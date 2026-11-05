@@ -1,0 +1,62 @@
+# First exhibit handoff
+
+This guide requires the local Proof Wall foundation toolkit: its templates, Python CLI, file inventory helper, and review documentation. It is not a standalone public upload interface. Public visitors can use contribution-template.txt and the contact path instead. Ask the owner for the curator toolkit before following these commands.
+
+The curator prepares evidence; the owner separately authorizes publication. Do not send the whole Library or constellation.
+
+## Submission interface
+
+The local private interface is a directory adjacent to the foundation:
+
+`../intake/<stable-id>--v1/`
+
+The Mac handoff receipt supplies the exact absolute location. This guide remains portable and contains no private workstation path.
+
+Copy `templates/exhibit.json` and `templates/article.md` into a new package. The template is intentionally incomplete and on hold. Fill every field; remove every `REPLACE:` marker. Add original files under `files/` if useful. Use ASCII filenames with letters, digits, dots, underscores, and hyphens. Do not include credentials, screenshots, private routing records, client information, or material whose release permission is unresolved.
+
+An exhibit looks like:
+
+```text
+my-question--v1/
+  exhibit.json
+  article.md
+  files/
+    original.md
+    experiment.py
+    receipt.json
+```
+
+List every file except `exhibit.json` in `files`. Record its path, role, media type, exact byte count, SHA-256, attribution, rights, and approved reuse terms. The article must have role `article`; at least one original, proof, data file, or receipt is required. The builder will not execute code to obtain a receipt.
+
+From the foundation, obtain sizes and hashes for your own package with:
+
+```sh
+python3 -B tools/file_inventory.py ../intake/my-question--v1
+```
+
+This prints a proposed file inventory; it never edits a manifest or approval. Assign roles and rights yourself. Rehashing cannot repair an invalid scientific result or an already-stale approval.
+
+## Describe the work honestly
+
+Give the original question, actual method, current finding, exact claim scope, limitations, open questions, authors, source history, and version note. Select a status matching the evidence. A failed attempt can be `artifact_type: failed-attempt` and `status: experimental` or `unresolved`. A finite test is `verified-finite-result`; it is not automatically `mathematically-proved`.
+
+No license is inferred. A rights holder can explicitly permit public reading with rights reserved; open licensing is a separate owner decision. Rights statements should say who can authorize which files. Do not put private permission correspondence into the public manifest.
+
+Set `sample: false` for actual research. Leave `publication.intent: hold` until ready to request review, then use `request-review`. This is a request, not permission. A curator-supplied approval flag is rejected as an unknown field.
+
+Relations name an exact exhibit ID and integer version with a reason. Available types: `related-to`, `tests`, `corrects`, `supersedes`, `contradicts`, `uses`. Targets must be present in the same release candidate; unresolved references block it. Garden references use IDs in `gardens.json` and describe why the connection matters.
+
+## Validate and hand over
+
+```sh
+python3 -B -m proofwall validate ../intake/my-question--v1
+python3 -B -m proofwall review ../intake/my-question--v1 --out ../reviews/my-question--v1.json
+```
+
+The second command creates a **pending** review record. It never approves. Give the owner the validation output and unchanged package. The reviewer must inspect all public bytes, metadata, attribution, claims and limits, and the evidence of release authority. See PUBLICATION.md.
+
+Keep the exact package once approved. Any byte change, including Markdown punctuation or an added file, invalidates approval. Make a new version for corrections. Preserve useful failures and explain what changed. Do not automatically republish an older version whose permission was withdrawn.
+
+## Before a public launch
+
+The builder creates a fresh static candidate and hashes its files. Inspect it in a browser and review the export itself. Public deployment still requires explicit owner approval. A valid package, a local review file, or a successful build never grants an agent permission to publish.

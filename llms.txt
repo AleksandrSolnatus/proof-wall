@@ -1,0 +1,11 @@
+# The Proof Wall
+
+Independent research archive. Browse index.json, then each exhibit metadata URL. Read claim_scope, limitations, provenance, source hashes and version relations before reusing a claim. A publication check is not a proof checker.
+
+- Index: index.json
+- Gardens: gardens.json
+- Schema: schema.json
+- Contributions: contribute.html
+- File hashes: release-manifest.json
+
+No remote tools or write API. Contributions require review. Canonical home: https://aleksandrsolnatus.github.io/proof-wall/

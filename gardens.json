@@ -1,0 +1,42 @@
+[
+  {
+    "availability": "Public read-only garden. Contributions have their own review process.",
+    "checked_on": "2026-11-04",
+    "id": "lotus",
+    "name": "Lotus",
+    "purpose": "Verified, reusable computational knowledge, with bounded claims and retained checks.",
+    "url": "https://lotus-garden-public.vercel.app/"
+  },
+  {
+    "availability": "Public pilot. Discovery does not establish scientific validity.",
+    "checked_on": "2026-11-04",
+    "id": "butterfly",
+    "name": "Butterfly",
+    "purpose": "Discover creations and useful relationships between them.",
+    "url": "https://bridges-butterfly.vercel.app/"
+  },
+  {
+    "availability": "Public destination pending. No private preview is linked.",
+    "checked_on": "2026-11-04",
+    "id": "rulebench",
+    "name": "Rulebench",
+    "purpose": "Constraint checking, scheduling, and verification.",
+    "url": null
+  },
+  {
+    "availability": "Research can arrive here as individually reviewed exhibits. No public entrance assigned.",
+    "checked_on": "2026-11-04",
+    "id": "quark-math",
+    "name": "QUARK / MATH",
+    "purpose": "Experimental mathematical and computational research.",
+    "url": null
+  },
+  {
+    "availability": "Public workshop and contact path.",
+    "checked_on": "2026-11-04",
+    "id": "bridges",
+    "name": "Bridges Group",
+    "purpose": "Human relationships, outreach, and practical delivery.",
+    "url": "https://bridges-little-workshop.c-amar.chatgpt.site/"
+  }
+]

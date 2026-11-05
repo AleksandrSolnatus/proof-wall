@@ -1,0 +1,8 @@
+Exhibit ID and version:
+Proposed correction / connection / question:
+Observation:
+Method or reproducible test:
+Result:
+Known limits:
+Sources and permission to share:
+Preferred attribution:

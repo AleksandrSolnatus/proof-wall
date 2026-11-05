@@ -1,0 +1,60 @@
+{
+  "canonical_url": "https://aleksandrsolnatus.github.io/proof-wall/",
+  "exhibits": 0,
+  "files": {
+    ".nojekyll": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "assets/wall.css": {
+      "bytes": 7351,
+      "sha256": "f3ba3550bad6e8b96367f0eb80cc43d83657dd2cf481cc983b7b26d470312d1a"
+    },
+    "assets/wall.js": {
+      "bytes": 1327,
+      "sha256": "716ccc5834ac1ee518f0ed40bc2528de217278ce00ce7fb50014496b6c628ad7"
+    },
+    "contribute.html": {
+      "bytes": 2765,
+      "sha256": "a75e60c4d5769678f85ee38c75e66d09c0ca026db0ebe75ad1994c60a4550e95"
+    },
+    "contribution-template.txt": {
+      "bytes": 189,
+      "sha256": "e1c2bb7ccacfc39f5be18c8767ba10e69e59bd59710626865bac5499cd801d0f"
+    },
+    "curator-guide.txt": {
+      "bytes": 4321,
+      "sha256": "82ac2f48d4a138c67bdd85ade3e28ad689f29c1fc78c4fe3b683a42b114540a3"
+    },
+    "gardens.json": {
+      "bytes": 1471,
+      "sha256": "d218439d7132992008a6e3d9bd19ce45ae98a9710f49b677c10fddb223bbefbb"
+    },
+    "index.html": {
+      "bytes": 3024,
+      "sha256": "63f9a3da55ae1a7bde136a32a1a9a279eefd3f1a7ff036f6568286d706782294"
+    },
+    "index.json": {
+      "bytes": 370,
+      "sha256": "be1d919c63f2e07635832c5686e06055523cd2027653e0d479eee0f1e5219665"
+    },
+    "llms.txt": {
+      "bytes": 508,
+      "sha256": "ca6711fc8c9af072023f6ad4b12c590ebaebdf0c4a7f68221412f8f93239bff8"
+    },
+    "paths.html": {
+      "bytes": 2826,
+      "sha256": "35ced673f8c22512bf2433efc1528d6fd5776f3c6028146df6fb1e94ca4dd118"
+    },
+    "schema.json": {
+      "bytes": 6645,
+      "sha256": "9a8f34a02329dd77da6f2e6e4945f7c6e1d841e60a5c40157795f284f4b5f7ec"
+    }
+  },
+  "manifest_note": "This manifest excludes itself. Hashes establish bytes, not truth or permission.",
+  "mode": "public-foundation",
+  "publication_note": "This manifest records the prepared bytes. Actual deployment is recorded separately.",
+  "published_by_builder": false,
+  "schema_version": 1,
+  "source_candidate_manifest_sha256": "cf3888a76228a441d634db38aed6a58db9227ddebe7a0746d930707c9754cc5c"
+}
