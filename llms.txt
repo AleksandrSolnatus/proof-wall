@@ -8,4 +8,4 @@ Independent research archive. Browse index.json, then each exhibit metadata URL.
 - Contributions: contribute.html
 - File hashes: release-manifest.json
 
-No remote tools or write API. Contributions require review. Canonical home: https://aleksandrsolnatus.github.io/proof-wall/
+No remote tools or write API. Contributions require review. This build has no assigned canonical public URL.

@@ -1,7 +1,5 @@
 {
-  "canonical_url": "https://aleksandrsolnatus.github.io/proof-wall/",
-  "change_description": "Owner-approved link to public Rulebench from Proof Wall paths and garden registry; no research exhibit publication.",
-  "exhibits": 0,
+  "exhibits": 1,
   "files": {
     ".nojekyll": {
       "bytes": 0,
@@ -27,21 +25,57 @@
       "bytes": 4321,
       "sha256": "82ac2f48d4a138c67bdd85ade3e28ad689f29c1fc78c4fe3b683a42b114540a3"
     },
+    "exhibits/lotus-greedy-scheduling/v2/exhibit.json": {
+      "bytes": 6148,
+      "sha256": "82fd6d6628c51121289495f53694b5dd9f679683f7df12a4c08e1e4d0e4166dd"
+    },
+    "exhibits/lotus-greedy-scheduling/v2/files/article.md.txt": {
+      "bytes": 3530,
+      "sha256": "80723206a771afb527a110dc925179db94641f599e9053aefae2c9addff1615d"
+    },
+    "exhibits/lotus-greedy-scheduling/v2/files/files/independent-receipt.json.txt": {
+      "bytes": 2714,
+      "sha256": "b5a578974a26a78517a8845ca390e99980c01233836ed0695fc2179bfa943211"
+    },
+    "exhibits/lotus-greedy-scheduling/v2/files/files/lotus-packet.json.txt": {
+      "bytes": 2242,
+      "sha256": "006196dbf29e08d30aa5b039b0f2f74ea69e4bfa89510e266a12580dc0296952"
+    },
+    "exhibits/lotus-greedy-scheduling/v2/files/files/lotus-problem.json.txt": {
+      "bytes": 2408,
+      "sha256": "b5ad78db6f1fb6b150d0a0b1feec79040c467fa27ff6a031898dc5f7ff9c2fbf"
+    },
+    "exhibits/lotus-greedy-scheduling/v2/files/files/replay.py.txt": {
+      "bytes": 3256,
+      "sha256": "2fd3c01f984f4b597cbace0d62285d30a669bb994ac519a4f27f1ef24b164a0d"
+    },
+    "exhibits/lotus-greedy-scheduling/v2/index.html": {
+      "bytes": 11125,
+      "sha256": "911c626987c0d182e5f557ac049f9802325cb7523964cd254f15b43c6c138b5d"
+    },
+    "exhibits/lotus-greedy-scheduling/v2/snapshot.json": {
+      "bytes": 948,
+      "sha256": "7ef81b074bf6af6f7b74b8f0e4c158b7efad271e196aec28d75fe9fcc4a11047"
+    },
+    "exhibits/lotus-greedy-scheduling/v2/submitted-manifest.json": {
+      "bytes": 4980,
+      "sha256": "c82e1909bf08d342765e9478aa9d100045c813e7b104189279409ef4fdba197d"
+    },
     "gardens.json": {
       "bytes": 1504,
       "sha256": "356068ebd2d472cfaeed0b6e9f0311b1a4d1975064c88837a37b24db9b87f5f2"
     },
     "index.html": {
-      "bytes": 3016,
-      "sha256": "252b1cc5e55c134edc2347404fb60c51243998eaf79fd134fc058a057e9ba8bb"
+      "bytes": 3273,
+      "sha256": "ba83fd2c99d73e1be177d0eb5d9e640108d7f0042bbfd688d0fa7f2fe5b84289"
     },
     "index.json": {
-      "bytes": 366,
-      "sha256": "0eea8dcf45cdc18ecbd77f0bcc5ea1b9bc84fb9d70a6fbe074f3fc13640891bf"
+      "bytes": 1458,
+      "sha256": "85dcc856ef79263aa0537f03ab0147682402af4bf4357b52d590cb720a811055"
     },
     "llms.txt": {
-      "bytes": 504,
-      "sha256": "bc846874e472606343c0e71fb9d5383ba1441e54d529d51cd32f9b259046c85b"
+      "bytes": 489,
+      "sha256": "4899e0930eea734ae80b0a5cde9edb050c756edc71961baea1c95cfae805ece1"
     },
     "paths.html": {
       "bytes": 2885,
@@ -53,10 +87,7 @@
     }
   },
   "manifest_note": "This manifest excludes itself. Hashes establish bytes, not truth or permission.",
-  "mode": "public-foundation",
-  "previous_release_manifest_sha256": "d8242e31ab07535b695d07bdb9fe1cefb85e44a6624db6b6f32ea8c64a204c1d",
-  "publication_note": "Direct link-only public checkout revision. Authoritative local builder input still requires reconciliation. This release includes zero research exhibits; publication of any pending exhibit remains prohibited.",
-  "published_by_builder": false,
-  "schema_version": 1,
-  "source_candidate_manifest_sha256": null
+  "mode": "release-candidate",
+  "published": false,
+  "schema_version": 1
 }

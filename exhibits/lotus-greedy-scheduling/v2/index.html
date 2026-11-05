@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer"><meta name="color-scheme" content="light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>A three-job counterexample to input-order greedy scheduling · Proof Wall</title><link rel="stylesheet" href="../../../assets/wall.css">
+<link rel="alternate" type="application/json" href="../../../index.json" title="Research index">
+<script src="../../../assets/wall.js" defer></script></head><body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../../../index.html"><span class="mark" aria-hidden="true">∴</span> Proof Wall</a>
+<nav aria-label="Main"><a href="../../../index.html">The wall</a><a href="../../../paths.html">Little paths</a><a href="../../../contribute.html">Contribute</a></nav></header>
+<main id="main"><a class="back" href="../../../index.html">← The wall</a>
+<div class="exhibit-heading"><p class="eyebrow">lotus-greedy-scheduling / v2 · 2026-11-05</p>
+<h1>A three-job counterexample to input-order greedy scheduling</h1><span class="status">counterexample</span><p class="scope">One exact counterexample refutes universal optimality of this input-order rule. The finite optimum check covers all eight assignments of these three jobs to two machines.</p></div>
+
+<div class="reading-layout"><article><section><h2>The question</h2><p>Does assigning each next job to the less-loaded of two identical machines always minimize the finish time?</p><h2>The method</h2><p>Replay the fixed [2,2,3] witness with ties to machine 0, enumerate all eight assignments independently, and compare with the original Lotus packet.</p><h2>The finding</h2><p>The stated greedy rule yields loads [5,2] and makespan 5. Assignment [0,0,1] yields [4,3] and makespan 4, which is optimal for this input.</p></section>
+<section class="original"><p class="eyebrow">Research text · rendered from the supplied Markdown</p><h2>A three-job counterexample to input-order greedy scheduling</h2>
+<p>This exhibit proposal preserves a checked demonstration already present in Lotus. It is not a new discovery or evidence that an outside visitor contributed research. The original packet is explicitly labeled a simulated visitor demonstration.</p>
+<h3>The question</h3>
+<p>Suppose two identical machines start empty. Jobs arrive in a fixed order. Assign each next job to the machine whose current load is smaller; on a tie, use machine 0. Does this rule always minimize the time when both machines have finished?</p>
+<p>Here, a job is assigned wholly to one machine. Its duration adds to that machine&#x27;s load. The finish time, or makespan, is the larger of the two loads.</p>
+<h3>A witness small enough to inspect</h3>
+<p>Use job durations 2, 2, 3, in that order.</p>
+<p>The rule places the first job on machine 0, the second on machine 1, and the third on machine 0 because both machines then have load 2. Its final loads are 5 and 2, so its makespan is 5.</p>
+<p>Put both duration-2 jobs on machine 0 and the duration-3 job on machine 1 instead. The final loads are 4 and 3, so the makespan is 4. This one feasible improvement is enough to refute the stated rule&#x27;s universal optimality claim.</p>
+<h3>Why 4 is optimal for this input</h3>
+<p>There are seven units of work and two machines. A makespan below 4 is impossible: both loads are integers, and two loads at most 3 would total at most 6. The alternative schedule attains 4.</p>
+<p>An independent replay also enumerates every one of the eight assignments. Here the three digits identify the machines assigned to the jobs in their original order.</p>
+<pre><code>assignment  loads   makespan
+000         7,0     7
+001         4,3     4
+010         5,2     5
+011         2,5     5
+100         5,2     5
+101         2,5     5
+110         3,4     4
+111         0,7     7</code></pre>
+<p>The replay imports no Lotus checker. It retains the original packet bytes, verifies their hash, computes the greedy trace, then calculates loads from each complete assignment independently. Run it after reviewing the supplied code:</p>
+<pre><code>python3 files/replay.py</code></pre>
+<p>Compare its JSON output with files/independent-receipt.json. The archive builder itself does not execute submitted code.</p>
+<h3>Original work and provenance</h3>
+<p>The source is Lotus Counterexample Hunter, fixture version lotus-flowers/1, and approved demonstration packet 4271490e-e38c-4b4d-bad3-1485227d8671. The PUBLIC-005 release records checker/fixture source commit d455cdc993909f5976fbcda2a39c6c035fa5fb13.</p>
+<ul><li><a href="https://lotus-garden-public.vercel.app/api/problems/counterexample-hunter" rel="noreferrer">Original problem and exact rule</a></li></ul>
+<ul><li><a href="https://lotus-garden-public.vercel.app/api/packets/4271490e-e38c-4b4d-bad3-1485227d8671" rel="noreferrer">Original approved packet</a></li></ul>
+<ul><li><a href="https://lotus-garden-public.vercel.app/verification/README.txt" rel="noreferrer">Lotus replay instructions and reuse limitation</a></li></ul>
+<p>The original public problem and packet are retained byte for byte in this local proposal. Their original publication does not itself grant a new license or authorize this proposal&#x27;s public release.</p>
+<h3>What this does not establish</h3>
+<p>This is a counterexample to one precisely stated rule. It does not identify the smallest possible counterexample, describe every input, or evaluate variants that reorder jobs before scheduling. It does not establish a general speedup or resolve SAT or P versus NP.</p>
+<p>The next useful question is how a changed scheduling rule behaves on a separately specified domain. That would require a new method and its own evidence, not a stronger label on this result.</p></section>
+<section class="limits"><h2>Limits &amp; open questions</h2><ul><li>Existing Lotus simulated-visitor demonstration; not a new discovery or evidence of external adoption.</li><li>No smallest-counterexample claim, characterization of all inputs, or evaluation of reordering heuristics.</li><li>No general runtime, SAT, or P-versus-NP conclusion.</li></ul><h3>Still open</h3><ul><li>How would a separately specified rule that reorders jobs behave on an explicitly bounded domain?</li></ul></section>
+<section><h2>Little paths</h2><ul><li><a href="../../../paths.html#lotus">lotus</a> — Original Counterexample Hunter fixture and approved simulated demonstration.</li><li><a href="../../../paths.html#rulebench">rulebench</a> — Related interest in checking schedules and constraints; no shared implementation or verified integration claimed.</li></ul></section></article>
+<aside class="evidence"><h2>Inspect the evidence</h2><p>Original bytes, with recorded hashes. Downloads retain their original names; hosted copies use inert suffixes.</p><ul><li><a download="article.md" href="files/article.md.txt">article.md</a>
+<span>article · 3,530 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">80723206a771afb527a110dc925179db94641f599e9053aefae2c9addff1615d</code><p>The Bridges Group — Lotus; Proof Wall independent explanation and replay.</p><p>Public reading and downloading on the Proof Wall authorized by Amar.</p><p>All rights reserved; no open-source license is granted.</p></details></li><li><a download="replay.py" href="files/files/replay.py.txt">files/replay.py</a>
+<span>code · 3,256 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">2fd3c01f984f4b597cbace0d62285d30a669bb994ac519a4f27f1ef24b164a0d</code><p>The Bridges Group — Lotus; Proof Wall independent explanation and replay.</p><p>Public reading and downloading on the Proof Wall authorized by Amar.</p><p>All rights reserved; no open-source license is granted.</p></details></li><li><a download="independent-receipt.json" href="files/files/independent-receipt.json.txt">files/independent-receipt.json</a>
+<span>receipt · 2,714 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">b5a578974a26a78517a8845ca390e99980c01233836ed0695fc2179bfa943211</code><p>The Bridges Group — Lotus; Proof Wall independent explanation and replay.</p><p>Public reading and downloading on the Proof Wall authorized by Amar.</p><p>All rights reserved; no open-source license is granted.</p></details></li><li><a download="lotus-problem.json" href="files/files/lotus-problem.json.txt">files/lotus-problem.json</a>
+<span>original · 2,408 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">b5ad78db6f1fb6b150d0a0b1feec79040c467fa27ff6a031898dc5f7ff9c2fbf</code><p>The Bridges Group — Lotus; Proof Wall independent explanation and replay.</p><p>Public reading and downloading on the Proof Wall authorized by Amar.</p><p>All rights reserved; no open-source license is granted.</p></details></li><li><a download="lotus-packet.json" href="files/files/lotus-packet.json.txt">files/lotus-packet.json</a>
+<span>original · 2,242 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">006196dbf29e08d30aa5b039b0f2f74ea69e4bfa89510e266a12580dc0296952</code><p>The Bridges Group — Lotus; Proof Wall independent explanation and replay.</p><p>Public reading and downloading on the Proof Wall authorized by Amar.</p><p>All rights reserved; no open-source license is granted.</p></details></li></ul>
+<p><a href="exhibit.json">Exhibit JSON</a> · <a href="submitted-manifest.json">Original manifest</a> · <a href="snapshot.json">Snapshot</a></p>
+<h3>Provenance</h3><p>The Bridges Group — Lotus, Proof Wall builder: independent explanation and finite replay</p><p>Lotus PUBLIC-005, source commit d455cdc993909f5976fbcda2a39c6c035fa5fb13; fixture lotus-flowers/1; packet 4271490e-e38c-4b4d-bad3-1485227d8671. Original problem and packet were fetched anonymously and matched the public release hashes.</p><h3>Version note</h3><p>Version 2 records owner authorization and attribution; article and original evidence files retained byte for byte.</p>
+<h3>Publication &amp; reuse</h3><p>The Bridges Group — Lotus; Proof Wall independent explanation and replay.</p><p>Public reading and downloading on the Proof Wall authorized by Amar.</p><p>All rights reserved; no open-source license is granted.</p>
+<p class="fine">Publication review is not a mathematical certification. A finite test is not a general proof.</p>
+<a href="../../../contribute.html?exhibit=lotus-greedy-scheduling%40v2">Suggest a correction or connection →</a></aside></div></main><footer><span>We attract by method.</span><div><a href="../../../index.json">Machine-readable index</a> · <a href="../../../llms.txt">For agents</a> · <a href="../../../release-manifest.json">File hashes</a></div><p>No accounts, analytics, or submission server. Hosting providers may keep security logs.</p></footer></body></html>

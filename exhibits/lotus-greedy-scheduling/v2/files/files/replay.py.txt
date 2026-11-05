@@ -1,0 +1,59 @@
+"""Independent finite replay of the published Lotus three-job witness.
+
+No Lotus code is imported or executed. Exactly one fixed input and all eight
+assignments are examined. This script does not search arbitrary scheduling inputs.
+"""
+from hashlib import sha256
+from itertools import product
+import json
+from pathlib import Path
+
+root = Path(__file__).resolve().parent
+raw = (root / 'lotus-packet.json').read_bytes()
+expected = '006196dbf29e08d30aa5b039b0f2f74ea69e4bfa89510e266a12580dc0296952'
+if sha256(raw).hexdigest() != expected:
+    raise SystemExit('Source packet bytes changed; stop and review provenance.')
+packet = json.loads(raw)
+jobs = packet['proposal']['jobs']
+if jobs != [2, 2, 3]:
+    raise SystemExit('This replay covers only the original three-job witness.')
+
+# Directly implement the stated online choice; trace each placement.
+loads = [0, 0]
+greedy_assignment, trace = [], []
+for index, duration in enumerate(jobs):
+    before = loads.copy()
+    machine = 0 if loads[0] <= loads[1] else 1
+    loads[machine] += duration
+    greedy_assignment.append(machine)
+    trace.append({'job_index':index, 'duration':duration, 'before':before,
+                  'machine':machine, 'after':loads.copy()})
+greedy_loads = loads.copy()
+
+# Recompute loads independently from each complete assignment.
+rows = []
+for assignment in product((0, 1), repeat=len(jobs)):
+    complete_loads = [sum(d for d, chosen in zip(jobs, assignment) if chosen == m) for m in (0, 1)]
+    rows.append({'assignment':list(assignment), 'loads':complete_loads, 'makespan':max(complete_loads)})
+optimum = min(row['makespan'] for row in rows)
+alternative = next(row for row in rows if row['assignment'] == packet['proposal']['better_assignment'])
+greedy_makespan = max(greedy_loads)
+if (len(rows), greedy_assignment, greedy_loads, greedy_makespan, optimum, alternative['makespan']) != (8, [0,1,0], [5,2], 5, 4, 4):
+    raise SystemExit('Independent result differs from the stated witness.')
+evidence = packet['check']['evidence']
+if evidence['greedy_assignment'] != greedy_assignment or evidence['greedy_loads'] != greedy_loads or evidence['optimal_makespan'] != optimum:
+    raise SystemExit('Original receipt differs from the independent calculation.')
+
+receipt = {'schema':'proof-wall-finite-replay-001', 'source_packet_sha256':expected,
+           'source_provenance':packet['provenance'], 'jobs':jobs, 'machines':2,
+           'greedy_trace':trace, 'greedy_assignment':greedy_assignment,
+           'greedy_loads':greedy_loads, 'greedy_makespan':greedy_makespan,
+           'complete_assignments_checked':len(rows), 'assignments':rows,
+           'optimal_makespan':optimum, 'optimal_assignments':[r['assignment'] for r in rows if r['makespan']==optimum],
+           'integer_workload_lower_bound':(sum(jobs)+1)//2,
+           'supplied_alternative':alternative, 'strict_improvement':greedy_makespan > optimum,
+           'matches_original_packet':True,
+           'limits':['One fixed witness; no smallest-counterexample claim.',
+                     'Input-order heuristic with ties to machine 0; reordering variants are outside scope.',
+                     'No general solver, runtime, SAT, or P-versus-NP claim.']}
+print(json.dumps(receipt, indent=2, sort_keys=True))

@@ -1,0 +1,86 @@
+{
+  "id": "counterexample-hunter",
+  "version": "lotus-flowers/1",
+  "title": "Counterexample Hunter",
+  "summary": "Break a scheduling claim with a small, replayable witness.",
+  "question": "Find jobs for which input-order list scheduling on two identical machines fails to minimize makespan. Supply an optimal alternative assignment.",
+  "fixture": {
+    "claim": "For every positive integer job list, assigning each next job to the currently less-loaded of two machines always minimizes makespan.",
+    "machines": 2,
+    "heuristic": "Process jobs in submitted order. Choose the less-loaded machine; ties choose machine 0.",
+    "job_count": {
+      "minimum": 1,
+      "maximum": 10
+    },
+    "job_duration": {
+      "minimum": 1,
+      "maximum": 20
+    },
+    "assignment": "One machine number, 0 or 1, per job in input order.",
+    "verification": "Enumerate all 2**len(jobs) assignments; require the supplied alternative to attain the minimum and strictly beat the heuristic."
+  },
+  "answer_schema": {
+    "type": "object",
+    "properties": {
+      "jobs": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "minItems": 1,
+        "maxItems": 10
+      },
+      "better_assignment": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "minItems": 1,
+        "maxItems": 10
+      },
+      "greedy_makespan": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 200
+      },
+      "optimal_makespan": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 200
+      }
+    },
+    "required": [
+      "jobs",
+      "better_assignment",
+      "greedy_makespan",
+      "optimal_makespan"
+    ],
+    "additionalProperties": false
+  },
+  "limits": [
+    "A checked witness refutes this exact universal claim.",
+    "It does not establish the smallest possible counterexample or characterize all inputs.",
+    "Failure to find a witness within the bounds is not a proof of the claim."
+  ],
+  "worked_example": {
+    "label": "Demonstration proposal (not a visitor contribution)",
+    "proposal": {
+      "jobs": [
+        2,
+        2,
+        3
+      ],
+      "better_assignment": [
+        0,
+        0,
+        1
+      ],
+      "greedy_makespan": 5,
+      "optimal_makespan": 4
+    }
+  }
+}

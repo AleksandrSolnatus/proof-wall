@@ -1,0 +1,29 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 3530,
+      "sha256": "80723206a771afb527a110dc925179db94641f599e9053aefae2c9addff1615d"
+    },
+    "exhibit.json": {
+      "bytes": 4980,
+      "sha256": "c82e1909bf08d342765e9478aa9d100045c813e7b104189279409ef4fdba197d"
+    },
+    "files/independent-receipt.json": {
+      "bytes": 2714,
+      "sha256": "b5a578974a26a78517a8845ca390e99980c01233836ed0695fc2179bfa943211"
+    },
+    "files/lotus-packet.json": {
+      "bytes": 2242,
+      "sha256": "006196dbf29e08d30aa5b039b0f2f74ea69e4bfa89510e266a12580dc0296952"
+    },
+    "files/lotus-problem.json": {
+      "bytes": 2408,
+      "sha256": "b5ad78db6f1fb6b150d0a0b1feec79040c467fa27ff6a031898dc5f7ff9c2fbf"
+    },
+    "files/replay.py": {
+      "bytes": 3256,
+      "sha256": "2fd3c01f984f4b597cbace0d62285d30a669bb994ac519a4f27f1ef24b164a0d"
+    }
+  },
+  "package_sha256": "b91be61c07861fc1ef0effcf8d7ca5928a2d396bc72e5ebcd2f068c12a5dd27b"
+}

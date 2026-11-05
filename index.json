@@ -1,9 +1,33 @@
 {
-  "canonical_url": "https://aleksandrsolnatus.github.io/proof-wall/",
+  "canonical_url": null,
   "contributions": "contribute.html",
-  "exhibits": [],
+  "exhibits": [
+    {
+      "claim_scope": "One exact counterexample refutes universal optimality of this input-order rule. The finite optimum check covers all eight assignments of these three jobs to two machines.",
+      "gardens": [
+        {
+          "id": "lotus",
+          "reason": "Original Counterexample Hunter fixture and approved simulated demonstration."
+        },
+        {
+          "id": "rulebench",
+          "reason": "Related interest in checking schedules and constraints; no shared implementation or verified integration claimed."
+        }
+      ],
+      "id": "lotus-greedy-scheduling",
+      "metadata": "exhibits/lotus-greedy-scheduling/v2/exhibit.json",
+      "package_sha256": "b91be61c07861fc1ef0effcf8d7ca5928a2d396bc72e5ebcd2f068c12a5dd27b",
+      "question": "Does assigning each next job to the less-loaded of two identical machines always minimize the finish time?",
+      "relations": [],
+      "sample": false,
+      "status": "counterexample",
+      "title": "A three-job counterexample to input-order greedy scheduling",
+      "url": "exhibits/lotus-greedy-scheduling/v2/index.html",
+      "version": 2
+    }
+  ],
   "gardens": "gardens.json",
-  "mode": "public-foundation",
+  "mode": "release-candidate",
   "schema_version": 1,
   "status_note": "Statuses are attributed claims, not established by this website. Finite verification is not a general proof.",
   "title": "Proof Wall"

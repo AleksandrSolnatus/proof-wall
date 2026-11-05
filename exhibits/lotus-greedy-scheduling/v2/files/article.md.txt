@@ -1,0 +1,59 @@
+# A three-job counterexample to input-order greedy scheduling
+
+This exhibit proposal preserves a checked demonstration already present in Lotus. It is not a new discovery or evidence that an outside visitor contributed research. The original packet is explicitly labeled a simulated visitor demonstration.
+
+## The question
+
+Suppose two identical machines start empty. Jobs arrive in a fixed order. Assign each next job to the machine whose current load is smaller; on a tie, use machine 0. Does this rule always minimize the time when both machines have finished?
+
+Here, a job is assigned wholly to one machine. Its duration adds to that machine's load. The finish time, or makespan, is the larger of the two loads.
+
+## A witness small enough to inspect
+
+Use job durations 2, 2, 3, in that order.
+
+The rule places the first job on machine 0, the second on machine 1, and the third on machine 0 because both machines then have load 2. Its final loads are 5 and 2, so its makespan is 5.
+
+Put both duration-2 jobs on machine 0 and the duration-3 job on machine 1 instead. The final loads are 4 and 3, so the makespan is 4. This one feasible improvement is enough to refute the stated rule's universal optimality claim.
+
+## Why 4 is optimal for this input
+
+There are seven units of work and two machines. A makespan below 4 is impossible: both loads are integers, and two loads at most 3 would total at most 6. The alternative schedule attains 4.
+
+An independent replay also enumerates every one of the eight assignments. Here the three digits identify the machines assigned to the jobs in their original order.
+
+```
+assignment  loads   makespan
+000         7,0     7
+001         4,3     4
+010         5,2     5
+011         2,5     5
+100         5,2     5
+101         2,5     5
+110         3,4     4
+111         0,7     7
+```
+
+The replay imports no Lotus checker. It retains the original packet bytes, verifies their hash, computes the greedy trace, then calculates loads from each complete assignment independently. Run it after reviewing the supplied code:
+
+```
+python3 files/replay.py
+```
+
+Compare its JSON output with files/independent-receipt.json. The archive builder itself does not execute submitted code.
+
+## Original work and provenance
+
+The source is Lotus Counterexample Hunter, fixture version lotus-flowers/1, and approved demonstration packet 4271490e-e38c-4b4d-bad3-1485227d8671. The PUBLIC-005 release records checker/fixture source commit d455cdc993909f5976fbcda2a39c6c035fa5fb13.
+
+- [Original problem and exact rule](https://lotus-garden-public.vercel.app/api/problems/counterexample-hunter)
+- [Original approved packet](https://lotus-garden-public.vercel.app/api/packets/4271490e-e38c-4b4d-bad3-1485227d8671)
+- [Lotus replay instructions and reuse limitation](https://lotus-garden-public.vercel.app/verification/README.txt)
+
+The original public problem and packet are retained byte for byte in this local proposal. Their original publication does not itself grant a new license or authorize this proposal's public release.
+
+## What this does not establish
+
+This is a counterexample to one precisely stated rule. It does not identify the smallest possible counterexample, describe every input, or evaluate variants that reorder jobs before scheduling. It does not establish a general speedup or resolve SAT or P versus NP.
+
+The next useful question is how a changed scheduling rule behaves on a separately specified domain. That would require a new method and its own evidence, not a stronger label on this result.

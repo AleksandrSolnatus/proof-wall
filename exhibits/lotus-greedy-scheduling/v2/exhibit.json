@@ -1,0 +1,133 @@
+{
+  "article": "article.md",
+  "artifact_type": "counterexample",
+  "claim_scope": "One exact counterexample refutes universal optimality of this input-order rule. The finite optimum check covers all eight assignments of these three jobs to two machines.",
+  "date": "2026-11-05",
+  "downloads": [
+    {
+      "bytes": 3530,
+      "original_path": "article.md",
+      "sha256": "80723206a771afb527a110dc925179db94641f599e9053aefae2c9addff1615d",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 3256,
+      "original_path": "files/replay.py",
+      "sha256": "2fd3c01f984f4b597cbace0d62285d30a669bb994ac519a4f27f1ef24b164a0d",
+      "url": "files/files/replay.py.txt"
+    },
+    {
+      "bytes": 2714,
+      "original_path": "files/independent-receipt.json",
+      "sha256": "b5a578974a26a78517a8845ca390e99980c01233836ed0695fc2179bfa943211",
+      "url": "files/files/independent-receipt.json.txt"
+    },
+    {
+      "bytes": 2408,
+      "original_path": "files/lotus-problem.json",
+      "sha256": "b5ad78db6f1fb6b150d0a0b1feec79040c467fa27ff6a031898dc5f7ff9c2fbf",
+      "url": "files/files/lotus-problem.json.txt"
+    },
+    {
+      "bytes": 2242,
+      "original_path": "files/lotus-packet.json",
+      "sha256": "006196dbf29e08d30aa5b039b0f2f74ea69e4bfa89510e266a12580dc0296952",
+      "url": "files/files/lotus-packet.json.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "The Bridges Group — Lotus; Proof Wall independent explanation and replay.",
+      "bytes": 3530,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Public reading and downloading on the Proof Wall authorized by Amar.",
+      "role": "article",
+      "sha256": "80723206a771afb527a110dc925179db94641f599e9053aefae2c9addff1615d"
+    },
+    {
+      "attribution": "The Bridges Group — Lotus; Proof Wall independent explanation and replay.",
+      "bytes": 3256,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "text/x-python",
+      "path": "files/replay.py",
+      "rights": "Public reading and downloading on the Proof Wall authorized by Amar.",
+      "role": "code",
+      "sha256": "2fd3c01f984f4b597cbace0d62285d30a669bb994ac519a4f27f1ef24b164a0d"
+    },
+    {
+      "attribution": "The Bridges Group — Lotus; Proof Wall independent explanation and replay.",
+      "bytes": 2714,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "application/json",
+      "path": "files/independent-receipt.json",
+      "rights": "Public reading and downloading on the Proof Wall authorized by Amar.",
+      "role": "receipt",
+      "sha256": "b5a578974a26a78517a8845ca390e99980c01233836ed0695fc2179bfa943211"
+    },
+    {
+      "attribution": "The Bridges Group — Lotus; Proof Wall independent explanation and replay.",
+      "bytes": 2408,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "application/json",
+      "path": "files/lotus-problem.json",
+      "rights": "Public reading and downloading on the Proof Wall authorized by Amar.",
+      "role": "original",
+      "sha256": "b5ad78db6f1fb6b150d0a0b1feec79040c467fa27ff6a031898dc5f7ff9c2fbf"
+    },
+    {
+      "attribution": "The Bridges Group — Lotus; Proof Wall independent explanation and replay.",
+      "bytes": 2242,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "application/json",
+      "path": "files/lotus-packet.json",
+      "rights": "Public reading and downloading on the Proof Wall authorized by Amar.",
+      "role": "original",
+      "sha256": "006196dbf29e08d30aa5b039b0f2f74ea69e4bfa89510e266a12580dc0296952"
+    }
+  ],
+  "finding": "The stated greedy rule yields loads [5,2] and makespan 5. Assignment [0,0,1] yields [4,3] and makespan 4, which is optimal for this input.",
+  "gardens": [
+    {
+      "id": "lotus",
+      "reason": "Original Counterexample Hunter fixture and approved simulated demonstration."
+    },
+    {
+      "id": "rulebench",
+      "reason": "Related interest in checking schedules and constraints; no shared implementation or verified integration claimed."
+    }
+  ],
+  "id": "lotus-greedy-scheduling",
+  "limitations": [
+    "Existing Lotus simulated-visitor demonstration; not a new discovery or evidence of external adoption.",
+    "No smallest-counterexample claim, characterization of all inputs, or evaluation of reordering heuristics.",
+    "No general runtime, SAT, or P-versus-NP conclusion."
+  ],
+  "method": "Replay the fixed [2,2,3] witness with ties to machine 0, enumerate all eight assignments independently, and compare with the original Lotus packet.",
+  "open_questions": [
+    "How would a separately specified rule that reorders jobs behave on an explicitly bounded domain?"
+  ],
+  "package_sha256": "b91be61c07861fc1ef0effcf8d7ca5928a2d396bc72e5ebcd2f068c12a5dd27b",
+  "provenance": {
+    "authors": [
+      "The Bridges Group — Lotus",
+      "Proof Wall builder: independent explanation and finite replay"
+    ],
+    "change_note": "Version 2 records owner authorization and attribution; article and original evidence files retained byte for byte.",
+    "origin": "Lotus PUBLIC-005, source commit d455cdc993909f5976fbcda2a39c6c035fa5fb13; fixture lotus-flowers/1; packet 4271490e-e38c-4b4d-bad3-1485227d8671. Original problem and packet were fetched anonymously and matched the public release hashes."
+  },
+  "publication": {
+    "attribution": "The Bridges Group — Lotus; Proof Wall independent explanation and replay.",
+    "intent": "request-review",
+    "license": "All rights reserved; no open-source license is granted.",
+    "rights": "Public reading and downloading on the Proof Wall authorized by Amar."
+  },
+  "question": "Does assigning each next job to the less-loaded of two identical machines always minimize the finish time?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "counterexample",
+  "title": "A three-job counterexample to input-order greedy scheduling",
+  "version": 2
+}

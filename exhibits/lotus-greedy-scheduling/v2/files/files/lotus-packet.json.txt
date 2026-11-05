@@ -1,0 +1,84 @@
+{
+  "check": {
+    "checker_version": "lotus-checkers/1",
+    "evidence": {
+      "claim_refuted": true,
+      "counterexample_minimality_claimed": false,
+      "greedy_assignment": [
+        0,
+        1,
+        0
+      ],
+      "greedy_loads": [
+        5,
+        2
+      ],
+      "greedy_makespan": 5,
+      "jobs": [
+        2,
+        2,
+        3
+      ],
+      "optimal_makespan": 4,
+      "reference_optimal_assignment": [
+        0,
+        0,
+        1
+      ],
+      "supplied_optimal_assignment": [
+        0,
+        0,
+        1
+      ],
+      "supplied_optimal_loads": [
+        4,
+        3
+      ]
+    },
+    "uncertainty": [
+      "A checked witness refutes this exact universal claim.",
+      "It does not establish the smallest possible counterexample or characterize all inputs.",
+      "Failure to find a witness within the bounds is not a proof of the claim."
+    ],
+    "valid": true,
+    "work": {
+      "assignments_enumerated": 8,
+      "greedy_job_placements": 3,
+      "reference_job_visits": 27,
+      "supplied_schedule_job_visits": 6
+    }
+  },
+  "created_at": "2026-11-04T20:09:47.230175+00:00",
+  "id": "4271490e-e38c-4b4d-bad3-1485227d8671",
+  "links": {
+    "problem": "/api/problems/counterexample-hunter"
+  },
+  "problem_id": "counterexample-hunter",
+  "problem_sha256": "fd561a63a65a3ed14eec7c0b994bcd2e2b765378be24bbf819fe13168ab7334e",
+  "problem_version": "lotus-flowers/1",
+  "proposal": {
+    "better_assignment": [
+      0,
+      0,
+      1
+    ],
+    "greedy_makespan": 5,
+    "jobs": [
+      2,
+      2,
+      3
+    ],
+    "optimal_makespan": 4
+  },
+  "provenance": "simulated visitor demonstration",
+  "schema": "lotus-pollen-001",
+  "suggested_next_step": "Recheck the packet, state your new question, and measure any reused work separately from verification.",
+  "uncertainty": [
+    "A checked witness refutes this exact universal claim.",
+    "It does not establish the smallest possible counterexample or characterize all inputs.",
+    "Failure to find a witness within the bounds is not a proof of the claim."
+  ],
+  "content_sha256": "80807145009c310c5125fdc8de385a8ef75ea2be6c24be98c21b59864a9887d9",
+  "moderation": "approved",
+  "moderated_at": "2026-11-04T20:09:47.230633+00:00"
+}

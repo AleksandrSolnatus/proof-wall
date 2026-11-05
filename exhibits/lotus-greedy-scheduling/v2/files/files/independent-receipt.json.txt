@@ -1,0 +1,194 @@
+{
+  "assignments": [
+    {
+      "assignment": [
+        0,
+        0,
+        0
+      ],
+      "loads": [
+        7,
+        0
+      ],
+      "makespan": 7
+    },
+    {
+      "assignment": [
+        0,
+        0,
+        1
+      ],
+      "loads": [
+        4,
+        3
+      ],
+      "makespan": 4
+    },
+    {
+      "assignment": [
+        0,
+        1,
+        0
+      ],
+      "loads": [
+        5,
+        2
+      ],
+      "makespan": 5
+    },
+    {
+      "assignment": [
+        0,
+        1,
+        1
+      ],
+      "loads": [
+        2,
+        5
+      ],
+      "makespan": 5
+    },
+    {
+      "assignment": [
+        1,
+        0,
+        0
+      ],
+      "loads": [
+        5,
+        2
+      ],
+      "makespan": 5
+    },
+    {
+      "assignment": [
+        1,
+        0,
+        1
+      ],
+      "loads": [
+        2,
+        5
+      ],
+      "makespan": 5
+    },
+    {
+      "assignment": [
+        1,
+        1,
+        0
+      ],
+      "loads": [
+        3,
+        4
+      ],
+      "makespan": 4
+    },
+    {
+      "assignment": [
+        1,
+        1,
+        1
+      ],
+      "loads": [
+        0,
+        7
+      ],
+      "makespan": 7
+    }
+  ],
+  "complete_assignments_checked": 8,
+  "greedy_assignment": [
+    0,
+    1,
+    0
+  ],
+  "greedy_loads": [
+    5,
+    2
+  ],
+  "greedy_makespan": 5,
+  "greedy_trace": [
+    {
+      "after": [
+        2,
+        0
+      ],
+      "before": [
+        0,
+        0
+      ],
+      "duration": 2,
+      "job_index": 0,
+      "machine": 0
+    },
+    {
+      "after": [
+        2,
+        2
+      ],
+      "before": [
+        2,
+        0
+      ],
+      "duration": 2,
+      "job_index": 1,
+      "machine": 1
+    },
+    {
+      "after": [
+        5,
+        2
+      ],
+      "before": [
+        2,
+        2
+      ],
+      "duration": 3,
+      "job_index": 2,
+      "machine": 0
+    }
+  ],
+  "integer_workload_lower_bound": 4,
+  "jobs": [
+    2,
+    2,
+    3
+  ],
+  "limits": [
+    "One fixed witness; no smallest-counterexample claim.",
+    "Input-order heuristic with ties to machine 0; reordering variants are outside scope.",
+    "No general solver, runtime, SAT, or P-versus-NP claim."
+  ],
+  "machines": 2,
+  "matches_original_packet": true,
+  "optimal_assignments": [
+    [
+      0,
+      0,
+      1
+    ],
+    [
+      1,
+      1,
+      0
+    ]
+  ],
+  "optimal_makespan": 4,
+  "schema": "proof-wall-finite-replay-001",
+  "source_packet_sha256": "006196dbf29e08d30aa5b039b0f2f74ea69e4bfa89510e266a12580dc0296952",
+  "source_provenance": "simulated visitor demonstration",
+  "strict_improvement": true,
+  "supplied_alternative": {
+    "assignment": [
+      0,
+      0,
+      1
+    ],
+    "loads": [
+      4,
+      3
+    ],
+    "makespan": 4
+  }
+}
