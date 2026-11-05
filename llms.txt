@@ -1,4 +1,4 @@
-# The Proof Wall
+# Proof Wall
 
 Independent research archive. Browse index.json, then each exhibit metadata URL. Read claim_scope, limitations, provenance, source hashes and version relations before reusing a claim. A publication check is not a proof checker.
 

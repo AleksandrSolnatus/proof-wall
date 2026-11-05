@@ -1,5 +1,6 @@
 {
   "canonical_url": "https://aleksandrsolnatus.github.io/proof-wall/",
+  "change_description": "Owner-approved display names only: Proof Wall and Bridges. All addresses, exhibit content, and access remain unchanged.",
   "exhibits": 0,
   "files": {
     ".nojekyll": {
@@ -15,8 +16,8 @@
       "sha256": "716ccc5834ac1ee518f0ed40bc2528de217278ce00ce7fb50014496b6c628ad7"
     },
     "contribute.html": {
-      "bytes": 2765,
-      "sha256": "a75e60c4d5769678f85ee38c75e66d09c0ca026db0ebe75ad1994c60a4550e95"
+      "bytes": 2757,
+      "sha256": "f0290f782e37d0630139b046a7bb7b37ea8ba36960679ba40cd8df338d94f800"
     },
     "contribution-template.txt": {
       "bytes": 189,
@@ -27,24 +28,24 @@
       "sha256": "82ac2f48d4a138c67bdd85ade3e28ad689f29c1fc78c4fe3b683a42b114540a3"
     },
     "gardens.json": {
-      "bytes": 1471,
-      "sha256": "d218439d7132992008a6e3d9bd19ce45ae98a9710f49b677c10fddb223bbefbb"
+      "bytes": 1465,
+      "sha256": "350a91c4483a0b07cb868af685af6e309bc03d9ede70953a932ee4bade6023e9"
     },
     "index.html": {
-      "bytes": 3024,
-      "sha256": "63f9a3da55ae1a7bde136a32a1a9a279eefd3f1a7ff036f6568286d706782294"
+      "bytes": 3016,
+      "sha256": "252b1cc5e55c134edc2347404fb60c51243998eaf79fd134fc058a057e9ba8bb"
     },
     "index.json": {
-      "bytes": 370,
-      "sha256": "be1d919c63f2e07635832c5686e06055523cd2027653e0d479eee0f1e5219665"
+      "bytes": 366,
+      "sha256": "0eea8dcf45cdc18ecbd77f0bcc5ea1b9bc84fb9d70a6fbe074f3fc13640891bf"
     },
     "llms.txt": {
-      "bytes": 508,
-      "sha256": "ca6711fc8c9af072023f6ad4b12c590ebaebdf0c4a7f68221412f8f93239bff8"
+      "bytes": 504,
+      "sha256": "bc846874e472606343c0e71fb9d5383ba1441e54d529d51cd32f9b259046c85b"
     },
     "paths.html": {
-      "bytes": 2826,
-      "sha256": "35ced673f8c22512bf2433efc1528d6fd5776f3c6028146df6fb1e94ca4dd118"
+      "bytes": 2812,
+      "sha256": "de4b3eaba0fee672488ac3f4318cda46c55c745d52f00d2b8e39b22d66bbe151"
     },
     "schema.json": {
       "bytes": 6645,
@@ -53,6 +54,7 @@
   },
   "manifest_note": "This manifest excludes itself. Hashes establish bytes, not truth or permission.",
   "mode": "public-foundation",
+  "previous_release_manifest_sha256": "c9efde32bf8929514bec9fbb4d3d01600bb6838448febd6679cbe600e3c0d0ad",
   "publication_note": "This manifest records the prepared bytes. Actual deployment is recorded separately.",
   "published_by_builder": false,
   "schema_version": 1,
