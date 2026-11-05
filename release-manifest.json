@@ -1,6 +1,6 @@
 {
   "canonical_url": "https://aleksandrsolnatus.github.io/proof-wall/",
-  "change_description": "Owner-approved connected ChatGPT Site address updates. Proof Wall host, content, and pending exhibit unchanged.",
+  "change_description": "Owner-approved link to public Rulebench from Proof Wall paths and garden registry; no research exhibit publication.",
   "exhibits": 0,
   "files": {
     ".nojekyll": {
@@ -28,8 +28,8 @@
       "sha256": "82ac2f48d4a138c67bdd85ade3e28ad689f29c1fc78c4fe3b683a42b114540a3"
     },
     "gardens.json": {
-      "bytes": 1449,
-      "sha256": "2d4c41bd5863d233d6dff1559e821a83fe29b59bc3717978e3459039347b4bd3"
+      "bytes": 1504,
+      "sha256": "356068ebd2d472cfaeed0b6e9f0311b1a4d1975064c88837a37b24db9b87f5f2"
     },
     "index.html": {
       "bytes": 3016,
@@ -44,8 +44,8 @@
       "sha256": "bc846874e472606343c0e71fb9d5383ba1441e54d529d51cd32f9b259046c85b"
     },
     "paths.html": {
-      "bytes": 2796,
-      "sha256": "07a14930313f853db0edc67415f3f3ea31d471ba7938240cdbdb138069b142e3"
+      "bytes": 2885,
+      "sha256": "99c689e7e5daf71598c82b43b15b547ebd70f8a8b48321e1c308a94cb3499bef"
     },
     "schema.json": {
       "bytes": 6645,
@@ -54,9 +54,9 @@
   },
   "manifest_note": "This manifest excludes itself. Hashes establish bytes, not truth or permission.",
   "mode": "public-foundation",
-  "previous_release_manifest_sha256": "62115cf294dbe3e9b919dc7837a62612eaf295a083797aa480e6a0539d1ec7cb",
-  "publication_note": "This manifest records the prepared bytes. Actual deployment is recorded separately.",
+  "previous_release_manifest_sha256": "d8242e31ab07535b695d07bdb9fe1cefb85e44a6624db6b6f32ea8c64a204c1d",
+  "publication_note": "Direct link-only public checkout revision. Authoritative local builder input still requires reconciliation. This release includes zero research exhibits; publication of any pending exhibit remains prohibited.",
   "published_by_builder": false,
   "schema_version": 1,
-  "source_candidate_manifest_sha256": "cf3888a76228a441d634db38aed6a58db9227ddebe7a0746d930707c9754cc5c"
+  "source_candidate_manifest_sha256": null
 }

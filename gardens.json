@@ -16,12 +16,12 @@
     "url": "https://bridges-butterfly.vercel.app/"
   },
   {
-    "availability": "Public destination pending. No private preview is linked.",
-    "checked_on": "2026-11-04",
+    "availability": "Public interactive toy. Its results have the limits stated by each experiment.",
+    "checked_on": "2026-11-05",
     "id": "rulebench",
     "name": "Rulebench",
     "purpose": "Constraint checking, scheduling, and verification.",
-    "url": null
+    "url": "https://rulebench-pocket.vercel.app/"
   },
   {
     "availability": "Research can arrive here as individually reviewed exhibits. No public entrance assigned.",
