@@ -1,0 +1,23 @@
+{
+  "purpose": "Provenance of copied originals and labeled excerpts; hashes identify bytes, not truth or rights.",
+  "sources": [
+    {
+      "packet_path": "files/results.json",
+      "source_sha256": "b90e3b1a6cfff81910a756d8797ab38cc21363cb0a735686400fcb08a997b4ca",
+      "source_bytes": 26810,
+      "excerpt_sha256": "b90e3b1a6cfff81910a756d8797ab38cc21363cb0a735686400fcb08a997b4ca",
+      "excerpt_bytes": 26810,
+      "selection": "Whole file, exact bytes; no execution.",
+      "source_name": "RESULTS.json"
+    },
+    {
+      "packet_path": "files/review-results.json",
+      "source_sha256": "296bfd12c757dff1a4baa95882e94d4a973cee21fcd1d5edeaf73a04f2c4dfbd",
+      "source_bytes": 1811,
+      "excerpt_sha256": "296bfd12c757dff1a4baa95882e94d4a973cee21fcd1d5edeaf73a04f2c4dfbd",
+      "excerpt_bytes": 1811,
+      "selection": "Whole file, exact bytes; no execution.",
+      "source_name": "REVIEW-RESULTS.json"
+    }
+  ]
+}

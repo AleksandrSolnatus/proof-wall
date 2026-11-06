@@ -1,0 +1,17 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 2165,
+      "sha256": "3578b6559ef198b9fb26c0c4c564f2358f57557ed77ad605332639a00e8c02cb"
+    },
+    "exhibit.json": {
+      "bytes": 3349,
+      "sha256": "be989553fbc71bddef1323b4a2b653eec9807cf6c66ffe792fe745c20c9a97b0"
+    },
+    "files/relay-001-research.pdf": {
+      "bytes": 339973,
+      "sha256": "e26239f46631b0004b66dd5d57e9cf9e7561a4ae79a1fad220c50c28f0489395"
+    }
+  },
+  "package_sha256": "a28b523fa092bcbbff49eb8f178d0a8081e500679359cdfde0ac8cc07053ea82"
+}

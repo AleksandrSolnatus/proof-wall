@@ -1,0 +1,107 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+  "date": "2026-11-05",
+  "downloads": [
+    {
+      "bytes": 1095,
+      "original_path": "article.md",
+      "sha256": "8896db8bbf698ff2ef1fcf293e824152f64943ae24c6fe9d786e443ce37a415a",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 26810,
+      "original_path": "files/results.json",
+      "sha256": "b90e3b1a6cfff81910a756d8797ab38cc21363cb0a735686400fcb08a997b4ca",
+      "url": "files/files/results.json.txt"
+    },
+    {
+      "bytes": 1811,
+      "original_path": "files/review-results.json",
+      "sha256": "296bfd12c757dff1a4baa95882e94d4a973cee21fcd1d5edeaf73a04f2c4dfbd",
+      "url": "files/files/review-results.json.txt"
+    },
+    {
+      "bytes": 937,
+      "original_path": "files/source-selections.json",
+      "sha256": "6614e06d62bacb118ebbd631609813f7f6b5da9fbdfbbb54dfcf2ca1cd7dffc9",
+      "url": "files/files/source-selections.json.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "Root editorial summary of retained work",
+      "bytes": 1095,
+      "license": "All rights reserved; no new open-source license is granted. Rights in cited third-party works remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "article",
+      "sha256": "8896db8bbf698ff2ef1fcf293e824152f64943ae24c6fe9d786e443ce37a415a"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 26810,
+      "license": "All rights reserved; no new open-source license is granted. Rights in cited third-party works remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/results.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "b90e3b1a6cfff81910a756d8797ab38cc21363cb0a735686400fcb08a997b4ca"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 1811,
+      "license": "All rights reserved; no new open-source license is granted. Rights in cited third-party works remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/review-results.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "receipt",
+      "sha256": "296bfd12c757dff1a4baa95882e94d4a973cee21fcd1d5edeaf73a04f2c4dfbd"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 937,
+      "license": "All rights reserved; no new open-source license is granted. Rights in cited third-party works remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/source-selections.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "6614e06d62bacb118ebbd631609813f7f6b5da9fbdfbbb54dfcf2ca1cd7dffc9"
+    }
+  ],
+  "finding": "Cold index loses to structural search at one query but wins at tested sizes 4,16,64. Changing one weight makes old index wrong on 23/64 queries; explicit identity comparison and rebuilding restore correctness.",
+  "gardens": [],
+  "id": "math-lesson-rent",
+  "limitations": [
+    "One 16-position toy family; crossover only bracketed between 1 and 4.",
+    "Mutation detection/rebuild is an explicit scenario, not general cache service.",
+    "No total model-cost or general runtime benefit claim."
+  ],
+  "method": "Compare retained indexed and structural searches across tested batch sizes, then reuse a stale index after a weight change and test a guarded rebuild.",
+  "open_questions": [
+    "How does the crossover change for other problem families when discovery, storage and maintenance costs are included?"
+  ],
+  "package_sha256": "ef432f88930ca7362c8aa356846fb746f7b6095cdea9b778534b2402b755c222",
+  "provenance": {
+    "authors": [
+      "Original project contributors as identified in the retained records; Root, editorial gathering"
+    ],
+    "change_note": "Version 2 updates release terms and editorial wording; version 1 and original evidence remain intact.",
+    "origin": "MATH retained experiment/implementation records. Source filenames and SHA-256 bindings are in source-selections.json; full custody stays in the private inventory."
+  },
+  "publication": {
+    "attribution": "Original project contributors as identified in retained records; Proof Wall editorial summary.",
+    "intent": "request-review",
+    "license": "All rights reserved; no new open-source license is granted. Rights in cited third-party works remain with their respective holders.",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner."
+  },
+  "question": "When does a reusable answer index repay its build cost, and what happens when its input changes?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Reuse pays rent; changed weights invalidate an answer index",
+  "version": 2
+}

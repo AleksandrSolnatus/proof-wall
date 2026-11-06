@@ -1,5 +1,5 @@
 {
-  "exhibits": 27,
+  "exhibits": 29,
   "files": {
     ".nojekyll": {
       "bytes": 0,
@@ -865,6 +865,38 @@
       "bytes": 3810,
       "sha256": "02ee2f7704aa221db21cf83478db9f337fbb4234538034ecd841c3113f0ddae7"
     },
+    "exhibits/math-lesson-rent/v2/exhibit.json": {
+      "bytes": 5266,
+      "sha256": "814eeee0c3e2ff597277ce8d2cdff317268dd379e091c738d02cf8e28d670980"
+    },
+    "exhibits/math-lesson-rent/v2/files/article.md.txt": {
+      "bytes": 1095,
+      "sha256": "8896db8bbf698ff2ef1fcf293e824152f64943ae24c6fe9d786e443ce37a415a"
+    },
+    "exhibits/math-lesson-rent/v2/files/files/results.json.txt": {
+      "bytes": 26810,
+      "sha256": "b90e3b1a6cfff81910a756d8797ab38cc21363cb0a735686400fcb08a997b4ca"
+    },
+    "exhibits/math-lesson-rent/v2/files/files/review-results.json.txt": {
+      "bytes": 1811,
+      "sha256": "296bfd12c757dff1a4baa95882e94d4a973cee21fcd1d5edeaf73a04f2c4dfbd"
+    },
+    "exhibits/math-lesson-rent/v2/files/files/source-selections.json.txt": {
+      "bytes": 937,
+      "sha256": "6614e06d62bacb118ebbd631609813f7f6b5da9fbdfbbb54dfcf2ca1cd7dffc9"
+    },
+    "exhibits/math-lesson-rent/v2/index.html": {
+      "bytes": 8158,
+      "sha256": "0f4f6b605ab814c3b690129778a6b4ed6bc881e3bdb5e784604c4cf1b1c73d96"
+    },
+    "exhibits/math-lesson-rent/v2/snapshot.json": {
+      "bytes": 806,
+      "sha256": "01b85b793e77fbbb909cdd7fe67366dac73505082402af1d78904ded5aa24def"
+    },
+    "exhibits/math-lesson-rent/v2/submitted-manifest.json": {
+      "bytes": 4311,
+      "sha256": "620d6a6f3efd888eb0fe4e67de6179f5004225e72b3938abf381c8dd42c1340a"
+    },
     "exhibits/math-proof-cache/v2/exhibit.json": {
       "bytes": 5561,
       "sha256": "e28806a02596da903af2f8f2894d5e1951e29bface7688b3658662792fbc2fa1"
@@ -1044,6 +1076,30 @@
     "exhibits/relation-transfer-001/v2/submitted-manifest.json": {
       "bytes": 11399,
       "sha256": "58c36f8b356a066982fbc1ee2d153f2ff8c0874aa15fdfe18355304b908d9ad8"
+    },
+    "exhibits/relay-001-cultural-inheritance/v1/exhibit.json": {
+      "bytes": 3878,
+      "sha256": "4b01206735e5493796bbbeefabbf053fa1b6fe4326e211868c46bed983f94fca"
+    },
+    "exhibits/relay-001-cultural-inheritance/v1/files/article.md.txt": {
+      "bytes": 2165,
+      "sha256": "3578b6559ef198b9fb26c0c4c564f2358f57557ed77ad605332639a00e8c02cb"
+    },
+    "exhibits/relay-001-cultural-inheritance/v1/files/files/relay-001-research.pdf.bin": {
+      "bytes": 339973,
+      "sha256": "e26239f46631b0004b66dd5d57e9cf9e7561a4ae79a1fad220c50c28f0489395"
+    },
+    "exhibits/relay-001-cultural-inheritance/v1/index.html": {
+      "bytes": 8204,
+      "sha256": "55de167f33debf6d8898e750369a70942bf606262fbd7201d97b3ae476b3bc07"
+    },
+    "exhibits/relay-001-cultural-inheritance/v1/snapshot.json": {
+      "bytes": 523,
+      "sha256": "b696f6fd40ff1247bc770e9e5d80ec3f35dec83b5f24ed194e0c78de289f1c8c"
+    },
+    "exhibits/relay-001-cultural-inheritance/v1/submitted-manifest.json": {
+      "bytes": 3349,
+      "sha256": "be989553fbc71bddef1323b4a2b653eec9807cf6c66ffe792fe745c20c9a97b0"
     },
     "exhibits/rising-tide-003b-edge-change/v2/exhibit.json": {
       "bytes": 8899,
@@ -1386,12 +1442,12 @@
       "sha256": "d1cf42ce64b01824f3c20d2eb7df88c95f8ffcbcc840f64a6c772c74989d4a8a"
     },
     "index.html": {
-      "bytes": 18008,
-      "sha256": "e8707338eac76da2d23d31ef21eca832dfb230e3db00065e0b23c04c87523e28"
+      "bytes": 18990,
+      "sha256": "c3620d198796a88f6adfa5e47f7004aaa0d7a26dfe12b78663879e0000ceed17"
     },
     "index.json": {
-      "bytes": 22433,
-      "sha256": "a3e9286d73d3fd6c9daa8ac5a8b2673e22014b16243662e23f0c57107e47d15b"
+      "bytes": 23924,
+      "sha256": "8617c7569ec938091ae628890a8911191a198a97b119e677af900d4dfa2ab59a"
     },
     "llms.txt": {
       "bytes": 489,

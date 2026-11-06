@@ -1,0 +1,25 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 1095,
+      "sha256": "8896db8bbf698ff2ef1fcf293e824152f64943ae24c6fe9d786e443ce37a415a"
+    },
+    "exhibit.json": {
+      "bytes": 4311,
+      "sha256": "620d6a6f3efd888eb0fe4e67de6179f5004225e72b3938abf381c8dd42c1340a"
+    },
+    "files/results.json": {
+      "bytes": 26810,
+      "sha256": "b90e3b1a6cfff81910a756d8797ab38cc21363cb0a735686400fcb08a997b4ca"
+    },
+    "files/review-results.json": {
+      "bytes": 1811,
+      "sha256": "296bfd12c757dff1a4baa95882e94d4a973cee21fcd1d5edeaf73a04f2c4dfbd"
+    },
+    "files/source-selections.json": {
+      "bytes": 937,
+      "sha256": "6614e06d62bacb118ebbd631609813f7f6b5da9fbdfbbb54dfcf2ca1cd7dffc9"
+    }
+  },
+  "package_sha256": "ef432f88930ca7362c8aa356846fb746f7b6095cdea9b778534b2402b755c222"
+}

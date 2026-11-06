@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "method": "Independent exhaustive 16-bit enumeration, both weight contexts; no benchmark rerun",
+  "domain_size": 65536,
+  "valid_spacing_subsets": 462,
+  "naive_size6_subsets": 8008,
+  "queries_per_context": 64,
+  "bijection_and_inverse_checked": true,
+  "complete_witness_sets_checked": true,
+  "stale_wrong_count": 23,
+  "stale_wrong_indices": [
+    0,
+    2,
+    3,
+    5,
+    6,
+    7,
+    9,
+    10,
+    12,
+    19,
+    20,
+    26,
+    35,
+    38,
+    39,
+    40,
+    42,
+    49,
+    50,
+    51,
+    52,
+    54,
+    60
+  ],
+  "guarded_correct_queries": 64,
+  "timing_medians_arithmetic_checked": true,
+  "ratios": [
+    {
+      "size": 1,
+      "index_over_structured_median_cpu": 1.4901960784313726,
+      "index_over_naive_median_cpu": 0.18116805721096543
+    },
+    {
+      "size": 4,
+      "index_over_structured_median_cpu": 0.37606837606837606,
+      "index_over_naive_median_cpu": 0.04506217995610826
+    },
+    {
+      "size": 16,
+      "index_over_structured_median_cpu": 0.09620098039215687,
+      "index_over_naive_median_cpu": 0.011673730388876497
+    },
+    {
+      "size": 64,
+      "index_over_structured_median_cpu": 0.024955574441783205,
+      "index_over_naive_median_cpu": 0.0029879740980573543
+    }
+  ],
+  "serialized_index_bytes": 18114,
+  "limits": [
+    "Three within-process repeats, not independent workload instances.",
+    "Serialization length is not memory cost.",
+    "Full model, infrastructure, and preparation-discovery costs unknown.",
+    "Guard scenario explicitly detects and rebuilds, not an automatic cache implementation.",
+    "Recorded outputs and source inspected; individual timed method outputs were asserted by experiment but not separately serialized.",
+    "No causal, universal, or human/AI learning conclusion established."
+  ]
+}

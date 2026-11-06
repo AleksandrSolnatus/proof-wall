@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "relay-001-cultural-inheritance",
+  "version": 1,
+  "title": "RELAY-001: The Work Remembers the Worker",
+  "artifact_type": "experiment",
+  "status": "experimental",
+  "question": "What usable state can one worker pass to the next while preserving room to adapt?",
+  "method": "Animal-culture literature synthesis and a reported synthetic six-worker noisy-observation comparison in stable and changed environments.",
+  "finding": "In the reported toy, averaging all observations performed best when the target was stable, while the 50/50 relay performed better after the target shifted.",
+  "claim_scope": "Synthetic RELAY-001A result as reported in the original packet; biological sources are attributed synthesis; RELAY-001B is a proposal, not a completed experiment.",
+  "limitations": [
+    "The toy is not evidence of a biological mechanism or general computational speedup.",
+    "Named toy source code and CSV were not located with the PDF and are not included.",
+    "The reported full-history storage is an implementation choice, not a streaming-average lower bound."
+  ],
+  "open_questions": [
+    "Can compact checked inherited state improve work on held-out changed computational tasks after all overhead is counted?"
+  ],
+  "date": "2026-11-05",
+  "provenance": {
+    "authors": [
+      "ANIMALS / PLANTS × MATH research packet; AI-assisted, with embedded content credentials preserved"
+    ],
+    "origin": "Original RELAY-001 research PDF with source ledger and original figures, preserved byte-for-byte.",
+    "change_note": "Initial exhibit; report and historical findings retained without rerunning."
+  },
+  "article": "article.md",
+  "files": [
+    {
+      "path": "article.md",
+      "role": "article",
+      "media_type": "text/markdown",
+      "bytes": 2165,
+      "sha256": "3578b6559ef198b9fb26c0c4c564f2358f57557ed77ad605332639a00e8c02cb",
+      "attribution": "Proof Wall editorial synthesis",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Rights in cited third-party works remain with their respective holders."
+    },
+    {
+      "path": "files/relay-001-research.pdf",
+      "role": "original",
+      "media_type": "application/pdf",
+      "bytes": 339973,
+      "sha256": "e26239f46631b0004b66dd5d57e9cf9e7561a4ae79a1fad220c50c28f0489395",
+      "attribution": "ANIMALS / PLANTS × MATH research packet; AI-assisted, with embedded content credentials preserved",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Rights in cited third-party works remain with their respective holders."
+    }
+  ],
+  "relations": [],
+  "gardens": [],
+  "publication": {
+    "intent": "request-review",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+    "license": "All rights reserved; no new open-source license is granted. Rights in cited third-party works remain with their respective holders.",
+    "attribution": "ANIMALS / PLANTS × MATH research packet; AI-assisted with embedded content credentials preserved; Proof Wall editorial summary; cited research credited in the PDF."
+  },
+  "sample": false
+}

@@ -1,0 +1,24 @@
+# RELAY-001: The Work Remembers the Worker
+
+What can one worker pass to the next so that useful work survives, while the next worker remains free to change it?
+
+## The research
+
+RELAY-001 gathers animal-culture research, including changing partnerships in homing pigeons, social learning in other species, and computational models. The original paper credits its biological and modeling sources with citations and DOI links. These studies suggest questions about social transmission; they do not establish unlimited cumulative improvement or a general computational shortcut.
+
+## The illustrative computation
+
+The packet reports a synthetic example, RELAY-001A, with 2,500 simulated chains per condition and six successive workers. Each worker sees a noisy 24-number observation. The test compares a fresh-only estimate, two weighted relays, and a full-history average in both a stable setting and a setting where the target changes.
+
+At the sixth worker, the reported mean-squared errors were:
+
+- Stable target: fresh 1.0044; 50/50 relay 0.3340; 75%-new relay 0.6017; full-history average 0.1668.
+- Changed target: fresh 0.9988; 50/50 relay 0.3963; 75%-new relay 0.6002; full-history average 1.1714.
+
+In this toy, old observations help when the target stays fixed and can become a liability after it changes. This is a synthetic illustration, not an animal experiment. The packet's full-history condition stores 144 numbers; that is a choice in this setup, not a lower bound for computing a streaming average.
+
+## What remains open
+
+RELAY-001B is a proposed, unrun trial of reusable state on related computational problems. It calls for matched controls, changed tasks, and accounting for recognition, transfer, checking and maintenance costs. The original packet distinguishes this proposal from completed work.
+
+The original PDF is available below. It refers to relay_toy.py, a results CSV and figure-generation code as packaged with it; these files were not located alongside the PDF and are not included in this exhibit. The reported computation has not been rerun here. The PDF itself supplies the methods, figures, results, limitations and source citations.

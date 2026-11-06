@@ -409,6 +409,34 @@
       "title": "When the Message Disappears from the Readout",
       "url": "exhibits/arepo-cellular-automata-005d/v1/index.html",
       "version": 1
+    },
+    {
+      "claim_scope": "Synthetic RELAY-001A result as reported in the original packet; biological sources are attributed synthesis; RELAY-001B is a proposal, not a completed experiment.",
+      "gardens": [],
+      "id": "relay-001-cultural-inheritance",
+      "metadata": "exhibits/relay-001-cultural-inheritance/v1/exhibit.json",
+      "package_sha256": "a28b523fa092bcbbff49eb8f178d0a8081e500679359cdfde0ac8cc07053ea82",
+      "question": "What usable state can one worker pass to the next while preserving room to adapt?",
+      "relations": [],
+      "sample": false,
+      "status": "experimental",
+      "title": "RELAY-001: The Work Remembers the Worker",
+      "url": "exhibits/relay-001-cultural-inheritance/v1/index.html",
+      "version": 1
+    },
+    {
+      "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+      "gardens": [],
+      "id": "math-lesson-rent",
+      "metadata": "exhibits/math-lesson-rent/v2/exhibit.json",
+      "package_sha256": "ef432f88930ca7362c8aa356846fb746f7b6095cdea9b778534b2402b755c222",
+      "question": "When does a reusable answer index repay its build cost, and what happens when its input changes?",
+      "relations": [],
+      "sample": false,
+      "status": "verified-finite-result",
+      "title": "Reuse pays rent; changed weights invalidate an answer index",
+      "url": "exhibits/math-lesson-rent/v2/index.html",
+      "version": 2
     }
   ],
   "gardens": "gardens.json",

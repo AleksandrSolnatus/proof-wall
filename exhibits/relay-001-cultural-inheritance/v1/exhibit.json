@@ -1,0 +1,75 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "Synthetic RELAY-001A result as reported in the original packet; biological sources are attributed synthesis; RELAY-001B is a proposal, not a completed experiment.",
+  "date": "2026-11-05",
+  "downloads": [
+    {
+      "bytes": 2165,
+      "original_path": "article.md",
+      "sha256": "3578b6559ef198b9fb26c0c4c564f2358f57557ed77ad605332639a00e8c02cb",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 339973,
+      "original_path": "files/relay-001-research.pdf",
+      "sha256": "e26239f46631b0004b66dd5d57e9cf9e7561a4ae79a1fad220c50c28f0489395",
+      "url": "files/files/relay-001-research.pdf.bin"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "Proof Wall editorial synthesis",
+      "bytes": 2165,
+      "license": "All rights reserved; no new open-source license is granted. Rights in cited third-party works remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "article",
+      "sha256": "3578b6559ef198b9fb26c0c4c564f2358f57557ed77ad605332639a00e8c02cb"
+    },
+    {
+      "attribution": "ANIMALS / PLANTS × MATH research packet; AI-assisted, with embedded content credentials preserved",
+      "bytes": 339973,
+      "license": "All rights reserved; no new open-source license is granted. Rights in cited third-party works remain with their respective holders.",
+      "media_type": "application/pdf",
+      "path": "files/relay-001-research.pdf",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "original",
+      "sha256": "e26239f46631b0004b66dd5d57e9cf9e7561a4ae79a1fad220c50c28f0489395"
+    }
+  ],
+  "finding": "In the reported toy, averaging all observations performed best when the target was stable, while the 50/50 relay performed better after the target shifted.",
+  "gardens": [],
+  "id": "relay-001-cultural-inheritance",
+  "limitations": [
+    "The toy is not evidence of a biological mechanism or general computational speedup.",
+    "Named toy source code and CSV were not located with the PDF and are not included.",
+    "The reported full-history storage is an implementation choice, not a streaming-average lower bound."
+  ],
+  "method": "Animal-culture literature synthesis and a reported synthetic six-worker noisy-observation comparison in stable and changed environments.",
+  "open_questions": [
+    "Can compact checked inherited state improve work on held-out changed computational tasks after all overhead is counted?"
+  ],
+  "package_sha256": "a28b523fa092bcbbff49eb8f178d0a8081e500679359cdfde0ac8cc07053ea82",
+  "provenance": {
+    "authors": [
+      "ANIMALS / PLANTS × MATH research packet; AI-assisted, with embedded content credentials preserved"
+    ],
+    "change_note": "Initial exhibit; report and historical findings retained without rerunning.",
+    "origin": "Original RELAY-001 research PDF with source ledger and original figures, preserved byte-for-byte."
+  },
+  "publication": {
+    "attribution": "ANIMALS / PLANTS × MATH research packet; AI-assisted with embedded content credentials preserved; Proof Wall editorial summary; cited research credited in the PDF.",
+    "intent": "request-review",
+    "license": "All rights reserved; no new open-source license is granted. Rights in cited third-party works remain with their respective holders.",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner."
+  },
+  "question": "What usable state can one worker pass to the next while preserving room to adapt?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "experimental",
+  "title": "RELAY-001: The Work Remembers the Worker",
+  "version": 1
+}

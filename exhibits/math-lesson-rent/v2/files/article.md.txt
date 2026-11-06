@@ -1,0 +1,19 @@
+# Reuse pays rent; changed weights invalidate an answer index
+
+Cold index loses to structural search at one query but wins at tested sizes 4,16,64. Changing one weight makes old index wrong on 23/64 queries; explicit identity comparison and rebuilding restore correctness.
+
+## What was checked
+
+Independent source review and numerical checking, complete witness comparisons and retained stale negative controls.
+
+The attached records are existing evidence, copied intact or extracted exactly as disclosed in source-selections.json. No experiment was rerun for this exhibit.
+
+## Limits
+
+- One 16-position toy family; crossover only bracketed between 1 and 4.
+- Mutation detection/rebuild is an explicit scenario, not general cache service.
+- No total model-cost or general runtime benefit claim.
+
+## Evidence and publication
+
+Original source locations and custody records remain in the private curator inventory. Public reading and downloading are authorized; all rights are reserved and no open-source license is granted. The article is a new explanation of retained work, not a new experiment.
