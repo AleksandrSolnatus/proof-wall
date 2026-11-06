@@ -24,6 +24,14 @@
     "url": "https://rulebench-pocket.vercel.app/"
   },
   {
+    "availability": "Public mathematical playground. Numerical demonstrations retain their stated limits.",
+    "checked_on": "2026-11-06",
+    "id": "outside-in",
+    "name": "Outside In",
+    "purpose": "Try mathematical ideas by moving, turning, and investigating them.",
+    "url": "https://outside-in.c-amar.chatgpt.site/"
+  },
+  {
     "availability": "Research can arrive here as individually reviewed exhibits. No public entrance assigned.",
     "checked_on": "2026-11-04",
     "id": "quark-math",
