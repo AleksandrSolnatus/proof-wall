@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "id": "quark-s5-one-step",
+  "version": 2,
+  "title": "Execution leaves ambiguous neutral cases genuinely unresolved",
+  "artifact_type": "experiment",
+  "status": "verified-finite-result",
+  "question": "What does this retained result establish, and where does its support stop?",
+  "method": "Read the original experiment or implementation record together with its existing receipts; preserve the reported result, controls and limits. Selected source records retain exact bytes.",
+  "finding": "81 one-step cases:24 moves,41 stays,16 unresolved; maximum execution depth1. Null successor means no execution, not unchanged input.",
+  "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+  "limitations": [
+    "No multi-step trajectory or physical fluid model.",
+    "Center-outward grammar has no return moves and at most2 center units.",
+    "Unresolved cases are not execution successes."
+  ],
+  "open_questions": [
+    "Release review must settle exact source attribution and public-use terms. Further scientific work is not required merely to preserve this bounded result."
+  ],
+  "date": "2026-11-05",
+  "provenance": {
+    "authors": [
+      "Original project contributors as identified in the retained records; Root, editorial gathering"
+    ],
+    "origin": "QUARK retained experiment/implementation records. Source filenames and SHA-256 bindings are in source-selections.json; full custody stays in the private inventory.",
+    "change_note": "Version 2 proposes exact publication terms; existing v1 and its historical checks remain intact."
+  },
+  "article": "article.md",
+  "files": [
+    {
+      "path": "article.md",
+      "role": "article",
+      "media_type": "text/markdown",
+      "bytes": 978,
+      "sha256": "b1337bf0bbef826465ac527bdbe9e2aaef982fb585997bdba38d9563640a27b7",
+      "attribution": "Root editorial summary of retained work",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "license": "All rights reserved; no open-source license is granted."
+    },
+    {
+      "path": "files/summary.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 828,
+      "sha256": "8342c1d6470ef13bbe39acb788ac34a875c3e76aff2fefccc8d16cd37b5dd2e7",
+      "attribution": "Original source record",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "license": "All rights reserved; no open-source license is granted."
+    },
+    {
+      "path": "files/limitations.md",
+      "role": "original",
+      "media_type": "text/markdown",
+      "bytes": 2661,
+      "sha256": "6171092cda2ab094aae60ff43f80d1fcfd93efaf9a45c27d597fbb7502360f20",
+      "attribution": "Original source record",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "license": "All rights reserved; no open-source license is granted."
+    },
+    {
+      "path": "files/execution-receipt.json",
+      "role": "receipt",
+      "media_type": "application/json",
+      "bytes": 520,
+      "sha256": "2622b831f3f90c94808aa33209fff90e1f665ec3153ab37b9dc2d696901f3771",
+      "attribution": "Original source record",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "license": "All rights reserved; no open-source license is granted."
+    },
+    {
+      "path": "files/source-selections.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 1334,
+      "sha256": "debe8bf04100695bc05180d10d9cd7370e59a05a3be0b39e73e7d70cfc189fef",
+      "attribution": "Original source record",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "license": "All rights reserved; no open-source license is granted."
+    }
+  ],
+  "relations": [],
+  "gardens": [],
+  "publication": {
+    "intent": "request-review",
+    "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+    "license": "All rights reserved; no open-source license is granted.",
+    "attribution": "Original project contributors as identified in the retained records; Proof Wall editorial gathering."
+  },
+  "sample": false
+}

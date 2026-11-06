@@ -1,0 +1,18 @@
+# Retained proof dependencies reduce repeated checking
+
+Same five fixed requests including cold seed: retained cache uses 7 proof-node validations versus 24 with fresh per-request caches. Four signed-unit consequences become available through checked dependencies.
+
+## What was checked
+
+Independent sequential proof interpreter, exhaustive 64-row truth table, discovery scan and separate DAG cost accounting; final Counsel.
+
+The attached records are existing evidence, copied intact or extracted exactly as disclosed in source-selections.json. No experiment was rerun for this exhibit.
+
+## Limits
+
+- One six-variable post-hoc diagnostic.
+- Discovery separate from fixed-bundle checking; no faster discovery, streaming extension or wall-time gain established.
+
+## Evidence and publication
+
+Original source locations and custody records remain in the private curator inventory. This packet is prepared for review; no publication authorization or open license is claimed. The article is a new explanation of retained work, not a new experiment.

@@ -1,0 +1,18 @@
+- Desktop: final muted blue, warm paper, and new illustrated shop display
+  rendered without visible clipping or overlapping elements.
+- Shop SVG links are exposed as four named links in Chrome’s accessibility
+  tree. Changing role from img to group fixed initially flattened child links.
+- Clicking the shop’s Lotus object opens Our Work, selecting Lotus and showing
+  “2 of 6 · Lotus Garden”.
+- Six selectors match six project cards. Rulebench displays coming-soon copy,
+  an illustrative diagram, and no remote destination button.
+- Selecting Rulebench changes the URL to #rulebench and status to “6 of 6”.
+  This fixes a discovered stale #lotus URL after switching cards.
+- Chrome DevTools iPhone SE emulation: actual 375×667 viewport. Final three
+  navigation links, six-selector layout, upcoming label and shop window fit
+  without visible horizontal clipping. The page scrolls vertically normally.
+- The Lotus card’s text, illustration, links and previous/next controls were
+  also visually checked at 375 pixels in this pass.
+- Earlier experiments disclosure opens and retains the City Fare link.
+- DevTools was closed after checks. No screenshot is included in public assets.
+

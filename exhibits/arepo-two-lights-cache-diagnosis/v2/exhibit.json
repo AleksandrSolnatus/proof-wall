@@ -1,0 +1,96 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+  "date": "2026-11-05",
+  "downloads": [
+    {
+      "bytes": 1280,
+      "original_path": "article.md",
+      "sha256": "8f43434442fa6ef5a8d8c62acce0006f83ac48887ba7c0b391a67b327dbc9b0e",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 4298,
+      "original_path": "files/diagnosis.txt",
+      "sha256": "5489869ab866d0b1492f24f009b38157ce6ed98e3d64f23c8eafc7ab47e8b351",
+      "url": "files/files/diagnosis.txt.txt"
+    },
+    {
+      "bytes": 623,
+      "original_path": "files/source-selections.json",
+      "sha256": "33f42d2dc0f01f2f834adf9fb478ce1f53e947d64e25dfb3fec525e5dfd9f2c9",
+      "url": "files/files/source-selections.json.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "Root editorial summary of retained work",
+      "bytes": 1280,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "article",
+      "sha256": "8f43434442fa6ef5a8d8c62acce0006f83ac48887ba7c0b391a67b327dbc9b0e"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 4298,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "text/plain",
+      "path": "files/diagnosis.txt",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "original",
+      "sha256": "5489869ab866d0b1492f24f009b38157ce6ed98e3d64f23c8eafc7ab47e8b351"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 623,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "application/json",
+      "path": "files/source-selections.json",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "data",
+      "sha256": "33f42d2dc0f01f2f834adf9fb478ce1f53e947d64e25dfb3fec525e5dfd9f2c9"
+    }
+  ],
+  "finding": "Nil cached shader path was identified as the immediate failure mechanism. Process-local diagnostic cache redirection allowed native rendering, and each light illuminated the synthetic receiver.",
+  "gardens": [],
+  "id": "arepo-two-lights-cache-diagnosis",
+  "limitations": [
+    "Nonpublic Metal SPI was diagnostic only, not a supported production solution. Exact default cache-operation failure unresolved; no motion/breathing/lifecycle/performance acceptance."
+  ],
+  "method": "Read the original experiment or implementation record together with its existing receipts; preserve the reported result, controls and limits. Selected source excerpts are identified explicitly.",
+  "open_questions": [
+    "Release review must settle exact source attribution and public-use terms. Further scientific work is not required merely to preserve this bounded result."
+  ],
+  "package_sha256": "505a2d8e5a3b86ddf1a042d65227848b8c24a4a37fe9b7676f5dd7e83006ec2b",
+  "provenance": {
+    "authors": [
+      "Original project contributors as identified in the retained records; Root, editorial gathering"
+    ],
+    "change_note": "Version 2 proposes exact publication terms; existing v1 and its historical checks remain intact. Local OS build omitted from derived diagnosis excerpt; original evidence preserved.",
+    "origin": "Arepo tests retained experiment/implementation records. Source filenames and SHA-256 bindings are in source-selections.json; full custody stays in the private inventory."
+  },
+  "publication": {
+    "attribution": "Original project contributors as identified in the retained records; Proof Wall editorial gathering.",
+    "intent": "request-review",
+    "license": "All rights reserved; no open-source license is granted.",
+    "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization."
+  },
+  "question": "What does this retained result establish, and where does its support stop?",
+  "relations": [
+    {
+      "id": "arepo-two-lights-initial-failure",
+      "reason": "Retains the earlier failed attempt; it does not erase or invalidate that historical outcome.",
+      "type": "related-to",
+      "version": 2
+    }
+  ],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Two Lights: a diagnostic cache-path correction produced four frames",
+  "version": 2
+}

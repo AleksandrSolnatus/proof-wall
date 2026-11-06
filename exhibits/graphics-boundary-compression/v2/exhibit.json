@@ -1,0 +1,105 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+  "date": "2026-11-05",
+  "downloads": [
+    {
+      "bytes": 1435,
+      "original_path": "article.md",
+      "sha256": "fb8ad2ffa848cba55f1c44cea48d362ce9893c092a620209cdcc557b61c483aa",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 1297,
+      "original_path": "files/mapping-verification.json",
+      "sha256": "5a7d43adfb39ecc5cea4dd14dc1e3956692eca609e3d94d6b9638479b2285c6b",
+      "url": "files/files/mapping-verification.json.txt"
+    },
+    {
+      "bytes": 370,
+      "original_path": "files/rendered-return-verification.json",
+      "sha256": "2c7a0c5670f422fcd0ae6186f4810770ec650ef3b97844f0ebe46d245332da0d",
+      "url": "files/files/rendered-return-verification.json.txt"
+    },
+    {
+      "bytes": 963,
+      "original_path": "files/source-selections.json",
+      "sha256": "0a5ea258f544b0172a60d3ddfe00234b77dcfb43716ef6ebc02678006ffa5191",
+      "url": "files/files/source-selections.json.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "Root editorial summary of retained work",
+      "bytes": 1435,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "article",
+      "sha256": "fb8ad2ffa848cba55f1c44cea48d362ce9893c092a620209cdcc557b61c483aa"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 1297,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "application/json",
+      "path": "files/mapping-verification.json",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "receipt",
+      "sha256": "5a7d43adfb39ecc5cea4dd14dc1e3956692eca609e3d94d6b9638479b2285c6b"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 370,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "application/json",
+      "path": "files/rendered-return-verification.json",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "receipt",
+      "sha256": "2c7a0c5670f422fcd0ae6186f4810770ec650ef3b97844f0ebe46d245332da0d"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 963,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "application/json",
+      "path": "files/source-selections.json",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "data",
+      "sha256": "0a5ea258f544b0172a60d3ddfe00234b77dcfb43716ef6ebc02678006ffa5191"
+    }
+  ],
+  "finding": "Positive diagonal compression keeps projected corners inside a fixed box. Sampled X compression about3.9%, Y/Z12.7%. Review did not establish a followability improvement, so no new app or refinement was made.",
+  "gardens": [],
+  "id": "graphics-boundary-compression",
+  "limitations": [
+    "Authored display mapping, no pressure/inertia/volume physics. Offscreen sampled images and GIF cadence do not prove continuous desktop playback or perception benefit."
+  ],
+  "method": "Read the original experiment or implementation record together with its existing receipts; preserve the reported result, controls and limits. Selected source records retain exact bytes.",
+  "open_questions": [
+    "Release review must settle exact source attribution and public-use terms. Further scientific work is not required merely to preserve this bounded result."
+  ],
+  "package_sha256": "3ee6f1393e6f818fb0852e9602f56b54438feb5bd2d060caaa8462d28691fff5",
+  "provenance": {
+    "authors": [
+      "Original project contributors as identified in the retained records; Root, editorial gathering"
+    ],
+    "change_note": "Version 2 proposes exact publication terms; existing v1 and its historical checks remain intact.",
+    "origin": "graphics retained experiment/implementation records. Source filenames and SHA-256 bindings are in source-selections.json; full custody stays in the private inventory."
+  },
+  "publication": {
+    "attribution": "Original project contributors as identified in the retained records; Proof Wall editorial gathering.",
+    "intent": "request-review",
+    "license": "All rights reserved; no open-source license is granted.",
+    "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization."
+  },
+  "question": "What does this retained result establish, and where does its support stop?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "A bounded compression experiment that did not earn a new app",
+  "version": 2
+}

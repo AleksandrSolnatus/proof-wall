@@ -1,0 +1,122 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+  "date": "2026-11-05",
+  "downloads": [
+    {
+      "bytes": 1042,
+      "original_path": "article.md",
+      "sha256": "522baf1ed99bb898560b36a00c465eb03caac878f893426ab0764d8a56689c8f",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 1816,
+      "original_path": "files/show-work.txt",
+      "sha256": "7073dd5fbd45dc23b195e970220efed45ec92553ebaa8c4f66a076766727f2bd",
+      "url": "files/files/show-work.txt.txt"
+    },
+    {
+      "bytes": 8920,
+      "original_path": "files/comparison.json",
+      "sha256": "7fdef78c1862fda5847e89e9b999836f8914d9f6410bb8bbf5d3cace6f1523d2",
+      "url": "files/files/comparison.json.txt"
+    },
+    {
+      "bytes": 8112,
+      "original_path": "files/verification.json",
+      "sha256": "3f576815595f1858248e5198c5bb2cde405aa10f7bebaeba93094eba2a7f1015",
+      "url": "files/files/verification.json.txt"
+    },
+    {
+      "bytes": 1332,
+      "original_path": "files/source-selections.json",
+      "sha256": "3f805ec8372691b9694c463c54e5321e97b897c5ea1cb2bbe156560282269036",
+      "url": "files/files/source-selections.json.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "Root editorial summary of retained work",
+      "bytes": 1042,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "article",
+      "sha256": "522baf1ed99bb898560b36a00c465eb03caac878f893426ab0764d8a56689c8f"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 1816,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "text/plain",
+      "path": "files/show-work.txt",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "original",
+      "sha256": "7073dd5fbd45dc23b195e970220efed45ec92553ebaa8c4f66a076766727f2bd"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 8920,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "application/json",
+      "path": "files/comparison.json",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "data",
+      "sha256": "7fdef78c1862fda5847e89e9b999836f8914d9f6410bb8bbf5d3cace6f1523d2"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 8112,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "application/json",
+      "path": "files/verification.json",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "receipt",
+      "sha256": "3f576815595f1858248e5198c5bb2cde405aa10f7bebaeba93094eba2a7f1015"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 1332,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "application/json",
+      "path": "files/source-selections.json",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "data",
+      "sha256": "3f805ec8372691b9694c463c54e5321e97b897c5ea1cb2bbe156560282269036"
+    }
+  ],
+  "finding": "Same five fixed requests including cold seed: retained cache uses 7 proof-node validations versus 24 with fresh per-request caches. Four signed-unit consequences become available through checked dependencies.",
+  "gardens": [],
+  "id": "math-proof-cache",
+  "limitations": [
+    "One six-variable post-hoc diagnostic.",
+    "Discovery separate from fixed-bundle checking; no faster discovery, streaming extension or wall-time gain established."
+  ],
+  "method": "Read the original experiment or implementation record together with its existing receipts; preserve the reported result, controls and limits. Selected source records retain exact bytes.",
+  "open_questions": [
+    "Release review must settle exact source attribution and public-use terms. Further scientific work is not required merely to preserve this bounded result."
+  ],
+  "package_sha256": "ad0874cad799431fca81c24fef1dfe8a9183ff12e153b2451c87e5a052dbee32",
+  "provenance": {
+    "authors": [
+      "Original project contributors as identified in the retained records; Root, editorial gathering"
+    ],
+    "change_note": "Version 2 proposes exact publication terms; existing v1 and its historical checks remain intact.",
+    "origin": "MATH retained experiment/implementation records. Source filenames and SHA-256 bindings are in source-selections.json; full custody stays in the private inventory."
+  },
+  "publication": {
+    "attribution": "Original project contributors as identified in the retained records; Proof Wall editorial gathering.",
+    "intent": "request-review",
+    "license": "All rights reserved; no open-source license is granted.",
+    "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization."
+  },
+  "question": "What does this retained result establish, and where does its support stop?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Retained proof dependencies reduce repeated checking",
+  "version": 2
+}

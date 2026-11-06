@@ -1,0 +1,19 @@
+# Execution leaves ambiguous neutral cases genuinely unresolved
+
+81 one-step cases:24 moves,41 stays,16 unresolved; maximum execution depth1. Null successor means no execution, not unchanged input.
+
+## What was checked
+
+Retained execution/rerun receipts and archive byte-custody audit; reported one-step verification must retain its original scope.
+
+The attached records are existing evidence, copied intact or extracted exactly as disclosed in source-selections.json. No experiment was rerun for this exhibit.
+
+## Limits
+
+- No multi-step trajectory or physical fluid model.
+- Center-outward grammar has no return moves and at most2 center units.
+- Unresolved cases are not execution successes.
+
+## Evidence and publication
+
+Original source locations and custody records remain in the private curator inventory. This packet is prepared for review; no publication authorization or open license is claimed. The article is a new explanation of retained work, not a new experiment.

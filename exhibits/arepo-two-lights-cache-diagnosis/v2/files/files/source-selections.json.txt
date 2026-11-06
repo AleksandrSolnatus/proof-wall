@@ -1,0 +1,14 @@
+{
+  "purpose": "Provenance of copied originals and labeled excerpts; hashes identify bytes, not truth or rights.",
+  "sources": [
+    {
+      "packet_path": "files/diagnosis.txt",
+      "source_sha256": "dd6947b390c0e52bca4d145fc12a212f5f845679ee63594edcb46d4368a453db",
+      "source_bytes": 6850,
+      "excerpt_sha256": "5489869ab866d0b1492f24f009b38157ce6ed98e3d64f23c8eafc7ab47e8b351",
+      "excerpt_bytes": 4298,
+      "selection": "Derived from the same contiguous excerpt; local operating-system version and build omitted for publication. Original source unchanged.",
+      "source_name": "RESULT.txt"
+    }
+  ]
+}

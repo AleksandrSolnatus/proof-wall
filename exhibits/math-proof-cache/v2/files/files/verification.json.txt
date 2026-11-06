@@ -1,0 +1,234 @@
+{
+  "status": "PASS",
+  "recommendation": "Accept this bounded diagnostic with the stated fixed-bundle and cost limits.",
+  "method": "Independent stdlib sequential proof checking, exhaustive truth table, deterministic discovery scan, and separate DAG cost accounting; no imports/execution of diagnostic.py or proof_cache.py.",
+  "source_formula_sha256": "8feeb12b976b2e70d45ebed1d81442301b0d716508eefb553a27030921171dfe",
+  "prior_certificate_sha256": "38603364fb3563c5b34ffce7684879c883f2d72c8b45a8494450465a13a9254b",
+  "source_files_unchanged": 5,
+  "packet_sha256": {
+    "proofs.json": "a60a58c8e1f7a637e5249af6b827d146aee4994a29966c97b1595e616e9fec64",
+    "DISCOVERY.json": "e402ccdf18ea2cc2bb06337939f817b220705a889f797d2d811a79909c3347a4",
+    "COMPARISON.json": "7fdef78c1862fda5847e89e9b999836f8914d9f6410bb8bbf5d3cace6f1523d2",
+    "DEPENDENCIES.json": "10d05280e1f1dfe5ed0eb6ba3596fdbbe8854cc69a975fbd40dc6c4fd9dd63e0",
+    "TRUTH.json": "4721bad3c7fe6848023b875a06ba27bb3f209acb29d3c0080abe2dc50945843b",
+    "CONTROLS.json": "480d15974c0a79d9009cc6e8b7ab8c5b1c4df935fbcaa05909a00f495332fa91",
+    "RUN.json": "461d3a2542a69e09155efc96ee57e1380bcadd095152c024d8f430e3fffa7fd6",
+    "SOURCE-BASELINE.json": "7d0fb7683a3d867f63b1e1f74fb14db43dadbb1922ab1ea36e18438df7c42f32",
+    "SCOPE.json": "cfeb16a8fc1a186a6d838ed8093c22cfe32c521746f53bd982bae7803ce813bd",
+    "proof_cache.py": "2fcdf9559bf922ae03482cde98bffcfa13a30a7003144df5b508254fed3a63ec",
+    "diagnostic.py": "757ae4be9b563b3055d40c5cc1d6e5bd550ec9ba3cadf34c5cb852f8b848722a",
+    "SHOW-WORK.txt": "7073dd5fbd45dc23b195e970220efed45ec92553ebaa8c4f66a076766727f2bd"
+  },
+  "verifier_sha256": "058fe46257c8b3c17985c9f3613d9e4c9f8fde32973d6a29afb4684143037bc0",
+  "proofs": {
+    "nodes": 7,
+    "resolution_nodes": 3,
+    "rup_nodes": 4,
+    "root_requests": 5,
+    "all_earlier_dependencies_proven": true,
+    "dependency_rows_exact": true,
+    "assignments_examined": 64,
+    "original_models": 3,
+    "all_node_countermodels": 0
+  },
+  "discovery": {
+    "round_probe_counts": [
+      12,
+      11,
+      9,
+      8
+    ],
+    "new_units_by_round": [
+      [
+        -4
+      ],
+      [
+        1,
+        -5
+      ],
+      [
+        -2
+      ],
+      []
+    ],
+    "original_only_probes": 12,
+    "all_discovery_probe_counts": {
+      "clause_visits": 2540,
+      "literal_inspections": 7206
+    }
+  },
+  "reconstructed_comparison_counts": {
+    "fresh": {
+      "input_bytes_snapshotted": 1502,
+      "hash_calls": 9,
+      "hash_bytes": 2542,
+      "cache_resets": 5,
+      "cache_lookups": 26,
+      "proof_nodes_checked": 24,
+      "reference_lookups": 79,
+      "source_clause_reads": 58,
+      "resolution_checks": 15,
+      "literal_inspections": 214,
+      "assumption_writes": 9,
+      "unit_checks": 40,
+      "conflict_checks": 9,
+      "rup_checks": 9,
+      "cache_hits": 2
+    },
+    "persistent": {
+      "input_bytes_snapshotted": 1502,
+      "hash_calls": 9,
+      "hash_bytes": 2542,
+      "cache_lookups": 13,
+      "proof_nodes_checked": 7,
+      "reference_lookups": 27,
+      "source_clause_reads": 19,
+      "resolution_checks": 3,
+      "literal_inspections": 69,
+      "cache_hits": 6,
+      "assumption_writes": 4,
+      "unit_checks": 17,
+      "conflict_checks": 4,
+      "rup_checks": 4
+    }
+  },
+  "serialized_cache_bytes_at_end": 1479,
+  "independent_negative_controls": [
+    {
+      "control": "wrong seed resolvent",
+      "rejected": true,
+      "reason": "exact resolvent"
+    },
+    {
+      "control": "circular dependency",
+      "rejected": true,
+      "reason": "unknown, forward, self or circular reference"
+    },
+    {
+      "control": "forward dependency",
+      "rejected": true,
+      "reason": "unknown, forward, self or circular reference"
+    },
+    {
+      "control": "missing dependency",
+      "rejected": true,
+      "reason": "unknown, forward, self or circular reference"
+    },
+    {
+      "control": "wrong forced literal",
+      "rejected": true,
+      "reason": "unit not forced by cited clause"
+    },
+    {
+      "control": "wrong conflict reference",
+      "rejected": true,
+      "reason": "cited conflict is not falsified"
+    },
+    {
+      "control": "changed conclusion behind same ID",
+      "rejected": true,
+      "reason": "unit not forced by cited clause"
+    },
+    {
+      "control": "forged verified receipt",
+      "rejected": true,
+      "reason": "bundle schema; no imported receipts"
+    },
+    {
+      "control": "changed original formula, old scope",
+      "rejected": true,
+      "reason": "formula/assumption identity"
+    },
+    {
+      "control": "changed assumptions, old scope",
+      "rejected": true,
+      "reason": "formula/assumption identity"
+    },
+    {
+      "control": "wrong resolution pivot",
+      "rejected": true,
+      "reason": "opposite resolution pivot"
+    },
+    {
+      "control": "duplicate ID",
+      "rejected": true,
+      "reason": "duplicate/reserved ID"
+    },
+    {
+      "control": "reserved source ID",
+      "rejected": true,
+      "reason": "duplicate/reserved ID"
+    },
+    {
+      "control": "out-of-range source",
+      "rejected": true,
+      "reason": "unknown, forward, self or circular reference"
+    },
+    {
+      "control": "boolean literal",
+      "rejected": true,
+      "reason": "literal range/type"
+    },
+    {
+      "control": "out-of-range literal",
+      "rejected": true,
+      "reason": "literal range/type"
+    },
+    {
+      "control": "tautological claimed clause",
+      "rejected": true,
+      "reason": "duplicate/complementary literals"
+    },
+    {
+      "control": "noncanonical clause",
+      "rejected": true,
+      "reason": "canonical clause"
+    },
+    {
+      "control": "missing forced step",
+      "rejected": true,
+      "reason": "unit not forced by cited clause"
+    },
+    {
+      "control": "repeated forced step",
+      "rejected": true,
+      "reason": "fresh forced variable"
+    },
+    {
+      "control": "extraneous node field",
+      "rejected": true,
+      "reason": "exact node schema"
+    },
+    {
+      "control": "unknown request",
+      "rejected": true,
+      "reason": "requests"
+    }
+  ],
+  "implementation_review": {
+    "mode": "Read-only source review; recorded root controls inspected, first ten independently reproduced against this verifier.",
+    "findings": [
+      "Caller inputs are serialized and copied; formula clauses/assumptions become tuples and nodes/ranks/keys become read-only mappings.",
+      "Cache keys bind original formula including assumptions, complete immutable bundle, and node digest.",
+      "Only successful checks insert cache entries; failed-node finally removes visiting state; earlier sound parents may remain.",
+      "No imported receipt or cache field is accepted; references to later/current/unknown nodes are rejected.",
+      "Both arms prepare the same bundle once and deduplicate dependencies within each root request; only inter-request cache retention differs."
+    ],
+    "recorded_root_controls": {
+      "rejection_controls": 10,
+      "cache_behavior_controls": 2,
+      "all_report_pass": true
+    },
+    "dynamic_cache_controls_independently_executed": false
+  },
+  "limits": [
+    "One post-hoc six-variable formula, not a general performance result.",
+    "Discovery produces a prepared immutable bundle; no online append or selective cache invalidation API is demonstrated.",
+    "All four learned units already follow logically from the original SAT formula; reuse changes proof availability and repeated checking work.",
+    "Closure is only for the tested signed-unit RUP family, not all logical consequences.",
+    "Literal inspections, lookups, hashes, serialization bytes and proof validations are different cost categories; no timing speedup inferred.",
+    "Recorded CPU/wall timings checked for format only, not reproduced or benchmarked; source preservation is the five recorded baseline files.",
+    "Root implementation cache controls were statically reviewed and their records checked; this verifier deliberately does not import root semantic code."
+  ],
+  "material_blockers": []
+}

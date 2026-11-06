@@ -1,0 +1,123 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+  "date": "2026-11-05",
+  "downloads": [
+    {
+      "bytes": 978,
+      "original_path": "article.md",
+      "sha256": "b1337bf0bbef826465ac527bdbe9e2aaef982fb585997bdba38d9563640a27b7",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 828,
+      "original_path": "files/summary.json",
+      "sha256": "8342c1d6470ef13bbe39acb788ac34a875c3e76aff2fefccc8d16cd37b5dd2e7",
+      "url": "files/files/summary.json.txt"
+    },
+    {
+      "bytes": 2661,
+      "original_path": "files/limitations.md",
+      "sha256": "6171092cda2ab094aae60ff43f80d1fcfd93efaf9a45c27d597fbb7502360f20",
+      "url": "files/files/limitations.md.txt"
+    },
+    {
+      "bytes": 520,
+      "original_path": "files/execution-receipt.json",
+      "sha256": "2622b831f3f90c94808aa33209fff90e1f665ec3153ab37b9dc2d696901f3771",
+      "url": "files/files/execution-receipt.json.txt"
+    },
+    {
+      "bytes": 1334,
+      "original_path": "files/source-selections.json",
+      "sha256": "debe8bf04100695bc05180d10d9cd7370e59a05a3be0b39e73e7d70cfc189fef",
+      "url": "files/files/source-selections.json.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "Root editorial summary of retained work",
+      "bytes": 978,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "article",
+      "sha256": "b1337bf0bbef826465ac527bdbe9e2aaef982fb585997bdba38d9563640a27b7"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 828,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "application/json",
+      "path": "files/summary.json",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "data",
+      "sha256": "8342c1d6470ef13bbe39acb788ac34a875c3e76aff2fefccc8d16cd37b5dd2e7"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 2661,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "text/markdown",
+      "path": "files/limitations.md",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "original",
+      "sha256": "6171092cda2ab094aae60ff43f80d1fcfd93efaf9a45c27d597fbb7502360f20"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 520,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "application/json",
+      "path": "files/execution-receipt.json",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "receipt",
+      "sha256": "2622b831f3f90c94808aa33209fff90e1f665ec3153ab37b9dc2d696901f3771"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 1334,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "application/json",
+      "path": "files/source-selections.json",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "data",
+      "sha256": "debe8bf04100695bc05180d10d9cd7370e59a05a3be0b39e73e7d70cfc189fef"
+    }
+  ],
+  "finding": "81 one-step cases:24 moves,41 stays,16 unresolved; maximum execution depth1. Null successor means no execution, not unchanged input.",
+  "gardens": [],
+  "id": "quark-s5-one-step",
+  "limitations": [
+    "No multi-step trajectory or physical fluid model.",
+    "Center-outward grammar has no return moves and at most2 center units.",
+    "Unresolved cases are not execution successes."
+  ],
+  "method": "Read the original experiment or implementation record together with its existing receipts; preserve the reported result, controls and limits. Selected source records retain exact bytes.",
+  "open_questions": [
+    "Release review must settle exact source attribution and public-use terms. Further scientific work is not required merely to preserve this bounded result."
+  ],
+  "package_sha256": "6cacdff8c1a67414e46ced1b5444271a25090e97ba8c3c896b650a5c9ae39cdb",
+  "provenance": {
+    "authors": [
+      "Original project contributors as identified in the retained records; Root, editorial gathering"
+    ],
+    "change_note": "Version 2 proposes exact publication terms; existing v1 and its historical checks remain intact.",
+    "origin": "QUARK retained experiment/implementation records. Source filenames and SHA-256 bindings are in source-selections.json; full custody stays in the private inventory."
+  },
+  "publication": {
+    "attribution": "Original project contributors as identified in the retained records; Proof Wall editorial gathering.",
+    "intent": "request-review",
+    "license": "All rights reserved; no open-source license is granted.",
+    "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization."
+  },
+  "question": "What does this retained result establish, and where does its support stop?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Execution leaves ambiguous neutral cases genuinely unresolved",
+  "version": 2
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "id": "graphics-boundary-compression",
+  "version": 2,
+  "title": "A bounded compression experiment that did not earn a new app",
+  "artifact_type": "experiment",
+  "status": "verified-finite-result",
+  "question": "What does this retained result establish, and where does its support stop?",
+  "method": "Read the original experiment or implementation record together with its existing receipts; preserve the reported result, controls and limits. Selected source records retain exact bytes.",
+  "finding": "Positive diagonal compression keeps projected corners inside a fixed box. Sampled X compression about3.9%, Y/Z12.7%. Review did not establish a followability improvement, so no new app or refinement was made.",
+  "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+  "limitations": [
+    "Authored display mapping, no pressure/inertia/volume physics. Offscreen sampled images and GIF cadence do not prove continuous desktop playback or perception benefit."
+  ],
+  "open_questions": [
+    "Release review must settle exact source attribution and public-use terms. Further scientific work is not required merely to preserve this bounded result."
+  ],
+  "date": "2026-11-05",
+  "provenance": {
+    "authors": [
+      "Original project contributors as identified in the retained records; Root, editorial gathering"
+    ],
+    "origin": "graphics retained experiment/implementation records. Source filenames and SHA-256 bindings are in source-selections.json; full custody stays in the private inventory.",
+    "change_note": "Version 2 proposes exact publication terms; existing v1 and its historical checks remain intact."
+  },
+  "article": "article.md",
+  "files": [
+    {
+      "path": "article.md",
+      "role": "article",
+      "media_type": "text/markdown",
+      "bytes": 1435,
+      "sha256": "fb8ad2ffa848cba55f1c44cea48d362ce9893c092a620209cdcc557b61c483aa",
+      "attribution": "Root editorial summary of retained work",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "license": "All rights reserved; no open-source license is granted."
+    },
+    {
+      "path": "files/mapping-verification.json",
+      "role": "receipt",
+      "media_type": "application/json",
+      "bytes": 1297,
+      "sha256": "5a7d43adfb39ecc5cea4dd14dc1e3956692eca609e3d94d6b9638479b2285c6b",
+      "attribution": "Original source record",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "license": "All rights reserved; no open-source license is granted."
+    },
+    {
+      "path": "files/rendered-return-verification.json",
+      "role": "receipt",
+      "media_type": "application/json",
+      "bytes": 370,
+      "sha256": "2c7a0c5670f422fcd0ae6186f4810770ec650ef3b97844f0ebe46d245332da0d",
+      "attribution": "Original source record",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "license": "All rights reserved; no open-source license is granted."
+    },
+    {
+      "path": "files/source-selections.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 963,
+      "sha256": "0a5ea258f544b0172a60d3ddfe00234b77dcfb43716ef6ebc02678006ffa5191",
+      "attribution": "Original source record",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "license": "All rights reserved; no open-source license is granted."
+    }
+  ],
+  "relations": [],
+  "gardens": [],
+  "publication": {
+    "intent": "request-review",
+    "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+    "license": "All rights reserved; no open-source license is granted.",
+    "attribution": "Original project contributors as identified in the retained records; Proof Wall editorial gathering."
+  },
+  "sample": false
+}

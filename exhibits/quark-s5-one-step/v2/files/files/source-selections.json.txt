@@ -1,0 +1,32 @@
+{
+  "purpose": "Provenance of copied originals and labeled excerpts; hashes identify bytes, not truth or rights.",
+  "sources": [
+    {
+      "packet_path": "files/summary.json",
+      "source_sha256": "8342c1d6470ef13bbe39acb788ac34a875c3e76aff2fefccc8d16cd37b5dd2e7",
+      "source_bytes": 828,
+      "excerpt_sha256": "8342c1d6470ef13bbe39acb788ac34a875c3e76aff2fefccc8d16cd37b5dd2e7",
+      "excerpt_bytes": 828,
+      "selection": "Whole file, exact bytes; no execution.",
+      "source_name": "summary.json"
+    },
+    {
+      "packet_path": "files/limitations.md",
+      "source_sha256": "6171092cda2ab094aae60ff43f80d1fcfd93efaf9a45c27d597fbb7502360f20",
+      "source_bytes": 2661,
+      "excerpt_sha256": "6171092cda2ab094aae60ff43f80d1fcfd93efaf9a45c27d597fbb7502360f20",
+      "excerpt_bytes": 2661,
+      "selection": "Whole file, exact bytes; no execution.",
+      "source_name": "LIMITATIONS.md"
+    },
+    {
+      "packet_path": "files/execution-receipt.json",
+      "source_sha256": "2622b831f3f90c94808aa33209fff90e1f665ec3153ab37b9dc2d696901f3771",
+      "source_bytes": 520,
+      "excerpt_sha256": "2622b831f3f90c94808aa33209fff90e1f665ec3153ab37b9dc2d696901f3771",
+      "excerpt_bytes": 520,
+      "selection": "Whole file, exact bytes; no execution.",
+      "source_name": "EXECUTION_RECEIPT.json"
+    }
+  ]
+}

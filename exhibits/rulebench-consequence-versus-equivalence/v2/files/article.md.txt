@@ -1,0 +1,18 @@
+# A useful conclusion can still be an unsafe replacement
+
+For A implies B, A implies C, and not both B and C, not A answers one question but alone admits an extra assignment. Retaining not A and not both B C preserves the three original assignments.
+
+## What was checked
+
+Existing carry-checks-receipt.json reports all eight states and the negative control passed; original recipe records the preservation-target distinction.
+
+The attached records are existing evidence, copied intact or extracted exactly as disclosed in source-selections.json. No experiment was rerun for this exhibit.
+
+## Limits
+
+- Three-variable finite example; no general solver advantage.
+- The excerpt is a method lesson, not a fresh theorem or new run.
+
+## Evidence and publication
+
+Original source locations and custody records remain in the private curator inventory. This packet is prepared for review; no publication authorization or open license is claimed. The article is a new explanation of retained work, not a new experiment.

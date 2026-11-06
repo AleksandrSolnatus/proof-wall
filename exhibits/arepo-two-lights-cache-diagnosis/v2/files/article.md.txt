@@ -1,0 +1,21 @@
+# Two Lights: a diagnostic cache-path correction produced four frames
+
+Nil cached shader path was identified as the immediate failure mechanism. Process-local diagnostic cache redirection allowed native rendering, and each light illuminated the synthetic receiver.
+
+## What was checked
+
+One guarded build/launch; four receiver conditions; static signature and independent review preserved.
+
+The attached records are existing evidence, copied intact or extracted exactly as disclosed in source-selections.json. No experiment was rerun for this exhibit.
+
+## Limits
+
+- Nonpublic Metal SPI was diagnostic only, not a supported production solution. Exact default cache-operation failure unresolved; no motion/breathing/lifecycle/performance acceptance.
+
+## What happened next and source context
+
+The source excerpt retains the diagnostic-only nonpublic API limitation. It does not propose deploying that route. Original frames remain in the source project; this text exhibit contains no visual assets.
+
+## Evidence and publication
+
+Original source locations and custody records remain in the private curator inventory. This packet is prepared for review; no publication authorization or open license is claimed. The article is a new explanation of retained work, not a new experiment.

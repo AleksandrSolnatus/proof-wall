@@ -1,0 +1,35 @@
+CHECKED CONCLUSIONS CAN SUPPORT THE NEXT PROOF
+
+Seed: x2 OR NOT x4, rechecked in three resolution steps from original clauses.
+The old receipt is provenance, not permission to trust this seed.
+
+Fixed signed-unit discovery, with each round using only the previous round’s store:
+Round 1: 12 probes; new candidates [[-4]]
+Round 2: 11 probes; new candidates [[1], [-5]]
+Round 3: 9 probes; new candidates [[-2]]
+Round 4: 8 probes; new candidates []
+
+The original-only unit probes all stalled. The seed enables NOT x4; that supports
+x1 and NOT x5; the retained results support NOT x2. The following round adds no
+new signed-unit RUP conclusion. All four units already follow logically from F.
+
+The checker validates every node against original clauses or earlier checked nodes.
+A node enters its cache only after its proof succeeds. All nodes and their source
+formula, assumptions and complete bundle are frozen and hash-bound.
+
+Identical five requests, including the seed and its cold proof:
+  Fresh proof cache per request: 24 proof-node validations.
+  Cache retained across requests: 7 proof-node validations.
+  Original/parent literal inspections: 214 vs 69.
+  Cache lookups: 26 vs 13.
+  Input/hash preparation is the same in both arms: 9 hashes over 2542 bytes.
+The fresh method also deduplicates dependencies inside each request.
+Actual dependency edges, all proof steps, and per-request counts are retained.
+
+Limits: this is one six-variable post-hoc diagnostic. Discovery is separate from
+fixed-bundle certificate checking; no faster discovery, online learning, streaming
+cache extension, or general wall-time speedup has been established. Full process
+and model costs are not measured. Historical records and production remain unchanged.
+
+Run: python3 -B diagnostic.py
+Independent replay: python3 -B verify.py

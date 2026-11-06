@@ -1,0 +1,6 @@
+## A small logical lesson
+
+For `A → B`, `A → C`, and `not both B C`, the conclusion `not A` answers whether A can occur. It is not an exact replacement of the original problem: it would allow `A=0, B=1, C=1`. Keeping `not A` **and** `not both B C` preserves the three original assignments. The carry packet's eight-state check confirms this finite example.
+
+To test an implication in supported Boolean grammar: first check that the premises are consistent, then check them with the negation of the conclusion. A checked SAT witness refutes the implication; a completed, validated UNSAT result supports it under those premises. Inconsistent premises are a separate outcome. A bounded UNKNOWN or failed validation supports neither conclusion. Exact counts need count-specific verification; the version-4 fresh decision receipt does not independently certify them.
+

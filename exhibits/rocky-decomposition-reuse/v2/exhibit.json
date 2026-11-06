@@ -1,0 +1,123 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+  "date": "2026-11-05",
+  "downloads": [
+    {
+      "bytes": 1532,
+      "original_path": "article.md",
+      "sha256": "9326c0852c089e9f0a2dd4c642135c8c9cbe72508064459acad4fefed7c88cc0",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 6419,
+      "original_path": "files/walkthrough.txt",
+      "sha256": "923bdf28254faa03fcd5285e60843d917ccdd911f5d5ee5d0d295b35f4f43ed8",
+      "url": "files/files/walkthrough.txt.txt"
+    },
+    {
+      "bytes": 564,
+      "original_path": "files/correction-replay.json",
+      "sha256": "6975258d1c630aec5a3c7d93beef97703a4655db5dcf2f7a90b71e49d7903c84",
+      "url": "files/files/correction-replay.json.txt"
+    },
+    {
+      "bytes": 945,
+      "original_path": "files/source-selections.json",
+      "sha256": "5daf1368fa54fa1332450f52da0d6bb6d323f2332daf866b5f48fddbf15ca361",
+      "url": "files/files/source-selections.json.txt"
+    },
+    {
+      "bytes": 2274,
+      "original_path": "files/recorded-results.txt",
+      "sha256": "1a23e97d5c39d9a0c40d4089b97987b4891458836b0ce58431862ef7bcd63a4f",
+      "url": "files/files/recorded-results.txt.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "Root editorial summary of retained work",
+      "bytes": 1532,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "article",
+      "sha256": "9326c0852c089e9f0a2dd4c642135c8c9cbe72508064459acad4fefed7c88cc0"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 6419,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "text/plain",
+      "path": "files/walkthrough.txt",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "original",
+      "sha256": "923bdf28254faa03fcd5285e60843d917ccdd911f5d5ee5d0d295b35f4f43ed8"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 564,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "application/json",
+      "path": "files/correction-replay.json",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "receipt",
+      "sha256": "6975258d1c630aec5a3c7d93beef97703a4655db5dcf2f7a90b71e49d7903c84"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 945,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "application/json",
+      "path": "files/source-selections.json",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "data",
+      "sha256": "5daf1368fa54fa1332450f52da0d6bb6d323f2332daf866b5f48fddbf15ca361"
+    },
+    {
+      "attribution": "Original BRIDGES-DECOMPOSITION-001 README, selected exact passages.",
+      "bytes": 2274,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "text/plain",
+      "path": "files/recorded-results.txt",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "original",
+      "sha256": "1a23e97d5c39d9a0c40d4089b97987b4891458836b0ce58431862ef7bcd63a4f"
+    }
+  ],
+  "finding": "Frozen-leaf search states113→7 for16 disjoint Qs,114→7 joined by selector,159→36 with final UNSAT gadget. Exact signed variable maps carry reusable checked conclusions. Bool/float audit-value acceptance was corrected with old evidence retained.",
+  "gardens": [],
+  "id": "rocky-decomposition-reuse",
+  "limitations": [
+    "Leaf counts exclude wrapper/discovery/verification and are not total runtime ratios.",
+    "Raw clause order preserved, not arbitrary isomorphism/semantic equivalence.",
+    "Complex UNSAT leaves rely on supplied checker; historical118-file archive missing."
+  ],
+  "method": "Read the original experiment or implementation record together with its existing receipts; preserve the reported result, controls and limits. Selected source records retain exact bytes.",
+  "open_questions": [
+    "Release review must settle exact source attribution and public-use terms. Further scientific work is not required merely to preserve this bounded result."
+  ],
+  "package_sha256": "2e4565e6953f327710f3f3319808325a016e2a953ed998eba47bc7336d718b7e",
+  "provenance": {
+    "authors": [
+      "Original project contributors as identified in the retained records; Root, editorial gathering"
+    ],
+    "change_note": "Version 2 proposes exact publication terms; existing v1 and its historical checks remain intact. Adds two verbatim excerpts from the original README: results and verification; source remains unchanged.",
+    "origin": "Rocky / MATH retained experiment/implementation records. Source filenames and SHA-256 bindings are in source-selections.json; full custody stays in the private inventory."
+  },
+  "publication": {
+    "attribution": "Original project contributors as identified in the retained records; Proof Wall editorial gathering.",
+    "intent": "request-review",
+    "license": "All rights reserved; no open-source license is granted.",
+    "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization."
+  },
+  "question": "What does this retained result establish, and where does its support stop?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Signed source maps make repeated subproblem results reusable",
+  "version": 2
+}

@@ -1,0 +1,23 @@
+{
+  "purpose": "Provenance of copied originals and labeled excerpts; hashes identify bytes, not truth or rights.",
+  "sources": [
+    {
+      "packet_path": "files/logical-lesson.txt",
+      "source_sha256": "c09118eb081eae7eee9f2f3ccf17bad03e31595fc85f1be86b9fc660615026fe",
+      "source_bytes": 4145,
+      "excerpt_sha256": "f12a2015e584620d0cce7b78fd3e8a0cbf1436cc77156c49ab82e26d2518d525",
+      "excerpt_bytes": 867,
+      "selection": "Exact contiguous excerpt: starts at '## A small logical lesson'; stops before '## Supplied schedules'. Surrounding operational material omitted; source intact.",
+      "source_name": "AGENT_RECIPE.md"
+    },
+    {
+      "packet_path": "files/carry-checks.json",
+      "source_sha256": "e9be5420733e8dd237e8b1619913b225646511eda739b63f8642866f5fa21ff7",
+      "source_bytes": 4225,
+      "excerpt_sha256": "e9be5420733e8dd237e8b1619913b225646511eda739b63f8642866f5fa21ff7",
+      "excerpt_bytes": 4225,
+      "selection": "Whole file, exact bytes; no execution.",
+      "source_name": "carry-checks-receipt.json"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "by_signal": {
+    "-1": {
+      "cases": 27,
+      "executed": 27,
+      "moves": 12,
+      "stays": 15,
+      "unresolved": 0
+    },
+    "0": {
+      "cases": 27,
+      "executed": 11,
+      "moves": 0,
+      "stays": 11,
+      "unresolved": 16
+    },
+    "1": {
+      "cases": 27,
+      "executed": 27,
+      "moves": 12,
+      "stays": 15,
+      "unresolved": 0
+    }
+  },
+  "fixture": {
+    "move_plus_stay_states": 16,
+    "move_proposals": 24,
+    "states": 27,
+    "stay_only_states": 11
+  },
+  "maximum_execution_depth": 1,
+  "randomness": "none",
+  "scope": "independent one-step cases; no multi-step trajectory or physical-water claim",
+  "selection_fully_resolved": false,
+  "totals": {
+    "cases": 81,
+    "executed": 65,
+    "moves": 24,
+    "stays": 41,
+    "unresolved": 16
+  },
+  "version": "Q002-S5 v1"
+}

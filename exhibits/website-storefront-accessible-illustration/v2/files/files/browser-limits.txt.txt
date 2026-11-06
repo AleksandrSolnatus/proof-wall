@@ -1,0 +1,10 @@
+Limits: emulation is not a physical iPhone. Accessible names were observed, but
+this is not a complete screen-reader audit. Public destination retrieval checks
+are separate from these local browser observations. A newly rendered private
+or public hosted 008 version has not been tested because none was deployed.
+
+Direct-file check: UNVERIFIED. Native Chrome attempts to navigate to the local
+file URL left the old loopback page visible; no successful file navigation was
+observed. The source is buildless with relative asset paths, but only HTTP
+execution was actually verified. The README supplies a loopback server command.
+

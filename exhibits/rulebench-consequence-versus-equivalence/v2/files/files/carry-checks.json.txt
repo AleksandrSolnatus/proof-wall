@@ -1,0 +1,69 @@
+{
+  "startedAt": "2026-11-02T01:39:34.876551+00:00",
+  "finishedAt": "2026-11-02T01:39:35.463744+00:00",
+  "wallSeconds": 0.5871181670809165,
+  "exitCode": 0,
+  "stdout": "{\n  \"schema\": \"rulebench-carry-checks-1\",\n  \"tests\": [\n    {\n      \"test\": \"review independent source and candidate checks\",\n      \"status\": \"PASS\",\n      \"exit_code\": 0,\n      \"elapsed_seconds\": 0.032429,\n      \"stdout_sha256\": \"a6e3d01cf85eac65b959f5b5759c67bec8ebe4c6fd5e85829bee4f417a361e73\",\n      \"stderr\": \"\"\n    },\n    {\n      \"test\": \"eight-state equivalence and negative control\",\n      \"status\": \"PASS\",\n      \"exit_code\": 0,\n      \"elapsed_seconds\": 0.016769,\n      \"stdout_sha256\": \"562310fec2267fc848bda47443ade1e351af357c3c1efadec8dc472e9b5ffbe6\",\n      \"stderr\": \"\"\n    },\n    {\n      \"test\": \"20 Boolean response byte bindings\",\n      \"status\": \"PASS\",\n      \"exit_code\": 0,\n      \"elapsed_seconds\": 0.204471,\n      \"stdout_sha256\": \"ceb0afd78edfe25ecee928e6d899730ea8f20caba8c03abf6be8b45a824b2c08\",\n      \"stderr\": \"\"\n    },\n    {\n      \"test\": \"offline Agent 002 wrapper regression\",\n      \"status\": \"PASS\",\n      \"exit_code\": 0,\n      \"elapsed_seconds\": 0.291006,\n      \"stdout_sha256\": \"5032716de016ceb6885dcf0e21ffa9cc5235a4ee8c0107fde199e817bcc1d3b3\",\n      \"stderr\": \"\"\n    }\n  ],\n  \"details\": {\n    \"schedule_operations\": 600,\n    \"schedule_makespan\": 2020,\n    \"optimality_established\": false,\n    \"invalid_candidates_rejected\": 7,\n    \"boolean_counts\": [\n      3,\n      0,\n      5,\n      1,\n      0\n    ],\n    \"language_states\": 8,\n    \"byte_binding_matches\": 24,\n    \"agent_test_groups\": 17\n  },\n  \"limits\": [\n    \"No new scheduling search or optimality proof.\",\n    \"No physical phone or live website test.\",\n    \"Current Workbench implementation and the original reported 112-test suite are not included or run.\",\n    \"Historical archived results stay unchanged.\",\n    \"Recorded source comparison to an earlier file was not repeated; internal source/candidate checks were repeated.\"\n  ]\n}\n",
+  "stderr": "",
+  "scriptSha256": "f3b21d56b0e2f32f31320ac2dec08f6c58b13ea80d1b3b495ffd09d05b8d3afd",
+  "result": {
+    "schema": "rulebench-carry-checks-1",
+    "tests": [
+      {
+        "test": "review independent source and candidate checks",
+        "status": "PASS",
+        "exit_code": 0,
+        "elapsed_seconds": 0.032429,
+        "stdout_sha256": "a6e3d01cf85eac65b959f5b5759c67bec8ebe4c6fd5e85829bee4f417a361e73",
+        "stderr": ""
+      },
+      {
+        "test": "eight-state equivalence and negative control",
+        "status": "PASS",
+        "exit_code": 0,
+        "elapsed_seconds": 0.016769,
+        "stdout_sha256": "562310fec2267fc848bda47443ade1e351af357c3c1efadec8dc472e9b5ffbe6",
+        "stderr": ""
+      },
+      {
+        "test": "20 Boolean response byte bindings",
+        "status": "PASS",
+        "exit_code": 0,
+        "elapsed_seconds": 0.204471,
+        "stdout_sha256": "ceb0afd78edfe25ecee928e6d899730ea8f20caba8c03abf6be8b45a824b2c08",
+        "stderr": ""
+      },
+      {
+        "test": "offline Agent 002 wrapper regression",
+        "status": "PASS",
+        "exit_code": 0,
+        "elapsed_seconds": 0.291006,
+        "stdout_sha256": "5032716de016ceb6885dcf0e21ffa9cc5235a4ee8c0107fde199e817bcc1d3b3",
+        "stderr": ""
+      }
+    ],
+    "details": {
+      "schedule_operations": 600,
+      "schedule_makespan": 2020,
+      "optimality_established": false,
+      "invalid_candidates_rejected": 7,
+      "boolean_counts": [
+        3,
+        0,
+        5,
+        1,
+        0
+      ],
+      "language_states": 8,
+      "byte_binding_matches": 24,
+      "agent_test_groups": 17
+    },
+    "limits": [
+      "No new scheduling search or optimality proof.",
+      "No physical phone or live website test.",
+      "Current Workbench implementation and the original reported 112-test suite are not included or run.",
+      "Historical archived results stay unchanged.",
+      "Recorded source comparison to an earlier file was not repeated; internal source/candidate checks were repeated."
+    ]
+  }
+}

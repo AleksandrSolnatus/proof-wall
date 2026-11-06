@@ -1,0 +1,65 @@
+AREPO TWO LIGHTS — APPENDED BOUNDED DIAGNOSIS RECEIPT
+October2,2026. One candidate, one build, one guarded GUI launch; no relaunch.
+
+Initialization succeeded, and both native point lights independently illuminate the
+synthetic receiver. This is an experiment result at one paused phase, with no final
+artistic acceptance or production integration. Earlier failure records are unchanged.
+
+Evidence-supported diagnosis
+Runs02–04 share the same nil-array-element exception at Metal's
+recordBinaryArchiveUsage block+132. Read-only disassembly of the actual local Metal
+image identifies element0 as the cached MTLGetShaderCachePath result. Its default
+folder path uses Darwin's cache directory and directory checks/creation, rather than
+the Foundation home redirect used earlier. This establishes the immediate nil-path
+mechanism; it does not identify the exact failed default-cache operation.
+
+The single candidate sets Metal's process-local shader-cache path to the precreated
+experiment-runtime/run-05-diagnosis-01/metal-cache directory before scene creation.
+It verifies that the getter returns exactly that canonical path, then records before/
+after renderer and Host stages. No fallback or sandbox relaxation exists. The original
+Info.plist, environment, scene, rendering, camera, material, light settings and clock
+are unchanged. Missing version metadata was not changed; the successful run still
+reports it missing, so that proposed explanation was not needed for this correction.
+
+Both MTLSetShaderCachePath and MTLGetShaderCachePath are nonpublic SPI. This is a
+local diagnostic route, not a supported production solution. Exact symbol and NSString
+calling convention were inspected before use. No framework/system binary was patched.
+
+The getter confirmed the disposable directory; RealityRenderer and Host completed,
+and native receiver frames were displayed and captured. The cache-path correction
+hypothesis is supported on this Mac [operating-system build omitted]. Why the default path became
+nil remains unresolved. The new confstr call returned a valid path/count50; errno45
+alongside that success is not proof of a failed syscall.
+
+Four-condition result, independently inspected
+A — Neither: receiver geometry is black against the dark background.
+B — Warm only: a broad, dim amber/brown-orange pool appears on the left.
+C — Cool only: a broad, dim green/teal pool appears on the right, with little obvious blue.
+D — Both: both subdued pools remain visible and blend across the middle. Warm is more legible.
+
+These are actual 960x720 RealityRenderer readback PNGs from the same live process,
+not markers, unlit overlays, color animation or replacement imagery. The labeled files
+in frames/ are byte-identical copies of manual-1 through manual-4. All receipts show
+phase0, no diagnostic seek, no markers, the same fixed camera/FOV, material source,
+background, default environment, tone mapping disabled and antialiasing disabled.
+The only changing comparison value is which source contributes. There were no
+unavoidable camera/material/exposure changes and no silent parameter tuning.
+
+The appearance is quite dark. Actual contribution is established; the desired degree
+of gentleness, strength and hue remains for Amar's encounter. Broad overlap here is
+ordinary point-light behavior and supplies no v0.4 overlap cap or rare-overlap proof.
+
+Checks and limits
+Compile, ad-hoc signing and strict signature verification passed. Same-executable
+preflight denied all nine protected paths plus the sibling-write canary, allowed the
+synthetic runtime probe, and passed six pure-clock checks. No performance or native
+lifecycle suite ran. The session stayed paused at zero active seconds throughout:
+normal-speed motion/breathing, inactive/resume behavior and cold return are untested.
+Normal window closure was observed and logged; that is cleanup evidence, not a full
+lifecycle pass. No accelerated preview or phase seek was used.
+
+The native radius3 versus existing field-lamp18*scale comparison remains technical
+only. Perceptual smaller and the intended specific large-light reference are unresolved.
+Prior v0.4's reported37 abstract checks remain separate; neither its complete bundle
+nor finite-support/ripple/five-hour recurrence guarantees were validated in this pass.
+

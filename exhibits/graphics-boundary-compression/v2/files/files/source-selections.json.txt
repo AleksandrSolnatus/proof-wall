@@ -1,0 +1,23 @@
+{
+  "purpose": "Provenance of copied originals and labeled excerpts; hashes identify bytes, not truth or rights.",
+  "sources": [
+    {
+      "packet_path": "files/mapping-verification.json",
+      "source_sha256": "5a7d43adfb39ecc5cea4dd14dc1e3956692eca609e3d94d6b9638479b2285c6b",
+      "source_bytes": 1297,
+      "excerpt_sha256": "5a7d43adfb39ecc5cea4dd14dc1e3956692eca609e3d94d6b9638479b2285c6b",
+      "excerpt_bytes": 1297,
+      "selection": "Whole file, exact bytes; no execution.",
+      "source_name": "verification.json"
+    },
+    {
+      "packet_path": "files/rendered-return-verification.json",
+      "source_sha256": "2c7a0c5670f422fcd0ae6186f4810770ec650ef3b97844f0ebe46d245332da0d",
+      "source_bytes": 370,
+      "excerpt_sha256": "2c7a0c5670f422fcd0ae6186f4810770ec650ef3b97844f0ebe46d245332da0d",
+      "excerpt_bytes": 370,
+      "selection": "Whole file, exact bytes; no execution.",
+      "source_name": "verification.json"
+    }
+  ]
+}

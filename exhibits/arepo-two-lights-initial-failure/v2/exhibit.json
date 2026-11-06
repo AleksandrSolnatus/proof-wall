@@ -1,0 +1,96 @@
+{
+  "article": "article.md",
+  "artifact_type": "failed-attempt",
+  "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+  "date": "2026-11-05",
+  "downloads": [
+    {
+      "bytes": 1153,
+      "original_path": "article.md",
+      "sha256": "903a2ec468bb4bd6a27cd486d26a6f27289283464330ed761885fcff6365a97e",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 655,
+      "original_path": "files/initial-failure.txt",
+      "sha256": "362325c8c8445313a080d0d2ded178a1bfcaf01e9eef6eb64b04b797a98db062",
+      "url": "files/files/initial-failure.txt.txt"
+    },
+    {
+      "bytes": 660,
+      "original_path": "files/source-selections.json",
+      "sha256": "f3cb8a2da875508247f2b4fa27b2e93dca64efb3f982cd2c3aa281d830fcd197",
+      "url": "files/files/source-selections.json.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "Root editorial summary of retained work",
+      "bytes": 1153,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "article",
+      "sha256": "903a2ec468bb4bd6a27cd486d26a6f27289283464330ed761885fcff6365a97e"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 655,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "text/plain",
+      "path": "files/initial-failure.txt",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "original",
+      "sha256": "362325c8c8445313a080d0d2ded178a1bfcaf01e9eef6eb64b04b797a98db062"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 660,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "application/json",
+      "path": "files/source-selections.json",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "data",
+      "sha256": "f3cb8a2da875508247f2b4fa27b2e93dca64efb3f982cd2c3aa281d830fcd197"
+    }
+  ],
+  "finding": "Distinguishes build and containment preflight success from an unobserved scene: no native lighting or lifecycle pass was asserted.",
+  "gardens": [],
+  "id": "arepo-two-lights-initial-failure",
+  "limitations": [
+    "Original failure did not establish a sandbox/OS defect or illumination performance. Later diagnosis belongs with this failure."
+  ],
+  "method": "Read the original experiment or implementation record together with its existing receipts; preserve the reported result, controls and limits. Selected source excerpts are identified explicitly.",
+  "open_questions": [
+    "Release review must settle exact source attribution and public-use terms. Further scientific work is not required merely to preserve this bounded result."
+  ],
+  "package_sha256": "544b3f3ea66440306e975ac85a425c4839a501beacd79347061efff5b11a64c8",
+  "provenance": {
+    "authors": [
+      "Original project contributors as identified in the retained records; Root, editorial gathering"
+    ],
+    "change_note": "Version 2 proposes exact publication terms; existing v1 and its historical checks remain intact.",
+    "origin": "Arepo tests retained experiment/implementation records. Source filenames and SHA-256 bindings are in source-selections.json; full custody stays in the private inventory."
+  },
+  "publication": {
+    "attribution": "Original project contributors as identified in the retained records; Proof Wall editorial gathering.",
+    "intent": "request-review",
+    "license": "All rights reserved; no open-source license is granted.",
+    "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization."
+  },
+  "question": "What does this retained result establish, and where does its support stop?",
+  "relations": [
+    {
+      "id": "arepo-two-lights-cache-diagnosis",
+      "reason": "The later diagnostic explains what happened after this preserved initialization failure.",
+      "type": "related-to",
+      "version": 2
+    }
+  ],
+  "sample": false,
+  "schema_version": 1,
+  "status": "experimental",
+  "title": "Two Lights: preserving an initialization failure",
+  "version": 2
+}

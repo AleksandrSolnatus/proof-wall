@@ -1,0 +1,11 @@
+TERRA TWO LIGHTS — DISPOSABLE NATIVE EXPERIMENT
+October 2, 2026. Outcome: built; isolated preflight passed; blocked before rendering.
+
+The prepared experiment is implemented, but its visual test did not run. Three
+guarded GUI process attempts failed in Metal binary-archive initialization during
+RealityRenderer construction. No receiver image or experiment window was observed.
+There is no visual pass, measured illumination, native lifecycle pass or performance
+result. Further launches have stopped. This receipt follows START-HERE.md's earlier
+preparation-only record; that historical record and its numerical proposal remain
+byte-for-byte intact.
+

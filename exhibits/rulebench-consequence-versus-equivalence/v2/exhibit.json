@@ -1,0 +1,106 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+  "date": "2026-11-05",
+  "downloads": [
+    {
+      "bytes": 1011,
+      "original_path": "article.md",
+      "sha256": "55067832ecd7f6b8431f3df4f6d7bc5f5a7ddb203d628a0d5c10aa1eccc76f26",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 867,
+      "original_path": "files/logical-lesson.txt",
+      "sha256": "f12a2015e584620d0cce7b78fd3e8a0cbf1436cc77156c49ab82e26d2518d525",
+      "url": "files/files/logical-lesson.txt.txt"
+    },
+    {
+      "bytes": 4225,
+      "original_path": "files/carry-checks.json",
+      "sha256": "e9be5420733e8dd237e8b1619913b225646511eda739b63f8642866f5fa21ff7",
+      "url": "files/files/carry-checks.json.txt"
+    },
+    {
+      "bytes": 1068,
+      "original_path": "files/source-selections.json",
+      "sha256": "d49e2c75131eca6afc53b7d60e3798f137cc846695e4bf8a85ed859788e34b28",
+      "url": "files/files/source-selections.json.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "Root editorial summary of retained work",
+      "bytes": 1011,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "article",
+      "sha256": "55067832ecd7f6b8431f3df4f6d7bc5f5a7ddb203d628a0d5c10aa1eccc76f26"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 867,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "text/plain",
+      "path": "files/logical-lesson.txt",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "original",
+      "sha256": "f12a2015e584620d0cce7b78fd3e8a0cbf1436cc77156c49ab82e26d2518d525"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 4225,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "application/json",
+      "path": "files/carry-checks.json",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "receipt",
+      "sha256": "e9be5420733e8dd237e8b1619913b225646511eda739b63f8642866f5fa21ff7"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 1068,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "application/json",
+      "path": "files/source-selections.json",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "data",
+      "sha256": "d49e2c75131eca6afc53b7d60e3798f137cc846695e4bf8a85ed859788e34b28"
+    }
+  ],
+  "finding": "For A implies B, A implies C, and not both B and C, not A answers one question but alone admits an extra assignment. Retaining not A and not both B C preserves the three original assignments.",
+  "gardens": [],
+  "id": "rulebench-consequence-versus-equivalence",
+  "limitations": [
+    "Three-variable finite example; no general solver advantage.",
+    "The excerpt is a method lesson, not a fresh theorem or new run."
+  ],
+  "method": "Read the original experiment or implementation record together with its existing receipts; preserve the reported result, controls and limits. Selected source excerpts are identified explicitly.",
+  "open_questions": [
+    "Release review must settle exact source attribution and public-use terms. Further scientific work is not required merely to preserve this bounded result."
+  ],
+  "package_sha256": "f1c9978c917aa3369d740bc84134566fc96c08f01b14959d4f1a77ddf6225f08",
+  "provenance": {
+    "authors": [
+      "Original project contributors as identified in the retained records; Root, editorial gathering"
+    ],
+    "change_note": "Version 2 proposes exact publication terms; existing v1 and its historical checks remain intact.",
+    "origin": "Rulebench retained experiment/implementation records. Source filenames and SHA-256 bindings are in source-selections.json; full custody stays in the private inventory."
+  },
+  "publication": {
+    "attribution": "Original project contributors as identified in the retained records; Proof Wall editorial gathering.",
+    "intent": "request-review",
+    "license": "All rights reserved; no open-source license is granted.",
+    "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization."
+  },
+  "question": "What does this retained result establish, and where does its support stop?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "A useful conclusion can still be an unsafe replacement",
+  "version": 2
+}

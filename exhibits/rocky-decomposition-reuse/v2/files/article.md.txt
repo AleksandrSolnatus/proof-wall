@@ -1,0 +1,23 @@
+# Signed source maps make repeated subproblem results reusable
+
+Frozen-leaf search states113→7 for16 disjoint Qs,114→7 joined by selector,159→36 with final UNSAT gadget. Exact signed variable maps carry reusable checked conclusions. Bool/float audit-value acceptance was corrected with old evidence retained.
+
+## What was checked
+
+758 builder executions and independent1687 executions; third interpreter replayed all saved DAGs;30 forgeries reject; final normal/-O parity and Counsel.
+
+The attached records are existing evidence, copied intact or extracted exactly as disclosed in source-selections.json. No experiment was rerun for this exhibit.
+
+## Limits
+
+- Leaf counts exclude wrapper/discovery/verification and are not total runtime ratios.
+- Raw clause order preserved, not arbitrary isomorphism/semantic equivalence.
+- Complex UNSAT leaves rely on supplied checker; historical118-file archive missing.
+
+## What happened next and source context
+
+The copied walkthrough shows two complete smaller reuse structures. The broader leaf-state comparison in the article is reported by the linked source record; these counts exclude wrapper, discovery and verification costs. The metadata type correction remains in the retained replay receipt.
+
+## Evidence and publication
+
+Original source locations and custody records remain in the private curator inventory. This packet is prepared for review; no publication authorization or open license is claimed. The article is a new explanation of retained work, not a new experiment.

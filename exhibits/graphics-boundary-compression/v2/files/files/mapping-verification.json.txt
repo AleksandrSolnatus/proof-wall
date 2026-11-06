@@ -1,0 +1,37 @@
+{
+  "centerBudget" : 1.494,
+  "exactBaselineReturns" : {
+    "0.0" : true,
+    "43.0" : true,
+    "90.0" : true,
+    "180.0" : true,
+    "240.0" : true,
+    "324.0" : true
+  },
+  "fixedBoxEdges" : 12,
+  "halfExtent" : 1.55,
+  "limits" : "Authored global diagonal compression of centers\/straight centerlines with constant glyph radii. All six inequalities solved together, not all planes necessarily in contact. No local pressure\/force\/volume model. Position continuous, velocity may kink. Owned offscreen sequences have quantized GIF cadence; not desktop behavior or perceptual acceptance. Unchanged kernel\/clock checks carry forward.",
+  "maximumDisplacementAcrossTwoMicrodegrees" : 7.94679176352453e-08,
+  "maximumFloatCornerExtentWithRadius" : 1.5499999580383301,
+  "minimumEdgeLength" : 0.99437386614296608,
+  "minimumScale" : [
+    0.96069631697998248,
+    0.87257792288664582,
+    0.87257792288664582
+  ],
+  "minimumVertexSeparation" : 0.99437386614296608,
+  "originalCorners" : 16,
+  "originalEdges" : 32,
+  "passed" : true,
+  "phaseChecks" : 1441,
+  "sharedFrameOrbit" : true,
+  "transitionPhasesFirstQuarter" : [
+    6.5554422391259006,
+    7.6506122737267361,
+    36.002054544086363,
+    53.997945455913651,
+    82.349387726273221,
+    83.44455776087409
+  ],
+  "visibleWindows" : 0
+}

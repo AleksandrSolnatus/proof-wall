@@ -1,0 +1,105 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+  "date": "2026-11-05",
+  "downloads": [
+    {
+      "bytes": 1478,
+      "original_path": "article.md",
+      "sha256": "6d68dfa763f65b040939a78a2b6e4222e3286a59c0fb52fee8b7d2c53f124a0d",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 1202,
+      "original_path": "files/browser-checks.txt",
+      "sha256": "8f85baa0549607febb14a9f5fe8edd93397cc95c135c63e1657a5d54ed740bf9",
+      "url": "files/files/browser-checks.txt.txt"
+    },
+    {
+      "bytes": 628,
+      "original_path": "files/browser-limits.txt",
+      "sha256": "a8981a89a8d255bf9da54463e5a218d83e66fcab08819f378d8466181672dd5c",
+      "url": "files/files/browser-limits.txt.txt"
+    },
+    {
+      "bytes": 1150,
+      "original_path": "files/source-selections.json",
+      "sha256": "8a85105aa0dfe8a079e0274b8d654179461e2f8d46086068a33caa20b7c38448",
+      "url": "files/files/source-selections.json.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "Root editorial summary of retained work",
+      "bytes": 1478,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "article",
+      "sha256": "6d68dfa763f65b040939a78a2b6e4222e3286a59c0fb52fee8b7d2c53f124a0d"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 1202,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "text/plain",
+      "path": "files/browser-checks.txt",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "original",
+      "sha256": "8f85baa0549607febb14a9f5fe8edd93397cc95c135c63e1657a5d54ed740bf9"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 628,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "text/plain",
+      "path": "files/browser-limits.txt",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "original",
+      "sha256": "a8981a89a8d255bf9da54463e5a218d83e66fcab08819f378d8466181672dd5c"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 1150,
+      "license": "All rights reserved; no open-source license is granted.",
+      "media_type": "application/json",
+      "path": "files/source-selections.json",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "role": "data",
+      "sha256": "8a85105aa0dfe8a079e0274b8d654179461e2f8d46086068a33caa20b7c38448"
+    }
+  ],
+  "finding": "Custom illustration links into a six-item gallery. SVG role img had flattened child links; role group restored them. Selection URL corrected from stale lotus to rulebench. Actual DOCX blue corrected first rejected blue interpretation.",
+  "gardens": [],
+  "id": "website-storefront-accessible-illustration",
+  "limitations": [
+    "No comprehensive screen-reader or physical-phone claim. Hosted machine byte readback403 remained unverified. Drawings illustrative, not product screenshots."
+  ],
+  "method": "Read the original experiment or implementation record together with its existing receipts; preserve the reported result, controls and limits. Selected source excerpts are identified explicitly.",
+  "open_questions": [
+    "Release review must settle exact source attribution and public-use terms. Further scientific work is not required merely to preserve this bounded result."
+  ],
+  "package_sha256": "37a91f7f902f7d0ab7ce3baf257c242fca70b44943b04e541e87233aec7503e1",
+  "provenance": {
+    "authors": [
+      "Original project contributors as identified in the retained records; Root, editorial gathering"
+    ],
+    "change_note": "Version 2 proposes exact publication terms; existing v1 and its historical checks remain intact.",
+    "origin": "website-building methods retained experiment/implementation records. Source filenames and SHA-256 bindings are in source-selections.json; full custody stays in the private inventory."
+  },
+  "publication": {
+    "attribution": "Original project contributors as identified in the retained records; Proof Wall editorial gathering.",
+    "intent": "request-review",
+    "license": "All rights reserved; no open-source license is granted.",
+    "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization."
+  },
+  "question": "What does this retained result establish, and where does its support stop?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "An illustrated storefront with accessible project controls",
+  "version": 2
+}

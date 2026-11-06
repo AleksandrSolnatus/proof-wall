@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "id": "arepo-two-lights-initial-failure",
+  "version": 2,
+  "title": "Two Lights: preserving an initialization failure",
+  "artifact_type": "failed-attempt",
+  "status": "experimental",
+  "question": "What does this retained result establish, and where does its support stop?",
+  "method": "Read the original experiment or implementation record together with its existing receipts; preserve the reported result, controls and limits. Selected source excerpts are identified explicitly.",
+  "finding": "Distinguishes build and containment preflight success from an unobserved scene: no native lighting or lifecycle pass was asserted.",
+  "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+  "limitations": [
+    "Original failure did not establish a sandbox/OS defect or illumination performance. Later diagnosis belongs with this failure."
+  ],
+  "open_questions": [
+    "Release review must settle exact source attribution and public-use terms. Further scientific work is not required merely to preserve this bounded result."
+  ],
+  "date": "2026-11-05",
+  "provenance": {
+    "authors": [
+      "Original project contributors as identified in the retained records; Root, editorial gathering"
+    ],
+    "origin": "Arepo tests retained experiment/implementation records. Source filenames and SHA-256 bindings are in source-selections.json; full custody stays in the private inventory.",
+    "change_note": "Version 2 proposes exact publication terms; existing v1 and its historical checks remain intact."
+  },
+  "article": "article.md",
+  "files": [
+    {
+      "path": "article.md",
+      "role": "article",
+      "media_type": "text/markdown",
+      "bytes": 1153,
+      "sha256": "903a2ec468bb4bd6a27cd486d26a6f27289283464330ed761885fcff6365a97e",
+      "attribution": "Root editorial summary of retained work",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "license": "All rights reserved; no open-source license is granted."
+    },
+    {
+      "path": "files/initial-failure.txt",
+      "role": "original",
+      "media_type": "text/plain",
+      "bytes": 655,
+      "sha256": "362325c8c8445313a080d0d2ded178a1bfcaf01e9eef6eb64b04b797a98db062",
+      "attribution": "Original source record",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "license": "All rights reserved; no open-source license is granted."
+    },
+    {
+      "path": "files/source-selections.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 660,
+      "sha256": "f3cb8a2da875508247f2b4fa27b2e93dca64efb3f982cd2c3aa281d830fcd197",
+      "attribution": "Original source record",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "license": "All rights reserved; no open-source license is granted."
+    }
+  ],
+  "relations": [
+    {
+      "type": "related-to",
+      "id": "arepo-two-lights-cache-diagnosis",
+      "version": 2,
+      "reason": "The later diagnostic explains what happened after this preserved initialization failure."
+    }
+  ],
+  "gardens": [],
+  "publication": {
+    "intent": "request-review",
+    "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+    "license": "All rights reserved; no open-source license is granted.",
+    "attribution": "Original project contributors as identified in the retained records; Proof Wall editorial gathering."
+  },
+  "sample": false
+}

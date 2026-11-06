@@ -1,0 +1,39 @@
+THE MAIN RESULTS
+
+                                      Supplied full      New frozen-leaf
+  Source                              search states      search states
+  16 independent Q gadgets                 113                 7
+  Same 16 joined by a selector             114                 7
+  8 joined gadgets, final one UNSAT        159                36
+
+The new numbers are LEAF search states, excluding wrapper discovery, source
+reading, renaming, model construction and verification. They are not whole-
+runtime ratios. Total work still grows with the input. In the first two cases
+the wrapper solves Q once. In the last it solves Q and the UNSAT gadget U once
+each, then both opposite selector branches use the same checked child proof.
+
+This is a concrete improvement in proof/result reuse. The old complete solver
+already solved these fixed-size component families in polynomial total work.
+Neither their old behavior nor this improvement settles P versus NP.
+
+VERIFICATION — SEPARATE, OVERLAPPING COHORTS
+
+- Baseline: exact Q reconstruction; full raw-model checks; uncapped recognition
+  for 1,2,4,8,16 copies; five positive label shifts; 132 model-consistent partial
+  assignments supporting the backdoor argument. Independent graph enumeration
+  finds 0 three-colorings of U and 42 of Q. Those are graph-coloring counts,
+  not counts of all Boolean models of their CNFs.
+- Builder: 758 wrapper executions, 15 full-solver baselines, 686 distinct small
+  truth sources / 4,061 assignments; 943 retained nodes, 1,203 checked calls
+  and 260 verified reuses. Includes cache-off, signed/sparse, row-reordering,
+  nested-separator and LIMITED controls.
+- Independent: 1,687 fresh executions, 973 distinct small truth sources /
+  6,701 assignments; 30 selected forgeries rejected by both checkers; nine bad
+  public inputs rejected. Independently replays all 758 saved DAGs and their
+  small truth tables, plus all 15 baselines. Normal/-O outcomes agree.
+
+These totals overlap and must not be added as unique discoveries. The third
+interpreter independently checks decomposition, exact reuse maps, model joins,
+call order and structural metrics. It uses the supplied check.py for complex
+UNSAT leaf certificates; it is not a third implementation of every leaf rule.
+

@@ -1,0 +1,29 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 978,
+      "sha256": "b1337bf0bbef826465ac527bdbe9e2aaef982fb585997bdba38d9563640a27b7"
+    },
+    "exhibit.json": {
+      "bytes": 4349,
+      "sha256": "345e3b36d3243c82faa540a3ec3cd8e81597e3af32654f22a9f3951c30f36c6e"
+    },
+    "files/execution-receipt.json": {
+      "bytes": 520,
+      "sha256": "2622b831f3f90c94808aa33209fff90e1f665ec3153ab37b9dc2d696901f3771"
+    },
+    "files/limitations.md": {
+      "bytes": 2661,
+      "sha256": "6171092cda2ab094aae60ff43f80d1fcfd93efaf9a45c27d597fbb7502360f20"
+    },
+    "files/source-selections.json": {
+      "bytes": 1334,
+      "sha256": "debe8bf04100695bc05180d10d9cd7370e59a05a3be0b39e73e7d70cfc189fef"
+    },
+    "files/summary.json": {
+      "bytes": 828,
+      "sha256": "8342c1d6470ef13bbe39acb788ac34a875c3e76aff2fefccc8d16cd37b5dd2e7"
+    }
+  },
+  "package_sha256": "6cacdff8c1a67414e46ced1b5444271a25090e97ba8c3c896b650a5c9ae39cdb"
+}

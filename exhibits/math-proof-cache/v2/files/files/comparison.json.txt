@@ -1,0 +1,355 @@
+{
+  "fresh": {
+    "method": "fresh_per_request",
+    "preparation": {
+      "input_bytes_snapshotted": 1502,
+      "hash_calls": 9,
+      "hash_bytes": 2542
+    },
+    "requests": [
+      {
+        "request": "r3",
+        "conclusion": [
+          2,
+          -4
+        ],
+        "new_checks": [
+          "r1",
+          "r2",
+          "r3"
+        ],
+        "counts": {
+          "cache_lookups": 3,
+          "reference_lookups": 6,
+          "source_clause_reads": 4,
+          "literal_inspections": 17,
+          "resolution_checks": 3,
+          "proof_nodes_checked": 3
+        },
+        "retained": {
+          "entries": 3,
+          "peak_entries": 3,
+          "serialized_cache_bytes": 640
+        }
+      },
+      {
+        "request": "unit_n4",
+        "conclusion": [
+          -4
+        ],
+        "new_checks": [
+          "r1",
+          "r2",
+          "r3",
+          "unit_n4"
+        ],
+        "counts": {
+          "cache_lookups": 4,
+          "reference_lookups": 12,
+          "source_clause_reads": 9,
+          "literal_inspections": 34,
+          "resolution_checks": 3,
+          "proof_nodes_checked": 4,
+          "assumption_writes": 1,
+          "unit_checks": 5,
+          "conflict_checks": 1,
+          "rup_checks": 1
+        },
+        "retained": {
+          "entries": 4,
+          "peak_entries": 4,
+          "serialized_cache_bytes": 850
+        }
+      },
+      {
+        "request": "unit_p1",
+        "conclusion": [
+          1
+        ],
+        "new_checks": [
+          "r1",
+          "r2",
+          "r3",
+          "unit_n4",
+          "unit_p1"
+        ],
+        "counts": {
+          "cache_lookups": 5,
+          "reference_lookups": 17,
+          "source_clause_reads": 13,
+          "literal_inspections": 47,
+          "resolution_checks": 3,
+          "proof_nodes_checked": 5,
+          "assumption_writes": 2,
+          "unit_checks": 9,
+          "conflict_checks": 2,
+          "rup_checks": 2
+        },
+        "retained": {
+          "entries": 5,
+          "peak_entries": 5,
+          "serialized_cache_bytes": 1059
+        }
+      },
+      {
+        "request": "unit_n5",
+        "conclusion": [
+          -5
+        ],
+        "new_checks": [
+          "r1",
+          "r2",
+          "r3",
+          "unit_n4",
+          "unit_n5"
+        ],
+        "counts": {
+          "cache_lookups": 5,
+          "reference_lookups": 17,
+          "source_clause_reads": 13,
+          "literal_inspections": 47,
+          "resolution_checks": 3,
+          "proof_nodes_checked": 5,
+          "assumption_writes": 2,
+          "unit_checks": 9,
+          "conflict_checks": 2,
+          "rup_checks": 2
+        },
+        "retained": {
+          "entries": 5,
+          "peak_entries": 5,
+          "serialized_cache_bytes": 1060
+        }
+      },
+      {
+        "request": "unit_n2",
+        "conclusion": [
+          -2
+        ],
+        "new_checks": [
+          "r1",
+          "r2",
+          "r3",
+          "unit_n4",
+          "unit_p1",
+          "unit_n5",
+          "unit_n2"
+        ],
+        "counts": {
+          "cache_lookups": 9,
+          "reference_lookups": 27,
+          "source_clause_reads": 19,
+          "literal_inspections": 69,
+          "resolution_checks": 3,
+          "proof_nodes_checked": 7,
+          "assumption_writes": 4,
+          "unit_checks": 17,
+          "conflict_checks": 4,
+          "rup_checks": 4,
+          "cache_hits": 2
+        },
+        "retained": {
+          "entries": 7,
+          "peak_entries": 7,
+          "serialized_cache_bytes": 1479
+        }
+      }
+    ],
+    "counts": {
+      "input_bytes_snapshotted": 1502,
+      "hash_calls": 9,
+      "hash_bytes": 2542,
+      "cache_resets": 5,
+      "cache_lookups": 26,
+      "reference_lookups": 79,
+      "source_clause_reads": 58,
+      "literal_inspections": 214,
+      "resolution_checks": 15,
+      "proof_nodes_checked": 24,
+      "assumption_writes": 9,
+      "unit_checks": 40,
+      "conflict_checks": 9,
+      "rup_checks": 9,
+      "cache_hits": 2
+    },
+    "retained": {
+      "entries": 7,
+      "peak_entries": 7,
+      "serialized_cache_bytes": 1479
+    },
+    "serialized_input_bytes": 1502,
+    "serialized_result_bytes_before_this_field": 2479,
+    "process_cpu_seconds": 0.0004139999999999977
+  },
+  "persistent": {
+    "method": "persistent_fixed_bundle",
+    "preparation": {
+      "input_bytes_snapshotted": 1502,
+      "hash_calls": 9,
+      "hash_bytes": 2542
+    },
+    "requests": [
+      {
+        "request": "r3",
+        "conclusion": [
+          2,
+          -4
+        ],
+        "new_checks": [
+          "r1",
+          "r2",
+          "r3"
+        ],
+        "counts": {
+          "cache_lookups": 3,
+          "reference_lookups": 6,
+          "source_clause_reads": 4,
+          "literal_inspections": 17,
+          "resolution_checks": 3,
+          "proof_nodes_checked": 3
+        },
+        "retained": {
+          "entries": 3,
+          "peak_entries": 3,
+          "serialized_cache_bytes": 640
+        }
+      },
+      {
+        "request": "unit_n4",
+        "conclusion": [
+          -4
+        ],
+        "new_checks": [
+          "unit_n4"
+        ],
+        "counts": {
+          "cache_lookups": 2,
+          "reference_lookups": 6,
+          "source_clause_reads": 5,
+          "literal_inspections": 17,
+          "proof_nodes_checked": 1,
+          "assumption_writes": 1,
+          "cache_hits": 1,
+          "unit_checks": 5,
+          "conflict_checks": 1,
+          "rup_checks": 1
+        },
+        "retained": {
+          "entries": 4,
+          "peak_entries": 4,
+          "serialized_cache_bytes": 850
+        }
+      },
+      {
+        "request": "unit_p1",
+        "conclusion": [
+          1
+        ],
+        "new_checks": [
+          "unit_p1"
+        ],
+        "counts": {
+          "cache_lookups": 2,
+          "reference_lookups": 5,
+          "source_clause_reads": 4,
+          "literal_inspections": 13,
+          "proof_nodes_checked": 1,
+          "assumption_writes": 1,
+          "cache_hits": 1,
+          "unit_checks": 4,
+          "conflict_checks": 1,
+          "rup_checks": 1
+        },
+        "retained": {
+          "entries": 5,
+          "peak_entries": 5,
+          "serialized_cache_bytes": 1059
+        }
+      },
+      {
+        "request": "unit_n5",
+        "conclusion": [
+          -5
+        ],
+        "new_checks": [
+          "unit_n5"
+        ],
+        "counts": {
+          "cache_lookups": 2,
+          "reference_lookups": 5,
+          "source_clause_reads": 4,
+          "literal_inspections": 13,
+          "proof_nodes_checked": 1,
+          "assumption_writes": 1,
+          "cache_hits": 1,
+          "unit_checks": 4,
+          "conflict_checks": 1,
+          "rup_checks": 1
+        },
+        "retained": {
+          "entries": 6,
+          "peak_entries": 6,
+          "serialized_cache_bytes": 1269
+        }
+      },
+      {
+        "request": "unit_n2",
+        "conclusion": [
+          -2
+        ],
+        "new_checks": [
+          "unit_n2"
+        ],
+        "counts": {
+          "cache_lookups": 4,
+          "reference_lookups": 5,
+          "source_clause_reads": 2,
+          "literal_inspections": 9,
+          "proof_nodes_checked": 1,
+          "assumption_writes": 1,
+          "cache_hits": 3,
+          "unit_checks": 4,
+          "conflict_checks": 1,
+          "rup_checks": 1
+        },
+        "retained": {
+          "entries": 7,
+          "peak_entries": 7,
+          "serialized_cache_bytes": 1479
+        }
+      }
+    ],
+    "counts": {
+      "input_bytes_snapshotted": 1502,
+      "hash_calls": 9,
+      "hash_bytes": 2542,
+      "cache_lookups": 13,
+      "reference_lookups": 27,
+      "source_clause_reads": 19,
+      "literal_inspections": 69,
+      "resolution_checks": 3,
+      "proof_nodes_checked": 7,
+      "assumption_writes": 4,
+      "cache_hits": 6,
+      "unit_checks": 17,
+      "conflict_checks": 4,
+      "rup_checks": 4
+    },
+    "retained": {
+      "entries": 7,
+      "peak_entries": 7,
+      "serialized_cache_bytes": 1479
+    },
+    "serialized_input_bytes": 1502,
+    "serialized_result_bytes_before_this_field": 2304,
+    "process_cpu_seconds": 0.00020900000000000085
+  },
+  "scope": "One immutable prepared proof bundle and identical five root requests; both deduplicate within a request; common parsing/hashing included once in each arm.",
+  "cost_limits": [
+    "Operation counts are different kinds of work, not interchangeable time units.",
+    "CPU values are one diagnostic observation, not a timed benchmark or speedup estimate.",
+    "Discovery, authoring, independent review and process startup/exit are outside method CPU timings.",
+    "Serialized cache size is not measured heap/RSS; retained immutable proof bytes also cost storage.",
+    "A fresh process/recipient must verify the proof DAG once; serialized receipts are never trusted."
+  ]
+}

@@ -24,6 +24,132 @@
       "title": "A three-job counterexample to input-order greedy scheduling",
       "url": "exhibits/lotus-greedy-scheduling/v2/index.html",
       "version": 2
+    },
+    {
+      "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+      "gardens": [],
+      "id": "rulebench-consequence-versus-equivalence",
+      "metadata": "exhibits/rulebench-consequence-versus-equivalence/v2/exhibit.json",
+      "package_sha256": "f1c9978c917aa3369d740bc84134566fc96c08f01b14959d4f1a77ddf6225f08",
+      "question": "What does this retained result establish, and where does its support stop?",
+      "relations": [],
+      "sample": false,
+      "status": "verified-finite-result",
+      "title": "A useful conclusion can still be an unsafe replacement",
+      "url": "exhibits/rulebench-consequence-versus-equivalence/v2/index.html",
+      "version": 2
+    },
+    {
+      "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+      "gardens": [],
+      "id": "math-proof-cache",
+      "metadata": "exhibits/math-proof-cache/v2/exhibit.json",
+      "package_sha256": "ad0874cad799431fca81c24fef1dfe8a9183ff12e153b2451c87e5a052dbee32",
+      "question": "What does this retained result establish, and where does its support stop?",
+      "relations": [],
+      "sample": false,
+      "status": "verified-finite-result",
+      "title": "Retained proof dependencies reduce repeated checking",
+      "url": "exhibits/math-proof-cache/v2/index.html",
+      "version": 2
+    },
+    {
+      "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+      "gardens": [],
+      "id": "quark-s5-one-step",
+      "metadata": "exhibits/quark-s5-one-step/v2/exhibit.json",
+      "package_sha256": "6cacdff8c1a67414e46ced1b5444271a25090e97ba8c3c896b650a5c9ae39cdb",
+      "question": "What does this retained result establish, and where does its support stop?",
+      "relations": [],
+      "sample": false,
+      "status": "verified-finite-result",
+      "title": "Execution leaves ambiguous neutral cases genuinely unresolved",
+      "url": "exhibits/quark-s5-one-step/v2/index.html",
+      "version": 2
+    },
+    {
+      "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+      "gardens": [],
+      "id": "rocky-decomposition-reuse",
+      "metadata": "exhibits/rocky-decomposition-reuse/v2/exhibit.json",
+      "package_sha256": "2e4565e6953f327710f3f3319808325a016e2a953ed998eba47bc7336d718b7e",
+      "question": "What does this retained result establish, and where does its support stop?",
+      "relations": [],
+      "sample": false,
+      "status": "verified-finite-result",
+      "title": "Signed source maps make repeated subproblem results reusable",
+      "url": "exhibits/rocky-decomposition-reuse/v2/index.html",
+      "version": 2
+    },
+    {
+      "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+      "gardens": [],
+      "id": "graphics-boundary-compression",
+      "metadata": "exhibits/graphics-boundary-compression/v2/exhibit.json",
+      "package_sha256": "3ee6f1393e6f818fb0852e9602f56b54438feb5bd2d060caaa8462d28691fff5",
+      "question": "What does this retained result establish, and where does its support stop?",
+      "relations": [],
+      "sample": false,
+      "status": "verified-finite-result",
+      "title": "A bounded compression experiment that did not earn a new app",
+      "url": "exhibits/graphics-boundary-compression/v2/index.html",
+      "version": 2
+    },
+    {
+      "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+      "gardens": [],
+      "id": "arepo-two-lights-initial-failure",
+      "metadata": "exhibits/arepo-two-lights-initial-failure/v2/exhibit.json",
+      "package_sha256": "544b3f3ea66440306e975ac85a425c4839a501beacd79347061efff5b11a64c8",
+      "question": "What does this retained result establish, and where does its support stop?",
+      "relations": [
+        {
+          "id": "arepo-two-lights-cache-diagnosis",
+          "reason": "The later diagnostic explains what happened after this preserved initialization failure.",
+          "type": "related-to",
+          "version": 2
+        }
+      ],
+      "sample": false,
+      "status": "experimental",
+      "title": "Two Lights: preserving an initialization failure",
+      "url": "exhibits/arepo-two-lights-initial-failure/v2/index.html",
+      "version": 2
+    },
+    {
+      "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+      "gardens": [],
+      "id": "arepo-two-lights-cache-diagnosis",
+      "metadata": "exhibits/arepo-two-lights-cache-diagnosis/v2/exhibit.json",
+      "package_sha256": "505a2d8e5a3b86ddf1a042d65227848b8c24a4a37fe9b7676f5dd7e83006ec2b",
+      "question": "What does this retained result establish, and where does its support stop?",
+      "relations": [
+        {
+          "id": "arepo-two-lights-initial-failure",
+          "reason": "Retains the earlier failed attempt; it does not erase or invalidate that historical outcome.",
+          "type": "related-to",
+          "version": 2
+        }
+      ],
+      "sample": false,
+      "status": "verified-finite-result",
+      "title": "Two Lights: a diagnostic cache-path correction produced four frames",
+      "url": "exhibits/arepo-two-lights-cache-diagnosis/v2/index.html",
+      "version": 2
+    },
+    {
+      "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+      "gardens": [],
+      "id": "website-storefront-accessible-illustration",
+      "metadata": "exhibits/website-storefront-accessible-illustration/v2/exhibit.json",
+      "package_sha256": "37a91f7f902f7d0ab7ce3baf257c242fca70b44943b04e541e87233aec7503e1",
+      "question": "What does this retained result establish, and where does its support stop?",
+      "relations": [],
+      "sample": false,
+      "status": "verified-finite-result",
+      "title": "An illustrated storefront with accessible project controls",
+      "url": "exhibits/website-storefront-accessible-illustration/v2/index.html",
+      "version": 2
     }
   ],
   "gardens": "gardens.json",

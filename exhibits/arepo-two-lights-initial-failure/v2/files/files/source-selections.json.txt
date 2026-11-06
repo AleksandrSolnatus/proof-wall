@@ -1,0 +1,14 @@
+{
+  "purpose": "Provenance of copied originals and labeled excerpts; hashes identify bytes, not truth or rights.",
+  "sources": [
+    {
+      "packet_path": "files/initial-failure.txt",
+      "source_sha256": "39eb2c78871174c23c2bf8e26d00e9800a0240d841c9ba8a41fd4c812a2be007",
+      "source_bytes": 7981,
+      "excerpt_sha256": "362325c8c8445313a080d0d2ded178a1bfcaf01e9eef6eb64b04b797a98db062",
+      "excerpt_bytes": 655,
+      "selection": "Exact contiguous excerpt: starts at 'TERRA TWO LIGHTS'; stops before 'Verified local custody and protection'. Surrounding operational material omitted; source intact.",
+      "source_name": "RESULT.txt"
+    }
+  ]
+}

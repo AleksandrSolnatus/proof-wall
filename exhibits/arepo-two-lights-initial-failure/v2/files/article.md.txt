@@ -1,0 +1,21 @@
+# Two Lights: preserving an initialization failure
+
+Distinguishes build and containment preflight success from an unobserved scene: no native lighting or lifecycle pass was asserted.
+
+## What was checked
+
+Successful build, six pure clock checks and protected-path preflights; three GUI attempts failed in Metal archive initialization before a frame.
+
+The attached records are existing evidence, copied intact or extracted exactly as disclosed in source-selections.json. No experiment was rerun for this exhibit.
+
+## Limits
+
+- Original failure did not establish a sandbox/OS defect or illumination performance. Later diagnosis belongs with this failure.
+
+## What happened next and source context
+
+What happened next: the companion diagnostic exhibit records a bounded cache-path change and four observed receiver conditions. The original no-frame failure remains intact.
+
+## Evidence and publication
+
+Original source locations and custody records remain in the private curator inventory. This packet is prepared for review; no publication authorization or open license is claimed. The article is a new explanation of retained work, not a new experiment.

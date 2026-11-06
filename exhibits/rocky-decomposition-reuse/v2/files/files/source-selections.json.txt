@@ -1,0 +1,23 @@
+{
+  "purpose": "Provenance of copied originals and labeled excerpts; hashes identify bytes, not truth or rights.",
+  "sources": [
+    {
+      "packet_path": "files/walkthrough.txt",
+      "source_sha256": "923bdf28254faa03fcd5285e60843d917ccdd911f5d5ee5d0d295b35f4f43ed8",
+      "source_bytes": 6419,
+      "excerpt_sha256": "923bdf28254faa03fcd5285e60843d917ccdd911f5d5ee5d0d295b35f4f43ed8",
+      "excerpt_bytes": 6419,
+      "selection": "Whole file, exact bytes; no execution.",
+      "source_name": "WALKTHROUGH.txt"
+    },
+    {
+      "packet_path": "files/correction-replay.json",
+      "source_sha256": "6975258d1c630aec5a3c7d93beef97703a4655db5dcf2f7a90b71e49d7903c84",
+      "source_bytes": 564,
+      "excerpt_sha256": "6975258d1c630aec5a3c7d93beef97703a4655db5dcf2f7a90b71e49d7903c84",
+      "excerpt_bytes": 564,
+      "selection": "Whole file, exact bytes; no execution.",
+      "source_name": "CORRECTION_REPLAY.json"
+    }
+  ]
+}

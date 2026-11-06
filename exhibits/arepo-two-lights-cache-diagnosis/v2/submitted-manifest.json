@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "id": "arepo-two-lights-cache-diagnosis",
+  "version": 2,
+  "title": "Two Lights: a diagnostic cache-path correction produced four frames",
+  "artifact_type": "experiment",
+  "status": "verified-finite-result",
+  "question": "What does this retained result establish, and where does its support stop?",
+  "method": "Read the original experiment or implementation record together with its existing receipts; preserve the reported result, controls and limits. Selected source excerpts are identified explicitly.",
+  "finding": "Nil cached shader path was identified as the immediate failure mechanism. Process-local diagnostic cache redirection allowed native rendering, and each light illuminated the synthetic receiver.",
+  "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+  "limitations": [
+    "Nonpublic Metal SPI was diagnostic only, not a supported production solution. Exact default cache-operation failure unresolved; no motion/breathing/lifecycle/performance acceptance."
+  ],
+  "open_questions": [
+    "Release review must settle exact source attribution and public-use terms. Further scientific work is not required merely to preserve this bounded result."
+  ],
+  "date": "2026-11-05",
+  "provenance": {
+    "authors": [
+      "Original project contributors as identified in the retained records; Root, editorial gathering"
+    ],
+    "origin": "Arepo tests retained experiment/implementation records. Source filenames and SHA-256 bindings are in source-selections.json; full custody stays in the private inventory.",
+    "change_note": "Version 2 proposes exact publication terms; existing v1 and its historical checks remain intact. Local OS build omitted from derived diagnosis excerpt; original evidence preserved."
+  },
+  "article": "article.md",
+  "files": [
+    {
+      "path": "article.md",
+      "role": "article",
+      "media_type": "text/markdown",
+      "bytes": 1280,
+      "sha256": "8f43434442fa6ef5a8d8c62acce0006f83ac48887ba7c0b391a67b327dbc9b0e",
+      "attribution": "Root editorial summary of retained work",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "license": "All rights reserved; no open-source license is granted."
+    },
+    {
+      "path": "files/diagnosis.txt",
+      "role": "original",
+      "media_type": "text/plain",
+      "bytes": 4298,
+      "sha256": "5489869ab866d0b1492f24f009b38157ce6ed98e3d64f23c8eafc7ab47e8b351",
+      "attribution": "Original source record",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "license": "All rights reserved; no open-source license is granted."
+    },
+    {
+      "path": "files/source-selections.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 623,
+      "sha256": "33f42d2dc0f01f2f834adf9fb478ce1f53e947d64e25dfb3fec525e5dfd9f2c9",
+      "attribution": "Original source record",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "license": "All rights reserved; no open-source license is granted."
+    }
+  ],
+  "relations": [
+    {
+      "type": "related-to",
+      "id": "arepo-two-lights-initial-failure",
+      "version": 2,
+      "reason": "Retains the earlier failed attempt; it does not erase or invalidate that historical outcome."
+    }
+  ],
+  "gardens": [],
+  "publication": {
+    "intent": "request-review",
+    "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+    "license": "All rights reserved; no open-source license is granted.",
+    "attribution": "Original project contributors as identified in the retained records; Proof Wall editorial gathering."
+  },
+  "sample": false
+}

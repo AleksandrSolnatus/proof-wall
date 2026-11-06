@@ -1,0 +1,23 @@
+{
+  "purpose": "Provenance of copied originals and labeled excerpts; hashes identify bytes, not truth or rights.",
+  "sources": [
+    {
+      "packet_path": "files/browser-checks.txt",
+      "source_sha256": "2cfc58f7a3847c39ac92009c85042a5af05f05dd01958d2b8889f85c6e42b2af",
+      "source_bytes": 2344,
+      "excerpt_sha256": "8f85baa0549607febb14a9f5fe8edd93397cc95c135c63e1657a5d54ed740bf9",
+      "excerpt_bytes": 1202,
+      "selection": "Exact contiguous excerpt: starts at '- Desktop:'; stops before 'Parent preview 007'. Surrounding operational material omitted; source intact.",
+      "source_name": "BROWSER_CHECKS.txt"
+    },
+    {
+      "packet_path": "files/browser-limits.txt",
+      "source_sha256": "2cfc58f7a3847c39ac92009c85042a5af05f05dd01958d2b8889f85c6e42b2af",
+      "source_bytes": 2344,
+      "excerpt_sha256": "a8981a89a8d255bf9da54463e5a218d83e66fcab08819f378d8466181672dd5c",
+      "excerpt_bytes": 628,
+      "selection": "Exact contiguous excerpt: starts at 'Limits:'; stops before 'Owned loopback server'. Surrounding operational material omitted; source intact.",
+      "source_name": "BROWSER_CHECKS.txt"
+    }
+  ]
+}

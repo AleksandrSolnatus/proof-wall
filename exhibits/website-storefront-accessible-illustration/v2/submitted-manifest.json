@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "id": "website-storefront-accessible-illustration",
+  "version": 2,
+  "title": "An illustrated storefront with accessible project controls",
+  "artifact_type": "experiment",
+  "status": "verified-finite-result",
+  "question": "What does this retained result establish, and where does its support stop?",
+  "method": "Read the original experiment or implementation record together with its existing receipts; preserve the reported result, controls and limits. Selected source excerpts are identified explicitly.",
+  "finding": "Custom illustration links into a six-item gallery. SVG role img had flattened child links; role group restored them. Selection URL corrected from stale lotus to rulebench. Actual DOCX blue corrected first rejected blue interpretation.",
+  "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+  "limitations": [
+    "No comprehensive screen-reader or physical-phone claim. Hosted machine byte readback403 remained unverified. Drawings illustrative, not product screenshots."
+  ],
+  "open_questions": [
+    "Release review must settle exact source attribution and public-use terms. Further scientific work is not required merely to preserve this bounded result."
+  ],
+  "date": "2026-11-05",
+  "provenance": {
+    "authors": [
+      "Original project contributors as identified in the retained records; Root, editorial gathering"
+    ],
+    "origin": "website-building methods retained experiment/implementation records. Source filenames and SHA-256 bindings are in source-selections.json; full custody stays in the private inventory.",
+    "change_note": "Version 2 proposes exact publication terms; existing v1 and its historical checks remain intact."
+  },
+  "article": "article.md",
+  "files": [
+    {
+      "path": "article.md",
+      "role": "article",
+      "media_type": "text/markdown",
+      "bytes": 1478,
+      "sha256": "6d68dfa763f65b040939a78a2b6e4222e3286a59c0fb52fee8b7d2c53f124a0d",
+      "attribution": "Root editorial summary of retained work",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "license": "All rights reserved; no open-source license is granted."
+    },
+    {
+      "path": "files/browser-checks.txt",
+      "role": "original",
+      "media_type": "text/plain",
+      "bytes": 1202,
+      "sha256": "8f85baa0549607febb14a9f5fe8edd93397cc95c135c63e1657a5d54ed740bf9",
+      "attribution": "Original source record",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "license": "All rights reserved; no open-source license is granted."
+    },
+    {
+      "path": "files/browser-limits.txt",
+      "role": "original",
+      "media_type": "text/plain",
+      "bytes": 628,
+      "sha256": "a8981a89a8d255bf9da54463e5a218d83e66fcab08819f378d8466181672dd5c",
+      "attribution": "Original source record",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "license": "All rights reserved; no open-source license is granted."
+    },
+    {
+      "path": "files/source-selections.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 1150,
+      "sha256": "8a85105aa0dfe8a079e0274b8d654179461e2f8d46086068a33caa20b7c38448",
+      "attribution": "Original source record",
+      "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+      "license": "All rights reserved; no open-source license is granted."
+    }
+  ],
+  "relations": [],
+  "gardens": [],
+  "publication": {
+    "intent": "request-review",
+    "rights": "Public reading and downloading on the Proof Wall, subject to owner authorization.",
+    "license": "All rights reserved; no open-source license is granted.",
+    "attribution": "Original project contributors as identified in the retained records; Proof Wall editorial gathering."
+  },
+  "sample": false
+}

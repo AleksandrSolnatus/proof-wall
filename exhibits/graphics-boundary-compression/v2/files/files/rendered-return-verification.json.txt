@@ -1,0 +1,13 @@
+{
+  "exactReturnsAfterConstrainedFrame" : {
+    "0.0" : true,
+    "43.0" : true,
+    "90.0" : true,
+    "180.0" : true,
+    "240.0" : true,
+    "324.0" : true
+  },
+  "passed" : true,
+  "scope" : "Focused correction: each constrained state is rendered before exact Baseline return. Other unchanged mapping\/bounds\/contact checks carry forward.",
+  "visibleWindows" : 0
+}

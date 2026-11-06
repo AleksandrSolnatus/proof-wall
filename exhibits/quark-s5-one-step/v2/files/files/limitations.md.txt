@@ -1,0 +1,42 @@
+# Limits and interpretation boundary
+
+This is an execution-contract test on 27 tiny occupancy states and three signals.
+Each primary case receives zero or one update. Independent reruns and candidate
+permutation checks always start from the original fixture, never a successor.
+There is no elapsed physical time, trajectory, sampling, native Arepo integration,
+water translation, rain, gravity, inertia or fluid model.
+
+The 16 ambiguous neutral outputs remain unresolved. Numerical verification of
+that behavior cannot honestly be reported as universal execution capability.
+No unique mode, candidate ordering, or fallback stay resolves a distribution.
+Null successor, after-quantity and stay-observation fields mean no execution
+occurred; do not replace those nulls with the unchanged input or a predicted state.
+
+The external direction is already a declared input; S5 introduces no new policy.
+Joint reflection reverses both the state and the signal. Holding the signal
+fixed is a different comparison and is not claimed to be reflection equivariance.
+
+The existing A/B union contains A-only disagreements with B's permission, but B
+contains all A moves. This is not a test of mutually conflicting hard constraints,
+negotiation between independent systems, or a general interface composition rule.
+Passing an action accepted by B alone follows the existing union; it does not
+establish acceptance by both grammars.
+
+The center-outward grammar has no neighbor-to-center return actions. Inspection
+of the rule shows why later repeated use would be structurally limited: every
+move consumes one center unit, and C starts at at most 2. That is a deduction
+from the recovered grammar, not a trajectory measurement or a discovered dynamic
+pathology. Any later chain must state this limitation before interpreting arrest.
+
+Sources were found through a bounded Quark title search and a targeted roadmap
+recovery. No claim is made that every external system was exhaustively searched.
+S3's historical manifest omits three later-added receipt/log files; their bytes
+are preserved and newly hashed here. Historical freezes and this freeze are
+locally recorded chronology, not independently timestamp-attested events.
+
+The smallest proposed next experiment, requiring separate authorization, is a
+two-step continuation test: freeze the same fixture, constant signals, horizon
+two, recomputation of legality and the unchanged S4 policy after step one,
+unresolved stopping, and full lineage. Its question would be whether reapplying
+the contract composes honestly. No such continuation is run in S5. This proposal
+does not justify longer dynamics, water behavior, or rain.

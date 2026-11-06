@@ -1,0 +1,32 @@
+{
+  "purpose": "Provenance of copied originals and labeled excerpts; hashes identify bytes, not truth or rights.",
+  "sources": [
+    {
+      "packet_path": "files/show-work.txt",
+      "source_sha256": "7073dd5fbd45dc23b195e970220efed45ec92553ebaa8c4f66a076766727f2bd",
+      "source_bytes": 1816,
+      "excerpt_sha256": "7073dd5fbd45dc23b195e970220efed45ec92553ebaa8c4f66a076766727f2bd",
+      "excerpt_bytes": 1816,
+      "selection": "Whole file, exact bytes; no execution.",
+      "source_name": "SHOW-WORK.txt"
+    },
+    {
+      "packet_path": "files/comparison.json",
+      "source_sha256": "7fdef78c1862fda5847e89e9b999836f8914d9f6410bb8bbf5d3cace6f1523d2",
+      "source_bytes": 8920,
+      "excerpt_sha256": "7fdef78c1862fda5847e89e9b999836f8914d9f6410bb8bbf5d3cace6f1523d2",
+      "excerpt_bytes": 8920,
+      "selection": "Whole file, exact bytes; no execution.",
+      "source_name": "COMPARISON.json"
+    },
+    {
+      "packet_path": "files/verification.json",
+      "source_sha256": "3f576815595f1858248e5198c5bb2cde405aa10f7bebaeba93094eba2a7f1015",
+      "source_bytes": 8112,
+      "excerpt_sha256": "3f576815595f1858248e5198c5bb2cde405aa10f7bebaeba93094eba2a7f1015",
+      "excerpt_bytes": 8112,
+      "selection": "Whole file, exact bytes; no execution.",
+      "source_name": "VERIFICATION.json"
+    }
+  ]
+}

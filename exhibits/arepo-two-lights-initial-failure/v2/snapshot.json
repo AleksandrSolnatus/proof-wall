@@ -1,0 +1,21 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 1153,
+      "sha256": "903a2ec468bb4bd6a27cd486d26a6f27289283464330ed761885fcff6365a97e"
+    },
+    "exhibit.json": {
+      "bytes": 3634,
+      "sha256": "5f43fc1313405d1bc381b74ffe3db33e358e0dbfcd0b96ea321625db51a472d2"
+    },
+    "files/initial-failure.txt": {
+      "bytes": 655,
+      "sha256": "362325c8c8445313a080d0d2ded178a1bfcaf01e9eef6eb64b04b797a98db062"
+    },
+    "files/source-selections.json": {
+      "bytes": 660,
+      "sha256": "f3cb8a2da875508247f2b4fa27b2e93dca64efb3f982cd2c3aa281d830fcd197"
+    }
+  },
+  "package_sha256": "544b3f3ea66440306e975ac85a425c4839a501beacd79347061efff5b11a64c8"
+}

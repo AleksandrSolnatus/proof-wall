@@ -1,0 +1,21 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 1280,
+      "sha256": "8f43434442fa6ef5a8d8c62acce0006f83ac48887ba7c0b391a67b327dbc9b0e"
+    },
+    "exhibit.json": {
+      "bytes": 3860,
+      "sha256": "98d5f921928808cd2c6068f247b699c188861cc839093d067adc47a5cc93f3ca"
+    },
+    "files/diagnosis.txt": {
+      "bytes": 4298,
+      "sha256": "5489869ab866d0b1492f24f009b38157ce6ed98e3d64f23c8eafc7ab47e8b351"
+    },
+    "files/source-selections.json": {
+      "bytes": 623,
+      "sha256": "33f42d2dc0f01f2f834adf9fb478ce1f53e947d64e25dfb3fec525e5dfd9f2c9"
+    }
+  },
+  "package_sha256": "505a2d8e5a3b86ddf1a042d65227848b8c24a4a37fe9b7676f5dd7e83006ec2b"
+}

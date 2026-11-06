@@ -1,0 +1,25 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 1011,
+      "sha256": "55067832ecd7f6b8431f3df4f6d7bc5f5a7ddb203d628a0d5c10aa1eccc76f26"
+    },
+    "exhibit.json": {
+      "bytes": 3946,
+      "sha256": "29636ac385279019dc49d0358a7f9834d8be9af9063580cbdeb687e45b5d5c8b"
+    },
+    "files/carry-checks.json": {
+      "bytes": 4225,
+      "sha256": "e9be5420733e8dd237e8b1619913b225646511eda739b63f8642866f5fa21ff7"
+    },
+    "files/logical-lesson.txt": {
+      "bytes": 867,
+      "sha256": "f12a2015e584620d0cce7b78fd3e8a0cbf1436cc77156c49ab82e26d2518d525"
+    },
+    "files/source-selections.json": {
+      "bytes": 1068,
+      "sha256": "d49e2c75131eca6afc53b7d60e3798f137cc846695e4bf8a85ed859788e34b28"
+    }
+  },
+  "package_sha256": "f1c9978c917aa3369d740bc84134566fc96c08f01b14959d4f1a77ddf6225f08"
+}

@@ -1,0 +1,30 @@
+{
+  "controls": [
+    {
+      "current": "REJECTED",
+      "historical": "ACCEPTED",
+      "id": "bool_leaf_cap"
+    },
+    {
+      "current": "REJECTED",
+      "historical": "ACCEPTED",
+      "id": "bool_leaf_metric"
+    },
+    {
+      "current": "REJECTED",
+      "historical": "ACCEPTED",
+      "id": "float_call_node"
+    },
+    {
+      "current": "REJECTED",
+      "historical": "ACCEPTED",
+      "id": "integer_call_hit"
+    },
+    {
+      "current": "REJECTED",
+      "historical": "ACCEPTED",
+      "id": "bool_call_budget"
+    }
+  ],
+  "status": "PASS"
+}
