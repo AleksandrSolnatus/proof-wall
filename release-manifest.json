@@ -6,16 +6,16 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     "assets/wall.css": {
-      "bytes": 7351,
-      "sha256": "f3ba3550bad6e8b96367f0eb80cc43d83657dd2cf481cc983b7b26d470312d1a"
+      "bytes": 7844,
+      "sha256": "070f3d1e09267f2c904cad18c0ca69ad9fc9118156e283318ecdae9cbdf5cc82"
     },
     "assets/wall.js": {
       "bytes": 1327,
       "sha256": "716ccc5834ac1ee518f0ed40bc2528de217278ce00ce7fb50014496b6c628ad7"
     },
     "contribute.html": {
-      "bytes": 2952,
-      "sha256": "dffa0a662f4fa8d585b34469665f7f86c6d805301469c4a2ae5611e11dec01b9"
+      "bytes": 3090,
+      "sha256": "485538255b5782784257a30881a0603ad3187a4cafc9dc81a7a5bcc0e393e014"
     },
     "contribution-template.txt": {
       "bytes": 189,
@@ -94,8 +94,8 @@
       "sha256": "9705206f9e922f587f19c934ab8bda91bd99d31be775a8cc9894af6bc8f105ed"
     },
     "exhibits/arepo-p32-divergence-audit/v2/index.html": {
-      "bytes": 17217,
-      "sha256": "9e97f3239e2fb8a0ee89f600c2c71cd6d08cdbc312a1fbfd4f4ebccb163f03f8"
+      "bytes": 17355,
+      "sha256": "6cbb38fb3fea7505f6562e1e10f7f0c2dbe9dbb65af1aada061d83ef99db03cb"
     },
     "exhibits/arepo-p32-divergence-audit/v2/snapshot.json": {
       "bytes": 2570,
@@ -122,8 +122,8 @@
       "sha256": "33f42d2dc0f01f2f834adf9fb478ce1f53e947d64e25dfb3fec525e5dfd9f2c9"
     },
     "exhibits/arepo-two-lights-cache-diagnosis/v2/index.html": {
-      "bytes": 8050,
-      "sha256": "fafb03ffb284ae9c0e50ef494538dbd4e398afa62e3213123351eb1ea8830eb4"
+      "bytes": 8188,
+      "sha256": "a5bb90e12738ef3c130c767e57e1e0d60ba4d29ed62e780f4f134fafc4993bb1"
     },
     "exhibits/arepo-two-lights-cache-diagnosis/v2/snapshot.json": {
       "bytes": 660,
@@ -150,8 +150,8 @@
       "sha256": "f3cb8a2da875508247f2b4fa27b2e93dca64efb3f982cd2c3aa281d830fcd197"
     },
     "exhibits/arepo-two-lights-initial-failure/v2/index.html": {
-      "bytes": 7708,
-      "sha256": "850704e26a5316fb0d4ac42d4868495e823238c68a34108a5395263ad519fe70"
+      "bytes": 7846,
+      "sha256": "752408ec5058dcb0edce8ee58930a71035ec693567f95441914e95a5be1fb952"
     },
     "exhibits/arepo-two-lights-initial-failure/v2/snapshot.json": {
       "bytes": 665,
@@ -226,8 +226,8 @@
       "sha256": "6d8aaad3ad640b41957b2133aadbca356f6d60d0595adfaa6867bd2220d3bc54"
     },
     "exhibits/dial-geometry-02-stability-stop/v2/index.html": {
-      "bytes": 17581,
-      "sha256": "6da88df7cb5910bcf5c7d8ea950ed0ab9c691cb4e121628b97d434a51851c3b7"
+      "bytes": 17719,
+      "sha256": "4dc2fa916ec11fc2e061cc85e9cdd1e9f1ba86740afbe9231e99a321d557f3a6"
     },
     "exhibits/dial-geometry-02-stability-stop/v2/snapshot.json": {
       "bytes": 2374,
@@ -290,8 +290,8 @@
       "sha256": "7c684d43654395ff2ca2bbfd980e21e2c458f15420cf71a3cefe0276c678e406"
     },
     "exhibits/dial-math-01-grammar-comparison/v2/index.html": {
-      "bytes": 15659,
-      "sha256": "358f62cf61633671c4b9b6412b13baeb0d0e73881848759af69e8ef562c00e08"
+      "bytes": 15797,
+      "sha256": "a39dc2b39e898c307051ae3d8d47baf79103860b94cfee43592615f7ac09c7a8"
     },
     "exhibits/dial-math-01-grammar-comparison/v2/snapshot.json": {
       "bytes": 1940,
@@ -358,8 +358,8 @@
       "sha256": "54c7f732b96ee35350c0291c948e7a504f76037e079d589316b08081530d6d40"
     },
     "exhibits/dial-math-02-calibration/v2/index.html": {
-      "bytes": 16105,
-      "sha256": "633abb03cc8930aea2f7049d10b93a0f3003749b21dad5c2ff1223d3a84ae90e"
+      "bytes": 16243,
+      "sha256": "3fae089501b9336729514d82b9bd4332c870b60c3c30ce669db147a1147e2623"
     },
     "exhibits/dial-math-02-calibration/v2/snapshot.json": {
       "bytes": 2167,
@@ -414,8 +414,8 @@
       "sha256": "68a437eef4f4c3e9a00baac3fa01a9b58de91cdd07ad9176a5535a393c5029eb"
     },
     "exhibits/dial-p6-r1-context/v2/index.html": {
-      "bytes": 13690,
-      "sha256": "9bff920dd80443cdda0794182baa26323ca5a6563c85d62c303c6d8cd862c6a6"
+      "bytes": 13828,
+      "sha256": "fde8e26feeb6ebbbc7b54d2bca9dcf5ed36c75bd72d2574e8093939dc03dfe56"
     },
     "exhibits/dial-p6-r1-context/v2/snapshot.json": {
       "bytes": 1690,
@@ -582,8 +582,8 @@
       "sha256": "20ad87d09960cc69ebeb5389495cf4a53165d4915d8616806c7800ef22951ed1"
     },
     "exhibits/drago-rocky-two-math-fighters/v1/index.html": {
-      "bytes": 40004,
-      "sha256": "739310723bd5dd75530d870b1157c3d9f1148033d0cf8551cbb11d41d4dc3509"
+      "bytes": 40142,
+      "sha256": "c0e7a19c9ab4bfe00ba767b7ea354a796f072857fff74b265c305e824f196142"
     },
     "exhibits/drago-rocky-two-math-fighters/v1/snapshot.json": {
       "bytes": 6553,
@@ -670,8 +670,8 @@
       "sha256": "a671c0e5602e80e03c3d0fe9c556e90f1c8f530ad81d1b16ee0d832c5121d0cd"
     },
     "exhibits/grammar-dual-run-001/v2/index.html": {
-      "bytes": 18174,
-      "sha256": "6c9380578da288e70fae4e5d13ca48cfa683ac82693a6a87be3a1ddc77d9323b"
+      "bytes": 18312,
+      "sha256": "a17a1af5da518e6529a6e02e34a7b21533c5d6cec6f5ad0f668e35ac0af12af6"
     },
     "exhibits/grammar-dual-run-001/v2/snapshot.json": {
       "bytes": 2935,
@@ -702,8 +702,8 @@
       "sha256": "0a5ea258f544b0172a60d3ddfe00234b77dcfb43716ef6ebc02678006ffa5191"
     },
     "exhibits/graphics-boundary-compression/v2/index.html": {
-      "bytes": 8105,
-      "sha256": "2ee2524532799b7b35f7194fe73dbf6386d20535ba84b671107d59a775e3f76a"
+      "bytes": 8243,
+      "sha256": "b9c5bb798cec0876f3a1bef5fd851e9bca1512e2ecc920471f73c271a04de27c"
     },
     "exhibits/graphics-boundary-compression/v2/snapshot.json": {
       "bytes": 831,
@@ -738,8 +738,8 @@
       "sha256": "2fd3c01f984f4b597cbace0d62285d30a669bb994ac519a4f27f1ef24b164a0d"
     },
     "exhibits/lotus-greedy-scheduling/v2/index.html": {
-      "bytes": 11329,
-      "sha256": "9ea77064c4ce0c7396004f1153c480e65af9a675166e2b4ec5bea48350c33934"
+      "bytes": 11467,
+      "sha256": "b3e3d12d31fdedcaa42e52d4e33724f9c5a935ada33c19ca81244f8942b3c5d1"
     },
     "exhibits/lotus-greedy-scheduling/v2/snapshot.json": {
       "bytes": 948,
@@ -774,8 +774,8 @@
       "sha256": "3f576815595f1858248e5198c5bb2cde405aa10f7bebaeba93094eba2a7f1015"
     },
     "exhibits/math-proof-cache/v2/index.html": {
-      "bytes": 8064,
-      "sha256": "1a3053f9730373f5c91824f8c41ac6ca0663f69291c49dc09a3cffd861303715"
+      "bytes": 8202,
+      "sha256": "0812478c71049260c111a810478579247c37dfd06f6c5e807af9378084e8f030"
     },
     "exhibits/math-proof-cache/v2/snapshot.json": {
       "bytes": 947,
@@ -810,8 +810,8 @@
       "sha256": "f9f86a6842f872e22832026916ac01a0d8bb347c3b28d3b106b83d654b6c63c5"
     },
     "exhibits/quark-finish-line-003-committed-payback/v2/index.html": {
-      "bytes": 9827,
-      "sha256": "db1c7d93959dafe6480f4b27102db88229a8c7bc05a969e4c51051eeff217920"
+      "bytes": 9965,
+      "sha256": "21dafde98f8d927c0c79792e3c2df2fd7271e229eff7bfad894760297b6decb1"
     },
     "exhibits/quark-finish-line-003-committed-payback/v2/snapshot.json": {
       "bytes": 932,
@@ -846,8 +846,8 @@
       "sha256": "8342c1d6470ef13bbe39acb788ac34a875c3e76aff2fefccc8d16cd37b5dd2e7"
     },
     "exhibits/quark-s5-one-step/v2/index.html": {
-      "bytes": 7981,
-      "sha256": "5e0431426dc456fe28db2ad8b56b11bf022ff8cee12b4af1298c63870cfca2a3"
+      "bytes": 8119,
+      "sha256": "25fa85e7e86a4b9fb96ef86584617e908efeaf2870614a9f573016e28e8c5c57"
     },
     "exhibits/quark-s5-one-step/v2/snapshot.json": {
       "bytes": 947,
@@ -918,8 +918,8 @@
       "sha256": "55495f869625fcfc009e1688cdfcd018d4b4e0b038ce224cc58164a548e59370"
     },
     "exhibits/relation-transfer-001/v2/index.html": {
-      "bytes": 16734,
-      "sha256": "1e9be27a16fd623d7ed720d8cb58c3e286c27ceb8ba488c2684c8367878d6173"
+      "bytes": 16872,
+      "sha256": "660385129fddf92728a77b93f9639848799b95a1825e2fd570d94198fa9b1bb4"
     },
     "exhibits/relation-transfer-001/v2/snapshot.json": {
       "bytes": 2238,
@@ -962,8 +962,8 @@
       "sha256": "44b33722c9a52b2fdc76a86e8433ada12791663ea6971de2fb963421542012c4"
     },
     "exhibits/rising-tide-003b-edge-change/v2/index.html": {
-      "bytes": 12271,
-      "sha256": "39989880544ebc27bebe48bfbc5ef8ecf1095573ea9a0ea2563da91c502223d0"
+      "bytes": 12409,
+      "sha256": "00b7789da7135787caf502d5f668efb94afcd7b9f7325e21e405c4c7e10335e1"
     },
     "exhibits/rising-tide-003b-edge-change/v2/snapshot.json": {
       "bytes": 1253,
@@ -998,8 +998,8 @@
       "sha256": "923bdf28254faa03fcd5285e60843d917ccdd911f5d5ee5d0d295b35f4f43ed8"
     },
     "exhibits/rocky-decomposition-reuse/v2/index.html": {
-      "bytes": 8946,
-      "sha256": "7d901f5dac7e9df5d5ca02f877597ff099dd334db13244e051d23183e85e8baf"
+      "bytes": 9084,
+      "sha256": "2255807005f469a39f1c5feceb77a0b0b6fb161d38d144cd00a7a0d34ebeb1ad"
     },
     "exhibits/rocky-decomposition-reuse/v2/snapshot.json": {
       "bytes": 957,
@@ -1038,8 +1038,8 @@
       "sha256": "35348b1872642c05f531440ba3c830078342a3576346c4027e62133b35b663e3"
     },
     "exhibits/rocky-rulebench-pr8-compatibility/v2/index.html": {
-      "bytes": 11874,
-      "sha256": "de2aa5614aae7d841fcbe2320c345d2a9970860883982bc209d3382e31adbdf2"
+      "bytes": 12012,
+      "sha256": "3f9e61955d32dbde6e4322de1e2ff2189bdc0346ff2ccde09b2224a47fb24445"
     },
     "exhibits/rocky-rulebench-pr8-compatibility/v2/snapshot.json": {
       "bytes": 1116,
@@ -1070,8 +1070,8 @@
       "sha256": "d49e2c75131eca6afc53b7d60e3798f137cc846695e4bf8a85ed859788e34b28"
     },
     "exhibits/rulebench-consequence-versus-equivalence/v2/index.html": {
-      "bytes": 7587,
-      "sha256": "3e38fe15dc2f527c07df3e13f7013f01cdcdcec17816659f8a4dee2fd46f3ea5"
+      "bytes": 7725,
+      "sha256": "b413aa54ce85643f8d747188a04db8960d89705424840d0f041742703f563b12"
     },
     "exhibits/rulebench-consequence-versus-equivalence/v2/snapshot.json": {
       "bytes": 809,
@@ -1118,8 +1118,8 @@
       "sha256": "a9980418f8e6bfe8f3c9682a787a837e3454473ecd89596a21cc710123c9faf4"
     },
     "exhibits/shape-tools-009-pair-fixed-point/v2/index.html": {
-      "bytes": 12662,
-      "sha256": "727e8d889a0007c934388b3972900baab0e4a9acaec505dc7bd7aeec76246e95"
+      "bytes": 12800,
+      "sha256": "c2fd688f75a41ff0ac70a9b7a84da7fec38c8c1e339d68acfaaf7ddfcc07a213"
     },
     "exhibits/shape-tools-009-pair-fixed-point/v2/snapshot.json": {
       "bytes": 1368,
@@ -1194,8 +1194,8 @@
       "sha256": "3bf57ab093351930a6275e30198fa6dc63a0a682090416ab101a9e18a1c2b7e8"
     },
     "exhibits/stone-003b-reconnecting-regions/v2/index.html": {
-      "bytes": 16968,
-      "sha256": "e4c678a41faa4bf57e60597cd00a9410a2a3ae1d435532fa03526e5f9f8c2aa1"
+      "bytes": 17106,
+      "sha256": "4b768b62c5f07f5fc5c080d04684d024f0e72f741531fa7d470abf62ce7a57e2"
     },
     "exhibits/stone-003b-reconnecting-regions/v2/snapshot.json": {
       "bytes": 2413,
@@ -1226,8 +1226,8 @@
       "sha256": "8a85105aa0dfe8a079e0274b8d654179461e2f8d46086068a33caa20b7c38448"
     },
     "exhibits/website-storefront-accessible-illustration/v2/index.html": {
-      "bytes": 8148,
-      "sha256": "36cf2f4b4f5f97660104154c3a190b1a348d43a675aec4960fdb121ecc611f9a"
+      "bytes": 8286,
+      "sha256": "41c6dda85940751d7b310f3eb01cd8d599ea00a9987004500c3035eec7e6c589"
     },
     "exhibits/website-storefront-accessible-illustration/v2/snapshot.json": {
       "bytes": 810,
@@ -1242,8 +1242,8 @@
       "sha256": "d1cf42ce64b01824f3c20d2eb7df88c95f8ffcbcc840f64a6c772c74989d4a8a"
     },
     "index.html": {
-      "bytes": 14573,
-      "sha256": "d2374868aa5ba103513f29aaeb3269e9580e816d69c20b539251d75387c01b0e"
+      "bytes": 15441,
+      "sha256": "7bf0053a1124f2c0a5e61318c0f25f28c898753953b86215b1bd5a2bdfcca37f"
     },
     "index.json": {
       "bytes": 18748,
@@ -1254,15 +1254,15 @@
       "sha256": "4899e0930eea734ae80b0a5cde9edb050c756edc71961baea1c95cfae805ece1"
     },
     "paths.html": {
-      "bytes": 3372,
-      "sha256": "d8b8116cefe692b0586d8aa935aa4f829f177b000b0b3906b3b34efe048eadfd"
+      "bytes": 3510,
+      "sha256": "90b9d1845ea2fdc7c53d9fc26afc0642230114eab26936e90f2e155c5017b1f0"
     },
     "schema.json": {
       "bytes": 6645,
       "sha256": "9a8f34a02329dd77da6f2e6e4945f7c6e1d841e60a5c40157795f284f4b5f7ec"
     }
   },
-  "manifest_note": "Presentation update: workshop navigation added to page footers and Outside In added to the garden registry and Paths page. Original exhibit metadata, evidence files, snapshots, and scientific text are unchanged. Hashes establish bytes, not truth or permission.",
+  "manifest_note": "Presentation amendment: one-step Bridges return links and a three-entry reading guide; exhibit metadata, original evidence and scientific text unchanged. Hashes bind bytes, not truth.",
   "mode": "release-candidate",
   "published": false,
   "schema_version": 1
