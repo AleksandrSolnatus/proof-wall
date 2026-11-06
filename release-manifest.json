@@ -1,5 +1,5 @@
 {
-  "exhibits": 22,
+  "exhibits": 24,
   "files": {
     ".nojekyll": {
       "bytes": 0,
@@ -713,6 +713,42 @@
       "bytes": 4012,
       "sha256": "4f276907618bfaef78e6bf77f50d51db0ddef88b8fca1aeeaae995c02fd121da"
     },
+    "exhibits/graphics-flex-tesseract/v2/exhibit.json": {
+      "bytes": 5760,
+      "sha256": "efafa4aeec79a64907c28e5ddb73b36f3a17bc3dcff19c1c1a23c0c9b5c06a15"
+    },
+    "exhibits/graphics-flex-tesseract/v2/files/article.md.txt": {
+      "bytes": 976,
+      "sha256": "473e619c1561ba86e8dede3e7802c83e7dc32e1952c2d8811f3586a446f14e77"
+    },
+    "exhibits/graphics-flex-tesseract/v2/files/files/browser-results.json.txt": {
+      "bytes": 888,
+      "sha256": "cea0d4c7e58f4a5028edea580e8fbb6d879fdf9b334fe3073e966ab501021276"
+    },
+    "exhibits/graphics-flex-tesseract/v2/files/files/experiment-report.md.txt": {
+      "bytes": 8805,
+      "sha256": "c1227a9b5726662038a33226546b8e8c99ab37f8b3e74fc3bb75af9e377a0b42"
+    },
+    "exhibits/graphics-flex-tesseract/v2/files/files/source-selections.json.txt": {
+      "bytes": 1384,
+      "sha256": "c89da56b9fd04209de05e4a7045de81854d71323acf330a1c80f128c549cf3b9"
+    },
+    "exhibits/graphics-flex-tesseract/v2/files/files/test-results.json.txt": {
+      "bytes": 4268,
+      "sha256": "4165f24629739d8ba75feab407818d9c107f80df12b17adae0a62c8cbbbff2c2"
+    },
+    "exhibits/graphics-flex-tesseract/v2/index.html": {
+      "bytes": 8340,
+      "sha256": "58702f8f1c70ade8541cbea10a6c06c7702acb13063bdc2467b2dbcff464ebae"
+    },
+    "exhibits/graphics-flex-tesseract/v2/snapshot.json": {
+      "bytes": 957,
+      "sha256": "f27b59a65f9eedeb23e5282c6c0d71dedf43154b371c88a3c3cdff4edca138fc"
+    },
+    "exhibits/graphics-flex-tesseract/v2/submitted-manifest.json": {
+      "bytes": 4572,
+      "sha256": "d75d032a2cbfda1cbdcb69ad39dfe100fd5839d75576318bb4f6d40c9625d8b7"
+    },
     "exhibits/lotus-greedy-scheduling/v2/exhibit.json": {
       "bytes": 6148,
       "sha256": "82fd6d6628c51121289495f53694b5dd9f679683f7df12a4c08e1e4d0e4166dd"
@@ -748,6 +784,34 @@
     "exhibits/lotus-greedy-scheduling/v2/submitted-manifest.json": {
       "bytes": 4980,
       "sha256": "c82e1909bf08d342765e9478aa9d100045c813e7b104189279409ef4fdba197d"
+    },
+    "exhibits/math-frontier-checker-counterexample/v2/exhibit.json": {
+      "bytes": 4574,
+      "sha256": "b96d68504fca7b9133550ceb4dd888d83e2332c8d21ed4a92416997c778980f3"
+    },
+    "exhibits/math-frontier-checker-counterexample/v2/files/article.md.txt": {
+      "bytes": 1110,
+      "sha256": "3bd4f3f6a24f3126eefde28d6d737f63f46ebdaebb1e770190e2a27be870109a"
+    },
+    "exhibits/math-frontier-checker-counterexample/v2/files/files/malformed-order-witness.json.txt": {
+      "bytes": 277,
+      "sha256": "6ab142ffce9dd145ef97e90b36ab55f11c039d11ccf0ab7e4c4491a6235b6aa3"
+    },
+    "exhibits/math-frontier-checker-counterexample/v2/files/files/source-selections.json.txt": {
+      "bytes": 558,
+      "sha256": "bb1c1dc564c1fa35a3789e4ccd36342c92e701dcc6a754c935cd5f240ac49cee"
+    },
+    "exhibits/math-frontier-checker-counterexample/v2/index.html": {
+      "bytes": 7674,
+      "sha256": "b79e6ea5f606695c941268b542ec884ea180f04340677aa43456918f8cdb0ebc"
+    },
+    "exhibits/math-frontier-checker-counterexample/v2/snapshot.json": {
+      "bytes": 674,
+      "sha256": "7b543db2b75e1e1ea85511073bb28eedd3ceb30c8a9570a88e28d40c93b09bb4"
+    },
+    "exhibits/math-frontier-checker-counterexample/v2/submitted-manifest.json": {
+      "bytes": 3810,
+      "sha256": "02ee2f7704aa221db21cf83478db9f337fbb4234538034ecd841c3113f0ddae7"
     },
     "exhibits/math-proof-cache/v2/exhibit.json": {
       "bytes": 5561,
@@ -1242,12 +1306,12 @@
       "sha256": "d1cf42ce64b01824f3c20d2eb7df88c95f8ffcbcc840f64a6c772c74989d4a8a"
     },
     "index.html": {
-      "bytes": 15441,
-      "sha256": "7bf0053a1124f2c0a5e61318c0f25f28c898753953b86215b1bd5a2bdfcca37f"
+      "bytes": 16451,
+      "sha256": "256853a12276bc1b207bed8bda46522bfc441b64916257c17fd7d8a958d6ce98"
     },
     "index.json": {
-      "bytes": 18748,
-      "sha256": "8cf2c2acef755f89c5442b6298e28f3be70c08ff0a39e961b2adb7a21d908ab1"
+      "bytes": 20233,
+      "sha256": "0ee2b6482e45ae01f1f1a5dae9c1cee047decdcfd6dcafefaa00f20700f6ad66"
     },
     "llms.txt": {
       "bytes": 489,
@@ -1262,7 +1326,7 @@
       "sha256": "9a8f34a02329dd77da6f2e6e4945f7c6e1d841e60a5c40157795f284f4b5f7ec"
     }
   },
-  "manifest_note": "Presentation amendment: one-step Bridges return links and a three-entry reading guide; exhibit metadata, original evidence and scientific text unchanged. Hashes bind bytes, not truth.",
+  "manifest_note": "Previously published Rocky exhibit page preserved byte-for-byte from latest baseline. Hashes establish bytes, not truth or permission.",
   "mode": "release-candidate",
   "published": false,
   "schema_version": 1

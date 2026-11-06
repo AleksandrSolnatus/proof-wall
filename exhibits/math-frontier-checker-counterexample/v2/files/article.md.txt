@@ -1,0 +1,19 @@
+# A valid saved answer does not make a hardened checker
+
+Checker accepts malformed order [0,0] on two isolated vertices with weights [0,100], zero answer and empty witness even though optimum is 100. Independent audit preserved defect without invalidating the correct saved cohort.
+
+## What was checked
+
+Independent B review counterexample, normal replay, optimized-mode limitation, and final Counsel retained.
+
+The attached records are existing evidence, copied intact or extracted exactly as disclosed in source-selections.json. No experiment was rerun for this exhibit.
+
+## Limits
+
+- Original implementations were not repaired by this review.
+- Assertions vanish under -O; both A and B original scripts require normal Python.
+- This is a checker-contract counterexample, not failure of the mathematical conditional theorem.
+
+## Evidence and publication
+
+Original source locations and custody records remain in the private curator inventory. This packet is prepared for review; no publication authorization or open license is claimed. The article is a new explanation of retained work, not a new experiment.

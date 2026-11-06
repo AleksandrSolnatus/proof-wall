@@ -1,0 +1,29 @@
+{
+  "adj": [
+    0,
+    0
+  ],
+  "answer": 0,
+  "cert": [
+    {
+      "0": 0
+    },
+    {
+      "0": 0
+    },
+    {
+      "0": 0
+    }
+  ],
+  "chosen": 0,
+  "order": [
+    0,
+    0
+  ],
+  "provided_checker_return": 4,
+  "true_optimum": 100,
+  "weights": [
+    0,
+    100
+  ]
+}

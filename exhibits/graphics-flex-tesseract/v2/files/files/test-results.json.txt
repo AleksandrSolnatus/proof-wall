@@ -1,0 +1,165 @@
+{
+  "checks": 82232,
+  "rotationsTested": 600,
+  "maxPairError": 1.3322676295501878e-15,
+  "maxEdgeError": 8.881784197001252e-16,
+  "maxRadiusError": 8.881784197001252e-16,
+  "maxOrthogonalityError": 6.661338147750939e-16,
+  "presets": [
+    {
+      "name": "nested",
+      "settings": {
+        "angles": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "projection": "perspective",
+        "distance": 4,
+        "flex": 0.65,
+        "bend": 0.25
+      },
+      "raw": {
+        "minVertexSeparation": 0.923760430703401,
+        "nearPairs": 0,
+        "chordMin": 0.923760430703401,
+        "chordMax": 2.6666666666666665,
+        "pairDistanceNRMSE": 0.22218309336676603,
+        "edgeRMS": 0.718498134511565
+      },
+      "flexed": {
+        "minVertexSeparation": 0.952415395512522,
+        "nearPairs": 0,
+        "chordMin": 0.952415395512522,
+        "chordMax": 2.6479638673270474,
+        "pairDistanceNRMSE": 0.22742717643721483,
+        "edgeRMS": 0.7129841839305782
+      },
+      "displacementRMS": 0.03372814707220069,
+      "displacementMax": 0.04486494728989655,
+      "arcMin": 0.9564618294909898,
+      "arcMax": 2.659214011977157,
+      "solver": {
+        "iterations": 160,
+        "initialEnergy": 1.9832554237585667,
+        "finalEnergy": 1.9550789730840383,
+        "gradientNorm": 0.00010054660089176035
+      }
+    },
+    {
+      "name": "collapse",
+      "settings": {
+        "angles": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "projection": "orthographic",
+        "distance": 4,
+        "flex": 1,
+        "bend": 0.25
+      },
+      "raw": {
+        "minVertexSeparation": 0,
+        "nearPairs": 8,
+        "chordMin": 0,
+        "chordMax": 2,
+        "pairDistanceNRMSE": 0.2430005747669934,
+        "edgeRMS": 1
+      },
+      "flexed": {
+        "minVertexSeparation": 0.8013386481155311,
+        "nearPairs": 0,
+        "chordMin": 0.8013386481155311,
+        "chordMax": 2.031473836932313,
+        "pairDistanceNRMSE": 0.21167216116719212,
+        "edgeRMS": 0.5937124940203338
+      },
+      "displacementRMS": 0.4064871470900464,
+      "displacementMax": 0.41305740748025965,
+      "arcMin": 0.8047432171190062,
+      "arcMax": 2.0401047607906024,
+      "solver": {
+        "iterations": 160,
+        "initialEnergy": 18.91148420863865,
+        "finalEnergy": 2.2788770623311123,
+        "gradientNorm": 0.00849187359910204
+      }
+    },
+    {
+      "name": "mixed",
+      "settings": {
+        "angles": [
+          12,
+          -18,
+          8,
+          35,
+          20,
+          -15
+        ],
+        "projection": "orthographic",
+        "distance": 4,
+        "flex": 0.7,
+        "bend": 0.25
+      },
+      "raw": {
+        "minVertexSeparation": 0.6207107389881323,
+        "nearPairs": 0,
+        "chordMin": 1.3374218416433872,
+        "chordMax": 1.9839068545210186,
+        "pairDistanceNRMSE": 0.23465678683221464,
+        "edgeRMS": 0.40274164641462423
+      },
+      "flexed": {
+        "minVertexSeparation": 0.6742922508017549,
+        "nearPairs": 0,
+        "chordMin": 1.5261446011445803,
+        "chordMax": 1.9884893127159855,
+        "pairDistanceNRMSE": 0.22391650093274929,
+        "edgeRMS": 0.28786068998782455
+      },
+      "displacementRMS": 0.11490165467333412,
+      "displacementMax": 0.15621091071095952,
+      "arcMin": 1.5326285821881704,
+      "arcMax": 1.9969376124376252,
+      "solver": {
+        "iterations": 140,
+        "initialEnergy": 0.7180702207674226,
+        "finalEnergy": 0.36954314482311523,
+        "gradientNorm": 9.605351320521532e-7
+      }
+    }
+  ],
+  "temporalProbe": [
+    {
+      "from": -0.1,
+      "to": -0.01,
+      "maxProjectedStep": 0.001572303297426414,
+      "maxFlexibleStep": 0.15435876445709118
+    },
+    {
+      "from": -0.01,
+      "to": 0,
+      "maxProjectedStep": 0.00017454815518425093,
+      "maxFlexibleStep": 0.021162083091397273
+    },
+    {
+      "from": 0,
+      "to": 0.01,
+      "maxProjectedStep": 0.00017454815518425093,
+      "maxFlexibleStep": 0.021137167655073466
+    },
+    {
+      "from": 0.01,
+      "to": 0.1,
+      "maxProjectedStep": 0.001572303297426414,
+      "maxFlexibleStep": 0.15859497293433503
+    }
+  ]
+}

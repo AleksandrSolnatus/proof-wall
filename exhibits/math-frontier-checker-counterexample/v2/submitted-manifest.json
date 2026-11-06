@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "math-frontier-checker-counterexample",
+  "version": 2,
+  "title": "A valid saved answer does not make a hardened checker",
+  "artifact_type": "counterexample",
+  "status": "counterexample",
+  "question": "What does this retained result establish, and where does its support stop?",
+  "method": "Read the original experiment or implementation record together with its existing receipts; preserve the reported result, controls and limits. Selected source records retain exact bytes.",
+  "finding": "Checker accepts malformed order [0,0] on two isolated vertices with weights [0,100], zero answer and empty witness even though optimum is 100. Independent audit preserved defect without invalidating the correct saved cohort.",
+  "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+  "limitations": [
+    "Original implementations were not repaired by this review.",
+    "Assertions vanish under -O; both A and B original scripts require normal Python.",
+    "This is a checker-contract counterexample, not failure of the mathematical conditional theorem.",
+    "This public exhibit contains selected evidence and receipts; the complete interactive or executable research package is not included."
+  ],
+  "open_questions": [
+    "Release review must settle exact source attribution and public-use terms. Further scientific work is not required merely to preserve this bounded result."
+  ],
+  "date": "2026-11-05",
+  "provenance": {
+    "authors": [
+      "Original project contributors as identified in the retained records; Root, editorial gathering"
+    ],
+    "origin": "MATH retained experiment/implementation records. Source filenames and SHA-256 bindings are in source-selections.json; full custody stays in the private inventory.",
+    "change_note": "Version 2 records owner publication authorization and the public-source selection limit. All article and evidence bytes remain the same as v1."
+  },
+  "article": "article.md",
+  "files": [
+    {
+      "path": "article.md",
+      "role": "article",
+      "media_type": "text/markdown",
+      "bytes": 1110,
+      "sha256": "3bd4f3f6a24f3126eefde28d6d737f63f46ebdaebb1e770190e2a27be870109a",
+      "attribution": "Root editorial summary of retained work",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/malformed-order-witness.json",
+      "role": "receipt",
+      "media_type": "application/json",
+      "bytes": 277,
+      "sha256": "6ab142ffce9dd145ef97e90b36ab55f11c039d11ccf0ab7e4c4491a6235b6aa3",
+      "attribution": "Original source record",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/source-selections.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 558,
+      "sha256": "bb1c1dc564c1fa35a3789e4ccd36342c92e701dcc6a754c935cd5f240ac49cee",
+      "attribution": "Original source record",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted."
+    }
+  ],
+  "relations": [],
+  "gardens": [],
+  "publication": {
+    "intent": "request-review",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+    "license": "All rights reserved; no new open-source license is granted.",
+    "attribution": "Original project contributors as identified in the retained records; Root editorial summary."
+  },
+  "sample": false
+}

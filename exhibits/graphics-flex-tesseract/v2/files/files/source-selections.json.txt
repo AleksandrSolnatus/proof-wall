@@ -1,0 +1,32 @@
+{
+  "purpose": "Provenance of copied originals and labeled excerpts; hashes identify bytes, not truth or rights.",
+  "sources": [
+    {
+      "packet_path": "files/experiment-report.md",
+      "source_sha256": "c1227a9b5726662038a33226546b8e8c99ab37f8b3e74fc3bb75af9e377a0b42",
+      "source_bytes": 8805,
+      "excerpt_sha256": "c1227a9b5726662038a33226546b8e8c99ab37f8b3e74fc3bb75af9e377a0b42",
+      "excerpt_bytes": 8805,
+      "selection": "Whole file, exact bytes; no execution.",
+      "source_name": "Tesseract_Experiment_Report.md"
+    },
+    {
+      "packet_path": "files/test-results.json",
+      "source_sha256": "4165f24629739d8ba75feab407818d9c107f80df12b17adae0a62c8cbbbff2c2",
+      "source_bytes": 4268,
+      "excerpt_sha256": "4165f24629739d8ba75feab407818d9c107f80df12b17adae0a62c8cbbbff2c2",
+      "excerpt_bytes": 4268,
+      "selection": "Whole file, exact bytes; no execution.",
+      "source_name": "Tesseract_Test_Results.json"
+    },
+    {
+      "packet_path": "files/browser-results.json",
+      "source_sha256": "cea0d4c7e58f4a5028edea580e8fbb6d879fdf9b334fe3073e966ab501021276",
+      "source_bytes": 888,
+      "excerpt_sha256": "cea0d4c7e58f4a5028edea580e8fbb6d879fdf9b334fe3073e966ab501021276",
+      "excerpt_bytes": 888,
+      "selection": "Whole file, exact bytes; no execution.",
+      "source_name": "Tesseract_Browser_Results.json"
+    }
+  ]
+}

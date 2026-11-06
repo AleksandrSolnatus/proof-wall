@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "id": "graphics-flex-tesseract",
+  "version": 2,
+  "title": "Separating collapsed tesseract vertices while retaining the 4D source",
+  "artifact_type": "experiment",
+  "status": "verified-finite-result",
+  "question": "What does this retained result establish, and where does its support stop?",
+  "method": "Read the original experiment or implementation record together with its existing receipts; preserve the reported result, controls and limits. Selected source records retain exact bytes.",
+  "finding": "Collapsed preset has eight near pairs before and none after redistribution; numerical source geometry and adjacency preserved. Near-degenerate display motion is amplified about 121x.",
+  "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+  "limitations": [
+    "Layout is not metric-faithful 4D geometry or proof of improved perception. Solver may hit 160-step cap. Headless Chromium only; no physical iPhone/Safari result.",
+    "This public exhibit contains selected evidence and receipts; the complete interactive or executable research package is not included."
+  ],
+  "open_questions": [
+    "Release review must settle exact source attribution and public-use terms. Further scientific work is not required merely to preserve this bounded result."
+  ],
+  "date": "2026-11-05",
+  "provenance": {
+    "authors": [
+      "Original project contributors as identified in the retained records; Root, editorial gathering"
+    ],
+    "origin": "graphics retained experiment/implementation records. Source filenames and SHA-256 bindings are in source-selections.json; full custody stays in the private inventory.",
+    "change_note": "Version 2 records owner publication authorization and the public-source selection limit. All article and evidence bytes remain the same as v1."
+  },
+  "article": "article.md",
+  "files": [
+    {
+      "path": "article.md",
+      "role": "article",
+      "media_type": "text/markdown",
+      "bytes": 976,
+      "sha256": "473e619c1561ba86e8dede3e7802c83e7dc32e1952c2d8811f3586a446f14e77",
+      "attribution": "Root editorial summary of retained work",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/experiment-report.md",
+      "role": "original",
+      "media_type": "text/markdown",
+      "bytes": 8805,
+      "sha256": "c1227a9b5726662038a33226546b8e8c99ab37f8b3e74fc3bb75af9e377a0b42",
+      "attribution": "Original source record",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/test-results.json",
+      "role": "receipt",
+      "media_type": "application/json",
+      "bytes": 4268,
+      "sha256": "4165f24629739d8ba75feab407818d9c107f80df12b17adae0a62c8cbbbff2c2",
+      "attribution": "Original source record",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/browser-results.json",
+      "role": "receipt",
+      "media_type": "application/json",
+      "bytes": 888,
+      "sha256": "cea0d4c7e58f4a5028edea580e8fbb6d879fdf9b334fe3073e966ab501021276",
+      "attribution": "Original source record",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/source-selections.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 1384,
+      "sha256": "c89da56b9fd04209de05e4a7045de81854d71323acf330a1c80f128c549cf3b9",
+      "attribution": "Original source record",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted."
+    }
+  ],
+  "relations": [],
+  "gardens": [],
+  "publication": {
+    "intent": "request-review",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+    "license": "All rights reserved; no new open-source license is granted.",
+    "attribution": "Original project contributors as identified in the retained records; Root editorial summary."
+  },
+  "sample": false
+}

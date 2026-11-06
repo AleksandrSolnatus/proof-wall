@@ -1,0 +1,81 @@
+# Tesseract / flexible projection experiment v0.1
+
+2026-09-22 · exploratory preview
+
+**Result:** the 3D display can redistribute and bend while the underlying tesseract retains its exact coordinates, edge length, and adjacency. In the intentionally collapsed view, redistribution separates all eight coincident vertex pairs. It does not recover undistorted 4D geometry, and motion close to this degeneracy is unstable.
+
+## Open and try
+
+Open `Tesseract_Flex_Preview.html` in a browser. It is a single offline file with no dependencies or network requests. A file preview that does not run JavaScript will need the file opened in a full browser. Desktop is the most convenient way to compare the two views; narrow screens stack them.
+
+1. Start with **Collapsed fourth axis**, the initial preset. The left view has eight distinct vertex pairs at identical 3D positions. The right separates them.
+2. Set **Redistribute vertices** to zero and back to 100%. The live 4D diagnostics remain unchanged.
+3. Change **Bend edges**. Curves move; endpoints and adjacency remain fixed. Compare chord and arc lengths in the edge inspector.
+4. Rotate XW, YW, or ZW in 4D. Expand **Other rotation planes** for XY, XZ, and YZ. Drag either canvas to rotate the common 3D camera. Arrow keys orbit; Q/E roll; the wheel and buttons zoom.
+5. Use **Remove flex** for an exact display baseline. Both vertex layouts coincide and all display edges become straight.
+6. Select any vertex or edge to inspect its correspondence. **Export diagnostics JSON** saves a state, including coordinates, curves, settings, camera, invariants, and measurement definitions. State re-import is not implemented in this version.
+
+## What is preserved
+
+The source vertices are all 16 tuples in `{−1,+1}⁴`. Vertex IDs encode coordinate signs, with X as the least significant bit. An edge joins two IDs differing in exactly one bit. There are 32 edges, four neighbors per vertex, and every edge has squared length exactly 4: edge length 2.
+
+The canonical arrays and edge records are deeply frozen. Six orthogonal plane rotations are evaluated from these canonical vertices on every frame. Rotations are mathematically length preserving; JavaScript sine/cosine evaluations are floating-point approximations. The viewer explicitly distinguishes exact source coordinates from numerical rotated coordinates.
+
+Projection, redistribution, curve routing, and camera motion operate downstream. They do not update the source coordinates or the rotated 4D coordinates. A projected coincidence never merges graph vertices.
+
+Only the edge graph is displayed. The preview does not model square faces or cubic cells as flexible surfaces or solids.
+
+## The two display operations
+
+Projection is either orthographic, `p = (x,y,z)`, or perspective, `p = d(x,y,z)/(d−w)`. All vertices have radius 2 in 4D. The permitted eye distance is 2.2–8, so the denominator cannot vanish. Both comparison views share an orthographic 3D camera and scale.
+
+Redistribution solves a small deterministic 3D layout problem. Its objective is:
+
+`E(q) = 0.35 Σvertices ||qᵢ−pᵢ||² + 0.12 Σedges (||qᵢ−qⱼ||−2)² + 4 Σall pairs max(0, 0.70−||qᵢ−qⱼ||)²`.
+
+Small reproducible offsets break coincident-point symmetry. Up to 160 gradient steps use backtracking. The slider blends projected positions with this solution. These weights are exploratory choices. Neither the edge lengths nor the separation target are hard constraints in 3D. The diagnostics expose the finite iteration budget and gradient norm.
+
+Bending replaces straight display segments with quadratic Bézier curves. Each curve retains its two graph endpoints. Its control point bows perpendicular to the chord, preferentially away from the center. This heuristic does not detect or resolve edge crossings. Arc lengths are approximated with 48 segments.
+
+## Measured behavior
+
+Measurements below use the included preset settings. Distances use canonical model units, with 4D edge length 2. A near pair has 3D separation below 0.25. All-pair error is `sqrt(Σ(d3−d4)² / Σd4²)` over all 120 distinct vertex pairs, without best-fit rescaling. It is not a perceptual readability score.
+
+| Preset | Near pairs, before → after | Minimum separation, before → after | All-pair error, before → after | RMS shift from projection |
+|---|---:|---:|---:|---:|
+| Collapsed fourth axis | 8 → 0 | 0.000 → 0.801 | 24.30% → 21.17% | 0.406 |
+| Nested perspective | 0 → 0 | 0.924 → 0.952 | 22.22% → 22.74% | 0.034 |
+| Mixed 4D rotation | 0 → 0 | 0.621 → 0.674 | 23.47% → 22.39% | 0.115 |
+
+In the collapsed case, the 3D edge chord range changes from **0–2** to **0.801–2.031**. Thus separation improves while the display still fails to represent all canonical edges at length 2. In the nested case, slightly better edge-length fit accompanies slightly worse all-pair error. Improvement in one measure can hurt another.
+
+## What breaks or remains limited
+
+- **Temporal stability:** an XW change from 0° to 0.01° moves projected vertices by at most 0.00017455 units, but flexible vertices by as much as 0.02114 units—about 121 times as far. This measured sensitivity arises near the collapsed projection. The experiment establishes amplified movement, not a proof of a mathematical discontinuity. Re-solving from scratch also leaves possible transitions between local solutions.
+- **Full metric fidelity:** a 3D layout cannot preserve every pairwise distance of this vertex set. Consider one vertex and its four neighbors: the four displacement vectors have Gram matrix `4I₄`, of rank 4. Their complete pairwise distances cannot be realized by vectors in 3D. Preserving graph adjacency or even all edge lengths would not preserve the entire tesseract geometry.
+- **Crossings and screen occlusion:** separating vertices in 3D does not guarantee separation on a particular screen view or prevent curve intersections. Both 3D near-pair and camera-dependent screen-overlap counts are visible. Wireframe depth sorting is illustrative and does not provide solid-surface occlusion.
+- **Optimality:** two default presets reach the 160-step cap. There is no claim of a global optimum, converged equilibrium, or physical material behavior.
+- **Performance and platforms:** mean core computation was approximately 22 ms over 15 frames in one headless Chromium run, before drawing costs. This is not a frame-rate guarantee. Physical iPhone, Safari, and real touch interactions were not tested.
+
+## Validation
+
+The core test covers 600 seeded arbitrary 4D rotations, all 120 pair distances per rotation, independent adjacency checks, a known quarter-turn, immutable source data, singularity protection, display parameter extremes, deterministic layout, curve endpoints, and zero-flex identity.
+
+- Largest pair-distance residual: **1.33 × 10⁻¹⁵**.
+- Largest edge-length residual: **8.88 × 10⁻¹⁶**.
+- Largest orthogonality residual: **6.66 × 10⁻¹⁶**.
+- Canonical coordinates and adjacency remained unchanged.
+
+Headless Chromium checks passed for presets, slider input, selection, pointer drag, keyboard orbit/roll, zoom, animation/pause, JSON download, the minimum eye distance, and page width at 390 and 320 CSS pixels. No script errors or external requests occurred. Desktop and narrow screenshots were inspected. These checks are not evidence of compatibility with every browser.
+
+Run `node test_tesseract.cjs` to repeat the dependency-free core checks. The optional browser test requires Playwright and a Chromium executable; set `CHROMIUM_EXECUTABLE` when using an existing browser. Full numerical results and test scripts are in the accompanying ZIP.
+
+## Next smallest experiment
+
+**Add temporal continuity to redistribution, keeping the same 4D model and objective terms.** Compare the present restart-per-frame layout against a warm start from the preceding flexible layout with one additional penalty, `μ Σ ||qᵢ−qᵢ(previous)||²`.
+
+Sweep XW from −2° through +2° and back, in 0.01° increments, with the same camera, full redistribution, and bending off. Compare maximum per-step vertex movement, near-pair count, RMS displacement from projection, all-pair error, and forward/backward hysteresis. Try μ = 0, 0.1, and 1. All 4D invariant checks must still pass. This isolates continuity before adding faces, more deformation controls, or a more elaborate renderer.
+
+## Coordination note
+
+2026-09-22 · Tesseract flexible 3D preview · eight collapsed pairs separate with immutable 4D geometry; near-degenerate motion is strongly amplified · `Tesseract_Flex_Preview.html`, this report, and bundled test results · general readability, intersections, temporal continuity, and Safari remain unresolved · next: controlled continuity experiment around XW = 0°.

@@ -1,0 +1,14 @@
+{
+  "purpose": "Provenance of copied originals and labeled excerpts; hashes identify bytes, not truth or rights.",
+  "sources": [
+    {
+      "packet_path": "files/malformed-order-witness.json",
+      "source_sha256": "6ab142ffce9dd145ef97e90b36ab55f11c039d11ccf0ab7e4c4491a6235b6aa3",
+      "source_bytes": 277,
+      "excerpt_sha256": "6ab142ffce9dd145ef97e90b36ab55f11c039d11ccf0ab7e4c4491a6235b6aa3",
+      "excerpt_bytes": 277,
+      "selection": "Whole file, exact bytes; no execution.",
+      "source_name": "MALFORMED_ORDER_WITNESS.json"
+    }
+  ]
+}

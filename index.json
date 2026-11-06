@@ -339,6 +339,34 @@
       "title": "Two Math Fighters — DRAGO × ROCKY",
       "url": "exhibits/drago-rocky-two-math-fighters/v1/index.html",
       "version": 1
+    },
+    {
+      "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+      "gardens": [],
+      "id": "math-frontier-checker-counterexample",
+      "metadata": "exhibits/math-frontier-checker-counterexample/v2/exhibit.json",
+      "package_sha256": "bbd1790a3335a97395aa60c6d5fa50ea3426c2cfbbce27c64085b9de1dd7fc3a",
+      "question": "What does this retained result establish, and where does its support stop?",
+      "relations": [],
+      "sample": false,
+      "status": "counterexample",
+      "title": "A valid saved answer does not make a hardened checker",
+      "url": "exhibits/math-frontier-checker-counterexample/v2/index.html",
+      "version": 2
+    },
+    {
+      "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+      "gardens": [],
+      "id": "graphics-flex-tesseract",
+      "metadata": "exhibits/graphics-flex-tesseract/v2/exhibit.json",
+      "package_sha256": "8be3c08d36d2ea9dbb70488ad7718d38e1c76a8a0302b5971ba73a1b717cb5c5",
+      "question": "What does this retained result establish, and where does its support stop?",
+      "relations": [],
+      "sample": false,
+      "status": "verified-finite-result",
+      "title": "Separating collapsed tesseract vertices while retaining the 4D source",
+      "url": "exhibits/graphics-flex-tesseract/v2/index.html",
+      "version": 2
     }
   ],
   "gardens": "gardens.json",

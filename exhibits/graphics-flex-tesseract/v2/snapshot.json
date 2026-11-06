@@ -1,0 +1,29 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 976,
+      "sha256": "473e619c1561ba86e8dede3e7802c83e7dc32e1952c2d8811f3586a446f14e77"
+    },
+    "exhibit.json": {
+      "bytes": 4572,
+      "sha256": "d75d032a2cbfda1cbdcb69ad39dfe100fd5839d75576318bb4f6d40c9625d8b7"
+    },
+    "files/browser-results.json": {
+      "bytes": 888,
+      "sha256": "cea0d4c7e58f4a5028edea580e8fbb6d879fdf9b334fe3073e966ab501021276"
+    },
+    "files/experiment-report.md": {
+      "bytes": 8805,
+      "sha256": "c1227a9b5726662038a33226546b8e8c99ab37f8b3e74fc3bb75af9e377a0b42"
+    },
+    "files/source-selections.json": {
+      "bytes": 1384,
+      "sha256": "c89da56b9fd04209de05e4a7045de81854d71323acf330a1c80f128c549cf3b9"
+    },
+    "files/test-results.json": {
+      "bytes": 4268,
+      "sha256": "4165f24629739d8ba75feab407818d9c107f80df12b17adae0a62c8cbbbff2c2"
+    }
+  },
+  "package_sha256": "8be3c08d36d2ea9dbb70488ad7718d38e1c76a8a0302b5971ba73a1b717cb5c5"
+}

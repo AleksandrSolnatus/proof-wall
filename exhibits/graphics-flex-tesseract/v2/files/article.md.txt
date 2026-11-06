@@ -1,0 +1,17 @@
+# Separating collapsed tesseract vertices while retaining the 4D source
+
+Collapsed preset has eight near pairs before and none after redistribution; numerical source geometry and adjacency preserved. Near-degenerate display motion is amplified about 121x.
+
+## What was checked
+
+Recorded 82,232 core checks over 600 rotations and browser checks; no rerun.
+
+The attached records are existing evidence, copied intact or extracted exactly as disclosed in source-selections.json. No experiment was rerun for this exhibit.
+
+## Limits
+
+- Layout is not metric-faithful 4D geometry or proof of improved perception. Solver may hit 160-step cap. Headless Chromium only; no physical iPhone/Safari result.
+
+## Evidence and publication
+
+Original source locations and custody records remain in the private curator inventory. This packet is prepared for review; no publication authorization or open license is claimed. The article is a new explanation of retained work, not a new experiment.

@@ -1,0 +1,122 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "Bounded historical result described by the retained source and receipts; no fresh scientific execution in this gathering.",
+  "date": "2026-11-05",
+  "downloads": [
+    {
+      "bytes": 976,
+      "original_path": "article.md",
+      "sha256": "473e619c1561ba86e8dede3e7802c83e7dc32e1952c2d8811f3586a446f14e77",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 8805,
+      "original_path": "files/experiment-report.md",
+      "sha256": "c1227a9b5726662038a33226546b8e8c99ab37f8b3e74fc3bb75af9e377a0b42",
+      "url": "files/files/experiment-report.md.txt"
+    },
+    {
+      "bytes": 4268,
+      "original_path": "files/test-results.json",
+      "sha256": "4165f24629739d8ba75feab407818d9c107f80df12b17adae0a62c8cbbbff2c2",
+      "url": "files/files/test-results.json.txt"
+    },
+    {
+      "bytes": 888,
+      "original_path": "files/browser-results.json",
+      "sha256": "cea0d4c7e58f4a5028edea580e8fbb6d879fdf9b334fe3073e966ab501021276",
+      "url": "files/files/browser-results.json.txt"
+    },
+    {
+      "bytes": 1384,
+      "original_path": "files/source-selections.json",
+      "sha256": "c89da56b9fd04209de05e4a7045de81854d71323acf330a1c80f128c549cf3b9",
+      "url": "files/files/source-selections.json.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "Root editorial summary of retained work",
+      "bytes": 976,
+      "license": "All rights reserved; no new open-source license is granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "article",
+      "sha256": "473e619c1561ba86e8dede3e7802c83e7dc32e1952c2d8811f3586a446f14e77"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 8805,
+      "license": "All rights reserved; no new open-source license is granted.",
+      "media_type": "text/markdown",
+      "path": "files/experiment-report.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "original",
+      "sha256": "c1227a9b5726662038a33226546b8e8c99ab37f8b3e74fc3bb75af9e377a0b42"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 4268,
+      "license": "All rights reserved; no new open-source license is granted.",
+      "media_type": "application/json",
+      "path": "files/test-results.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "receipt",
+      "sha256": "4165f24629739d8ba75feab407818d9c107f80df12b17adae0a62c8cbbbff2c2"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 888,
+      "license": "All rights reserved; no new open-source license is granted.",
+      "media_type": "application/json",
+      "path": "files/browser-results.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "receipt",
+      "sha256": "cea0d4c7e58f4a5028edea580e8fbb6d879fdf9b334fe3073e966ab501021276"
+    },
+    {
+      "attribution": "Original source record",
+      "bytes": 1384,
+      "license": "All rights reserved; no new open-source license is granted.",
+      "media_type": "application/json",
+      "path": "files/source-selections.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "c89da56b9fd04209de05e4a7045de81854d71323acf330a1c80f128c549cf3b9"
+    }
+  ],
+  "finding": "Collapsed preset has eight near pairs before and none after redistribution; numerical source geometry and adjacency preserved. Near-degenerate display motion is amplified about 121x.",
+  "gardens": [],
+  "id": "graphics-flex-tesseract",
+  "limitations": [
+    "Layout is not metric-faithful 4D geometry or proof of improved perception. Solver may hit 160-step cap. Headless Chromium only; no physical iPhone/Safari result.",
+    "This public exhibit contains selected evidence and receipts; the complete interactive or executable research package is not included."
+  ],
+  "method": "Read the original experiment or implementation record together with its existing receipts; preserve the reported result, controls and limits. Selected source records retain exact bytes.",
+  "open_questions": [
+    "Release review must settle exact source attribution and public-use terms. Further scientific work is not required merely to preserve this bounded result."
+  ],
+  "package_sha256": "8be3c08d36d2ea9dbb70488ad7718d38e1c76a8a0302b5971ba73a1b717cb5c5",
+  "provenance": {
+    "authors": [
+      "Original project contributors as identified in the retained records; Root, editorial gathering"
+    ],
+    "change_note": "Version 2 records owner publication authorization and the public-source selection limit. All article and evidence bytes remain the same as v1.",
+    "origin": "graphics retained experiment/implementation records. Source filenames and SHA-256 bindings are in source-selections.json; full custody stays in the private inventory."
+  },
+  "publication": {
+    "attribution": "Original project contributors as identified in the retained records; Root editorial summary.",
+    "intent": "request-review",
+    "license": "All rights reserved; no new open-source license is granted.",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner."
+  },
+  "question": "What does this retained result establish, and where does its support stop?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Separating collapsed tesseract vertices while retaining the 4D source",
+  "version": 2
+}

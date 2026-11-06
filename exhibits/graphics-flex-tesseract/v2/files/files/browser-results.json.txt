@@ -1,0 +1,38 @@
+{
+  "browser": "153.0.8010.0",
+  "desktopViewport": {
+    "width": 1440,
+    "height": 1100
+  },
+  "mobileViewport": {
+    "width": 390,
+    "scrollWidth": 390,
+    "canvasWidths": [
+      364,
+      364
+    ]
+  },
+  "tested": [
+    "Initial invariant diagnostics",
+    "Three presets",
+    "Zero-flex identity",
+    "4D slider",
+    "Vertex and edge inspector",
+    "Keyboard orbit and roll",
+    "Pointer drag orbit",
+    "Zoom and camera reset",
+    "Animation start and pause",
+    "JSON download and contents",
+    "Minimum perspective eye distance",
+    "390px and 320px page overflow",
+    "No script errors",
+    "No external requests"
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "meanComputeMs": 22.3,
+  "limitations": [
+    "Headless Chromium only; no physical iPhone/Safari or touch gesture check.",
+    "Screenshots use emulated viewport size, not a mobile device."
+  ]
+}
