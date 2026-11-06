@@ -1,0 +1,6129 @@
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "name": "series_mixed_chain",
+      "source": [
+        [
+          1,
+          5,
+          6
+        ],
+        [
+          1,
+          5,
+          -6
+        ],
+        [
+          1,
+          -5,
+          6
+        ],
+        [
+          1,
+          -5,
+          -6
+        ],
+        [
+          -1,
+          2,
+          4
+        ],
+        [
+          -4,
+          7
+        ],
+        [
+          -7,
+          2
+        ],
+        [
+          -2,
+          3
+        ]
+      ],
+      "models": [
+        {
+          "1": true,
+          "2": true,
+          "3": true,
+          "4": false,
+          "5": false,
+          "6": false,
+          "7": false
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": true,
+          "4": false,
+          "5": false,
+          "6": false,
+          "7": true
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": true,
+          "4": false,
+          "5": false,
+          "6": true,
+          "7": false
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": true,
+          "4": false,
+          "5": false,
+          "6": true,
+          "7": true
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": true,
+          "4": false,
+          "5": true,
+          "6": false,
+          "7": false
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": true,
+          "4": false,
+          "5": true,
+          "6": false,
+          "7": true
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": true,
+          "4": false,
+          "5": true,
+          "6": true,
+          "7": false
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": true,
+          "4": false,
+          "5": true,
+          "6": true,
+          "7": true
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": true,
+          "4": true,
+          "5": false,
+          "6": false,
+          "7": true
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": true,
+          "4": true,
+          "5": false,
+          "6": true,
+          "7": true
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": true,
+          "4": true,
+          "5": true,
+          "6": false,
+          "7": true
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": true,
+          "4": true,
+          "5": true,
+          "6": true,
+          "7": true
+        }
+      ],
+      "model_count": 12,
+      "arms": {
+        "series": {
+          "summary": {
+            "outcome": "closure",
+            "units": [
+              1,
+              2,
+              3
+            ],
+            "proof_records": 7
+          },
+          "result": {
+            "schema": "instinct-drago007-shared-ledger-1",
+            "mode": "combined",
+            "source_sha256": "f0dc864c45b8b7ed8eed2a7fbfb8a9dce154bc6fc67ebca72e01250dcd6c51e9",
+            "prefix_sha256": "a9ce4c48350645e93a5b527d0a3524c428f23f3691c54b0d19f998dfe63f8076",
+            "nodes": [
+              [
+                1,
+                5,
+                6
+              ],
+              [
+                1,
+                5,
+                -6
+              ],
+              [
+                1,
+                -5,
+                6
+              ],
+              [
+                1,
+                -5,
+                -6
+              ],
+              [
+                -1,
+                2,
+                4
+              ],
+              [
+                -4,
+                7
+              ],
+              [
+                2,
+                -7
+              ],
+              [
+                -2,
+                3
+              ],
+              [
+                1,
+                -5
+              ],
+              [
+                1,
+                5
+              ],
+              [
+                1
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                2,
+                7
+              ],
+              [
+                2
+              ],
+              [
+                3
+              ]
+            ],
+            "proofs": [
+              {
+                "certificate": {
+                  "source_sha256": "f0dc864c45b8b7ed8eed2a7fbfb8a9dce154bc6fc67ebca72e01250dcd6c51e9",
+                  "prefix_sha256": "f0dc864c45b8b7ed8eed2a7fbfb8a9dce154bc6fc67ebca72e01250dcd6c51e9",
+                  "step": 0,
+                  "left": 2,
+                  "right": 3,
+                  "pivot": 6,
+                  "clause": [
+                    1,
+                    -5
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 8,
+                  "clause": [
+                    1,
+                    -5
+                  ],
+                  "prefix_sha256": "c3a06b4e743ee42230171d3e4b89e5fb7aa2bdfd70aebc02d2933df712ea954f",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 6,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 286
+                  }
+                },
+                "origin": {
+                  "kind": "loop_compilation",
+                  "candidate": 1,
+                  "direction": "forward"
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "f0dc864c45b8b7ed8eed2a7fbfb8a9dce154bc6fc67ebca72e01250dcd6c51e9",
+                  "prefix_sha256": "c3a06b4e743ee42230171d3e4b89e5fb7aa2bdfd70aebc02d2933df712ea954f",
+                  "step": 1,
+                  "left": 0,
+                  "right": 1,
+                  "pivot": 6,
+                  "clause": [
+                    1,
+                    5
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 9,
+                  "clause": [
+                    1,
+                    5
+                  ],
+                  "prefix_sha256": "8501d93526c8c504a3a900172fe6304af5f93f4e56caac63729cca7a4a0acba3",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 6,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 285
+                  }
+                },
+                "origin": {
+                  "kind": "loop_compilation",
+                  "candidate": 1,
+                  "direction": "backward"
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "f0dc864c45b8b7ed8eed2a7fbfb8a9dce154bc6fc67ebca72e01250dcd6c51e9",
+                  "prefix_sha256": "8501d93526c8c504a3a900172fe6304af5f93f4e56caac63729cca7a4a0acba3",
+                  "step": 2,
+                  "left": 8,
+                  "right": 9,
+                  "pivot": -5,
+                  "clause": [
+                    1
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 10,
+                  "clause": [
+                    1
+                  ],
+                  "prefix_sha256": "93f8097aad254430d08724983c1c085f89ce4daf1299aeb087586447cee4151d",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 4,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 284
+                  }
+                },
+                "origin": {
+                  "kind": "loop_compilation",
+                  "candidate": 1,
+                  "direction": "join"
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "f0dc864c45b8b7ed8eed2a7fbfb8a9dce154bc6fc67ebca72e01250dcd6c51e9",
+                  "prefix_sha256": "93f8097aad254430d08724983c1c085f89ce4daf1299aeb087586447cee4151d",
+                  "step": 3,
+                  "left": 4,
+                  "right": 10,
+                  "pivot": -1,
+                  "clause": [
+                    2,
+                    4
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 11,
+                  "clause": [
+                    2,
+                    4
+                  ],
+                  "prefix_sha256": "da06ac4a9289cc8fb5e670155f0ad99e1083e39a4317b98590b54ad53deee87a",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 4,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 287
+                  }
+                },
+                "origin": {
+                  "kind": "unit_simplification",
+                  "unit_node": 10
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "f0dc864c45b8b7ed8eed2a7fbfb8a9dce154bc6fc67ebca72e01250dcd6c51e9",
+                  "prefix_sha256": "da06ac4a9289cc8fb5e670155f0ad99e1083e39a4317b98590b54ad53deee87a",
+                  "step": 4,
+                  "left": 5,
+                  "right": 11,
+                  "pivot": -4,
+                  "clause": [
+                    2,
+                    7
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 12,
+                  "clause": [
+                    2,
+                    7
+                  ],
+                  "prefix_sha256": "e76ac11135ddd79010cdd1e2a4d84f8494c1f2ff93273b1b2a7ae9476034099c",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 4,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 287
+                  }
+                },
+                "origin": {
+                  "kind": "binary_discovery"
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "f0dc864c45b8b7ed8eed2a7fbfb8a9dce154bc6fc67ebca72e01250dcd6c51e9",
+                  "prefix_sha256": "e76ac11135ddd79010cdd1e2a4d84f8494c1f2ff93273b1b2a7ae9476034099c",
+                  "step": 5,
+                  "left": 6,
+                  "right": 12,
+                  "pivot": -7,
+                  "clause": [
+                    2
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 13,
+                  "clause": [
+                    2
+                  ],
+                  "prefix_sha256": "37c16a86658e8f4fd82a83b7350e7da6415e0aa56a5331d8d9ab6a29f8f211d3",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 4,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 285
+                  }
+                },
+                "origin": {
+                  "kind": "loop_compilation",
+                  "candidate": 2,
+                  "direction": "join"
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "f0dc864c45b8b7ed8eed2a7fbfb8a9dce154bc6fc67ebca72e01250dcd6c51e9",
+                  "prefix_sha256": "37c16a86658e8f4fd82a83b7350e7da6415e0aa56a5331d8d9ab6a29f8f211d3",
+                  "step": 6,
+                  "left": 7,
+                  "right": 13,
+                  "pivot": -2,
+                  "clause": [
+                    3
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 14,
+                  "clause": [
+                    3
+                  ],
+                  "prefix_sha256": "a9ce4c48350645e93a5b527d0a3524c428f23f3691c54b0d19f998dfe63f8076",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 3,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 285
+                  }
+                },
+                "origin": {
+                  "kind": "unit_simplification",
+                  "unit_node": 13
+                }
+              }
+            ],
+            "units": [
+              1,
+              2,
+              3
+            ],
+            "outcome": "closure",
+            "terminal_node": null,
+            "budget_reason": null,
+            "counts": {
+              "rounds": 6,
+              "unit_node_tests": 73,
+              "simplification_clause_scans": 61,
+              "simplification_literal_tests": 51,
+              "active_clause_scans": 48,
+              "loop_bucket_clause_tests": 18,
+              "loop_bucket_memberships_built": 41,
+              "loop_candidate_dispatches": 11,
+              "candidate_loop_checks": 11,
+              "bucket_sort_items": 17,
+              "graph_edges_created": 21,
+              "scc_vertex_sort_items": 28,
+              "scc_forward_vertex_visits": 28,
+              "scc_forward_edge_visits": 21,
+              "scc_reverse_vertex_visits": 28,
+              "scc_reverse_edge_visits": 21,
+              "pivot_sort_items": 14,
+              "complement_pair_tests": 13,
+              "path_vertex_visits": 6,
+              "path_edge_visits": 9,
+              "certificate_edges_emitted": 6,
+              "resolution_proposals": 7,
+              "known_clause_lookups": 7,
+              "checked_derived_clauses": 7,
+              "simplification_known_tests": 4,
+              "binary_parent_pair_tests": 6,
+              "binary_complement_tests": 12,
+              "binary_resolution_attempts": 1
+            },
+            "checker_counts": {
+              "source_clause_checks": 8,
+              "source_literal_checks": 21,
+              "source_hashes": 1,
+              "source_hash_bytes": 67,
+              "guard_checks": 126,
+              "parent_node_reads": 14,
+              "parent_literal_reads": 31,
+              "prefix_hashes": 7,
+              "prefix_hash_bytes": 1999
+            },
+            "origins": {
+              "loop_compilation": 4,
+              "unit_simplification": 2,
+              "binary_discovery": 1
+            },
+            "discovery_events": [
+              {
+                "kind": "loop_discovered",
+                "candidate": 1,
+                "unit_node": 10,
+                "proof_start": 0,
+                "proof_stop": 3,
+                "proposal": {
+                  "kind": "loop",
+                  "candidate": 1,
+                  "pivot": 5,
+                  "forward": [
+                    {
+                      "from": 5,
+                      "to": 6,
+                      "clause_index": 2
+                    },
+                    {
+                      "from": 6,
+                      "to": -5,
+                      "clause_index": 3
+                    }
+                  ],
+                  "backward": [
+                    {
+                      "from": -5,
+                      "to": 6,
+                      "clause_index": 0
+                    },
+                    {
+                      "from": 6,
+                      "to": 5,
+                      "clause_index": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "loop_discovered",
+                "candidate": 2,
+                "unit_node": 13,
+                "proof_start": 5,
+                "proof_stop": 6,
+                "proposal": {
+                  "kind": "loop",
+                  "candidate": 2,
+                  "pivot": 7,
+                  "forward": [
+                    {
+                      "from": 7,
+                      "to": -7,
+                      "clause_index": 6
+                    }
+                  ],
+                  "backward": [
+                    {
+                      "from": -7,
+                      "to": 7,
+                      "clause_index": 12
+                    }
+                  ]
+                }
+              }
+            ],
+            "max_derived": 1000,
+            "max_rounds": 10000,
+            "elapsed_seconds": 0.0007820139999239473,
+            "checker_seconds_included": 0.00028453599952626973,
+            "storage_entries": {
+              "nodes": 15,
+              "known_clauses": 15,
+              "attempted_binary_pairs": 1
+            },
+            "scope": "One source-bound ordinary-resolution DAG. Loop proposals and origin labels are not trusted proof premises. Units justify every wider-clause reduction. Discovery rescans and rebuilds graphs; storage entries are not bytes. Closure is current-rule exhaustion, not general SAT completeness. Ablations share unit simplification and differ only in enabled discovery rules."
+          }
+        },
+        "companion": {
+          "summary": {
+            "outcome": "CLOSURE_UNKNOWN",
+            "units": [
+              1,
+              2,
+              3
+            ],
+            "proof_records": 7
+          },
+          "result": {
+            "schema": "drago007-combined-1",
+            "mode": "combined",
+            "status": "CLOSURE_UNKNOWN",
+            "original": [
+              [
+                1,
+                5,
+                6
+              ],
+              [
+                1,
+                5,
+                -6
+              ],
+              [
+                1,
+                -5,
+                6
+              ],
+              [
+                1,
+                -5,
+                -6
+              ],
+              [
+                -1,
+                2,
+                4
+              ],
+              [
+                -4,
+                7
+              ],
+              [
+                -7,
+                2
+              ],
+              [
+                -2,
+                3
+              ]
+            ],
+            "source_sha256": "f0dc864c45b8b7ed8eed2a7fbfb8a9dce154bc6fc67ebca72e01250dcd6c51e9",
+            "prefix_sha256": "850a4a6a7d18e10df7ca210f54d5c821a2478fc6619083c2d4c74f59e2ea8cfd",
+            "nodes": [
+              {
+                "rule": "source",
+                "source_index": 0,
+                "clause": [
+                  1,
+                  5,
+                  6
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 1,
+                "clause": [
+                  -6,
+                  1,
+                  5
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 2,
+                "clause": [
+                  -5,
+                  1,
+                  6
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 3,
+                "clause": [
+                  -6,
+                  -5,
+                  1
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 4,
+                "clause": [
+                  -1,
+                  2,
+                  4
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 5,
+                "clause": [
+                  -4,
+                  7
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 6,
+                "clause": [
+                  -7,
+                  2
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 7,
+                "clause": [
+                  -2,
+                  3
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  2,
+                  3
+                ],
+                "pivot": 6,
+                "clause": [
+                  -5,
+                  1
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  0,
+                  1
+                ],
+                "pivot": 6,
+                "clause": [
+                  1,
+                  5
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  9,
+                  8
+                ],
+                "pivot": 5,
+                "clause": [
+                  1
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  4,
+                  10
+                ],
+                "pivot": -1,
+                "clause": [
+                  2,
+                  4
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  5,
+                  6
+                ],
+                "pivot": 7,
+                "clause": [
+                  -4,
+                  2
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  11,
+                  12
+                ],
+                "pivot": 4,
+                "clause": [
+                  2
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  7,
+                  13
+                ],
+                "pivot": -2,
+                "clause": [
+                  3
+                ]
+              }
+            ],
+            "certificates": [
+              {
+                "source_sha256": "f0dc864c45b8b7ed8eed2a7fbfb8a9dce154bc6fc67ebca72e01250dcd6c51e9",
+                "prefix_sha256": "f0dc864c45b8b7ed8eed2a7fbfb8a9dce154bc6fc67ebca72e01250dcd6c51e9",
+                "step": 0,
+                "rule": "resolve",
+                "parents": [
+                  2,
+                  3
+                ],
+                "pivot": 6,
+                "clause": [
+                  -5,
+                  1
+                ]
+              },
+              {
+                "source_sha256": "f0dc864c45b8b7ed8eed2a7fbfb8a9dce154bc6fc67ebca72e01250dcd6c51e9",
+                "prefix_sha256": "69acc9e515f16a29183cf718d60c1f2880318f6aea0810b9f5caa9fd2a1a4892",
+                "step": 1,
+                "rule": "resolve",
+                "parents": [
+                  0,
+                  1
+                ],
+                "pivot": 6,
+                "clause": [
+                  1,
+                  5
+                ]
+              },
+              {
+                "source_sha256": "f0dc864c45b8b7ed8eed2a7fbfb8a9dce154bc6fc67ebca72e01250dcd6c51e9",
+                "prefix_sha256": "f002a7ed603617301f93cb2a0ca0c5604c7942ceba0f781a695896ef1e918ce2",
+                "step": 2,
+                "rule": "resolve",
+                "parents": [
+                  9,
+                  8
+                ],
+                "pivot": 5,
+                "clause": [
+                  1
+                ]
+              },
+              {
+                "source_sha256": "f0dc864c45b8b7ed8eed2a7fbfb8a9dce154bc6fc67ebca72e01250dcd6c51e9",
+                "prefix_sha256": "5fb108b0ab966fa92976f3ae5563bf6d9cf5154391c9d8da54eb5310650e5ece",
+                "step": 3,
+                "rule": "resolve",
+                "parents": [
+                  4,
+                  10
+                ],
+                "pivot": -1,
+                "clause": [
+                  2,
+                  4
+                ]
+              },
+              {
+                "source_sha256": "f0dc864c45b8b7ed8eed2a7fbfb8a9dce154bc6fc67ebca72e01250dcd6c51e9",
+                "prefix_sha256": "2617f074312929c37d1f20ace48d53bd1e124b1bef20799c68b91461060f674e",
+                "step": 4,
+                "rule": "resolve",
+                "parents": [
+                  5,
+                  6
+                ],
+                "pivot": 7,
+                "clause": [
+                  -4,
+                  2
+                ]
+              },
+              {
+                "source_sha256": "f0dc864c45b8b7ed8eed2a7fbfb8a9dce154bc6fc67ebca72e01250dcd6c51e9",
+                "prefix_sha256": "06ce93b582d986edbf4cf4b3d7dfefacf78d06bd9d80319a298487970a8bd2aa",
+                "step": 5,
+                "rule": "resolve",
+                "parents": [
+                  11,
+                  12
+                ],
+                "pivot": 4,
+                "clause": [
+                  2
+                ]
+              },
+              {
+                "source_sha256": "f0dc864c45b8b7ed8eed2a7fbfb8a9dce154bc6fc67ebca72e01250dcd6c51e9",
+                "prefix_sha256": "d3063db4226e85d4eb2dcadbb5e0f7ea58f6bb8d8783eae4ab3264d58c24b699",
+                "step": 6,
+                "rule": "resolve",
+                "parents": [
+                  7,
+                  13
+                ],
+                "pivot": -2,
+                "clause": [
+                  3
+                ]
+              }
+            ],
+            "facts": {
+              "1": true,
+              "2": true,
+              "3": true
+            },
+            "fact_node_ids": {
+              "1": 10,
+              "2": 13,
+              "3": 14
+            },
+            "entries": [
+              {
+                "base_node": 0,
+                "current_node": null,
+                "version": 2,
+                "state": "satisfied",
+                "origin": "original",
+                "satisfied_by": 10
+              },
+              {
+                "base_node": 1,
+                "current_node": null,
+                "version": 2,
+                "state": "satisfied",
+                "origin": "original",
+                "satisfied_by": 10
+              },
+              {
+                "base_node": 2,
+                "current_node": null,
+                "version": 2,
+                "state": "satisfied",
+                "origin": "original",
+                "satisfied_by": 10
+              },
+              {
+                "base_node": 3,
+                "current_node": null,
+                "version": 2,
+                "state": "satisfied",
+                "origin": "original",
+                "satisfied_by": 10
+              },
+              {
+                "base_node": 4,
+                "current_node": null,
+                "version": 3,
+                "state": "satisfied",
+                "origin": "original",
+                "satisfied_by": 13
+              },
+              {
+                "base_node": 5,
+                "current_node": 5,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 6,
+                "current_node": null,
+                "version": 2,
+                "state": "satisfied",
+                "origin": "original",
+                "satisfied_by": 13
+              },
+              {
+                "base_node": 7,
+                "current_node": null,
+                "version": 3,
+                "state": "satisfied",
+                "origin": "original",
+                "satisfied_by": 14
+              },
+              {
+                "base_node": 12,
+                "current_node": null,
+                "version": 2,
+                "state": "satisfied",
+                "origin": "bridge",
+                "satisfied_by": 13
+              }
+            ],
+            "events": [
+              {
+                "event": "guarded_loop",
+                "candidate": 1,
+                "pivot": 5,
+                "forward": [
+                  {
+                    "from": 5,
+                    "to": 6,
+                    "clause_index": 2
+                  },
+                  {
+                    "from": 6,
+                    "to": -5,
+                    "clause_index": 3
+                  }
+                ],
+                "backward": [
+                  {
+                    "from": -5,
+                    "to": 6,
+                    "clause_index": 0
+                  },
+                  {
+                    "from": 6,
+                    "to": 5,
+                    "clause_index": 1
+                  }
+                ],
+                "entry_nodes": {
+                  "2": 2,
+                  "3": 3,
+                  "0": 0,
+                  "1": 1
+                },
+                "result_node": 10
+              },
+              {
+                "event": "fact",
+                "literal": 1,
+                "node_id": 10,
+                "reason": "guarded_loop"
+              },
+              {
+                "event": "reduction",
+                "entry": 4,
+                "from_node": 4,
+                "unit_node": 10,
+                "pivot": -1,
+                "result_node": 11
+              },
+              {
+                "event": "binary_bridge",
+                "parents": [
+                  5,
+                  6
+                ],
+                "pivot": 7,
+                "result_node": 12,
+                "clause": [
+                  -4,
+                  2
+                ],
+                "published_entry": 8
+              },
+              {
+                "event": "guarded_loop",
+                "candidate": 2,
+                "pivot": 4,
+                "forward": [
+                  {
+                    "from": 4,
+                    "to": -4,
+                    "clause_index": 8
+                  }
+                ],
+                "backward": [
+                  {
+                    "from": -4,
+                    "to": 4,
+                    "clause_index": 4
+                  }
+                ],
+                "entry_nodes": {
+                  "8": 12,
+                  "4": 11
+                },
+                "result_node": 13
+              },
+              {
+                "event": "fact",
+                "literal": 2,
+                "node_id": 13,
+                "reason": "guarded_loop"
+              },
+              {
+                "event": "reduction",
+                "entry": 7,
+                "from_node": 7,
+                "unit_node": 13,
+                "pivot": -2,
+                "result_node": 14
+              },
+              {
+                "event": "fact",
+                "literal": 3,
+                "node_id": 14,
+                "reason": "active_unit"
+              }
+            ],
+            "empty_node_id": null,
+            "pending_refresh": [],
+            "pending_binary_tasks": 0,
+            "counts": {
+              "active_state_builds": 1,
+              "variable_occurrence_insertions": 23,
+              "refresh_enqueues": 19,
+              "work_items": 47,
+              "entry_updates": 19,
+              "bucket_insertions": 25,
+              "binary_occurrence_insertions": 10,
+              "binary_tasks_enqueued": 6,
+              "peak_pending_binary_tasks": 5,
+              "candidate_loop_checks": 10,
+              "bucket_sort_items": 16,
+              "graph_edges_created": 20,
+              "scc_vertex_sort_items": 26,
+              "scc_forward_vertex_visits": 26,
+              "scc_forward_edge_visits": 20,
+              "scc_reverse_vertex_visits": 26,
+              "scc_reverse_edge_visits": 20,
+              "pivot_sort_items": 13,
+              "complement_pair_tests": 11,
+              "path_vertex_visits": 6,
+              "path_edge_visits": 9,
+              "certificate_edges_emitted": 6,
+              "resolution_requests": 7,
+              "checked_nodes_appended": 7,
+              "facts_published": 3,
+              "bucket_removals": 23,
+              "binary_resolution_attempts": 1,
+              "bridge_entries_published": 1,
+              "binary_occurrence_removals": 8,
+              "unit_heap_pushes": 1,
+              "stale_binary_tasks": 5
+            },
+            "checker_counts": {
+              "envelope": {
+                "attempts": 7,
+                "prefix_hash_calls": 7,
+                "prefix_hash_bytes": 2095,
+                "accepted": 7
+              },
+              "resolution_checker": {
+                "accepted_steps": 7,
+                "conclusion_literals_checked": 11,
+                "parent_literal_visits": 31,
+                "pivot_membership_checks": 14,
+                "rejected_steps": 0,
+                "resolvent_literal_entries": 11,
+                "source_clauses_checked": 8,
+                "source_hash_bytes": 67,
+                "source_hash_calls": 1,
+                "source_literals_read": 21,
+                "source_normalized_literal_entries": 21,
+                "step_attempts": 7,
+                "tautology_membership_checks": 11
+              }
+            },
+            "limits": {
+              "max_work_items": 20000,
+              "max_new_proof_nodes": 4000,
+              "max_bridge_entries": 512,
+              "max_pending_binary_tasks": 20000
+            },
+            "limit_reason": null,
+            "scope": "One immutable-source exact-resolution DAG. Only published units/binary bridges and original entries drive discovery; internal loop proofs stay DAG-only. CLOSURE_UNKNOWN is not SAT. LIMITED may contain valid unpublished proofs and unfinished index refresh; no resume/total resource/speed/completeness claim."
+          }
+        }
+      }
+    },
+    {
+      "name": "strict_loop_to_bridge",
+      "source": [
+        [
+          1,
+          5,
+          6
+        ],
+        [
+          1,
+          5,
+          -6
+        ],
+        [
+          1,
+          -5,
+          6
+        ],
+        [
+          1,
+          -5,
+          -6
+        ],
+        [
+          -1,
+          2,
+          3
+        ],
+        [
+          -1,
+          -3,
+          4
+        ],
+        [
+          -1,
+          -4,
+          2
+        ]
+      ],
+      "models": [
+        {
+          "1": true,
+          "2": true,
+          "3": false,
+          "4": false,
+          "5": false,
+          "6": false
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": false,
+          "4": false,
+          "5": false,
+          "6": true
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": false,
+          "4": false,
+          "5": true,
+          "6": false
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": false,
+          "4": false,
+          "5": true,
+          "6": true
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": false,
+          "4": true,
+          "5": false,
+          "6": false
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": false,
+          "4": true,
+          "5": false,
+          "6": true
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": false,
+          "4": true,
+          "5": true,
+          "6": false
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": false,
+          "4": true,
+          "5": true,
+          "6": true
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": true,
+          "4": true,
+          "5": false,
+          "6": false
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": true,
+          "4": true,
+          "5": false,
+          "6": true
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": true,
+          "4": true,
+          "5": true,
+          "6": false
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": true,
+          "4": true,
+          "5": true,
+          "6": true
+        }
+      ],
+      "model_count": 12,
+      "arms": {
+        "series": {
+          "summary": {
+            "outcome": "closure",
+            "units": [
+              1,
+              2
+            ],
+            "proof_records": 8
+          },
+          "result": {
+            "schema": "instinct-drago007-shared-ledger-1",
+            "mode": "combined",
+            "source_sha256": "d05895be756cd24f1b0afaf3cda3f4ea4ec8e6be40620e2d03a9c92ba6d769fa",
+            "prefix_sha256": "0639610eb749ccb7f4864fb3ddaf2d392170a198294b6c8e8eba593b57ba7586",
+            "nodes": [
+              [
+                1,
+                5,
+                6
+              ],
+              [
+                1,
+                5,
+                -6
+              ],
+              [
+                1,
+                -5,
+                6
+              ],
+              [
+                1,
+                -5,
+                -6
+              ],
+              [
+                -1,
+                2,
+                3
+              ],
+              [
+                -1,
+                -3,
+                4
+              ],
+              [
+                -1,
+                2,
+                -4
+              ],
+              [
+                1,
+                -5
+              ],
+              [
+                1,
+                5
+              ],
+              [
+                1
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                -3,
+                4
+              ],
+              [
+                2,
+                -4
+              ],
+              [
+                2,
+                -3
+              ],
+              [
+                2
+              ]
+            ],
+            "proofs": [
+              {
+                "certificate": {
+                  "source_sha256": "d05895be756cd24f1b0afaf3cda3f4ea4ec8e6be40620e2d03a9c92ba6d769fa",
+                  "prefix_sha256": "d05895be756cd24f1b0afaf3cda3f4ea4ec8e6be40620e2d03a9c92ba6d769fa",
+                  "step": 0,
+                  "left": 2,
+                  "right": 3,
+                  "pivot": 6,
+                  "clause": [
+                    1,
+                    -5
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 7,
+                  "clause": [
+                    1,
+                    -5
+                  ],
+                  "prefix_sha256": "dca4ab961406449b1d31983f205d70b8a9f6969250c94e7fe78b288111df584e",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 6,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 286
+                  }
+                },
+                "origin": {
+                  "kind": "loop_compilation",
+                  "candidate": 1,
+                  "direction": "forward"
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "d05895be756cd24f1b0afaf3cda3f4ea4ec8e6be40620e2d03a9c92ba6d769fa",
+                  "prefix_sha256": "dca4ab961406449b1d31983f205d70b8a9f6969250c94e7fe78b288111df584e",
+                  "step": 1,
+                  "left": 0,
+                  "right": 1,
+                  "pivot": 6,
+                  "clause": [
+                    1,
+                    5
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 8,
+                  "clause": [
+                    1,
+                    5
+                  ],
+                  "prefix_sha256": "687c7b2dcde7695bfe069af31b5489a4629d615b993609419585e13fb2f87e90",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 6,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 285
+                  }
+                },
+                "origin": {
+                  "kind": "loop_compilation",
+                  "candidate": 1,
+                  "direction": "backward"
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "d05895be756cd24f1b0afaf3cda3f4ea4ec8e6be40620e2d03a9c92ba6d769fa",
+                  "prefix_sha256": "687c7b2dcde7695bfe069af31b5489a4629d615b993609419585e13fb2f87e90",
+                  "step": 2,
+                  "left": 7,
+                  "right": 8,
+                  "pivot": -5,
+                  "clause": [
+                    1
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 9,
+                  "clause": [
+                    1
+                  ],
+                  "prefix_sha256": "b5d65d0e7b0f2685208bc4bd34ab5a84a428bde7b28272d09ea6b038c1c89693",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 4,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 284
+                  }
+                },
+                "origin": {
+                  "kind": "loop_compilation",
+                  "candidate": 1,
+                  "direction": "join"
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "d05895be756cd24f1b0afaf3cda3f4ea4ec8e6be40620e2d03a9c92ba6d769fa",
+                  "prefix_sha256": "b5d65d0e7b0f2685208bc4bd34ab5a84a428bde7b28272d09ea6b038c1c89693",
+                  "step": 3,
+                  "left": 4,
+                  "right": 9,
+                  "pivot": -1,
+                  "clause": [
+                    2,
+                    3
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 10,
+                  "clause": [
+                    2,
+                    3
+                  ],
+                  "prefix_sha256": "25650ee626d047521d0e643298ace83d7b6ca6b7397cb3ed5d07d6df8663d3db",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 4,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 286
+                  }
+                },
+                "origin": {
+                  "kind": "unit_simplification",
+                  "unit_node": 9
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "d05895be756cd24f1b0afaf3cda3f4ea4ec8e6be40620e2d03a9c92ba6d769fa",
+                  "prefix_sha256": "25650ee626d047521d0e643298ace83d7b6ca6b7397cb3ed5d07d6df8663d3db",
+                  "step": 4,
+                  "left": 5,
+                  "right": 9,
+                  "pivot": -1,
+                  "clause": [
+                    -3,
+                    4
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 11,
+                  "clause": [
+                    -3,
+                    4
+                  ],
+                  "prefix_sha256": "5dabb2fa2fff5f075f535013da24ddd93cee1021d78485c8d7f23c337e5932b6",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 4,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 287
+                  }
+                },
+                "origin": {
+                  "kind": "unit_simplification",
+                  "unit_node": 9
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "d05895be756cd24f1b0afaf3cda3f4ea4ec8e6be40620e2d03a9c92ba6d769fa",
+                  "prefix_sha256": "5dabb2fa2fff5f075f535013da24ddd93cee1021d78485c8d7f23c337e5932b6",
+                  "step": 5,
+                  "left": 6,
+                  "right": 9,
+                  "pivot": -1,
+                  "clause": [
+                    2,
+                    -4
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 12,
+                  "clause": [
+                    2,
+                    -4
+                  ],
+                  "prefix_sha256": "d7281238d90ed1af814d65259e583cf085fc46432755c55d74d6b5d0c0d5a01f",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 4,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 287
+                  }
+                },
+                "origin": {
+                  "kind": "unit_simplification",
+                  "unit_node": 9
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "d05895be756cd24f1b0afaf3cda3f4ea4ec8e6be40620e2d03a9c92ba6d769fa",
+                  "prefix_sha256": "d7281238d90ed1af814d65259e583cf085fc46432755c55d74d6b5d0c0d5a01f",
+                  "step": 6,
+                  "left": 11,
+                  "right": 12,
+                  "pivot": 4,
+                  "clause": [
+                    2,
+                    -3
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 13,
+                  "clause": [
+                    2,
+                    -3
+                  ],
+                  "prefix_sha256": "00cc11ef31fe94f100dd945910488bf7ef07b836172e2c370722599cc36fde7c",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 4,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 288
+                  }
+                },
+                "origin": {
+                  "kind": "binary_discovery"
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "d05895be756cd24f1b0afaf3cda3f4ea4ec8e6be40620e2d03a9c92ba6d769fa",
+                  "prefix_sha256": "00cc11ef31fe94f100dd945910488bf7ef07b836172e2c370722599cc36fde7c",
+                  "step": 7,
+                  "left": 13,
+                  "right": 10,
+                  "pivot": -3,
+                  "clause": [
+                    2
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 14,
+                  "clause": [
+                    2
+                  ],
+                  "prefix_sha256": "0639610eb749ccb7f4864fb3ddaf2d392170a198294b6c8e8eba593b57ba7586",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 4,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 286
+                  }
+                },
+                "origin": {
+                  "kind": "loop_compilation",
+                  "candidate": 2,
+                  "direction": "join"
+                }
+              }
+            ],
+            "units": [
+              1,
+              2
+            ],
+            "outcome": "closure",
+            "terminal_node": null,
+            "budget_reason": null,
+            "counts": {
+              "rounds": 7,
+              "unit_node_tests": 82,
+              "simplification_clause_scans": 67,
+              "simplification_literal_tests": 70,
+              "active_clause_scans": 49,
+              "loop_bucket_clause_tests": 15,
+              "loop_bucket_memberships_built": 37,
+              "loop_candidate_dispatches": 9,
+              "candidate_loop_checks": 9,
+              "bucket_sort_items": 15,
+              "graph_edges_created": 19,
+              "scc_vertex_sort_items": 24,
+              "scc_forward_vertex_visits": 24,
+              "scc_forward_edge_visits": 19,
+              "scc_reverse_vertex_visits": 24,
+              "scc_reverse_edge_visits": 19,
+              "pivot_sort_items": 12,
+              "complement_pair_tests": 10,
+              "path_vertex_visits": 6,
+              "path_edge_visits": 9,
+              "certificate_edges_emitted": 6,
+              "resolution_proposals": 8,
+              "known_clause_lookups": 8,
+              "checked_derived_clauses": 8,
+              "simplification_known_tests": 13,
+              "binary_parent_pair_tests": 3,
+              "binary_complement_tests": 6,
+              "binary_resolution_attempts": 1
+            },
+            "checker_counts": {
+              "source_clause_checks": 7,
+              "source_literal_checks": 21,
+              "source_hashes": 1,
+              "source_hash_bytes": 66,
+              "guard_checks": 144,
+              "parent_node_reads": 16,
+              "parent_literal_reads": 36,
+              "prefix_hashes": 8,
+              "prefix_hash_bytes": 2289
+            },
+            "origins": {
+              "loop_compilation": 4,
+              "unit_simplification": 3,
+              "binary_discovery": 1
+            },
+            "discovery_events": [
+              {
+                "kind": "loop_discovered",
+                "candidate": 1,
+                "unit_node": 9,
+                "proof_start": 0,
+                "proof_stop": 3,
+                "proposal": {
+                  "kind": "loop",
+                  "candidate": 1,
+                  "pivot": 5,
+                  "forward": [
+                    {
+                      "from": 5,
+                      "to": 6,
+                      "clause_index": 2
+                    },
+                    {
+                      "from": 6,
+                      "to": -5,
+                      "clause_index": 3
+                    }
+                  ],
+                  "backward": [
+                    {
+                      "from": -5,
+                      "to": 6,
+                      "clause_index": 0
+                    },
+                    {
+                      "from": 6,
+                      "to": 5,
+                      "clause_index": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "loop_discovered",
+                "candidate": 2,
+                "unit_node": 14,
+                "proof_start": 7,
+                "proof_stop": 8,
+                "proposal": {
+                  "kind": "loop",
+                  "candidate": 2,
+                  "pivot": 3,
+                  "forward": [
+                    {
+                      "from": 3,
+                      "to": -3,
+                      "clause_index": 13
+                    }
+                  ],
+                  "backward": [
+                    {
+                      "from": -3,
+                      "to": 3,
+                      "clause_index": 10
+                    }
+                  ]
+                }
+              }
+            ],
+            "max_derived": 1000,
+            "max_rounds": 10000,
+            "elapsed_seconds": 0.0008102669999061618,
+            "checker_seconds_included": 0.00020578899602696765,
+            "storage_entries": {
+              "nodes": 15,
+              "known_clauses": 15,
+              "attempted_binary_pairs": 1
+            },
+            "scope": "One source-bound ordinary-resolution DAG. Loop proposals and origin labels are not trusted proof premises. Units justify every wider-clause reduction. Discovery rescans and rebuilds graphs; storage entries are not bytes. Closure is current-rule exhaustion, not general SAT completeness. Ablations share unit simplification and differ only in enabled discovery rules."
+          }
+        },
+        "companion": {
+          "summary": {
+            "outcome": "CLOSURE_UNKNOWN",
+            "units": [
+              1,
+              2
+            ],
+            "proof_records": 8
+          },
+          "result": {
+            "schema": "drago007-combined-1",
+            "mode": "combined",
+            "status": "CLOSURE_UNKNOWN",
+            "original": [
+              [
+                1,
+                5,
+                6
+              ],
+              [
+                1,
+                5,
+                -6
+              ],
+              [
+                1,
+                -5,
+                6
+              ],
+              [
+                1,
+                -5,
+                -6
+              ],
+              [
+                -1,
+                2,
+                3
+              ],
+              [
+                -1,
+                -3,
+                4
+              ],
+              [
+                -1,
+                -4,
+                2
+              ]
+            ],
+            "source_sha256": "d05895be756cd24f1b0afaf3cda3f4ea4ec8e6be40620e2d03a9c92ba6d769fa",
+            "prefix_sha256": "b6f91bc6e2ba6f6119be5ff9f36cd43b665f4874e9ecd030f05b602ac5c42a94",
+            "nodes": [
+              {
+                "rule": "source",
+                "source_index": 0,
+                "clause": [
+                  1,
+                  5,
+                  6
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 1,
+                "clause": [
+                  -6,
+                  1,
+                  5
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 2,
+                "clause": [
+                  -5,
+                  1,
+                  6
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 3,
+                "clause": [
+                  -6,
+                  -5,
+                  1
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 4,
+                "clause": [
+                  -1,
+                  2,
+                  3
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 5,
+                "clause": [
+                  -3,
+                  -1,
+                  4
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 6,
+                "clause": [
+                  -4,
+                  -1,
+                  2
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  2,
+                  3
+                ],
+                "pivot": 6,
+                "clause": [
+                  -5,
+                  1
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  0,
+                  1
+                ],
+                "pivot": 6,
+                "clause": [
+                  1,
+                  5
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  8,
+                  7
+                ],
+                "pivot": 5,
+                "clause": [
+                  1
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  4,
+                  9
+                ],
+                "pivot": -1,
+                "clause": [
+                  2,
+                  3
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  5,
+                  9
+                ],
+                "pivot": -1,
+                "clause": [
+                  -3,
+                  4
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  6,
+                  9
+                ],
+                "pivot": -1,
+                "clause": [
+                  -4,
+                  2
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  10,
+                  11
+                ],
+                "pivot": 3,
+                "clause": [
+                  2,
+                  4
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  13,
+                  12
+                ],
+                "pivot": 4,
+                "clause": [
+                  2
+                ]
+              }
+            ],
+            "certificates": [
+              {
+                "source_sha256": "d05895be756cd24f1b0afaf3cda3f4ea4ec8e6be40620e2d03a9c92ba6d769fa",
+                "prefix_sha256": "d05895be756cd24f1b0afaf3cda3f4ea4ec8e6be40620e2d03a9c92ba6d769fa",
+                "step": 0,
+                "rule": "resolve",
+                "parents": [
+                  2,
+                  3
+                ],
+                "pivot": 6,
+                "clause": [
+                  -5,
+                  1
+                ]
+              },
+              {
+                "source_sha256": "d05895be756cd24f1b0afaf3cda3f4ea4ec8e6be40620e2d03a9c92ba6d769fa",
+                "prefix_sha256": "036a70a67f30e040d248f5b4b27f4cfc4ec3bcf70652488543cd753d98dc2118",
+                "step": 1,
+                "rule": "resolve",
+                "parents": [
+                  0,
+                  1
+                ],
+                "pivot": 6,
+                "clause": [
+                  1,
+                  5
+                ]
+              },
+              {
+                "source_sha256": "d05895be756cd24f1b0afaf3cda3f4ea4ec8e6be40620e2d03a9c92ba6d769fa",
+                "prefix_sha256": "e3b7bec626c55e1f7b8da3313cbc4bf41063723ba2307bae6bc452b23515548d",
+                "step": 2,
+                "rule": "resolve",
+                "parents": [
+                  8,
+                  7
+                ],
+                "pivot": 5,
+                "clause": [
+                  1
+                ]
+              },
+              {
+                "source_sha256": "d05895be756cd24f1b0afaf3cda3f4ea4ec8e6be40620e2d03a9c92ba6d769fa",
+                "prefix_sha256": "097652633f94fa89e2f8367cc6d4e6a5a108c6af4f9cb3a538fbf93d7b87b827",
+                "step": 3,
+                "rule": "resolve",
+                "parents": [
+                  4,
+                  9
+                ],
+                "pivot": -1,
+                "clause": [
+                  2,
+                  3
+                ]
+              },
+              {
+                "source_sha256": "d05895be756cd24f1b0afaf3cda3f4ea4ec8e6be40620e2d03a9c92ba6d769fa",
+                "prefix_sha256": "e924cf2399f1dd10ce50dcdb65b810655b5754f9b0f88a0c278e6ae612e799bc",
+                "step": 4,
+                "rule": "resolve",
+                "parents": [
+                  5,
+                  9
+                ],
+                "pivot": -1,
+                "clause": [
+                  -3,
+                  4
+                ]
+              },
+              {
+                "source_sha256": "d05895be756cd24f1b0afaf3cda3f4ea4ec8e6be40620e2d03a9c92ba6d769fa",
+                "prefix_sha256": "7fc892d7ed131a3f2795fd34dd1823405472ef34f08eead4fb23d8b9fe84f3f4",
+                "step": 5,
+                "rule": "resolve",
+                "parents": [
+                  6,
+                  9
+                ],
+                "pivot": -1,
+                "clause": [
+                  -4,
+                  2
+                ]
+              },
+              {
+                "source_sha256": "d05895be756cd24f1b0afaf3cda3f4ea4ec8e6be40620e2d03a9c92ba6d769fa",
+                "prefix_sha256": "17471e4dcd1a7691980762b5a83c242fb1684c3d14363a721a8ce069e34af9cb",
+                "step": 6,
+                "rule": "resolve",
+                "parents": [
+                  10,
+                  11
+                ],
+                "pivot": 3,
+                "clause": [
+                  2,
+                  4
+                ]
+              },
+              {
+                "source_sha256": "d05895be756cd24f1b0afaf3cda3f4ea4ec8e6be40620e2d03a9c92ba6d769fa",
+                "prefix_sha256": "b4dc6d0f87a55fa15087215cbe1481d984918adf01ab3478ac3d1d091fd94d62",
+                "step": 7,
+                "rule": "resolve",
+                "parents": [
+                  13,
+                  12
+                ],
+                "pivot": 4,
+                "clause": [
+                  2
+                ]
+              }
+            ],
+            "facts": {
+              "1": true,
+              "2": true
+            },
+            "fact_node_ids": {
+              "1": 9,
+              "2": 14
+            },
+            "entries": [
+              {
+                "base_node": 0,
+                "current_node": null,
+                "version": 2,
+                "state": "satisfied",
+                "origin": "original",
+                "satisfied_by": 9
+              },
+              {
+                "base_node": 1,
+                "current_node": null,
+                "version": 2,
+                "state": "satisfied",
+                "origin": "original",
+                "satisfied_by": 9
+              },
+              {
+                "base_node": 2,
+                "current_node": null,
+                "version": 2,
+                "state": "satisfied",
+                "origin": "original",
+                "satisfied_by": 9
+              },
+              {
+                "base_node": 3,
+                "current_node": null,
+                "version": 2,
+                "state": "satisfied",
+                "origin": "original",
+                "satisfied_by": 9
+              },
+              {
+                "base_node": 4,
+                "current_node": null,
+                "version": 3,
+                "state": "satisfied",
+                "origin": "original",
+                "satisfied_by": 14
+              },
+              {
+                "base_node": 5,
+                "current_node": 11,
+                "version": 2,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 6,
+                "current_node": null,
+                "version": 3,
+                "state": "satisfied",
+                "origin": "original",
+                "satisfied_by": 14
+              },
+              {
+                "base_node": 13,
+                "current_node": null,
+                "version": 2,
+                "state": "satisfied",
+                "origin": "bridge",
+                "satisfied_by": 14
+              }
+            ],
+            "events": [
+              {
+                "event": "guarded_loop",
+                "candidate": 1,
+                "pivot": 5,
+                "forward": [
+                  {
+                    "from": 5,
+                    "to": 6,
+                    "clause_index": 2
+                  },
+                  {
+                    "from": 6,
+                    "to": -5,
+                    "clause_index": 3
+                  }
+                ],
+                "backward": [
+                  {
+                    "from": -5,
+                    "to": 6,
+                    "clause_index": 0
+                  },
+                  {
+                    "from": 6,
+                    "to": 5,
+                    "clause_index": 1
+                  }
+                ],
+                "entry_nodes": {
+                  "2": 2,
+                  "3": 3,
+                  "0": 0,
+                  "1": 1
+                },
+                "result_node": 9
+              },
+              {
+                "event": "fact",
+                "literal": 1,
+                "node_id": 9,
+                "reason": "guarded_loop"
+              },
+              {
+                "event": "reduction",
+                "entry": 4,
+                "from_node": 4,
+                "unit_node": 9,
+                "pivot": -1,
+                "result_node": 10
+              },
+              {
+                "event": "reduction",
+                "entry": 5,
+                "from_node": 5,
+                "unit_node": 9,
+                "pivot": -1,
+                "result_node": 11
+              },
+              {
+                "event": "reduction",
+                "entry": 6,
+                "from_node": 6,
+                "unit_node": 9,
+                "pivot": -1,
+                "result_node": 12
+              },
+              {
+                "event": "binary_bridge",
+                "parents": [
+                  10,
+                  11
+                ],
+                "pivot": 3,
+                "result_node": 13,
+                "clause": [
+                  2,
+                  4
+                ],
+                "published_entry": 7
+              },
+              {
+                "event": "guarded_loop",
+                "candidate": 2,
+                "pivot": 4,
+                "forward": [
+                  {
+                    "from": 4,
+                    "to": -4,
+                    "clause_index": 6
+                  }
+                ],
+                "backward": [
+                  {
+                    "from": -4,
+                    "to": 4,
+                    "clause_index": 7
+                  }
+                ],
+                "entry_nodes": {
+                  "6": 12,
+                  "7": 13
+                },
+                "result_node": 14
+              },
+              {
+                "event": "fact",
+                "literal": 2,
+                "node_id": 14,
+                "reason": "guarded_loop"
+              }
+            ],
+            "empty_node_id": null,
+            "pending_refresh": [],
+            "pending_binary_tasks": 0,
+            "counts": {
+              "active_state_builds": 1,
+              "variable_occurrence_insertions": 23,
+              "refresh_enqueues": 18,
+              "work_items": 38,
+              "entry_updates": 18,
+              "bucket_insertions": 29,
+              "candidate_loop_checks": 8,
+              "bucket_sort_items": 14,
+              "graph_edges_created": 18,
+              "scc_vertex_sort_items": 22,
+              "scc_forward_vertex_visits": 22,
+              "scc_forward_edge_visits": 18,
+              "scc_reverse_vertex_visits": 22,
+              "scc_reverse_edge_visits": 18,
+              "pivot_sort_items": 11,
+              "complement_pair_tests": 10,
+              "path_vertex_visits": 6,
+              "path_edge_visits": 9,
+              "certificate_edges_emitted": 6,
+              "resolution_requests": 8,
+              "checked_nodes_appended": 8,
+              "facts_published": 2,
+              "bucket_removals": 27,
+              "binary_occurrence_insertions": 8,
+              "binary_tasks_enqueued": 3,
+              "peak_pending_binary_tasks": 2,
+              "binary_resolution_attempts": 1,
+              "bridge_entries_published": 1,
+              "binary_occurrence_removals": 6,
+              "stale_binary_tasks": 2
+            },
+            "checker_counts": {
+              "envelope": {
+                "attempts": 8,
+                "prefix_hash_calls": 8,
+                "prefix_hash_bytes": 2398,
+                "accepted": 8
+              },
+              "resolution_checker": {
+                "accepted_steps": 8,
+                "conclusion_literals_checked": 14,
+                "parent_literal_visits": 36,
+                "pivot_membership_checks": 16,
+                "rejected_steps": 0,
+                "resolvent_literal_entries": 14,
+                "source_clauses_checked": 7,
+                "source_hash_bytes": 66,
+                "source_hash_calls": 1,
+                "source_literals_read": 21,
+                "source_normalized_literal_entries": 21,
+                "step_attempts": 8,
+                "tautology_membership_checks": 14
+              }
+            },
+            "limits": {
+              "max_work_items": 20000,
+              "max_new_proof_nodes": 4000,
+              "max_bridge_entries": 512,
+              "max_pending_binary_tasks": 20000
+            },
+            "limit_reason": null,
+            "scope": "One immutable-source exact-resolution DAG. Only published units/binary bridges and original entries drive discovery; internal loop proofs stay DAG-only. CLOSURE_UNKNOWN is not SAT. LIMITED may contain valid unpublished proofs and unfinished index refresh; no resume/total resource/speed/completeness claim."
+          }
+        }
+      }
+    },
+    {
+      "name": "bridge_to_loop",
+      "source": [
+        [
+          1,
+          2
+        ],
+        [
+          -2,
+          3
+        ],
+        [
+          -3,
+          1
+        ],
+        [
+          -1,
+          4,
+          5,
+          6
+        ],
+        [
+          -1,
+          4,
+          5,
+          -6
+        ],
+        [
+          -1,
+          4,
+          -5,
+          6
+        ],
+        [
+          -1,
+          4,
+          -5,
+          -6
+        ]
+      ],
+      "models": [
+        {
+          "1": true,
+          "2": false,
+          "3": false,
+          "4": true,
+          "5": false,
+          "6": false
+        },
+        {
+          "1": true,
+          "2": false,
+          "3": false,
+          "4": true,
+          "5": false,
+          "6": true
+        },
+        {
+          "1": true,
+          "2": false,
+          "3": false,
+          "4": true,
+          "5": true,
+          "6": false
+        },
+        {
+          "1": true,
+          "2": false,
+          "3": false,
+          "4": true,
+          "5": true,
+          "6": true
+        },
+        {
+          "1": true,
+          "2": false,
+          "3": true,
+          "4": true,
+          "5": false,
+          "6": false
+        },
+        {
+          "1": true,
+          "2": false,
+          "3": true,
+          "4": true,
+          "5": false,
+          "6": true
+        },
+        {
+          "1": true,
+          "2": false,
+          "3": true,
+          "4": true,
+          "5": true,
+          "6": false
+        },
+        {
+          "1": true,
+          "2": false,
+          "3": true,
+          "4": true,
+          "5": true,
+          "6": true
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": true,
+          "4": true,
+          "5": false,
+          "6": false
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": true,
+          "4": true,
+          "5": false,
+          "6": true
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": true,
+          "4": true,
+          "5": true,
+          "6": false
+        },
+        {
+          "1": true,
+          "2": true,
+          "3": true,
+          "4": true,
+          "5": true,
+          "6": true
+        }
+      ],
+      "model_count": 12,
+      "arms": {
+        "series": {
+          "summary": {
+            "outcome": "closure",
+            "units": [
+              1,
+              4
+            ],
+            "proof_records": 9
+          },
+          "result": {
+            "schema": "instinct-drago007-shared-ledger-1",
+            "mode": "combined",
+            "source_sha256": "6aac2ba8509e5db6b43228c7139ad838530f334bfec8e47e5967d7f5cd36db4b",
+            "prefix_sha256": "260f8dce39309642f15bc5148a94ef607cc48890c12ff6b87896173761011ebf",
+            "nodes": [
+              [
+                1,
+                2
+              ],
+              [
+                -2,
+                3
+              ],
+              [
+                1,
+                -3
+              ],
+              [
+                -1,
+                4,
+                5,
+                6
+              ],
+              [
+                -1,
+                4,
+                5,
+                -6
+              ],
+              [
+                -1,
+                4,
+                -5,
+                6
+              ],
+              [
+                -1,
+                4,
+                -5,
+                -6
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                1
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                4,
+                5,
+                -6
+              ],
+              [
+                4,
+                -5,
+                6
+              ],
+              [
+                4,
+                -5,
+                -6
+              ],
+              [
+                4,
+                -5
+              ],
+              [
+                4,
+                5
+              ],
+              [
+                4
+              ]
+            ],
+            "proofs": [
+              {
+                "certificate": {
+                  "source_sha256": "6aac2ba8509e5db6b43228c7139ad838530f334bfec8e47e5967d7f5cd36db4b",
+                  "prefix_sha256": "6aac2ba8509e5db6b43228c7139ad838530f334bfec8e47e5967d7f5cd36db4b",
+                  "step": 0,
+                  "left": 0,
+                  "right": 1,
+                  "pivot": 2,
+                  "clause": [
+                    1,
+                    3
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 7,
+                  "clause": [
+                    1,
+                    3
+                  ],
+                  "prefix_sha256": "05b8c39603bdee37ff867bc499c0e9b98c0877f6d233178c740221660729a729",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 4,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 285
+                  }
+                },
+                "origin": {
+                  "kind": "binary_discovery"
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "6aac2ba8509e5db6b43228c7139ad838530f334bfec8e47e5967d7f5cd36db4b",
+                  "prefix_sha256": "05b8c39603bdee37ff867bc499c0e9b98c0877f6d233178c740221660729a729",
+                  "step": 1,
+                  "left": 2,
+                  "right": 7,
+                  "pivot": -3,
+                  "clause": [
+                    1
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 8,
+                  "clause": [
+                    1
+                  ],
+                  "prefix_sha256": "06ce2cec41c55e5784d8c166b37c18d61611b0ceabce0a9565cc774903eeace9",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 4,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 284
+                  }
+                },
+                "origin": {
+                  "kind": "loop_compilation",
+                  "candidate": 1,
+                  "direction": "join"
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "6aac2ba8509e5db6b43228c7139ad838530f334bfec8e47e5967d7f5cd36db4b",
+                  "prefix_sha256": "06ce2cec41c55e5784d8c166b37c18d61611b0ceabce0a9565cc774903eeace9",
+                  "step": 2,
+                  "left": 3,
+                  "right": 8,
+                  "pivot": -1,
+                  "clause": [
+                    4,
+                    5,
+                    6
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 9,
+                  "clause": [
+                    4,
+                    5,
+                    6
+                  ],
+                  "prefix_sha256": "a9dfb471bac8b8ceb87f92f14490fb78340b4370dc7bf54877680b204df32c98",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 5,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 288
+                  }
+                },
+                "origin": {
+                  "kind": "unit_simplification",
+                  "unit_node": 8
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "6aac2ba8509e5db6b43228c7139ad838530f334bfec8e47e5967d7f5cd36db4b",
+                  "prefix_sha256": "a9dfb471bac8b8ceb87f92f14490fb78340b4370dc7bf54877680b204df32c98",
+                  "step": 3,
+                  "left": 4,
+                  "right": 8,
+                  "pivot": -1,
+                  "clause": [
+                    4,
+                    5,
+                    -6
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 10,
+                  "clause": [
+                    4,
+                    5,
+                    -6
+                  ],
+                  "prefix_sha256": "cb9e863264a0e0abade4d2b15e26a7df93889951603e253b8d2cb759c39b19b7",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 5,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 289
+                  }
+                },
+                "origin": {
+                  "kind": "unit_simplification",
+                  "unit_node": 8
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "6aac2ba8509e5db6b43228c7139ad838530f334bfec8e47e5967d7f5cd36db4b",
+                  "prefix_sha256": "cb9e863264a0e0abade4d2b15e26a7df93889951603e253b8d2cb759c39b19b7",
+                  "step": 4,
+                  "left": 5,
+                  "right": 8,
+                  "pivot": -1,
+                  "clause": [
+                    4,
+                    -5,
+                    6
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 11,
+                  "clause": [
+                    4,
+                    -5,
+                    6
+                  ],
+                  "prefix_sha256": "1a80a8fc0ee353017b5005789f676dd34d1e2c1b4323a1b6c8b5e2c2549f4ed5",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 5,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 289
+                  }
+                },
+                "origin": {
+                  "kind": "unit_simplification",
+                  "unit_node": 8
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "6aac2ba8509e5db6b43228c7139ad838530f334bfec8e47e5967d7f5cd36db4b",
+                  "prefix_sha256": "1a80a8fc0ee353017b5005789f676dd34d1e2c1b4323a1b6c8b5e2c2549f4ed5",
+                  "step": 5,
+                  "left": 6,
+                  "right": 8,
+                  "pivot": -1,
+                  "clause": [
+                    4,
+                    -5,
+                    -6
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 12,
+                  "clause": [
+                    4,
+                    -5,
+                    -6
+                  ],
+                  "prefix_sha256": "28140db2ff0dc0338e803ec1e8de37e7f71a3e209a586e22af0d23f4bf9037a0",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 5,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 290
+                  }
+                },
+                "origin": {
+                  "kind": "unit_simplification",
+                  "unit_node": 8
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "6aac2ba8509e5db6b43228c7139ad838530f334bfec8e47e5967d7f5cd36db4b",
+                  "prefix_sha256": "28140db2ff0dc0338e803ec1e8de37e7f71a3e209a586e22af0d23f4bf9037a0",
+                  "step": 6,
+                  "left": 11,
+                  "right": 12,
+                  "pivot": 6,
+                  "clause": [
+                    4,
+                    -5
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 13,
+                  "clause": [
+                    4,
+                    -5
+                  ],
+                  "prefix_sha256": "27ea22143b434d3139174ebdd608b04e2f88a7d6afea4d8c24e6acdac1fce121",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 6,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 288
+                  }
+                },
+                "origin": {
+                  "kind": "loop_compilation",
+                  "candidate": 4,
+                  "direction": "forward"
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "6aac2ba8509e5db6b43228c7139ad838530f334bfec8e47e5967d7f5cd36db4b",
+                  "prefix_sha256": "27ea22143b434d3139174ebdd608b04e2f88a7d6afea4d8c24e6acdac1fce121",
+                  "step": 7,
+                  "left": 9,
+                  "right": 10,
+                  "pivot": 6,
+                  "clause": [
+                    4,
+                    5
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 14,
+                  "clause": [
+                    4,
+                    5
+                  ],
+                  "prefix_sha256": "4616ffcecd0623f97296618130105102345289a74f9b85940b23c134d960da93",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 6,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 286
+                  }
+                },
+                "origin": {
+                  "kind": "loop_compilation",
+                  "candidate": 4,
+                  "direction": "backward"
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "6aac2ba8509e5db6b43228c7139ad838530f334bfec8e47e5967d7f5cd36db4b",
+                  "prefix_sha256": "4616ffcecd0623f97296618130105102345289a74f9b85940b23c134d960da93",
+                  "step": 8,
+                  "left": 13,
+                  "right": 14,
+                  "pivot": -5,
+                  "clause": [
+                    4
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 15,
+                  "clause": [
+                    4
+                  ],
+                  "prefix_sha256": "260f8dce39309642f15bc5148a94ef607cc48890c12ff6b87896173761011ebf",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 4,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 286
+                  }
+                },
+                "origin": {
+                  "kind": "loop_compilation",
+                  "candidate": 4,
+                  "direction": "join"
+                }
+              }
+            ],
+            "units": [
+              1,
+              4
+            ],
+            "outcome": "closure",
+            "terminal_node": null,
+            "budget_reason": null,
+            "counts": {
+              "rounds": 8,
+              "unit_node_tests": 86,
+              "simplification_clause_scans": 66,
+              "simplification_literal_tests": 114,
+              "active_clause_scans": 44,
+              "loop_bucket_clause_tests": 21,
+              "loop_bucket_memberships_built": 30,
+              "loop_candidate_dispatches": 11,
+              "candidate_loop_checks": 11,
+              "bucket_sort_items": 17,
+              "graph_edges_created": 21,
+              "scc_vertex_sort_items": 28,
+              "scc_forward_vertex_visits": 28,
+              "scc_forward_edge_visits": 21,
+              "scc_reverse_vertex_visits": 28,
+              "scc_reverse_edge_visits": 21,
+              "pivot_sort_items": 14,
+              "complement_pair_tests": 13,
+              "binary_parent_pair_tests": 3,
+              "binary_complement_tests": 6,
+              "binary_resolution_attempts": 1,
+              "resolution_proposals": 9,
+              "known_clause_lookups": 9,
+              "checked_derived_clauses": 9,
+              "path_vertex_visits": 6,
+              "path_edge_visits": 9,
+              "certificate_edges_emitted": 6,
+              "simplification_known_tests": 14
+            },
+            "checker_counts": {
+              "source_clause_checks": 7,
+              "source_literal_checks": 22,
+              "source_hashes": 1,
+              "source_hash_bytes": 69,
+              "guard_checks": 162,
+              "parent_node_reads": 18,
+              "parent_literal_reads": 44,
+              "prefix_hashes": 9,
+              "prefix_hash_bytes": 2585
+            },
+            "origins": {
+              "binary_discovery": 1,
+              "loop_compilation": 4,
+              "unit_simplification": 4
+            },
+            "discovery_events": [
+              {
+                "kind": "loop_discovered",
+                "candidate": 1,
+                "unit_node": 8,
+                "proof_start": 1,
+                "proof_stop": 2,
+                "proposal": {
+                  "kind": "loop",
+                  "candidate": 1,
+                  "pivot": 3,
+                  "forward": [
+                    {
+                      "from": 3,
+                      "to": -3,
+                      "clause_index": 2
+                    }
+                  ],
+                  "backward": [
+                    {
+                      "from": -3,
+                      "to": 3,
+                      "clause_index": 7
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "loop_discovered",
+                "candidate": 4,
+                "unit_node": 15,
+                "proof_start": 6,
+                "proof_stop": 9,
+                "proposal": {
+                  "kind": "loop",
+                  "candidate": 4,
+                  "pivot": 5,
+                  "forward": [
+                    {
+                      "from": 5,
+                      "to": 6,
+                      "clause_index": 11
+                    },
+                    {
+                      "from": 6,
+                      "to": -5,
+                      "clause_index": 12
+                    }
+                  ],
+                  "backward": [
+                    {
+                      "from": -5,
+                      "to": 6,
+                      "clause_index": 9
+                    },
+                    {
+                      "from": 6,
+                      "to": 5,
+                      "clause_index": 10
+                    }
+                  ]
+                }
+              }
+            ],
+            "max_derived": 1000,
+            "max_rounds": 10000,
+            "elapsed_seconds": 0.0006813219988544006,
+            "checker_seconds_included": 0.00027653699362417683,
+            "storage_entries": {
+              "nodes": 16,
+              "known_clauses": 16,
+              "attempted_binary_pairs": 1
+            },
+            "scope": "One source-bound ordinary-resolution DAG. Loop proposals and origin labels are not trusted proof premises. Units justify every wider-clause reduction. Discovery rescans and rebuilds graphs; storage entries are not bytes. Closure is current-rule exhaustion, not general SAT completeness. Ablations share unit simplification and differ only in enabled discovery rules."
+          }
+        },
+        "companion": {
+          "summary": {
+            "outcome": "CLOSURE_UNKNOWN",
+            "units": [
+              1,
+              4
+            ],
+            "proof_records": 9
+          },
+          "result": {
+            "schema": "drago007-combined-1",
+            "mode": "combined",
+            "status": "CLOSURE_UNKNOWN",
+            "original": [
+              [
+                1,
+                2
+              ],
+              [
+                -2,
+                3
+              ],
+              [
+                -3,
+                1
+              ],
+              [
+                -1,
+                4,
+                5,
+                6
+              ],
+              [
+                -1,
+                4,
+                5,
+                -6
+              ],
+              [
+                -1,
+                4,
+                -5,
+                6
+              ],
+              [
+                -1,
+                4,
+                -5,
+                -6
+              ]
+            ],
+            "source_sha256": "6aac2ba8509e5db6b43228c7139ad838530f334bfec8e47e5967d7f5cd36db4b",
+            "prefix_sha256": "5c1b741560985cecfd0e3854c5abced9577eca25241fac190d1036c0bdbf6e00",
+            "nodes": [
+              {
+                "rule": "source",
+                "source_index": 0,
+                "clause": [
+                  1,
+                  2
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 1,
+                "clause": [
+                  -2,
+                  3
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 2,
+                "clause": [
+                  -3,
+                  1
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 3,
+                "clause": [
+                  -1,
+                  4,
+                  5,
+                  6
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 4,
+                "clause": [
+                  -6,
+                  -1,
+                  4,
+                  5
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 5,
+                "clause": [
+                  -5,
+                  -1,
+                  4,
+                  6
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 6,
+                "clause": [
+                  -6,
+                  -5,
+                  -1,
+                  4
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  0,
+                  1
+                ],
+                "pivot": 2,
+                "clause": [
+                  1,
+                  3
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  7,
+                  2
+                ],
+                "pivot": 3,
+                "clause": [
+                  1
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  3,
+                  8
+                ],
+                "pivot": -1,
+                "clause": [
+                  4,
+                  5,
+                  6
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  4,
+                  8
+                ],
+                "pivot": -1,
+                "clause": [
+                  -6,
+                  4,
+                  5
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  5,
+                  8
+                ],
+                "pivot": -1,
+                "clause": [
+                  -5,
+                  4,
+                  6
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  6,
+                  8
+                ],
+                "pivot": -1,
+                "clause": [
+                  -6,
+                  -5,
+                  4
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  11,
+                  12
+                ],
+                "pivot": 6,
+                "clause": [
+                  -5,
+                  4
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  9,
+                  10
+                ],
+                "pivot": 6,
+                "clause": [
+                  4,
+                  5
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  14,
+                  13
+                ],
+                "pivot": 5,
+                "clause": [
+                  4
+                ]
+              }
+            ],
+            "certificates": [
+              {
+                "source_sha256": "6aac2ba8509e5db6b43228c7139ad838530f334bfec8e47e5967d7f5cd36db4b",
+                "prefix_sha256": "6aac2ba8509e5db6b43228c7139ad838530f334bfec8e47e5967d7f5cd36db4b",
+                "step": 0,
+                "rule": "resolve",
+                "parents": [
+                  0,
+                  1
+                ],
+                "pivot": 2,
+                "clause": [
+                  1,
+                  3
+                ]
+              },
+              {
+                "source_sha256": "6aac2ba8509e5db6b43228c7139ad838530f334bfec8e47e5967d7f5cd36db4b",
+                "prefix_sha256": "7a4a6750d7152cb769451958f0e63f92d41cef9d69e2fc6822bad575ba81741a",
+                "step": 1,
+                "rule": "resolve",
+                "parents": [
+                  7,
+                  2
+                ],
+                "pivot": 3,
+                "clause": [
+                  1
+                ]
+              },
+              {
+                "source_sha256": "6aac2ba8509e5db6b43228c7139ad838530f334bfec8e47e5967d7f5cd36db4b",
+                "prefix_sha256": "663153a67a264c8d4b67bd776d735043ebe298a2b2d73de811408a69b096a934",
+                "step": 2,
+                "rule": "resolve",
+                "parents": [
+                  3,
+                  8
+                ],
+                "pivot": -1,
+                "clause": [
+                  4,
+                  5,
+                  6
+                ]
+              },
+              {
+                "source_sha256": "6aac2ba8509e5db6b43228c7139ad838530f334bfec8e47e5967d7f5cd36db4b",
+                "prefix_sha256": "f8eb10e09787d83d5007cf45498a3cf6a670a8e683932a750fab4b021a61b988",
+                "step": 3,
+                "rule": "resolve",
+                "parents": [
+                  4,
+                  8
+                ],
+                "pivot": -1,
+                "clause": [
+                  -6,
+                  4,
+                  5
+                ]
+              },
+              {
+                "source_sha256": "6aac2ba8509e5db6b43228c7139ad838530f334bfec8e47e5967d7f5cd36db4b",
+                "prefix_sha256": "0a3c92a9d52cc6f42547fdcf3fd88331e7a109438298d37f39956b9981e2575d",
+                "step": 4,
+                "rule": "resolve",
+                "parents": [
+                  5,
+                  8
+                ],
+                "pivot": -1,
+                "clause": [
+                  -5,
+                  4,
+                  6
+                ]
+              },
+              {
+                "source_sha256": "6aac2ba8509e5db6b43228c7139ad838530f334bfec8e47e5967d7f5cd36db4b",
+                "prefix_sha256": "a62347444c4bf0cff4f802ed252428fc5669f3c8a8ba9c38f8dcbfee1c1f5297",
+                "step": 5,
+                "rule": "resolve",
+                "parents": [
+                  6,
+                  8
+                ],
+                "pivot": -1,
+                "clause": [
+                  -6,
+                  -5,
+                  4
+                ]
+              },
+              {
+                "source_sha256": "6aac2ba8509e5db6b43228c7139ad838530f334bfec8e47e5967d7f5cd36db4b",
+                "prefix_sha256": "a7754809dfaffa18dc03e39ab681599605abd13bd45be7228998b0bef3031fad",
+                "step": 6,
+                "rule": "resolve",
+                "parents": [
+                  11,
+                  12
+                ],
+                "pivot": 6,
+                "clause": [
+                  -5,
+                  4
+                ]
+              },
+              {
+                "source_sha256": "6aac2ba8509e5db6b43228c7139ad838530f334bfec8e47e5967d7f5cd36db4b",
+                "prefix_sha256": "282956d4410bccbea248d8a706d20e80b76ecbf96215626a5c017af15bd16f85",
+                "step": 7,
+                "rule": "resolve",
+                "parents": [
+                  9,
+                  10
+                ],
+                "pivot": 6,
+                "clause": [
+                  4,
+                  5
+                ]
+              },
+              {
+                "source_sha256": "6aac2ba8509e5db6b43228c7139ad838530f334bfec8e47e5967d7f5cd36db4b",
+                "prefix_sha256": "c0db6acf580738ebd8bca2ec7b688e8872752884ce90ddd221dabd35e2fc5f09",
+                "step": 8,
+                "rule": "resolve",
+                "parents": [
+                  14,
+                  13
+                ],
+                "pivot": 5,
+                "clause": [
+                  4
+                ]
+              }
+            ],
+            "facts": {
+              "1": true,
+              "4": true
+            },
+            "fact_node_ids": {
+              "1": 8,
+              "4": 15
+            },
+            "entries": [
+              {
+                "base_node": 0,
+                "current_node": null,
+                "version": 2,
+                "state": "satisfied",
+                "origin": "original",
+                "satisfied_by": 8
+              },
+              {
+                "base_node": 1,
+                "current_node": 1,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 2,
+                "current_node": null,
+                "version": 2,
+                "state": "satisfied",
+                "origin": "original",
+                "satisfied_by": 8
+              },
+              {
+                "base_node": 3,
+                "current_node": null,
+                "version": 3,
+                "state": "satisfied",
+                "origin": "original",
+                "satisfied_by": 15
+              },
+              {
+                "base_node": 4,
+                "current_node": null,
+                "version": 3,
+                "state": "satisfied",
+                "origin": "original",
+                "satisfied_by": 15
+              },
+              {
+                "base_node": 5,
+                "current_node": null,
+                "version": 3,
+                "state": "satisfied",
+                "origin": "original",
+                "satisfied_by": 15
+              },
+              {
+                "base_node": 6,
+                "current_node": null,
+                "version": 3,
+                "state": "satisfied",
+                "origin": "original",
+                "satisfied_by": 15
+              },
+              {
+                "base_node": 7,
+                "current_node": null,
+                "version": 2,
+                "state": "satisfied",
+                "origin": "bridge",
+                "satisfied_by": 8
+              }
+            ],
+            "events": [
+              {
+                "event": "binary_bridge",
+                "parents": [
+                  0,
+                  1
+                ],
+                "pivot": 2,
+                "result_node": 7,
+                "clause": [
+                  1,
+                  3
+                ],
+                "published_entry": 7
+              },
+              {
+                "event": "guarded_loop",
+                "candidate": 1,
+                "pivot": 3,
+                "forward": [
+                  {
+                    "from": 3,
+                    "to": -3,
+                    "clause_index": 2
+                  }
+                ],
+                "backward": [
+                  {
+                    "from": -3,
+                    "to": 3,
+                    "clause_index": 7
+                  }
+                ],
+                "entry_nodes": {
+                  "2": 2,
+                  "7": 7
+                },
+                "result_node": 8
+              },
+              {
+                "event": "fact",
+                "literal": 1,
+                "node_id": 8,
+                "reason": "guarded_loop"
+              },
+              {
+                "event": "reduction",
+                "entry": 3,
+                "from_node": 3,
+                "unit_node": 8,
+                "pivot": -1,
+                "result_node": 9
+              },
+              {
+                "event": "reduction",
+                "entry": 4,
+                "from_node": 4,
+                "unit_node": 8,
+                "pivot": -1,
+                "result_node": 10
+              },
+              {
+                "event": "reduction",
+                "entry": 5,
+                "from_node": 5,
+                "unit_node": 8,
+                "pivot": -1,
+                "result_node": 11
+              },
+              {
+                "event": "reduction",
+                "entry": 6,
+                "from_node": 6,
+                "unit_node": 8,
+                "pivot": -1,
+                "result_node": 12
+              },
+              {
+                "event": "guarded_loop",
+                "candidate": 4,
+                "pivot": 5,
+                "forward": [
+                  {
+                    "from": 5,
+                    "to": 6,
+                    "clause_index": 5
+                  },
+                  {
+                    "from": 6,
+                    "to": -5,
+                    "clause_index": 6
+                  }
+                ],
+                "backward": [
+                  {
+                    "from": -5,
+                    "to": 6,
+                    "clause_index": 3
+                  },
+                  {
+                    "from": 6,
+                    "to": 5,
+                    "clause_index": 4
+                  }
+                ],
+                "entry_nodes": {
+                  "5": 11,
+                  "6": 12,
+                  "3": 9,
+                  "4": 10
+                },
+                "result_node": 15
+              },
+              {
+                "event": "fact",
+                "literal": 4,
+                "node_id": 15,
+                "reason": "guarded_loop"
+              }
+            ],
+            "empty_node_id": null,
+            "pending_refresh": [],
+            "pending_binary_tasks": 0,
+            "counts": {
+              "active_state_builds": 1,
+              "variable_occurrence_insertions": 24,
+              "refresh_enqueues": 19,
+              "work_items": 38,
+              "entry_updates": 19,
+              "bucket_insertions": 20,
+              "binary_occurrence_insertions": 8,
+              "binary_tasks_enqueued": 3,
+              "peak_pending_binary_tasks": 2,
+              "candidate_loop_checks": 8,
+              "bucket_sort_items": 14,
+              "graph_edges_created": 18,
+              "scc_vertex_sort_items": 22,
+              "scc_forward_vertex_visits": 22,
+              "scc_forward_edge_visits": 18,
+              "scc_reverse_vertex_visits": 22,
+              "scc_reverse_edge_visits": 18,
+              "pivot_sort_items": 11,
+              "complement_pair_tests": 10,
+              "binary_resolution_attempts": 1,
+              "resolution_requests": 9,
+              "checked_nodes_appended": 9,
+              "bridge_entries_published": 1,
+              "path_vertex_visits": 6,
+              "path_edge_visits": 9,
+              "certificate_edges_emitted": 6,
+              "facts_published": 2,
+              "bucket_removals": 18,
+              "binary_occurrence_removals": 6,
+              "stale_binary_tasks": 2
+            },
+            "checker_counts": {
+              "envelope": {
+                "attempts": 9,
+                "prefix_hash_calls": 9,
+                "prefix_hash_bytes": 2709,
+                "accepted": 9
+              },
+              "resolution_checker": {
+                "accepted_steps": 9,
+                "conclusion_literals_checked": 20,
+                "parent_literal_visits": 44,
+                "pivot_membership_checks": 18,
+                "rejected_steps": 0,
+                "resolvent_literal_entries": 20,
+                "source_clauses_checked": 7,
+                "source_hash_bytes": 69,
+                "source_hash_calls": 1,
+                "source_literals_read": 22,
+                "source_normalized_literal_entries": 22,
+                "step_attempts": 9,
+                "tautology_membership_checks": 20
+              }
+            },
+            "limits": {
+              "max_work_items": 20000,
+              "max_new_proof_nodes": 4000,
+              "max_bridge_entries": 512,
+              "max_pending_binary_tasks": 20000
+            },
+            "limit_reason": null,
+            "scope": "One immutable-source exact-resolution DAG. Only published units/binary bridges and original entries drive discovery; internal loop proofs stay DAG-only. CLOSURE_UNKNOWN is not SAT. LIMITED may contain valid unpublished proofs and unfinished index refresh; no resume/total resource/speed/completeness claim."
+          }
+        }
+      }
+    },
+    {
+      "name": "four_unit_reduction",
+      "source": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ],
+        [
+          4
+        ],
+        [
+          -1,
+          -2,
+          -3,
+          -4,
+          5
+        ]
+      ],
+      "models": [
+        {
+          "1": true,
+          "2": true,
+          "3": true,
+          "4": true,
+          "5": true
+        }
+      ],
+      "model_count": 1,
+      "arms": {
+        "series": {
+          "summary": {
+            "outcome": "closure",
+            "units": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "proof_records": 15
+          },
+          "result": {
+            "schema": "instinct-drago007-shared-ledger-1",
+            "mode": "combined",
+            "source_sha256": "bd7278e1e76f09932b00579a83e14d2b7beea1fa365b60f39a5772aeb9505af7",
+            "prefix_sha256": "d6ebe9467b7fa88cfed8c368ff04f30016e33c9bb0707518843fc6eedf647e3d",
+            "nodes": [
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                3
+              ],
+              [
+                4
+              ],
+              [
+                -1,
+                -2,
+                -3,
+                -4,
+                5
+              ],
+              [
+                -2,
+                -3,
+                -4,
+                5
+              ],
+              [
+                -1,
+                -3,
+                -4,
+                5
+              ],
+              [
+                -1,
+                -2,
+                -4,
+                5
+              ],
+              [
+                -1,
+                -2,
+                -3,
+                5
+              ],
+              [
+                -3,
+                -4,
+                5
+              ],
+              [
+                -2,
+                -4,
+                5
+              ],
+              [
+                -2,
+                -3,
+                5
+              ],
+              [
+                -1,
+                -4,
+                5
+              ],
+              [
+                -1,
+                -3,
+                5
+              ],
+              [
+                -1,
+                -2,
+                5
+              ],
+              [
+                -4,
+                5
+              ],
+              [
+                -3,
+                5
+              ],
+              [
+                -2,
+                5
+              ],
+              [
+                -1,
+                5
+              ],
+              [
+                5
+              ]
+            ],
+            "proofs": [
+              {
+                "certificate": {
+                  "source_sha256": "bd7278e1e76f09932b00579a83e14d2b7beea1fa365b60f39a5772aeb9505af7",
+                  "prefix_sha256": "bd7278e1e76f09932b00579a83e14d2b7beea1fa365b60f39a5772aeb9505af7",
+                  "step": 0,
+                  "left": 4,
+                  "right": 0,
+                  "pivot": -1,
+                  "clause": [
+                    -2,
+                    -3,
+                    -4,
+                    5
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 5,
+                  "clause": [
+                    -2,
+                    -3,
+                    -4,
+                    5
+                  ],
+                  "prefix_sha256": "9b789f41e2a1a3ba98ea047a0a0400a9ba44b0870739c04b9a2a987ee4042695",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 6,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 293
+                  }
+                },
+                "origin": {
+                  "kind": "unit_simplification",
+                  "unit_node": 0
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "bd7278e1e76f09932b00579a83e14d2b7beea1fa365b60f39a5772aeb9505af7",
+                  "prefix_sha256": "9b789f41e2a1a3ba98ea047a0a0400a9ba44b0870739c04b9a2a987ee4042695",
+                  "step": 1,
+                  "left": 4,
+                  "right": 1,
+                  "pivot": -2,
+                  "clause": [
+                    -1,
+                    -3,
+                    -4,
+                    5
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 6,
+                  "clause": [
+                    -1,
+                    -3,
+                    -4,
+                    5
+                  ],
+                  "prefix_sha256": "cdd8d868fe47273b12678e40f68a0843e5bcc9502f25fd0c750504c4f22c79be",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 6,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 293
+                  }
+                },
+                "origin": {
+                  "kind": "unit_simplification",
+                  "unit_node": 1
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "bd7278e1e76f09932b00579a83e14d2b7beea1fa365b60f39a5772aeb9505af7",
+                  "prefix_sha256": "cdd8d868fe47273b12678e40f68a0843e5bcc9502f25fd0c750504c4f22c79be",
+                  "step": 2,
+                  "left": 4,
+                  "right": 2,
+                  "pivot": -3,
+                  "clause": [
+                    -1,
+                    -2,
+                    -4,
+                    5
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 7,
+                  "clause": [
+                    -1,
+                    -2,
+                    -4,
+                    5
+                  ],
+                  "prefix_sha256": "8f2caa342da97ee5f721773374c3d75d94c12392f45a6b0fa317c755459b327c",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 6,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 293
+                  }
+                },
+                "origin": {
+                  "kind": "unit_simplification",
+                  "unit_node": 2
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "bd7278e1e76f09932b00579a83e14d2b7beea1fa365b60f39a5772aeb9505af7",
+                  "prefix_sha256": "8f2caa342da97ee5f721773374c3d75d94c12392f45a6b0fa317c755459b327c",
+                  "step": 3,
+                  "left": 4,
+                  "right": 3,
+                  "pivot": -4,
+                  "clause": [
+                    -1,
+                    -2,
+                    -3,
+                    5
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 8,
+                  "clause": [
+                    -1,
+                    -2,
+                    -3,
+                    5
+                  ],
+                  "prefix_sha256": "fa8344ba2326a36b0d3060b0af8cf077747b43bbc60aa1d4bc4f5ac9e651a6c8",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 6,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 293
+                  }
+                },
+                "origin": {
+                  "kind": "unit_simplification",
+                  "unit_node": 3
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "bd7278e1e76f09932b00579a83e14d2b7beea1fa365b60f39a5772aeb9505af7",
+                  "prefix_sha256": "fa8344ba2326a36b0d3060b0af8cf077747b43bbc60aa1d4bc4f5ac9e651a6c8",
+                  "step": 4,
+                  "left": 5,
+                  "right": 1,
+                  "pivot": -2,
+                  "clause": [
+                    -3,
+                    -4,
+                    5
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 9,
+                  "clause": [
+                    -3,
+                    -4,
+                    5
+                  ],
+                  "prefix_sha256": "f94760b1e6112e4250be015ab172036582b2d84d52a9aac4c5d2a2d3e4992d17",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 5,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 290
+                  }
+                },
+                "origin": {
+                  "kind": "unit_simplification",
+                  "unit_node": 1
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "bd7278e1e76f09932b00579a83e14d2b7beea1fa365b60f39a5772aeb9505af7",
+                  "prefix_sha256": "f94760b1e6112e4250be015ab172036582b2d84d52a9aac4c5d2a2d3e4992d17",
+                  "step": 5,
+                  "left": 5,
+                  "right": 2,
+                  "pivot": -3,
+                  "clause": [
+                    -2,
+                    -4,
+                    5
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 10,
+                  "clause": [
+                    -2,
+                    -4,
+                    5
+                  ],
+                  "prefix_sha256": "1562457c4e50c9eb267e4ba540b0b2936bfe1a1945d113ccedd611371fbf669e",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 5,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 290
+                  }
+                },
+                "origin": {
+                  "kind": "unit_simplification",
+                  "unit_node": 2
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "bd7278e1e76f09932b00579a83e14d2b7beea1fa365b60f39a5772aeb9505af7",
+                  "prefix_sha256": "1562457c4e50c9eb267e4ba540b0b2936bfe1a1945d113ccedd611371fbf669e",
+                  "step": 6,
+                  "left": 5,
+                  "right": 3,
+                  "pivot": -4,
+                  "clause": [
+                    -2,
+                    -3,
+                    5
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 11,
+                  "clause": [
+                    -2,
+                    -3,
+                    5
+                  ],
+                  "prefix_sha256": "086af433a01354439341b7bde3cc7538364452effafe2799d726e53058fa31a2",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 5,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 290
+                  }
+                },
+                "origin": {
+                  "kind": "unit_simplification",
+                  "unit_node": 3
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "bd7278e1e76f09932b00579a83e14d2b7beea1fa365b60f39a5772aeb9505af7",
+                  "prefix_sha256": "086af433a01354439341b7bde3cc7538364452effafe2799d726e53058fa31a2",
+                  "step": 7,
+                  "left": 6,
+                  "right": 2,
+                  "pivot": -3,
+                  "clause": [
+                    -1,
+                    -4,
+                    5
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 12,
+                  "clause": [
+                    -1,
+                    -4,
+                    5
+                  ],
+                  "prefix_sha256": "f42d094f8cfb23255d3fd48b1fadc32593af1a0ed921512ab8c3d062a4226e4b",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 5,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 290
+                  }
+                },
+                "origin": {
+                  "kind": "unit_simplification",
+                  "unit_node": 2
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "bd7278e1e76f09932b00579a83e14d2b7beea1fa365b60f39a5772aeb9505af7",
+                  "prefix_sha256": "f42d094f8cfb23255d3fd48b1fadc32593af1a0ed921512ab8c3d062a4226e4b",
+                  "step": 8,
+                  "left": 6,
+                  "right": 3,
+                  "pivot": -4,
+                  "clause": [
+                    -1,
+                    -3,
+                    5
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 13,
+                  "clause": [
+                    -1,
+                    -3,
+                    5
+                  ],
+                  "prefix_sha256": "f4830e3f89994847b9c78a7cf7c35a6c6e8e0a323fec19f595ad930eeb954bfc",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 5,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 290
+                  }
+                },
+                "origin": {
+                  "kind": "unit_simplification",
+                  "unit_node": 3
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "bd7278e1e76f09932b00579a83e14d2b7beea1fa365b60f39a5772aeb9505af7",
+                  "prefix_sha256": "f4830e3f89994847b9c78a7cf7c35a6c6e8e0a323fec19f595ad930eeb954bfc",
+                  "step": 9,
+                  "left": 7,
+                  "right": 3,
+                  "pivot": -4,
+                  "clause": [
+                    -1,
+                    -2,
+                    5
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 14,
+                  "clause": [
+                    -1,
+                    -2,
+                    5
+                  ],
+                  "prefix_sha256": "c06b03f7cd0ad835a497ba5da1ae62e6618fee4b666939bad94e8abb3835798d",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 5,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 290
+                  }
+                },
+                "origin": {
+                  "kind": "unit_simplification",
+                  "unit_node": 3
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "bd7278e1e76f09932b00579a83e14d2b7beea1fa365b60f39a5772aeb9505af7",
+                  "prefix_sha256": "c06b03f7cd0ad835a497ba5da1ae62e6618fee4b666939bad94e8abb3835798d",
+                  "step": 10,
+                  "left": 9,
+                  "right": 2,
+                  "pivot": -3,
+                  "clause": [
+                    -4,
+                    5
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 15,
+                  "clause": [
+                    -4,
+                    5
+                  ],
+                  "prefix_sha256": "074a949dda4af00be5d48d1127556a12b261babbd50150d09fc9e45773f392f4",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 4,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 288
+                  }
+                },
+                "origin": {
+                  "kind": "unit_simplification",
+                  "unit_node": 2
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "bd7278e1e76f09932b00579a83e14d2b7beea1fa365b60f39a5772aeb9505af7",
+                  "prefix_sha256": "074a949dda4af00be5d48d1127556a12b261babbd50150d09fc9e45773f392f4",
+                  "step": 11,
+                  "left": 9,
+                  "right": 3,
+                  "pivot": -4,
+                  "clause": [
+                    -3,
+                    5
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 16,
+                  "clause": [
+                    -3,
+                    5
+                  ],
+                  "prefix_sha256": "cf42eb1f4a9c6c85045e141ecfe7677887ce487ff05315f580abeb82093fb6fb",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 4,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 288
+                  }
+                },
+                "origin": {
+                  "kind": "unit_simplification",
+                  "unit_node": 3
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "bd7278e1e76f09932b00579a83e14d2b7beea1fa365b60f39a5772aeb9505af7",
+                  "prefix_sha256": "cf42eb1f4a9c6c85045e141ecfe7677887ce487ff05315f580abeb82093fb6fb",
+                  "step": 12,
+                  "left": 10,
+                  "right": 3,
+                  "pivot": -4,
+                  "clause": [
+                    -2,
+                    5
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 17,
+                  "clause": [
+                    -2,
+                    5
+                  ],
+                  "prefix_sha256": "8e181d9ffeddb1d5ccf37684982b4ae8e29506f797d9947406c8b04b665b56f4",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 4,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 289
+                  }
+                },
+                "origin": {
+                  "kind": "unit_simplification",
+                  "unit_node": 3
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "bd7278e1e76f09932b00579a83e14d2b7beea1fa365b60f39a5772aeb9505af7",
+                  "prefix_sha256": "8e181d9ffeddb1d5ccf37684982b4ae8e29506f797d9947406c8b04b665b56f4",
+                  "step": 13,
+                  "left": 12,
+                  "right": 3,
+                  "pivot": -4,
+                  "clause": [
+                    -1,
+                    5
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 18,
+                  "clause": [
+                    -1,
+                    5
+                  ],
+                  "prefix_sha256": "82d26e4d2d66e91ae135aac01d40ebf0b554dabdc75c0865c7c1477e0214a64d",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 4,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 289
+                  }
+                },
+                "origin": {
+                  "kind": "unit_simplification",
+                  "unit_node": 3
+                }
+              },
+              {
+                "certificate": {
+                  "source_sha256": "bd7278e1e76f09932b00579a83e14d2b7beea1fa365b60f39a5772aeb9505af7",
+                  "prefix_sha256": "82d26e4d2d66e91ae135aac01d40ebf0b554dabdc75c0865c7c1477e0214a64d",
+                  "step": 14,
+                  "left": 15,
+                  "right": 3,
+                  "pivot": -4,
+                  "clause": [
+                    5
+                  ]
+                },
+                "replay": {
+                  "valid": true,
+                  "node_id": 19,
+                  "clause": [
+                    5
+                  ],
+                  "prefix_sha256": "d6ebe9467b7fa88cfed8c368ff04f30016e33c9bb0707518843fc6eedf647e3d",
+                  "checks": {
+                    "guard_checks": 18,
+                    "parent_node_reads": 2,
+                    "parent_literal_reads": 3,
+                    "prefix_hashes": 1,
+                    "prefix_hash_bytes": 286
+                  }
+                },
+                "origin": {
+                  "kind": "unit_simplification",
+                  "unit_node": 3
+                }
+              }
+            ],
+            "units": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "outcome": "closure",
+            "terminal_node": null,
+            "budget_reason": null,
+            "counts": {
+              "rounds": 16,
+              "unit_node_tests": 200,
+              "simplification_clause_scans": 140,
+              "simplification_literal_tests": 213,
+              "simplification_known_tests": 168,
+              "resolution_proposals": 15,
+              "known_clause_lookups": 15,
+              "checked_derived_clauses": 15,
+              "active_clause_scans": 20
+            },
+            "checker_counts": {
+              "source_clause_checks": 5,
+              "source_literal_checks": 9,
+              "source_hashes": 1,
+              "source_hash_bytes": 33,
+              "guard_checks": 270,
+              "parent_node_reads": 30,
+              "parent_literal_reads": 73,
+              "prefix_hashes": 15,
+              "prefix_hash_bytes": 4352
+            },
+            "origins": {
+              "unit_simplification": 15
+            },
+            "discovery_events": [],
+            "max_derived": 1000,
+            "max_rounds": 10000,
+            "elapsed_seconds": 0.0009922750014084158,
+            "checker_seconds_included": 0.0003283870028099045,
+            "storage_entries": {
+              "nodes": 20,
+              "known_clauses": 20,
+              "attempted_binary_pairs": 0
+            },
+            "scope": "One source-bound ordinary-resolution DAG. Loop proposals and origin labels are not trusted proof premises. Units justify every wider-clause reduction. Discovery rescans and rebuilds graphs; storage entries are not bytes. Closure is current-rule exhaustion, not general SAT completeness. Ablations share unit simplification and differ only in enabled discovery rules."
+          }
+        },
+        "companion": {
+          "summary": {
+            "outcome": "CLOSURE_UNKNOWN",
+            "units": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "proof_records": 4
+          },
+          "result": {
+            "schema": "drago007-combined-1",
+            "mode": "combined",
+            "status": "CLOSURE_UNKNOWN",
+            "original": [
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                3
+              ],
+              [
+                4
+              ],
+              [
+                -1,
+                -2,
+                -3,
+                -4,
+                5
+              ]
+            ],
+            "source_sha256": "bd7278e1e76f09932b00579a83e14d2b7beea1fa365b60f39a5772aeb9505af7",
+            "prefix_sha256": "9da9e73ffa118ca586ff5175beb8c04436fc99942fbcd281fa32f937d4c3ca16",
+            "nodes": [
+              {
+                "rule": "source",
+                "source_index": 0,
+                "clause": [
+                  1
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 1,
+                "clause": [
+                  2
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 2,
+                "clause": [
+                  3
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 3,
+                "clause": [
+                  4
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 4,
+                "clause": [
+                  -4,
+                  -3,
+                  -2,
+                  -1,
+                  5
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  4,
+                  0
+                ],
+                "pivot": -1,
+                "clause": [
+                  -4,
+                  -3,
+                  -2,
+                  5
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  5,
+                  1
+                ],
+                "pivot": -2,
+                "clause": [
+                  -4,
+                  -3,
+                  5
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  6,
+                  2
+                ],
+                "pivot": -3,
+                "clause": [
+                  -4,
+                  5
+                ]
+              },
+              {
+                "rule": "resolve",
+                "parents": [
+                  7,
+                  3
+                ],
+                "pivot": -4,
+                "clause": [
+                  5
+                ]
+              }
+            ],
+            "certificates": [
+              {
+                "source_sha256": "bd7278e1e76f09932b00579a83e14d2b7beea1fa365b60f39a5772aeb9505af7",
+                "prefix_sha256": "bd7278e1e76f09932b00579a83e14d2b7beea1fa365b60f39a5772aeb9505af7",
+                "step": 0,
+                "rule": "resolve",
+                "parents": [
+                  4,
+                  0
+                ],
+                "pivot": -1,
+                "clause": [
+                  -4,
+                  -3,
+                  -2,
+                  5
+                ]
+              },
+              {
+                "source_sha256": "bd7278e1e76f09932b00579a83e14d2b7beea1fa365b60f39a5772aeb9505af7",
+                "prefix_sha256": "005a09744024c64d90f3e70ca78a4bb17927cc6b9bb3f4a2f1e3ec72a3da08f5",
+                "step": 1,
+                "rule": "resolve",
+                "parents": [
+                  5,
+                  1
+                ],
+                "pivot": -2,
+                "clause": [
+                  -4,
+                  -3,
+                  5
+                ]
+              },
+              {
+                "source_sha256": "bd7278e1e76f09932b00579a83e14d2b7beea1fa365b60f39a5772aeb9505af7",
+                "prefix_sha256": "6a33a214c81923fcd87c2cc5cfc84068896afa5bdfda2b6f0b0cee0a03fd9e3b",
+                "step": 2,
+                "rule": "resolve",
+                "parents": [
+                  6,
+                  2
+                ],
+                "pivot": -3,
+                "clause": [
+                  -4,
+                  5
+                ]
+              },
+              {
+                "source_sha256": "bd7278e1e76f09932b00579a83e14d2b7beea1fa365b60f39a5772aeb9505af7",
+                "prefix_sha256": "4174819966cffa707a2866654bdbf5660e9677e27107d9c89452dbebd11a94ee",
+                "step": 3,
+                "rule": "resolve",
+                "parents": [
+                  7,
+                  3
+                ],
+                "pivot": -4,
+                "clause": [
+                  5
+                ]
+              }
+            ],
+            "facts": {
+              "1": true,
+              "2": true,
+              "3": true,
+              "4": true,
+              "5": true
+            },
+            "fact_node_ids": {
+              "1": 0,
+              "2": 1,
+              "3": 2,
+              "4": 3,
+              "5": 8
+            },
+            "entries": [
+              {
+                "base_node": 0,
+                "current_node": null,
+                "version": 2,
+                "state": "satisfied",
+                "origin": "original",
+                "satisfied_by": 0
+              },
+              {
+                "base_node": 1,
+                "current_node": null,
+                "version": 2,
+                "state": "satisfied",
+                "origin": "original",
+                "satisfied_by": 1
+              },
+              {
+                "base_node": 2,
+                "current_node": null,
+                "version": 2,
+                "state": "satisfied",
+                "origin": "original",
+                "satisfied_by": 2
+              },
+              {
+                "base_node": 3,
+                "current_node": null,
+                "version": 2,
+                "state": "satisfied",
+                "origin": "original",
+                "satisfied_by": 3
+              },
+              {
+                "base_node": 4,
+                "current_node": null,
+                "version": 6,
+                "state": "satisfied",
+                "origin": "original",
+                "satisfied_by": 8
+              }
+            ],
+            "events": [
+              {
+                "event": "fact",
+                "literal": 1,
+                "node_id": 0,
+                "reason": "active_unit"
+              },
+              {
+                "event": "reduction",
+                "entry": 4,
+                "from_node": 4,
+                "unit_node": 0,
+                "pivot": -1,
+                "result_node": 5
+              },
+              {
+                "event": "fact",
+                "literal": 2,
+                "node_id": 1,
+                "reason": "active_unit"
+              },
+              {
+                "event": "reduction",
+                "entry": 4,
+                "from_node": 5,
+                "unit_node": 1,
+                "pivot": -2,
+                "result_node": 6
+              },
+              {
+                "event": "fact",
+                "literal": 3,
+                "node_id": 2,
+                "reason": "active_unit"
+              },
+              {
+                "event": "reduction",
+                "entry": 4,
+                "from_node": 6,
+                "unit_node": 2,
+                "pivot": -3,
+                "result_node": 7
+              },
+              {
+                "event": "fact",
+                "literal": 4,
+                "node_id": 3,
+                "reason": "active_unit"
+              },
+              {
+                "event": "reduction",
+                "entry": 4,
+                "from_node": 7,
+                "unit_node": 3,
+                "pivot": -4,
+                "result_node": 8
+              },
+              {
+                "event": "fact",
+                "literal": 5,
+                "node_id": 8,
+                "reason": "active_unit"
+              }
+            ],
+            "empty_node_id": null,
+            "pending_refresh": [],
+            "pending_binary_tasks": 0,
+            "counts": {
+              "active_state_builds": 1,
+              "variable_occurrence_insertions": 9,
+              "refresh_enqueues": 14,
+              "work_items": 22,
+              "entry_updates": 14,
+              "unit_heap_pushes": 5,
+              "facts_published": 5,
+              "resolution_requests": 4,
+              "checked_nodes_appended": 4,
+              "bucket_insertions": 5,
+              "bucket_removals": 5,
+              "binary_occurrence_insertions": 2,
+              "binary_occurrence_removals": 2
+            },
+            "checker_counts": {
+              "envelope": {
+                "attempts": 4,
+                "prefix_hash_calls": 4,
+                "prefix_hash_bytes": 1210,
+                "accepted": 4
+              },
+              "resolution_checker": {
+                "accepted_steps": 4,
+                "conclusion_literals_checked": 10,
+                "parent_literal_visits": 18,
+                "pivot_membership_checks": 8,
+                "rejected_steps": 0,
+                "resolvent_literal_entries": 10,
+                "source_clauses_checked": 5,
+                "source_hash_bytes": 33,
+                "source_hash_calls": 1,
+                "source_literals_read": 9,
+                "source_normalized_literal_entries": 9,
+                "step_attempts": 4,
+                "tautology_membership_checks": 10
+              }
+            },
+            "limits": {
+              "max_work_items": 20000,
+              "max_new_proof_nodes": 4000,
+              "max_bridge_entries": 512,
+              "max_pending_binary_tasks": 20000
+            },
+            "limit_reason": null,
+            "scope": "One immutable-source exact-resolution DAG. Only published units/binary bridges and original entries drive discovery; internal loop proofs stay DAG-only. CLOSURE_UNKNOWN is not SAT. LIMITED may contain valid unpublished proofs and unfinished index refresh; no resume/total resource/speed/completeness claim."
+          }
+        }
+      }
+    },
+    {
+      "name": "parity_six_variables",
+      "source": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          1,
+          -2,
+          -3
+        ],
+        [
+          -1,
+          2,
+          -3
+        ],
+        [
+          -1,
+          -2,
+          3
+        ],
+        [
+          1,
+          4,
+          -5
+        ],
+        [
+          1,
+          -4,
+          5
+        ],
+        [
+          -1,
+          4,
+          5
+        ],
+        [
+          -1,
+          -4,
+          -5
+        ],
+        [
+          2,
+          4,
+          -6
+        ],
+        [
+          2,
+          -4,
+          6
+        ],
+        [
+          -2,
+          4,
+          6
+        ],
+        [
+          -2,
+          -4,
+          -6
+        ],
+        [
+          3,
+          5,
+          -6
+        ],
+        [
+          3,
+          -5,
+          6
+        ],
+        [
+          -3,
+          5,
+          6
+        ],
+        [
+          -3,
+          -5,
+          -6
+        ]
+      ],
+      "models": [],
+      "model_count": 0,
+      "arms": {
+        "series": {
+          "summary": {
+            "outcome": "closure",
+            "units": [],
+            "proof_records": 0
+          },
+          "result": {
+            "schema": "instinct-drago007-shared-ledger-1",
+            "mode": "combined",
+            "source_sha256": "de6d83f566950453a69d6f3325b6f58b7102c4334a52a5773537dee34ce529c9",
+            "prefix_sha256": "de6d83f566950453a69d6f3325b6f58b7102c4334a52a5773537dee34ce529c9",
+            "nodes": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                -2,
+                -3
+              ],
+              [
+                -1,
+                2,
+                -3
+              ],
+              [
+                -1,
+                -2,
+                3
+              ],
+              [
+                1,
+                4,
+                -5
+              ],
+              [
+                1,
+                -4,
+                5
+              ],
+              [
+                -1,
+                4,
+                5
+              ],
+              [
+                -1,
+                -4,
+                -5
+              ],
+              [
+                2,
+                4,
+                -6
+              ],
+              [
+                2,
+                -4,
+                6
+              ],
+              [
+                -2,
+                4,
+                6
+              ],
+              [
+                -2,
+                -4,
+                -6
+              ],
+              [
+                3,
+                5,
+                -6
+              ],
+              [
+                3,
+                -5,
+                6
+              ],
+              [
+                -3,
+                5,
+                6
+              ],
+              [
+                -3,
+                -5,
+                -6
+              ]
+            ],
+            "proofs": [],
+            "units": [],
+            "outcome": "closure",
+            "terminal_node": null,
+            "budget_reason": null,
+            "counts": {
+              "rounds": 1,
+              "unit_node_tests": 16,
+              "simplification_clause_scans": 16,
+              "simplification_literal_tests": 48,
+              "active_clause_scans": 16,
+              "loop_bucket_clause_tests": 16,
+              "loop_bucket_memberships_built": 48,
+              "loop_candidate_dispatches": 12,
+              "candidate_loop_checks": 12,
+              "bucket_sort_items": 48,
+              "graph_edges_created": 96,
+              "scc_vertex_sort_items": 96,
+              "scc_forward_vertex_visits": 96,
+              "scc_forward_edge_visits": 96,
+              "scc_reverse_vertex_visits": 96,
+              "scc_reverse_edge_visits": 96,
+              "pivot_sort_items": 48,
+              "complement_pair_tests": 48
+            },
+            "checker_counts": {
+              "source_clause_checks": 16,
+              "source_literal_checks": 48,
+              "source_hashes": 1,
+              "source_hash_bytes": 153
+            },
+            "origins": {},
+            "discovery_events": [],
+            "max_derived": 1000,
+            "max_rounds": 10000,
+            "elapsed_seconds": 0.00035773399940808304,
+            "checker_seconds_included": 4.064199856657069e-05,
+            "storage_entries": {
+              "nodes": 16,
+              "known_clauses": 16,
+              "attempted_binary_pairs": 0
+            },
+            "scope": "One source-bound ordinary-resolution DAG. Loop proposals and origin labels are not trusted proof premises. Units justify every wider-clause reduction. Discovery rescans and rebuilds graphs; storage entries are not bytes. Closure is current-rule exhaustion, not general SAT completeness. Ablations share unit simplification and differ only in enabled discovery rules."
+          }
+        },
+        "companion": {
+          "summary": {
+            "outcome": "CLOSURE_UNKNOWN",
+            "units": [],
+            "proof_records": 0
+          },
+          "result": {
+            "schema": "drago007-combined-1",
+            "mode": "combined",
+            "status": "CLOSURE_UNKNOWN",
+            "original": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                -2,
+                -3
+              ],
+              [
+                -1,
+                2,
+                -3
+              ],
+              [
+                -1,
+                -2,
+                3
+              ],
+              [
+                1,
+                4,
+                -5
+              ],
+              [
+                1,
+                -4,
+                5
+              ],
+              [
+                -1,
+                4,
+                5
+              ],
+              [
+                -1,
+                -4,
+                -5
+              ],
+              [
+                2,
+                4,
+                -6
+              ],
+              [
+                2,
+                -4,
+                6
+              ],
+              [
+                -2,
+                4,
+                6
+              ],
+              [
+                -2,
+                -4,
+                -6
+              ],
+              [
+                3,
+                5,
+                -6
+              ],
+              [
+                3,
+                -5,
+                6
+              ],
+              [
+                -3,
+                5,
+                6
+              ],
+              [
+                -3,
+                -5,
+                -6
+              ]
+            ],
+            "source_sha256": "de6d83f566950453a69d6f3325b6f58b7102c4334a52a5773537dee34ce529c9",
+            "prefix_sha256": "de6d83f566950453a69d6f3325b6f58b7102c4334a52a5773537dee34ce529c9",
+            "nodes": [
+              {
+                "rule": "source",
+                "source_index": 0,
+                "clause": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 1,
+                "clause": [
+                  -3,
+                  -2,
+                  1
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 2,
+                "clause": [
+                  -3,
+                  -1,
+                  2
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 3,
+                "clause": [
+                  -2,
+                  -1,
+                  3
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 4,
+                "clause": [
+                  -5,
+                  1,
+                  4
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 5,
+                "clause": [
+                  -4,
+                  1,
+                  5
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 6,
+                "clause": [
+                  -1,
+                  4,
+                  5
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 7,
+                "clause": [
+                  -5,
+                  -4,
+                  -1
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 8,
+                "clause": [
+                  -6,
+                  2,
+                  4
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 9,
+                "clause": [
+                  -4,
+                  2,
+                  6
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 10,
+                "clause": [
+                  -2,
+                  4,
+                  6
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 11,
+                "clause": [
+                  -6,
+                  -4,
+                  -2
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 12,
+                "clause": [
+                  -6,
+                  3,
+                  5
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 13,
+                "clause": [
+                  -5,
+                  3,
+                  6
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 14,
+                "clause": [
+                  -3,
+                  5,
+                  6
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 15,
+                "clause": [
+                  -6,
+                  -5,
+                  -3
+                ]
+              }
+            ],
+            "certificates": [],
+            "facts": {},
+            "fact_node_ids": {},
+            "entries": [
+              {
+                "base_node": 0,
+                "current_node": 0,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 1,
+                "current_node": 1,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 2,
+                "current_node": 2,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 3,
+                "current_node": 3,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 4,
+                "current_node": 4,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 5,
+                "current_node": 5,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 6,
+                "current_node": 6,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 7,
+                "current_node": 7,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 8,
+                "current_node": 8,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 9,
+                "current_node": 9,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 10,
+                "current_node": 10,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 11,
+                "current_node": 11,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 12,
+                "current_node": 12,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 13,
+                "current_node": 13,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 14,
+                "current_node": 14,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 15,
+                "current_node": 15,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              }
+            ],
+            "events": [],
+            "empty_node_id": null,
+            "pending_refresh": [],
+            "pending_binary_tasks": 0,
+            "counts": {
+              "active_state_builds": 1,
+              "variable_occurrence_insertions": 48,
+              "refresh_enqueues": 16,
+              "work_items": 28,
+              "entry_updates": 16,
+              "bucket_insertions": 48,
+              "candidate_loop_checks": 12,
+              "bucket_sort_items": 48,
+              "graph_edges_created": 96,
+              "scc_vertex_sort_items": 96,
+              "scc_forward_vertex_visits": 96,
+              "scc_forward_edge_visits": 96,
+              "scc_reverse_vertex_visits": 96,
+              "scc_reverse_edge_visits": 96,
+              "pivot_sort_items": 48,
+              "complement_pair_tests": 48
+            },
+            "checker_counts": {
+              "envelope": {},
+              "resolution_checker": {
+                "accepted_steps": 0,
+                "conclusion_literals_checked": 0,
+                "parent_literal_visits": 0,
+                "pivot_membership_checks": 0,
+                "rejected_steps": 0,
+                "resolvent_literal_entries": 0,
+                "source_clauses_checked": 16,
+                "source_hash_bytes": 153,
+                "source_hash_calls": 1,
+                "source_literals_read": 48,
+                "source_normalized_literal_entries": 48,
+                "step_attempts": 0,
+                "tautology_membership_checks": 0
+              }
+            },
+            "limits": {
+              "max_work_items": 20000,
+              "max_new_proof_nodes": 4000,
+              "max_bridge_entries": 512,
+              "max_pending_binary_tasks": 20000
+            },
+            "limit_reason": null,
+            "scope": "One immutable-source exact-resolution DAG. Only published units/binary bridges and original entries drive discovery; internal loop proofs stay DAG-only. CLOSURE_UNKNOWN is not SAT. LIMITED may contain valid unpublished proofs and unfinished index refresh; no resume/total resource/speed/completeness claim."
+          }
+        }
+      }
+    },
+    {
+      "name": "all_four_variable_signs",
+      "source": [
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          1,
+          2,
+          3,
+          -4
+        ],
+        [
+          1,
+          2,
+          -3,
+          4
+        ],
+        [
+          1,
+          2,
+          -3,
+          -4
+        ],
+        [
+          1,
+          -2,
+          3,
+          4
+        ],
+        [
+          1,
+          -2,
+          3,
+          -4
+        ],
+        [
+          1,
+          -2,
+          -3,
+          4
+        ],
+        [
+          1,
+          -2,
+          -3,
+          -4
+        ],
+        [
+          -1,
+          2,
+          3,
+          4
+        ],
+        [
+          -1,
+          2,
+          3,
+          -4
+        ],
+        [
+          -1,
+          2,
+          -3,
+          4
+        ],
+        [
+          -1,
+          2,
+          -3,
+          -4
+        ],
+        [
+          -1,
+          -2,
+          3,
+          4
+        ],
+        [
+          -1,
+          -2,
+          3,
+          -4
+        ],
+        [
+          -1,
+          -2,
+          -3,
+          4
+        ],
+        [
+          -1,
+          -2,
+          -3,
+          -4
+        ]
+      ],
+      "models": [],
+      "model_count": 0,
+      "arms": {
+        "series": {
+          "summary": {
+            "outcome": "closure",
+            "units": [],
+            "proof_records": 0
+          },
+          "result": {
+            "schema": "instinct-drago007-shared-ledger-1",
+            "mode": "combined",
+            "source_sha256": "1d8707e6fe2e5c11ffffa8135bc178400e48340ec2ecd19aca1e690b588b1cc5",
+            "prefix_sha256": "1d8707e6fe2e5c11ffffa8135bc178400e48340ec2ecd19aca1e690b588b1cc5",
+            "nodes": [
+              [
+                1,
+                2,
+                3,
+                4
+              ],
+              [
+                1,
+                2,
+                3,
+                -4
+              ],
+              [
+                1,
+                2,
+                -3,
+                4
+              ],
+              [
+                1,
+                2,
+                -3,
+                -4
+              ],
+              [
+                1,
+                -2,
+                3,
+                4
+              ],
+              [
+                1,
+                -2,
+                3,
+                -4
+              ],
+              [
+                1,
+                -2,
+                -3,
+                4
+              ],
+              [
+                1,
+                -2,
+                -3,
+                -4
+              ],
+              [
+                -1,
+                2,
+                3,
+                4
+              ],
+              [
+                -1,
+                2,
+                3,
+                -4
+              ],
+              [
+                -1,
+                2,
+                -3,
+                4
+              ],
+              [
+                -1,
+                2,
+                -3,
+                -4
+              ],
+              [
+                -1,
+                -2,
+                3,
+                4
+              ],
+              [
+                -1,
+                -2,
+                3,
+                -4
+              ],
+              [
+                -1,
+                -2,
+                -3,
+                4
+              ],
+              [
+                -1,
+                -2,
+                -3,
+                -4
+              ]
+            ],
+            "proofs": [],
+            "units": [],
+            "outcome": "closure",
+            "terminal_node": null,
+            "budget_reason": null,
+            "counts": {
+              "rounds": 1,
+              "unit_node_tests": 16,
+              "simplification_clause_scans": 16,
+              "simplification_literal_tests": 64,
+              "active_clause_scans": 16,
+              "loop_bucket_clause_tests": 16
+            },
+            "checker_counts": {
+              "source_clause_checks": 16,
+              "source_literal_checks": 64,
+              "source_hashes": 1,
+              "source_hash_bytes": 193
+            },
+            "origins": {},
+            "discovery_events": [],
+            "max_derived": 1000,
+            "max_rounds": 10000,
+            "elapsed_seconds": 0.00010804600060509983,
+            "checker_seconds_included": 4.445700142241549e-05,
+            "storage_entries": {
+              "nodes": 16,
+              "known_clauses": 16,
+              "attempted_binary_pairs": 0
+            },
+            "scope": "One source-bound ordinary-resolution DAG. Loop proposals and origin labels are not trusted proof premises. Units justify every wider-clause reduction. Discovery rescans and rebuilds graphs; storage entries are not bytes. Closure is current-rule exhaustion, not general SAT completeness. Ablations share unit simplification and differ only in enabled discovery rules."
+          }
+        },
+        "companion": {
+          "summary": {
+            "outcome": "CLOSURE_UNKNOWN",
+            "units": [],
+            "proof_records": 0
+          },
+          "result": {
+            "schema": "drago007-combined-1",
+            "mode": "combined",
+            "status": "CLOSURE_UNKNOWN",
+            "original": [
+              [
+                1,
+                2,
+                3,
+                4
+              ],
+              [
+                1,
+                2,
+                3,
+                -4
+              ],
+              [
+                1,
+                2,
+                -3,
+                4
+              ],
+              [
+                1,
+                2,
+                -3,
+                -4
+              ],
+              [
+                1,
+                -2,
+                3,
+                4
+              ],
+              [
+                1,
+                -2,
+                3,
+                -4
+              ],
+              [
+                1,
+                -2,
+                -3,
+                4
+              ],
+              [
+                1,
+                -2,
+                -3,
+                -4
+              ],
+              [
+                -1,
+                2,
+                3,
+                4
+              ],
+              [
+                -1,
+                2,
+                3,
+                -4
+              ],
+              [
+                -1,
+                2,
+                -3,
+                4
+              ],
+              [
+                -1,
+                2,
+                -3,
+                -4
+              ],
+              [
+                -1,
+                -2,
+                3,
+                4
+              ],
+              [
+                -1,
+                -2,
+                3,
+                -4
+              ],
+              [
+                -1,
+                -2,
+                -3,
+                4
+              ],
+              [
+                -1,
+                -2,
+                -3,
+                -4
+              ]
+            ],
+            "source_sha256": "1d8707e6fe2e5c11ffffa8135bc178400e48340ec2ecd19aca1e690b588b1cc5",
+            "prefix_sha256": "1d8707e6fe2e5c11ffffa8135bc178400e48340ec2ecd19aca1e690b588b1cc5",
+            "nodes": [
+              {
+                "rule": "source",
+                "source_index": 0,
+                "clause": [
+                  1,
+                  2,
+                  3,
+                  4
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 1,
+                "clause": [
+                  -4,
+                  1,
+                  2,
+                  3
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 2,
+                "clause": [
+                  -3,
+                  1,
+                  2,
+                  4
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 3,
+                "clause": [
+                  -4,
+                  -3,
+                  1,
+                  2
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 4,
+                "clause": [
+                  -2,
+                  1,
+                  3,
+                  4
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 5,
+                "clause": [
+                  -4,
+                  -2,
+                  1,
+                  3
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 6,
+                "clause": [
+                  -3,
+                  -2,
+                  1,
+                  4
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 7,
+                "clause": [
+                  -4,
+                  -3,
+                  -2,
+                  1
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 8,
+                "clause": [
+                  -1,
+                  2,
+                  3,
+                  4
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 9,
+                "clause": [
+                  -4,
+                  -1,
+                  2,
+                  3
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 10,
+                "clause": [
+                  -3,
+                  -1,
+                  2,
+                  4
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 11,
+                "clause": [
+                  -4,
+                  -3,
+                  -1,
+                  2
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 12,
+                "clause": [
+                  -2,
+                  -1,
+                  3,
+                  4
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 13,
+                "clause": [
+                  -4,
+                  -2,
+                  -1,
+                  3
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 14,
+                "clause": [
+                  -3,
+                  -2,
+                  -1,
+                  4
+                ]
+              },
+              {
+                "rule": "source",
+                "source_index": 15,
+                "clause": [
+                  -4,
+                  -3,
+                  -2,
+                  -1
+                ]
+              }
+            ],
+            "certificates": [],
+            "facts": {},
+            "fact_node_ids": {},
+            "entries": [
+              {
+                "base_node": 0,
+                "current_node": 0,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 1,
+                "current_node": 1,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 2,
+                "current_node": 2,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 3,
+                "current_node": 3,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 4,
+                "current_node": 4,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 5,
+                "current_node": 5,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 6,
+                "current_node": 6,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 7,
+                "current_node": 7,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 8,
+                "current_node": 8,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 9,
+                "current_node": 9,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 10,
+                "current_node": 10,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 11,
+                "current_node": 11,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 12,
+                "current_node": 12,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 13,
+                "current_node": 13,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 14,
+                "current_node": 14,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              },
+              {
+                "base_node": 15,
+                "current_node": 15,
+                "version": 1,
+                "state": "active",
+                "origin": "original"
+              }
+            ],
+            "events": [],
+            "empty_node_id": null,
+            "pending_refresh": [],
+            "pending_binary_tasks": 0,
+            "counts": {
+              "active_state_builds": 1,
+              "variable_occurrence_insertions": 64,
+              "refresh_enqueues": 16,
+              "work_items": 16,
+              "entry_updates": 16
+            },
+            "checker_counts": {
+              "envelope": {},
+              "resolution_checker": {
+                "accepted_steps": 0,
+                "conclusion_literals_checked": 0,
+                "parent_literal_visits": 0,
+                "pivot_membership_checks": 0,
+                "rejected_steps": 0,
+                "resolvent_literal_entries": 0,
+                "source_clauses_checked": 16,
+                "source_hash_bytes": 193,
+                "source_hash_calls": 1,
+                "source_literals_read": 64,
+                "source_normalized_literal_entries": 64,
+                "step_attempts": 0,
+                "tautology_membership_checks": 0
+              }
+            },
+            "limits": {
+              "max_work_items": 20000,
+              "max_new_proof_nodes": 4000,
+              "max_bridge_entries": 512,
+              "max_pending_binary_tasks": 20000
+            },
+            "limit_reason": null,
+            "scope": "One immutable-source exact-resolution DAG. Only published units/binary bridges and original entries drive discovery; internal loop proofs stay DAG-only. CLOSURE_UNKNOWN is not SAT. LIMITED may contain valid unpublished proofs and unfinished index refresh; no resume/total resource/speed/completeness claim."
+          }
+        }
+      }
+    }
+  ],
+  "code_sha256": {
+    "INSTINCT-Drago-007/EVIDENCE/BOUNDARY007.initial.py": "28c384b8d1c3e00c2740ed847fe8d34ffa1b65931d8a23055ab3a35ea179b2e0",
+    "INSTINCT-Drago-007/EVIDENCE/SIMPLIFICATION_COST.initial.py": "f03d4310ce156570ebf7260f7e6e39921b505d838eb5187873fe139892c6b275",
+    "INSTINCT-Drago-007/audit007.py": "b9f4e0b9264d31ea3b8d356515fdb80e03ab462fec2ddec2e73dc539111560d7",
+    "INSTINCT-Drago-007/boundary007.py": "5a65abde79381b65adf9d55b894790eb34bebbf002d7cd4bbc8b193ef0ae04c8",
+    "INSTINCT-Drago-007/checker007.py": "07e48ad7f5b8e145dc303898cf4ae982fe426d2cba3fb3cd8456d9e698da7178",
+    "INSTINCT-Drago-007/engine007.py": "5f52e850f7aea8145e715c30b9714eb6554f07012ba186f423917e1b352495c2",
+    "INSTINCT-Drago-007/experiment007.py": "f5e6f83b55905470f99aa40e58b6cf9390c7ce930067a25964d24ec985d5872d",
+    "INSTINCT-Drago-007/parity_boundary007.py": "6227250b29ebf3387504362d2992f71eaf0d266ec29b78c23969abd35936227c",
+    "INSTINCT-Drago-007/reference/episode005/checker.py": "444bf721659943a9df0e51f9bb9c3b6a32191b683ca18326f8424edde583729b",
+    "INSTINCT-Drago-007/reference/episode005/engine.py": "3a1e53e163f30b19ec515d110aa453150a1b6308290bfe177a09896c552a3355",
+    "INSTINCT-Drago-007/reference/episode006/checker006.py": "d07f8206490f9dfbd49d0fdc1732367a1d2e69ab6d1afd69b54db6053c02dfd1",
+    "INSTINCT-Drago-007/reference/episode006/engine006.py": "508481ad50e5b237c2f6013ebca19a6960d29135bac2860fdd8ec93ca8827e11",
+    "INSTINCT-Drago-007/replay007.py": "211ba652f127aa1f0ecd7707245799bcaebb8ca80b01a3b09105fca362b970d2",
+    "INSTINCT-Drago-007/show_work007.py": "98abe7f487241c1470f436aee616687f11338f213316e515bf93b0f400309e8b",
+    "INSTINCT-Drago-007/simplification_cost007.py": "10ad5a6f86eb2dfe56c8db025176c24c6f58f76accda700c7bff1807576832c8",
+    "DRAGO007-Combined-Checked-Inference-2026-11-03/EVIDENCE/history/run_experiment_run001.py": "0fe57e34ed45292f78b6f41915626a4c9d8c471ce3cdc3e264531d393e32c7dd",
+    "DRAGO007-Combined-Checked-Inference-2026-11-03/combined.py": "391941e4eae04539a4a9cdd119b42f6b0707ee261451f26ae32d79e3c8fbf056",
+    "DRAGO007-Combined-Checked-Inference-2026-11-03/loop_kernel.py": "7b931d73e447dbfbb348711d8a431a80209c3835880b0eb271ace34208a9fc6b",
+    "DRAGO007-Combined-Checked-Inference-2026-11-03/ordinary_checker.py": "c0eac86fee9fb4c2e969b8b0866dec3d3ac1b82b01683a5a0caebfd01c0c955e",
+    "DRAGO007-Combined-Checked-Inference-2026-11-03/proof_store.py": "b3a9314ad2316561d349badc8ecbde4ae7c518a7844e5eba9714b6871f8000f6",
+    "DRAGO007-Combined-Checked-Inference-2026-11-03/reference/drago005/checker.py": "444bf721659943a9df0e51f9bb9c3b6a32191b683ca18326f8424edde583729b",
+    "DRAGO007-Combined-Checked-Inference-2026-11-03/reference/drago005/engine.py": "3a1e53e163f30b19ec515d110aa453150a1b6308290bfe177a09896c552a3355",
+    "DRAGO007-Combined-Checked-Inference-2026-11-03/reference/drago006/bridge.py": "f19d037d211fc73c90d4d254dee0f94f5c2d4846d283a7ef2f2fd600d1a83207",
+    "DRAGO007-Combined-Checked-Inference-2026-11-03/run_experiment.py": "493d38065d51ae38872b5345cce0717c6e685a9285c2bc31f426dbf0387d2fd3",
+    "DRAGO007-Combined-Checked-Inference-2026-11-03/show_work.py": "567c6b576d8b711591bd1d202e3c8a1ac7b2d83f49425ac321386e98b745c290",
+    "DRAGO007-Combined-Checked-Inference-2026-11-03/verify_combined.py": "16083a8b09fe4c1c8b4286888a4ce708f6e926961bacaf43b110e753a2fa0744"
+  },
+  "probe_sha256": "8a28641dca10e6b40adf3eae2bae6b4b51ae080602d0120050bb572217d03631",
+  "scope": "Six targeted source cases, two combined modes, complete truth tables and exact resolution replay. Different implementations and intermediate clauses; no equal-contract timing benchmark, universal dominance, or general completeness claim."
+}

@@ -1,0 +1,47 @@
+## Inspection result
+The connected-region theorem survives inspection. XORing vertex equations cancels internal edges. On a connected internal graph, fixing free non-tree edges and solving the tree from leaves to root gives sufficiency when the boundary parity matches. For disconnected internal regions the condition must be kept per component. The recognizer's completeness remains narrower: clean four-clause motifs for simple cubic graphs. The code leaves unmatched clauses in the residual and checks the full input before reporting SAT. No correctness counterexample to these stated claims found in this bounded inspection.
+
+This is not an external audit or formal verification. In particular, parsing, arbitrary malformed input behavior and the archived large outputs were not comprehensively audited. Hash agreement establishes source integrity, not proof correctness.
+
+## The actual mixed remainder, settled exactly
+Use the packet's all-even triangular prism with edge IDs 1..9. A deterministic spanning tree uses edges 1,2,4,5,7. Put z1=x3, z2=x6, z3=x8, z4=x9. Tree reconstruction gives XOR expressions:
+
+x1 = z1 XOR z3 XOR z4
+x2 = z1 XOR z4
+x3 = z1
+x4 = z2 XOR z3 XOR z4
+x5 = z2 XOR z4
+x6 = z2
+x7 = z3 XOR z4
+x8 = z3
+x9 = z4.
+
+All 16 z assignments satisfy all original parity clauses after this reconstruction, and every parity solution occurs exactly once. Exhaustively checked against all 512 original edge assignments.
+
+For the packet's unmatched clause G=(x1 OR x2 OR x3), substitution is exactly equivalent to
+
+G(T(z)) = z1 OR z3 OR z4.
+
+Proof: all three x's are zero iff z1=0 from x3, then z4=0 from x2, then z3=0 from x1. z2 is unrestricted. Therefore exactly two of 16 core solutions fail G; 14 satisfy the full original CNF. Choosing (z1,z2,z3,z4)=(1,0,0,0) reconstructs x1=x2=x3=1, x4..x9=0, checked directly against every original clause. This reproduces the provided witness and adds an exact residual classification; it is not a new witness discovery. The supplied solver still returns UNKNOWN for this mixed formula, correctly reflecting its deliberately partial method rather than UNSAT.
+
+## A universal extension obstruction with every extra variable inside the core
+Precise statement: solving arbitrary added CNF clauses on free edges of these connected clean cubic parity cores is at least as hard as solving arbitrary CNF. Adding clauses only on core variables does not make the residual uniformly easy.
+
+Construction: given any CNF H(z1,...,zq), take a connected prism with 2k vertices and 3k edges, where k=max(3,q-1), and all vertex charges zero. A spanning tree leaves d=3k-(2k)+1=k+1>=q non-tree edges. Associate each z_i with a distinct non-tree edge, and rename H's literals to these edges; call the resulting clauses G. Encode every vertex parity equation by the packet's four three-literal clauses. This makes a connected, consistent, clean cubic parity core C. Every variable in G is an edge variable already present in C; no separate dummy component or unconstrained outside variable is used.
+
+Forward: every solution of C AND G restricts on the q selected free edges to a solution of H. Backward: every solution of H extends by setting the unused free edges arbitrarily and reconstructing tree edges; the result satisfies C AND G. Thus SAT(H) iff SAT(C AND G), with explicit polynomial-size construction and witness reconstruction. The core contributes 8k clauses; literal renaming preserves the size and widths of H. If H has width at most three, so does the whole constructed instance. The statement needs no assumption that the recognizer can recover its original core uniquely after G is added.
+
+More exactly, the number of models of C AND G is 2^(d-q) times the number of H models, because free-edge assignment and tree reconstruction are bijective. This is a straightforward consequence of the established cycle-space parameterization, not an originality claim or a new complexity barrier. Under the standard NP-completeness of SAT, the constructed mixed family is SAT-hard; it is also in NP by ordinary assignment checking. This does not prove P!=NP: a polynomial complete solver for all these mixed instances would also solve SAT, which is precisely the remaining open obligation.
+
+## Small execution checks
+Standard-library code check.py and results.json saved here; source hash and original source copies preserved. Checked 104 lifted cases: four explicit controls (empty true H, empty false clause, opposite units, and one three-literal clause) plus 100 seed-20261022 generated formulas on one to six variables. For each, enumerated every free-edge assignment, reconstructed original edges and verified both the core and equality between the full lifted CNF and H. Total 2,736 free-assignment checks, all passed. These are construction checks, not evidence for asymptotic hardness; the general reduction proof is above.
+
+Also called the supplied partial solver on each lifted instance. It reported SAT on 12 cases and UNKNOWN on 92; no UNSAT reports. All SAT witnesses passed original-clause evaluation. UNKNOWNs were retained as unknown, never counted as UNSAT. No inference that the partial solver is incorrect follows from its incompleteness here. The mathematical projection equivalence was checked independently by reconstruction and truth tables.
+
+Measured local checker time about 0.116 seconds; excludes source inspection, reasoning, tool overhead, packaging and any archived large-run costs. No runtime comparison with a general SAT solver.
+
+## What is finished and what remains
+Finished this packet's small mixed remainder, with the original requirements unchanged and a checkable witness plus exact count. The graph-parity theorem did not need more large replays. A universal 'the parity core makes arbitrary remaining clauses easy' claim does not follow: even clauses restricted to free core coordinates can reproduce arbitrary SAT. No actual false general claim is attributed to the source packet, which explicitly leaves this obligation open.
+
+Possible next direction: identify a restricted form of G(T(z)) that remains tractable and can be recognized cheaply, such as an additional affine system (solve it as linear equations) or a genuinely small free-variable support. Count recognition and reconstruction costs. Do not relabel unrestricted G as one of those classes.
+

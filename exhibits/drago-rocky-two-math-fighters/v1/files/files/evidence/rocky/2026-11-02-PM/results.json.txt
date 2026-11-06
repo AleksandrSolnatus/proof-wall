@@ -1,0 +1,105 @@
+{
+  "planted_formulas": 60,
+  "orders_per_formula": 3,
+  "remaining_assignment_checks": 960,
+  "explicit_original_extension_evaluations": 61440,
+  "formulas_with_different_intermediate_restriction_costs": 57,
+  "sum_best_order_calls": 6036,
+  "sum_worst_order_calls": 6806,
+  "doubling_controls": [
+    {
+      "k": 1,
+      "layer_unique_nodes": [
+        2
+      ],
+      "restriction_calls": 2,
+      "original_models": 3
+    },
+    {
+      "k": 2,
+      "layer_unique_nodes": [
+        2,
+        4
+      ],
+      "restriction_calls": 6,
+      "original_models": 9
+    },
+    {
+      "k": 3,
+      "layer_unique_nodes": [
+        2,
+        4,
+        8
+      ],
+      "restriction_calls": 14,
+      "original_models": 27
+    },
+    {
+      "k": 4,
+      "layer_unique_nodes": [
+        2,
+        4,
+        8,
+        16
+      ],
+      "restriction_calls": 30,
+      "original_models": 81
+    },
+    {
+      "k": 5,
+      "layer_unique_nodes": [
+        2,
+        4,
+        8,
+        16,
+        32
+      ],
+      "restriction_calls": 62,
+      "original_models": 243
+    },
+    {
+      "k": 6,
+      "layer_unique_nodes": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64
+      ],
+      "restriction_calls": 126,
+      "original_models": 729
+    },
+    {
+      "k": 7,
+      "layer_unique_nodes": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "restriction_calls": 254,
+      "original_models": 2187
+    },
+    {
+      "k": 8,
+      "layer_unique_nodes": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128,
+        256
+      ],
+      "restriction_calls": 510,
+      "original_models": 6561
+    }
+  ],
+  "failures": 0,
+  "seed": 2026110301
+}

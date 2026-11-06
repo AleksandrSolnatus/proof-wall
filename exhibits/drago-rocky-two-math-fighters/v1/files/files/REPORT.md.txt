@@ -1,0 +1,403 @@
+# Two Math Fighters
+## DRAGO × ROCKY: different strengths, useful weaknesses
+
+**A retrospective experiment record · November 6, 2026 · Version 1**
+
+> “The most useful thing is two trained math fighters with different strength and weakness.”
+>
+> — Aleksandr, experiment owner, at the opening of the comparison
+
+The experiment began with a mountain: P versus NP. It ended this phase with something more immediately useful than a winner—two research tracks that the owner had learned how to work with differently.
+
+Drago received an inheritance: accumulated mathematics, tools, prior discoveries, and a structured research archive. Rocky received the destination, freedom to choose a route, and the tools actually available in its own environment. Rocky was not required to work without computation. The difference was preparation, not a prohibition on using tools. Both were expected to retain mistakes as well as successes. [S02–S03]
+
+The owner's description is vivid: **Drago wonders about everything and takes a long time; Rocky arrives quickly at a simple, useful answer.** That is a valuable observation about working with these tracks. It is not a measured speed ratio. The tasks, resources, review obligations, interventions, and later agendas were not held equal. This was a friendly, deliberately unequal research game—not a randomized experiment establishing which model is faster or better.
+
+“Training” here means accumulated research experience: a history of questions, failed approaches, methods, artifacts, corrections, and reusable work. This packet does not document a change to model weights. The names identify continuing research tracks, not fixed model versions or scientifically established personalities.
+
+## A shared packet, two useful responses
+
+The clearest early encounter used common mathematics: a parity problem that could be simplified, but still had an extra condition to satisfy. Both tracks received the common material; this was an authorized shared-input episode, not a secret transfer of either notebook. [S04–S05]
+
+**Drago worked around the result.** It reproduced the supplied outputs, checked certificates independently, clarified the difference between a theorem and an implemented interface, and found a small but real qualification: a completeness statement needed to exclude the empty input. Its reported reproduction included 64 charge assignments, 126 projection checks, and six larger encodings. [S04]
+
+**Rocky worked through the remaining question.** It wrote the original variables in terms of four free choices. The extra condition became the plain statement `z1 OR z3 OR z4`. Fourteen of the sixteen parity solutions survived. Rocky then checked a construction on 104 cases, with 2,736 free-assignment checks, and explained why arbitrary added conditions could still contain the whole difficulty of SAT. [S05]
+
+These responses are complementary. One made the surrounding claim safer to rely on; the other finished the particular unfinished example. The reported local times—0.514 seconds for Drago's supplied-code replay and about 0.116 seconds for Rocky's checker—cover different computations. They must not be turned into a race result.
+
+## Rocky: stop carrying independent choices together
+
+One of Rocky's most useful sequences began with a failure. An exact method shared identical residual problems, yet an easy family still doubled its number of distinct residual states. For eight independent pairs, the saved test reached 256 residual states and 510 restriction calls. The answer was correct; the representation was expensive. [S06]
+
+The next move was not a larger machine. It was a simpler arrangement: keep independent components separate. For a family of independent pairs, local factors preserve the count without expanding their entire product. The subsequent experiment checked 100 generated formulas against explicit assignment evaluation. A negative control joined two formerly independent pieces: their old product would predict nine solutions, but the connected problem had five. [S07]
+
+The following session handled a small shared set: first agree on the shared variables, then multiply the genuinely independent pieces. Another 100-formula experiment matched 51,200 full-assignment evaluations. A tiny equality example showed why multiplying before agreement would count four combinations when only two were compatible. [S08]
+
+This is the kind of simple answer the owner valued. It is also a qualified answer. Finding a useful separator costs work. Enumerating its possible values costs work. A remaining component can still be difficult. Rocky's own notes keep those costs visible.
+
+## Drago: make the useful inference answer for its cost
+
+Drago's proof work supplied a different sort of value: a good idea did not get a free pass because it was mathematically sound.
+
+One reviewed recognizer found every forced literal in a tightly specified four-clause family. The recorded census contained 35,960 formulas and 72 forced-literal cases, with no semantic misses in that family. One additional clause supplied a checked boundary to the guarantee. [S09]
+
+Then came a practical question: would calling the recognizer during a search pay for itself? In the saved eight-case continuation pilot, the answer was **no**. Treatment median continuation times were 4.89–7.75 times the baseline. All eight cases were easy satisfiable continuations; the test did not measure escape from a large failed search subtree. The negative finding belongs to that exact integration, not to every possible use of the method. [S09]
+
+A later 128-case comparison retained search information instead of rebuilding it. Both main arms produced the same checked proof sequences. Residual-clause recomputations fell from 43,872 to 7,008. The archived sum of per-case median times also fell, but the retaining arm was slower on 66 of the 128 individual cases. Both facts are part of the result. [S10]
+
+That combination—proof, boundary, cost, and losing cases—is a strength. Its practical weakness is the possibility of spending more effort establishing a mechanism than a particular task can repay. The record does not hide that tension.
+
+## Neither fighter fits only one style
+
+The contrast becomes more useful when it is not turned into a caricature.
+
+Drago also found a small repair: apply an already forced unit before continuing a recursive interface search. On the same 68-source comparison, the tight recursive configurations improved from 49 decided cases to 65; the roomier ones improved from 55 to 68. Separate controls still regressed, and a deep host-stack failure remained visible. A small fix can have a careful proof trail. [S12]
+
+Rocky also supplied a general conditional accounting argument. A bound on decisions along an entire path, additive mass under decomposition, polynomial local work, and decisive polynomial leaves together give a bound of the form `A(H + 1) 2^B N^d`. The hard universal conditions were not assumed away. A simple route can lead to a substantial theorem about exactly what must be paid for. [S14]
+
+The styles are tendencies observed in collaboration, not exclusive capabilities.
+
+## The encounter: a proof that a restricted search did not find
+
+In an authorized cross-review, Rocky examined six saved formulas and twelve engine arms. It checked 67 recorded resolution steps without rerunning the original discovery engines. On a separate six-variable, sixteen-clause parity example, it produced a 31-step resolution refutation; all sixteen one-clause-deletion controls became satisfiable. [S11]
+
+The lesson is not “Rocky beat Drago.” The compared saved engines had restricted inference languages. A short proof can exist outside the patterns they recognize. The 31-step trace is a constructive addition to the shared work, not a stopwatch comparison, a shortest-proof claim, or a general SAT algorithm.
+
+This is the practical promise of two differently developed fighters: one track can reveal a gap that the other's machinery makes precise, and one track's checked machinery can make the other's compact insight safer to reuse. That promise is an interpretation of the record. This packet does not claim a controlled demonstration that a combined team outperforms both tracks separately.
+
+## What the wall should preserve
+
+The useful result is not just a shelf of findings. It is a pair of accumulated working relationships, with different strengths and recognizable costs.
+
+Keep the small answer that finishes a real task. Keep the deeper examination that prevents a seductive mistake. Keep the failed test that tells us when a method does not earn its place. And keep enough detail that another reader can distinguish these things.
+
+This packet therefore includes nine test dossiers, selected original inputs and recorded outputs, source-bound reports, corrected-scope notes, and a structured test ledger. **No historical experiment, solver, benchmark, or proof audit was rerun to prepare this edition.** New checks concern the identity and packaging of the files, not a fresh certification of the mathematics.
+
+The selection is not a complete final census of both archives. Rocky's daily notebook examples here run through November 3; its later checkpoint bodies are outside this edition's recovered corpus. Drago's selected repair is from November 4. Drago's agenda also broadened to verified-work efficiency on November 4, so later work is not one unchanged head-to-head SAT experiment. [S15]
+
+No resolution of P versus NP is claimed by these records. No universal speed ranking is established. The claim is narrower and more useful:
+
+**We developed two math fighters worth knowing separately—and a record that lets us learn from how each one works.**
+
+---
+
+**Reading the evidence.** `[Sxx]` identifiers resolve in `files/SOURCE-GUIDE.md` and `files/source-register.json`. The full printable report adds the method, nine detailed test dossiers, measurement boundaries, and the publication handoff. “Independent” retains each source's stated scope; it does not mean external peer review or perfect organizational isolation.
+
+
+---
+
+# How to read this experiment
+
+## The design of the friendly game
+
+The starting contrast was deliberate. Drago was the well-equipped Root-local track, with inherited research and explicit review infrastructure. Rocky was the Cloud track given the objective without that inheritance, but permitted to use available tools, public mathematics, code, and its own growing archive. Both were intended to have two daily research opportunities. A scheduled opportunity is not evidence that a session completed, and this edition does not count every scheduled slot as a successful run. [S02–S03]
+
+The research question was broad: what might different starting conditions make possible? There was no predeclared numerical score in the recovered brief that would turn all the different outputs into one fair league table. The invitation explicitly allowed meaningful intermediate discoveries, failures, corrections, and changes of direction. [S02]
+
+| Design feature | What the record supports | Consequence for interpretation |
+|---|---|---|
+| Two continuing tracks | Root/Drago and Cloud/Rocky, with separate records | A case comparison, not a population estimate |
+| Unequal initial preparation | Drago inherited accumulated work; Rocky did not inherit that archive | No causal attribution to a model alone |
+| Tool use | Both could use available computation | “Rocky” does not mean unaided reasoning |
+| Independence | Separation was instructed; some common packets and later cross-reviews were authorized | Do not describe every episode as fully blind |
+| Changing objectives | Drago's later agenda explicitly broadened | Later outputs are not matched SAT tasks |
+| Research memory | Records, corrections, tools, and handoffs accumulated | No model-weight training is demonstrated |
+| Owner impression | Drago broad/slower; Rocky direct/faster | An observation to preserve, not a timed endpoint |
+
+The common-packet episode and the later cross-review are labeled separately below. They are useful encounters, but they cannot simultaneously count as untouched independent discoveries. The records also do not establish perfect account-level isolation, stable serving-model identities, or equal end-to-end budgets.
+
+## Evidence levels used here
+
+**Observation** means an attributed human impression. **Recorded finite result** means the cited source reports a bounded computation and its outputs. **Argument or conditional proof** means a written mathematical argument with stated assumptions. **Interpretation** means the present writer's reading of what the combination suggests. **Open** means the evidence does not settle the question.
+
+Historical reports sometimes use “independent” for a separately written checker or a separately scoped reviewer. This packet keeps that meaning; it does not upgrade it to external peer review, a different institution, or formal proof-assistant verification. Likewise, an archival hash identifies bytes. It does not prove their mathematical claims.
+
+## Scope and stopping rule for this edition
+
+This is a curated retrospective, not a new research round. It uses selected original records from October 19–November 4, 2026, compiled after the owner's November 6 authorization to compare. The recovered cumulative Rocky notebook supplies daily-session examples through November 3. November 4–5 Rocky checkpoint bodies were not retrieved for this edition; their contents are not inferred from mailbox subjects. Selected Drago material is anchored to the already identified November 5 snapshot, with the case-study repair itself dated November 4.
+
+The rule for preparation was: read the evidence already earned, preserve the original, identify the version, and stop before redoing the experiment. No original research program was executed. Copying data, matching exported text to a stored Git object, building the document, inspecting pages, and hashing the final package are editorial/integrity operations only.
+
+The case selection is retrospective and illustrative. It was not preregistered as a neutral sample of every success and failure. It supports a careful account of particular working strengths, not a causal experiment about whether richer preparation helps or harms an agent.
+
+# Nine test dossiers
+
+## T01 · The same parity packet, two different finishes
+
+**Question.** What can be safely claimed about a recognized graph-parity core, and what happens to an additional clause that the core solver does not settle?
+
+**Episode type.** Authorized common-source comparison, October 22. The two tracks selected different tasks from the shared mathematics; there was no common timed race. [S04–S05]
+
+**Drago's actual work.** The intake report records a complete static read, an unchanged supplied-code replay in a separate copy, mathematical review, and separate saved-witness/certificate checks. The supplied-code replay reproduced eight JSON outputs byte for byte. It covered 64 triangular-prism charge assignments (32 satisfiable and 32 unsatisfiable), 126 region/charge projection checks including 102 connected-region cases, and six larger clean encodings, including cases with 15,000 variables and 40,000 clauses. Disconnected odd components, corrupted certificates, damaged motifs, and an extra retained clause were controls. The independent saved-evidence checker examined 44,400 original satisfiable clauses and 11,100 parity rows through 88,800 local truth-table assignments. Those are different checking units, not one grand number of solved problems.
+
+**A correction worth keeping.** The code returned `UNKNOWN` for the empty conjunction. A completeness statement about its recognized graph family therefore needed a nonempty-input qualification. Drago did not rewrite the old theorem or quietly change the original implementation. It recorded the narrower implementation claim.
+
+**Rocky's actual work.** For the all-even triangular prism, four free variables were chosen: `z1=x3`, `z2=x6`, `z3=x8`, `z4=x9`. In the reconstructed solution, `x1=z1 XOR z3 XOR z4`, `x2=z1 XOR z4`, and `x3=z1`. Consequently the added clause `x1 OR x2 OR x3` is exactly `z1 OR z3 OR z4`. It excludes the two free assignments with `z1=z3=z4=0`, leaving 14 of the 16 parity solutions. The original nine-variable space has 512 assignments; Rocky reports checking the reconstruction against that space.
+
+The extension test used four explicit controls plus 100 seeded generated formulas on one to six variables: empty true input, an empty false clause, opposite units, and a three-literal clause were included. Across 104 lifted cases, all 2,736 free-assignment checks passed. The supplied partial solver returned 12 `SAT`, 92 `UNKNOWN`, and no `UNSAT`; all emitted witnesses were checked against the original clauses. `UNKNOWN` was not relabeled as impossible.
+
+**Costs and limits.** Drago's 0.514-second replay and Rocky's approximately 0.116-second checker are different local measurements. Neither includes a matched total of source reading, reasoning, review, startup, packaging, and delivery. There is no defensible Drago/Rocky speed ratio here. Rocky did not rerun the six large cases; Drago's intake did not settle arbitrary remaining constraints. Both reports keep general SAT obligations open.
+
+**What this encounter contributes.** Drago strengthened the contract around the result. Rocky completed a small unresolved example and characterized its remaining difficulty. The useful contrast is the work selected and delivered, not a common-score victory.
+
+**Evidence supplied.** Exact research excerpts from both reports and Rocky's complete saved 104-case results. The full original common-packet engine and Drago's large raw replay are referenced by the source reports, not reconstructed in this edition.
+
+## T02 · Exact sharing can still double
+
+**Question.** Does merging identical residual formulas keep an exact counting representation compact?
+
+**Track and design.** Rocky, November 2 PM. The saved generator used seed `2026110301`: 60 planted-satisfiable formulas on ten variables, each with 15, 30, or 40 proper signed three-literal clauses. Original clauses contained distinct variables and no tautologies or empty clauses. Planted witnesses were checked. This is a deliberately planted sample, not a representative hard random-SAT population. [S06]
+
+The same six variables were eliminated in ascending, descending, and independently shuffled order. For every formula, all three orders produced the same final canonical residual/weight map. For the 960 assignments to the four remaining variables, recorded weighted counts matched 61,440 explicit evaluations over the eliminated choices.
+
+**The cost result.** Intermediate restriction counts differed on 57 of the 60 formulas. Summing the best of the three observed orders per formula gave 6,036 calls; the worst gave 6,806. This is retrospective selection among tested orders. It does not pay for finding the best order and is not a reported solver speedup. A restriction call can touch a different amount of formula data in each case.
+
+**The decisive control.** Let `F_k` be the conjunction of independent clauses `(x_i OR y_i)`, and eliminate all the `x` variables first. Every subset of the `y` variables becomes a distinct residual conjunction. The saved controls for `k=1..8` matched the doubling argument. At `k=8`, the method held 256 final residuals and made 510 restriction calls. The weighted model count was 6,561.
+
+The family is easy: an immediate satisfying assignment exists and the product count is simple. The explosion belongs to this particular flattened residual representation. It is not a lower bound for all SAT algorithms, all exact counting representations, or every possible form of sharing.
+
+**Limits and evidence.** Normal-Python assertion checks are historical evidence; running the original script with `-O` would suppress its assertions. Original inputs, outputs, script, and its required earlier helper are included unchanged. None was executed during this compilation. This failure sets up the next two dossiers rather than being erased by them.
+
+## T03 · Factor independent choices before cancellation
+
+**Question.** Can genuine independence avoid the expansion in T02 without losing solutions or multiplicity?
+
+**Track and design.** Rocky, November 3 AM, seed `2026110303`. One hundred nine-variable formulas were generated within three disjoint blocks, with zero to eight clauses per block and occasional empty clauses. The program discovered components in the actual primal graph instead of trusting the generator's block labels. Declared isolated variables and the effect of an empty clause were retained. Variables `{1,4,7}` were eliminated. [S07]
+
+**Recorded comparisons.** All 6,400 assignments to the six remaining variables matched the explicit extension counts, requiring 51,200 global-extension evaluations in the reference calculation. The factored side recorded 44,416 component-local assignment tests and 2,473 input-literal visits for graph construction. A local test and a global test are not equal-sized units. Graph operations, bookkeeping, multiplication, bit costs, and other Python work are not covered by those counters.
+
+**Why the rule works.** With genuinely disjoint component variables, each component's legal choices combine independently with every legal choice in the others. Extension counts therefore multiply. The decomposition must come from the actual current clauses, not a preferred earlier picture of the problem.
+
+**Family control.** For the independent-pair family, the saved controls cover `k=1..12`. At `k=12`, the local two-way structure has 24 branches and the model count is 531,441. The 8,190 calls attributed to the old global method at that size come from its formula `2^(k+1)-2`; the old global program was not run at `k=12`. These are neither stopwatch readings nor equal-work comparisons.
+
+**Negative control.** Add `(NOT x1 OR NOT x2)` to `(x1 OR y1) AND (x2 OR y2)`. The new clause connects the pieces. Discovery returns one component, and exact counting gives five models. Multiplying the outdated independent pair counts would give nine. This is a counterexample to reusing a split without checking its premises, not a false answer emitted by the implemented method.
+
+**Limits and evidence.** A component can itself be large and difficult. The local counting implementation still enumerates assignments. This test licenses a useful factorization under verified separation, not a universal efficient SAT procedure. The notebook excerpt and original code, 100 inputs, and saved output are included.
+
+## T04 · First agree on the shared choices
+
+**Question.** What changes when components overlap on a small set of variables?
+
+**Track and design.** Rocky, November 3 PM, seed `2026110401`. One hundred nine-variable formulas were generated inside overlapping blocks `{1,2,3,4,5}` and `{1,2,6,7,8,9}`. The supplied shared set was `{1,2}`, giving four conditioning assignments. Units and occasional empty clauses were included. After each substitution, the implementation discovered the actual residual components, including isolated variables. [S08]
+
+The preserved identity is: partition all solutions by their shared-variable values; within each branch, multiply counts over disjoint residual components; then sum the branches. Each original solution belongs to exactly one shared assignment. Empty-clause branches contribute zero; a satisfied branch with no remaining variables contributes one.
+
+**Recorded result.** Counts matched 51,200 independent full-assignment evaluations. The conditioned calculation recorded 2,528 local assignment tests and 11,604 substitution literal visits. A second calculation with an empty shared set also matched the answers, but its work is not included in those conditioned counters. No ratio of global evaluations to local tests is claimed as a speedup.
+
+**A four-clause failure of naive multiplication.** The formula
+
+`(NOT s OR x) AND (s OR NOT x) AND (NOT s OR y) AND (s OR NOT y)`
+
+requires `s=x=y`. Each pair separately has two models, but the conjunction has only two compatible models, not four. Conditioning on `s` gives one extension from each component in each branch, totaling two.
+
+**Additional controls.** An empty formula on five declared variables keeps 32 models after conditioning on two variables. Contradictory units give zero. Repeating a variable in the conditioning list is rejected. An empty conditioning set is valid but need not make the problem easier.
+
+**Where the difficulty remains.** The shared set costs `2^|S|` branches to enumerate. This test supplies the set from the construction; it does not solve the problem of cheaply finding a good separator. Component counts can still be exponential. The small, exact solution is useful precisely because its conditions and unpaid costs remain explicit. Original inputs, code, output, and the substantive notebook are included.
+
+## T05 · A good inference can be a bad intervention
+
+**Question.** Can a source-bound forced-literal recognizer be both correct and worth calling during a search?
+
+**Track and scope.** The reviewed INSTINCT–DRAGO 003 episode contains two distinct studies: an exhaustive recognition census and a later frozen continuation-cost pilot. They must not be pooled as one benchmark. [S09]
+
+**Recognition census.** Every four-clause subset of the 32 distinct non-tautological ternary clauses on four variables was examined: 35,960 formulas. All were satisfiable. Of these, 35,888 had no forced literal and 72 had exactly one; the restricted rule found all 72 without false positives in this finite family. The 72 is the prevalence of forced-literal cases, not 72 successes out of a much larger number of true opportunities. All 72 positive cases were also converted into source-bound ordinary-resolution proofs.
+
+The review supplies a narrow argument for at most four normalized ternary clauses: each clause excludes one eighth of all assignments, so forcing one literal requires the excluded half to be accounted for exactly; each clause must contain that literal with the same sign. Denying it leaves an inconsistent binary formula. This is a result for the stated class, not arbitrary CNF.
+
+**Boundary control.** One five-clause example has seven models, all with `A=true`, but the restricted detectors miss `A`. A separate four-step resolution proof establishes it. The source report preserves the exact five clauses and proof. Existence of a short proof and discovery by the selected rule are different properties.
+
+**Continuation pilot.** Eight constructed cases were frozen: eight or twelve variables, 12–17 original clauses, intact and missing-guard controls, both conclusion signs, and optional unrelated components. Deterministic DPLL used the smallest unassigned variable, false first, with full clause scans. After the first real decision and propagation, both arms received copied identical search state. Treatment called the recognizer once on the immutable original source, checked every emitted proof, and inserted only verified global units.
+
+There were 31 paired repetitions per case, alternating arm order: 248 pairs and 496 timed arms. Both arms finished with valid original-source witnesses. All cases were easy satisfiable continuations; no conflict or backtracking occurred. This is not a hard-subtree-avoidance experiment.
+
+| Case | Baseline median µs | Treatment median µs | Recorded ratio |
+|---|---:|---:|---:|
+| Positive intact, 8 variables | 57.5 | 445.2 | 7.75 |
+| Positive missing guard, 8 | 51.8 | 256.4 | 4.95 |
+| Negative intact, 8 | 54.3 | 342.0 | 6.30 |
+| Negative missing guard, 8 | 53.0 | 315.2 | 5.95 |
+| Positive intact + component, 12 | 90.1 | 526.4 | 5.84 |
+| Positive missing + component, 12 | 82.1 | 401.3 | 4.89 |
+| Negative intact + component, 12 | 86.9 | 504.4 | 5.80 |
+| Negative missing + component, 12 | 81.1 | 408.1 | 5.03 |
+
+Treatment was slower in median wall and CPU time on all eight cases, and in wall time on 246 of 248 individual pairs. The timings include copying, detection, proof checking, insertion, continuation, and final witness checking; they exclude common-prefix work, input loading, external truth tables, serialization, development, and review. The displayed times and ratios are separately rounded source values.
+
+**Failure preserved.** A delivered replay script also mistook a metadata list for formula data. The failed original and a separately repaired replay were retained. The inference proof's validity did not make the delivered replay command correct.
+
+**Reading the result.** This recognizer can be right and this invocation policy can still lose. The report is included in full, with its historical evidence map. The original complete 35,960-row census and raw timing bundle are not duplicated here; this dossier is report-supported, not a new replay or a replacement for that original review package.
+
+## T06 · Retain the search work, keep the same proof standard
+
+**Question.** Once a proved fact simplifies the source, can retaining unaffected search information avoid needless reconstruction?
+
+**Design.** INSTINCT–DRAGO 004's frozen comparison used 32 synthetic configurations, each under seeds `113`, `271`, `997`, and `2027`: 128 cases across eight families, with 0–96 variables and no more than 88 clauses. Both main arms used the same normalization, unit-first ordering, candidate order, stopping rule, and independent checker. Both retained proved facts and the checker session. What differed was whether residual clauses and candidate buckets were reconstructed or maintained incrementally. A unit-only arm was a reach control, not an equal-output speed baseline. [S10]
+
+**Recorded equivalence of output.** Both main arms produced the same complete certificate sequences: 832 facts and eight terminal contradictions, 840 proof records per arm. Of the facts, 820 were on 120 satisfiable sources; twelve preceded contradictions on eight inconsistent sources. Exhaustive semantic checking covered 68 cases with at most twelve variables, using 26,740 assignments. The other sixty had checked original witnesses and proofs, not exhaustive model enumeration.
+
+| Work item in the archived first pass | Rebuild | Incremental |
+|---|---:|---:|
+| Residual-clause recomputations | 43,872 | 7,008 |
+| Candidate-loop checks | 8,728 | 3,534 |
+| Original-source hashes | 128 | 128 |
+| New proof-prefix hashes | 840 | 840 |
+| Checker reads of original literals | 7,112 | 7,112 |
+
+Occurrence lists, dirty buckets, versions, and queues have their own overhead. These heterogeneous counts are not summed into an invented measure of total CPU work.
+
+**Timing, with the losing cases retained.** The archived statistic is the sum of 128 per-case medians, each from four fresh-session repetitions after the first pass. Rebuild totals 88.231793 ms and incremental 51.279672 ms. Incremental is faster on 62 individual cases and slower on 66. A separately recorded review replay gives 434.388733 versus 274.550942 ms, with 67 faster and 61 slower cases. These observations are not pooled, substituted, or treated as two populations of distinct problems. Preparation, external audits, serialization, and delivery remain outside those complete-call timings. Resident-memory bytes were not measured.
+
+**Proof and cache checks.** The separate ordinary-resolution bridge converted all 840 records, retaining 620 earlier-proof dependency links in 2,696 resolution steps. The recorded packet audit covered 935 cases, 4,599 proof records, 2,015 dependency links, and 28 rejected mutations. A further targeted review recorded 472 checks under normal and optimized Python. Overlapping checks are not additional independent discoveries.
+
+**The smallest embarrassing case matters.** Eight clauses encode two forced guards. After proving the first guard, the other guard's supporting clauses shrink to two literals. The loop detector accepts exactly ternary residual patterns, while ordinary unit handling accepts only one literal. Both engines therefore miss a true second fact. Renaming variables changes the order and makes both facts visible. A six-resolution certificate proves the missed fact. This is an eligibility/order limitation, not an unsound accepted conclusion.
+
+**Recording failures also matter.** Earlier exports contained 87 of 128 benchmark rows and, in another file, 123 of 128 bridge rows despite full summaries or expected hashes. The source report records preserved failures, recovery, and a successful final clean-path receipt; the underlying recording cause was not identified. This edition trusts that existing qualified checkpoint and does not repeat it. Full review text is included, but the larger original raw bundle is not duplicated.
+
+## T07 · A short proof outside the current search language
+
+**Question.** Do the saved local-engine records support their claims, and can a different bounded route settle a parity case that their rules do not expose?
+
+**Episode type.** Owner-authorized packet cross-review, not a blind daily training round. Rocky read the supplied review packet, not the other participant's full workspace. [S11]
+
+**Recorded audit.** A separate script imported none of the supplied engines or checkers. It enumerated six source formulas, checked twelve saved engine arms, and replayed 67 recorded resolution steps with earlier-parent and source-prefix bindings. Model counts were `12, 12, 12, 1, 0, 0`. One four-unit diagnostic used fifteen Series steps versus four companion steps with the same final units. That is a particular proof-work contrast, not a runtime result.
+
+The original implementation ZIPs needed to regenerate discovery were absent from that supplied review. Rocky explicitly did not rerun their searches, their larger historical cohorts, or saturation/closure completeness. A discrepancy between the pasted narrative and the packaged report about optimized-Python scope was left visible.
+
+**The additional parity result.** The six-variable, sixteen-clause source decomposes into four exact three-variable parity groups. Each group was checked against all its local assignments. Adding the four equations cancels every variable while leaving an odd right-hand side, giving a contradiction. Separately, elimination on the original CNF produced a 31-derived-step resolution refutation after 109 parent-pair attempts. The saved trace contains the actual parent IDs, pivots, and clauses; the last clause is empty.
+
+**Negative controls.** Deleting any one of the sixteen clauses made the formula satisfiable, with two models in every deletion case. The incomplete groups were rejected as complete parity encodings. A signed variable renaming and reversed clause order retained the contradiction.
+
+**Limits.** The 31-step proof is not claimed shortest, novel, or faster than an equally capable general solver. It does not repair the old engines merely by existing. It identifies a gap between the proof language available for checking and the inference patterns selected for discovery.
+
+**Evidence supplied.** Exact source report, raw six-case probe, verification record including the 31-step trace, and the historical verification script. That script was not executed for this edition. This is a concrete place where two different routes can contribute without inventing a winner.
+
+## T08 · A small repair from the broad investigator
+
+**Question.** Can making an already forced unit explicit repair a stalled recursive-interface procedure without changing the frozen source cases or budgets?
+
+**Track and scope.** Drago, November 4, reviewing an owner-supplied Recursive Interfaces packet. This is a cross-packet engineering intervention, not proof that every source in the inherited test corpus originated in Drago's independent daily training. [S12]
+
+The extension adds a checked forced-unit step and preserves the source, configurations, branching policy, numerical budgets, justifications, and model reconstruction.
+
+| Mode and budget profile | Before, decided / 68 | After, decided / 68 |
+|---|---:|---:|
+| Recursive with reuse, tight | 49 | 65 |
+| Recursive without reuse, tight | 49 | 65 |
+| Recursive with reuse, roomier | 55 | 68 |
+| Recursive without reuse, roomier | 55 | 68 |
+| Table only, tight | 17 | 17 |
+| Table only, roomier | 48 | 48 |
+
+There are 411 paired records: 408 main comparison calls and a three-mode diagnostic. Fifty-eight `LIMITED`-to-decided rows correspond to sixteen distinct source names across overlapping modes and profiles. No previously decided case regressed inside this cohort. That statement does not extend to all other resource limits.
+
+**Concrete gains and costs.** In the tight reuse arm, the contradictory diamond falls from fifteen to five visited nodes and from seven to one decisions. Its satisfiable companion falls from fifteen to three nodes. Aggregate visited nodes fall from 465 to 352, table rows from 583 to 392, and actual certificate bytes from 561,745 to 382,769. Yet summed output reservations rise from 342,911,856 to 371,002,496 bytes. Those reservations are sums across runs, not measured peak memory. Fifteen of the 68 tight-reuse cases visit more nodes and spend more declared work credits; the roomier arm has eighteen cases with more nodes.
+
+**Controls that prevent overclaiming.** A single unit with `max_nodes=1` changes from accepted SAT to `LIMITED`. A four-unit chain uses five nodes instead of one. With 512 independent units, the producer returns a candidate in 513 nodes but the checker raises `RecursionError` at a host recursion limit of 1,000. That candidate is not accepted. Logical resource limits and host execution failure remain distinct.
+
+**Recorded validation.** Focused tests cover 74 records and reject 49 malformed certificates per Python mode. A separate sweep uses 708 sources through three modes: 2,124 executions per mode, with 395 SAT, 1,192 UNSAT, and 537 LIMITED outcomes. Normal/optimized repetitions overlap; they are not 4,248 independent source formulas. The report separately records checks of all 209 repaired SAT models in the paired cohort.
+
+**Reading the result.** This is a good example against reducing Drago to “always elaborate.” The useful intervention was small. Its careful record makes both the gains and regressions inspectable. The pinned report excerpt is included; the full 749-file supplied corpus and extended implementation are not reconstructed here. No end-to-end runtime improvement is claimed.
+
+## T09 · A failed universal bound and a useful conditional one
+
+**Question.** Can a small branching set always make a particular recognizer decisive, and how should work be counted when a problem decomposes?
+
+**Episode type.** Rocky's authorized synthesis and gap reviews of supplied packets. The conclusions are scoped to the recorded recognizer and explicit accounting assumptions, not all algorithms. [S13–S14]
+
+**The fixed gadget.** Removing one specified edge from the supplied graph construction yields a satisfiable gadget `Q` with 33 variables and 68 clauses. The complete solver reports a checked model in seven states, while the no-branch recognizer returns `LIMITED`. Disjoint-copy controls record:
+
+| Copies of Q | Variables | Clauses | Complete-solver search states | Root-only recognizer |
+|---|---:|---:|---:|---|
+| 1 | 33 | 68 | 7 | LIMITED |
+| 2 | 66 | 136 | 15 | LIMITED |
+| 4 | 132 | 272 | 29 | LIMITED |
+| 8 | 264 | 544 | 57 | LIMITED |
+| 16 | 528 | 1,088 | 113 | LIMITED |
+
+For this unchanged component-local recognizer, a strong branching set must touch every copy. Otherwise choose the assigned variables consistently with a satisfying assignment: the untouched copy still stalls, and no touched satisfiable component supplies an UNSAT shortcut. Thus a required set can grow at least linearly in the number of copies. This refutes a proposed universal logarithmic bound for that recognizer. It does not establish an exponential lower bound for the complete solver: these independent constant-size copies are easy to solve separately.
+
+**A small equivalence repair.** The later gap review observes that `(s OR C) AND (NOT s OR C)` is exactly `C` when `C` contains neither sign of `s`. On the recorded guarded-copy family, the prototype removes artificial connectors without first searching both selector branches. At sixteen copies, 2,176 clauses become 1,088 through 1,088 checked equivalence steps. Nine tail-pattern controls cover 72 truth-table rows. If the declared variable universe is silently shrunk after removing `s`, raw model counts change; the unused variable still has two values. The scope is full-function equivalence with the universe respected.
+
+**The conditional whole-path bound.** Give a node positive mass `m ≤ N` and remaining decision budget `r`; assign potential `2^r m`. Decomposition may keep the budget in each child only when child masses sum to no more than the parent mass. A Boolean decision consumes one budget unit, creates at most two children, and does not enlarge either child's mass. The sum of potentials on a frontier therefore never exceeds the root's `2^B N`.
+
+If tree height is at most `H`, every node's entire local work is at most `A m^d` for fixed `d ≥ 1`, and every leaf is decided within that same polynomial obligation, the saved argument yields total work at most `A(H+1)2^B N^d`, apart from separately disclosed polynomial encoding overhead. Local work must include discovery, failed attempts, copying, decomposition, proof construction, combination, and checking. A logarithmic **whole-path** budget then suffices under all these assumptions. A new logarithmic allowance at each scale is not the same condition.
+
+**What remains open.** The records do not establish those assumptions for every SAT input. A hard leaf cannot be hidden under a cheap wrapper. A small reuse graph may be costly to discover. The original fixed-gadget stall is implementation-specific; the notebook does not turn it into formal verification of every program execution. A later review also notes that the earlier assertion-based script could skip its checks under optimized Python; later targeted explicit checks do not retroactively certify every old test.
+
+**Evidence supplied.** Exact selected synthesis review, written proof, later gap review, and whole-path theorem. This is a substantial mathematical contribution from the track described as finding simple answers: simplicity and depth are not opposites.
+
+# What this encounter supports
+
+## A useful division of attention, not an exclusive assignment
+
+The owner's working description is consistent with the selected contrast: Rocky often seeks a small exact completion or a simpler representation; Drago often expands the chain of obligations, checks the surrounding claim, and exposes the cost of the mechanism. The same record also prevents a rigid stereotype. Drago's unit repair is small. Rocky's whole-path argument is general and conditional. Neither track owns simplicity, rigor, creativity, or mistakes.
+
+A reasonable interpretation is that different accumulated research habits can be useful together. The current evidence does not establish an optimal routing policy, a tested combined-team advantage, a model capability ranking, or a proof that more preparation makes an investigator slower. Those would be different questions requiring their own evidence; no new experiment is proposed or launched by this packet.
+
+## Do not turn different counters into a scoreboard
+
+| Tempting comparison | Why this packet does not make it |
+|---|---|
+| 0.514 seconds versus 0.116 seconds | Different computations and omitted end-to-end work in the shared-packet episode |
+| 51,200 global checks versus 2,528 local checks | Different-sized work units; substitution and discovery also cost work |
+| 24 branches versus 8,190 calls | The larger number is an analytic prediction for an unexecuted larger control, not a timing observation |
+| 43,872 recomputations versus 31 proof steps | Different operations, inputs, procedures, and acceptance contracts |
+| 411 records versus 708 sources | Trial rows and unique source cases are not the same unit |
+| More archived tests means more capable | Coverage, repetition, preparation, and chosen scope differ |
+
+`UNKNOWN` and `LIMITED` are retained as limits of a method or budget. They do not mean unsatisfiable. SAT witnesses are checked against the original requirements, not merely a convenient reduced problem. Accepted proof steps, complete search, and semantic completeness are different claims.
+
+## Corrections stay attached
+
+The first Step 007 packet and the Step 007B parity-guard checkpoint are distinct: 1,519 versus 1,141 original clauses, despite both reporting 189 conflicts. The supplied addendum identifies a strict earlier-parent/type check and a residual-unit detector correction for the later checkpoint. The old combined handoff did not automatically contain those corrections. This edition includes a public-safe excerpt of that addendum and does not merge the two histories. [S16]
+
+Likewise, the Drago 003 metadata-loader failure, Drago 004 incomplete exports, recognizer misses, assertion-dependent checks, and unit-repair regressions remain visible. A correction is an addition to the evidence, not a reason to erase the unsuccessful attempt.
+
+# Reader access, provenance, and publication
+
+The public candidate separates the short wall article from this detailed report. Selected original research files are included unchanged where suitable; operational preflight paragraphs, private Library links, and workstation/custody locations are omitted in explicitly labeled excerpts. The source register gives each exported file's SHA-256 and, for excerpts, the original source digest when available. Drago text transfers used here were matched to their pinned Git blob identities before excerpting. This identifies the retrieved text; it does not independently re-prove its mathematics.
+
+**Not every original archive is duplicated.** T02–T04 include exact scripts and saved inputs/results, with T02's helper. T07 includes the raw supplied six-case probe and the saved proof trace. T01 includes Rocky's case rows and both substantive reports. T05, T06, and T08 rely on complete or substantial source reports with explicit evidence maps; their larger raw bundles are not repackaged. T09 includes selected review and proof documents. The source and coverage registers make these differences visible.
+
+The top-level integrity checker only hashes files. It never imports a research script, runs a solver, downloads a source, or reproduces a benchmark. Optional research-replay notes instruct a future reader to use a disposable copy; they are not a claim that those replays occurred in this edition. Assertions in original scientific scripts require ordinary Python, not `-O`.
+
+This is a **prepared Proof Wall candidate**, not a claim of a live release. The existing builder/review process should receive this new version as an additional exhibit, preserving prior exhibits and their source records. Public reading and download terms remain all rights reserved; no new open-source license, ownership transfer, or permission to release the entire private archive is granted. Final exact-file review and publication are separate from this compilation.
+
+The central finding is a human interpretation supported by inspectable examples: two accumulated research tracks became useful in different ways. The numerical claims stay where their tests put them. That is enough to put an honest and interesting story on the wall.
+
+
+# Source key for this edition
+
+The following key locates the main documents in the downloadable packet. Supplementary original inputs, outputs and scripts share their parent source ID in `source-register.json`. Exact identities and selection details are in that register and `SOURCE-GUIDE.md`.
+
+**S01 — Owner interpretation commissioning this comparison.** `evidence/design/owner-observation.md`. Exact selected quotation plus explicitly editorial paraphrase from the commissioning conversation.
+
+**S02 — Original invitation: unequal starting conditions.** `evidence/design/rocky-invitation-excerpt.md`. Verbatim contiguous excerpt.
+
+**S03 — Drago research contract and required run evidence.** `evidence/design/drago-contract-excerpt.md`. Verbatim contiguous excerpt; machine commissioning sections omitted.
+
+**S04 — drago-common-intake.md.** `evidence/common-packet/drago-intake-excerpt.md`. Verbatim excerpt from full source matched to pinned git blob; custody/location metadata omitted.
+
+**S05 — Rocky common parity packet response.** `evidence/common-packet/rocky-response-excerpt.md`. Verbatim contiguous excerpt; environment and delivery metadata omitted.
+
+**S06 — Rocky: exact sharing can still double.** `evidence/rocky/2026-11-02-PM/notebook-excerpt.md`. Verbatim notebook paragraphs; operational preflight and courier-preservation paragraphs omitted.
+
+**S07 — Rocky: factor independent choices before cancellation.** `evidence/rocky/2026-11-03-AM/notebook-excerpt.md`. Verbatim notebook paragraphs; operational preflight and courier-preservation paragraphs omitted.
+
+**S08 — Rocky: condition shared choices, then multiply.** `evidence/rocky/2026-11-03-PM/notebook-excerpt.md`. Verbatim notebook paragraphs; operational preflight and courier-preservation paragraphs omitted.
+
+**S09 — INSTINCT-DRAGO-003-REVIEW-REPORT-2026-11-03.txt.** `evidence/drago/INSTINCT-DRAGO-003-REVIEW-REPORT-2026-11-03.txt`. Byte-exact selected original.
+
+**S10 — INSTINCT-DRAGO-004-REVIEW-REPORT-2026-11-03.txt.** `evidence/drago/INSTINCT-DRAGO-004-REVIEW-REPORT-2026-11-03.txt`. Byte-exact selected original.
+
+**S11 — ROCKY-CROSS-REVIEW-RESULTS.zip / ROCKY-REVIEW.md.** `evidence/rocky/cross-review/ROCKY-REVIEW.md`. Byte-exact selected original.
+
+**S12 — drago-unit-repair.md.** `evidence/drago/unit-repair-excerpt.md`. Verbatim excerpt from full source matched to pinned git blob; custody/location metadata omitted.
+
+**S13 — ROCKY-SYNTHESIS-REVIEW-AND-PROOF.zip / ROCKY-REVIEW.md.** `evidence/rocky/synthesis-review/ROCKY-REVIEW.md`. Byte-exact selected original.
+
+**S14 — ROCKY-GAP-REVIEW-2026-11-03.zip / REVIEW.md.** `evidence/rocky/gap-review/REVIEW.md`. Byte-exact selected original.
+
+**S15 — Drago revised agenda, November 4, 2026.** `evidence/design/drago-agenda-excerpt.md`. Verbatim retained-research and measurement-limits excerpt; owner/scheduler paragraphs omitted.
+
+**S16 — Step 007 / 007B correction addendum.** `evidence/corrections/step-007-addendum-public-excerpt.md`. Verbatim text except private library links replaced by explicit omission markers.

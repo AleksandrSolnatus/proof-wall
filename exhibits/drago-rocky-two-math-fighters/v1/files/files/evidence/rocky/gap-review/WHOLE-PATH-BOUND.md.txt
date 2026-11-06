@@ -1,0 +1,21 @@
+# A whole-path branching budget suffices, under explicit local obligations
+
+This is a sufficient conditional theorem, not a theorem that arbitrary SAT inputs meet its hypotheses. No novelty is claimed.
+
+Let an algorithm build a finite split/decomposition tree on a CNF input of encoded length N. Every node has a positive integer mass m, bounded by N, and a nonnegative integer remaining decision budget r. The root has mass at most N and budget B. Assume:
+
+1. A decomposition node gives all children the same remaining budget r, with sum of child masses at most the parent mass.
+2. A Boolean decision gives each of its at most two children budget r-1; each child has mass at most the parent mass. A b-variable batch is equivalent to b such levels. The total number of individual decisions on any root-to-leaf path is at most B.
+3. Tree height is at most H(N), a fixed polynomial. Unary simplification is accounted locally or included in this height bound.
+4. Each node's entire local cost is at most A m^d, for fixed d>=1. Include separator discovery, failed trials, restriction, decomposition, cache lookups if used, copying, certificate construction, combination and checking. Every leaf has a polynomial-time decisive procedure under that same bound. No unrestricted SAT solve is hidden at a leaf. Constant-mass terminal contradictions are charged a positive mass.
+5. Mass accounting is explicitly justified for the representation. Nonempty disjoint residual scopes can use additive occurrence/clause volumes. Empty-clause or satisfied outcomes terminate. Administrative overhead can be charged to local work; it must not create uncounted children. Relabeling bit costs can instead be absorbed into an additional polynomial in N without altering the conclusion.
+
+Then total work is at most A H'(N) 2^B N^d, where H'=H+1 counts levels, up to any separately disclosed polynomial encoding overhead. In particular, B<=c log_2 N for a fixed c implies polynomial total work.
+
+Proof. Give a node the potential Phi=2^r m. At a decomposition, the sum of child potentials is at most 2^r m. At a decision, it is at most 2 * 2^(r-1) m = 2^r m. Consequently the sum of potentials on every depth frontier is at most the root potential 2^B N. Since 2^r>=1, the sum of masses on that frontier is at most 2^B N. Also m^d <= N^(d-1)m. Summing local costs on one frontier therefore gives at most A 2^B N^d. There are at most H+1 frontiers. Summing proves the bound. QED.
+
+This proof permits an independent component to retain the remaining budget; it does not require dividing a global budget among all components. It bounds a whole-path allowance, not a renewed O(log N) allowance at each scale. The latter can admit quasipolynomial recurrences, as the supplied Root packet correctly explains.
+
+Discovery and universal coverage remain obligations. A successful run with a short path does not prove a bound for every input or every alternative branch. An UNSAT certificate may require both alternatives. A complete leaf solver with potentially exponential work violates hypothesis 4 even if the wrapper uses only one separator variable.
+
+Relation to reuse: this bounds the expanded tree and needs no cache. A checked reuse DAG can save work further, but its small existence alone does not bound discovery. An alternative sufficient route is to prove polynomially many distinct expanded keys, polynomially many attempted edges, and polynomial total leaf work, with polynomial discovery/binding overhead. None of the three packets proves either route for arbitrary 3SAT.

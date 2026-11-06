@@ -1,0 +1,3876 @@
+{
+  "status": "all assertions passed",
+  "source_sha256": "a595aeed8245e149f618f988dc6838e2f5cfd2a57ce97c28f7d5897a0c98369b",
+  "prism": {
+    "free_edges": [
+      3,
+      6,
+      8,
+      9
+    ],
+    "edge_expressions": {
+      "1": [
+        1,
+        3,
+        4
+      ],
+      "2": [
+        1,
+        4
+      ],
+      "3": [
+        1
+      ],
+      "4": [
+        2,
+        3,
+        4
+      ],
+      "5": [
+        2,
+        4
+      ],
+      "6": [
+        2
+      ],
+      "7": [
+        3,
+        4
+      ],
+      "8": [
+        3
+      ],
+      "9": [
+        4
+      ]
+    },
+    "residual_equivalent_to": "z1 OR z3 OR z4",
+    "core_models": 16,
+    "mixed_models": 14,
+    "source_solver_status": "UNKNOWN",
+    "original_witness": {
+      "1": 1,
+      "2": 1,
+      "3": 1,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0
+    },
+    "residual_truth_table": [
+      {
+        "z": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "retained_clause": false
+      },
+      {
+        "z": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "retained_clause": true
+      },
+      {
+        "z": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "retained_clause": true
+      },
+      {
+        "z": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "retained_clause": true
+      },
+      {
+        "z": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "retained_clause": false
+      },
+      {
+        "z": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "retained_clause": true
+      },
+      {
+        "z": [
+          0,
+          1,
+          1,
+          0
+        ],
+        "retained_clause": true
+      },
+      {
+        "z": [
+          0,
+          1,
+          1,
+          1
+        ],
+        "retained_clause": true
+      },
+      {
+        "z": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "retained_clause": true
+      },
+      {
+        "z": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "retained_clause": true
+      },
+      {
+        "z": [
+          1,
+          0,
+          1,
+          0
+        ],
+        "retained_clause": true
+      },
+      {
+        "z": [
+          1,
+          0,
+          1,
+          1
+        ],
+        "retained_clause": true
+      },
+      {
+        "z": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "retained_clause": true
+      },
+      {
+        "z": [
+          1,
+          1,
+          0,
+          1
+        ],
+        "retained_clause": true
+      },
+      {
+        "z": [
+          1,
+          1,
+          1,
+          0
+        ],
+        "retained_clause": true
+      },
+      {
+        "z": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "retained_clause": true
+      }
+    ]
+  },
+  "lift_cases": 104,
+  "lift_assignment_checks": 2736,
+  "source_status_counts": {
+    "SAT": 12,
+    "UNSAT": 0,
+    "UNKNOWN": 92
+  },
+  "rows": [
+    {
+      "index": 0,
+      "q": 1,
+      "H": [],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": true,
+      "lifted_model_count": 16,
+      "source_solver_status": "SAT"
+    },
+    {
+      "index": 1,
+      "q": 1,
+      "H": [
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 2,
+      "q": 1,
+      "H": [
+        [
+          1
+        ],
+        [
+          -1
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 3,
+      "q": 3,
+      "H": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": true,
+      "lifted_model_count": 14,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 4,
+      "q": 6,
+      "H": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [],
+        [
+          2
+        ],
+        []
+      ],
+      "graph_vertices": 10,
+      "graph_edges": 15,
+      "free_edges": [
+        5,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 5,
+      "q": 6,
+      "H": [
+        [
+          -5
+        ],
+        [
+          5
+        ],
+        []
+      ],
+      "graph_vertices": 10,
+      "graph_edges": 15,
+      "free_edges": [
+        5,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 6,
+      "q": 5,
+      "H": [
+        [
+          2,
+          -3
+        ]
+      ],
+      "graph_vertices": 8,
+      "graph_edges": 12,
+      "free_edges": [
+        4,
+        8,
+        10,
+        11,
+        12
+      ],
+      "original_SAT": true,
+      "lifted_model_count": 24,
+      "source_solver_status": "SAT"
+    },
+    {
+      "index": 7,
+      "q": 1,
+      "H": [
+        [],
+        [
+          -1
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 8,
+      "q": 5,
+      "H": [
+        [
+          1,
+          2
+        ],
+        [],
+        [
+          4,
+          -1,
+          -5
+        ]
+      ],
+      "graph_vertices": 8,
+      "graph_edges": 12,
+      "free_edges": [
+        4,
+        8,
+        10,
+        11,
+        12
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 9,
+      "q": 1,
+      "H": [
+        [],
+        [
+          -1
+        ],
+        [],
+        [],
+        [
+          1
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 10,
+      "q": 4,
+      "H": [
+        [],
+        [],
+        [
+          1,
+          -3
+        ],
+        [
+          -1,
+          4,
+          3
+        ],
+        [],
+        [
+          -4,
+          -1
+        ],
+        [
+          -1,
+          4
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          3
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 11,
+      "q": 6,
+      "H": [
+        [
+          -2,
+          6
+        ],
+        [
+          -4,
+          -2
+        ],
+        [
+          -6,
+          -5,
+          3
+        ],
+        [
+          -6,
+          5,
+          -2
+        ],
+        [],
+        [
+          -5,
+          -6,
+          3
+        ],
+        [
+          -1,
+          -3
+        ],
+        [],
+        [
+          6,
+          3
+        ],
+        [],
+        []
+      ],
+      "graph_vertices": 10,
+      "graph_edges": 15,
+      "free_edges": [
+        5,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 12,
+      "q": 2,
+      "H": [
+        [
+          1
+        ],
+        [],
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 13,
+      "q": 2,
+      "H": [
+        [],
+        [],
+        [
+          2
+        ],
+        [],
+        [
+          2,
+          -1
+        ],
+        [],
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 14,
+      "q": 6,
+      "H": [
+        [
+          -5,
+          -2,
+          4
+        ],
+        [
+          6
+        ],
+        [
+          4,
+          -3,
+          -6
+        ],
+        [
+          -5
+        ],
+        [
+          -5,
+          6,
+          -4
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2,
+          3
+        ],
+        [
+          5
+        ],
+        [
+          1,
+          -6
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "graph_vertices": 10,
+      "graph_edges": 15,
+      "free_edges": [
+        5,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 15,
+      "q": 6,
+      "H": [
+        [
+          -6
+        ]
+      ],
+      "graph_vertices": 10,
+      "graph_edges": 15,
+      "free_edges": [
+        5,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "original_SAT": true,
+      "lifted_model_count": 32,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 16,
+      "q": 4,
+      "H": [
+        [
+          3
+        ],
+        [
+          -4,
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          -3,
+          2,
+          -4
+        ],
+        [
+          4,
+          -1
+        ],
+        [
+          4,
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [],
+        [
+          -1,
+          -4
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 17,
+      "q": 1,
+      "H": [
+        [],
+        [
+          -1
+        ],
+        [
+          -1
+        ],
+        [],
+        [
+          1
+        ],
+        [],
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [],
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 18,
+      "q": 3,
+      "H": [
+        [
+          3,
+          -2
+        ],
+        [
+          -3,
+          -1
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": true,
+      "lifted_model_count": 8,
+      "source_solver_status": "SAT"
+    },
+    {
+      "index": 19,
+      "q": 5,
+      "H": [
+        [
+          2,
+          -1
+        ],
+        [
+          -4
+        ],
+        [],
+        [
+          -2,
+          -1
+        ],
+        [
+          -4,
+          -1,
+          3
+        ],
+        [
+          -4,
+          3
+        ],
+        [
+          3
+        ],
+        [
+          5,
+          3,
+          1
+        ],
+        [],
+        [],
+        [],
+        [
+          1
+        ]
+      ],
+      "graph_vertices": 8,
+      "graph_edges": 12,
+      "free_edges": [
+        4,
+        8,
+        10,
+        11,
+        12
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 20,
+      "q": 2,
+      "H": [
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 21,
+      "q": 1,
+      "H": [
+        [],
+        [
+          -1
+        ],
+        [],
+        [
+          -1
+        ],
+        [],
+        [
+          1
+        ],
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 22,
+      "q": 4,
+      "H": [
+        [
+          -1
+        ],
+        [],
+        [
+          -2
+        ],
+        [
+          -1,
+          -2,
+          -4
+        ],
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 23,
+      "q": 2,
+      "H": [
+        [
+          -1
+        ],
+        [],
+        [],
+        [
+          2
+        ],
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 24,
+      "q": 2,
+      "H": [
+        [],
+        [
+          1,
+          -2
+        ],
+        [],
+        [
+          -2,
+          1
+        ],
+        [],
+        [
+          2,
+          -1
+        ],
+        [
+          1,
+          2
+        ],
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 25,
+      "q": 5,
+      "H": [
+        [
+          4,
+          -2,
+          3
+        ],
+        [
+          -4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          -2,
+          -3
+        ],
+        [
+          -5
+        ],
+        [
+          -4,
+          -1,
+          5
+        ],
+        [
+          5,
+          -2
+        ],
+        [
+          -1
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "graph_vertices": 8,
+      "graph_edges": 12,
+      "free_edges": [
+        4,
+        8,
+        10,
+        11,
+        12
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 26,
+      "q": 2,
+      "H": [
+        [
+          2
+        ],
+        [
+          -2,
+          -1
+        ],
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 27,
+      "q": 6,
+      "H": [
+        [
+          6
+        ],
+        [
+          -4,
+          -2
+        ],
+        [
+          -4,
+          2,
+          1
+        ],
+        [
+          -5,
+          1,
+          4
+        ]
+      ],
+      "graph_vertices": 10,
+      "graph_edges": 15,
+      "free_edges": [
+        5,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "original_SAT": true,
+      "lifted_model_count": 16,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 28,
+      "q": 5,
+      "H": [
+        [
+          -2,
+          -1,
+          -5
+        ],
+        [
+          -1,
+          4
+        ],
+        [
+          1,
+          3,
+          -2
+        ],
+        [
+          -4,
+          -5
+        ],
+        [
+          -2,
+          -3,
+          -4
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          -1,
+          -5
+        ]
+      ],
+      "graph_vertices": 8,
+      "graph_edges": 12,
+      "free_edges": [
+        4,
+        8,
+        10,
+        11,
+        12
+      ],
+      "original_SAT": true,
+      "lifted_model_count": 5,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 29,
+      "q": 4,
+      "H": [
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 30,
+      "q": 4,
+      "H": [
+        [
+          -3
+        ],
+        [],
+        [],
+        [
+          2,
+          -3
+        ],
+        [
+          -1
+        ],
+        [
+          -3
+        ],
+        [],
+        [],
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 31,
+      "q": 3,
+      "H": [
+        [],
+        [
+          -1
+        ],
+        [
+          1,
+          -2,
+          -3
+        ],
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 32,
+      "q": 6,
+      "H": [
+        [
+          -1,
+          6,
+          4
+        ],
+        [
+          1,
+          2,
+          6
+        ],
+        [
+          1,
+          -3,
+          -5
+        ],
+        [
+          3
+        ]
+      ],
+      "graph_vertices": 10,
+      "graph_edges": 15,
+      "free_edges": [
+        5,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "original_SAT": true,
+      "lifted_model_count": 18,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 33,
+      "q": 3,
+      "H": [
+        [
+          1
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": true,
+      "lifted_model_count": 8,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 34,
+      "q": 2,
+      "H": [
+        [],
+        [
+          1,
+          2
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 35,
+      "q": 4,
+      "H": [
+        [
+          -2
+        ],
+        [],
+        [
+          4,
+          -1,
+          -3
+        ],
+        [
+          -2
+        ],
+        [
+          -2
+        ],
+        [
+          4,
+          -1,
+          -3
+        ],
+        [
+          -1,
+          2,
+          4
+        ],
+        [],
+        [
+          2,
+          -1,
+          3
+        ],
+        [],
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 36,
+      "q": 2,
+      "H": [
+        [
+          2,
+          -1
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": true,
+      "lifted_model_count": 12,
+      "source_solver_status": "SAT"
+    },
+    {
+      "index": 37,
+      "q": 5,
+      "H": [
+        [],
+        [],
+        [
+          -2,
+          1
+        ],
+        [],
+        [
+          4,
+          -2,
+          5
+        ],
+        [
+          2,
+          -5
+        ],
+        [
+          3,
+          2,
+          -1
+        ],
+        [],
+        [
+          -3
+        ]
+      ],
+      "graph_vertices": 8,
+      "graph_edges": 12,
+      "free_edges": [
+        4,
+        8,
+        10,
+        11,
+        12
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 38,
+      "q": 1,
+      "H": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [],
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 39,
+      "q": 3,
+      "H": [
+        [
+          3
+        ],
+        [
+          -2,
+          -1,
+          -3
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": true,
+      "lifted_model_count": 6,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 40,
+      "q": 1,
+      "H": [
+        [],
+        [],
+        [],
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 41,
+      "q": 3,
+      "H": [
+        [
+          -1,
+          2,
+          -3
+        ],
+        [
+          -3
+        ],
+        [
+          -3,
+          2
+        ],
+        [
+          -1
+        ],
+        [
+          3,
+          -1,
+          -2
+        ],
+        [
+          2,
+          -1,
+          -3
+        ],
+        [],
+        [],
+        [],
+        [
+          -3,
+          2,
+          1
+        ],
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 42,
+      "q": 4,
+      "H": [
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [],
+        [],
+        [
+          1
+        ],
+        [
+          -3,
+          4,
+          2
+        ],
+        [
+          -4,
+          -1
+        ],
+        [
+          -4,
+          -2
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 43,
+      "q": 4,
+      "H": [
+        [
+          -4,
+          3
+        ],
+        [
+          -4
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          1
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 44,
+      "q": 5,
+      "H": [
+        [
+          -4,
+          -2,
+          -5
+        ],
+        [],
+        [
+          -2,
+          4,
+          5
+        ],
+        [
+          3
+        ],
+        [
+          -3
+        ],
+        [],
+        [
+          5
+        ],
+        []
+      ],
+      "graph_vertices": 8,
+      "graph_edges": 12,
+      "free_edges": [
+        4,
+        8,
+        10,
+        11,
+        12
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 45,
+      "q": 1,
+      "H": [
+        [
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          -1
+        ],
+        [],
+        [],
+        [],
+        [
+          1
+        ],
+        [],
+        [],
+        [
+          -1
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 46,
+      "q": 3,
+      "H": [
+        [
+          -3
+        ],
+        [
+          1,
+          -3
+        ],
+        [
+          3,
+          -2,
+          -1
+        ],
+        [
+          -1,
+          3,
+          -2
+        ],
+        [
+          -3,
+          -2
+        ],
+        [],
+        [
+          -3,
+          2
+        ],
+        [],
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 47,
+      "q": 1,
+      "H": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          1
+        ],
+        [],
+        [
+          -1
+        ],
+        [
+          -1
+        ],
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 48,
+      "q": 1,
+      "H": [
+        [],
+        [],
+        [],
+        [],
+        [
+          -1
+        ],
+        [],
+        [
+          1
+        ],
+        [
+          -1
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 49,
+      "q": 2,
+      "H": [
+        [
+          -1,
+          2
+        ],
+        [
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          2
+        ],
+        [],
+        [],
+        [
+          -1,
+          2
+        ],
+        [],
+        [],
+        [
+          1
+        ],
+        [],
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 50,
+      "q": 5,
+      "H": [],
+      "graph_vertices": 8,
+      "graph_edges": 12,
+      "free_edges": [
+        4,
+        8,
+        10,
+        11,
+        12
+      ],
+      "original_SAT": true,
+      "lifted_model_count": 32,
+      "source_solver_status": "SAT"
+    },
+    {
+      "index": 51,
+      "q": 2,
+      "H": [
+        [],
+        [],
+        [],
+        [
+          1
+        ],
+        [
+          -2,
+          1
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 52,
+      "q": 4,
+      "H": [
+        [
+          -1,
+          4,
+          2
+        ],
+        [
+          -3
+        ],
+        [],
+        [
+          1,
+          3
+        ],
+        [
+          4,
+          1,
+          2
+        ],
+        [
+          4,
+          -1,
+          -3
+        ],
+        [
+          4,
+          -2
+        ],
+        [
+          -3,
+          1,
+          2
+        ],
+        [
+          2,
+          3,
+          -1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          -2,
+          4,
+          -3
+        ],
+        [
+          -2,
+          1
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 53,
+      "q": 6,
+      "H": [
+        [
+          4
+        ],
+        [],
+        [
+          5
+        ],
+        [
+          4,
+          2,
+          6
+        ],
+        [
+          -3
+        ],
+        [],
+        [
+          1,
+          6,
+          2
+        ],
+        [
+          -2,
+          -6
+        ]
+      ],
+      "graph_vertices": 10,
+      "graph_edges": 15,
+      "free_edges": [
+        5,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 54,
+      "q": 4,
+      "H": [],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": true,
+      "lifted_model_count": 16,
+      "source_solver_status": "SAT"
+    },
+    {
+      "index": 55,
+      "q": 4,
+      "H": [
+        [],
+        [
+          -2,
+          -1
+        ],
+        [],
+        [
+          2
+        ],
+        [
+          -2
+        ],
+        [
+          -4,
+          1
+        ],
+        [
+          -2
+        ],
+        [],
+        [
+          2,
+          -4,
+          -3
+        ],
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 56,
+      "q": 2,
+      "H": [
+        [
+          -2,
+          1
+        ],
+        [
+          1
+        ],
+        [],
+        [],
+        [
+          -2,
+          1
+        ],
+        [],
+        [
+          -2
+        ],
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 57,
+      "q": 4,
+      "H": [
+        [
+          -3,
+          -1
+        ],
+        [],
+        [
+          -4
+        ],
+        [
+          -4,
+          2,
+          1
+        ],
+        [
+          -1,
+          -2
+        ],
+        [
+          1,
+          4,
+          -3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 58,
+      "q": 2,
+      "H": [
+        [],
+        [],
+        [
+          1,
+          2
+        ],
+        [],
+        [
+          -1,
+          2
+        ],
+        [
+          -2,
+          1
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 59,
+      "q": 1,
+      "H": [],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": true,
+      "lifted_model_count": 16,
+      "source_solver_status": "SAT"
+    },
+    {
+      "index": 60,
+      "q": 2,
+      "H": [
+        [],
+        [
+          1,
+          -2
+        ],
+        [
+          -1
+        ],
+        [
+          -2
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 61,
+      "q": 2,
+      "H": [
+        [
+          -1
+        ],
+        [
+          -1
+        ],
+        [],
+        [
+          2,
+          -1
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          -2,
+          -1
+        ],
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 62,
+      "q": 6,
+      "H": [
+        [
+          3
+        ],
+        [
+          -6
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          -6,
+          -3,
+          1
+        ],
+        [],
+        [
+          3,
+          5,
+          6
+        ],
+        [
+          -2,
+          5
+        ],
+        [
+          -4,
+          2
+        ],
+        [],
+        [],
+        [
+          1,
+          -5
+        ],
+        []
+      ],
+      "graph_vertices": 10,
+      "graph_edges": 15,
+      "free_edges": [
+        5,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 63,
+      "q": 3,
+      "H": [
+        [
+          -2,
+          1
+        ],
+        [
+          -3,
+          1,
+          -2
+        ],
+        [],
+        [],
+        [
+          -2
+        ],
+        [
+          -3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          -2,
+          1
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 64,
+      "q": 3,
+      "H": [
+        [
+          3
+        ],
+        [
+          3,
+          -1,
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          1,
+          2,
+          -3
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": true,
+      "lifted_model_count": 4,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 65,
+      "q": 5,
+      "H": [],
+      "graph_vertices": 8,
+      "graph_edges": 12,
+      "free_edges": [
+        4,
+        8,
+        10,
+        11,
+        12
+      ],
+      "original_SAT": true,
+      "lifted_model_count": 32,
+      "source_solver_status": "SAT"
+    },
+    {
+      "index": 66,
+      "q": 5,
+      "H": [
+        [
+          3
+        ],
+        [
+          1,
+          -4
+        ]
+      ],
+      "graph_vertices": 8,
+      "graph_edges": 12,
+      "free_edges": [
+        4,
+        8,
+        10,
+        11,
+        12
+      ],
+      "original_SAT": true,
+      "lifted_model_count": 12,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 67,
+      "q": 4,
+      "H": [
+        [
+          1,
+          -2
+        ],
+        [
+          4,
+          3,
+          -1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          -4
+        ],
+        [
+          1,
+          -4,
+          2
+        ],
+        [
+          4,
+          3,
+          1
+        ],
+        [
+          -2
+        ],
+        [
+          1,
+          4,
+          3
+        ],
+        [
+          -4
+        ],
+        [
+          -4,
+          2,
+          -3
+        ],
+        [
+          4
+        ],
+        [
+          -3,
+          4,
+          2
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 68,
+      "q": 4,
+      "H": [
+        [
+          4
+        ],
+        [
+          3
+        ],
+        [],
+        [
+          -3
+        ],
+        [
+          -3
+        ],
+        [
+          -3,
+          -1,
+          4
+        ],
+        [],
+        [
+          3,
+          2,
+          1
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 69,
+      "q": 3,
+      "H": [],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": true,
+      "lifted_model_count": 16,
+      "source_solver_status": "SAT"
+    },
+    {
+      "index": 70,
+      "q": 3,
+      "H": [
+        [],
+        [
+          -3,
+          -2
+        ],
+        [
+          3
+        ],
+        [
+          3,
+          1,
+          2
+        ],
+        [
+          -1,
+          -3
+        ],
+        [],
+        [
+          -3,
+          -1
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 71,
+      "q": 4,
+      "H": [
+        [
+          3,
+          2
+        ],
+        [
+          -4,
+          -1,
+          -2
+        ],
+        [
+          3,
+          -2,
+          4
+        ],
+        [
+          -1
+        ],
+        [],
+        [],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3,
+          -4
+        ],
+        [
+          -3,
+          -1
+        ],
+        [],
+        [
+          4,
+          3,
+          1
+        ],
+        [
+          -1,
+          -2,
+          -3
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 72,
+      "q": 4,
+      "H": [
+        [],
+        [],
+        [
+          4,
+          -2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          4
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 73,
+      "q": 1,
+      "H": [
+        [],
+        [
+          -1
+        ],
+        [],
+        [],
+        [
+          -1
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 74,
+      "q": 2,
+      "H": [
+        [],
+        [
+          -2
+        ],
+        [
+          -2
+        ],
+        [
+          2
+        ],
+        [],
+        [
+          -2,
+          -1
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 75,
+      "q": 5,
+      "H": [
+        [
+          -4,
+          -3,
+          -1
+        ],
+        [],
+        [
+          5,
+          3,
+          -4
+        ],
+        [],
+        [
+          3
+        ],
+        [
+          -4
+        ],
+        [
+          4,
+          3
+        ],
+        [],
+        [
+          -3,
+          -1
+        ]
+      ],
+      "graph_vertices": 8,
+      "graph_edges": 12,
+      "free_edges": [
+        4,
+        8,
+        10,
+        11,
+        12
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 76,
+      "q": 3,
+      "H": [
+        [
+          -1,
+          2
+        ],
+        [],
+        [
+          -2,
+          -3
+        ],
+        [
+          3,
+          -1,
+          -2
+        ],
+        [
+          -3,
+          2,
+          -1
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 77,
+      "q": 6,
+      "H": [
+        [
+          4,
+          6,
+          1
+        ],
+        [],
+        [],
+        [
+          2,
+          -6,
+          3
+        ],
+        [
+          -6,
+          -3,
+          5
+        ],
+        [],
+        [],
+        [],
+        [
+          2
+        ],
+        [
+          -3,
+          6,
+          5
+        ],
+        []
+      ],
+      "graph_vertices": 10,
+      "graph_edges": 15,
+      "free_edges": [
+        5,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 78,
+      "q": 4,
+      "H": [
+        [
+          2,
+          -3
+        ],
+        [],
+        [
+          -2,
+          -1,
+          -3
+        ],
+        [
+          4,
+          -3
+        ],
+        [],
+        [
+          4,
+          2,
+          -1
+        ],
+        [],
+        [
+          3,
+          2,
+          1
+        ],
+        [],
+        [],
+        [
+          1,
+          4,
+          -2
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 79,
+      "q": 6,
+      "H": [
+        [
+          -6
+        ],
+        [
+          1,
+          6,
+          5
+        ],
+        [
+          -4,
+          -3
+        ],
+        [],
+        [],
+        [
+          1,
+          4
+        ],
+        [
+          4
+        ],
+        [
+          -1,
+          3,
+          4
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          6
+        ],
+        [
+          -4,
+          -5
+        ],
+        [
+          6,
+          -4
+        ]
+      ],
+      "graph_vertices": 10,
+      "graph_edges": 15,
+      "free_edges": [
+        5,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 80,
+      "q": 4,
+      "H": [
+        [
+          -2
+        ],
+        [],
+        [
+          3
+        ],
+        [],
+        [
+          4,
+          -1,
+          -2
+        ],
+        [
+          -1,
+          -4
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 81,
+      "q": 3,
+      "H": [],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": true,
+      "lifted_model_count": 16,
+      "source_solver_status": "SAT"
+    },
+    {
+      "index": 82,
+      "q": 5,
+      "H": [
+        [
+          -4,
+          5
+        ],
+        [],
+        [
+          -3
+        ],
+        [],
+        [
+          -5,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [],
+        [],
+        [
+          -1,
+          -4,
+          3
+        ],
+        [
+          -1
+        ],
+        [
+          2
+        ],
+        [
+          -2,
+          -5,
+          -1
+        ]
+      ],
+      "graph_vertices": 8,
+      "graph_edges": 12,
+      "free_edges": [
+        4,
+        8,
+        10,
+        11,
+        12
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 83,
+      "q": 6,
+      "H": [
+        [
+          2
+        ],
+        [],
+        [],
+        [],
+        [
+          6
+        ],
+        [
+          3,
+          -1,
+          -5
+        ],
+        [
+          6,
+          -5
+        ]
+      ],
+      "graph_vertices": 10,
+      "graph_edges": 15,
+      "free_edges": [
+        5,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 84,
+      "q": 4,
+      "H": [
+        [
+          -3,
+          2
+        ],
+        [
+          -4,
+          2
+        ],
+        [
+          2
+        ],
+        [
+          3,
+          2,
+          4
+        ],
+        [
+          2,
+          -1
+        ],
+        [],
+        [
+          4,
+          -1
+        ],
+        [
+          1,
+          -2
+        ],
+        [
+          -1,
+          -2,
+          4
+        ],
+        [],
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 85,
+      "q": 4,
+      "H": [
+        [
+          -4,
+          -2
+        ],
+        [
+          3,
+          4,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          3,
+          -4,
+          2
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": true,
+      "lifted_model_count": 4,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 86,
+      "q": 5,
+      "H": [
+        [
+          5,
+          -2
+        ],
+        [],
+        [
+          -1,
+          -3,
+          -4
+        ],
+        [],
+        [],
+        [
+          -1,
+          5,
+          -4
+        ]
+      ],
+      "graph_vertices": 8,
+      "graph_edges": 12,
+      "free_edges": [
+        4,
+        8,
+        10,
+        11,
+        12
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 87,
+      "q": 6,
+      "H": [
+        [
+          -2,
+          1,
+          -6
+        ],
+        [
+          3
+        ],
+        [],
+        [
+          2,
+          4,
+          -3
+        ],
+        [
+          -3,
+          -2
+        ],
+        [
+          -1,
+          6
+        ],
+        [
+          -1,
+          -4
+        ],
+        [],
+        [],
+        [],
+        []
+      ],
+      "graph_vertices": 10,
+      "graph_edges": 15,
+      "free_edges": [
+        5,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 88,
+      "q": 6,
+      "H": [
+        []
+      ],
+      "graph_vertices": 10,
+      "graph_edges": 15,
+      "free_edges": [
+        5,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 89,
+      "q": 5,
+      "H": [
+        [],
+        [],
+        [
+          -1
+        ],
+        [],
+        [
+          -3,
+          4,
+          -5
+        ],
+        [
+          4,
+          -1,
+          3
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          -1,
+          4,
+          -2
+        ]
+      ],
+      "graph_vertices": 8,
+      "graph_edges": 12,
+      "free_edges": [
+        4,
+        8,
+        10,
+        11,
+        12
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 90,
+      "q": 6,
+      "H": [
+        [
+          5
+        ],
+        [
+          -3
+        ],
+        [
+          6,
+          4,
+          -1
+        ],
+        [
+          -5,
+          4,
+          3
+        ],
+        [
+          -1,
+          -2
+        ],
+        [
+          -1
+        ],
+        [
+          -2,
+          3
+        ],
+        [
+          3,
+          -6
+        ],
+        [],
+        [
+          3,
+          1,
+          -2
+        ]
+      ],
+      "graph_vertices": 10,
+      "graph_edges": 15,
+      "free_edges": [
+        5,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 91,
+      "q": 3,
+      "H": [
+        [
+          1,
+          -3,
+          -2
+        ],
+        [],
+        [
+          3,
+          -2,
+          1
+        ],
+        []
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 92,
+      "q": 6,
+      "H": [
+        [],
+        [
+          1
+        ],
+        [
+          3
+        ],
+        [
+          -6,
+          -4,
+          -5
+        ],
+        [
+          3,
+          6,
+          -2
+        ],
+        []
+      ],
+      "graph_vertices": 10,
+      "graph_edges": 15,
+      "free_edges": [
+        5,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 93,
+      "q": 4,
+      "H": [
+        [
+          2,
+          -1
+        ],
+        [
+          -1,
+          4,
+          -3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": true,
+      "lifted_model_count": 9,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 94,
+      "q": 1,
+      "H": [],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": true,
+      "lifted_model_count": 16,
+      "source_solver_status": "SAT"
+    },
+    {
+      "index": 95,
+      "q": 4,
+      "H": [],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": true,
+      "lifted_model_count": 16,
+      "source_solver_status": "SAT"
+    },
+    {
+      "index": 96,
+      "q": 6,
+      "H": [
+        [
+          -1,
+          -2
+        ],
+        [
+          1,
+          5,
+          -3
+        ],
+        [
+          -3
+        ],
+        [
+          -6,
+          -5
+        ],
+        [
+          -6,
+          -5,
+          1
+        ],
+        [
+          -1,
+          5,
+          6
+        ],
+        [],
+        [
+          5,
+          -1,
+          2
+        ],
+        [
+          3
+        ],
+        []
+      ],
+      "graph_vertices": 10,
+      "graph_edges": 15,
+      "free_edges": [
+        5,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 97,
+      "q": 1,
+      "H": [
+        [],
+        [
+          1
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 98,
+      "q": 4,
+      "H": [
+        [
+          3,
+          4
+        ],
+        [
+          -2,
+          3,
+          -1
+        ],
+        [],
+        [
+          -2
+        ],
+        [
+          2
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          -1,
+          3,
+          -2
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 99,
+      "q": 4,
+      "H": [
+        [],
+        [
+          -4,
+          2,
+          -1
+        ],
+        [
+          2,
+          -3
+        ],
+        [
+          3
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          -4
+        ],
+        [
+          3,
+          -2,
+          -1
+        ],
+        [
+          2,
+          1,
+          4
+        ],
+        [
+          1,
+          -2
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 100,
+      "q": 3,
+      "H": [
+        [
+          3,
+          -1
+        ],
+        [
+          -3
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 101,
+      "q": 5,
+      "H": [
+        [
+          1,
+          -4
+        ],
+        [
+          -4
+        ],
+        [
+          -3,
+          4,
+          5
+        ],
+        [
+          -1,
+          -3
+        ]
+      ],
+      "graph_vertices": 8,
+      "graph_edges": 12,
+      "free_edges": [
+        4,
+        8,
+        10,
+        11,
+        12
+      ],
+      "original_SAT": true,
+      "lifted_model_count": 10,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 102,
+      "q": 5,
+      "H": [
+        [
+          1,
+          -2,
+          -5
+        ],
+        [
+          -1
+        ],
+        [
+          3,
+          5
+        ],
+        []
+      ],
+      "graph_vertices": 8,
+      "graph_edges": 12,
+      "free_edges": [
+        4,
+        8,
+        10,
+        11,
+        12
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    },
+    {
+      "index": 103,
+      "q": 3,
+      "H": [
+        [],
+        [],
+        [
+          3
+        ],
+        [
+          2,
+          -3
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ],
+      "graph_vertices": 6,
+      "graph_edges": 9,
+      "free_edges": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "original_SAT": false,
+      "lifted_model_count": 0,
+      "source_solver_status": "UNKNOWN"
+    }
+  ],
+  "elapsed_seconds": 0.11638387299899478,
+  "script_sha256": "398ec3ecb923016915efb1d13bd43ba77d3e7600b9e46c289c4322a859a0cba2"
+}

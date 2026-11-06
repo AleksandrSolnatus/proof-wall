@@ -1,0 +1,433 @@
+{
+  "schema_version": 1,
+  "id": "drago-rocky-two-math-fighters",
+  "version": 1,
+  "title": "Two Math Fighters — DRAGO × ROCKY",
+  "date": "2026-11-06",
+  "artifact_type": "experiment",
+  "status": "experimental",
+  "sample": false,
+  "question": "What became useful when two mathematical research tracks developed differently—and what do their saved tests actually show?",
+  "finding": "The owner reports complementary broad/investigative and direct/simplifying styles. Nine source-backed dossiers preserve particular useful findings, failures and costs without treating them as a controlled speed ranking.",
+  "method": "Retrospective editorial selection of saved reports, inputs, results and proof documents; no historical scientific code, solver, experiment, benchmark or proof audit rerun. Only source-file identity, document layout and package integrity checked.",
+  "claim_scope": "Attributed working observations plus the selected historical finite results and conditional arguments. Unequal starting resources, distinct tasks, later agenda changes and authorized shared episodes prevent causal model or speed comparisons.",
+  "limitations": [
+    "Retrospective and selectively recovered corpus, not a complete final archive census or preregistered neutral sample.",
+    "Rocky daily notebook examples end November 3; later checkpoint bodies are outside this recovered edition. Selected Drago repair is dated November 4.",
+    "Some dossiers include full selected inputs/code/results; others are report-supported and do not include their large raw archives.",
+    "Historical independent checks are not recast as external peer review or fresh mathematical certification.",
+    "No model-weight training, universal speed ranking, tested combined-team advantage, or P versus NP resolution established.",
+    "Publication and official builder/schema validation remain separate pending steps."
+  ],
+  "article": "article.md",
+  "files": [
+    {
+      "path": "article.md",
+      "sha256": "123149d57ecef2354b305e081410b4f18d814e5558be7ee9f4a7a6db09378088",
+      "bytes": 10150,
+      "role": "article",
+      "media_type": "text/markdown",
+      "attribution": "AI-assisted editorial synthesis of the identified records",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/REPORT.md",
+      "sha256": "dc4e861dbaceb43e0453c7c464680ec73594bdc6941baf14ed80d43712b69b5f",
+      "bytes": 50811,
+      "role": "article",
+      "media_type": "text/markdown",
+      "attribution": "AI-assisted editorial synthesis of the identified records",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/REPORT.pdf",
+      "sha256": "557597cf1b3093876101dba9fe34f041e2a3cf540d05bc7ff9a4253062a4aa89",
+      "bytes": 104250,
+      "role": "article",
+      "media_type": "application/pdf",
+      "attribution": "AI-assisted editorial synthesis of the identified records",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/SOURCE-GUIDE.md",
+      "sha256": "849339d53f8228dae533f1705feedb2d1bba2905acb4c52d75b508af113b7393",
+      "bytes": 8543,
+      "role": "data",
+      "media_type": "text/markdown",
+      "attribution": "AI-assisted editorial synthesis of the identified records",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/common-packet/drago-intake-excerpt.md",
+      "sha256": "fa7d10a459824772484718c3970e7120f6be2d70cecf5c1c7d736cbf654b3120",
+      "bytes": 5192,
+      "role": "original",
+      "media_type": "text/markdown",
+      "attribution": "Original track/reviewer record; verbatim excerpt from full source matched to pinned Git blob; custody/location metadata omitted",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/common-packet/rocky-response-excerpt.md",
+      "sha256": "e3c4a41a38d237eac1d9aa2ccaf1d35839c85057d9a7c86a4f89e7e24fe7cf40",
+      "bytes": 6339,
+      "role": "original",
+      "media_type": "text/markdown",
+      "attribution": "Original track/reviewer record; verbatim contiguous excerpt; environment and delivery metadata omitted",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/common-packet/rocky-results.json",
+      "sha256": "fe61ad02211fdc836be86f8c83f909d34d9e327baebbaf07cc44e2fc988103c2",
+      "bytes": 55907,
+      "role": "original",
+      "media_type": "application/json",
+      "attribution": "Original track/reviewer record; byte-exact selected original",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/corrections/step-007-addendum-public-excerpt.md",
+      "sha256": "51860491c8431b03315b4ed560da226370ad32a356c1509fcc2e00903fd2c2e6",
+      "bytes": 4833,
+      "role": "original",
+      "media_type": "text/markdown",
+      "attribution": "Original track/reviewer record; verbatim text except private Library links replaced by explicit omission markers",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/design/drago-agenda-excerpt.md",
+      "sha256": "ba2935ebe89bd5c9d6447d3619a8736bd3eb8793f6fb3d63b7707943b098fe5f",
+      "bytes": 1958,
+      "role": "original",
+      "media_type": "text/markdown",
+      "attribution": "Original track/reviewer record; verbatim retained-research and measurement-limits excerpt; owner/scheduler paragraphs omitted",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/design/drago-contract-excerpt.md",
+      "sha256": "885b5fb0af4ac257c7cbaf39bc27aeba5be75740ff29c66f4827a5fe4b959a40",
+      "bytes": 2295,
+      "role": "original",
+      "media_type": "text/markdown",
+      "attribution": "Original track/reviewer record; verbatim contiguous excerpt; machine commissioning sections omitted",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/design/owner-observation.md",
+      "sha256": "a81f22267158f88894ec4b2036adab3b06ec0811abb3cf54029e249f2b4fe1c1",
+      "bytes": 434,
+      "role": "original",
+      "media_type": "text/markdown",
+      "attribution": "Original track/reviewer record; exact selected quotation plus explicitly editorial paraphrase from the commissioning conversation",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/design/rocky-invitation-excerpt.md",
+      "sha256": "d9dfc011c61db60d44db7f0e8e617bfbdf7b2dbef34bb395774ffa389a9b10e3",
+      "bytes": 967,
+      "role": "original",
+      "media_type": "text/markdown",
+      "attribution": "Original track/reviewer record; verbatim contiguous excerpt",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/drago/INSTINCT-DRAGO-003-REVIEW-REPORT-2026-11-03.txt",
+      "sha256": "f4aa74eeef467fe9f32eef4bfdc8be0f3f739eb32d73fc671d1c85daf36e3a85",
+      "bytes": 16583,
+      "role": "original",
+      "media_type": "text/plain",
+      "attribution": "Original track/reviewer record; byte-exact selected original",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/drago/INSTINCT-DRAGO-004-REVIEW-REPORT-2026-11-03.txt",
+      "sha256": "d32072ecd3d4383937c257117af5aa521d6b20fb74283354c5f245f610275a3d",
+      "bytes": 22305,
+      "role": "original",
+      "media_type": "text/plain",
+      "attribution": "Original track/reviewer record; byte-exact selected original",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/drago/unit-repair-excerpt.md",
+      "sha256": "3bf02739321806ec1d42217f1c8e9d8517f3a810f4ed772298bbb61bc9315f49",
+      "bytes": 6890,
+      "role": "original",
+      "media_type": "text/markdown",
+      "attribution": "Original track/reviewer record; verbatim excerpt from full source matched to pinned Git blob; custody/location metadata omitted",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/rocky/2026-11-02-AM/check.py",
+      "sha256": "3539ab594149d8a91595a6af2387b22847c853b57e19e5ea4bdfb33f8a6585bf",
+      "bytes": 2888,
+      "role": "original",
+      "media_type": "text/x-python",
+      "attribution": "Original track/reviewer record; byte-exact selected original",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/rocky/2026-11-02-PM/cases.json",
+      "sha256": "edf48d8bec93c240e3842551a26f5b3ca18d4dbd970061cef030dbc5978d6f7c",
+      "bytes": 251204,
+      "role": "original",
+      "media_type": "application/json",
+      "attribution": "Original track/reviewer record; byte-exact selected original",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/rocky/2026-11-02-PM/check.py",
+      "sha256": "92e820fb5cc4e1138ba3cedacbc871e1bf42361df08c9817e38d382dce4d59de",
+      "bytes": 2733,
+      "role": "original",
+      "media_type": "text/x-python",
+      "attribution": "Original track/reviewer record; byte-exact selected original",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/rocky/2026-11-02-PM/notebook-excerpt.md",
+      "sha256": "9e8bb1d0e5406e4667c4f0770f65d7958f7ca912494547b9aeaa4f0a627dbf6d",
+      "bytes": 4075,
+      "role": "original",
+      "media_type": "text/markdown",
+      "attribution": "Original track/reviewer record; verbatim notebook paragraphs; operational preflight and courier-preservation paragraphs omitted",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/rocky/2026-11-02-PM/results.json",
+      "sha256": "e31d26197611a16ee57be1711112d6c44719c42e71b076b4023c8eae988f2779",
+      "bytes": 1754,
+      "role": "original",
+      "media_type": "application/json",
+      "attribution": "Original track/reviewer record; byte-exact selected original",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/rocky/2026-11-03-AM/cases.json",
+      "sha256": "4682925e583b67135ea79204d2e0fe426e524284d62cdc79e816dc8c5b8896bd",
+      "bytes": 17305,
+      "role": "original",
+      "media_type": "application/json",
+      "attribution": "Original track/reviewer record; byte-exact selected original",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/rocky/2026-11-03-AM/check.py",
+      "sha256": "9706693e105ff68721bb0078e758ff68a9d5d32d8ee5afbffcd1e88def34b99f",
+      "bytes": 3094,
+      "role": "original",
+      "media_type": "text/x-python",
+      "attribution": "Original track/reviewer record; byte-exact selected original",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/rocky/2026-11-03-AM/notebook-excerpt.md",
+      "sha256": "2064203cdaa2932a5653b48e00309971ba040d6c3f2c41bdf4fb2d1a09591185",
+      "bytes": 3960,
+      "role": "original",
+      "media_type": "text/markdown",
+      "attribution": "Original track/reviewer record; verbatim notebook paragraphs; operational preflight and courier-preservation paragraphs omitted",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/rocky/2026-11-03-AM/results.json",
+      "sha256": "8bb2f4217037461849b30a6244d82892300f7c11e2f5d48d7883f73462706e88",
+      "bytes": 2482,
+      "role": "original",
+      "media_type": "application/json",
+      "attribution": "Original track/reviewer record; byte-exact selected original",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/rocky/2026-11-03-PM/cases.json",
+      "sha256": "b622351b37b4418e4ef64186aca4b73ac7cd8cd9befb6a983b4a577ab8efea24",
+      "bytes": 56299,
+      "role": "original",
+      "media_type": "application/json",
+      "attribution": "Original track/reviewer record; byte-exact selected original",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/rocky/2026-11-03-PM/check.py",
+      "sha256": "5b7a587fc3027eb8d2ab22a5fee6843c7f77bd684173539748d7fa87e2b94933",
+      "bytes": 3286,
+      "role": "original",
+      "media_type": "text/x-python",
+      "attribution": "Original track/reviewer record; byte-exact selected original",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/rocky/2026-11-03-PM/notebook-excerpt.md",
+      "sha256": "008da344a630db96ca8c9438d5b000e9bc6e6cdd752d15d33e843cdbba726b63",
+      "bytes": 3775,
+      "role": "original",
+      "media_type": "text/markdown",
+      "attribution": "Original track/reviewer record; verbatim notebook paragraphs; operational preflight and courier-preservation paragraphs omitted",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/rocky/2026-11-03-PM/results.json",
+      "sha256": "2369ece1a1df70d9af68de50dfa6f5cac4cd5fad1d1f564c2d630e785bade76a",
+      "bytes": 424,
+      "role": "original",
+      "media_type": "application/json",
+      "attribution": "Original track/reviewer record; byte-exact selected original",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/rocky/cross-review/ROCKY-REVIEW.md",
+      "sha256": "af42f00a31cabb7f96a5c24b7c99d2da595aa4ed794c8ba7c746d748e93c015e",
+      "bytes": 4788,
+      "role": "original",
+      "media_type": "text/markdown",
+      "attribution": "Original track/reviewer record; byte-exact selected original",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/rocky/cross-review/ROCKY-VERIFICATION.json",
+      "sha256": "ab65441e4a0e3c0edf79e30ee017126f60e9600b4391a20653756f7f3af49b26",
+      "bytes": 10375,
+      "role": "original",
+      "media_type": "application/json",
+      "attribution": "Original track/reviewer record; byte-exact selected original",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/rocky/cross-review/cross_probe.json",
+      "sha256": "ccd4bef23d1563eac9b74f97fde581e73809a2cf852ab691b64e6484e2c0f3cd",
+      "bytes": 177293,
+      "role": "original",
+      "media_type": "application/json",
+      "attribution": "Original track/reviewer record; byte-exact selected original",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/rocky/cross-review/rocky_verify.py",
+      "sha256": "d49975c8ee1d8c97dbe3bcbdf0734c9be8d39e55fc3822f0210e7ea20898c3a3",
+      "bytes": 5899,
+      "role": "original",
+      "media_type": "text/x-python",
+      "attribution": "Original track/reviewer record; byte-exact selected original",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/rocky/gap-review/REVIEW.md",
+      "sha256": "5a450d47b0c03166d531884545486c300a387143e5c8fecb9fa0f9a2a0967259",
+      "bytes": 5690,
+      "role": "original",
+      "media_type": "text/markdown",
+      "attribution": "Original track/reviewer record; byte-exact selected original",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/rocky/gap-review/WHOLE-PATH-BOUND.md",
+      "sha256": "5b3828e5098c4eabfae1fde6e2f3c31541485ea5b6975359c9ef601c6374ed6f",
+      "bytes": 3554,
+      "role": "original",
+      "media_type": "text/markdown",
+      "attribution": "Original track/reviewer record; byte-exact selected original",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/rocky/synthesis-review/FORMAL-PROOF.md",
+      "sha256": "4c41713005ce40477010e0a6b092755c992e8615660087ad618c623368060e26",
+      "bytes": 6471,
+      "role": "original",
+      "media_type": "text/markdown",
+      "attribution": "Original track/reviewer record; byte-exact selected original",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/evidence/rocky/synthesis-review/ROCKY-REVIEW.md",
+      "sha256": "5f09df8e2ed3742968f7cbdf38a3afa8a653ea9565f5cf33df3b85a8086e73ce",
+      "bytes": 3391,
+      "role": "original",
+      "media_type": "text/markdown",
+      "attribution": "Original track/reviewer record; byte-exact selected original",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/source-register.json",
+      "sha256": "b3aad8ee0c2cab22ac72790be617fc0931c26e089aa9a8fd0219839d373f5c28",
+      "bytes": 11864,
+      "role": "data",
+      "media_type": "application/json",
+      "attribution": "AI-assisted editorial synthesis of the identified records",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/test-ledger.json",
+      "sha256": "20ad87d09960cc69ebeb5389495cf4a53165d4915d8616806c7800ef22951ed1",
+      "bytes": 19647,
+      "role": "data",
+      "media_type": "application/json",
+      "attribution": "AI-assisted editorial synthesis of the identified records",
+      "rights": "Candidate for public reading and downloading at Proof Wall, subject to exact-file review and cleared source rights.",
+      "license": "All rights reserved; no new open-source license is granted."
+    }
+  ],
+  "gardens": [],
+  "relations": [
+    {
+      "id": "rocky-decomposition-reuse",
+      "version": 2,
+      "type": "related-to",
+      "reason": "Related Rocky decomposition theme, but this new retrospective selects different sessions and claims; it does not replace or reverify that exhibit."
+    }
+  ],
+  "provenance": {
+    "authors": [
+      "Aleksandr — experiment design and direction",
+      "DRAGO and ROCKY research tracks and separately scoped reviewers, as identified in the retained records",
+      "ChatGPT — AI-assisted editorial compilation"
+    ],
+    "origin": "Selected saved research records. Exact exported-file hashes and excerpt treatments are in files/source-register.json. Private custody addresses are not part of the candidate.",
+    "change_note": "First retrospective encounter edition. Original sources preserved; new narrative, test dossiers, structured index and packaging. No scientific reruns."
+  },
+  "open_questions": [
+    "What further material should enter a later exact-source edition, if selected?",
+    "Complete exact-file, attribution and rights review in the existing Proof Wall publication workflow. No new scientific experiment is required merely to preserve these bounded results."
+  ],
+  "publication": {
+    "intent": "request-review",
+    "rights": "Public reading and downloading at the existing Proof Wall only after exact-file review and an authorized release decision.",
+    "license": "All rights reserved; no new open-source license is granted.",
+    "attribution": "Aleksandr; DRAGO and ROCKY contributors/reviewers as identified; AI-assisted editorial synthesis."
+  }
+}

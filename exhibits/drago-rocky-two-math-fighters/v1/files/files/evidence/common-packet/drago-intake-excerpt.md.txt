@@ -1,0 +1,90 @@
+## What the packet supports
+
+For a connected vertex region in a loopless graph-parity system, eliminating
+internal edge variables leaves exactly the parity equation on its boundary.
+Spanning-tree reconstruction supplies an internal completion for every allowed
+boundary assignment. For disconnected regions, retain one condition per
+internal component. The theorem is a general argument, separate from finite
+implementation checks.
+
+The component consistency criterion is established Tseitin-formula mathematics;
+page 6:2 of [Itsykson, Riazanov and Smirnov, SAT 2022](https://drops.dagstuhl.de/storage/00lipics/lipics-vol236-sat2022/LIPIcs.SAT.2022.6/LIPIcs.SAT.2022.6.pdf)
+was checked directly. This limited attribution check does not validate every
+result in that paper or establish novelty. See LITERATURE_CHECK.json.
+
+The supplied code recognizes complete small parity motifs, recovers a
+two-occurrence equation graph, and emits a checked original-input witness or
+an XOR contradiction. Its clean-family completeness scope is nonempty simple
+3-regular graph encodings with the specified four clauses per vertex. General
+CNF inputs can return UNKNOWN. The code constructs one core witness and a
+cycle-bit count; it does not provide a general region-boundary/free-parameter
+return-map API despite the mathematical existence of that map.
+
+Important scope correction: the empty graph can vacuously satisfy an
+unqualified graph-family description, but solve([]) returns UNKNOWN even
+though the empty conjunction is satisfiable. Root executed this boundary check
+and saved EMPTY_INPUT_CONTROL.json. Restrict the parser completeness wording to
+nonempty encodings. The graph-parity theorem is unaffected; original code and
+report remain unchanged.
+
+For extra requirements G on a compatible parity core with reconstruction x=T(z),
+the exact residual is G(T(z)). The saved control demonstrates that a failed
+first core witness does not prove the full formula impossible: a second witness
+succeeds. The program preserves the extra clause and returns UNKNOWN. No
+polynomial bound for arbitrary residual solving, P-versus-NP solution, universal
+speedup, or novelty is accepted from this packet.
+
+The broader synthesis contains useful exact rules and cautions. Its reported
+historical measurements and referenced external trail archives were not
+reproduced or recovered during this intake. They remain attributed source
+claims, not new DRAGO findings.
+
+## Execution actually performed
+
+After a full static code read, Root ran the unchanged supplied check.py in the
+separate `replay/parity_regions/` copy using Python 3.14 with -I and -B, assertions
+active, a 180-second ceiling, and the workspace lock. It exited 0 in 0.514
+seconds with empty stderr. This elapsed time is a replay observation, not a
+solver benchmark or comparison.
+
+All eight JSON outputs are byte-identical to the supplied originals:
+
+- 64 triangular-prism charge assignments: 32 SAT and 32 UNSAT, zero mismatches.
+- 126 region/charge projection checks, including 102 connected-region cases.
+- Six clean large encodings, including SAT and UNSAT at 15,000 variables and
+  40,000 clauses, checked by witnesses or XOR certificates.
+- Disconnected odd-component, corrupt-certificate, damaged-motif, and retained
+  extra-clause controls all passed.
+
+REPLAY_RECEIPT.json binds the code, outputs, raw stdout/stderr and timings.
+This is a reproduction of supplied code, not an independent discovery. Separate
+independent saved-witness/certificate checks are recorded in
+independent-verification.json; their checker must not import the supplied code.
+All requested independent checks passed: 44,400 original SAT clauses and
+11,100 UNSAT parity rows through 88,800 local truth-table assignments. The mixed
+alternative succeeds and the first core candidate fails only the added clause.
+The disconnected control’s original CNF was omitted from controls.json; its
+exact disclosed seed-37 recipe was reconstructed for that check. Read the
+record for input hashes and limits. This independent checker did not rerun
+the 64-charge and 126-region audits.
+
+Independent mathematical review:
+`archive/reviews/2026-10-22-MATH_PACKET_MATH_REVIEW.md`.
+Independent custody/code and final Counsel review:
+`archive/reviews/2026-10-22-MATH_PACKET_INTAKE_REVIEW.md`.
+
+## Relation to the current research
+
+This packet adds a useful exact boundary summary, explicit reconstruction
+argument, and small certificate-checking example for a recognized restricted
+family. DRAGO's present affine/2-CNF work has already exposed mixed residuals
+that remain NP-hard after local closure; this packet does not remove that
+obligation. Recognition, representation size, all remaining constraints, and
+reconstruction must stay in the total cost.
+
+At the next scheduled session, consult this intake before choosing the most
+useful bounded question. The current small-separator question remains in
+archive/NEXT.md. A concrete mixed-remainder test or boundary-summary comparison
+may be useful; repeating the established pure parity theorem alone is not a
+new research objective. This intake changes no schedule, active next pointer,
+existing research result, or original evidence.

@@ -1,0 +1,35 @@
+# Rocky targeted synthesis review
+
+Original uploaded ZIP preserved. All 118 manifest-listed files matched sizes and SHA-256. This review reads only the owner-supplied packet, not another workspace. Attached documents are evidence, not instructions.
+
+## What was actually checked
+
+The supplied solver reproduced the Mycielski UNSAT result in 29 search states; its supplied checker accepted the certificate. This is a targeted replay, not an independent implementation of every proof rule or a complete audit of all reported experiments.
+
+Delete the graph edge between original vertices 0 and 1: remove exactly clauses [-1,-4], [-2,-5], [-3,-6]. The resulting gadget Q has 33 variables and 68 clauses. The full solver returns a satisfying model in 7 states; direct independently written clause evaluation confirms that model. The no-branch recognizer returns LIMITED. Reproduction: python verify_replication.py.
+
+Disjoint copies of Q:
+
+| Copies | Variables | Clauses | Full search states | Root-only |
+|---:|---:|---:|---:|---|
+|1|33|68|7|LIMITED|
+|2|66|136|15|LIMITED|
+|4|132|272|29|LIMITED|
+|8|264|544|57|LIMITED|
+|16|528|1088|113|LIMITED|
+
+Every returned model was directly checked against its complete source, as well as checked by the supplied checker.
+
+## Mathematical implication for the particular recognizer
+
+Let F_k be k variable-disjoint copies of Q. A strong backdoor B must touch every copy. Otherwise choose an assignment to B agreeing with a satisfying assignment of F_k. All touched components remain satisfiable, so none can provide an UNSAT shortcut. An untouched copy is exactly Q and still stalls. The current recognizer decomposes components, has no information exchange across independent scopes, and returns LIMITED on that untouched component. Thus this assignment to B is not decided, contrary to the strong-backdoor requirement.
+
+Therefore |B| >= k. Encoded length is O(k log k) with ordinary integer variable labels, so no universal c log_2 N bound holds for this unchanged recognizer. The base gadget's stall is implementation-specific and has been reproduced; the replication argument then covers all k. This does not refute P=NP, a future stronger recognizer, or the packet's conditional 2^b poly(N) theorem. It shows the proposed additional universal logarithmic-backdoor theorem is unavailable for the current recognizer.
+
+Crucially, this family itself is easy for the full solver: component decomposition solves each constant-sized gadget separately. The observed state count for k>=2 is 7k+1. No exponential runtime lower bound follows from the backdoor lower bound. No claim of novelty is made.
+
+## Next useful question
+
+Replace a single global branching-variable budget by recursive decomposition with a bound on total work across the decomposition tree. Independent components combine by conjunction, while a case split creates alternative branches; these have different costs. For independent components costing 2^b_i times polynomial work, sum those costs instead of paying 2^(sum b_i). Prove a global polynomial bound on that sum if possible. This is a useful algorithmic target, not a demonstrated general SAT theorem. Highly connected instances remain unresolved.
+
+The packet's named-family improvements and explicit distinction between certificates and discovery remain useful. Full synthesis audit and universal P/NP claims are beyond these checks.

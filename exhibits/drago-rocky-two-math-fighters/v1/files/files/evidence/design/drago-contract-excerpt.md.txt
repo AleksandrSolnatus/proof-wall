@@ -1,0 +1,16 @@
+## 3. Research contract shared by both rounds
+
+**Primary mountain:** Determine whether `P = NP` or `P ≠ NP`, with a fully rigorous argument if possible. It is an open mathematical problem, and a solution is **not** the expected output of each run. Advance through tractable subproblems, especially SAT, UNSAT, representation, certificates, proof complexity, and finding-versus-verifying, without assuming a particular conclusion. Choose your own method; inherited prompts are possibilities, not commands.
+
+Drago has extensive preparation, computation, and previous research. Rocky operates separately under unequal conditions by design. Do not look at Rocky's conversations, notes, archives, prompts, outputs, or running tasks, and do not send Drago results to Rocky. An explicit owner-authorized later comparison would be a separate phase. Your own DRAGO notes may accumulate.
+
+Be exploratory and ambitious; distinguish analogy, conjecture, counterexample, source-supported theorem, finite verified finding, and proof. Test novel claims against prior mathematics. Prefer a sharper result over a confident declaration. Keep unsuccessful and inconclusive work; do not falsify runs, fabricate references, or call a restricted-toy statement a P-versus-NP result.
+
+For **each** actual run create a distinct, dated `runs/YYYY-MM-DD-AM/` or `runs/YYYY-MM-DD-PM/` folder with:
+
+- `REPORT.md`: question, reason for choosing it, mathematical definitions, work actually done, results, what failed/survived, limits, and one next move.
+- `EVIDENCE/`: exact inputs, executable code, seeds, output, independent checking method where feasible, citations/links for outside mathematical claims.
+- `RECEIPT.json`: date/time/timezone, environment, model/session if known, scheduler trigger, tools actually used, exit/status, artifact paths, and reproducibility notes. Mark unknowns honestly.
+
+Keep an append-only `archive/DRAGO_LEDGER.md`. Prevent concurrent duplicate rounds, check for a completed receipt before rerunning the same slot, and report any skipped/failed session rather than inventing a result. Preserve original inherited source files unchanged. No arbitrary continuous loops or work beyond the allotted session without owner approval; if a run must be cut short, preserve a truthful checkpoint.
+

@@ -1,0 +1,323 @@
+INSTINCT–DRAGO 003: REVIEW, RESOLUTION BRIDGE, AND CONTINUATION COST PROBE
+November 3, 2026 UTC
+
+RESULT
+
+The shared-conclusion proofs are sound and independently reproducible. All
+72 recorded positive cases now also have ordinary-resolution certificates
+accepted by the verifier from our preceding S7 work.
+
+One replay defect was found in the delivered package: search.py mistakes a
+later-added metadata list for a Boolean formula. The original failure is
+retained. A separate corrected copy repairs fixture loading and reproduces
+the deterministic search results without changing the uploaded source.
+
+The narrow mathematical class is now explained precisely: with at most four
+normalized ternary clauses, every forced literal is detectable by this rule.
+A checked five-clause example proves that the guarantee stops there.
+
+The proposed continuation test has also been executed. It loses on all eight
+frozen constructed cases once detection, proof checking, insertion and the
+remaining search are included. In this Python pilot, treatment median wall
+time was 4.89–7.75 times baseline. The useful recognition result survives;
+this particular automatic insertion strategy did not pay for itself.
+
+1. WHAT THE NEW PACKET CONTRIBUTES
+
+The earlier common-pair detector automatically considered two-literal
+conclusions and required each supporting clause to contain the whole pair.
+Our more general S7 routine accepts an explicitly supplied candidate, denies
+it, simplifies the whole source, and proves a consequence when the genuine
+residual unit/binary portion is inconsistent.
+
+Drago 003 automatically considers single signed literals L. It groups
+normalized ternary clauses of the form L OR u OR v, denies L, and checks the
+remaining binary rules for both x→NOT x and NOT x→x. Both paths carry original
+clause references, and an independent verifier replays every edge.
+
+Given the candidate [L], the S7 routine covers this pattern and additional
+cases. Drago supplies automatic candidate enumeration and a direct unit
+certificate. It is an engineered application of established 2-SAT reasoning.
+The relevant primary background is the opposite-literal path criterion:
+https://cseweb.ucsd.edu/classes/sp13/cse200-a/handouts/lec-06-0417.pdf
+
+The symbol ∨ means inclusive OR; ¬ means NOT. A literal is a variable or its
+negation. A unit conclusion fixes one variable's value.
+
+2. DEMONSTRATION AND ORDINARY-RESOLUTION BRIDGE
+
+The four original demonstration rules are:
+
+  A ∨ ¬B ∨ C
+  A ∨ ¬C ∨ ¬B
+  A ∨ B ∨ D
+  A ∨ ¬D ∨ B
+
+Assuming A is false leaves B→C→¬B and ¬B→D→B. Either value of B contradicts
+that assumption, so A is forced.
+
+Three ordinary resolutions show the same result:
+
+  Rules 1 and 2, resolving C, give A ∨ ¬B.
+  Rules 3 and 4, resolving D, give A ∨ B.
+  Those two clauses, resolving B, give A.
+
+The original source has eight models, all with A true. Removing any one of
+the four premises gives ten models, including a model with A false. Our
+earlier pair detector already finds the two intermediate binary clauses;
+the final resolution turns them into the unit.
+
+The new adapter converts Drago's supplied paths into the ordinary-resolution
+format. It does not discover candidates. For all 72 archived positive cases,
+both the adapted proof and an independent S7 proof, given only the raw source
+and candidate, pass the separate source-bound resolution verifier. Each route
+produces 40 three-step and 32 seven-step proofs, totaling 344 resolution steps.
+These are verified generated proofs, not claims of minimum proof length.
+
+3. WHY THERE ARE EXACTLY 72 HITS
+
+The exhaustive experiment examines every four-clause subset of 32 distinct
+non-tautological ternary clauses on four variables: choose(32,4)=35,960.
+
+Independent reconstruction from forbidden-assignment bitmasks confirms:
+
+  35,960 formulas are satisfiable.
+  35,888 have no forced literal.
+      72 have exactly one forced literal.
+       9 cases occur for each of the eight signed literals.
+       0 semantic misses or false positives occur in this finite family.
+
+Thus 72/35,960 describes the prevalence of forced literals in the corpus. It
+does not mean the detector recognized only 72 out of many more forced cases.
+The uploaded Counsel review had already established this finite agreement.
+Our addition is the structural explanation below, plus independent replay.
+
+Theorem for the narrow class. Let F contain at most four non-tautological
+clauses, each normalizing to exactly three literals on distinct variables.
+Each clause excludes 2^(n−3) of the 2^n assignments. Four clauses exclude at
+most 2^(n−1), so at least half the assignments remain.
+
+If F forces L, every surviving assignment lies in the L=true half. Both
+halves have size 2^(n−1), so the models of F must be exactly the entire
+L=true half. No clause may exclude an assignment in that allowed half.
+Therefore every clause must contain L with the same sign. Denying L leaves
+an inconsistent binary formula, which the shared-literal rule detects.
+
+Consequences: for this at-most-four-clause ternary class, the rule is complete
+for forced literals, for any n. With fewer than four such clauses, there is
+not enough excluded-assignment capacity to force a literal. No formula in
+this class is UNSAT. This is a narrow counting theorem, not a general SAT
+algorithm. Having exactly half the assignments survive by itself does not
+imply a forced literal; the additional containment in one literal's half
+is essential.
+
+For n=4 and a fixed signed L, the four forbidden sets are four disjoint edges
+covering the eight vertices of the remaining three-variable cube. There are
+nine perfect matchings of that cube, independently enumerated in the packet.
+Eight signed choices of L give 8×9=72. This explains the observed count.
+
+4. ONE FIFTH CLAUSE BREAKS THE GUARANTEE
+
+The following focused control has seven models, all with A true:
+
+  (1) A ∨ B ∨ C
+  (2) A ∨ B ∨ ¬C
+  (3) A ∨ ¬B ∨ D
+  (4) A ∨ ¬D ∨ C
+  (5) ¬B ∨ ¬C ∨ ¬D
+
+Under NOT A, the first four rules force B=C=D=true. Their binary portion is
+consistent. The fifth, still ternary, forbids that assignment. Both Drago's
+restricted shared-literal detector and the immediate-residual S7 routine
+miss A. This is not a counterexample to their soundness: they return no
+certificate, not an incorrect conclusion.
+
+A supplied four-step resolution proof is independently accepted:
+
+  (1)+(2), resolve C:       A ∨ B
+  (4)+(5), resolve C:       A ∨ ¬B ∨ ¬D
+  previous+(3), resolve D:  A ∨ ¬B
+  the two binary results:  A
+
+This separates the existence of a short proof from the ability of the
+selected recognition methods to find it. The explicit proof is recorded as
+supplied algebra, not automated discovery by either restricted detector.
+
+5. THE ORIGINAL REPLAY DEFECT AND THE SEPARATE REPAIR
+
+The delivered search.py globbed EVIDENCE/*.json and treated any JSON list as
+a CNF fixture. EVIDENCE/SERIES_CONTINUITY.json was added later and is a list
+of metadata objects. Its entries are not clauses. The script reaches that
+file after completing the 35,960-formula enumeration and fails while trying
+to interpret metadata keys as integer literals.
+
+The failed original execution, traceback, and completed deterministic
+search outputs are retained. The failure does not invalidate the already
+checked resolution and implication proofs. It does invalidate the claim
+that the delivered unmodified search command replays successfully as-is.
+
+The corrected copy distinguishes list-of-clause fixtures from metadata
+lists and validates fixture literals. The replay harness changes only the
+isolated copy of search.py. Its executed code hash is recorded separately.
+The complete per-case rows, clause catalog, selected case, logical counters,
+and fixture results are compared with retained evidence; timing and the
+intended search-code hash change are explicitly excluded from equality.
+
+The uploaded archive, detector, verifier, historical reports, manifests and
+failed replay remain unchanged. No current Git or live Rulebench execution
+is inferred from stored receipts. Local source bytes and stored receipt
+bindings are independently checked.
+
+All 47 package payload entries and 43 historical episode entries pass their
+manifests. The 45 files listed by the saved Git receipt match local bytes,
+SHA-256 values and Git blob IDs. Both saved Rulebench receipts pass all four
+binding reconstructions and seven declared checks; model counts are checked
+separately. This does not establish the current state of a remote branch.
+
+The core entailment verifier rejects ten additional malformed controls both
+normally and under Python -O. It validates the operative paths and source,
+but does not validate the auxiliary kind, bucket-index, used-index or input
+consistency annotations. Its returned consistency remains unchecked. The
+finite audit/search scripts themselves use assertions and are replayed in
+normal Python. Their core proof verifier has explicit checks.
+
+6. THE FROZEN CONTINUATION PILOT
+
+Question: does calling this detector once during an ongoing search save
+enough remaining work to cover detection, proof checking and insertion?
+
+Eight new constructed cases were fixed before evaluation. They contain
+8 or 12 variables and 12–17 original clauses. Four include a six-clause
+guarded contradictory pattern, with both signs of the conclusion; four
+remove one guard clause. Half add an unrelated four-clause component.
+They are targeted constructed cases, not a representative benchmark corpus.
+
+The baseline is deterministic DPLL with unit propagation: smallest numbered
+unassigned variable, false branch first, repeated full clause scans. A common
+prefix stops after the first real decision and propagation to a fixed point.
+Each arm receives the same copied assignment, full decision-frame stack,
+source identity and propagation status. Backtracking preserves the continuing
+search state; this is not a restart from the root.
+
+The treatment invokes Drago once on the full immutable original CNF,
+independently checks every emitted certificate against that source, then
+inserts only verified global units. The full original clause prefix is
+retained. Both arms continue the same solver and independently validate the
+final satisfying assignment against every original clause.
+
+There are 31 paired repetitions per case, with alternating arm order. Both
+wall time and process CPU time include state copying, detection, verification,
+unit processing/insertion, continuation and full-source witness validation.
+Common-prefix work is recorded separately. Input loading, independent
+post-run truth tables, receipt serialization, implementation and review are
+outside those continuation timings. All named work counters remain separate;
+no heterogeneous sum is advertised as CPU work.
+
+The input cases, plan and runner were hashed before first evaluation. No
+case, trigger, solver order or cap was changed after results were seen.
+All 496 timed solver arms completed and agreed with independent exhaustive
+oracles. All reported SAT witnesses satisfy the original source. One extra
+corrupted-certificate control was rejected before any unit insertion or
+continuation search. No-hit and losing cases are retained.
+
+7. COST RESULTS: THIS INTEGRATION LOSES
+
+These are first-run median continuation wall times, in microseconds. The
+baseline and treatment both include full-original SAT-witness validation.
+
+Case                              Baseline   Treatment   Ratio
+Positive intact, 8 variables          57.5       445.2      7.75
+Positive missing guard, 8             51.8       256.4      4.95
+Negative intact, 8                    54.3       342.0      6.30
+Negative missing guard, 8             53.0       315.2      5.95
+Positive intact + component, 12       90.1       526.4      5.84
+Positive missing + component, 12      82.1       401.3      4.89
+Negative intact + component, 12       86.9       504.4      5.80
+Negative missing + component, 12      81.1       408.1      5.03
+
+Treatment median process CPU time is also higher in all eight cases.
+Treatment wall time is higher in 246 of the 248 individual pairs. These are
+repeated observations on eight fixed cases, not 248 independent problem
+samples. Microsecond timings are specific to this Python implementation,
+instrumentation and execution environment.
+
+Logical search work reinforces the distinction:
+
+  Two intact 8-variable cases: 273→200 search literal visits, saving 73 each.
+  Their 12-variable variants: 510→572 visits, spending 62 more each.
+  Four missing-guard cases: no certificate and no search-literal saving.
+
+Detection, full-source certificate replay and insertion are additional work
+in every treatment invocation. A reduced search counter alone does not mean
+reduced total continuation cost. Here, the measured complete continuation
+cost is higher even in the two cases with search savings.
+
+This is evidence against enabling this exact trigger unconditionally for
+these cases and this solver. It does not prove no detector integration can
+ever help, or predict performance on a broader SAT population. The first
+negative run is preserved; replay timings will naturally vary.
+
+All eight cases are easy SAT continuations: neither arm encounters a conflict
+or backtrack. Consequently this pilot measures intervention overhead and
+limited search savings, not the value of avoiding a large failed subtree.
+That limitation is part of the result, not an unperformed hard-case test.
+
+8. PRESERVATION AND A PRECISE COMPRESSION OPPORTUNITY
+
+A certified common-L bucket B has a stronger property than mere entailment:
+
+  B = AND_i(L OR R_i) = L OR AND_i R_i = L,
+
+because the residual conjunction is inconsistent. L also satisfies every
+clause in that bucket. For a whole formula B AND U, an equivalent working
+representation is therefore [L] AND U, keeping every unrelated constraint
+U and the complete original source/proof as evidence.
+
+This observation concerns a certified shared-literal bucket. It does not
+authorize replacing an arbitrary full formula by a consequence, and it does
+not automatically apply to S7 proofs assembled from different portions of
+a larger candidate. The current pilot only inserts verified units; it does
+not implement or benchmark bucket replacement.
+
+The useful next question is consequently narrower than “does the scout work?”
+It works as a recognizer on its stated class. The remaining cost question is
+whether a justified trigger or a retained-source equivalent working view can
+make its overhead worthwhile. This review stops after the one frozen pilot;
+it does not tune a policy on these outcomes and present it as a fresh test.
+
+9. REPLAY AND EVIDENCE
+
+The review packet includes the unchanged original ZIP and extracted files,
+the original failed replay, corrected search copy and patch, independent
+receipt checks, the resolution bridge, all 72 ordinary-resolution proofs,
+the fifth-clause failure and its valid proof, the finite semantic census,
+and the frozen cost plan/cases/code/raw timings/checkpoints/certificates.
+
+From the extracted review folder, with Python 3.10 or later:
+
+  python3 replay_review.py
+
+The command writes fresh outputs in a temporary directory and preserves the
+packet. It reproduces the expected original search failure, runs the separate
+corrected replay, checks mathematical results and deterministic solver work,
+and reruns the frozen timing pilot. New timings are reported separately; they
+are not required to match the retained first-run measurements. No external
+packages, network, Git write, production deployment or historical relabeling
+are required.
+
+The user authorized useful exploration through Butterfly and related trails
+in the preceding turn. This review's useful connection is directly to the
+existing S7 proof verifier and the Rulebench distinction between a valid
+consequence and a beneficial solving operation. No additional current
+Butterfly retrieval or publication is claimed in this packet.
+
+Source upload SHA-256:
+0fb4436b9f71fa95478285c2fab78a9e7bb7994db1e8857ca3addaf8b7d0c487
+Frozen continuation cases SHA-256:
+02f79bb36e178f393e49b032d31ac04cd01cc348bc6a1b53848fee4fe6165493
+The package manifest binds all remaining code, evidence and report bytes.
+
+No general SAT completeness, P=NP conclusion, learned discovery, novelty or
+whole-task speedup is established. The concrete gains are compatible proof
+formats, a sharply defined complete class with a checked boundary, a repaired
+replay path, and an honestly negative integration result.

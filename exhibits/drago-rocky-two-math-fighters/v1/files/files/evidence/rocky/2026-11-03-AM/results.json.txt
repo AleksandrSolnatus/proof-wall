@@ -1,0 +1,100 @@
+{
+  "random_formulas": 100,
+  "remaining_assignment_checks": 6400,
+  "global_extension_evaluations": 51200,
+  "component_local_evaluations": 44416,
+  "factor_construction_literal_visits": 2473,
+  "independent_pair_controls": [
+    {
+      "k": 1,
+      "independent_factors": 1,
+      "local_two_branch_restrictions": 2,
+      "global_method_restriction_calls_formula": 2,
+      "count": 3
+    },
+    {
+      "k": 2,
+      "independent_factors": 2,
+      "local_two_branch_restrictions": 4,
+      "global_method_restriction_calls_formula": 6,
+      "count": 9
+    },
+    {
+      "k": 3,
+      "independent_factors": 3,
+      "local_two_branch_restrictions": 6,
+      "global_method_restriction_calls_formula": 14,
+      "count": 27
+    },
+    {
+      "k": 4,
+      "independent_factors": 4,
+      "local_two_branch_restrictions": 8,
+      "global_method_restriction_calls_formula": 30,
+      "count": 81
+    },
+    {
+      "k": 5,
+      "independent_factors": 5,
+      "local_two_branch_restrictions": 10,
+      "global_method_restriction_calls_formula": 62,
+      "count": 243
+    },
+    {
+      "k": 6,
+      "independent_factors": 6,
+      "local_two_branch_restrictions": 12,
+      "global_method_restriction_calls_formula": 126,
+      "count": 729
+    },
+    {
+      "k": 7,
+      "independent_factors": 7,
+      "local_two_branch_restrictions": 14,
+      "global_method_restriction_calls_formula": 254,
+      "count": 2187
+    },
+    {
+      "k": 8,
+      "independent_factors": 8,
+      "local_two_branch_restrictions": 16,
+      "global_method_restriction_calls_formula": 510,
+      "count": 6561
+    },
+    {
+      "k": 9,
+      "independent_factors": 9,
+      "local_two_branch_restrictions": 18,
+      "global_method_restriction_calls_formula": 1022,
+      "count": 19683
+    },
+    {
+      "k": 10,
+      "independent_factors": 10,
+      "local_two_branch_restrictions": 20,
+      "global_method_restriction_calls_formula": 2046,
+      "count": 59049
+    },
+    {
+      "k": 11,
+      "independent_factors": 11,
+      "local_two_branch_restrictions": 22,
+      "global_method_restriction_calls_formula": 4094,
+      "count": 177147
+    },
+    {
+      "k": 12,
+      "independent_factors": 12,
+      "local_two_branch_restrictions": 24,
+      "global_method_restriction_calls_formula": 8190,
+      "count": 531441
+    }
+  ],
+  "connector_control": {
+    "components": 1,
+    "actual_models": 5,
+    "incorrect_old_product": 9
+  },
+  "failures": 0,
+  "seed": 2026110303
+}

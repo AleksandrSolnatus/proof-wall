@@ -1,0 +1,55 @@
+import itertools,json,random
+from pathlib import Path
+
+def holds(F,a):return all(any(a[abs(l)]==(l>0) for l in c) for c in F)
+def conditioned_count(F,n,S):
+ if len(set(S))!=len(S) or any(type(v) is not int or not 1<=v<=n for v in S):raise ValueError('invalid conditioning set')
+ total=0;tests=0;rows=[];scans=0
+ for bits in itertools.product([False,True],repeat=len(S)):
+  fixed=dict(zip(S,bits));H=[]
+  for c in F:
+   scans+=len(c)
+   if any(abs(l) in fixed and fixed[abs(l)]==(l>0) for l in c):continue
+   H.append([l for l in c if abs(l) not in fixed])
+  if any(not c for c in H):rows.append({'fixed':fixed,'count':0,'components':[]});continue
+  remain=[v for v in range(1,n+1) if v not in fixed];parent={v:v for v in remain}
+  def root(v):
+   while parent[v]!=v:v=parent[v]
+   return v
+  for c in H:
+   for l in c:parent[root(abs(l))]=root(abs(c[0]))
+  groups={}
+  for v in remain:groups.setdefault(root(v),[]).append(v)
+  product=1;componentcounts=[]
+  for vs in groups.values():
+   own=set(vs);local=[c for c in H if abs(c[0]) in own];assert all(all(abs(l) in own for l in c) for c in local)
+   count=0
+   for vals in itertools.product([False,True],repeat=len(vs)):
+    count+=holds(local,dict(zip(vs,vals)));tests+=1
+   product*=count;componentcounts.append({'variables':vs,'count':count})
+  total+=product;rows.append({'fixed':fixed,'count':product,'components':componentcounts})
+ return total,tests,scans,rows
+
+def main():
+ rng=random.Random(2026110401);cases=[];brute=local=scan=0
+ for t in range(100):
+  n=9;F=[]
+  for block in [[1,2,3,4,5],[1,2,6,7,8,9]]:
+   for _ in range(rng.randrange(1,14)):
+    vs=rng.sample(block,rng.randrange(1,4));F.append([rng.choice([-1,1])*v for v in vs])
+  if t%23==0:F.append([])
+  got,work,scans,rows=conditioned_count(F,n,[1,2]);want=sum(holds(F,dict(enumerate(a,1))) for a in itertools.product([False,True],repeat=n));assert got==want
+  # An empty conditioning set remains correct by treating connected variables
+  # together; it does not falsely assume the original two generator blocks.
+  direct,_,_,_=conditioned_count(F,n,[]);assert direct==want
+  brute+=2**n;local+=work;scan+=scans;cases.append({'n':n,'F':F,'conditioned':[1,2],'count':got,'branches':rows})
+ F=[[-1,2],[1,-2],[-1,3],[1,-3]];got,_,_,rows=conditioned_count(F,3,[1]);assert got==2
+ left=sum(holds(F[:2],{1:s,2:x}) for s,x in itertools.product([False,True],repeat=2));right=sum(holds(F[2:],{1:s,3:y}) for s,y in itertools.product([False,True],repeat=2));assert left*right==4
+ assert conditioned_count([],5,[1,2])[0]==32 and conditioned_count([[1],[-1]],1,[1])[0]==0
+ rejected=False
+ try:conditioned_count([],3,[1,1])
+ except ValueError:rejected=True
+ assert rejected
+ r={'random_formulas':100,'conditioning_assignments_per_formula':4,'independent_global_assignment_checks':brute,'component_local_assignment_tests':local,'substitution_literal_visits':scan,'shared_agreement_control':{'correct_models':got,'incorrect_unconditional_product':left*right},'unused_variable_control':32,'invalid_duplicate_set_rejected':rejected,'failures':0,'seed':2026110401}
+ p=Path(__file__).parent;(p/'cases.json').write_text(json.dumps(cases,separators=(',',':'))+'\n');(p/'results.json').write_text(json.dumps(r,indent=2)+'\n');print(json.dumps(r,indent=2))
+if __name__=='__main__':main()

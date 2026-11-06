@@ -1,0 +1,50 @@
+# DRAGO: checked unit repair of Recursive Interfaces 001
+
+One small omission explains the six-variable stalled contradiction: either first guess exposes a forced unit. Applying that unit leaves a binary formula the existing checker can handle. The extension makes this forced step explicit, keeps its justification and model reconstruction, and charges every additional node. It does not change sources, configurations, branching heuristics or numerical budgets. The original producer remains the baseline.
+
+## What changed on the frozen comparison
+
+| Mode/profile | Originally decided | With checked units | Sources |
+|---|---:|---:|---:|
+| Recursive with reuse, tight | 49 | 65 | 68 |
+| Recursive without reuse, tight | 49 | 65 | 68 |
+| Recursive with reuse, roomier | 55 | 68 | 68 |
+| Recursive without reuse, roomier | 55 | 68 | 68 |
+| Table only, tight | 17 | 17 | 68 |
+| Table only, roomier | 48 | 48 | 68 |
+
+All 411 paired trial records have identical source/configuration bindings and independently checked repaired records. They include the 408 comparison calls and a separate three-mode diagnostic. There are 58 LIMITED-to-decided trial rows across modes/profiles, representing 16 distinct source names. No previously decided case regressed in this cohort. These overlapping calls are not independent discoveries.
+
+For the tight reuse arm, the diamond contradiction changes from LIMITED to checked UNSAT: 15 to 5 visited nodes, 7 to 1 decisions, and 24 to 8 table rows. Its satisfiable companion changes from LIMITED to checked SAT: 15 to 3 nodes, 7 to 1 decisions, and 24 to 8 rows. The contradictory example uses two forced-unit steps; its companion uses one.
+
+The remaining tight-profile LIMITED cases are gates7, gates12 and gates20. Roomier results decide all 68 supplied cases; that is a finite cohort result, not completeness or polynomial-time evidence.
+
+## Costs and failures retained
+
+Tight reuse totals fall from 465 to 352 visited nodes, 583 to 392 table rows, and 561,745 to 382,769 actual certificate bytes. Yet summed reserved output rises from 342,911,856 to 371,002,496 bytes. These sums cover 68 separate runs and are not peak memory. Fifteen of those 68 cases visit more nodes; fifteen spend more declared work credits. The roomier reuse arm has 18 cases with more nodes. Savings in one counter do not establish a general speedup.
+
+Outside that cohort, [[1]] with max_nodes=1 changes from baseline SAT to repaired LIMITED. At default limits it remains SAT, but work credits rise 401 to 446 and output reservations 7,680 to 12,800. The four-unit chain uses five nodes instead of one. Extra propagation is not free.
+
+A separate host-limit control uses 512 independent units and explicitly raised finite work/output caps. The producer returns a SAT candidate in 513 nodes; the checker raises RecursionError at Python's recursion limit of 1,000. This candidate is not accepted. The failure is preserved in EVIDENCE/HOST_LIMIT, separately from logical LIMITED outcomes. No all-input execution guarantee is made for this recursive Python implementation.
+
+## Mathematical finding and remaining boundary
+
+For the family containing every positive triple on n variables, the old frozen policy needs joint allowance K of at least n-2 under adequate other resources. The repaired policy reaches SAT with K=2 for every n>=4 under adequate other resources: two false guesses force every remaining variable true. The local argument is in UNIT_PROTOCOL.md and the independent mathematical review. This is a statement about this policy and structured family, not an all-CNF efficiency theorem. Host stack and output limits still apply to executable runs.
+
+Unit propagation does not erase the boundary. The independent review retains a satisfiable source with every positive five-literal clause on eight variables that still stalls at K=3 under the same unit-only recognition policy. It is a width-five control, not an additional result on the main width-three cohort. The all-true assignment proves satisfiability directly; the example tests the policy's failure to find that model.
+
+## Verification and provenance
+
+The original replay ran 13 subprocesses successfully: integrity, saved-record checks, mutation controls, interface controls and fresh production in normal/optimized Python as applicable. All 411 regenerated original certificates match the supplied bytes in both Python modes. Original mutation outcome records reproduce semantically; some raw JSON byte hashes vary with unordered key emission. The initial overly strict byte-comparison failure is retained and corrected explicitly.
+
+The extension's focused tests check 74 records and reject 49 malformed certificates in each Python mode. A separate semantic sweep checks 708 sources through three modes (2,124 executions per Python mode) against exhaustive small truth tables: 395 SAT, 1,192 UNSAT, 537 LIMITED. It enumerates 3,498 assignments once per source and independently checks 1,234 forced steps per run. Normal/optimized repetitions overlap. Direct full-source checks also validate all 209 repaired SAT models from the paired cohort.
+
+The mathematical probe enumerates the diamond and dense-family examples independently of the solver/checker; the remaining-boundary probe separately checks its 256 assignments. The implementation agent preserved a test-harness mistake where Python True==1 obscured a typed mutation; the corrected runner uses serialized equality. No solver/checker soundness defect was inferred from that harness error. These are finite checks and a local mathematical argument, not formal verification of the full implementation.
+
+The new checker is an independently extended version of the supplied checker, not a wholly new verifier. Unchanged symbolic/table leaf kernels and earlier design are inherited knowledge. No training occurred. Development, review, baseline reproduction, failed tests, source intake and packaging are preparation costs; they are not included in the per-case solve durations. Actual session start is 2026-11-04 18:24:03 UTC. Single-pass timing is retained, but no runtime speedup is claimed. Actual memory bytes are not measured; output reservations and certificate bytes are separate quantities.
+
+## Next useful experiment
+
+Keep this version frozen. Test a checked batch of forced units, or iterative traversal of the same proof nodes, against this exact baseline. Require the same reached conclusions, exact source/model bindings, all required checks and unchanged external limits, while counting fewer admissions, stack depth, bytes and checker work. In particular, preserve the max_nodes=1 loss and 512-unit checker failure as regression targets. Do not silently broaden the rule to pure literals or trial assignments.
+
+P versus NP remains unresolved. This deliverable closes one documented recognition gap and exposes the repair's resource tradeoffs.

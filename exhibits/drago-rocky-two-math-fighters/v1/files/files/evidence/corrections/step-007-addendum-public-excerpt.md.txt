@@ -1,0 +1,41 @@
+# Step 007 solver correction addendum v1.0
+
+November 3, 2026 · Companion to the original Step 007 packet and the Drago–Rocky solver handoff. Preserve both originals and their historical results. This addendum does not replace either packet.
+
+## Keep the checkpoints separate
+
+| Checkpoint | Source and result | Evidence |
+|---|---|---|
+| Step 007 mask | 45 variables, 1,519 original clauses. 189 conflicts recovered by 1,323 folds; 1,708 clauses after augmentation. | Original reader's guide and Attempts 001–007 packet. Its source and proof records are distinct from 007B. |
+| Step 007B parity guard | 45 variables, 1,141 original clauses. 189 certified conflicts, 945 resolution steps; 1,330 clauses after augmentation. A separate Hall witness establishes UNSAT with seven demands and six capacity-one groups. | The reconciled supplement contains the source, proof exports, corrected detector, verifier, and capacity check. The earlier automatic solver run remains historically UNKNOWN. |
+
+Equal conflict counts do not identify the same formula or proof. Bind every replay to its own original source. The original Step 007 guide has not been shown to contain the later SCC detector defect.
+
+## Implementation corrections
+
+1. **Proof checking.** An older short checker accepted negative parent indices, which Python could interpret as later nodes, permitting a malformed circular proof to pass. The authentic 007B proofs use valid earlier nonnegative references and pass repaired checks. For the reconciled 007B local and shared-DAG formats use `code/verify_proofs_strict.py` in the reconciled supplement: it binds the raw source, validates types and earlier references, and checks exact resolution and conclusions with checks active under `python -O`. Its scope is source-bound entailment; it does not certify scan completeness or every cost counter. Use `code/verify_hall_capacity.py` separately for the capacity witness; the Hall check alone does not establish provenance of appended conflicts.
+2. **Residual-unit SCC detection.** The earlier 007B SCC detector could raise `ValueError: path proof lost its resolution pivot` when a residual unit yields a stronger clause before the end of a graph path. Use `code/guard_detector_scc_fixed.py` from the reconciled supplement. It stops lifting once the target or a stronger clause has been proved. The earlier detector failed on the regression; it did not return a false conclusion there. The fixed detector reproduces the original 007B checkpoint's result and counters. This is a restricted shared-pair residual-2SAT recognizer, not a general SAT algorithm.
+
+## Replay and handoff
+
+Download and extract the reconciled supplement [private archive reference omitted]. From its extracted top directory, with Python 3.10 or later and no additional packages, run:
+
+```sh
+python3 replay.py --output ../shared-loop-fresh-results
+```
+
+Expected: `PASS`, 189 certified conclusions, 945 derived resolution nodes for the shared-DAG export, 1,141 source clauses, 1,330 augmented clauses, passing residual-unit regressions, and a checked 7-versus-6 Hall deficit. The strict proof and Hall checks are complementary. The replay checks archived materials and focused tests; it does not rerun the full historical failed search. On November 3 this command passed in a fresh output directory. These checks are not external peer review.
+
+For the separate original checkpoint, extract the original Step 007 packet [private archive reference omitted] and follow its `START_HERE.pdf` and `REVIEWER_HANDOFF.md`: `python3 verify_packet.py` and, for its fast replay, `python3 verify_packet.py --replay`. Those commands concern that packet's own records; do not substitute its results for the 007B checks.
+
+The Step 007B report [private archive reference omitted] contains the later erratum and preserved historical account. Read the supplement's `README.txt`, `ERRATUM.txt`, and `REPORT.txt` for scope and regression detail.
+
+The Drago–Rocky combined solver handoff [private archive reference omitted] was inspected including nested archives; searches found no references to the named 007B correction files or the 1,141-clause checkpoint. Its general request for independent checking is useful but does not supply this correction. Share this addendum and the reconciled supplement alongside it; retain all original evidence.
+
+## Archive identity
+
+- Original Step 007 ZIP SHA-256: `f7965a6eb4af602e87653e778147f9d073ff443e4b4012dc81b21f379e6b57ee` (matches the original email).
+- Reconciled supplement ZIP SHA-256: `73e2e20cb1fcb6dec917279bfaa379336ac080610fa49eaff4eaacacf0c3e24b`.
+- Inspected Drago–Rocky handoff ZIP SHA-256: `25612ea9106fa2c4fbc6c354ce73d842d2a6567c4b399220f7396b8d024f0388`.
+
+Hashes establish byte identity, not correctness. Neither checkpoint claims a resolution of P versus NP.

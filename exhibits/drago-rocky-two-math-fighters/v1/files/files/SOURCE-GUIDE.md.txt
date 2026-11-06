@@ -1,0 +1,216 @@
+# Source guide
+
+Every bracketed source ID in the article/report resolves here. The JSON register carries complete SHA-256 values and exact byte counts. Original files remain unchanged; excerpts are expressly labeled. A hash identifies a file, not a proof of its claims.
+
+The selected collection has 32 source entries. The cutoff and coverage are intentional: this is not a complete final archive comparison.
+
+## S01 · Owner interpretation commissioning this comparison
+
+File: [evidence/design/owner-observation.md](evidence/design/owner-observation.md)
+
+Treatment: exact selected quotation plus explicitly editorial paraphrase from the commissioning conversation
+
+## S02 · Original invitation: unequal starting conditions
+
+File: [evidence/design/rocky-invitation-excerpt.md](evidence/design/rocky-invitation-excerpt.md)
+
+Treatment: verbatim contiguous excerpt
+
+## S03 · Drago research contract and required run evidence
+
+File: [evidence/design/drago-contract-excerpt.md](evidence/design/drago-contract-excerpt.md)
+
+Treatment: verbatim contiguous excerpt; machine commissioning sections omitted
+
+## S04 · drago-common-intake.md
+
+File: [evidence/common-packet/drago-intake-excerpt.md](evidence/common-packet/drago-intake-excerpt.md)
+
+Treatment: verbatim excerpt from full source matched to pinned Git blob; custody/location metadata omitted
+
+## S05 · Rocky common parity packet response
+
+File: [evidence/common-packet/rocky-response-excerpt.md](evidence/common-packet/rocky-response-excerpt.md)
+
+Treatment: verbatim contiguous excerpt; environment and delivery metadata omitted
+
+## S05-results · Rocky common parity packet: all 104 recorded case rows
+
+File: [evidence/common-packet/rocky-results.json](evidence/common-packet/rocky-results.json)
+
+Treatment: byte-exact selected original
+
+## S06 · Rocky: exact sharing can still double
+
+File: [evidence/rocky/2026-11-02-PM/notebook-excerpt.md](evidence/rocky/2026-11-02-PM/notebook-excerpt.md)
+
+Treatment: verbatim notebook paragraphs; operational preflight and courier-preservation paragraphs omitted
+
+Selection: All substantive research paragraphs retained; omission rule disclosed.
+
+## S06-cases · 2026-11-02-PM original cases.json
+
+File: [evidence/rocky/2026-11-02-PM/cases.json](evidence/rocky/2026-11-02-PM/cases.json)
+
+Treatment: byte-exact selected original
+
+## S06-check · 2026-11-02-PM original check.py
+
+File: [evidence/rocky/2026-11-02-PM/check.py](evidence/rocky/2026-11-02-PM/check.py)
+
+Treatment: byte-exact selected original
+
+## S06-dependency · Rocky weighted-cofactor helper, unchanged
+
+File: [evidence/rocky/2026-11-02-AM/check.py](evidence/rocky/2026-11-02-AM/check.py)
+
+Treatment: byte-exact selected original
+
+## S06-results · 2026-11-02-PM original results.json
+
+File: [evidence/rocky/2026-11-02-PM/results.json](evidence/rocky/2026-11-02-PM/results.json)
+
+Treatment: byte-exact selected original
+
+## S07 · Rocky: factor independent choices before cancellation
+
+File: [evidence/rocky/2026-11-03-AM/notebook-excerpt.md](evidence/rocky/2026-11-03-AM/notebook-excerpt.md)
+
+Treatment: verbatim notebook paragraphs; operational preflight and courier-preservation paragraphs omitted
+
+Selection: All substantive research paragraphs retained; omission rule disclosed.
+
+## S07-cases · 2026-11-03-AM original cases.json
+
+File: [evidence/rocky/2026-11-03-AM/cases.json](evidence/rocky/2026-11-03-AM/cases.json)
+
+Treatment: byte-exact selected original
+
+## S07-check · 2026-11-03-AM original check.py
+
+File: [evidence/rocky/2026-11-03-AM/check.py](evidence/rocky/2026-11-03-AM/check.py)
+
+Treatment: byte-exact selected original
+
+## S07-results · 2026-11-03-AM original results.json
+
+File: [evidence/rocky/2026-11-03-AM/results.json](evidence/rocky/2026-11-03-AM/results.json)
+
+Treatment: byte-exact selected original
+
+## S08 · Rocky: condition shared choices, then multiply
+
+File: [evidence/rocky/2026-11-03-PM/notebook-excerpt.md](evidence/rocky/2026-11-03-PM/notebook-excerpt.md)
+
+Treatment: verbatim notebook paragraphs; operational preflight and courier-preservation paragraphs omitted
+
+Selection: All substantive research paragraphs retained; omission rule disclosed.
+
+## S08-cases · 2026-11-03-PM original cases.json
+
+File: [evidence/rocky/2026-11-03-PM/cases.json](evidence/rocky/2026-11-03-PM/cases.json)
+
+Treatment: byte-exact selected original
+
+## S08-check · 2026-11-03-PM original check.py
+
+File: [evidence/rocky/2026-11-03-PM/check.py](evidence/rocky/2026-11-03-PM/check.py)
+
+Treatment: byte-exact selected original
+
+## S08-results · 2026-11-03-PM original results.json
+
+File: [evidence/rocky/2026-11-03-PM/results.json](evidence/rocky/2026-11-03-PM/results.json)
+
+Treatment: byte-exact selected original
+
+## S09 · INSTINCT-DRAGO-003-REVIEW-REPORT-2026-11-03.txt
+
+File: [evidence/drago/INSTINCT-DRAGO-003-REVIEW-REPORT-2026-11-03.txt](evidence/drago/INSTINCT-DRAGO-003-REVIEW-REPORT-2026-11-03.txt)
+
+Treatment: byte-exact selected original
+
+## S10 · INSTINCT-DRAGO-004-REVIEW-REPORT-2026-11-03.txt
+
+File: [evidence/drago/INSTINCT-DRAGO-004-REVIEW-REPORT-2026-11-03.txt](evidence/drago/INSTINCT-DRAGO-004-REVIEW-REPORT-2026-11-03.txt)
+
+Treatment: byte-exact selected original
+
+## S11 · ROCKY-CROSS-REVIEW-RESULTS.zip / ROCKY-REVIEW.md
+
+File: [evidence/rocky/cross-review/ROCKY-REVIEW.md](evidence/rocky/cross-review/ROCKY-REVIEW.md)
+
+Treatment: byte-exact selected original
+
+## S11-1 · ROCKY-CROSS-REVIEW-RESULTS.zip / ROCKY-VERIFICATION.json
+
+File: [evidence/rocky/cross-review/ROCKY-VERIFICATION.json](evidence/rocky/cross-review/ROCKY-VERIFICATION.json)
+
+Treatment: byte-exact selected original
+
+## S11-2 · ROCKY-CROSS-REVIEW-RESULTS.zip / cross_probe.json
+
+File: [evidence/rocky/cross-review/cross_probe.json](evidence/rocky/cross-review/cross_probe.json)
+
+Treatment: byte-exact selected original
+
+## S11-3 · ROCKY-CROSS-REVIEW-RESULTS.zip / rocky_verify.py
+
+File: [evidence/rocky/cross-review/rocky_verify.py](evidence/rocky/cross-review/rocky_verify.py)
+
+Treatment: byte-exact selected original
+
+## S12 · drago-unit-repair.md
+
+File: [evidence/drago/unit-repair-excerpt.md](evidence/drago/unit-repair-excerpt.md)
+
+Treatment: verbatim excerpt from full source matched to pinned Git blob; custody/location metadata omitted
+
+## S13 · ROCKY-SYNTHESIS-REVIEW-AND-PROOF.zip / ROCKY-REVIEW.md
+
+File: [evidence/rocky/synthesis-review/ROCKY-REVIEW.md](evidence/rocky/synthesis-review/ROCKY-REVIEW.md)
+
+Treatment: byte-exact selected original
+
+## S13-1 · ROCKY-SYNTHESIS-REVIEW-AND-PROOF.zip / FORMAL-PROOF.md
+
+File: [evidence/rocky/synthesis-review/FORMAL-PROOF.md](evidence/rocky/synthesis-review/FORMAL-PROOF.md)
+
+Treatment: byte-exact selected original
+
+## S14 · ROCKY-GAP-REVIEW-2026-11-03.zip / REVIEW.md
+
+File: [evidence/rocky/gap-review/REVIEW.md](evidence/rocky/gap-review/REVIEW.md)
+
+Treatment: byte-exact selected original
+
+## S14-1 · ROCKY-GAP-REVIEW-2026-11-03.zip / WHOLE-PATH-BOUND.md
+
+File: [evidence/rocky/gap-review/WHOLE-PATH-BOUND.md](evidence/rocky/gap-review/WHOLE-PATH-BOUND.md)
+
+Treatment: byte-exact selected original
+
+## S15 · Drago revised agenda, November 4, 2026
+
+File: [evidence/design/drago-agenda-excerpt.md](evidence/design/drago-agenda-excerpt.md)
+
+Treatment: verbatim retained-research and measurement-limits excerpt; owner/scheduler paragraphs omitted
+
+## S16 · Step 007 / 007B correction addendum
+
+File: [evidence/corrections/step-007-addendum-public-excerpt.md](evidence/corrections/step-007-addendum-public-excerpt.md)
+
+Treatment: verbatim text except private Library links replaced by explicit omission markers
+
+## Coverage, not a claim of a complete replay kit
+
+| Dossiers | Included | Not included |
+|---|---|---|
+| T01 | Both substantive reports; complete Rocky case results | Full common engine and Drago raw replay |
+| T02–T04 | Original scripts, fixed inputs, recorded outputs, T02 helper | Whole cumulative notebook archive |
+| T05–T06 | Complete original review reports and evidence maps | Large raw census, timing and review bundles |
+| T07 | Raw six-case probe, saved resolution trace, original checker, report | Original discovery-engine archives |
+| T08 | Substantive source report with fixed Git identity | Original 749-file corpus and extended code |
+| T09 | Selected reviews and written arguments | Full solver/gadget archive and all historical verifier implementations |
+
+A future independent replay may need the source bundles named by the original reports. Do not replace a missing original by invented data or claim that a report-only selection is a standalone executable experiment.

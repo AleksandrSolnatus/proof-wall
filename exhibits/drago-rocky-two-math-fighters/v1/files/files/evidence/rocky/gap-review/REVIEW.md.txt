@@ -1,0 +1,42 @@
+# Rocky: what closes, and what remains
+
+Owner-authorized review of the three supplied ZIPs. Original uploads and extracted packet sources were preserved. No other participant workspace was consulted. No P versus NP resolution is claimed.
+
+## Results actually run
+
+- Read the Root report and separator theorem, Bridges proof/README, and Drago backdoor/decomposition report. This was not a full audit of all packet records or a replay of every historical experiment.
+- Independently checked all 16 assignments to the reported four-variable set {10,11,31,32} using a separately written DPLL Boolean oracle. The recognizer agreed in every case: 13 SAT, 3 UNSAT. Supplied proof checker also accepted. Normal and optimized Python agreed. This confirms the size-four upper witness, not a fresh independent verification of every lower-bound subset supporting exact minimum four.
+- Regenerated Bridges H4. Result: SAT, one frozen Q leaf (7 search states), three retained DAG nodes, five edges. Its structural checker accepted six calls and three reuse links. Seven leaf states exclude wrapper costs; no runtime ratio is inferred.
+- Implemented complementary-guard cancellation with an explicit equivalence ledger and separate replay function. For k=1,2,4,8,16 guarded Q copies, removed every selector occurrence and recovered the original disjoint clauses (up to literal ordering). At k=16, 2176 clauses became 1088 in 1088 checked equivalence steps. Normal and optimized Python matched. Nine two-variable tail patterns were additionally checked on all eight three-variable assignments (72 truth-table rows). These are bounded tests plus an elementary general identity, not evidence for general SAT complexity.
+
+## A small gap that does close
+
+For C not containing s or -s:
+
+    (s OR C) AND (-s OR C) iff C.
+
+If C is true, both clauses hold; if C is false, the conjunction requires s and -s simultaneously and is false. Thus replacing the pair by C preserves the full Boolean function, including assignments to s (which becomes unconstrained if absent elsewhere). This is stronger than merely preserving satisfiability. It is not a raw model-count preserving deletion if the variable universe is silently shrunk: an unused s still has two values.
+
+Repeated application strictly decreases active clause count and literal volume. The direct implementation scans polynomially many tail keys per iteration and has at most the original number of clauses in successful iterations, so discovery, reduction and its ledger have polynomial cost. It uses no general semantic-equivalence oracle. For the synthetic connected guard families in the packets, this removes the connector without exploring either selector branch; the already justified component/caching machinery can then proceed. This is a scoped simplification of those families, not a new general SAT algorithm. The included prototype is separate from the supplied solvers and is not integrated into them.
+
+## The general gap remains explicit
+
+The Bridges wrapper bounds work by polynomial(N,D,E) plus the costs of distinct solved leaves. D, E and leaf costs are not bounded polynomially for arbitrary input. Exact maps make reuse sound; they do not ensure enough equal subproblems exist or that hard new leaves disappear.
+
+The Root constant-separator/shrinking-child theorem is a valid sufficient induction. Its hypotheses include the hard part: finding useful separators at every reachable residual and paying for all work. Initial connectedness is too weak, as these guard examples show. Conversely, merely being unable to find a separator proves no algorithm-independent hardness result.
+
+Drago's reported exact 4k backdoor bound strengthens a statement about the fixed old recognizer. It supplies neither an exponential runtime lower bound for the complete solver nor an upper bound for general SAT. Its lower-bound finite premises were not exhaustively rerun in this review.
+
+## A precise way to finish this route, if true
+
+WHOLE-PATH-BOUND.md proves a sufficient potential bound. Give a residual mass m and remaining path budget r potential 2^r m. Decomposition conserves total mass; a Boolean split consumes one budget unit and can create two children. Therefore neither operation increases total frontier potential. With polynomial local costs/height and a decisive polynomial leaf recognizer, a whole-path O(log N) branching budget gives polynomial total work.
+
+This theorem closes the accounting step. It does not close universal discovery or leaf coverage. To reach a P=NP result through this route, construct and prove a uniform algorithm satisfying ALL these hypotheses on every 3CNF, or prove a polynomial bound on the distinct-reuse-DAG route instead. A one-variable wrapper whose leaves run unrestricted search does not satisfy them.
+
+## Next bounded test
+
+Use distinct connected gadgets joined by nonredundant small interfaces, including UNSAT cases that require both branches. Record separator-finding failures, child mass, accumulated path budget, distinct canonical keys, complete leaf work, and proof-checking costs. Equal guarded copies are controls, not the main evidence. Preserve a failing instance rather than changing the target after observing it.
+
+## Correction acknowledged
+
+The Drago report correctly observes that the earlier verify_replication.py used assert, so python -O could skip its checks. Original script was preserved. The new spotcheck.py and cancel_guards.py use explicit exceptions for acceptance conditions, and were executed normally and under -O. The earlier finite outcomes were also evaluated anew in these targeted tests; this is not a claim that every old check has been retroactively audited.

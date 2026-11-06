@@ -1,0 +1,53 @@
+import itertools,random,json,math
+from pathlib import Path
+
+def holds(F,a):return all(any(a[abs(l)]==(l>0) for l in c) for c in F)
+def components(F,n):
+ parent=list(range(n+1));scans=0
+ def root(v):
+  while parent[v]!=v:v=parent[v]
+  return v
+ for c in F:
+  for l in c:
+   scans+=1;parent[root(abs(l))]=root(abs(c[0]))
+ groups={}
+ for v in range(1,n+1):groups.setdefault(root(v),[]).append(v)
+ parts=[]
+ for vs in groups.values():
+  S=set(vs);local=[c for c in F if c and abs(c[0]) in S];assert all(all(abs(l) in S for l in c) for c in local);parts.append((vs,local))
+ return parts,not any(not c for c in F),scans
+
+def factored_count(parts,consistent,elim,a):
+ if not consistent:return 0,0
+ total=1;tests=0
+ for vs,F in parts:
+  gone=[v for v in vs if v in elim];local=0
+  for bits in itertools.product([False,True],repeat=len(gone)):
+   local+=holds(F,{**a,**dict(zip(gone,bits))});tests+=1
+  total*=local
+ return total,tests
+
+def main():
+ rng=random.Random(2026110303);cases=[];checks=globaltests=localtests=scan=0
+ for t in range(100):
+  n=9;elim={1,4,7};remain=[v for v in range(1,n+1) if v not in elim];F=[]
+  for block in [[1,2,3],[4,5,6],[7,8,9]]:
+   for _ in range(rng.randrange(0,9)):
+    vs=rng.sample(block,rng.randrange(1,4));F.append([rng.choice([-1,1])*v for v in vs])
+  if t%31==0:F.append([])
+  parts,ok,scans=components(F,n);scan+=scans
+  for bits in itertools.product([False,True],repeat=len(remain)):
+   a=dict(zip(remain,bits));exact=sum(holds(F,{**a,**dict(zip(sorted(elim),eb))}) for eb in itertools.product([False,True],repeat=3));got,tests=factored_count(parts,ok,elim,a);assert got==exact;checks+=1;globaltests+=8;localtests+=tests
+  cases.append({'F':F,'components':[vs for vs,f in parts],'consistent_empty_clause_guard':ok})
+ controls=[]
+ for k in range(1,13):
+  F=[[i,k+i] for i in range(1,k+1)];parts,ok,s=components(F,2*k);assert len(parts)==k
+  # Each factor contributes weight 1+[y_i]; summing over y_i gives 3.
+  factor_total=math.prod(sum(factored_count([part],ok,{i}, {k+i:b})[0] for b in [False,True]) for i,part in enumerate(parts,1));assert factor_total==3**k
+  controls.append({'k':k,'independent_factors':len(parts),'local_two_branch_restrictions':2*k,'global_method_restriction_calls_formula':2**(k+1)-2,'count':factor_total})
+ # Connector invalidates the old factor split: 9 -> 5 models, not 9.
+ F=[[1,3],[2,4],[-1,-2]];parts,ok,s=components(F,4);assert len(parts)==1
+ count=sum(holds(F,dict(enumerate(bits,1))) for bits in itertools.product([False,True],repeat=4));assert count==5
+ r={'random_formulas':100,'remaining_assignment_checks':checks,'global_extension_evaluations':globaltests,'component_local_evaluations':localtests,'factor_construction_literal_visits':scan,'independent_pair_controls':controls,'connector_control':{'components':len(parts),'actual_models':count,'incorrect_old_product':9},'failures':0,'seed':2026110303}
+ p=Path(__file__).parent;(p/'cases.json').write_text(json.dumps(cases,separators=(',',':'))+'\n');(p/'results.json').write_text(json.dumps(r,indent=2)+'\n');print(json.dumps(r,indent=2))
+if __name__=='__main__':main()

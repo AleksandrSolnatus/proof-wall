@@ -1,0 +1,15 @@
+{
+  "random_formulas": 100,
+  "conditioning_assignments_per_formula": 4,
+  "independent_global_assignment_checks": 51200,
+  "component_local_assignment_tests": 2528,
+  "substitution_literal_visits": 11604,
+  "shared_agreement_control": {
+    "correct_models": 2,
+    "incorrect_unconditional_product": 4
+  },
+  "unused_variable_control": 32,
+  "invalid_duplicate_set_rejected": true,
+  "failures": 0,
+  "seed": 2026110401
+}

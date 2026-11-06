@@ -1,5 +1,5 @@
 {
-  "exhibits": 21,
+  "exhibits": 22,
   "files": {
     ".nojekyll": {
       "bytes": 0,
@@ -424,6 +424,174 @@
     "exhibits/dial-p6-r1-context/v2/submitted-manifest.json": {
       "bytes": 8748,
       "sha256": "0b86408fde5d6c90eaf0606a3bf6a5a78e6b0b9555c4a6179d8c76308661fddf"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/exhibit.json": {
+      "bytes": 34840,
+      "sha256": "c99d52a8aca8107a2af34a4c4f69b20655e1ee470c445a0285fca3c06a842cba"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/article.md.txt": {
+      "bytes": 10150,
+      "sha256": "123149d57ecef2354b305e081410b4f18d814e5558be7ee9f4a7a6db09378088"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/REPORT.md.txt": {
+      "bytes": 50811,
+      "sha256": "dc4e861dbaceb43e0453c7c464680ec73594bdc6941baf14ed80d43712b69b5f"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/REPORT.pdf.bin": {
+      "bytes": 104250,
+      "sha256": "557597cf1b3093876101dba9fe34f041e2a3cf540d05bc7ff9a4253062a4aa89"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/SOURCE-GUIDE.md.txt": {
+      "bytes": 8543,
+      "sha256": "849339d53f8228dae533f1705feedb2d1bba2905acb4c52d75b508af113b7393"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/common-packet/drago-intake-excerpt.md.txt": {
+      "bytes": 5192,
+      "sha256": "fa7d10a459824772484718c3970e7120f6be2d70cecf5c1c7d736cbf654b3120"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/common-packet/rocky-response-excerpt.md.txt": {
+      "bytes": 6339,
+      "sha256": "e3c4a41a38d237eac1d9aa2ccaf1d35839c85057d9a7c86a4f89e7e24fe7cf40"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/common-packet/rocky-results.json.txt": {
+      "bytes": 55907,
+      "sha256": "fe61ad02211fdc836be86f8c83f909d34d9e327baebbaf07cc44e2fc988103c2"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/corrections/step-007-addendum-public-excerpt.md.txt": {
+      "bytes": 4833,
+      "sha256": "51860491c8431b03315b4ed560da226370ad32a356c1509fcc2e00903fd2c2e6"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/design/drago-agenda-excerpt.md.txt": {
+      "bytes": 1958,
+      "sha256": "ba2935ebe89bd5c9d6447d3619a8736bd3eb8793f6fb3d63b7707943b098fe5f"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/design/drago-contract-excerpt.md.txt": {
+      "bytes": 2295,
+      "sha256": "885b5fb0af4ac257c7cbaf39bc27aeba5be75740ff29c66f4827a5fe4b959a40"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/design/owner-observation.md.txt": {
+      "bytes": 434,
+      "sha256": "a81f22267158f88894ec4b2036adab3b06ec0811abb3cf54029e249f2b4fe1c1"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/design/rocky-invitation-excerpt.md.txt": {
+      "bytes": 967,
+      "sha256": "d9dfc011c61db60d44db7f0e8e617bfbdf7b2dbef34bb395774ffa389a9b10e3"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/drago/INSTINCT-DRAGO-003-REVIEW-REPORT-2026-11-03.txt.txt": {
+      "bytes": 16583,
+      "sha256": "f4aa74eeef467fe9f32eef4bfdc8be0f3f739eb32d73fc671d1c85daf36e3a85"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/drago/INSTINCT-DRAGO-004-REVIEW-REPORT-2026-11-03.txt.txt": {
+      "bytes": 22305,
+      "sha256": "d32072ecd3d4383937c257117af5aa521d6b20fb74283354c5f245f610275a3d"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/drago/unit-repair-excerpt.md.txt": {
+      "bytes": 6890,
+      "sha256": "3bf02739321806ec1d42217f1c8e9d8517f3a810f4ed772298bbb61bc9315f49"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/rocky/2026-11-02-AM/check.py.txt": {
+      "bytes": 2888,
+      "sha256": "3539ab594149d8a91595a6af2387b22847c853b57e19e5ea4bdfb33f8a6585bf"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/rocky/2026-11-02-PM/cases.json.txt": {
+      "bytes": 251204,
+      "sha256": "edf48d8bec93c240e3842551a26f5b3ca18d4dbd970061cef030dbc5978d6f7c"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/rocky/2026-11-02-PM/check.py.txt": {
+      "bytes": 2733,
+      "sha256": "92e820fb5cc4e1138ba3cedacbc871e1bf42361df08c9817e38d382dce4d59de"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/rocky/2026-11-02-PM/notebook-excerpt.md.txt": {
+      "bytes": 4075,
+      "sha256": "9e8bb1d0e5406e4667c4f0770f65d7958f7ca912494547b9aeaa4f0a627dbf6d"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/rocky/2026-11-02-PM/results.json.txt": {
+      "bytes": 1754,
+      "sha256": "e31d26197611a16ee57be1711112d6c44719c42e71b076b4023c8eae988f2779"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/rocky/2026-11-03-AM/cases.json.txt": {
+      "bytes": 17305,
+      "sha256": "4682925e583b67135ea79204d2e0fe426e524284d62cdc79e816dc8c5b8896bd"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/rocky/2026-11-03-AM/check.py.txt": {
+      "bytes": 3094,
+      "sha256": "9706693e105ff68721bb0078e758ff68a9d5d32d8ee5afbffcd1e88def34b99f"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/rocky/2026-11-03-AM/notebook-excerpt.md.txt": {
+      "bytes": 3960,
+      "sha256": "2064203cdaa2932a5653b48e00309971ba040d6c3f2c41bdf4fb2d1a09591185"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/rocky/2026-11-03-AM/results.json.txt": {
+      "bytes": 2482,
+      "sha256": "8bb2f4217037461849b30a6244d82892300f7c11e2f5d48d7883f73462706e88"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/rocky/2026-11-03-PM/cases.json.txt": {
+      "bytes": 56299,
+      "sha256": "b622351b37b4418e4ef64186aca4b73ac7cd8cd9befb6a983b4a577ab8efea24"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/rocky/2026-11-03-PM/check.py.txt": {
+      "bytes": 3286,
+      "sha256": "5b7a587fc3027eb8d2ab22a5fee6843c7f77bd684173539748d7fa87e2b94933"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/rocky/2026-11-03-PM/notebook-excerpt.md.txt": {
+      "bytes": 3775,
+      "sha256": "008da344a630db96ca8c9438d5b000e9bc6e6cdd752d15d33e843cdbba726b63"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/rocky/2026-11-03-PM/results.json.txt": {
+      "bytes": 424,
+      "sha256": "2369ece1a1df70d9af68de50dfa6f5cac4cd5fad1d1f564c2d630e785bade76a"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/rocky/cross-review/ROCKY-REVIEW.md.txt": {
+      "bytes": 4788,
+      "sha256": "af42f00a31cabb7f96a5c24b7c99d2da595aa4ed794c8ba7c746d748e93c015e"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/rocky/cross-review/ROCKY-VERIFICATION.json.txt": {
+      "bytes": 10375,
+      "sha256": "ab65441e4a0e3c0edf79e30ee017126f60e9600b4391a20653756f7f3af49b26"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/rocky/cross-review/cross_probe.json.txt": {
+      "bytes": 177293,
+      "sha256": "ccd4bef23d1563eac9b74f97fde581e73809a2cf852ab691b64e6484e2c0f3cd"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/rocky/cross-review/rocky_verify.py.txt": {
+      "bytes": 5899,
+      "sha256": "d49975c8ee1d8c97dbe3bcbdf0734c9be8d39e55fc3822f0210e7ea20898c3a3"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/rocky/gap-review/REVIEW.md.txt": {
+      "bytes": 5690,
+      "sha256": "5a450d47b0c03166d531884545486c300a387143e5c8fecb9fa0f9a2a0967259"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/rocky/gap-review/WHOLE-PATH-BOUND.md.txt": {
+      "bytes": 3554,
+      "sha256": "5b3828e5098c4eabfae1fde6e2f3c31541485ea5b6975359c9ef601c6374ed6f"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/rocky/synthesis-review/FORMAL-PROOF.md.txt": {
+      "bytes": 6471,
+      "sha256": "4c41713005ce40477010e0a6b092755c992e8615660087ad618c623368060e26"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/evidence/rocky/synthesis-review/ROCKY-REVIEW.md.txt": {
+      "bytes": 3391,
+      "sha256": "5f09df8e2ed3742968f7cbdf38a3afa8a653ea9565f5cf33df3b85a8086e73ce"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/source-register.json.txt": {
+      "bytes": 11864,
+      "sha256": "b3aad8ee0c2cab22ac72790be617fc0931c26e089aa9a8fd0219839d373f5c28"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/files/files/test-ledger.json.txt": {
+      "bytes": 19647,
+      "sha256": "20ad87d09960cc69ebeb5389495cf4a53165d4915d8616806c7800ef22951ed1"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/index.html": {
+      "bytes": 39800,
+      "sha256": "3523e802af03068c1035d7bb1e19f90b9804804e42f033922fa968926b8a775c"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/snapshot.json": {
+      "bytes": 6553,
+      "sha256": "43f7f2931b11cce75b212c4d6c487b19f0323a8d0bb177e0fb0918f10447a344"
+    },
+    "exhibits/drago-rocky-two-math-fighters/v1/submitted-manifest.json": {
+      "bytes": 24820,
+      "sha256": "31e0b26b7c88d3f33d447f6c112a47fa49ae89e5b61316192c24bbcaa5cc0910"
     },
     "exhibits/grammar-dual-run-001/v2/exhibit.json": {
       "bytes": 17062,
@@ -1074,12 +1242,12 @@
       "sha256": "356068ebd2d472cfaeed0b6e9f0311b1a4d1975064c88837a37b24db9b87f5f2"
     },
     "index.html": {
-      "bytes": 13862,
-      "sha256": "465bf51edfe16bfc14711bef954b2b9c056d80deb327b20a1f9d78c59e28ef54"
+      "bytes": 14378,
+      "sha256": "37f753c4b57b3fdaac39744ac938137a23edcb8fb2554375b1a686720bd52598"
     },
     "index.json": {
-      "bytes": 17570,
-      "sha256": "82d1a81ec6634623dc94ded06a795165f3f69f33491dbf235cb24be57a9e235a"
+      "bytes": 18748,
+      "sha256": "8cf2c2acef755f89c5442b6298e28f3be70c08ff0a39e961b2adb7a21d908ab1"
     },
     "llms.txt": {
       "bytes": 489,
@@ -1094,7 +1262,7 @@
       "sha256": "9a8f34a02329dd77da6f2e6e4945f7c6e1d841e60a5c40157795f284f4b5f7ec"
     }
   },
-  "manifest_note": "This manifest excludes itself. Hashes establish bytes, not truth or permission.",
+  "manifest_note": "Existing Rocky page restored byte-for-byte from public baseline to preserve previous exhibit; no generated page was edited. Hashes establish bytes, not truth or permission.",
   "mode": "release-candidate",
   "published": false,
   "schema_version": 1

@@ -1,0 +1,381 @@
+INSTINCT–DRAGO 004 REVIEW — FOLLOW THE CHECKED CONCLUSION
+November 3, 2026 • America/Phoenix
+
+DISPOSITION
+
+The packet's bounded continuation and work claims are supported by replay and
+independent checking. A separate targeted review found a concrete recognition
+boundary: a sound learned fact can shrink another loop's clauses below the
+detector's exact ternary pattern, so the detector misses a remaining forced fact.
+Both rebuild and incremental arms exhibit that limit. No false entailment or
+stale-cache defect was found in the inspected implementation and targeted tests.
+
+Uploaded source:
+  INSTINCT-Drago-004-Follow-the-Conclusion.zip
+  SHA-256 d88c54e7ffb7d6962ff3128d1d323ff7fb00cbd5e45bdf6d0c673c607157027a
+  405,321 bytes, 32 archive files.
+
+The original uploaded payload is retained unchanged in this review package.
+This report distinguishes archived observations, fresh replay, independent proof
+conversion, post-hoc demo accounting, and newly constructed boundary checks.
+
+1. WHAT EPISODE 004 ADDS
+
+This episode connects checked conclusions back into the original shared-candidate
+loop recognizer. A globally proved unit simplifies original clauses. That change
+can expose a new loop, whose proof refers to the earlier unit. The engine retains
+the original source, verified facts, proof prefix, variable-occurrence lists,
+current residual clauses, candidate buckets, no-hit cache state, and a versioned
+unit/conflict queue. Only clauses incident to the newly fixed variable can change.
+
+An unchanged candidate bucket can keep its no-hit result. A changed bucket is
+marked dirty and its local implication graph is rebuilt when checked. This is
+selective reconstruction of affected graphs, not retention of a fully dynamic
+strongly connected-component decomposition.
+
+The source is immutable within one proof session. Only previously proved GLOBAL
+facts may justify reductions. A source digest, exact prior-proof-prefix digest,
+and consecutive step number bind each certificate to its context. Clause/path
+replay supplies the proof; hashes supply identity and order. Branch decisions,
+temporary assumptions and changing-source reuse are outside this contract.
+
+Each accepted nonconflict step fixes a new variable, so there are at most n such
+steps and one terminal conflict. Exhausting the rule queue means this ordered
+procedure found no further step. It does not establish SAT or all consequences.
+
+2. THE A -> B -> C DEMO IS VALID
+
+For a guard G, the four clauses G OR (+/-X) OR (+/-Y), using every sign pair,
+are equivalent to G. If G is false, every X,Y assignment violates one clause;
+if G is true, all four clauses hold. The nine-clause demo is therefore equivalent
+to A AND (NOT A OR B) AND (NOT B OR C), hence A AND B AND C.
+
+The source contains:
+  Four clauses A OR (+/-X) OR (+/-Y).
+  Four clauses NOT A OR B OR (+/-X) OR (+/-Y).
+  One clause NOT B OR C.
+
+The recognizer first proves A from a ternary loop. Removing the now-false NOT A
+from the four wider B clauses creates a new ternary B loop. Proving B then makes
+NOT B OR C a unit and proves C. Independent enumeration of all 32 assignments
+finds exactly four models: A=B=C=true, and X,Y free.
+
+Saved dependency chain, with zero-based proof IDs:
+  Proof 0: A; dependencies [].
+  Proof 1: B; dependencies [0].
+  Proof 2: C; dependencies [1].
+
+The independent ordinary-resolution conversion contains eleven steps: three for
+A, four reductions using the saved A plus three loop resolutions for B, and one
+reduction using B for C. Original clauses remain in the proof prefix. Each later
+proof references the earlier unit node rather than copying its derivation.
+
+These are operational proof dependencies. A, B and C were all consequences of
+the original formula; the first result becomes an explicit checked premise,
+not a new independent assumption or a claim of necessity in every possible proof.
+
+3. FIRST-TO-SECOND WORK: AN AUDITED DEMO DECOMPOSITION
+
+The packet's main benchmark records complete-call counters. We additionally
+decomposed its demonstration using the unchanged engine/checker, without timing.
+Every final deterministic field matches the archived demo exactly: certificates,
+receipts, facts, source/prefix hashes, engine/checker counters, storage and outcome.
+
+The stage boundary is immediately before learned(). Thus A-triggered maintenance
+is charged to finding B, B-triggered maintenance to finding C, and C maintenance
+to the terminal scan. This is post-hoc counter attribution, not a newly frozen
+performance experiment.
+
+All entries below are Rebuild / Incremental:
+
+Stage                           | Residual recomputations | Residual literal tests | Loop checks
+--------------------------------+-------------------------+------------------------+------------
+Setup through A                 | 9 / 9                   | 30 / 30                | 1 / 1      
+A maintenance through B         | 9 / 8                   | 22 / 20                | 1 / 1      
+B maintenance through C         | 9 / 5                   | 14 / 10                | 0 / 0      
+C maintenance and terminal scan | 9 / 1                   | 14 / 2                 | 0 / 0      
+TOTAL                           | 36 / 23                 | 80 / 62                | 2 / 2      
+
+For A -> B, the incremental arm visits eight incident clauses, recomputes eight
+residuals, removes twelve bucket memberships and inserts twelve new memberships.
+It also pays dirty-candidate/version bookkeeping. Both arms build the same B
+loop: eight graph edges, eight forward SCC edge visits and eight reverse visits.
+Both check sixteen original literal occurrences and four certificate edges.
+
+The first-to-second saving in this small demo is therefore ONE residual-clause
+recomputation. A occurs in eight of the nine source clauses, so locality provides
+little scope for avoiding scans at that point. Later updates touch fewer clauses.
+One index construction versus four full reconstructions demonstrates retention;
+it alone does not demonstrate a faster first-to-second transition.
+
+4. THE 128-CASE BENCHMARK REPRODUCES
+
+The frozen packet contains 32 synthetic configurations, each under four seeds
+(113, 271, 997, 2027) changing variable names, signs and clause order. There are
+eight families, 0–96 variables and at most 88 clauses per case. These are designed
+variations, not a representative population of SAT problems.
+
+Both main arms use the same source normalization, unit-first ordering, candidate
+ordering, loop search, stopping rule and independent checker. Both keep prior
+proved facts and a checker session. The baseline reconstructs current residuals
+and buckets, with a unit-first shortcut. The unit-only arm is a reach control
+with fewer inference rules; it is not an equal-output speed comparator.
+
+The review reproduced all 128 complete first-pass rows and their deterministic
+summary on its first replay. Both main arms produce identical certificate
+sequences: 832 facts and eight certified terminal contradictions, or 840 proof
+records per arm. Of the 832 facts, 820 are on 120 satisfiable sources; twelve
+precede contradiction on eight inconsistent sources.
+
+Structural work in the original first pass | Rebuild | Incremental
+-------------------------------------------+---------+------------
+Residual-clause recomputations             | 43872   | 7008       
+Candidate-loop checks                      | 8728    | 3534       
+Original-source hashes                     | 128     | 128        
+New proof-prefix hashes                    | 840     | 840        
+Checker reads of original literals         | 7112    | 7112       
+
+All main-arm checker event counts match. Retention reduces reconstruction without
+relaxing proof acceptance. Its additional occurrence, bucket, dirty-state and
+queue maintenance counters remain visible in the detailed records. Heterogeneous
+events and hash bytes are not added into a fictitious total CPU-work score.
+
+The benchmark enumerates 26,740 assignments over 68 cases having at most twelve
+variables. For the other sixty cases, it checks an original satisfying witness
+and every proof, with no claim of exhaustive model coverage. All eight inconsistent
+cases are small. Greater reach than unit-only occurs on 88 satisfiable sources;
+four inconsistent sources with extra intermediate facts are recorded separately.
+
+5. TIMING AND STORAGE REQUIRE CAREFUL INTERPRETATION
+
+The archived timing statistic is the sum of 128 per-case medians, each based on
+four fresh-session repetitions after the retained first pass. It includes setup,
+normalization, proof-session creation, index maintenance, inference and checking.
+It excludes authoring, preparation, external audits, serialization and delivery.
+It is not one continuous workload measurement or a whole-solver speed estimate.
+
+Observation         | Rebuild median sum (ms) | Incremental median sum (ms) | Faster cases | Slower cases
+--------------------+-------------------------+-----------------------------+--------------+-------------
+Archived benchmark  | 88.231793               | 51.279672                   | 62           | 66          
+First review replay | 434.388733              | 274.550942                  | 67           | 61          
+
+The archived 41.88% reduction in the sum is arithmetically correct, while the
+incremental arm is slower on 66 of 128 individual cases. The first review replay
+also shows an aggregate reduction, with different absolute timings and 61 slower
+cases. These are separate observations; they are not pooled or substituted for
+one another. Portable validation runs are reproducibility checks, not additional
+timing samples used to select a favorable result.
+
+Archived family breakdown:
+
+Family              | Cases | Rebuild ms | Incremental ms | Faster/slower
+--------------------+-------+------------+----------------+--------------
+loop_chain          | 40    | 41.972     | 24.094         | 28/12        
+independent_loops   | 24    | 27.813     | 13.033         | 19/5         
+no_hit              | 16    | 3.830      | 4.244          | 3/13         
+unit_chain          | 16    | 8.627      | 3.772          | 8/8          
+broken_chain        | 12    | 1.512      | 1.711          | 0/12         
+mixed_chain         | 12    | 4.039      | 3.911          | 4/8          
+conflict_units      | 4     | 0.092      | 0.109          | 0/4          
+conflict_after_loop | 4     | 0.347      | 0.406          | 0/4          
+
+All four original single-loop cases without added noise and all twelve broken
+chains were slower incrementally in the archived timing observation. The losing
+cases remain intact. The larger chains and independent blocks supply much of
+the aggregate gain. Individual tiny timings are sensitive to execution noise.
+
+Storage metrics in Drago 004 count entries: occurrence memberships, bucket
+memberships, unit-heap entries and dirty candidates. Actual resident-memory bytes
+and Python object-size samples were not measured here. The approximately 63 KiB
+figure from our different PROOF-REUSE-001 experiment cannot be transferred to this
+implementation. Sorting, heap comparisons and dictionary internals are not counted
+as individual operations, although complete-call times include their effects.
+
+6. INDEPENDENT PROOF BRIDGE AND CACHE REVIEW
+
+The new bridge imports neither Drago's engine nor its checker. It uses an
+unchanged copy of the generic ordinary-resolution checker from PROOF-REUSE-001.
+It checks source digests, prefix/step order, cited original clauses, path edges
+and dependencies, and reconstructs each residual by actual resolution with
+already derived global units. Opposite paths then yield the candidate unit.
+
+Coverage across one archived main arm, after checking both arms' records equal:
+
+Bridge evidence                                | Count
+-----------------------------------------------+------
+Cases                                          | 128  
+Complete original clauses retained             | 3444 
+Loop records                                   | 448  
+Unit records                                   | 384  
+Terminal conflict records                      | 8    
+Total records converted                        | 840  
+Earlier-proof dependency links preserved       | 620  
+Ordinary-resolution steps                      | 2696 
+Total source-plus-resolution DAG nodes checked | 6140 
+
+Every proposed ordinary resolution passes online checking; each complete DAG
+also passes the separate batch verifier. All generated clauses happen to have
+width at most three. The adapter handles the simple paths actually stored in
+this packet, covering every archived record; it does not claim universal support
+for every possible non-simple certificate accepted by Drago's checker.
+
+The packet's 935-case audit also reproduces, including 4,599 replayed proof
+records, 2,015 dependency links and 28 rejected mutations. A further targeted
+review passes ten acceptance/copy controls and seven state scenarios, comprising
+472 checks, under both normal Python and python -O. The observer independently
+reconstructs residuals, occurrence lists and candidate buckets; checks heap
+versions and live unit coverage; and verifies every clean cached no-hit bucket
+using a separate reachability implementation. Late serialization failures leave
+accepted state unchanged. These finite checks complement the invariant argument;
+they are not a universal formal verification of all program executions.
+
+7. NEW BOUNDARY: A VALID FACT CAN SHRINK A PROOF OUT OF VIEW
+
+Let block(c,x,y) contain all four c OR (+/-x) OR (+/-y) clauses. Consider:
+
+  F = block(x2,x5,x6) AND block(x3,x2,x4).
+
+The exact raw eight clauses are:
+  [2,5,6], [2,5,-6], [2,-5,6], [2,-5,-6],
+  [3,2,4], [3,2,-4], [3,-2,4], [3,-2,-4].
+
+Each block is equivalent to its guard, so F is exactly x2 AND x3, with x4,x5,x6
+free. Independent enumeration finds eight models, all x2=x3=true.
+
+Both engines first prove x2. The first two clauses of the x3 block are then
+satisfied; its remaining clauses reduce to:
+
+  (x3 OR x4), (x3 OR NOT x4).
+
+These directly resolve to x3. But they are two-literal residuals. The current
+loop rule admits exactly three distinct residual variables; the unit rule admits
+only one literal. Both engines consequently return closure with only x2 fixed.
+
+Renaming x3 to x1 preserves the logical problem under a variable bijection and
+the same eight-model count. It changes candidate priority, however. Both engines
+then prove x1 before x2 and recognize both facts. Thus this ordered recognizer's
+recognized facts can depend on variable names. This is a rule-eligibility and
+order limitation, consistent with its declared incompleteness. The implication
+remains true, the proof checker stays sound, and the retained cache is accurate.
+
+The missing conclusion has a separately checked six-resolution proof:
+  1. Resolve source clauses 0 and 1 on x6 to obtain x2 OR x5.
+  2. Resolve sources 2 and 3 on x6 to obtain x2 OR NOT x5.
+  3. Resolve those results on x5 to prove x2.
+  4. Use that saved x2 to reduce source 6 to x3 OR x4.
+  5. Use the same saved x2 to reduce source 7 to x3 OR NOT x4.
+  6. Resolve the two binaries on x4 to prove x3.
+
+All eight raw clauses remain in the proof DAG. The ordinary checker and complete
+model census pass. BOUNDARY_ARMS.json retains both naming variants, all models
+and both complete engine outputs. BOUNDARY_RESOLUTION.json retains the missing
+conclusion's source-bound proof.
+
+8. COMPARISON WITH OUR PRECEDING EXPERIMENT
+
+Feature              | PROOF-REUSE-001                      | Drago 004                              
+---------------------+--------------------------------------+----------------------------------------
+Learned objects      | Clauses of width at most 3           | Globally proved unit facts             
+Discovery rule       | Ordinary resolution                  | Units and shared-candidate loops       
+How a result helps   | New resolution parent                | Simplifies original clauses            
+Retained search work | Literal index and pending resolvents | Occurrences, residuals, dirty buckets  
+Primary work counter | Resolution attempts                  | Residual recomputations and loop checks
+Corpus               | 11 constructed cases                 | 128 seeded synthetic variations        
+Memory evidence      | Sampled retained Python bytes        | Entry counts only                      
+
+Both experiments retain checked facts/proofs in both comparison arms. Each tests
+whether preserving search state avoids reconstruction after a conclusion is
+learned. Neither paired performance contrast compares learning that fact with
+withholding it. The demo/dependency diagnostics supply separate evidence that
+the fact exposes another immediate inference.
+
+Drago's 43,872 -> 7,008 residual recomputations cannot be numerically pooled with
+our 7,208 -> 646 resolution attempts. They count different operations on different
+inputs under different inference and timing protocols. The proof bridge provides
+a common validity check, not a common performance denominator.
+
+9. THE NEXT NARROW RULE TO TEST
+
+The boundary suggests extending the guarded loop rule to TWO-literal residuals
+as well as three-literal residuals, while retaining ordinary-unit handling.
+For a candidate L denied locally within its proof:
+  L OR p OR q gives the usual binary implication edges.
+  L OR p gives the unit implication NOT p -> p.
+  L alone is handled immediately by the ordinary-unit rule.
+
+There is a useful witness-preservation argument. If the denied residual 2-CNF
+is unsatisfiable, restricting it by additional checked assignments remains
+unsatisfiable. Its surviving clauses still have width at most two, although some
+shrink to units or an empty clause. Supporting those smaller residuals preserves
+the existence of this kind of witness when clauses simplify, with L unassigned.
+
+This does not preserve the old graph paths or pivot, prove cheap discovery, or
+give a complete solver. The engine and checker would both need the explicit
+extension, equal acceptance rules in both arms, and new frozen evaluation cases.
+The review supplies the argument and counterexample, not an implemented patch
+or a measured performance result for the extension.
+
+The packet's proposed activation gate—when to pay for index retention—remains
+a separate cost question. I would address this small recognition loss before
+tuning that gate. An index policy alone cannot recover a proof pattern excluded
+from the rule language.
+
+10. REPRODUCIBILITY, INTEGRITY AND PROVENANCE
+
+All 31 package-manifest payload entries and 27 episode-manifest entries match.
+The finalization/review bindings and 29 stored Git file identities also match,
+including independently recomputed Git blob hashes. This verifies local receipt
+consistency. It does not independently establish current GitHub state, remote
+delivery, or the historical order of original execution. Freeze/measurement
+timestamps are consistent recorded metadata, not external chronology proof.
+
+The original benchmark and audit are replayed with assertions enabled. The
+checker itself uses explicit validation; the added controls also pass under -O.
+
+A portable controller reproduces the original packet review, independent proof
+bridge, targeted normal/optimized checks, both boundary variants, demo stage
+trace and the missing-conclusion proof. From the extracted review package:
+
+  python3 -B drago004_root/replay_review.py --output /absolute/path/to/new/results
+
+Use ordinary Python 3.10 or later, with a new output path. The standard library
+is sufficient. Original evidence and review observations are never overwritten.
+The controller and component harnesses retain failures and allow only documented
+timing fields to differ. Detailed portable-validation disposition is recorded in
+drago004_root/PORTABLE_REVIEW_RECEIPT.json.
+
+Two initial portability attempts exposed real output-integrity failures. The
+first fresh benchmark log contained only 87 rows despite its complete 128-case
+summary. A later attempt reproduced the full benchmark but found that our
+generated bridge comparison file held only 123 of 128 rows. Its internal receipt
+already bound the full 128-row byte stream. The unchanged converter regenerated
+all 128 rows, matching that original expected hash exactly. The partial export,
+both failed attempts, and the original review receipt are preserved; the current
+review receipt explicitly records the recovery amendment. A single instrumented
+writer diagnostic reproduced all requested writes correctly and did not identify
+the earlier cause. The underlying recording cause remains undetermined.
+
+The final clean-path controller must pass every full-log and proof check before
+this report is generated. Failures were not ignored, timing fields were not used
+to conceal missing records, and inference/checker source code was not changed.
+See OUTPUT_RECOVERY.json, the preserved portability_incidents directory, and
+the writer-diagnostic note for the exact evidence. These recording incidents are
+separate from the mathematical recognition boundary described in section 7.
+
+Evidence map:
+  drago004_input/INSTINCT-Drago-004/      complete unchanged uploaded payload
+  drago004_replay/FINDINGS.txt           packet replay and aggregate verification
+  drago004_replay/first_replay/          first review replay, complete outputs/logs
+  drago004_replay/DEMO_STAGE_TRACE.json  post-hoc per-transition counters
+  drago004_math/bridge_results/         all converted ordinary-resolution proofs
+  drago004_math/BOUNDARY_RESOLUTION.json six-step missing-conclusion certificate
+  drago004_checker/TARGETED_NORMAL.json targeted acceptance/cache-state checks
+  drago004_checker/TARGETED_OPTIMIZED.json same checks under optimized Python
+  drago004_checker/BOUNDARY_ARMS.json   exact counterexample and renamed outputs
+  drago004_math/FINDINGS.txt             mathematical argument and comparison
+  drago004_root/PORTABLE_REVIEW_RECEIPT.json clean-path replay disposition
+
+All new mathematical conclusions in this review are supported by the supplied
+derivations, explicit source-bound certificates and finite checks. The episode
+supports bounded proof continuation and selective recomputation. No novelty,
+general SAT speedup, completeness, or P-versus-NP conclusion follows.

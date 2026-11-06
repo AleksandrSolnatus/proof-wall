@@ -1,0 +1,44 @@
+import itertools,random,json
+from pathlib import Path
+
+def canon(F):
+ out=set()
+ for c in F:
+  c=frozenset(c)
+  if any(-l in c for l in c):continue
+  if not c:return ((),)
+  out.add(tuple(sorted(c)))
+ return tuple(sorted(out))
+def restrict(F,v,b):
+ true=v if b else -v
+ return canon([tuple(l for l in c if l!=-true) for c in F if true not in c])
+def holds(F,a):return all(any(a[abs(l)]==(l>0) for l in c) for c in F)
+def eliminate(F,order):
+ states={canon(F):1};layers=[];restrictions=0
+ for v in order:
+  nextstates={}
+  for node,w in states.items():
+   for b in [False,True]:
+    child=restrict(node,v,b);restrictions+=1;nextstates[child]=nextstates.get(child,0)+w
+  states=nextstates;layers.append({'unique_nodes':len(states),'total_path_weight':sum(states.values()),'literal_occurrences':sum(sum(map(len,node)) for node in states)})
+ return states,layers,restrictions
+
+def main():
+ rng=random.Random(2026110202);cases=[];assignments=merges=0
+ for t in range(250):
+  F=[]
+  for _ in range(rng.randrange(0,13)):
+   F.append([rng.choice([-1,1])*rng.randrange(1,8) for _ in range(rng.randrange(0,5))])
+  states,layers,work=eliminate(F,[1,2]);reverse,_,_=eliminate(F,[2,1]);assert states==reverse
+  for bits in itertools.product([False,True],repeat=5):
+   a=dict(zip(range(3,8),bits));count=sum(holds(F,{**a,1:x,2:y}) for x,y in itertools.product([False,True],repeat=2))
+   weighted=sum(w*holds(node,a) for node,w in states.items());boolean=any(holds(node,a) for node in states)
+   assert count==weighted and bool(count)==boolean;assignments+=1
+  merges+=len(states)<4
+  cases.append({'F':F,'order':[1,2],'states':[{'clauses':node,'weight':w} for node,w in sorted(states.items())],'layers':layers,'restriction_calls':work})
+ # Two completely unused eliminated variables: dedup without weights loses x4.
+ states,layers,work=eliminate([], [1,2]);a={3:False};assert len(states)==1 and states[()]==4
+ original=sum(holds([],{1:x,2:y,3:z}) for x,y,z in itertools.product([False,True],repeat=3));wrong=sum(any(holds(node,{3:z}) for node in states) for z in [False,True]);right=sum(sum(w*holds(node,{3:z}) for node,w in states.items()) for z in [False,True]);assert(original,wrong,right)==(8,2,8)
+ r={'formulas':250,'remaining_assignment_checks':assignments,'explicit_extension_evaluations':4*assignments,'formulas_with_final_syntactic_merges':merges,'formulas_containing_initial_empty_clause':sum(any(not c for c in row['F']) for row in cases),'reverse_order_weight_maps_equal':250,'counterexample':{'original_models':original,'unweighted_projected_models':wrong,'weighted_models':right,'unique_final_node':1,'weight':4,'restriction_calls':work},'failures':0,'seed':2026110202}
+ p=Path(__file__).parent;(p/'cases.json').write_text(json.dumps(cases,separators=(',',':'))+'\n');(p/'results.json').write_text(json.dumps(r,indent=2)+'\n');print(json.dumps(r,indent=2))
+if __name__=='__main__':main()

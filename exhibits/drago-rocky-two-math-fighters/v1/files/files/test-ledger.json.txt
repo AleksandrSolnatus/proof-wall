@@ -1,0 +1,476 @@
+{
+  "schema_version": 1,
+  "edition": "2026-11-06-v1",
+  "kind": "retrospective-test-index",
+  "scientific_experiments_rerun": 0,
+  "recorded_data_not_fresh_measurements": true,
+  "tests": [
+    {
+      "id": "T01",
+      "title": "The same parity packet, two different finishes",
+      "source_ids": [
+        "S04",
+        "S05",
+        "S05-results"
+      ],
+      "design": "Authorized common input, October 22; each track selected different work, not matched timed arms.",
+      "recorded_counts": {
+        "drago_charge_assignments": 64,
+        "drago_charge_sat": 32,
+        "drago_charge_unsat": 32,
+        "drago_projection_checks": 126,
+        "drago_connected_region_checks": 102,
+        "drago_large_clean_encodings": 6,
+        "drago_original_sat_clauses_checked": 44400,
+        "drago_parity_rows_checked": 11100,
+        "drago_local_truth_assignments": 88800,
+        "rocky_lifted_cases": 104,
+        "rocky_generated_cases": 100,
+        "rocky_explicit_controls": 4,
+        "rocky_seed": 20261022,
+        "rocky_free_assignment_checks": 2736,
+        "rocky_partial_solver_sat": 12,
+        "rocky_partial_solver_unknown": 92,
+        "rocky_partial_solver_unsat": 0,
+        "small_example_core_models": 16,
+        "small_example_full_models": 14
+      },
+      "recorded_findings": [
+        "Drago qualified the implemented recognized-family completeness claim to nonempty inputs.",
+        "Rocky reduced the extra condition to z1 OR z3 OR z4 and settled the 14-of-16 mixed remainder."
+      ],
+      "negative_controls_and_limits": [
+        "Empty conjunction returns UNKNOWN in the supplied partial implementation.",
+        "A failed first core witness is not a proof of UNSAT.",
+        "General added conditions can retain arbitrary SAT difficulty."
+      ],
+      "cost_scope": {
+        "drago_local_replay_seconds": 0.514,
+        "rocky_local_checker_seconds_approximately": 0.116,
+        "direct_time_ratio_valid": false,
+        "reason": "Different computations; source reading, reasoning, review, packaging and delivery are not matched."
+      },
+      "evidence_in_this_package": "Substantive source excerpts for both tracks; complete saved Rocky 104-case results. Original common engine and Drago large replay files are not included.",
+      "new_scientific_execution_in_this_edition": false
+    },
+    {
+      "id": "T02",
+      "title": "Exact sharing can still double",
+      "source_ids": [
+        "S06",
+        "S06-cases",
+        "S06-results",
+        "S06-check",
+        "S06-dependency"
+      ],
+      "design": "Rocky, November 2 PM: planted satisfiable 10-variable formulas; three elimination orders on the same six variables.",
+      "recorded_counts": {
+        "seed": 2026110301,
+        "formulas": 60,
+        "variables": 10,
+        "clause_counts": [
+          15,
+          30,
+          40
+        ],
+        "eliminated_variables": 6,
+        "orders_per_formula": 3,
+        "remaining_assignment_checks": 960,
+        "explicit_original_extension_evaluations": 61440,
+        "formulas_with_order_cost_differences": 57,
+        "sum_best_observed_order_calls": 6036,
+        "sum_worst_observed_order_calls": 6806,
+        "doubling_control_k_min": 1,
+        "doubling_control_k_max": 8,
+        "k8_final_residuals": 256,
+        "k8_restriction_calls": 510,
+        "k8_models": 6561
+      },
+      "recorded_findings": [
+        "All three orders preserve the final weighted residual map.",
+        "Independent-pair controls expose exponential size for this flattened residual representation."
+      ],
+      "negative_controls_and_limits": [
+        "Retrospective best-order selection does not pay for discovering that order.",
+        "Easy input family; not a lower bound for all SAT algorithms.",
+        "Historical assertions require normal Python; optimized execution can suppress checks."
+      ],
+      "cost_scope": {
+        "unit": "restriction calls",
+        "not_measured": "A full end-to-end or whole-solver speedup; equal call costs are not established."
+      },
+      "evidence_in_this_package": "Exact selected input/output JSON, original script, and its earlier helper; no script was run in this edition.",
+      "new_scientific_execution_in_this_edition": false
+    },
+    {
+      "id": "T03",
+      "title": "Factor independent choices before cancellation",
+      "source_ids": [
+        "S07",
+        "S07-cases",
+        "S07-results",
+        "S07-check"
+      ],
+      "design": "Rocky, November 3 AM: actual incidence graph discovery on 100 nine-variable, initially disjoint-block formulas.",
+      "recorded_counts": {
+        "seed": 2026110303,
+        "formulas": 100,
+        "variables": 9,
+        "remaining_assignment_checks": 6400,
+        "global_extension_evaluations": 51200,
+        "component_local_assignment_tests": 44416,
+        "factor_construction_literal_visits": 2473,
+        "pair_controls_k_min": 1,
+        "pair_controls_k_max": 12,
+        "k12_local_two_branch_restrictions": 24,
+        "k12_old_global_calls_analytic_not_executed": 8190,
+        "k12_model_count": 531441,
+        "connector_actual_models": 5,
+        "connector_incorrect_old_product": 9
+      },
+      "recorded_findings": [
+        "Component-wise counting agrees with exhaustive original assignment checks.",
+        "A connector destroys the old factor split; recomputing the graph preserves the correct count."
+      ],
+      "negative_controls_and_limits": [
+        "The 8190 comparison is an analytic prediction, not an executed larger baseline.",
+        "Distinct-sized local/global work units cannot be treated as an elapsed-time ratio."
+      ],
+      "cost_scope": {
+        "included_counters": [
+          "component local assignment tests",
+          "input literal visits for construction"
+        ],
+        "not_a_claim": "Total runtime or general counting tractability."
+      },
+      "evidence_in_this_package": "Exact input/output JSON and original script; no rerun.",
+      "new_scientific_execution_in_this_edition": false
+    },
+    {
+      "id": "T04",
+      "title": "First agree on the shared choices",
+      "source_ids": [
+        "S08",
+        "S08-cases",
+        "S08-results",
+        "S08-check"
+      ],
+      "design": "Rocky, November 3 PM: two overlapping generator blocks on nine variables, conditioning on the supplied shared set {1,2}.",
+      "recorded_counts": {
+        "seed": 2026110401,
+        "formulas": 100,
+        "variables": 9,
+        "conditioning_assignments_per_formula": 4,
+        "full_assignment_checks": 51200,
+        "component_local_assignment_tests": 2528,
+        "substitution_literal_visits": 11604,
+        "agreement_control_correct_models": 2,
+        "agreement_control_naive_product": 4,
+        "empty_formula_declared_variables": 5,
+        "empty_formula_models": 32
+      },
+      "recorded_findings": [
+        "All generated counts agree with full original-assignment evaluation.",
+        "Condition before multiplying to avoid counting incompatible shared choices."
+      ],
+      "negative_controls_and_limits": [
+        "An empty-conditioning-set cross-check is additional work not charged in the published local counters.",
+        "Contradictory units give zero; a duplicate conditioning variable is rejected.",
+        "The shared set is supplied; separator discovery and arbitrary hard components remain obligations."
+      ],
+      "cost_scope": {
+        "unit_warning": "Local assignment tests and substitution literal visits are separate units; graph and bookkeeping costs are additional."
+      },
+      "evidence_in_this_package": "Exact input/output JSON and original script; no rerun.",
+      "new_scientific_execution_in_this_edition": false
+    },
+    {
+      "id": "T05",
+      "title": "A good inference can be a bad intervention",
+      "source_ids": [
+        "S09"
+      ],
+      "design": "Drago 003: exhaustive restricted-family census followed by a separate frozen continuation pilot on eight constructed SAT cases.",
+      "recorded_counts": {
+        "census_formulas": 35960,
+        "census_no_forced_literal": 35888,
+        "census_one_forced_literal": 72,
+        "signed_literals": 8,
+        "cases_per_signed_literal": 9,
+        "proof_steps_per_route": 344,
+        "pilot_cases": 8,
+        "pilot_variables": [
+          8,
+          12
+        ],
+        "pilot_clause_range": [
+          12,
+          17
+        ],
+        "paired_repetitions_per_case": 31,
+        "paired_observations": 248,
+        "timed_solver_arms": 496,
+        "slower_treatment_pairs": 246,
+        "median_wall_ratio_min": 4.89,
+        "median_wall_ratio_max": 7.75
+      },
+      "recorded_findings": [
+        "No semantic miss in the four-clause census; a fifth-clause example defeats the narrow guarantee.",
+        "All eight pilot median continuation times are worse with this intervention."
+      ],
+      "negative_controls_and_limits": [
+        "The pilot had no conflicts or backtracking and did not test escape from a hard failed subtree.",
+        "An original fixture loader confused a metadata list with CNF; failure and separate correction are retained in the source report."
+      ],
+      "cost_scope": {
+        "timed": [
+          "state copying",
+          "detection",
+          "certificate verification",
+          "insertion",
+          "continuation",
+          "full-source SAT witness validation"
+        ],
+        "outside_continuation_timing": [
+          "common prefix",
+          "input loading",
+          "post-run truth tables",
+          "serialization",
+          "implementation",
+          "review"
+        ]
+      },
+      "evidence_in_this_package": "Complete original review report with evidence map. The large raw census/proof/timing bundle is not included; no trial rows reconstructed.",
+      "new_scientific_execution_in_this_edition": false
+    },
+    {
+      "id": "T06",
+      "title": "Retain the search work, keep the same proof standard",
+      "source_ids": [
+        "S10"
+      ],
+      "design": "Drago 004: 32 synthetic configurations under four seeds; rebuild and incremental arms share inference order, source, facts, checker session and acceptance.",
+      "recorded_counts": {
+        "configurations": 32,
+        "seeds": [
+          113,
+          271,
+          997,
+          2027
+        ],
+        "cases": 128,
+        "families": 8,
+        "maximum_variables": 96,
+        "maximum_clauses": 88,
+        "facts_per_arm": 832,
+        "terminal_contradictions_per_arm": 8,
+        "proof_records_per_arm": 840,
+        "small_exhaustive_cases": 68,
+        "enumerated_assignments": 26740,
+        "larger_witness_and_proof_cases": 60,
+        "rebuild_residual_recomputations": 43872,
+        "incremental_residual_recomputations": 7008,
+        "rebuild_loop_checks": 8728,
+        "incremental_loop_checks": 3534,
+        "source_hashes_each": 128,
+        "prefix_hashes_each": 840,
+        "original_literal_checker_reads_each": 7112,
+        "archived_sum_case_medians_ms": {
+          "rebuild": 88.231793,
+          "incremental": 51.279672
+        },
+        "archived_incremental_faster_cases": 62,
+        "archived_incremental_slower_cases": 66,
+        "separate_review_sum_case_medians_ms": {
+          "rebuild": 434.388733,
+          "incremental": 274.550942
+        },
+        "separate_review_faster_cases": 67,
+        "separate_review_slower_cases": 61,
+        "resolution_bridge_records": 840,
+        "dependency_links": 620,
+        "resolution_steps": 2696,
+        "source_plus_resolution_nodes": 6140
+      },
+      "recorded_findings": [
+        "Both main arms return identical checked proof sequences.",
+        "Retention reduces reconstruction but loses on many individual cases."
+      ],
+      "negative_controls_and_limits": [
+        "A proved fact can shrink another proof below the ternary pattern; a six-step proof recovers the missing consequence.",
+        "Renaming changes recognition order, not the source truth.",
+        "Partial 87-of-128 and 123-of-128 exports were preserved, then recovered; root recording cause remains undetermined."
+      ],
+      "cost_scope": {
+        "statistic": "Sum of 128 per-case medians, each from four fresh-session repetitions; not one continuous workload.",
+        "excludes": [
+          "authoring",
+          "preparation",
+          "external audits",
+          "serialization",
+          "delivery"
+        ],
+        "memory": "Entry counts, not resident-memory bytes.",
+        "pooling": "Archived timing and first-review timing remain separate."
+      },
+      "evidence_in_this_package": "Complete original review report with detailed evidence map; full raw 128-case package not included.",
+      "new_scientific_execution_in_this_edition": false
+    },
+    {
+      "id": "T07",
+      "title": "A short proof outside the current search language",
+      "source_ids": [
+        "S11",
+        "S11-1",
+        "S11-2",
+        "S11-3"
+      ],
+      "design": "Rocky, authorized cross-review: saved ledgers checked independently of discovery engines, plus a separate parity counterexample/refutation.",
+      "recorded_counts": {
+        "saved_formulas": 6,
+        "saved_engine_arms": 12,
+        "recorded_resolution_steps_checked": 67,
+        "saved_formula_model_counts": [
+          12,
+          12,
+          12,
+          1,
+          0,
+          0
+        ],
+        "parity_variables": 6,
+        "parity_clauses": 16,
+        "parity_groups": 4,
+        "refutation_resolution_steps": 31,
+        "pair_attempts": 109,
+        "single_clause_deletion_controls": 16,
+        "models_per_deletion_control": 2
+      },
+      "recorded_findings": [
+        "Saved proof traces checked; the supplied restricted discovery engines were not rerun.",
+        "A 31-step ordinary-resolution refutation establishes the separate parity contradiction."
+      ],
+      "negative_controls_and_limits": [
+        "Missing original engine archives prevent an independent replay of discovery.",
+        "No shortest-proof or timing superiority claim.",
+        "The motif recognizer rejects damaged encodings; signed renaming and clause order controls are recorded."
+      ],
+      "cost_scope": {
+        "counts_are": "Saved proof steps and separate derivation attempts, not Drago/Rocky task-speed observations."
+      },
+      "evidence_in_this_package": "Selected original review, raw six-case supplied probe, verification JSON including proof trace, and original checking code.",
+      "new_scientific_execution_in_this_edition": false
+    },
+    {
+      "id": "T08",
+      "title": "A small repair from the broad investigator",
+      "source_ids": [
+        "S12"
+      ],
+      "design": "Drago, November 4: preserve source/configuration/budgets, add explicitly checked forced-unit steps to the recursive interface baseline.",
+      "recorded_counts": {
+        "sources": 68,
+        "paired_records": 411,
+        "main_comparison_calls": 408,
+        "separate_diagnostic_calls": 3,
+        "tight_recursive_decided_before": 49,
+        "tight_recursive_decided_after": 65,
+        "roomier_recursive_decided_before": 55,
+        "roomier_recursive_decided_after": 68,
+        "tight_table_only_unchanged": 17,
+        "roomier_table_only_unchanged": 48,
+        "limited_to_decided_trial_rows": 58,
+        "distinct_improved_source_names": 16,
+        "tight_reuse_nodes_before": 465,
+        "tight_reuse_nodes_after": 352,
+        "tight_reuse_table_rows_before": 583,
+        "tight_reuse_table_rows_after": 392,
+        "actual_certificate_bytes_before": 561745,
+        "actual_certificate_bytes_after": 382769,
+        "summed_output_reservations_before": 342911856,
+        "summed_output_reservations_after": 371002496,
+        "tight_cases_more_nodes": 15,
+        "roomier_cases_more_nodes": 18,
+        "focused_records_per_python_mode": 74,
+        "malformed_rejections_per_python_mode": 49,
+        "semantic_sweep_sources": 708,
+        "semantic_modes": 3,
+        "executions_per_python_mode": 2124,
+        "per_mode_outcomes": {
+          "SAT": 395,
+          "UNSAT": 1192,
+          "LIMITED": 537
+        },
+        "paired_sat_models_checked": 209
+      },
+      "recorded_findings": [
+        "No previously decided main-cohort case regresses; tight and roomier coverage improve.",
+        "Some costs rise despite aggregate node/certificate reductions."
+      ],
+      "negative_controls_and_limits": [
+        "Outside the cohort, [[1]] with max_nodes=1 changes SAT to LIMITED.",
+        "512 independent units yield a SAT candidate but the checker raises RecursionError; candidate is not accepted.",
+        "Repeated Python modes and overlapping trials are not independent source discoveries."
+      ],
+      "cost_scope": {
+        "not_measured": "Whole-task speedup or actual memory use.",
+        "output_reservations": "Sums across separate runs, not peak memory.",
+        "preparation": "Development, original replay, review, failed attempts and packaging excluded from per-case solve time."
+      },
+      "evidence_in_this_package": "Substantive exact report excerpt, pinned to a stored Git object. The 749-file original corpus is not repackaged.",
+      "new_scientific_execution_in_this_edition": false
+    },
+    {
+      "id": "T09",
+      "title": "A failed universal bound and a useful conditional one",
+      "source_ids": [
+        "S13",
+        "S13-1",
+        "S14",
+        "S14-1"
+      ],
+      "design": "Rocky synthesis and gap reviews: fixed satisfiable recognizer-stalling gadget, disjoint replication, then an explicit whole-path accounting theorem.",
+      "recorded_counts": {
+        "base_variables": 33,
+        "base_clauses": 68,
+        "copy_counts": [
+          1,
+          2,
+          4,
+          8,
+          16
+        ],
+        "saved_full_solver_states": [
+          7,
+          15,
+          29,
+          57,
+          113
+        ],
+        "recognizer_root_status": "LIMITED for all five saved copy counts",
+        "guarded_k16_clauses_before": 2176,
+        "guarded_k16_clauses_after": 1088,
+        "checked_equivalence_steps": 1088,
+        "tail_patterns": 9,
+        "tail_rows": 72
+      },
+      "recorded_findings": [
+        "Every strong backdoor for the fixed recognizer must touch each independent gadget copy, ruling out its proposed universal logarithmic strong-backdoor bound.",
+        "The complete solver can still handle fixed-size independent components cheaply.",
+        "Under the stated local cost, decisive-leaf, additive-mass, height and whole-path decision conditions, total work is bounded by A(H+1)2^B N^d plus disclosed polynomial encoding overhead."
+      ],
+      "negative_controls_and_limits": [
+        "The finite recognizer base lemma is computational, not proof-assistant formalized.",
+        "No all-algorithm SAT lower bound, general polynomial SAT solver, or automatic cheap separator discovery follows.",
+        "Renewing a logarithmic budget at every scale is not the whole-path hypothesis.",
+        "A later explicit optimized-mode spot check does not retroactively validate assertion-dependent earlier checks."
+      ],
+      "cost_scope": {
+        "bound_scope": "Conditional symbolic work bound; all local work, failed trials and leaf solving must be paid for.",
+        "not_a_timing_claim": true
+      },
+      "evidence_in_this_package": "Exact selected review and proof documents; not a duplication of all supplied solver/gadget archives.",
+      "new_scientific_execution_in_this_edition": false
+    }
+  ]
+}

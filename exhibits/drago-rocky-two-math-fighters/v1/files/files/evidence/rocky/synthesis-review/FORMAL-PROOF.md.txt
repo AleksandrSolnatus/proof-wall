@@ -1,0 +1,51 @@
+# A replication obstruction to globally logarithmic strong backdoors
+
+Rocky — 2026-11-03, America/Phoenix.
+
+## Scope
+
+This is a mathematical proof with an explicit finite computational lemma about the supplied Python recognizer. It is not a proof-assistant formalization. It does not establish P != NP, an exponential running-time lower bound, or an obstruction to stronger future recognizers. The conditional theorem 2^b poly(N) in the supplied packet remains valid.
+
+## Definitions
+
+A CNF restriction F|a substitutes a partial assignment a, drops satisfied clauses, and removes false literals from remaining clauses. An empty clause is retained. Variables are positive integer identifiers; their binary encodings count toward input length.
+
+R is the recognition algorithm in DRAGO_SYNTHESIS_001/solver.py with default logical features, no node/work/depth caps, no supplied decisions, and prefix_only=True. Its outcomes are SAT, UNSAT, or LIMITED. Resource exhaustion is not treated as a mathematical obstruction. R uses unit/pure preprocessing, connected-component decomposition, and its four named structural probes. B is a strong R-backdoor of F if R decides F|a for EVERY Boolean assignment a:B->{0,1}. This universal quantifier includes restrictions of satisfiable inputs.
+
+For copies below, clause order is retained and variable labels are shifted by a constant. The code's component-local probe decisions are unchanged by these positive shifts: sorted literal/variable orders, equalities, incidences, and conflict neighborhoods are preserved. Original source IDs may shift but their relative order and source relationships are preserved. Values inherited from other components have no occurrence in this component's clauses. This is the relevant invariance, not invariance under arbitrary signed permutations.
+
+## Finite base lemma
+
+Let H be the 11-vertex Mycielski graph of C5 from fixtures.mycielski_five_cycle(). Remove edge {0,1}, and encode three-colorability exactly as that fixture does, without extra at-most-one clauses. Equivalently, remove precisely [-1,-4], [-2,-5], [-3,-6] from the fixture CNF. Denote the resulting 33-variable, 68-clause formula by Q.
+
+Then Q is satisfiable and R(Q)=LIMITED. This lemma is computational: gadget.json gives every clause; gadget-model.json supplies a satisfying assignment; verify_replication.py reconstructs Q, directly evaluates returned models on all clauses, and executes the recognition-only call. The solver source is included for replay. Its manifest SHA-256 is recorded in PROVENANCE.json. The root stall is not inferred merely from the absence of a capacity refutation: possible SAT proposals must also fail, and the actual recognition call checks that.
+
+No unit/pure preprocessing changes Q: all requirements have three positive literals, all exclusions two negative literals, and every variable occurs in both polarities. The graph remains connected, and minimum graph degree is at least two, so conservative single-pair elimination has no eligible variable. Thus Q is a whole unchanged component when left untouched. The finite replay includes the other probes and their deterministic candidate models.
+
+## Replication theorem
+
+Let Q_i be the order-preserving relabeling x_j -> x_(33(i-1)+j) of Q, and define F_k = conjunction_(i=1..k) Q_i. Then every strong R-backdoor B of F_k satisfies |B| >= k.
+
+Proof. Suppose |B|<k. The k variable scopes are disjoint, so some scope V(Q_j) is disjoint from B. Choose a satisfying assignment M of F_k by combining a satisfying assignment of each Q_i; these exist by the base lemma. Set a=M restricted to B.
+
+Every Q_i|a is satisfiable, since M extends a. Therefore a sound recognition rule cannot refute any component of F_k|a. The untouched Q_j remains exactly Q_j: its clauses contain no variable of B, and preprocessing on other variable scopes cannot change them. Its local unit/pure preprocessing also makes no change, as established above. Component processing consequently retains Q_j as an independent unresolved component.
+
+By the base lemma and shift invariance, R on this component returns LIMITED. Successful SAT recognition of other components cannot supply values for its disjoint variables; and no component supplies an UNSAT shortcut, since all are satisfiable. The supplied component-processing rule therefore cannot return a complete decision on F_k|a. Hence R(F_k|a)=LIMITED. This contradicts the defining condition on a strong R-backdoor. Thus |B|>=k. QED.
+
+The proof uses only one particular assignment a to defeat a proposed B; it does not assert that every assignment to B fails.
+
+## Corollary: the suggested universal logarithmic theorem fails for this R
+
+The input F_k has 33k variables and 68k constant-width clauses. Its ordinary binary-label encoding has length N_k <= C k log_2(k+2) for a fixed constant C. Consequently log_2 N_k = O(log k). For every fixed c, eventually k > c log_2 N_k. The replication theorem then gives |B| > c log_2 N_k for every strong R-backdoor B of F_k.
+
+Therefore there is no fixed c such that every 3CNF input has a strong R-backdoor of size at most c log_2 N, for the present unchanged recognizer. Discovery time cannot repair failure of this existence statement. QED.
+
+## Why this does not imply hard SAT instances
+
+The complete solver allows fallback branching and decomposes independent components. Q is fixed-sized, so solving each copy costs a fixed finite amount. Solving k copies separately, combining their models, and checking the complete formula therefore takes polynomial total work, including input-label costs. The observed search-state counts were 7,15,29,57,113 for k=1,2,4,8,16. These measurements support the implementation observation; they are not needed for the asymptotic argument that fixed-size components can be solved separately.
+
+Thus a large strong backdoor for R does not imply a slow complete solver. A global backdoor enumeration pays for combinations that independent decomposition can avoid.
+
+## A better sufficient target
+
+For independent components with branching parameters b_i and polynomial leaf costs, the work can be bounded by a sum of component costs, such as sum_i 2^b_i poly(N_i), plus decomposition and combination overhead. It need not be 2^(sum_i b_i) poly(N). A future general SAT theorem would still need to bound the total cost over all recursive splits and decompositions, including structure discovery. No such bound for arbitrary inputs is proved here.

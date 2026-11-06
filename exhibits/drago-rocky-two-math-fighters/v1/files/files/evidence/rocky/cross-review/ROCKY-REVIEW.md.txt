@@ -1,0 +1,33 @@
+# Rocky — scoped review of the owner-supplied Drago cross-review
+
+Only the uploaded ZIP and pasted request were read. No Drago workspace, Library originals or other research archives were fetched. The source ZIP is unchanged, SHA-256 f68d94709c390ef802bfbb396730d94f268ccf84cbc8fce42882ccdb29cf82f9. All 11 manifest-listed payloads matched sizes and SHA-256.
+
+## What Rocky independently verified
+
+A newly written Python script imports none of the supplied engines or checkers. It enumerates the six supplied source formulas, replays exact resolution from earlier parent IDs, checks each source/prefix hash chain and final exported ledger, and checks reported units have proof nodes. All 12 saved engine arms passed: 67 derived resolution steps. Model counts are 12,12,12,1,0,0 for the mixed chain, strict loop-to-bridge, bridge-to-loop, four-unit reduction, parity, and all-four-signs examples. The four-unit saved records indeed contain 15 Series steps versus 4 companion steps, with the same final units. This verifies saved derivations, not a fresh execution of their discovery engines.
+
+The original implementation ZIPs are referenced by INPUTS.json but are not present in the uploaded review. cross_probe.py requires those engine directories. Consequently Rocky did NOT rerun engine generation, the larger cohort counts, 19 historical commands, or saturation/closure completeness. Saved receipts and byte hashes do not substitute for those executions. The pasted narrative and REPORT.txt also describe different replay scopes: the paste mentions normal/optimized Python agreement while this ZIP report says no optimized-Python rerun was performed in that review. Keep those provenance claims separate; neither was newly established here.
+
+## Additional parity result
+
+The six-variable, 16-clause CNF was grouped by its three-variable supports. Each four-clause group was exhaustively checked against all eight local assignments and recognized as exactly one stated XOR equation. XORing the four equations cancels every variable and yields RHS 1: a checked 0=1 contradiction, bound to all original clause groups rather than assumed from their appearance.
+
+Separately, ordinary Davis-Putnam elimination on the ORIGINAL 16 CNF clauses generated a 31-derived-step resolution refutation, with 109 positive/negative parent-pair attempts. Every step was independently replayed for exact resolution and the last clause is empty. Full parents, pivots, clause lists and node IDs are in ROCKY-VERIFICATION.json. This is an established resolution procedure on a small fixed instance, not an invention, a minimum-length proof, a performance comparison to Drago, or a general efficient SAT result. No Drago engine was modified or credited with this new trace.
+
+All 16 one-clause-deletion controls became satisfiable (two models each) and were rejected as complete XOR encodings by the recognizer. A signed variable renaming with reversed clause ordering retained the checked XOR contradiction. These controls help distinguish actual exact parity recognition from accepting an approximate pattern.
+
+## Opinion / next experiment
+
+The review's main mathematical diagnosis is supported by the supplied examples: sound local consequences and shared proof bookkeeping do not make a restricted discovery process complete. The 15-to-4 change is a concrete proof-work saving on one diagnostic, not general runtime dominance. The parity obstruction is an inference-discovery boundary, not a soundness defect demonstrated by these records.
+
+A useful next candidate is a bounded, source-bound parity recognizer with independently checked row-combination certificates and explicit failure on missing clauses. Alternatively a bounded general-resolution fallback can expose this fixed contradiction using the existing resolution proof language. These are different capabilities and should be compared with discovery costs, failed candidates, maximum intermediate width, and representation/translation work included. Neither reordering a disabled rule set nor a short certificate alone establishes fast general discovery.
+
+Keep the current zero-step baseline, original proof histories and corrected ancestry example. Do not silently replace the existing programs or interpret UNKNOWN closure as SAT. No P/NP outcome, novelty, universal speedup or historical authorship claim follows.
+
+## Reproduce
+
+Python standard library only:
+
+    python rocky_verify.py
+
+This writes Rocky's independent verification file beside the read-only supplied artifacts. The source ZIP remains the untouched original. The new result is a scoped manual cross-review, not an independent contest training round, and its shared provenance should stay visible if used later. No external mail or publication was performed by this review.

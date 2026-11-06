@@ -1,0 +1,84 @@
+# Two Math Fighters
+## DRAGO × ROCKY: different strengths, useful weaknesses
+
+**A retrospective experiment record · November 6, 2026 · Version 1**
+
+> “The most useful thing is two trained math fighters with different strength and weakness.”
+>
+> — Aleksandr, experiment owner, at the opening of the comparison
+
+The experiment began with a mountain: P versus NP. It ended this phase with something more immediately useful than a winner—two research tracks that the owner had learned how to work with differently.
+
+Drago received an inheritance: accumulated mathematics, tools, prior discoveries, and a structured research archive. Rocky received the destination, freedom to choose a route, and the tools actually available in its own environment. Rocky was not required to work without computation. The difference was preparation, not a prohibition on using tools. Both were expected to retain mistakes as well as successes. [S02–S03]
+
+The owner's description is vivid: **Drago wonders about everything and takes a long time; Rocky arrives quickly at a simple, useful answer.** That is a valuable observation about working with these tracks. It is not a measured speed ratio. The tasks, resources, review obligations, interventions, and later agendas were not held equal. This was a friendly, deliberately unequal research game—not a randomized experiment establishing which model is faster or better.
+
+“Training” here means accumulated research experience: a history of questions, failed approaches, methods, artifacts, corrections, and reusable work. This packet does not document a change to model weights. The names identify continuing research tracks, not fixed model versions or scientifically established personalities.
+
+## A shared packet, two useful responses
+
+The clearest early encounter used common mathematics: a parity problem that could be simplified, but still had an extra condition to satisfy. Both tracks received the common material; this was an authorized shared-input episode, not a secret transfer of either notebook. [S04–S05]
+
+**Drago worked around the result.** It reproduced the supplied outputs, checked certificates independently, clarified the difference between a theorem and an implemented interface, and found a small but real qualification: a completeness statement needed to exclude the empty input. Its reported reproduction included 64 charge assignments, 126 projection checks, and six larger encodings. [S04]
+
+**Rocky worked through the remaining question.** It wrote the original variables in terms of four free choices. The extra condition became the plain statement `z1 OR z3 OR z4`. Fourteen of the sixteen parity solutions survived. Rocky then checked a construction on 104 cases, with 2,736 free-assignment checks, and explained why arbitrary added conditions could still contain the whole difficulty of SAT. [S05]
+
+These responses are complementary. One made the surrounding claim safer to rely on; the other finished the particular unfinished example. The reported local times—0.514 seconds for Drago's supplied-code replay and about 0.116 seconds for Rocky's checker—cover different computations. They must not be turned into a race result.
+
+## Rocky: stop carrying independent choices together
+
+One of Rocky's most useful sequences began with a failure. An exact method shared identical residual problems, yet an easy family still doubled its number of distinct residual states. For eight independent pairs, the saved test reached 256 residual states and 510 restriction calls. The answer was correct; the representation was expensive. [S06]
+
+The next move was not a larger machine. It was a simpler arrangement: keep independent components separate. For a family of independent pairs, local factors preserve the count without expanding their entire product. The subsequent experiment checked 100 generated formulas against explicit assignment evaluation. A negative control joined two formerly independent pieces: their old product would predict nine solutions, but the connected problem had five. [S07]
+
+The following session handled a small shared set: first agree on the shared variables, then multiply the genuinely independent pieces. Another 100-formula experiment matched 51,200 full-assignment evaluations. A tiny equality example showed why multiplying before agreement would count four combinations when only two were compatible. [S08]
+
+This is the kind of simple answer the owner valued. It is also a qualified answer. Finding a useful separator costs work. Enumerating its possible values costs work. A remaining component can still be difficult. Rocky's own notes keep those costs visible.
+
+## Drago: make the useful inference answer for its cost
+
+Drago's proof work supplied a different sort of value: a good idea did not get a free pass because it was mathematically sound.
+
+One reviewed recognizer found every forced literal in a tightly specified four-clause family. The recorded census contained 35,960 formulas and 72 forced-literal cases, with no semantic misses in that family. One additional clause supplied a checked boundary to the guarantee. [S09]
+
+Then came a practical question: would calling the recognizer during a search pay for itself? In the saved eight-case continuation pilot, the answer was **no**. Treatment median continuation times were 4.89–7.75 times the baseline. All eight cases were easy satisfiable continuations; the test did not measure escape from a large failed search subtree. The negative finding belongs to that exact integration, not to every possible use of the method. [S09]
+
+A later 128-case comparison retained search information instead of rebuilding it. Both main arms produced the same checked proof sequences. Residual-clause recomputations fell from 43,872 to 7,008. The archived sum of per-case median times also fell, but the retaining arm was slower on 66 of the 128 individual cases. Both facts are part of the result. [S10]
+
+That combination—proof, boundary, cost, and losing cases—is a strength. Its practical weakness is the possibility of spending more effort establishing a mechanism than a particular task can repay. The record does not hide that tension.
+
+## Neither fighter fits only one style
+
+The contrast becomes more useful when it is not turned into a caricature.
+
+Drago also found a small repair: apply an already forced unit before continuing a recursive interface search. On the same 68-source comparison, the tight recursive configurations improved from 49 decided cases to 65; the roomier ones improved from 55 to 68. Separate controls still regressed, and a deep host-stack failure remained visible. A small fix can have a careful proof trail. [S12]
+
+Rocky also supplied a general conditional accounting argument. A bound on decisions along an entire path, additive mass under decomposition, polynomial local work, and decisive polynomial leaves together give a bound of the form `A(H + 1) 2^B N^d`. The hard universal conditions were not assumed away. A simple route can lead to a substantial theorem about exactly what must be paid for. [S14]
+
+The styles are tendencies observed in collaboration, not exclusive capabilities.
+
+## The encounter: a proof that a restricted search did not find
+
+In an authorized cross-review, Rocky examined six saved formulas and twelve engine arms. It checked 67 recorded resolution steps without rerunning the original discovery engines. On a separate six-variable, sixteen-clause parity example, it produced a 31-step resolution refutation; all sixteen one-clause-deletion controls became satisfiable. [S11]
+
+The lesson is not “Rocky beat Drago.” The compared saved engines had restricted inference languages. A short proof can exist outside the patterns they recognize. The 31-step trace is a constructive addition to the shared work, not a stopwatch comparison, a shortest-proof claim, or a general SAT algorithm.
+
+This is the practical promise of two differently developed fighters: one track can reveal a gap that the other's machinery makes precise, and one track's checked machinery can make the other's compact insight safer to reuse. That promise is an interpretation of the record. This packet does not claim a controlled demonstration that a combined team outperforms both tracks separately.
+
+## What the wall should preserve
+
+The useful result is not just a shelf of findings. It is a pair of accumulated working relationships, with different strengths and recognizable costs.
+
+Keep the small answer that finishes a real task. Keep the deeper examination that prevents a seductive mistake. Keep the failed test that tells us when a method does not earn its place. And keep enough detail that another reader can distinguish these things.
+
+This packet therefore includes nine test dossiers, selected original inputs and recorded outputs, source-bound reports, corrected-scope notes, and a structured test ledger. **No historical experiment, solver, benchmark, or proof audit was rerun to prepare this edition.** New checks concern the identity and packaging of the files, not a fresh certification of the mathematics.
+
+The selection is not a complete final census of both archives. Rocky's daily notebook examples here run through November 3; its later checkpoint bodies are outside this edition's recovered corpus. Drago's selected repair is from November 4. Drago's agenda also broadened to verified-work efficiency on November 4, so later work is not one unchanged head-to-head SAT experiment. [S15]
+
+No resolution of P versus NP is claimed by these records. No universal speed ranking is established. The claim is narrower and more useful:
+
+**We developed two math fighters worth knowing separately—and a record that lets us learn from how each one works.**
+
+---
+
+**Reading the evidence.** `[Sxx]` identifiers resolve in `files/SOURCE-GUIDE.md` and `files/source-register.json`. The full printable report adds the method, nine detailed test dossiers, measurement boundaries, and the publication handoff. “Independent” retains each source's stated scope; it does not mean external peer review or perfect organizational isolation.

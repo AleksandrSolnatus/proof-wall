@@ -318,6 +318,27 @@
       "title": "Stone 003B: When the Pieces Reconnect",
       "url": "exhibits/stone-003b-reconnecting-regions/v2/index.html",
       "version": 2
+    },
+    {
+      "claim_scope": "Attributed working observations plus the selected historical finite results and conditional arguments. Unequal starting resources, distinct tasks, later agenda changes and authorized shared episodes prevent causal model or speed comparisons.",
+      "gardens": [],
+      "id": "drago-rocky-two-math-fighters",
+      "metadata": "exhibits/drago-rocky-two-math-fighters/v1/exhibit.json",
+      "package_sha256": "5acb2e00e51264af165719d591038db8a1341bfbd5e67adc658f50d3f6f49c45",
+      "question": "What became useful when two mathematical research tracks developed differently—and what do their saved tests actually show?",
+      "relations": [
+        {
+          "id": "rocky-decomposition-reuse",
+          "reason": "Related Rocky decomposition theme, but this new retrospective selects different sessions and claims; it does not replace or reverify that exhibit.",
+          "type": "related-to",
+          "version": 2
+        }
+      ],
+      "sample": false,
+      "status": "experimental",
+      "title": "Two Math Fighters — DRAGO × ROCKY",
+      "url": "exhibits/drago-rocky-two-math-fighters/v1/index.html",
+      "version": 1
     }
   ],
   "gardens": "gardens.json",

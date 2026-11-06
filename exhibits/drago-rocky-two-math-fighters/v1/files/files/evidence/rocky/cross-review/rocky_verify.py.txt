@@ -1,0 +1,94 @@
+"""Independent checks of owner-supplied saved ledgers; no supplied engine imports."""
+import json,hashlib,itertools,copy
+from pathlib import Path
+P=Path(__file__).parent
+
+def truth(F):
+ vs=sorted({abs(l) for c in F for l in c});out=[]
+ for bits in itertools.product([False,True],repeat=len(vs)):
+  a=dict(zip(vs,bits))
+  if all(any(a[abs(l)]==(l>0) for l in c) for c in F):out.append(a)
+ return out
+
+def replay(F,result,kind):
+ nodes=[frozenset(c) for c in F];assert len(nodes)==len(F)
+ source=hashlib.sha256(json.dumps(F,separators=(',',':')).encode()).hexdigest();assert result['source_sha256']==source;prefix=source
+ events=result['certificates'] if kind=='companion' else [p['certificate'] for p in result['proofs']]
+ ms=truth(F)
+ for step,c in enumerate(events):
+  assert c['source_sha256']==source and c['prefix_sha256']==prefix and type(c['step']) is int and c['step']==step
+  ids=c['parents'] if kind=='companion' else [c['left'],c['right']];assert len(ids)==2 and all(type(i) is int and 0<=i<len(nodes) for i in ids)
+  x=c['pivot'];assert type(x) is int and x!=0
+  a,b=[nodes[i] for i in ids];assert x in a and -x in b
+  derived=(a-{x})|(b-{-x});assert not any(-l in derived for l in derived)
+  assert all(type(l) is int and l!=0 for l in c['clause']);assert len(set(c['clause']))==len(c['clause']) and derived==frozenset(c['clause'])
+  assert all(any(a[abs(l)]==(l>0) for l in derived) for a in ms)
+  nodes.append(derived);payload=json.dumps(c,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode();prefix=hashlib.sha256(prefix.encode()+b'\n'+payload).hexdigest()
+ exported=[frozenset(n['clause']) for n in result['nodes']] if kind=='companion' else list(map(frozenset,result['nodes']))
+ assert exported==nodes and result['prefix_sha256']==prefix
+ if kind=='companion':assert result['original']==F;units=sorted(int(v) if b else -int(v) for v,b in result['facts'].items())
+ else:units=result['units']
+ assert all(frozenset([l]) in nodes for l in units)
+ return {'models':len(ms),'proof_steps':len(events),'units':units}
+
+def dp(F):
+ nodes=[frozenset(c) for c in F];ids={c:i for i,c in enumerate(nodes)};active=set(range(len(F)));proof=[];attempts=0
+ for v in sorted({abs(l) for c in F for l in c}):
+  plus=sorted(i for i in active if v in nodes[i]);minus=sorted(i for i in active if -v in nodes[i]);nextactive={i for i in active if v not in nodes[i] and -v not in nodes[i]}
+  for a,b in itertools.product(plus,minus):
+   attempts+=1;c=(nodes[a]-{v})|(nodes[b]-{-v})
+   if any(-l in c for l in c):continue
+   if c not in ids:
+    ids[c]=len(nodes);nodes.append(c);proof.append({'parents':[a,b],'pivot':v,'clause':sorted(c),'node_id':ids[c]})
+   nextactive.add(ids[c])
+   if not c:return proof,attempts
+  active=nextactive
+ raise AssertionError('No refutation found')
+
+def check_dp(F,proof):
+ nodes=list(map(frozenset,F))
+ for c in proof:
+  a,b=c['parents'];v=c['pivot'];assert 0<=a<len(nodes) and 0<=b<len(nodes);assert v in nodes[a] and -v in nodes[b]
+  d=(nodes[a]-{v})|(nodes[b]-{-v});assert d==frozenset(c['clause']) and not any(-l in d for l in d);assert c['node_id']==len(nodes);nodes.append(d)
+ assert not nodes[-1]
+
+def parity_extract(F):
+ groups={}
+ for i,c in enumerate(F):
+  vs=tuple(sorted({abs(l) for l in c}))
+  if len(vs)!=3 or len(c)!=3:return None
+  groups.setdefault(vs,[]).append((i,c))
+ eq=[]
+ for vs,rows in groups.items():
+  if len(rows)!=4:return None
+  allowed=[]
+  for bits in itertools.product([0,1],repeat=3):
+   a=dict(zip(vs,bits))
+   if all(any(a[abs(l)]==(l>0) for l in c) for _,c in rows):allowed.append(bits)
+  if len(allowed)!=4 or len({sum(b)%2 for b in allowed})!=1:return None
+  eq.append({'variables':vs,'rhs':sum(allowed[0])%2,'original_clause_ids':[i for i,c in rows]})
+ return eq
+
+def main():
+ data=json.loads((P/'cross_probe.json').read_text());rows=[];total=0
+ for case in data['cases']:
+  F=case['source'];ms=truth(F);assert len(ms)==case['model_count'];arms={}
+  for name,a in case['arms'].items():arms[name]=replay(F,a['result'],name);total+=arms[name]['proof_steps'];assert arms[name]['proof_steps']==a['summary']['proof_records']
+  rows.append({'case':case['name'],'models':len(ms),'arms':arms})
+ F=next(c['source'] for c in data['cases'] if c['name']=='parity_six_variables');eq=parity_extract(F);assert eq is not None
+ rhs=0;counts={}
+ for e in eq:
+  rhs^=e['rhs']
+  for v in e['variables']:counts[v]=counts.get(v,0)^1
+ assert not any(counts.values()) and rhs==1 and not truth(F)
+ proof,attempts=dp(F);check_dp(F,proof)
+ mutations=[]
+ for i in range(len(F)):
+  G=F[:i]+F[i+1:];ms=truth(G);assert ms and parity_extract(G) is None;mutations.append({'removed_clause':i,'models':len(ms)})
+ # Signed renaming and clause reordering keep exact XOR recognition valid.
+ mapping={1:-6,2:4,3:-2,4:1,5:-5,6:3};ren=lambda l:(1 if l>0 else -1)*mapping[abs(l)];G=[[ren(l) for l in c] for c in reversed(F)];eg=parity_extract(G);assert eg and not truth(G);rr=0;vs=set()
+ for e in eg:rr^=e['rhs'];vs.symmetric_difference_update(e['variables'])
+ assert not vs and rr==1
+ r={'packet_saved_cases_verified':6,'saved_engine_arms_verified':12,'saved_resolution_steps_verified':total,'saved_cases':rows,'parity_equations_checked_against_full_original_clause_groups':eq,'parity_resolution_refutation':{'derived_steps':len(proof),'pair_attempts':attempts,'proof':proof},'clause_deletion_controls':mutations,'signed_renaming_reorder_control_passed':True,'original_engine_searches_rerun':False,'missing_inputs':'Original engine packages referenced by INPUTS.json are not included; no external archives fetched.','failures':0}
+ (P/'ROCKY-VERIFICATION.json').write_text(json.dumps(r,indent=2)+'\n');print(json.dumps({k:v for k,v in r.items() if k not in ['parity_resolution_refutation','saved_cases','clause_deletion_controls']},indent=2));print('Independent parity resolution proof:',len(proof),'steps,',attempts,'pair attempts')
+if __name__=='__main__':main()
