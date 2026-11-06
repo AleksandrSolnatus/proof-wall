@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "zero-up-001-schedule-eversion",
+  "version": 1,
+  "title": "Zero-Up: Crossing an Impossible Draft",
+  "artifact_type": "experiment",
+  "status": "verified-finite-result",
+  "question": "Can a planning representation pass through an infeasible intermediate ordering while ending in a feasible, exact-source schedule?",
+  "method": "Four-operation enumeration, machine-load lower bound and recorded unchanged 600-operation heuristic comparisons with separate input checker.",
+  "finding": "A four-operation shop has exact optimal makespan 4; on the large shop changing tentative machine orders helped relative to frozen orders but did not find an optimum.",
+  "claim_scope": "Exact tiny theorem; reported finite 600-operation heuristic runs only.",
+  "limitations": [
+    "The complete 600-operation source, CSVs and checker are not in the selected material."
+  ],
+  "open_questions": [
+    "What additional conclusions, if any, would the original missing evidence support?"
+  ],
+  "date": "2026-10-31",
+  "provenance": {
+    "authors": [
+      "Amar and Terra"
+    ],
+    "origin": "Existing experiment records and original handoff; editorial adaptation for Proof Wall. Original source bytes retained in downloads.",
+    "change_note": "Initial public exhibit; no experiment rerun."
+  },
+  "article": "article.md",
+  "files": [
+    {
+      "path": "article.md",
+      "role": "article",
+      "media_type": "text/markdown",
+      "bytes": 4015,
+      "sha256": "fd92005baf98e03b22da05dd32f80667bab99a6f9cae89e65a0b2f8dfef8b125",
+      "attribution": "Proof Wall editorial synthesis of original research",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/zero-up-report.md",
+      "role": "original",
+      "media_type": "text/markdown",
+      "bytes": 10787,
+      "sha256": "5b1770191d048aec4564c4b426428540f4242cf391854a55de283fd147411e77",
+      "attribution": "Amar and Terra",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/zero-up-toy.html.txt",
+      "role": "original",
+      "media_type": "text/plain",
+      "bytes": 11619,
+      "sha256": "0f3c550da8ae886c5100f3fa910eba5abf5f97a1a4ab1267954b7488b789d452",
+      "attribution": "Amar and Terra",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted."
+    }
+  ],
+  "relations": [],
+  "gardens": [],
+  "publication": {
+    "intent": "request-review",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+    "license": "All rights reserved; no new open-source license is granted.",
+    "attribution": "Amar and Terra; Proof Wall editorial synthesis."
+  },
+  "sample": false
+}

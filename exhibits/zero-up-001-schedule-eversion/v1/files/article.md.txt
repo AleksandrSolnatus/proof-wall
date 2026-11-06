@@ -1,0 +1,45 @@
+# Zero-Up: Crossing an Impossible Draft
+
+Proof Wall exhibit — computation & scheduling · Original experiment: October 31, 2026
+
+## The question
+
+What if we begin with the wish to finish at time zero, add actual machine obligations, and allow ourselves to rearrange the *plan* rather than freeze every early choice? Can a path between legal schedules travel through an illegal draft without making the final schedule illegal?
+
+The image behind Zero-Up came from turning a sphere inside out: the picture of a continuous transformation can require passing through a self-intersection. A shop-floor schedule cannot tolerate that crossing during execution. A planning representation can, provided we finish with a complete valid timetable.
+
+## One tiny, exact result
+
+We gave two jobs to two machines:
+
+- A: Machine 1, 3 units; Machine 2, 1 unit
+- B: Machine 2, 3 units; Machine 1, 1 unit
+
+One feasible schedule is: Machine 1 executes A [0,3), B [3,4); Machine 2 executes B [0,3), A [3,4). Every machine is single-capacity and both job orders are respected. Each machine must perform four units of work, so any full schedule has makespan at least four; the displayed one achieves four. Therefore the optimal makespan of this particular instance is exactly 4. The original report enumerates four choices of machine orders: three feasible with makespans 4, 8, 8, and one cyclic.
+
+There is also a small impossibility proof hiding inside the metaphor. For two positive-duration tasks on one machine, a continuous deformation of their starting times from A-before-B to B-before-A must pass through an interval in which their executions overlap. In other words, changing orders without ever passing through an infeasible intermediate state is impossible *under that continuous start-time model*. This is why the crossing belongs to the planning draft, not the real shop floor.
+
+## The experiment got harder
+
+On the unchanged 30-job, 20-machine, 600-operation shop, the original investigation recorded several valid but imperfect schedules:
+
+- Insert operations one by one with immediate horizon objective: 2,504
+- Grow operations with projected remaining work: 2,427
+- Activate machines while freezing earlier machine orders: 5,550
+- Activate machines while rebuilding all active orders: 2,429
+
+The source-grounded checker independently checked five completed 600-operation CSVs (including a repeated 2,427 post-wander outcome). The experiment retained failed local searches: 6,553 adjacent/paired-swap moves evaluated without improvement, and another 40,556 random relocation attempts without better finish. Those failures do not prove impossibility.
+
+The key correction: other already-checked schedules on the same input finished at 2,073 and 1,923, so Zero-Up's 2,427 is emphatically *not* a new best or an optimum. As more machine requirements were activated, a *heuristic's found schedule* sometimes got shorter because it was rebuilt; the true optimum of the increasingly constrained problem cannot decrease.
+
+## What survived
+
+Keep the requirements. Let the guesses move. A machine order chosen during planning is not itself part of the original problem. The final timetable must satisfy every original duration, route, nonoverlap and precedence requirement, no matter how audacious the intermediate draft looked.
+
+The original interactive toy is included as downloadable source text; it is not embedded as an active display.
+
+## What this does not show
+
+No polynomial-time result for general scheduling, no optimum for the 600-operation case, no physical overlap, and no proof that temporary invalid representations always help. The complete source/input/CSV/checker set is named in the original report but is not contained in this handoff ZIP. The exact four-operation example *is* self-contained above.
+
+Evidence: the original report and interactive toy source text are available in the downloads below. The toy is provided as text, not as an active web page. No historical experiment was rerun for this exhibit.

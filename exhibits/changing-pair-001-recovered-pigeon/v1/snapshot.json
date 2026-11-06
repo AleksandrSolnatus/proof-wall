@@ -1,0 +1,17 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 3037,
+      "sha256": "da4345ff8868bb9dd43a2c05f4750ee2f9f9db315255a56b6ca7350cf89b97db"
+    },
+    "exhibit.json": {
+      "bytes": 2691,
+      "sha256": "cc5a4bb4990a9843aabd9288a1eb91ed5b1050083c7b270f67de95a14bd3bf27"
+    },
+    "files/recovered-pigeon.md": {
+      "bytes": 2420,
+      "sha256": "266c1aee0b9569e993bb063f513a628070f915dcf01aac183fbe8de07e12d8b5"
+    }
+  },
+  "package_sha256": "ae8408176ada6442239f58735859745d9478d81a3a0c85e3327cc530b8206fe0"
+}

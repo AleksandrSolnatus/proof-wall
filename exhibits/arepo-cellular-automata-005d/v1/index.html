@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer"><meta name="color-scheme" content="light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>When the Message Disappears from the Readout · Proof Wall</title><link rel="stylesheet" href="../../../assets/wall.css">
+<link rel="alternate" type="application/json" href="../../../index.json" title="Research index">
+<script src="../../../assets/wall.js" defer></script></head><body><nav class="workshop-return" aria-label="Return to the workshop"><a href="https://bridges.c-amar.chatgpt.site/#work">← Bridges</a></nav>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../../../index.html"><span class="mark" aria-hidden="true">∴</span> Proof Wall</a>
+<nav aria-label="Main"><a href="../../../index.html">The wall</a><a href="../../../paths.html">Little paths</a><a href="../../../contribute.html">Contribute</a></nav></header>
+<main id="main"><a class="back" href="../../../index.html">← The wall</a>
+<div class="exhibit-heading"><p class="eyebrow">arepo-cellular-automata-005d / v1 · 2026-09-27</p>
+<h1>When the Message Disappears from the Readout</h1><span class="status">verified finite result</span><p class="scope">Finite codebook and sensor-window behavior only, not physical information destruction or quantum tunneling.</p></div>
+
+<div class="reading-layout"><article><section><h2>The question</h2><p>Under which finite CA rules do 16 messages remain distinguishable at a fixed downstream sensor?</p><h2>The method</h2><p>Reconciliation of two frozen differently implemented deterministic CA histories; independent stored-transition rule audit.</p><h2>The finding</h2><p>Across the tested widths/windows, Rules 90, 26, 122 yield 16 distinct readouts and Rule 74 yields the same empty readout for all 16.</p></section>
+<section class="original"><p class="eyebrow">Research text · rendered from the supplied Markdown</p><h2>When the Message Disappears from the Readout</h2>
+<p>Proof Wall exhibit — cellular automata &amp; model checking · Reconciliation: September 27, 2026</p>
+<h3>The question</h3>
+<p>Imagine sending one of 16 distinguishable messages through a strip of changing cellular-automaton rules. At a downstream sensor, can all 16 messages still be told apart? Can two very different implementations agree on the entire evolution, not just the headline number?</p>
+<p>Two frozen implementations of a specified synchronous deterministic cellular automaton were reconciled. Run A evaluated rule numbers by bit shifts; Run B used explicit truth tables and a destination-rule mask. Their saved histories used different bit-packing formats and different data layouts. The reconciliation did not rerun either simulator: it decoded the archived histories, matched scientific configuration labels, and independently checked stored initial states and transitions against the declared update rule.</p>
+<h3>What the evidence showed</h3>
+<ul><li>Configurations compared: 476 labels (224 distinct logical histories)</li></ul>
+<ul><li>Paired cell-state comparisons: 187,841,500; zero differences</li></ul>
+<ul><li>Independent transition-rule audit: 187,353,600 transitions per run family; zero invalid transitions</li></ul>
+<ul><li>Recorded audit assertions: 28,295 checks; zero failures</li></ul>
+<ul><li>Matched message signatures: 896 complete readouts</li></ul>
+<p>Under the frozen setup — widths 1, 2, 4, 8, 16, 32, 64, early and late sensor windows, and the chosen 16-message codebook — Rules 90, 26 and 122 kept all 16 exact downstream outputs distinct (4 bits of codebook identity). Under Rule 74, all 16 produced the same empty downstream output (0 bits of identity at that sensor).</p>
+<p>The strangest detail is that the *amount of activity* alone could conceal what the full pattern showed. For Rule 122, width 16, late window, messages 0 and 5 each had 2,053 ON cell-time entries, yet their full signatures differed at 2,054 of 4,096 positions. An equal count did not imply an equal message pattern.</p>
+<h3>Why it matters</h3>
+<p>It separates what the system did from what a particular observer can distinguish. The exact downstream readout may lose distinctions without proving that information disappeared everywhere in the system. It also shows why full-state reconciliation can be stronger than visually similar plots or matching headline summary statistics.</p>
+<p>The reconciliation&#x27;s independence is bounded. The two sources used different implementations, but intentionally shared a protocol and software environment; the separate audit was not a third blind experiment. The 476 labels were not 476 independent samples.</p>
+<h3>What it does not establish</h3>
+<p>This is a deterministic, finite computational experiment. It does not demonstrate quantum tunneling, a physical hidden timestep, an extra dimension, universal information conservation or destruction, noisy-channel robustness, general capacity, or behavior outside the stated inputs and windows. No new simulations or physical claims were added to make this exhibit.</p>
+<p>Evidence: the original reconciliation report and existing comparison summary are available in the downloads below. The large primary run archives and full reconciliation evidence directory are not included in this exhibit.</p></section>
+<section class="limits"><h2>Limits &amp; open questions</h2><ul><li>The full primary archives and audit directory are not included; this is a bounded finite result.</li></ul><h3>Still open</h3><ul><li>What additional conclusions, if any, would the original missing evidence support?</li></ul></section>
+<section><h2>Little paths</h2><ul><li>No relationships proposed yet.</li></ul></section></article>
+<aside class="evidence"><h2>Inspect the evidence</h2><p>Original bytes, with recorded hashes. Downloads retain their original names; hosted copies use inert suffixes.</p><ul><li><a download="article.md" href="files/article.md.txt">article.md</a>
+<span>article · 3,206 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">911c8db3bd825c4813f068354f3834692f0c8949b8973b2e8b3cb894d71a2538</code><p>Proof Wall editorial synthesis of original research</p><p>Public reading and downloading on the Proof Wall, authorized by the owner.</p><p>All rights reserved; no new open-source license is granted.</p></details></li><li><a download="reconciliation-report.md" href="files/files/reconciliation-report.md.txt">files/reconciliation-report.md</a>
+<span>original · 12,342 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">287f751c591eefa1a9f7aa00376f846e8f28d166ca400472073e55d0827a8c92</code><p>Original AREPO research contributors</p><p>Public reading and downloading on the Proof Wall, authorized by the owner.</p><p>All rights reserved; no new open-source license is granted.</p></details></li><li><a download="comparison-summary.json" href="files/files/comparison-summary.json.txt">files/comparison-summary.json</a>
+<span>data · 2,124 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">351a2563d5fd9718466a15c9ed519329342ce52c89d7e78b17a8ef625cd9bf9f</code><p>Original AREPO research contributors</p><p>Public reading and downloading on the Proof Wall, authorized by the owner.</p><p>All rights reserved; no new open-source license is granted.</p></details></li></ul>
+<p><a href="exhibit.json">Exhibit JSON</a> · <a href="submitted-manifest.json">Original manifest</a> · <a href="snapshot.json">Snapshot</a></p>
+<h3>Provenance</h3><p>Original AREPO research contributors</p><p>Existing experiment records and original handoff; editorial adaptation for Proof Wall. Original source bytes retained in downloads.</p><h3>Version note</h3><p>Initial public exhibit; no experiment rerun.</p>
+<h3>Publication &amp; reuse</h3><p>Original AREPO research contributors; Proof Wall editorial synthesis.</p><p>Public reading and downloading on the Proof Wall, authorized by the owner.</p><p>All rights reserved; no new open-source license is granted.</p>
+<p class="fine">Publication review is not a mathematical certification. A finite test is not a general proof.</p>
+<a href="../../../contribute.html?exhibit=arepo-cellular-automata-005d%40v1">Suggest a correction or connection →</a></aside></div></main><footer><span>We attract by method.</span><nav aria-label="Other places in the workshop"><a href="../../../paths.html">Other places in the workshop</a> · <a href="https://bridges.c-amar.chatgpt.site/" rel="noreferrer">Return to Bridges</a></nav><div><a href="../../../index.json">Machine-readable index</a> · <a href="../../../llms.txt">For agents</a> · <a href="../../../release-manifest.json">File hashes</a></div><p>No accounts, analytics, or submission server. Hosting providers may keep security logs.</p></footer></body></html>

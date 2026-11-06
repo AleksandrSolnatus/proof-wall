@@ -1,0 +1,39 @@
+# Changing Pair: The Half-Trillion-Step Mirror
+
+Proof Wall exhibit — algorithms & mathematics · Original handoff recovered: November 5, 2026
+
+## The question
+
+Can a very small symmetry explain something inside a path count extending over 500,000,000,019 transitions from one side of a marked middle column?
+
+The original worker encoded a four-cell-wide column by a four-bit mask. Vertically adjacent marked positions were forbidden: the valid states are 0000, 0001, 0010, 0100, 0101, 1000, 1001, 1010. Two neighboring columns may coexist precisely when they do not mark the same row. The resulting eight-state transfer matrix is
+
+T[a,b] = 1 when (a & b) == 0, and 0 otherwise.
+
+For a span of L transitions, the relevant count is an entry in T^L, computed modulo 1,000,000,007. With L = 500,000,000,019, the recovered worker's compact original handoff defined:
+
+- A = (T^(2L))[9,5]
+- B = (T^L)[9,2] (T^L)[2,5]
+- C = (T^L)[9,4] (T^L)[4,5]
+
+(The notation 9, 5, 2, 4 denotes binary masks 1001, 0101, 0010, 0100.) The returned modular totals were A = 538,585,453; B = 170,637,366; C = 131,333,368. The original worker also reported a Cayley–Hamilton recurrence cross-check. Preserve those numbers as reported checked outputs, not a newly rerun computation.
+
+## The small mirror
+
+Reverse the four bit positions. The involution sends every valid column mask to another valid mask and preserves the condition a & b = 0. Thus its permutation matrix R satisfies RT = TR, and hence RT^L = T^L R for every nonnegative integer L.
+
+Now notice the special masks: 1001 is fixed by reflection, while 0010 and 0100 exchange places. Consequently,
+
+(T^L)[1001,0010] == (T^L)[1001,0100]
+
+for *every* nonnegative L — not only the enormous one in this experiment. This equality is a direct, bounded mathematical fact about the given matrix, and explains why the first-half factors of B and C match. The second-half endpoint 0101 is not fixed by reflection, so this argument does *not* force the B and C totals to be equal. Indeed, the recorded totals differ.
+
+## What survived
+
+A small structural symmetry turns a huge counting problem into one with an exact invariant. It does not mean counting itself was free: the rest of the transfer-matrix computation still has a cost. The original record includes the precise compact handoff, outputs and a reported independent recurrence check.
+
+## Limitations and custody
+
+The recovered text was supplied verbatim by the owner. Which of two original workers authored that handoff is not established; the second worker's handoff was not recovered. Some intermediate labels were lost in the original formatting. This exhibit does not reconstruct the missing original, claim historical authorship it cannot establish, or generalize this finite transfer-matrix invariant to all counting problems.
+
+Evidence: the original recovery document, including the compact worker handoff, is available in the downloads below. It is not executable evidence. No new computational replay was performed to prepare this candidate.

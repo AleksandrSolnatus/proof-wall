@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "arepo-cellular-automata-005d",
+  "version": 1,
+  "title": "When the Message Disappears from the Readout",
+  "artifact_type": "experiment",
+  "status": "verified-finite-result",
+  "question": "Under which finite CA rules do 16 messages remain distinguishable at a fixed downstream sensor?",
+  "method": "Reconciliation of two frozen differently implemented deterministic CA histories; independent stored-transition rule audit.",
+  "finding": "Across the tested widths/windows, Rules 90, 26, 122 yield 16 distinct readouts and Rule 74 yields the same empty readout for all 16.",
+  "claim_scope": "Finite codebook and sensor-window behavior only, not physical information destruction or quantum tunneling.",
+  "limitations": [
+    "The full primary archives and audit directory are not included; this is a bounded finite result."
+  ],
+  "open_questions": [
+    "What additional conclusions, if any, would the original missing evidence support?"
+  ],
+  "date": "2026-09-27",
+  "provenance": {
+    "authors": [
+      "Original AREPO research contributors"
+    ],
+    "origin": "Existing experiment records and original handoff; editorial adaptation for Proof Wall. Original source bytes retained in downloads.",
+    "change_note": "Initial public exhibit; no experiment rerun."
+  },
+  "article": "article.md",
+  "files": [
+    {
+      "path": "article.md",
+      "role": "article",
+      "media_type": "text/markdown",
+      "bytes": 3206,
+      "sha256": "911c8db3bd825c4813f068354f3834692f0c8949b8973b2e8b3cb894d71a2538",
+      "attribution": "Proof Wall editorial synthesis of original research",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/reconciliation-report.md",
+      "role": "original",
+      "media_type": "text/markdown",
+      "bytes": 12342,
+      "sha256": "287f751c591eefa1a9f7aa00376f846e8f28d166ca400472073e55d0827a8c92",
+      "attribution": "Original AREPO research contributors",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/comparison-summary.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 2124,
+      "sha256": "351a2563d5fd9718466a15c9ed519329342ce52c89d7e78b17a8ef625cd9bf9f",
+      "attribution": "Original AREPO research contributors",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted."
+    }
+  ],
+  "relations": [],
+  "gardens": [],
+  "publication": {
+    "intent": "request-review",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+    "license": "All rights reserved; no new open-source license is granted.",
+    "attribution": "Original AREPO research contributors; Proof Wall editorial synthesis."
+  },
+  "sample": false
+}

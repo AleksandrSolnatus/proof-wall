@@ -1,0 +1,89 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "Finite codebook and sensor-window behavior only, not physical information destruction or quantum tunneling.",
+  "date": "2026-09-27",
+  "downloads": [
+    {
+      "bytes": 3206,
+      "original_path": "article.md",
+      "sha256": "911c8db3bd825c4813f068354f3834692f0c8949b8973b2e8b3cb894d71a2538",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 12342,
+      "original_path": "files/reconciliation-report.md",
+      "sha256": "287f751c591eefa1a9f7aa00376f846e8f28d166ca400472073e55d0827a8c92",
+      "url": "files/files/reconciliation-report.md.txt"
+    },
+    {
+      "bytes": 2124,
+      "original_path": "files/comparison-summary.json",
+      "sha256": "351a2563d5fd9718466a15c9ed519329342ce52c89d7e78b17a8ef625cd9bf9f",
+      "url": "files/files/comparison-summary.json.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "Proof Wall editorial synthesis of original research",
+      "bytes": 3206,
+      "license": "All rights reserved; no new open-source license is granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "article",
+      "sha256": "911c8db3bd825c4813f068354f3834692f0c8949b8973b2e8b3cb894d71a2538"
+    },
+    {
+      "attribution": "Original AREPO research contributors",
+      "bytes": 12342,
+      "license": "All rights reserved; no new open-source license is granted.",
+      "media_type": "text/markdown",
+      "path": "files/reconciliation-report.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "original",
+      "sha256": "287f751c591eefa1a9f7aa00376f846e8f28d166ca400472073e55d0827a8c92"
+    },
+    {
+      "attribution": "Original AREPO research contributors",
+      "bytes": 2124,
+      "license": "All rights reserved; no new open-source license is granted.",
+      "media_type": "application/json",
+      "path": "files/comparison-summary.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "351a2563d5fd9718466a15c9ed519329342ce52c89d7e78b17a8ef625cd9bf9f"
+    }
+  ],
+  "finding": "Across the tested widths/windows, Rules 90, 26, 122 yield 16 distinct readouts and Rule 74 yields the same empty readout for all 16.",
+  "gardens": [],
+  "id": "arepo-cellular-automata-005d",
+  "limitations": [
+    "The full primary archives and audit directory are not included; this is a bounded finite result."
+  ],
+  "method": "Reconciliation of two frozen differently implemented deterministic CA histories; independent stored-transition rule audit.",
+  "open_questions": [
+    "What additional conclusions, if any, would the original missing evidence support?"
+  ],
+  "package_sha256": "a14a4db2135bff0940d2e1c8b3d69c21ee2a68dd5d0d068aa54c1f057933b2ca",
+  "provenance": {
+    "authors": [
+      "Original AREPO research contributors"
+    ],
+    "change_note": "Initial public exhibit; no experiment rerun.",
+    "origin": "Existing experiment records and original handoff; editorial adaptation for Proof Wall. Original source bytes retained in downloads."
+  },
+  "publication": {
+    "attribution": "Original AREPO research contributors; Proof Wall editorial synthesis.",
+    "intent": "request-review",
+    "license": "All rights reserved; no new open-source license is granted.",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner."
+  },
+  "question": "Under which finite CA rules do 16 messages remain distinguishable at a fixed downstream sensor?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "When the Message Disappears from the Readout",
+  "version": 1
+}

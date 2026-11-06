@@ -1,0 +1,152 @@
+# Experiment 005D — A/B Reconciliation
+## Verified agreement | Reconciliation v1.0 | 27 September 2026
+
+**Result: PASS.** Arepo Run A (`005D-A-v1`) and Tesseract/4D Run B (`005D-B-v1`) agree on the complete archived cell histories and every common scientific measurement checked under shared protocol v1.0. No scientific settings were changed to obtain agreement.
+
+This is a new reconciliation record. The two original frozen reports remain unchanged, including their historical “NOT YET COMPARED” statements. Earlier Experiment 005 implementations remain predecessor records, not pooled replications of 005D.
+
+## 1. What was actually checked
+
+The auditor opened the supplied combined handoff, verified the two relevant inner archives, decoded both history-storage formats, and matched configurations by **slab rule, width, and message identity**, rather than file order or run-name formatting.
+
+| Comparison | Coverage | Result |
+|---|---:|---|
+| Frozen scientific specification | Exact shared protocol bytes; normalized settings, codewords, truth tables, sensor locations and time windows | Match |
+| Complete histories | 476 labeled configurations, each 385 × 1,025 cells | Match |
+| Cell-state comparisons | 187,841,500 paired values | **0 differences** |
+| Stored logical-history hashes | Recomputed for all 476 labels in each bundle | All match their records |
+| Message signatures | 896 exact 128 × 32 readouts; 3,670,016 paired bits | Match |
+| No-input signatures | 56 B-stored readouts checked against both decoded histories | All zero and consistent |
+| Message/window measurements | 896 common rows, with five core metrics per row | Exact match |
+| Ensemble measurements | 56 rule/width/window ensembles | Exact match |
+| Pairwise message distances | 56 full 16 × 16 matrices; 14,336 entries | Exact match |
+| Exact-signature and activity-count groups | 56 of each | Match |
+| Maximum A/B floating-point information discrepancy | Absolute difference in bits | **0.0** (permitted tolerance: 1e-12) |
+
+The 476 labels comprise 448 message configurations and 28 no-input controls. They are not 476 independent statistical observations: there are **224 distinct full logical histories**. Repeated labels and controls were not used to manufacture confidence intervals.
+
+The reconciler completed **28,295 recorded checks with zero failures**. These are software/evidence assertions, not a statistical sample size. Full results are in `evidence/all_checks.json`; the failure list is empty.
+
+## 2. More than matching two answers
+
+Neither supplied simulator was imported or executed during this audit. Instead, the auditor independently checked every initial state and **every stored transition** in both bundles against the declared synchronous, destination-cell rule assignment and zero exterior conditions.
+
+That is **187,353,600 cell transitions per run family**, with zero invalid transitions in either. The checker expressed the four rules as Boolean formulas rather than copying A’s per-cell bit-shift evaluation or B’s explicit truth-table lookup. All 32 rule/neighborhood combinations were checked against elementary-rule numbering before those formulas were used.
+
+Initial states, zero-input behavior, Rule-74 downstream blocking, Rule-90 homogeneous controls, the time-dependent causal envelope, and sensor-window endpoints also passed. Full signatures, first-arrival ticks, activity counts, matched-control differences, collision groups, pairwise distances, and both information calculations were recomputed from decoded data.
+
+The checker itself received seven additional synthetic tests. A deliberately flipped cell was detected at its injected location, tick 100 / cell 520. A deliberately wrong slab rule was rejected at its first incompatible transition. Known all-equal, all-distinct and two-group information examples returned 0, 4 and 1 bit respectively. These tests used private array copies and did not alter the experiment or its inputs. See `evidence/checker_self_tests.json`.
+
+## 3. Verified scientific result
+
+Every entry below holds at widths **1, 2, 4, 8, 16, 32 and 64**, in both the frozen early and late windows.
+
+| Slab rule | Distinct outputs for the 16 messages | Exact codebook information |
+|---|---:|---:|
+| 90 — unchanged-rule control | 16 | 4 bits |
+| 26 — transmitting candidate | 16 | 4 bits |
+| 122 — transmitting candidate | 16 | 4 bits |
+| 74 — hard-block control | 1 shared, empty output | 0 bits |
+
+**Within this finite codebook and these specified readouts, Rules 26 and 122 transform the evolution without collapsing any of the 16 message identities into the same exact output.** Rule 74 blocks downstream activity and makes the selected inputs indistinguishable to that downstream readout.
+
+This verifies the headline agreement in the frozen reports. It does not establish an information-loss curve, an exponential transmission law, or physical tunneling. No exponential was fitted, no stochastic transmission was inserted, and no new width, time window or candidate rule was run.
+
+### Amount of activity is not the whole result
+
+A useful verified example occurs for **Rule 122, width 16, late window**. Messages **0 and 5** both produce exactly **2,053 ON cell-time entries** in the sensor block. A counter of total activity alone cannot distinguish that pair. Their complete signatures, however, differ at **2,054 of the 4,096 cell-time positions**.
+
+The converse nuance matters too: for **Rule 26**, total activity alone distinguishes all 16 messages in every tested window. The experiment therefore does not show that the full spatial/temporal pattern is always necessary. It separates the two readouts and reports where they differ.
+
+| Slab rule | Full-signature information range | Count-only information range |
+|---|---:|---:|
+| 90 | 4–4 bits | 3.452819531114783–3.875 bits |
+| 26 | 4–4 bits | 4–4 bits |
+| 122 | 4–4 bits | 3.75–4 bits |
+| 74 | 0–0 bits | 0–0 bits |
+
+### Four bits is not a claim of equal robustness
+
+The full-information score reaches its four-bit ceiling whenever all 16 exact outputs differ. It cannot, by itself, distinguish widely separated outputs from much closer ones.
+
+The smallest off-diagonal signature distance among all transmitting cases is **95 bits**, for Rule 26, width 32, late window. All messages are still distinct there. This comparison did not run a noise model or a decoder, so it makes no tested error-rate or noise-robustness claim.
+
+## 4. Real differences between the deliverables
+
+These differences were retained and normalized explicitly, not treated as scientific disagreements.
+
+| Item | Run A | Run B | Reconciliation |
+|---|---|---|---|
+| Update implementation | Rule-number bit-shift evaluation | Explicit truth-table lookup selected by destination-rule mask | Different source approaches; same valid histories |
+| Truth-table display | Descending neighborhoods, 111 through 000 | Ascending neighborhoods, 000 through 111 | Matched by neighborhood value |
+| History packing | Little bit order, each time row packed separately, NPZ | Big bit order, entire history flattened before packing, NPY | Decoded to the same 385 × 1,025 uint8 arrays |
+| Duplicate-history storage | 224 deduplicated arrays mapped to 476 labels | 476 packed rows | All labeled histories compared; 224 distinct logical hashes |
+| No-input label | `noinput` | `zero` | Matched as the separate empty control, never message 0000 |
+| Width formatting | e.g. `L01` | e.g. `L001` | Matched by integer width |
+| Per-window metric rows | 896 message rows | 952 rows including 56 no-input rows | All common rows match; extra controls checked independently |
+| Additional statistics | Includes median activity | Includes final activity and a separate raw-activity summary | Each extra verified from histories; absence in the other bundle is not a mismatch |
+| Source/manifest/ZIP hashes | A-specific bytes | B-specific bytes | Expected to differ; integrity checked within each bundle |
+
+All **29 A artifact checksums** and **16 B post-run file checksums** verified. Freeze-receipt hashes for source, manifest and protocol also match the supplied files. The outer handoff remained byte-identical before and after the audit.
+
+Plots were not compared pixel-for-pixel. Their source histories and numerical measurement arrays were checked; font, layout and image-container differences are not dynamics differences.
+
+## 5. How strong is the independence claim?
+
+The two sources implement the update differently, and B’s frozen record declares that no A source, results, plots or conclusions were supplied before its freeze. The artifacts are consistent with that declaration, but **hashes and saved declarations do not independently prove historical non-exposure or the time of freezing**.
+
+Both software receipts report Python 3.13.5, NumPy 2.3.5, pandas 2.2.3, matplotlib 3.10.8 and the same Linux platform. This is not a cross-platform or different-library replication. Both runs intentionally share a protocol and motivating assumptions. Their agreement does not validate those assumptions by majority vote.
+
+This audit necessarily saw both bundles. Its Boolean transition check adds a separately written consistency test; it is not a third blind study.
+
+## 6. What is established, and what remains open
+
+**Established by this reconciliation:** both archived implementations realize the same specified deterministic experiment, with matching full histories and readout measurements. The two transmitting candidates preserve all 16 selected input distinctions in all tested exact readouts; the hard-block control does not.
+
+**Not established:** performance for all possible inputs, channel capacity, semantic meaning, universal information conservation, behavior after tick 384, robustness to measurement noise or decoding errors, physical quantum tunneling, a quantum/classical division of laws, or a fourth spatial dimension. These remain outside the tested scope.
+
+No repeat of the same deterministic cases is needed to resolve this A/B comparison. A useful next scientific step would be a separately frozen readout-degradation or noise/decoder test, with the existing runs preserved as baselines. That study was **not run** here.
+
+## 7. Exact identities
+
+```text
+Shared protocol SHA-256:
+cebc6ae7eed286c1a998402efb1a7a059d5ed1127b9b3ea26184e43d08f92247
+
+Original combined handoff SHA-256:
+d83caf0dc0a00cc31aaca3edb2651a8b31c19c081ac475375d2ec01cfe52cfd1
+
+Run A ZIP SHA-256:
+eccd69498992bf35431d2b8233613db79329716d08d8a26d28fbf6db8411a655
+Run B ZIP SHA-256:
+4d5ebeadb71feaabcc945c445cbacdf4726411ba1c5f6601d1123e29321f66e5
+
+Run A source SHA-256:
+616b99686e0df9b609ee1e452643c352703d301bbc2444f318ad0f09db81d5be
+Run B source SHA-256:
+bbafe12930d70a2c8de8c1c7e2acf74a99e4907781a2e942f0c7844c41dcf49a
+
+Run A manifest SHA-256:
+f08675dca6babe66f106be76cc8bd55767801109f46a9938ab0d73849c418f4a
+Run B manifest SHA-256:
+7f56c059d4bac4828a62861cdd6b7f7ed1742708b2e5dad16f1f43e628d6b000
+
+Reconciler source SHA-256:
+56b915e0612ddcdb7bc49a3d625433e3577778bd77570e7c408744df682a2ed0
+```
+
+## 8. Preservation and handoff
+
+**CHANGED:** Created a new, standalone comparison report, machine-readable evidence, read-only auditing script and synthetic checker tests.
+
+**LEARNED:** A/B agreement is now verified at full-state and metric level, not merely inferred from similar prose or plots.
+
+**UNCERTAIN:** Historical non-exposure, robustness beyond the frozen readout, other input ensembles, and physical interpretation remain unproved.
+
+**DO NOT ASSUME:** Reproducibility is not a physics verdict; 476 labels are not independent trials; four exact codebook bits are not channel capacity or a measured decoding success rate.
+
+**NEXT USEFUL STEP:** Preserve this reconciled checkpoint before defining any new test.
+
+**FILES TOUCHED:** Only new files under the coordinating container’s `005D_reconciliation` output area and the final report/package copies. Original archives and reports were not edited. Native Arepo, canonical 4D state, DOORWAY, branches, PRs and main were not accessed or changed.
+
+**Reproduction:** See the accompanying package’s `README.md`. The original combined handoff is included byte-for-byte, with its predecessor records intact. `comparison_summary.json` records the exact execution scope and the checker environment.

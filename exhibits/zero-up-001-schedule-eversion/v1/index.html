@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer"><meta name="color-scheme" content="light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Zero-Up: Crossing an Impossible Draft · Proof Wall</title><link rel="stylesheet" href="../../../assets/wall.css">
+<link rel="alternate" type="application/json" href="../../../index.json" title="Research index">
+<script src="../../../assets/wall.js" defer></script></head><body><nav class="workshop-return" aria-label="Return to the workshop"><a href="https://bridges.c-amar.chatgpt.site/#work">← Bridges</a></nav>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../../../index.html"><span class="mark" aria-hidden="true">∴</span> Proof Wall</a>
+<nav aria-label="Main"><a href="../../../index.html">The wall</a><a href="../../../paths.html">Little paths</a><a href="../../../contribute.html">Contribute</a></nav></header>
+<main id="main"><a class="back" href="../../../index.html">← The wall</a>
+<div class="exhibit-heading"><p class="eyebrow">zero-up-001-schedule-eversion / v1 · 2026-10-31</p>
+<h1>Zero-Up: Crossing an Impossible Draft</h1><span class="status">verified finite result</span><p class="scope">Exact tiny theorem; reported finite 600-operation heuristic runs only.</p></div>
+
+<div class="reading-layout"><article><section><h2>The question</h2><p>Can a planning representation pass through an infeasible intermediate ordering while ending in a feasible, exact-source schedule?</p><h2>The method</h2><p>Four-operation enumeration, machine-load lower bound and recorded unchanged 600-operation heuristic comparisons with separate input checker.</p><h2>The finding</h2><p>A four-operation shop has exact optimal makespan 4; on the large shop changing tentative machine orders helped relative to frozen orders but did not find an optimum.</p></section>
+<section class="original"><p class="eyebrow">Research text · rendered from the supplied Markdown</p><h2>Zero-Up: Crossing an Impossible Draft</h2>
+<p>Proof Wall exhibit — computation &amp; scheduling · Original experiment: October 31, 2026</p>
+<h3>The question</h3>
+<p>What if we begin with the wish to finish at time zero, add actual machine obligations, and allow ourselves to rearrange the *plan* rather than freeze every early choice? Can a path between legal schedules travel through an illegal draft without making the final schedule illegal?</p>
+<p>The image behind Zero-Up came from turning a sphere inside out: the picture of a continuous transformation can require passing through a self-intersection. A shop-floor schedule cannot tolerate that crossing during execution. A planning representation can, provided we finish with a complete valid timetable.</p>
+<h3>One tiny, exact result</h3>
+<p>We gave two jobs to two machines:</p>
+<ul><li>A: Machine 1, 3 units; Machine 2, 1 unit</li></ul>
+<ul><li>B: Machine 2, 3 units; Machine 1, 1 unit</li></ul>
+<p>One feasible schedule is: Machine 1 executes A [0,3), B [3,4); Machine 2 executes B [0,3), A [3,4). Every machine is single-capacity and both job orders are respected. Each machine must perform four units of work, so any full schedule has makespan at least four; the displayed one achieves four. Therefore the optimal makespan of this particular instance is exactly 4. The original report enumerates four choices of machine orders: three feasible with makespans 4, 8, 8, and one cyclic.</p>
+<p>There is also a small impossibility proof hiding inside the metaphor. For two positive-duration tasks on one machine, a continuous deformation of their starting times from A-before-B to B-before-A must pass through an interval in which their executions overlap. In other words, changing orders without ever passing through an infeasible intermediate state is impossible *under that continuous start-time model*. This is why the crossing belongs to the planning draft, not the real shop floor.</p>
+<h3>The experiment got harder</h3>
+<p>On the unchanged 30-job, 20-machine, 600-operation shop, the original investigation recorded several valid but imperfect schedules:</p>
+<ul><li>Insert operations one by one with immediate horizon objective: 2,504</li></ul>
+<ul><li>Grow operations with projected remaining work: 2,427</li></ul>
+<ul><li>Activate machines while freezing earlier machine orders: 5,550</li></ul>
+<ul><li>Activate machines while rebuilding all active orders: 2,429</li></ul>
+<p>The source-grounded checker independently checked five completed 600-operation CSVs (including a repeated 2,427 post-wander outcome). The experiment retained failed local searches: 6,553 adjacent/paired-swap moves evaluated without improvement, and another 40,556 random relocation attempts without better finish. Those failures do not prove impossibility.</p>
+<p>The key correction: other already-checked schedules on the same input finished at 2,073 and 1,923, so Zero-Up&#x27;s 2,427 is emphatically *not* a new best or an optimum. As more machine requirements were activated, a *heuristic&#x27;s found schedule* sometimes got shorter because it was rebuilt; the true optimum of the increasingly constrained problem cannot decrease.</p>
+<h3>What survived</h3>
+<p>Keep the requirements. Let the guesses move. A machine order chosen during planning is not itself part of the original problem. The final timetable must satisfy every original duration, route, nonoverlap and precedence requirement, no matter how audacious the intermediate draft looked.</p>
+<p>The original interactive toy is included as downloadable source text; it is not embedded as an active display.</p>
+<h3>What this does not show</h3>
+<p>No polynomial-time result for general scheduling, no optimum for the 600-operation case, no physical overlap, and no proof that temporary invalid representations always help. The complete source/input/CSV/checker set is named in the original report but is not contained in this handoff ZIP. The exact four-operation example *is* self-contained above.</p>
+<p>Evidence: the original report and interactive toy source text are available in the downloads below. The toy is provided as text, not as an active web page. No historical experiment was rerun for this exhibit.</p></section>
+<section class="limits"><h2>Limits &amp; open questions</h2><ul><li>The complete 600-operation source, CSVs and checker are not in the selected material.</li></ul><h3>Still open</h3><ul><li>What additional conclusions, if any, would the original missing evidence support?</li></ul></section>
+<section><h2>Little paths</h2><ul><li>No relationships proposed yet.</li></ul></section></article>
+<aside class="evidence"><h2>Inspect the evidence</h2><p>Original bytes, with recorded hashes. Downloads retain their original names; hosted copies use inert suffixes.</p><ul><li><a download="article.md" href="files/article.md.txt">article.md</a>
+<span>article · 4,015 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">fd92005baf98e03b22da05dd32f80667bab99a6f9cae89e65a0b2f8dfef8b125</code><p>Proof Wall editorial synthesis of original research</p><p>Public reading and downloading on the Proof Wall, authorized by the owner.</p><p>All rights reserved; no new open-source license is granted.</p></details></li><li><a download="zero-up-report.md" href="files/files/zero-up-report.md.txt">files/zero-up-report.md</a>
+<span>original · 10,787 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">5b1770191d048aec4564c4b426428540f4242cf391854a55de283fd147411e77</code><p>Amar and Terra</p><p>Public reading and downloading on the Proof Wall, authorized by the owner.</p><p>All rights reserved; no new open-source license is granted.</p></details></li><li><a download="zero-up-toy.html.txt" href="files/files/zero-up-toy.html.txt.txt">files/zero-up-toy.html.txt</a>
+<span>original · 11,619 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">0f3c550da8ae886c5100f3fa910eba5abf5f97a1a4ab1267954b7488b789d452</code><p>Amar and Terra</p><p>Public reading and downloading on the Proof Wall, authorized by the owner.</p><p>All rights reserved; no new open-source license is granted.</p></details></li></ul>
+<p><a href="exhibit.json">Exhibit JSON</a> · <a href="submitted-manifest.json">Original manifest</a> · <a href="snapshot.json">Snapshot</a></p>
+<h3>Provenance</h3><p>Amar and Terra</p><p>Existing experiment records and original handoff; editorial adaptation for Proof Wall. Original source bytes retained in downloads.</p><h3>Version note</h3><p>Initial public exhibit; no experiment rerun.</p>
+<h3>Publication &amp; reuse</h3><p>Amar and Terra; Proof Wall editorial synthesis.</p><p>Public reading and downloading on the Proof Wall, authorized by the owner.</p><p>All rights reserved; no new open-source license is granted.</p>
+<p class="fine">Publication review is not a mathematical certification. A finite test is not a general proof.</p>
+<a href="../../../contribute.html?exhibit=zero-up-001-schedule-eversion%40v1">Suggest a correction or connection →</a></aside></div></main><footer><span>We attract by method.</span><nav aria-label="Other places in the workshop"><a href="../../../paths.html">Other places in the workshop</a> · <a href="https://bridges.c-amar.chatgpt.site/" rel="noreferrer">Return to Bridges</a></nav><div><a href="../../../index.json">Machine-readable index</a> · <a href="../../../llms.txt">For agents</a> · <a href="../../../release-manifest.json">File hashes</a></div><p>No accounts, analytics, or submission server. Hosting providers may keep security logs.</p></footer></body></html>

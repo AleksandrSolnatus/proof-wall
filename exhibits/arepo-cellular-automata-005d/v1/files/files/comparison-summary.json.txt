@@ -1,0 +1,58 @@
+{
+  "experiment": "005D",
+  "comparison": "A-v1 versus B-v1, frozen protocol v1.0",
+  "preserved_date": "2026-09-27",
+  "base_main_sha": "6386dc175f5a3d17b3bc554dd0fe59d1a0f887ca",
+  "status": "PASS",
+  "protocol_sha256": "cebc6ae7eed286c1a998402efb1a7a059d5ed1127b9b3ea26184e43d08f92247",
+  "input_handoff_sha256": "d83caf0dc0a00cc31aaca3edb2651a8b31c19c081ac475375d2ec01cfe52cfd1",
+  "A_bundle_sha256": "eccd69498992bf35431d2b8233613db79329716d08d8a26d28fbf6db8411a655",
+  "B_bundle_sha256": "4d5ebeadb71feaabcc945c445cbacdf4726411ba1c5f6601d1123e29321f66e5",
+  "A_source_sha256": "616b99686e0df9b609ee1e452643c352703d301bbc2444f318ad0f09db81d5be",
+  "B_source_sha256": "bbafe12930d70a2c8de8c1c7e2acf74a99e4907781a2e942f0c7844c41dcf49a",
+  "A_manifest_sha256": "f08675dca6babe66f106be76cc8bd55767801109f46a9938ab0d73849c418f4a",
+  "B_manifest_sha256": "7f56c059d4bac4828a62861cdd6b7f7ed1742708b2e5dad16f1f43e628d6b000",
+  "labeled_configurations_compared": 476,
+  "message_configurations": 448,
+  "no_input_configurations": 28,
+  "logical_history_shape": [
+    385,
+    1025
+  ],
+  "cell_states_compared": 187841500,
+  "AB_cell_mismatches": 0,
+  "A_transition_mismatches": 0,
+  "B_transition_mismatches": 0,
+  "transitions_checked_per_run_family": 187353600,
+  "message_signatures_compared": 896,
+  "bits_per_signature": 4096,
+  "message_signature_bits_compared": 3670016,
+  "ensemble_comparisons": 56,
+  "pairwise_matrices_compared": 56,
+  "pairwise_matrix_entries_compared": 14336,
+  "max_AB_perrun_metric_difference": 0,
+  "max_AB_ensemble_metric_difference": 0,
+  "max_AB_entropy_difference_bits": 0,
+  "checks_total": 28295,
+  "checks_failed": 0,
+  "headline": {
+    "26": {
+      "distinct_outputs": 16,
+      "information_bits": 4
+    },
+    "74": {
+      "distinct_outputs": 1,
+      "information_bits": 0,
+      "output": "shared empty"
+    },
+    "90": {
+      "distinct_outputs": 16,
+      "information_bits": 4
+    },
+    "122": {
+      "distinct_outputs": 16,
+      "information_bits": 4
+    }
+  },
+  "interpretation_boundary": "Deterministic cellular-automaton reproducibility only; not quantum evidence."
+}

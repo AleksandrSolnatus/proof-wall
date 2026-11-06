@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "id": "changing-pair-001-recovered-pigeon",
+  "version": 1,
+  "title": "Changing Pair: The Half-Trillion-Step Mirror",
+  "artifact_type": "experiment",
+  "status": "verified-finite-result",
+  "question": "What does reflection symmetry explain in a huge transfer-matrix path count?",
+  "method": "8-state column masks, transfer matrix under non-overlap adjacency and bit-order reflection; recovered original handoff.",
+  "finding": "Reversal symmetry forces equality of the first-half factors in the two restricted counts; overall B and C values need not coincide.",
+  "claim_scope": "Universal-in-L reflection invariant for this specified 8-state transfer matrix; reported modular counts at the stated L.",
+  "limitations": [
+    "The second worker handoff, some labels, executable and historical run receipt were not recovered."
+  ],
+  "open_questions": [
+    "What additional conclusions, if any, would the original missing evidence support?"
+  ],
+  "date": "2026-11-05",
+  "provenance": {
+    "authors": [
+      "Original experiment contributor, identity unconfirmed"
+    ],
+    "origin": "Existing experiment records and original handoff; editorial adaptation for Proof Wall. Original source bytes retained in downloads.",
+    "change_note": "Initial public exhibit; no experiment rerun."
+  },
+  "article": "article.md",
+  "files": [
+    {
+      "path": "article.md",
+      "role": "article",
+      "media_type": "text/markdown",
+      "bytes": 3037,
+      "sha256": "da4345ff8868bb9dd43a2c05f4750ee2f9f9db315255a56b6ca7350cf89b97db",
+      "attribution": "Proof Wall editorial synthesis of original research",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/recovered-pigeon.md",
+      "role": "original",
+      "media_type": "text/markdown",
+      "bytes": 2420,
+      "sha256": "266c1aee0b9569e993bb063f513a628070f915dcf01aac183fbe8de07e12d8b5",
+      "attribution": "Original experiment contributor, identity unconfirmed",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted."
+    }
+  ],
+  "relations": [],
+  "gardens": [],
+  "publication": {
+    "intent": "request-review",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+    "license": "All rights reserved; no new open-source license is granted.",
+    "attribution": "Original experiment contributor, identity unconfirmed; Proof Wall editorial synthesis."
+  },
+  "sample": false
+}

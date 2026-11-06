@@ -1,0 +1,89 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "Exact tiny theorem; reported finite 600-operation heuristic runs only.",
+  "date": "2026-10-31",
+  "downloads": [
+    {
+      "bytes": 4015,
+      "original_path": "article.md",
+      "sha256": "fd92005baf98e03b22da05dd32f80667bab99a6f9cae89e65a0b2f8dfef8b125",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 10787,
+      "original_path": "files/zero-up-report.md",
+      "sha256": "5b1770191d048aec4564c4b426428540f4242cf391854a55de283fd147411e77",
+      "url": "files/files/zero-up-report.md.txt"
+    },
+    {
+      "bytes": 11619,
+      "original_path": "files/zero-up-toy.html.txt",
+      "sha256": "0f3c550da8ae886c5100f3fa910eba5abf5f97a1a4ab1267954b7488b789d452",
+      "url": "files/files/zero-up-toy.html.txt.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "Proof Wall editorial synthesis of original research",
+      "bytes": 4015,
+      "license": "All rights reserved; no new open-source license is granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "article",
+      "sha256": "fd92005baf98e03b22da05dd32f80667bab99a6f9cae89e65a0b2f8dfef8b125"
+    },
+    {
+      "attribution": "Amar and Terra",
+      "bytes": 10787,
+      "license": "All rights reserved; no new open-source license is granted.",
+      "media_type": "text/markdown",
+      "path": "files/zero-up-report.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "original",
+      "sha256": "5b1770191d048aec4564c4b426428540f4242cf391854a55de283fd147411e77"
+    },
+    {
+      "attribution": "Amar and Terra",
+      "bytes": 11619,
+      "license": "All rights reserved; no new open-source license is granted.",
+      "media_type": "text/plain",
+      "path": "files/zero-up-toy.html.txt",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "original",
+      "sha256": "0f3c550da8ae886c5100f3fa910eba5abf5f97a1a4ab1267954b7488b789d452"
+    }
+  ],
+  "finding": "A four-operation shop has exact optimal makespan 4; on the large shop changing tentative machine orders helped relative to frozen orders but did not find an optimum.",
+  "gardens": [],
+  "id": "zero-up-001-schedule-eversion",
+  "limitations": [
+    "The complete 600-operation source, CSVs and checker are not in the selected material."
+  ],
+  "method": "Four-operation enumeration, machine-load lower bound and recorded unchanged 600-operation heuristic comparisons with separate input checker.",
+  "open_questions": [
+    "What additional conclusions, if any, would the original missing evidence support?"
+  ],
+  "package_sha256": "28e4a527070df1e8affdaed642f2204c6963bc1122879b8ad087f8b874441b63",
+  "provenance": {
+    "authors": [
+      "Amar and Terra"
+    ],
+    "change_note": "Initial public exhibit; no experiment rerun.",
+    "origin": "Existing experiment records and original handoff; editorial adaptation for Proof Wall. Original source bytes retained in downloads."
+  },
+  "publication": {
+    "attribution": "Amar and Terra; Proof Wall editorial synthesis.",
+    "intent": "request-review",
+    "license": "All rights reserved; no new open-source license is granted.",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner."
+  },
+  "question": "Can a planning representation pass through an infeasible intermediate ordering while ending in a feasible, exact-source schedule?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Zero-Up: Crossing an Impossible Draft",
+  "version": 1
+}

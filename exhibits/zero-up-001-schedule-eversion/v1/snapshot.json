@@ -1,0 +1,21 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 4015,
+      "sha256": "fd92005baf98e03b22da05dd32f80667bab99a6f9cae89e65a0b2f8dfef8b125"
+    },
+    "exhibit.json": {
+      "bytes": 3043,
+      "sha256": "e35658d644f4b3255f9b80b885291cb0c0c04183341a0fdf39059ea797321482"
+    },
+    "files/zero-up-report.md": {
+      "bytes": 10787,
+      "sha256": "5b1770191d048aec4564c4b426428540f4242cf391854a55de283fd147411e77"
+    },
+    "files/zero-up-toy.html.txt": {
+      "bytes": 11619,
+      "sha256": "0f3c550da8ae886c5100f3fa910eba5abf5f97a1a4ab1267954b7488b789d452"
+    }
+  },
+  "package_sha256": "28e4a527070df1e8affdaed642f2204c6963bc1122879b8ad087f8b874441b63"
+}

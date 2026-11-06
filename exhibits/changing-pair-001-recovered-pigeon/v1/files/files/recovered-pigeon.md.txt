@@ -1,0 +1,46 @@
+# MATH — The Changing Pair 001
+## Recovered original worker handoff: Pigeon 001
+
+**Recovered:** November 5, 2026.
+**Provenance:** User supplied one worker's original result and handoff in the MATH conversation after the short messages were thought lost. This is an *original recovered handoff*, not the assistant's earlier reconstruction. The identity of the worker (inherited versus fresh) is not established by this pasted text alone.
+
+### Original 200-character pigeon (preserved verbatim)
+
+> Masks m: m&(m<<1)=0. T[a,b]=1 iff a&b=0. L=500000000019. A=(T^(2L))[9,5]; B=(T^L)[9,2](T^L)[2,5]; C=(T^L)[9,4](T^L)[4,5], mod 1000000007.
+
+### Returned answers
+
+| Stage | Requirement at K | Count modulo 1,000,000,007 |
+|---|---|---:|
+| A | unrestricted | 538,585,453 |
+| B | `0010` | 170,637,366 |
+| C | `0100` | 131,333,368 |
+
+### Mathematical structure the worker described
+
+Eight valid column states (four vertical positions, no adjacent marked cells):
+
+`0000, 0001, 0010, 0100, 0101, 1000, 1001, 1010`
+
+Define `T[u,v] = 1` if `u & v == 0`, and 0 otherwise, with u and v from the eight states. Let `N = 1,000,000,000,039`, `K = 500,000,000,020`, `L=K-1=500,000,000,019`. Then `N = 2K-1`. With `M = T^L` modulo 1,000,000,007,
+
+- `A = sum_v M[1001,v] * M[0101,v]`.
+- `B = M[1001,0010] * M[0101,0010]`.
+- `C = M[1001,0100] * M[0101,0100]`.
+
+The original worker reported an independent Cayley–Hamilton recurrence check, with characteristic polynomial
+
+`(x+1)(x^2+2x-1)(x^5-4x^4-9x^3+5x^2+4x-1)`.
+
+**Additional discovered invariant:** reverse the order of bits in each 4-bit column. This maps the valid-state graph to itself, fixes `1001`, and swaps `0010` with `0100`. Thus for all nonnegative integer L,
+
+`(T^L)[1001,0010] == (T^L)[1001,0100]`.
+
+The worker concluded that the difference between the B and C totals comes from the second-half contribution, not the first-half path count.
+
+### Notes on preservation
+
+- The short pigeon above is copied from the user's actual return, not reconstructed.
+- Some equations and four intermediate matrix-entry labels did not survive formatting in the pasted result; no missing numbers or labels have been invented.
+- The *second* worker's exact 200-character handoff is not recovered here.
+- Inheritance/learning experiments should not impose a compulsory preflight proof audit: **inherit → fly → adjust → pass on**, with correctness checked at the receiving/output stage.

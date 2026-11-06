@@ -1,0 +1,33 @@
+# When the Message Disappears from the Readout
+
+Proof Wall exhibit — cellular automata & model checking · Reconciliation: September 27, 2026
+
+## The question
+
+Imagine sending one of 16 distinguishable messages through a strip of changing cellular-automaton rules. At a downstream sensor, can all 16 messages still be told apart? Can two very different implementations agree on the entire evolution, not just the headline number?
+
+Two frozen implementations of a specified synchronous deterministic cellular automaton were reconciled. Run A evaluated rule numbers by bit shifts; Run B used explicit truth tables and a destination-rule mask. Their saved histories used different bit-packing formats and different data layouts. The reconciliation did not rerun either simulator: it decoded the archived histories, matched scientific configuration labels, and independently checked stored initial states and transitions against the declared update rule.
+
+## What the evidence showed
+
+- Configurations compared: 476 labels (224 distinct logical histories)
+- Paired cell-state comparisons: 187,841,500; zero differences
+- Independent transition-rule audit: 187,353,600 transitions per run family; zero invalid transitions
+- Recorded audit assertions: 28,295 checks; zero failures
+- Matched message signatures: 896 complete readouts
+
+Under the frozen setup — widths 1, 2, 4, 8, 16, 32, 64, early and late sensor windows, and the chosen 16-message codebook — Rules 90, 26 and 122 kept all 16 exact downstream outputs distinct (4 bits of codebook identity). Under Rule 74, all 16 produced the same empty downstream output (0 bits of identity at that sensor).
+
+The strangest detail is that the *amount of activity* alone could conceal what the full pattern showed. For Rule 122, width 16, late window, messages 0 and 5 each had 2,053 ON cell-time entries, yet their full signatures differed at 2,054 of 4,096 positions. An equal count did not imply an equal message pattern.
+
+## Why it matters
+
+It separates what the system did from what a particular observer can distinguish. The exact downstream readout may lose distinctions without proving that information disappeared everywhere in the system. It also shows why full-state reconciliation can be stronger than visually similar plots or matching headline summary statistics.
+
+The reconciliation's independence is bounded. The two sources used different implementations, but intentionally shared a protocol and software environment; the separate audit was not a third blind experiment. The 476 labels were not 476 independent samples.
+
+## What it does not establish
+
+This is a deterministic, finite computational experiment. It does not demonstrate quantum tunneling, a physical hidden timestep, an extra dimension, universal information conservation or destruction, noisy-channel robustness, general capacity, or behavior outside the stated inputs and windows. No new simulations or physical claims were added to make this exhibit.
+
+Evidence: the original reconciliation report and existing comparison summary are available in the downloads below. The large primary run archives and full reconciliation evidence directory are not included in this exhibit.

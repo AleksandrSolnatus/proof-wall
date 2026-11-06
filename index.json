@@ -367,6 +367,48 @@
       "title": "Separating collapsed tesseract vertices while retaining the 4D source",
       "url": "exhibits/graphics-flex-tesseract/v2/index.html",
       "version": 2
+    },
+    {
+      "claim_scope": "Exact tiny theorem; reported finite 600-operation heuristic runs only.",
+      "gardens": [],
+      "id": "zero-up-001-schedule-eversion",
+      "metadata": "exhibits/zero-up-001-schedule-eversion/v1/exhibit.json",
+      "package_sha256": "28e4a527070df1e8affdaed642f2204c6963bc1122879b8ad087f8b874441b63",
+      "question": "Can a planning representation pass through an infeasible intermediate ordering while ending in a feasible, exact-source schedule?",
+      "relations": [],
+      "sample": false,
+      "status": "verified-finite-result",
+      "title": "Zero-Up: Crossing an Impossible Draft",
+      "url": "exhibits/zero-up-001-schedule-eversion/v1/index.html",
+      "version": 1
+    },
+    {
+      "claim_scope": "Universal-in-L reflection invariant for this specified 8-state transfer matrix; reported modular counts at the stated L.",
+      "gardens": [],
+      "id": "changing-pair-001-recovered-pigeon",
+      "metadata": "exhibits/changing-pair-001-recovered-pigeon/v1/exhibit.json",
+      "package_sha256": "ae8408176ada6442239f58735859745d9478d81a3a0c85e3327cc530b8206fe0",
+      "question": "What does reflection symmetry explain in a huge transfer-matrix path count?",
+      "relations": [],
+      "sample": false,
+      "status": "verified-finite-result",
+      "title": "Changing Pair: The Half-Trillion-Step Mirror",
+      "url": "exhibits/changing-pair-001-recovered-pigeon/v1/index.html",
+      "version": 1
+    },
+    {
+      "claim_scope": "Finite codebook and sensor-window behavior only, not physical information destruction or quantum tunneling.",
+      "gardens": [],
+      "id": "arepo-cellular-automata-005d",
+      "metadata": "exhibits/arepo-cellular-automata-005d/v1/exhibit.json",
+      "package_sha256": "a14a4db2135bff0940d2e1c8b3d69c21ee2a68dd5d0d068aa54c1f057933b2ca",
+      "question": "Under which finite CA rules do 16 messages remain distinguishable at a fixed downstream sensor?",
+      "relations": [],
+      "sample": false,
+      "status": "verified-finite-result",
+      "title": "When the Message Disappears from the Readout",
+      "url": "exhibits/arepo-cellular-automata-005d/v1/index.html",
+      "version": 1
     }
   ],
   "gardens": "gardens.json",

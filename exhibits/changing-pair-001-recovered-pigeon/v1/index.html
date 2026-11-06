@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer"><meta name="color-scheme" content="light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Changing Pair: The Half-Trillion-Step Mirror · Proof Wall</title><link rel="stylesheet" href="../../../assets/wall.css">
+<link rel="alternate" type="application/json" href="../../../index.json" title="Research index">
+<script src="../../../assets/wall.js" defer></script></head><body><nav class="workshop-return" aria-label="Return to the workshop"><a href="https://bridges.c-amar.chatgpt.site/#work">← Bridges</a></nav>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../../../index.html"><span class="mark" aria-hidden="true">∴</span> Proof Wall</a>
+<nav aria-label="Main"><a href="../../../index.html">The wall</a><a href="../../../paths.html">Little paths</a><a href="../../../contribute.html">Contribute</a></nav></header>
+<main id="main"><a class="back" href="../../../index.html">← The wall</a>
+<div class="exhibit-heading"><p class="eyebrow">changing-pair-001-recovered-pigeon / v1 · 2026-11-05</p>
+<h1>Changing Pair: The Half-Trillion-Step Mirror</h1><span class="status">verified finite result</span><p class="scope">Universal-in-L reflection invariant for this specified 8-state transfer matrix; reported modular counts at the stated L.</p></div>
+
+<div class="reading-layout"><article><section><h2>The question</h2><p>What does reflection symmetry explain in a huge transfer-matrix path count?</p><h2>The method</h2><p>8-state column masks, transfer matrix under non-overlap adjacency and bit-order reflection; recovered original handoff.</p><h2>The finding</h2><p>Reversal symmetry forces equality of the first-half factors in the two restricted counts; overall B and C values need not coincide.</p></section>
+<section class="original"><p class="eyebrow">Research text · rendered from the supplied Markdown</p><h2>Changing Pair: The Half-Trillion-Step Mirror</h2>
+<p>Proof Wall exhibit — algorithms &amp; mathematics · Original handoff recovered: November 5, 2026</p>
+<h3>The question</h3>
+<p>Can a very small symmetry explain something inside a path count extending over 500,000,000,019 transitions from one side of a marked middle column?</p>
+<p>The original worker encoded a four-cell-wide column by a four-bit mask. Vertically adjacent marked positions were forbidden: the valid states are 0000, 0001, 0010, 0100, 0101, 1000, 1001, 1010. Two neighboring columns may coexist precisely when they do not mark the same row. The resulting eight-state transfer matrix is</p>
+<p>T[a,b] = 1 when (a &amp; b) == 0, and 0 otherwise.</p>
+<p>For a span of L transitions, the relevant count is an entry in T^L, computed modulo 1,000,000,007. With L = 500,000,000,019, the recovered worker&#x27;s compact original handoff defined:</p>
+<ul><li>A = (T^(2L))[9,5]</li></ul>
+<ul><li>B = (T^L)[9,2] (T^L)[2,5]</li></ul>
+<ul><li>C = (T^L)[9,4] (T^L)[4,5]</li></ul>
+<p>(The notation 9, 5, 2, 4 denotes binary masks 1001, 0101, 0010, 0100.) The returned modular totals were A = 538,585,453; B = 170,637,366; C = 131,333,368. The original worker also reported a Cayley–Hamilton recurrence cross-check. Preserve those numbers as reported checked outputs, not a newly rerun computation.</p>
+<h3>The small mirror</h3>
+<p>Reverse the four bit positions. The involution sends every valid column mask to another valid mask and preserves the condition a &amp; b = 0. Thus its permutation matrix R satisfies RT = TR, and hence RT^L = T^L R for every nonnegative integer L.</p>
+<p>Now notice the special masks: 1001 is fixed by reflection, while 0010 and 0100 exchange places. Consequently,</p>
+<p>(T^L)[1001,0010] == (T^L)[1001,0100]</p>
+<p>for *every* nonnegative L — not only the enormous one in this experiment. This equality is a direct, bounded mathematical fact about the given matrix, and explains why the first-half factors of B and C match. The second-half endpoint 0101 is not fixed by reflection, so this argument does *not* force the B and C totals to be equal. Indeed, the recorded totals differ.</p>
+<h3>What survived</h3>
+<p>A small structural symmetry turns a huge counting problem into one with an exact invariant. It does not mean counting itself was free: the rest of the transfer-matrix computation still has a cost. The original record includes the precise compact handoff, outputs and a reported independent recurrence check.</p>
+<h3>Limitations and custody</h3>
+<p>The recovered text was supplied verbatim by the owner. Which of two original workers authored that handoff is not established; the second worker&#x27;s handoff was not recovered. Some intermediate labels were lost in the original formatting. This exhibit does not reconstruct the missing original, claim historical authorship it cannot establish, or generalize this finite transfer-matrix invariant to all counting problems.</p>
+<p>Evidence: the original recovery document, including the compact worker handoff, is available in the downloads below. It is not executable evidence. No new computational replay was performed to prepare this candidate.</p></section>
+<section class="limits"><h2>Limits &amp; open questions</h2><ul><li>The second worker handoff, some labels, executable and historical run receipt were not recovered.</li></ul><h3>Still open</h3><ul><li>What additional conclusions, if any, would the original missing evidence support?</li></ul></section>
+<section><h2>Little paths</h2><ul><li>No relationships proposed yet.</li></ul></section></article>
+<aside class="evidence"><h2>Inspect the evidence</h2><p>Original bytes, with recorded hashes. Downloads retain their original names; hosted copies use inert suffixes.</p><ul><li><a download="article.md" href="files/article.md.txt">article.md</a>
+<span>article · 3,037 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">da4345ff8868bb9dd43a2c05f4750ee2f9f9db315255a56b6ca7350cf89b97db</code><p>Proof Wall editorial synthesis of original research</p><p>Public reading and downloading on the Proof Wall, authorized by the owner.</p><p>All rights reserved; no new open-source license is granted.</p></details></li><li><a download="recovered-pigeon.md" href="files/files/recovered-pigeon.md.txt">files/recovered-pigeon.md</a>
+<span>original · 2,420 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">266c1aee0b9569e993bb063f513a628070f915dcf01aac183fbe8de07e12d8b5</code><p>Original experiment contributor, identity unconfirmed</p><p>Public reading and downloading on the Proof Wall, authorized by the owner.</p><p>All rights reserved; no new open-source license is granted.</p></details></li></ul>
+<p><a href="exhibit.json">Exhibit JSON</a> · <a href="submitted-manifest.json">Original manifest</a> · <a href="snapshot.json">Snapshot</a></p>
+<h3>Provenance</h3><p>Original experiment contributor, identity unconfirmed</p><p>Existing experiment records and original handoff; editorial adaptation for Proof Wall. Original source bytes retained in downloads.</p><h3>Version note</h3><p>Initial public exhibit; no experiment rerun.</p>
+<h3>Publication &amp; reuse</h3><p>Original experiment contributor, identity unconfirmed; Proof Wall editorial synthesis.</p><p>Public reading and downloading on the Proof Wall, authorized by the owner.</p><p>All rights reserved; no new open-source license is granted.</p>
+<p class="fine">Publication review is not a mathematical certification. A finite test is not a general proof.</p>
+<a href="../../../contribute.html?exhibit=changing-pair-001-recovered-pigeon%40v1">Suggest a correction or connection →</a></aside></div></main><footer><span>We attract by method.</span><nav aria-label="Other places in the workshop"><a href="../../../paths.html">Other places in the workshop</a> · <a href="https://bridges.c-amar.chatgpt.site/" rel="noreferrer">Return to Bridges</a></nav><div><a href="../../../index.json">Machine-readable index</a> · <a href="../../../llms.txt">For agents</a> · <a href="../../../release-manifest.json">File hashes</a></div><p>No accounts, analytics, or submission server. Hosting providers may keep security logs.</p></footer></body></html>

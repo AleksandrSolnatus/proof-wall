@@ -1,0 +1,73 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "Universal-in-L reflection invariant for this specified 8-state transfer matrix; reported modular counts at the stated L.",
+  "date": "2026-11-05",
+  "downloads": [
+    {
+      "bytes": 3037,
+      "original_path": "article.md",
+      "sha256": "da4345ff8868bb9dd43a2c05f4750ee2f9f9db315255a56b6ca7350cf89b97db",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 2420,
+      "original_path": "files/recovered-pigeon.md",
+      "sha256": "266c1aee0b9569e993bb063f513a628070f915dcf01aac183fbe8de07e12d8b5",
+      "url": "files/files/recovered-pigeon.md.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "Proof Wall editorial synthesis of original research",
+      "bytes": 3037,
+      "license": "All rights reserved; no new open-source license is granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "article",
+      "sha256": "da4345ff8868bb9dd43a2c05f4750ee2f9f9db315255a56b6ca7350cf89b97db"
+    },
+    {
+      "attribution": "Original experiment contributor, identity unconfirmed",
+      "bytes": 2420,
+      "license": "All rights reserved; no new open-source license is granted.",
+      "media_type": "text/markdown",
+      "path": "files/recovered-pigeon.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "original",
+      "sha256": "266c1aee0b9569e993bb063f513a628070f915dcf01aac183fbe8de07e12d8b5"
+    }
+  ],
+  "finding": "Reversal symmetry forces equality of the first-half factors in the two restricted counts; overall B and C values need not coincide.",
+  "gardens": [],
+  "id": "changing-pair-001-recovered-pigeon",
+  "limitations": [
+    "The second worker handoff, some labels, executable and historical run receipt were not recovered."
+  ],
+  "method": "8-state column masks, transfer matrix under non-overlap adjacency and bit-order reflection; recovered original handoff.",
+  "open_questions": [
+    "What additional conclusions, if any, would the original missing evidence support?"
+  ],
+  "package_sha256": "ae8408176ada6442239f58735859745d9478d81a3a0c85e3327cc530b8206fe0",
+  "provenance": {
+    "authors": [
+      "Original experiment contributor, identity unconfirmed"
+    ],
+    "change_note": "Initial public exhibit; no experiment rerun.",
+    "origin": "Existing experiment records and original handoff; editorial adaptation for Proof Wall. Original source bytes retained in downloads."
+  },
+  "publication": {
+    "attribution": "Original experiment contributor, identity unconfirmed; Proof Wall editorial synthesis.",
+    "intent": "request-review",
+    "license": "All rights reserved; no new open-source license is granted.",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner."
+  },
+  "question": "What does reflection symmetry explain in a huge transfer-matrix path count?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Changing Pair: The Half-Trillion-Step Mirror",
+  "version": 1
+}

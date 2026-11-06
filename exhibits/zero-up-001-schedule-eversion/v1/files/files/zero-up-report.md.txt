@@ -1,0 +1,80 @@
+# ZERO-UP-001 — The Schedule Eversion
+
+**Amar and Terra · October 31, 2026**  
+**Question:** Start from the desired finish `00:00`, activate machine requirements, add only the necessary time, and permit rearrangement without tearing a source constraint. The sphere-eversion analogy suggests allowing *proposed* operations to pass through each other while changing orders, then validating an executable schedule at a checkpoint.
+
+**Status:** Constructive exploratory experiment, with one exact small theorem, multiple completed 600-operation runs, preserved negative results, and a separate direct original-input checker. **No claim of schedule optimality, new benchmark record, or improvement over earlier strongest schedules.**
+
+## 1. Distinguish what must remain unbroken
+
+The source job shop has 30 jobs × 20 original operations = 600 operations and 20 single-capacity machines. Each operation has its exact original positive integer duration and specified machine. Jobs have fixed stage precedence. Executable schedules cannot overlap on a machine, omit operations, split an operation, or violate job precedence. Half-open intervals are used.
+
+**Allowed:** Rebuild start times, change order of operations *on a machine*, and try a temporary planning state that is *not* executable, provided it is not reported as a valid schedule. Any published schedule must satisfy every original rule.
+
+**Not allowed:** Change a duration, ignore an original precedence relation in the final result, perform two machine operations at once, or call a failed budgeted search an impossibility proof.
+
+### A small impossibility lemma behind the metaphor
+
+Let positive-duration operations A and B occupy one machine, with start times `a` and `b` and durations `p>0` and `q>0`. In every feasible continuous arrangement, either `a+p <= b` (A before B) or `b+q <= a` (B before A). To move continuously in start-time coordinates from A-before-B to B-before-A, the continuous quantity `a-b` must pass from `<= -p` to `>= q`. Intermediate values strictly between `-p` and `q` imply overlap. Thus there is no continuous **every-intermediate-feasible** deformation that exchanges their order.
+
+The useful sphere-eversion correspondence is therefore not that machine conflicts are physically acceptable. It is that **the planning representation can pass through a self-intersection**, then emerge at a different fully feasible order. Neither endpoint violates any source constraint. The temporary crossing is not an executable schedule.
+
+## 2. Exact little example: four minutes, twice
+
+Job A: Machine 1 for 3, then Machine 2 for 1.  
+Job B: Machine 2 for 3, then Machine 1 for 1.
+
+At `00:00` no machine work is activated. Activate Machine 1: A at [0,3), B at [3,4), makespan 4. Its total workload of 4 proves this partial finish cannot be lower. Activate Machine 2: B at [0,3), A at [3,4), without changing Machine 1. Both original job routes remain respected; makespan stays 4. Both machines have four units of workload, so makespan 4 is now **globally optimal** for this tiny full example. Adding four units of machine work costs zero *additional completion time* because of overlap across two **different** machines, which is legal.
+
+For this four-operation example, enumerating all four choices of the two machine orders yields three feasible orders with makespans 4, 8, and 8, and one cyclic/infeasible order. The interactive toy shows the two construction stages and a draft-only crossing needed to exchange an individual machine order.
+
+## 3. Three actual attempts on unchanged 600-operation input
+
+The original source is copied verbatim to `source.txt` and identified by SHA-256 in `results.json` and `eversion_results.json`. No published schedule, old witness, answer key, or optimum target was supplied to the constructing algorithms. All timings are local descriptive runs, not controlled performance benchmarks.
+
+| Construction | What is allowed | Best completed makespan | Finding |
+|---|---|---:|---|
+| Insert job operations one by one | Try insertion positions on the required machine; retain job prefixes | **2,504** | Simple cheapest-immediate-horizon policy postponed costly future work |
+| Operation growth with projected job/machine remaining work | Rearrange by inserting an operation anywhere in its machine order at each step; every checkpoint feasible | **2,427** | Better than 2,504, still far from known good schedules |
+| Activate one whole machine at a time **without** revising earlier machine orders | Complete DAG-consistent machine permutations held permanently | **5,550** among three activation orders | Freezing early decisions creates a severe trap |
+| Activate one whole machine at a time and **rebuild all active orders** each step | Every activated machine has its full source duration, all source job ordering retained, fresh valid schedule at each step | **2,429** | Reorientation helps greatly against frozen orders, but not against other baseline schedules |
+
+The rebuilt-machine sequence starts with `0` at zero active machines. It activates machines by descending original total processing workload. Machine 10 alone requires 1,674 units. The recorded stage makespans are:
+
+`0 → 1674 → 1674 → 1674 → 1701 → 1849 → 1874 → 1945 → 1994 → 1966 → 2007 → 2159 → 2079 → 2122 → 2252 → 2174 → 2266 → 2313 → 2338 → 2524 → 2429`.
+
+**Do not read decreases as evidence that added work physically reduces the minimum required time.** The optimizer is heuristic. Each stage throws away its prior **arrangement** but retains all previously activated **requirements**, and some new candidate schedules happen to outperform the old heuristic candidate despite having more requirements. The actual optimum for the increasingly constrained problem cannot decrease.
+
+The operation-by-operation projected variant finished at **2,427**, with 478 additions that left its observed current finish unchanged and 122 that increased it. It tested 50,976 insertion candidates; 34,374 were rejected as cyclic and 16,602 evaluated as DAG-consistent. It inserted 292 operations somewhere other than the end of the current machine order. These are instrumentation categories, not comparable elementary CPU operations.
+
+### The local trap is real for this method
+
+Starting from the valid 2,427 schedule, the adjacent-swap/feasible paired-swap test evaluated 6,553 moves without improving the best result. A subsequent random relocation test made 40,556 attempts, including 10,075 accepted feasible moves, again without improving the best observed finish. These are finite search failures, **not** proof that no better schedule exists.
+
+For context, the earlier independently checked Rocky schedule finished at **2,073** and a separately verified reference schedule was **1,923**. These are historical comparisons on the same original shop, not results constructed here. Their existence itself proves the new 2,427 and 2,429 schedules are **not** optimal. An independently checked lower bound of 1,804 was available in the previous review; this new experiment separately computes only the simpler machine-load lower bound of 1,674. The previously reported 1,812 solver bound is not a newly reproduced certificate here.
+
+## 4. What is verified
+
+`verify_source.py` was written separately from the generating routines and does not import them. It parses the original source pairs, then checks each completed CSV for: exactly 600 `(job,stage)` records; correct machine, duration, integer and nonnegative start/finish; all job-stage precedence constraints; nonoverlap on every machine; and reported final makespan. The checker passed five generated full schedules: 2,504, 2,427, 2,427 (post-wander), 5,550, and 2,429. The separate start/finish recurrence used in generating some outputs was also checked by direct prefix constraints, but no third-party review is claimed. Full validator output is in `independent_verification.json`.
+
+An added machine's intermediate relaxed problem gives *only that stage's* goal. Its not-yet-activated operations are treated as zero-duration placeholders, not a model of the final shop. They are restored to exact source durations at activation; at the twentieth stage every source operation is fully restored.
+
+## 5. The surviving insight
+
+**Preserve constraints; let choices move.** An earlier machine order is a hypothesis, not a source law. Requiring it to remain permanently fixed is different from insisting that every source job and duration remain intact. A change in the draft machine order can pass through an impossible intermediate order—*self-intersection in the planning space*—before producing a new executable schedule.
+
+The **zero target** is a starting aspiration, not a feasible completion time once positive work is introduced. At every stage, the target must rise enough to accommodate the activated work. A heuristic's absence of contradiction does not prove a target feasible; only a complete checked timetable does. For the tiny two-machine toy we established optimality exactly; for the 600-operation problem we did not.
+
+**Small next door:** Instead of choosing and freezing machine orders one-by-one, keep a target finish `T` and a flexible tentative arrangement of all operations; try to repair conflicting machine orders by coordinated exchanges, charge every attempt, and increase `T` only when a sound lower-bound proof rules out the smaller target or a bounded search reports that it failed without concluding impossibility. First prove behavior on tiny known-optimal shops, then try the unchanged 600-operation source. Do not turn an unsuccessful heuristic search into an UNSAT or makespan-optimality certificate.
+
+## 6. Files
+
+- `ZERO-UP-001-TOY.html`: self-contained interactive two-machine growth, continuous-order crossing, and recorded 20-machine growth plot (open locally in browser; no network).
+- `zero_up_schedule_600.csv`: best new 600-operation schedule from tested operation-growth methods, finishing 2,427.
+- `zero_up_eversion_schedule_600.csv`: completed all-machine stage-rebuilding approach, finishing 2,429.
+- `source.txt`: original unchanged input and directions.
+- `independent_verification.json`, `verify_source.py`: source-grounded independent-code check.
+- `growth_results.json`, `eversion_results.json`, `machine_growth.json`, `relaxation_results.json`, `wander_results.json`: evidence and negative controls.
+- `operation_growth.py`, `grow.py`, `machine_growth.py`, `eversion.py`, `relax.py`, `wander.py`, `create_toy.py`: Python standard-library construction and presentation programs. Some experiments generate additional CSVs in this folder. Python 3.10+.
+
+**No P-versus-NP theorem, optimality result on the large shop, or historical algorithm novelty is claimed.**
