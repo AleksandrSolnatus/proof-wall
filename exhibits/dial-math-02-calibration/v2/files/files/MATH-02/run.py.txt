@@ -1,0 +1,89 @@
+import pathlib,json,hashlib,collections,math,random,time,platform
+import original_math01 as m
+P=pathlib.Path(__file__).resolve().parent
+O=P.parent/'math02-intake/unpacked/MATH-01'
+MODELS=m.MODELS[:6]
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def components(cells):
+ parent=list(range(len(cells)))
+ def root(i):
+  while parent[i]!=i:i=parent[i]
+  return i
+ for i,a in enumerate(cells):
+  for j in range(i):
+   b=cells[j];x=a['signs'];y=b['signs'];short,long=sorted((x,y),key=len)
+   if m.dist1(x,y) or any(short==long[k:k+len(short)] for k in range(len(long)-len(short)+1)):
+    parent[root(i)]=root(j)
+ groups=collections.defaultdict(list)
+ for i in range(len(cells)):groups[root(i)].append(i)
+ return sorted(groups.values(),key=lambda g:(-sum(len(cells[i]['signs']) for i in g),g))
+def profile(cells):
+ counts=collections.Counter(s for c in cells for s in c['signs']);n=sum(counts.values())
+ return dict(cells=len(cells),tokens=n,types=len(counts),length_histogram=dict(sorted(collections.Counter(len(c['signs']) for c in cells).items())),top_symbol_fraction=max(counts.values())/n,collision_probability=sum(v*(v-1) for v in counts.values())/(n*(n-1)),duplicate_cell_excess=len(cells)-len({tuple(c['signs']) for c in cells}))
+def score(cells,train,test):
+ prec=m.prev_cells(cells);base,role=m.train(cells,train,prec)
+ n=sum(len(cells[i]['signs']) for i in test)
+ return {model:sum(-math.log2(m.tokenprob(model,cells,i,j,base,role,prec)) for i in test for j in range(len(cells[i]['signs'])))/n for model in MODELS}
+def contrast(v):
+ a=min(v[k] for k in MODELS if k[0] in 'ABC');b=min(v[k] for k in MODELS if k[0] in 'DE')
+ return dict(math_advantage=b-a,positive_math_call=b-a>0.05,advantage_including_unigram=min(b,v['F_unigram'])-a,best_model=min(v,key=v.get))
+def wilson(k,n):
+ if not n:return None
+ z=1.95996398454;p=k/n;den=1+z*z/n;c=(p+z*z/(2*n))/den;h=z*math.sqrt(p*(1-p)/n+z*z/(4*n*n))/den
+ return [c-h,c+h]
+def main():
+ start=time.process_time();data=json.loads((P/'controls.json').read_text())
+ integrity=[]
+ for line in (O/'MATH-01-REPRODUCIBILITY/checksums.sha256').read_text().splitlines():
+  digest,name=line.split(None,1);assert sha(O/name)==digest,name;integrity.append(name)
+ assert sha(P/'original_math01.py')==sha(O/'MATH-01-REPRODUCIBILITY/run_math01.py')
+ old=json.loads((O/'MATH-01-REPRODUCIBILITY/results.json').read_text())
+ a=m.load(O/'inputs/corpus_masked.json','S07');b=m.load(O/'inputs/corpus_masked.json','S25')
+ assign,_=m.fold_assign(a,m.families(a,b));replay={}
+ for var,cells in [('S07',a),('S25',b)]:
+  scores=m.evaluate(cells,assign)['bits_per_token'];saved=old['variants'][var]['observed']['bits_per_token'];err=max(abs(scores[k]-saved[k]) for k in scores);assert err<1e-12
+  replay[var]={'max_abs_error':err,'scores':scores,'profile':profile(cells)}
+ result={'status':'INCOMPLETE_CALIBRATION','original_manifest_files_verified':len(integrity),'original_replay':replay,'classes':{},'synthetic':{},'python':platform.python_version()}
+ for cl in ['math','language','registry']:
+  cells=[dict(r,face=r['source'],cell=f'C{r["source_cell"]:02d}') for r in data['cells'] if r['category']==cl]
+  pr=profile(cells);cr={'profile':pr,'profile_matched':190<=pr['tokens']<=285 and 20<=pr['types']<=45,'folds':[]};result['classes'][cl]=cr
+  if pr['types']>45:cr['status']='INELIGIBLE_ALPHABET';continue
+  groups=components(cells);cr['dependency_component_sizes']=[len(g) for g in groups]
+  sources=list(dict.fromkeys(c['source'] for c in cells));all_loss=collections.Counter();all_n=0
+  for source in sources:
+   test=[i for i,c in enumerate(cells) if c['source']==source];touch=set(test);purge={i for g in groups if touch.intersection(g) for i in g};train=[i for i in range(len(cells)) if i not in purge]
+   ntrain=sum(len(cells[i]['signs']) for i in train);nsource=len({cells[i]['source'] for i in train});ntest=sum(len(cells[i]['signs']) for i in test)
+   row=dict(source=source,train_cells=len(train),train_tokens=ntrain,train_sources=nsource,test_tokens=ntest,purged_train_cells=len(cells)-len(test)-len(train),test_indices=test,train_indices=train)
+   cr['folds'].append(row)
+   if ntrain<60 or nsource<2:row['status']='BLOCKED_TRAINING_SUPPORT';continue
+   scores=score(cells,train,test);row.update(status='SCORED',bits_per_token=scores,**contrast(scores))
+   renamed=[dict(c,signs=[f'S{46-int(s[1:]):02d}' for s in c['signs']]) for c in cells]
+   again=score(renamed,train,test);err=max(abs(scores[k]-again[k]) for k in scores);assert err<1e-12;row['relabel_max_abs_error']=err
+   for k,v in scores.items():all_loss[k]+=v*ntest
+   all_n+=ntest
+  valid=[r for r in cr['folds'] if r['status']=='SCORED'];cr['status']='SCORED' if len(valid)==5 else 'PARTIAL_OR_BLOCKED'
+  if valid:
+   pooled={k:v/all_n for k,v in all_loss.items()};pos=sum(r['positive_math_call'] for r in valid)
+   cr.update(pooled_eligible_folds=pooled,pooled_contrast=contrast(pooled),scored_sources=len(valid),positive_sources=pos,positive_fraction_wilson95=wilson(pos,len(valid)))
+ rng=random.Random(20261017)
+ for kind in ['A','B','C']:
+  cells=[]
+  for i,c in enumerate(a):
+   n=len(c['signs']);head=rng.randrange(5);ss=[]
+   for j in range(n):
+    if kind=='A':v=rng.randrange(1,11) if j%2 else rng.randrange(11,46)
+    elif kind=='C':v=rng.randrange(1,11) if j==(n-1)//2 else rng.randrange(11,46)
+    else:v=head+1 if j==0 else 6+head*8+rng.randrange(8)
+    ss.append(f'S{v:02d}')
+   cells.append(dict(face='Synthetic',cell=f'C{i+1:02d}',signs=ss))
+  groups=components(cells);assign,sizes=m.fold_assign(cells,groups);rr={'profile':profile(cells),'fold_sizes':sizes,'cells':cells}
+  if min(sizes)>0:
+   sc=m.evaluate(cells,assign)['bits_per_token'];rr.update(status='SCORED',bits_per_token=sc,**contrast({k:sc[k] for k in MODELS}))
+  else:rr['status']='BLOCKED_EMPTY_FOLD'
+  result['synthetic'][kind]=rr
+ result['cpu_seconds']=time.process_time()-start;assert result['cpu_seconds']<=60
+ (P/'RESULTS.json').write_text(json.dumps(result,indent=2)+'\n')
+ print(json.dumps({cl:{k:v for k,v in cr.items() if k not in ['folds','dependency_component_sizes']} for cl,cr in result['classes'].items()},indent=2))
+ print('synthetic',{k:(v['status'],v.get('math_advantage')) for k,v in result['synthetic'].items()})
+ print('CPU seconds',result['cpu_seconds'])
+if __name__=='__main__':main()

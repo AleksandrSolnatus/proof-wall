@@ -1,0 +1,554 @@
+{
+  "schema": "relation-transfer-001-audit",
+  "python": "3.12.14",
+  "node": "v24.22.1",
+  "valid_transfers": [
+    {
+      "name": "valid-0",
+      "lotus": {
+        "valid": true,
+        "checker_version": "lotus-checkers/1",
+        "evidence": {
+          "checked_relation": [
+            -1,
+            -3
+          ],
+          "mapped_relation": [
+            -1,
+            -4
+          ],
+          "premises_matched": 4,
+          "target_models_before": 6,
+          "target_models_after": 6,
+          "exact_solution_set_preserved": true,
+          "mathematical_scope": "Resolution consequence under signed injective source embedding",
+          "publication_approved": false
+        },
+        "uncertainty": [
+          "One fixed source formula and one-step ordinary resolution; not general theorem discovery.",
+          "A candidate proves sound reuse only when all mapped premises occur in the target.",
+          "The target is bounded to eight Boolean variables; enumeration corroborates exact model-set preservation.",
+          "Finding the proof and mapping is unmeasured visitor work; no global speedup is claimed.",
+          "A passed check remains pending until the owner explicitly approves a specific packet."
+        ],
+        "work": {
+          "proof_pivots_checked": 1,
+          "premises_matched": 4,
+          "target_assignments_checked": 64,
+          "target_clause_evaluations": 190,
+          "derivation_search_cost": "not measured; supplied by visitor, checked by LOTUS"
+        }
+      },
+      "lotusNs": 322983,
+      "target_models": [
+        "01011",
+        "01110",
+        "01111",
+        "10001",
+        "10100",
+        "10101"
+      ],
+      "same_actual_model_set": true
+    },
+    {
+      "name": "valid-1",
+      "lotus": {
+        "valid": true,
+        "checker_version": "lotus-checkers/1",
+        "evidence": {
+          "checked_relation": [
+            1,
+            3
+          ],
+          "mapped_relation": [
+            1,
+            4
+          ],
+          "premises_matched": 4,
+          "target_models_before": 6,
+          "target_models_after": 6,
+          "exact_solution_set_preserved": true,
+          "mathematical_scope": "Resolution consequence under signed injective source embedding",
+          "publication_approved": false
+        },
+        "uncertainty": [
+          "One fixed source formula and one-step ordinary resolution; not general theorem discovery.",
+          "A candidate proves sound reuse only when all mapped premises occur in the target.",
+          "The target is bounded to eight Boolean variables; enumeration corroborates exact model-set preservation.",
+          "Finding the proof and mapping is unmeasured visitor work; no global speedup is claimed.",
+          "A passed check remains pending until the owner explicitly approves a specific packet."
+        ],
+        "work": {
+          "proof_pivots_checked": 1,
+          "premises_matched": 4,
+          "target_assignments_checked": 64,
+          "target_clause_evaluations": 190,
+          "derivation_search_cost": "not measured; supplied by visitor, checked by LOTUS"
+        }
+      },
+      "lotusNs": 236051,
+      "target_models": [
+        "01011",
+        "01110",
+        "01111",
+        "10001",
+        "10100",
+        "10101"
+      ],
+      "same_actual_model_set": true
+    },
+    {
+      "name": "valid-signed-polarity",
+      "lotus": {
+        "valid": true,
+        "checker_version": "lotus-checkers/1",
+        "evidence": {
+          "checked_relation": [
+            -1,
+            -3
+          ],
+          "mapped_relation": [
+            1,
+            4
+          ],
+          "premises_matched": 4,
+          "target_models_before": 6,
+          "target_models_after": 6,
+          "exact_solution_set_preserved": true,
+          "mathematical_scope": "Resolution consequence under signed injective source embedding",
+          "publication_approved": false
+        },
+        "uncertainty": [
+          "One fixed source formula and one-step ordinary resolution; not general theorem discovery.",
+          "A candidate proves sound reuse only when all mapped premises occur in the target.",
+          "The target is bounded to eight Boolean variables; enumeration corroborates exact model-set preservation.",
+          "Finding the proof and mapping is unmeasured visitor work; no global speedup is claimed.",
+          "A passed check remains pending until the owner explicitly approves a specific packet."
+        ],
+        "work": {
+          "proof_pivots_checked": 1,
+          "premises_matched": 4,
+          "target_assignments_checked": 64,
+          "target_clause_evaluations": 190,
+          "derivation_search_cost": "not measured; supplied by visitor, checked by LOTUS"
+        }
+      },
+      "lotusNs": 4686188,
+      "target_models": [
+        "01011",
+        "01110",
+        "01111",
+        "10001",
+        "10100",
+        "10101"
+      ],
+      "same_actual_model_set": true
+    },
+    {
+      "name": "valid-source-comment",
+      "lotus": {
+        "valid": true,
+        "checker_version": "lotus-checkers/1",
+        "evidence": {
+          "checked_relation": [
+            -1,
+            -3
+          ],
+          "mapped_relation": [
+            -1,
+            -4
+          ],
+          "premises_matched": 4,
+          "target_models_before": 6,
+          "target_models_after": 6,
+          "exact_solution_set_preserved": true,
+          "mathematical_scope": "Resolution consequence under signed injective source embedding",
+          "publication_approved": false
+        },
+        "uncertainty": [
+          "One fixed source formula and one-step ordinary resolution; not general theorem discovery.",
+          "A candidate proves sound reuse only when all mapped premises occur in the target.",
+          "The target is bounded to eight Boolean variables; enumeration corroborates exact model-set preservation.",
+          "Finding the proof and mapping is unmeasured visitor work; no global speedup is claimed.",
+          "A passed check remains pending until the owner explicitly approves a specific packet."
+        ],
+        "work": {
+          "proof_pivots_checked": 1,
+          "premises_matched": 4,
+          "target_assignments_checked": 64,
+          "target_clause_evaluations": 190,
+          "derivation_search_cost": "not measured; supplied by visitor, checked by LOTUS"
+        }
+      },
+      "lotusNs": 288997,
+      "target_models": [
+        "01011",
+        "01110",
+        "01111",
+        "10001",
+        "10100",
+        "10101"
+      ],
+      "same_actual_model_set": true
+    }
+  ],
+  "independent_bindings": [
+    {
+      "exact_source_and_field_binding": true,
+      "independent_resolution_replayed": true
+    },
+    {
+      "exact_source_and_field_binding": true,
+      "independent_resolution_replayed": true
+    }
+  ],
+  "binding_adversaries": [
+    {
+      "name": "proposal-unrehashed",
+      "rejected": "proposal bytes digest"
+    },
+    {
+      "name": "wrong-lemma-rehashed",
+      "rejected": "translated fields are not an exact correspondence"
+    },
+    {
+      "name": "boolean-lemma-rehashed",
+      "rejected": "translated fields are not an exact correspondence"
+    },
+    {
+      "name": "float-lemma-rehashed",
+      "rejected": "translated fields are not an exact correspondence"
+    },
+    {
+      "name": "source-digest-corrupt",
+      "rejected": "source digest"
+    },
+    {
+      "name": "source-substitution-rehashed",
+      "rejected": "ordered source binding"
+    }
+  ],
+  "adapter_adversaries_rejected": 20,
+  "lotus_invalid_proposals_rejected": 27,
+  "failed_approval_attempts_blocked": 31,
+  "custody_valid_remained_pending": 4,
+  "tamper_controls": [
+    {
+      "case": "stale-check-and-rehashed-bad-proposal",
+      "checksum_agrees": true,
+      "approval_denied": "Cannot approve: current independent checker does not match"
+    },
+    {
+      "case": "forged-valid-check-and-rehashed-bad-proposal",
+      "checksum_agrees": true,
+      "approval_denied": "Cannot approve: current independent checker does not match"
+    },
+    {
+      "case": "tampered-problem-hash",
+      "checksum_agrees": true,
+      "approval_denied": "Problem changed; resubmit against current version"
+    },
+    {
+      "case": "unrehashed-storage-tamper",
+      "checksum_agrees": false,
+      "approval_denied": "Packet integrity check failed"
+    }
+  ],
+  "schema_gaps": [
+    {
+      "name": "boolean-source-lemma",
+      "proposal": {
+        "parents": [
+          1,
+          2
+        ],
+        "pivot": 2,
+        "lemma": [
+          true,
+          3
+        ],
+        "mapping": [
+          4,
+          2,
+          1
+        ],
+        "target_variables": 5,
+        "target_clauses": [
+          [
+            2,
+            -4
+          ],
+          [
+            -2,
+            4
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            -1,
+            -2
+          ],
+          [
+            3,
+            5
+          ]
+        ],
+        "mapped_lemma": [
+          1,
+          4
+        ],
+        "target_model_count": 6
+      },
+      "checker_valid": true,
+      "simulated_approval": true,
+      "error": null,
+      "interpretation": "Typed representation hole; normalized intended Boolean theorem remains true. Not a demonstrated false theorem."
+    },
+    {
+      "name": "boolean-mapped-lemma",
+      "proposal": {
+        "parents": [
+          1,
+          2
+        ],
+        "pivot": 2,
+        "lemma": [
+          1,
+          3
+        ],
+        "mapping": [
+          4,
+          2,
+          1
+        ],
+        "target_variables": 5,
+        "target_clauses": [
+          [
+            2,
+            -4
+          ],
+          [
+            -2,
+            4
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            -1,
+            -2
+          ],
+          [
+            3,
+            5
+          ]
+        ],
+        "mapped_lemma": [
+          true,
+          4
+        ],
+        "target_model_count": 6
+      },
+      "checker_valid": true,
+      "simulated_approval": true,
+      "error": null,
+      "interpretation": "Typed representation hole; normalized intended Boolean theorem remains true. Not a demonstrated false theorem."
+    },
+    {
+      "name": "float-source-lemma",
+      "proposal": {
+        "parents": [
+          0,
+          3
+        ],
+        "pivot": 2,
+        "lemma": [
+          -1.0,
+          -3.0
+        ],
+        "mapping": [
+          4,
+          2,
+          1
+        ],
+        "target_variables": 5,
+        "target_clauses": [
+          [
+            2,
+            -4
+          ],
+          [
+            -2,
+            4
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            -1,
+            -2
+          ],
+          [
+            3,
+            5
+          ]
+        ],
+        "mapped_lemma": [
+          -1,
+          -4
+        ],
+        "target_model_count": 6
+      },
+      "checker_valid": true,
+      "simulated_approval": true,
+      "error": null,
+      "interpretation": "Typed representation hole; normalized intended Boolean theorem remains true. Not a demonstrated false theorem."
+    },
+    {
+      "name": "float-mapped-lemma",
+      "proposal": {
+        "parents": [
+          0,
+          3
+        ],
+        "pivot": 2,
+        "lemma": [
+          -1,
+          -3
+        ],
+        "mapping": [
+          4,
+          2,
+          1
+        ],
+        "target_variables": 5,
+        "target_clauses": [
+          [
+            2,
+            -4
+          ],
+          [
+            -2,
+            4
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            -1,
+            -2
+          ],
+          [
+            3,
+            5
+          ]
+        ],
+        "mapped_lemma": [
+          -1.0,
+          -4.0
+        ],
+        "target_model_count": 6
+      },
+      "checker_valid": true,
+      "simulated_approval": true,
+      "error": null,
+      "interpretation": "Typed representation hole; normalized intended Boolean theorem remains true. Not a demonstrated false theorem."
+    }
+  ],
+  "unsafe_projection_controls": [
+    {
+      "name": "corrupt-source-digest",
+      "lotus_on_unsafe_projection": {
+        "valid": true,
+        "checker_version": "lotus-checkers/1",
+        "evidence": {
+          "checked_relation": [
+            -1,
+            -3
+          ],
+          "mapped_relation": [
+            -1,
+            -4
+          ],
+          "premises_matched": 4,
+          "target_models_before": 6,
+          "target_models_after": 6,
+          "exact_solution_set_preserved": true,
+          "mathematical_scope": "Resolution consequence under signed injective source embedding",
+          "publication_approved": false
+        },
+        "uncertainty": [
+          "One fixed source formula and one-step ordinary resolution; not general theorem discovery.",
+          "A candidate proves sound reuse only when all mapped premises occur in the target.",
+          "The target is bounded to eight Boolean variables; enumeration corroborates exact model-set preservation.",
+          "Finding the proof and mapping is unmeasured visitor work; no global speedup is claimed.",
+          "A passed check remains pending until the owner explicitly approves a specific packet."
+        ],
+        "work": {
+          "proof_pivots_checked": 1,
+          "premises_matched": 4,
+          "target_assignments_checked": 64,
+          "target_clause_evaluations": 190,
+          "derivation_search_cost": "not measured; supplied by visitor, checked by LOTUS"
+        }
+      }
+    },
+    {
+      "name": "changed-unused-source-rehashed",
+      "lotus_on_unsafe_projection": {
+        "valid": true,
+        "checker_version": "lotus-checkers/1",
+        "evidence": {
+          "checked_relation": [
+            -1,
+            -3
+          ],
+          "mapped_relation": [
+            -1,
+            -4
+          ],
+          "premises_matched": 4,
+          "target_models_before": 6,
+          "target_models_after": 6,
+          "exact_solution_set_preserved": true,
+          "mathematical_scope": "Resolution consequence under signed injective source embedding",
+          "publication_approved": false
+        },
+        "uncertainty": [
+          "One fixed source formula and one-step ordinary resolution; not general theorem discovery.",
+          "A candidate proves sound reuse only when all mapped premises occur in the target.",
+          "The target is bounded to eight Boolean variables; enumeration corroborates exact model-set preservation.",
+          "Finding the proof and mapping is unmeasured visitor work; no global speedup is claimed.",
+          "A passed check remains pending until the owner explicitly approves a specific packet."
+        ],
+        "work": {
+          "proof_pivots_checked": 1,
+          "premises_matched": 4,
+          "target_assignments_checked": 64,
+          "target_clause_evaluations": 190,
+          "derivation_search_cost": "not measured; supplied by visitor, checked by LOTUS"
+        }
+      }
+    }
+  ],
+  "local_approval_control": "valid simulation approved and replayed in separate temporary DB; all DBs deleted",
+  "lotus_benchmark": {
+    "iterations": 200,
+    "warmups": 20,
+    "median_ns": 180628.5,
+    "p95_ns": 1835225,
+    "includes": "checkers.check, fixture retrieval, proof/mapping checking, two model enumerations; excludes process startup and SQLite"
+  },
+  "limits": [
+    "Local cross-language handoff, not cross-host transport or outside-agent participation",
+    "Fixed source fixture and one-step shared subset only",
+    "All mapping information supplied; no recognition experiment",
+    "No repository or live service writes; no real submission approved",
+    "Snapshot relevant suites, not complete repository suites"
+  ]
+}

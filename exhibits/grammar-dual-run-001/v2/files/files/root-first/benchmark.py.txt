@@ -1,0 +1,53 @@
+#!/usr/bin/env python3
+"""Optional CPU-only diagnostic. Counts in results.json remain primary."""
+import json, random, statistics, time, platform
+from pathlib import Path
+import root_grammar001 as R
+import grammar001 as F
+
+OUT=Path(__file__).resolve().parent
+def checked(n,c,witness):
+    if witness is not None:
+        values={i+1:(witness[i]=='1') for i in range(n)}
+        assert R.verify_original(c,values,R.RootCost())
+    return witness
+
+ARMS={
+ 'fixed_hybrid':lambda n,c:checked(n,c,F.hybrid(n,c)[0]),
+ 'root_hybrid':lambda n,c:R.hybrid_root(n,c), # already verifies original witness
+ 'sham_hybrid':lambda n,c:checked(n,c,R.sham_hybrid(n,c)['solution']),
+ 'first_solution_search':lambda n,c:checked(n,c,F.first_solution_search(n,c)[0])
+}
+# This is not an external benchmark: Python function overhead and process noise apply.
+REPS=30
+BATCHES=9
+rng=random.Random(15102026)
+allcases=R.make_cases()
+records=[]
+for b in range(BATCHES):
+    arms=list(ARMS.items());rng.shuffle(arms)
+    for arm,run in arms:
+        for kind in ('original','constructed','heldout_parity','heldout_no_motif','negative'):
+            group=[(n,c) for _,n,c,k in allcases if k==kind]
+            for n,c in group: run(n,c) # warm
+            start=time.process_time_ns()
+            for _ in range(REPS):
+                for n,c in group: run(n,c)
+            elapsed=time.process_time_ns()-start
+            records.append({'batch':b,'arm':arm,'group':kind,
+                'samples':REPS*len(group),'avg_cpu_microseconds_per_solve':elapsed/(1000*REPS*len(group))})
+summary={}
+for group in ('original','constructed','heldout_parity','heldout_no_motif','negative'):
+    summary[group]={}
+    for arm in ARMS:
+        values=[r['avg_cpu_microseconds_per_solve'] for r in records if r['arm']==arm and r['group']==group]
+        summary[group][arm]={'median_us':round(statistics.median(values),3),
+            'range_us':[round(min(values),3),round(max(values),3)]}
+out={'method':'Python process_time_ns per repeated solve; median of 9 batches; all per-case construction and source costs included in each respective solver; each positive witness checked against original CNF. The exhaustive scientific oracle is excluded.',
+      'caveats':['microbenchmark, one host, run order randomized by batch',
+                 'solver branch-order changes and Python representation differences can affect timings',
+                 'no complexity/scaling conclusion, no statistical inference on new instances'],
+      'platform':platform.platform(),'python':platform.python_version(),
+      'repetitions_per_batch':REPS,'batches':BATCHES,'groups':summary,'raw_batches':records}
+(OUT/'benchmark.json').write_text(json.dumps(out,indent=2)+'\n')
+print(json.dumps(summary,indent=2))

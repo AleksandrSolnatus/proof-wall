@@ -1,0 +1,42 @@
+# MATH-01 CONTROLS — 2026-10-14
+
+**Comparator discipline:** Each hypothesis was fixed in `PLAN-FROZEN.md` before computational execution. Both Pencil.C28 variants used the same fixed model choices and five folds. Every shuffled control was evaluated by the same held-out procedure, with best-of-three mathematical family selection applied to every draw rather than just the observed data. The 399 randomized datasets per variant are fixed with seed `20261014`.
+
+## Explicit properties of the references
+
+| Reference | Preserves | Breaks | Main interpretation |
+|---|---|---|---|
+| F unigram | sign-frequency estimate on training cells | transition/position information | Does added grammar help at all? |
+| Within-cell shuffled | every cell's length, sign multiset, cell membership and face; global sign counts | actual within-cell order; initial and terminal identities in most cells | Are observed role/transition advantages beyond position-independent sign repetition? |
+| Interior-only shuffled | original cell length-at-address, sign multiset, face, starts and ends, exact cell boundary pairs | order of non-edge symbols | Do interior order effects matter beyond preserved endings? |
+| Whole-cell-order shuffled within face | whole complete cell strings, face-level sign counts, distribution of cell lengths and within-cell adjacency | original address, neighbors, **length-at-address**, repeated-passage locations | Weak test for actual between-cell neighbor structure **only**, not a conditioned permutation at fixed addresses |
+
+**Important controls limitation:** Shuffled datasets retain the original corpus's dependency-fold *assignments*, not re-formed dependency groups. Since the shuffles can break exact-copy relationships, their empirical reference distributions are sensitivity probes, not fully exchangeable p-values under a rigorous dependency-preserving null. Whole-cell-order shuffled references especially do **not** preserve physical length at address and cannot support a length-conditioned claim. Empirical p values below are therefore descriptive Monte Carlo ranks only.
+
+## Measured family-selection margins
+
+Defined `math margin = best(D,E) bits/sign − best(A,B,C) bits/sign`; positive values favor mathematics-inspired models. We observe **negative** values for both variants: S07 = **-0.272** and S25 = **-0.271** bits/sign. Thus even the internally selected best mathematical surrogate predicts **worse**, not better, than the best nonmathematical alternative.
+
+| Control | Mean math margin, C28=S07 | Mean math margin, C28=S25 | Observed math margin | Notes |
+|---|---:|---:|---|---|
+| Within-cell shuffled | 0.005 | 0.003 | −0.272 / −0.271 | Observed math advantage is below all 399 draws in each reading |
+| Interior-only shuffled | -0.069 | -0.052 | −0.272 / −0.271 | Endpoints fixed; again observed is lower |
+| Whole-cell-order shuffled | -0.436 | -0.441 | −0.272 / −0.271 | Observed is less negative than reordered cells but STILL negative; this does not prove math |
+
+`p_upper` in `results.json` is `(1 + count(control margins ≥ observed margin)) / 400`. In particular, the whole-cell-order observed-vs-null rank is 0.0025/0.0025, but that rank is **not** evidence for H1 because both observed margins are negative and whole-cell order is not address-conditioned. Within- and interior-shuffle upper-tail ranks of math margin equal **1.0000** for both readings.
+
+## The face-continuity null
+
+At 57 actual boundaries, W predicts the initial sign less well than D's cell-start distribution. Actual `D - W` advantage (positive means W helps) is **-0.267/-0.285**. The whole-cell-order shuffled mean advantage is -0.502/-0.494, itself negative: the special boundary model has insufficient conditional data, even compared with reordered cells. A negative score does not demonstrate absence of a across-cell mathematical relation.
+
+## Negative results and rejected inferences
+
+- **Reject** 'A, B or C has shown superior out-of-fold predictive fit': D wins all five S07 group folds and both readings in the aggregate.
+- **Reject** 'stable mathematical roles have been inferred': position skews were identified, but every sign remains semantically unassigned.
+- **Reject** 'sign counts show a decoded formula': no value/operator mapping was fit, let alone independently validated.
+- **Reject** 'one equation per face has been ruled in or out': W is only a first-order boundary continuity proxy, not a complete equation grammar.
+- **Reject** 'S25 rescues the hypothesis': the two C28 readings agree qualitatively.
+- **Reject** 'significant permutation rank proves mathematics': any rank depends on what the null destroys, and no model has positive mathematical-vs-nonmathematical predictive advantage.
+- **Reject** 'a true independent blind challenge was completed': the heldout procedure is retrospective, context-conditional and corpus-exposed.
+
+**Control conclusion:** The observed data have sequence regularities compatible with several kinds of constrained symbolic communication, but not an advantage of the particular mathematics-inspired family specified for MATH-01.

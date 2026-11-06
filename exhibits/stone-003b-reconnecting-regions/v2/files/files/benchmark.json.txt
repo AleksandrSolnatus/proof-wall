@@ -1,0 +1,510 @@
+{
+  "status": "PASS",
+  "environment": {
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41"
+  },
+  "notes": [
+    "Sequential single-process exploratory measurements, not controlled production benchmarks.",
+    "Order randomized with seed 33003; garbage collection before each timed trial.",
+    "All ingest/update, source retention, local summary construction, min-fill planning, cache lookup and querying included.",
+    "External verification, input generation, serialization, and explicit BDD reachable-node inspection excluded.",
+    "Interface runtime counters remain enabled; BDD has its original counters, so instrumentation differs.",
+    "tracemalloc reports Python allocations only; preloaded input objects and native process overhead are excluded.",
+    "Memory instrumentation time is not mixed with ordinary timings."
+  ],
+  "cases": [
+    {
+      "case": "chain-64-regions",
+      "snapshots": 64,
+      "repeats": 7,
+      "run_order": [
+        [
+          "incremental_bdd",
+          "fresh_interface",
+          "cached_interface",
+          "fresh_bdd"
+        ],
+        [
+          "fresh_interface",
+          "incremental_bdd",
+          "fresh_bdd",
+          "cached_interface"
+        ],
+        [
+          "incremental_bdd",
+          "cached_interface",
+          "fresh_interface",
+          "fresh_bdd"
+        ],
+        [
+          "fresh_interface",
+          "cached_interface",
+          "incremental_bdd",
+          "fresh_bdd"
+        ],
+        [
+          "fresh_bdd",
+          "cached_interface",
+          "incremental_bdd",
+          "fresh_interface"
+        ],
+        [
+          "fresh_bdd",
+          "cached_interface",
+          "fresh_interface",
+          "incremental_bdd"
+        ],
+        [
+          "cached_interface",
+          "incremental_bdd",
+          "fresh_bdd",
+          "fresh_interface"
+        ]
+      ],
+      "samples_seconds": {
+        "cached_interface": [
+          0.04409085899999354,
+          0.04882352399999945,
+          0.04351978800002598,
+          0.03830184699995698,
+          0.03975012700004754,
+          0.04286270300008255,
+          0.04715213099996163
+        ],
+        "fresh_interface": [
+          0.08342000000004646,
+          0.20938746100000571,
+          0.0894314789999271,
+          0.08530364799992185,
+          0.15231416799997533,
+          0.09551476299998285,
+          0.1686269890000176
+        ],
+        "incremental_bdd": [
+          0.037718195000024934,
+          0.032293855000034455,
+          0.033274000999995224,
+          0.03882348699994509,
+          0.027570321999974112,
+          0.03034483800001908,
+          0.03822884399994564
+        ],
+        "fresh_bdd": [
+          1.0064473439999801,
+          3.088806540000064,
+          1.3664986320000025,
+          1.035464348000005,
+          1.176695509999945,
+          1.9787816539999312,
+          2.772968184999968
+        ]
+      },
+      "median_seconds": {
+        "cached_interface": 0.04351978800002598,
+        "fresh_interface": 0.09551476299998285,
+        "incremental_bdd": 0.033274000999995224,
+        "fresh_bdd": 1.3664986320000025
+      },
+      "min_seconds": {
+        "cached_interface": 0.03830184699995698,
+        "fresh_interface": 0.08342000000004646,
+        "incremental_bdd": 0.027570321999974112,
+        "fresh_bdd": 1.0064473439999801
+      },
+      "max_seconds": {
+        "cached_interface": 0.04882352399999945,
+        "fresh_interface": 0.20938746100000571,
+        "incremental_bdd": 0.03882348699994509,
+        "fresh_bdd": 3.088806540000064
+      },
+      "memory_separate_runs": {
+        "cached_interface": {
+          "peak_python_allocated_bytes": 288592,
+          "traced_seconds_not_for_speed_comparison": 0.49017435600001136
+        },
+        "fresh_interface": {
+          "peak_python_allocated_bytes": 488372,
+          "traced_seconds_not_for_speed_comparison": 1.1474856059999183
+        },
+        "incremental_bdd": {
+          "peak_python_allocated_bytes": 5296720,
+          "traced_seconds_not_for_speed_comparison": 0.13477982500000962
+        },
+        "fresh_bdd": {
+          "peak_python_allocated_bytes": 5163802,
+          "traced_seconds_not_for_speed_comparison": 5.300432748999924
+        }
+      }
+    },
+    {
+      "case": "grid-5x5",
+      "snapshots": 41,
+      "repeats": 7,
+      "run_order": [
+        [
+          "incremental_bdd",
+          "fresh_interface",
+          "cached_interface",
+          "fresh_bdd"
+        ],
+        [
+          "fresh_interface",
+          "incremental_bdd",
+          "fresh_bdd",
+          "cached_interface"
+        ],
+        [
+          "incremental_bdd",
+          "cached_interface",
+          "fresh_interface",
+          "fresh_bdd"
+        ],
+        [
+          "fresh_interface",
+          "cached_interface",
+          "incremental_bdd",
+          "fresh_bdd"
+        ],
+        [
+          "fresh_bdd",
+          "cached_interface",
+          "incremental_bdd",
+          "fresh_interface"
+        ],
+        [
+          "fresh_bdd",
+          "cached_interface",
+          "fresh_interface",
+          "incremental_bdd"
+        ],
+        [
+          "cached_interface",
+          "incremental_bdd",
+          "fresh_bdd",
+          "fresh_interface"
+        ]
+      ],
+      "samples_seconds": {
+        "cached_interface": [
+          0.018113332999973863,
+          0.016058078000014575,
+          0.016426972999965983,
+          0.015608345999908124,
+          0.015274618000034934,
+          0.02303990900009012,
+          0.018775997000034295
+        ],
+        "fresh_interface": [
+          0.02708688000006987,
+          0.030093068000041967,
+          0.025441008000029797,
+          0.02698399199994128,
+          0.029830432000039764,
+          0.0347505849999834,
+          0.029673183999989305
+        ],
+        "incremental_bdd": [
+          0.02477632700004051,
+          0.015478802999950858,
+          0.015316915999960656,
+          0.016311603000076502,
+          0.012992603000043346,
+          0.02426325499993709,
+          0.015849224000021422
+        ],
+        "fresh_bdd": [
+          0.17119554099997458,
+          0.18292962800001078,
+          0.19981921399994462,
+          0.9448794900000621,
+          0.22754300999997668,
+          0.19754087800004072,
+          1.2021450140000525
+        ]
+      },
+      "median_seconds": {
+        "cached_interface": 0.016426972999965983,
+        "fresh_interface": 0.029673183999989305,
+        "incremental_bdd": 0.015849224000021422,
+        "fresh_bdd": 0.19981921399994462
+      },
+      "min_seconds": {
+        "cached_interface": 0.015274618000034934,
+        "fresh_interface": 0.025441008000029797,
+        "incremental_bdd": 0.012992603000043346,
+        "fresh_bdd": 0.17119554099997458
+      },
+      "max_seconds": {
+        "cached_interface": 0.02303990900009012,
+        "fresh_interface": 0.0347505849999834,
+        "incremental_bdd": 0.02477632700004051,
+        "fresh_bdd": 1.2021450140000525
+      },
+      "memory_separate_runs": {
+        "cached_interface": {
+          "peak_python_allocated_bytes": 189708,
+          "traced_seconds_not_for_speed_comparison": 0.13138850699999693
+        },
+        "fresh_interface": {
+          "peak_python_allocated_bytes": 186280,
+          "traced_seconds_not_for_speed_comparison": 0.39745053599995117
+        },
+        "incremental_bdd": {
+          "peak_python_allocated_bytes": 3180304,
+          "traced_seconds_not_for_speed_comparison": 0.0939894439999307
+        },
+        "fresh_bdd": {
+          "peak_python_allocated_bytes": 3085080,
+          "traced_seconds_not_for_speed_comparison": 1.050698281000109
+        }
+      }
+    },
+    {
+      "case": "original-16-variable-bridges",
+      "snapshots": 9,
+      "repeats": 7,
+      "run_order": [
+        [
+          "incremental_bdd",
+          "fresh_interface",
+          "cached_interface",
+          "fresh_bdd"
+        ],
+        [
+          "fresh_interface",
+          "incremental_bdd",
+          "fresh_bdd",
+          "cached_interface"
+        ],
+        [
+          "incremental_bdd",
+          "cached_interface",
+          "fresh_interface",
+          "fresh_bdd"
+        ],
+        [
+          "fresh_interface",
+          "cached_interface",
+          "incremental_bdd",
+          "fresh_bdd"
+        ],
+        [
+          "fresh_bdd",
+          "cached_interface",
+          "incremental_bdd",
+          "fresh_interface"
+        ],
+        [
+          "fresh_bdd",
+          "cached_interface",
+          "fresh_interface",
+          "incremental_bdd"
+        ],
+        [
+          "cached_interface",
+          "incremental_bdd",
+          "fresh_bdd",
+          "fresh_interface"
+        ]
+      ],
+      "samples_seconds": {
+        "cached_interface": [
+          0.0032068760000356633,
+          0.001246266999942236,
+          0.0010944509999717411,
+          0.001221086000100513,
+          0.001039684000033958,
+          0.0014740350000010949,
+          0.0011341199999606033
+        ],
+        "fresh_interface": [
+          0.001910333999944669,
+          0.001809169999887672,
+          0.005635010000105467,
+          0.0020274230000723037,
+          0.0016934210000272287,
+          0.0017517190000262417,
+          0.0034578730000021096
+        ],
+        "incremental_bdd": [
+          0.000716366000006019,
+          0.000651590999950713,
+          0.00041007599998010846,
+          0.00036249999993742676,
+          0.00034970400008660363,
+          0.00039361099993584503,
+          0.0003536469999971814
+        ],
+        "fresh_bdd": [
+          0.0022197819999973945,
+          0.0023196930000040084,
+          0.0017582200000560988,
+          0.0022416819999762083,
+          0.0022608030000128565,
+          0.0021474930000522363,
+          0.00200257199992393
+        ]
+      },
+      "median_seconds": {
+        "cached_interface": 0.001221086000100513,
+        "fresh_interface": 0.001910333999944669,
+        "incremental_bdd": 0.00039361099993584503,
+        "fresh_bdd": 0.0022197819999973945
+      },
+      "min_seconds": {
+        "cached_interface": 0.001039684000033958,
+        "fresh_interface": 0.0016934210000272287,
+        "incremental_bdd": 0.00034970400008660363,
+        "fresh_bdd": 0.0017582200000560988
+      },
+      "max_seconds": {
+        "cached_interface": 0.0032068760000356633,
+        "fresh_interface": 0.005635010000105467,
+        "incremental_bdd": 0.000716366000006019,
+        "fresh_bdd": 0.0023196930000040084
+      },
+      "memory_separate_runs": {
+        "cached_interface": {
+          "peak_python_allocated_bytes": 35272,
+          "traced_seconds_not_for_speed_comparison": 0.006483679999973901
+        },
+        "fresh_interface": {
+          "peak_python_allocated_bytes": 29304,
+          "traced_seconds_not_for_speed_comparison": 0.013504881000017122
+        },
+        "incremental_bdd": {
+          "peak_python_allocated_bytes": 96696,
+          "traced_seconds_not_for_speed_comparison": 0.0013062739999440964
+        },
+        "fresh_bdd": {
+          "peak_python_allocated_bytes": 328816,
+          "traced_seconds_not_for_speed_comparison": 0.006475915999999415
+        }
+      }
+    },
+    {
+      "case": "random-cross-16-31013",
+      "snapshots": 6,
+      "repeats": 7,
+      "run_order": [
+        [
+          "incremental_bdd",
+          "fresh_interface",
+          "cached_interface",
+          "fresh_bdd"
+        ],
+        [
+          "fresh_interface",
+          "incremental_bdd",
+          "fresh_bdd",
+          "cached_interface"
+        ],
+        [
+          "incremental_bdd",
+          "cached_interface",
+          "fresh_interface",
+          "fresh_bdd"
+        ],
+        [
+          "fresh_interface",
+          "cached_interface",
+          "incremental_bdd",
+          "fresh_bdd"
+        ],
+        [
+          "fresh_bdd",
+          "cached_interface",
+          "incremental_bdd",
+          "fresh_interface"
+        ],
+        [
+          "fresh_bdd",
+          "cached_interface",
+          "fresh_interface",
+          "incremental_bdd"
+        ],
+        [
+          "cached_interface",
+          "incremental_bdd",
+          "fresh_bdd",
+          "fresh_interface"
+        ]
+      ],
+      "samples_seconds": {
+        "cached_interface": [
+          0.23109927400003016,
+          0.22435046800001146,
+          0.2297872640000378,
+          0.23783851000007417,
+          0.23010555199994087,
+          0.23753479499998775,
+          0.23958627900003648
+        ],
+        "fresh_interface": [
+          0.23158308999995825,
+          0.23634868900001038,
+          0.24023152300003403,
+          0.23196200799998223,
+          0.2287731620000386,
+          0.2408792699999367,
+          0.22905524300006164
+        ],
+        "incremental_bdd": [
+          0.012409971000010955,
+          0.009523228000034578,
+          0.009681764000106341,
+          0.010103317000016432,
+          0.010402252999938355,
+          0.009924869999963448,
+          0.010398893999990833
+        ],
+        "fresh_bdd": [
+          0.04203901699997914,
+          0.040846547999990435,
+          0.04072511399999712,
+          0.038418417999992016,
+          0.039402265000035186,
+          0.03837058699991758,
+          0.040476190999925166
+        ]
+      },
+      "median_seconds": {
+        "cached_interface": 0.23109927400003016,
+        "fresh_interface": 0.23196200799998223,
+        "incremental_bdd": 0.010103317000016432,
+        "fresh_bdd": 0.040476190999925166
+      },
+      "min_seconds": {
+        "cached_interface": 0.22435046800001146,
+        "fresh_interface": 0.2287731620000386,
+        "incremental_bdd": 0.009523228000034578,
+        "fresh_bdd": 0.03837058699991758
+      },
+      "max_seconds": {
+        "cached_interface": 0.23958627900003648,
+        "fresh_interface": 0.2408792699999367,
+        "incremental_bdd": 0.012409971000010955,
+        "fresh_bdd": 0.04203901699997914
+      },
+      "memory_separate_runs": {
+        "cached_interface": {
+          "peak_python_allocated_bytes": 366040,
+          "traced_seconds_not_for_speed_comparison": 4.374206774999948
+        },
+        "fresh_interface": {
+          "peak_python_allocated_bytes": 191240,
+          "traced_seconds_not_for_speed_comparison": 4.418514925999943
+        },
+        "incremental_bdd": {
+          "peak_python_allocated_bytes": 2853376,
+          "traced_seconds_not_for_speed_comparison": 0.052884078000033696
+        },
+        "fresh_bdd": {
+          "peak_python_allocated_bytes": 2904616,
+          "traced_seconds_not_for_speed_comparison": 0.1863923570000452
+        }
+      }
+    }
+  ]
+}

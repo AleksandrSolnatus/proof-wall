@@ -1,0 +1,105 @@
+# MATH GRAMMAR — DUAL-RUN-001 / Independent local miniature
+
+**Executed October 15, 2026.** Small deterministic problem instances, instrumented Python; every finite-answer claim checked against exhaustive truth tables. This is an exploratory measurement, not a general theorem or an independent professional solver audit.
+
+## 1. The question
+
+> What changes if we begin from agreed roots, accept only relationships justified by the problem, and let a language of valid deductions emerge instead of starting with unguided trial answers? When can the cost of building that language be repaid?
+
+The Hebrew-root analogy inspired the experimental framing. It was not used to claim a novel Hebrew linguistic property, and linguistic rules were not assumed to be logical inference rules.
+
+## 2. GRAMMAR-001: a genuinely fixed, limited language
+
+The inference grammar was **unit propagation only**: a clause with exactly one unassigned literal and all others false forces that literal; an all-false clause proves contradiction; every already-satisfied clause proves SAT. No guessing.
+
+Original five problem outcomes, rerun and **byte-for-byte identical** to the saved first result:
+
+| Case | Models | Fixed grammar | Fixed clause visits | Unit + branch decisions |
+|---|---:|---|---:|---:|
+| CHAIN_SAT | 1 | SAT | 12 | 0 |
+| CHAIN_UNSAT | 0 | UNSAT | 3 | 0 |
+| XOR_SAT | 2 | SILENT | 4 | 1 |
+| HIDDEN_UNSAT | 0 | SILENT | 8 | 2 |
+| TAUTOLOGY_SAT | 4 | SILENT | 4 | 2 |
+
+Important: SILENT is neither UNSAT nor a solver defect. The originally compiled grammar's scope is deliberately narrow.
+
+## 3. ROOT-GRAMMAR-001: build justified relations from the problem
+
+**Agreed roots:** Boolean truth assignments; conjunction of clauses; disjunction of signed literals. **Admissible named relations:**
+
+- `(a OR b) AND ((NOT a) OR (NOT b))` is equivalent to `a XOR b = 1` (different).
+- `(a OR (NOT b)) AND ((NOT a) OR b)` is equivalent to `a XOR b = 0` (equal).
+
+Each accepted relation requires both clauses, carries their source IDs, and is checked over all four two-bit assignments. Disjoint-set-with-parity composes these equalities or differences into larger relations. Original clauses that carry certified relations are translated into an equivalent residual formula; clauses like `(a OR NOT a)` may also be dropped as certified tautologies. Then fixed unit propagation runs over the compacted problem. If it remains silent, a separate hybrid can branch on unresolved root variables.
+
+The *admission grammar is predeclared*, not discovered by AI during the run. The *specific words/relations* are extracted from each instance. This distinction matters: the experiment compares inference powers as well as representation methods, and does not establish that co-constructing a grammar is inherently superior to any rich static grammar.
+
+## 4. Direct result, same 31 cases
+
+| Grammar only | SAT | UNSAT | SILENT | Resolved without branching |
+|---|---:|---:|---:|---:|
+| Fixed (unit propagation) | 1 | 1 | 29 | **2/31** |
+| Root-first (certified relations + unit propagation) | 12 | 9 | 10 | **21/31** |
+
+Across the separate hybrid search implementations, fixed used **69** branch decisions; root-first used **38**. Root-first used fewer branches on **20 cases**, the same number on **11**, and more on **0**. Branch decisions alone are not an adequate proxy for CPU time.
+
+Source and checker counts from the root-first hybrid over 31 runs include **940** original literal reads, **372** candidate signature membership tests, **90** admitted relations, and **360** two-bit local proof cases. These are *categorical operation counts*, not interchangeable timing units.
+
+**Held-out families:** the twelve newly seeded, generated 4/6/8-variable parity cases were resolved 12/12 by root-first and 0/12 by unit propagation alone; the eight newly seeded random 3-CNF cases with no matching relation motif remained SILENT 8/8 for **both** grammars.
+
+**Soundness and robustness:** For all 31 cases, exhaustive truth tables (`n <= 8`) agreed with the compiled representation and the output SAT/UNSAT result. All 31 additional renamed, sign-flipped, clause-reordered controls preserved the number of solutions and each method's grammar-only status. Exact paired binary clause certificates were locally verified; a deliberately incomplete certificate triggered no new relation.
+
+Concrete examples:
+- `XOR_SAT`: a two-clause pair creates `x1 != x2`, allowing construction of witness `01` without branching.
+- `HIDDEN_UNSAT`: the problem simultaneously certifies `x1 != x2` and `x1 == x2`, an immediate contradiction the original unit grammar cannot expose unaided.
+- `PARITY_COLLAPSE_SAT`: chained relations reduce a larger clause to one forced root, producing a fully verified original witness `1110`.
+- `HELDOUT_RANDOM3_n8_i1`: neither grammar alone settles SAT; the richer parser cannot conjure a relationship that the evidence does not justify.
+
+## 5. Cost: no free computational win
+
+CPU samples are the **median per-solve process CPU microseconds** from nine randomized batches, 30 repetitions per batch, positive-witness verification for all algorithms. They are diagnostic measurements on one Python runtime, not definitive algorithmic rankings.
+
+| Problem group | Fixed hybrid | Root-first fresh hybrid | Sham compile + fixed | Plain first-solution enumeration |
+|---|---:|---:|---:|---:|
+| Five original cases | 10.1 µs | 23.0 µs | 26.0 µs | 8.1 µs |
+| Twelve held-out parity cases | 31.8 µs | 65.7 µs | 95.7 µs | 128.8 µs |
+| Eight random 3-CNF negative controls | 119.3 µs | 187.8 µs | 187.0 µs | 163.1 µs |
+
+So the richer language **often eliminates guesses**, and can beat naive enumeration on patterned problems, but **constructing and verifying it afresh lost to existing unit-propagation-assisted branching here**. No general net computational advantage has been demonstrated.
+
+## 6. When does the learned language survive economically? Bounded reuse extension
+
+Construct a base of precisely certified parity edges (8 or 12 variables), freeze it, compile root relations **once**, and then issue 64 new additive queries against that *unchanged* base. Query results include both SAT and UNSAT outcomes, all independently oracle-checked. Compare:
+
+- Fixed search on the full base plus each question.
+- Root-first construction anew for every question.
+- Cached verified root grammar, with the complete construction cost charged once per batch of k questions.
+
+Observed medians for 64 questions, in **total CPU microseconds including the single cached construction cost**:
+
+| Underlying base | Fixed search | Rebuild root grammar every query | Build once, reuse roots | First sampled batch size where reuse beats fixed |
+|---|---:|---:|---:|---:|
+| 8 variables | 1,664.40 µs | 4,768.54 µs | **616.85 µs** | 8 queries |
+| 12 variables | 2,699.95 µs | 7,142.13 µs | **822.34 µs** | 4 queries |
+
+**Critical qualification:** this is *same-problem, shared-structure reuse*. It is not unseen-instance transfer and not a claim that dynamically designing a grammar is cheaper for a new arbitrary problem. The implementation provides an immutable base; adding query clauses is allowed but silently modifying the original base is not. A separate mutation control changed one parity relation, changed query satisfiability, and required a new compilation to restore correctness.
+
+## 7. Provisional answer to “When it survives”
+
+A derived root relation *survives logically* when its source clauses warrant it, its transformations preserve models, and independent checks do not falsify it. It *survives economically* when repeated legitimate uses save more than its discovery, checking, encoding and reuse costs.
+
+In this toy, admission and logical survival are demonstrable; fresh-build net savings against a capable basic solver are **not**. Shared-base query reuse can repay costs after several uses in these two controlled families. That distinction is the valuable result.
+
+**Next unresolved question:** Can useful new root words be discovered automatically, with predeclared soundness gates and all discovery costs counted, and then transfer to different previously unseen problem structures? This experiment does not answer it.
+
+## 8. Scientific boundaries
+
+- n is at most 8 for the 31-problem same-instance tests, and 12 for the related-query extension.
+- Relational grammar covers an explicitly targeted binary parity motif; no general SAT acceleration claim.
+- The set of new generated cases is deterministic and related to the motif; renaming equivalence controls do not simulate an independent experiment.
+- Microbenchmarks have process and Python overhead; some measured times vary, as recorded in raw ranges.
+- Local certificate checking, per-query witness checking, and pipeline construction are charged at runtime. Independent full truth-table audits, prior research/design, human interpretation, communication/storage, and language-design cost are outside those CPU timing totals.
+- No claim about `P=NP`, formal complexity separations, or solutions to the Millennium Problems.
+
+**Experiment labels:** `GRAMMAR-001` and `ROOT-GRAMMAR-001`. `MATH-SEVEN-001` and `FUNNEL-013` are separate, unchanged records.

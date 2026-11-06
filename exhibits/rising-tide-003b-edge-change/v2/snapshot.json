@@ -1,0 +1,37 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 2190,
+      "sha256": "7bac5a366b57b73a488bbeea5b0484f7d719181d1d96782ace04a294afb88fc5"
+    },
+    "exhibit.json": {
+      "bytes": 7267,
+      "sha256": "8a60c4b130e136192877482d5d7aba7f4b294bec844d052ca20b0ad3d6b6472a"
+    },
+    "files/experiment.py": {
+      "bytes": 18165,
+      "sha256": "88fa400204b4fffe622f0e838e6d5c989292aee962c5c2243b0cb420536925ac"
+    },
+    "files/original-checksums.txt": {
+      "bytes": 601,
+      "sha256": "2eac521a6d2c362bf337f6d9a81f308d8b58d1e2b6cf73033905c3f991d91ee7"
+    },
+    "files/original-readme.md": {
+      "bytes": 1496,
+      "sha256": "53a472759d361d1d7416da179a8068f3dbf3942bda78ec1dd616e6e8525f0cf1"
+    },
+    "files/protocol-public-excerpt.md": {
+      "bytes": 4686,
+      "sha256": "61dd6c81a1388ebf33eae5e9ab433a67a896211b12db3867e6dc6fe04eaf5f82"
+    },
+    "files/report-public-excerpt.md": {
+      "bytes": 16764,
+      "sha256": "71c5f053f6acc8c5c4f3d4d2cd4fbbd4b0c07329c670d1cfb63837c44b0cf8a0"
+    },
+    "files/results.json": {
+      "bytes": 1126246,
+      "sha256": "44b33722c9a52b2fdc76a86e8433ada12791663ea6971de2fb963421542012c4"
+    }
+  },
+  "package_sha256": "b915130dd819bf07b2e5ca81abf5f13d114a5a20cdc77e37af1110c96a8ed2e8"
+}

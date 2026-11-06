@@ -1,0 +1,27 @@
+# Rising Tide 003B: what survives a graph edge change
+
+## Original question
+
+Which retained graph-power calculations remain useful after an edge changes, once maintenance and checking are charged?
+
+## Method and recorded result
+
+The recorded experiment compares rebuilding, fresh binary computation and exact repair using integer support counts on fixed graph-edit workloads. Its source, protocol, final ledgers and preserved pilot remain together.
+
+Retained Boolean-power structure can be repaired across edits; savings depend on propagation and subsequent use. Maintaining unused powers can lose badly.
+
+## Scope and limits
+
+A self-contained bounded graph-power follow-up. Its recorded work-event counts are not machine instructions or elapsed-time speedups.
+
+- Declared work-event accounting on selected small graphs, not CPU/energy measurements or a universal speedup.
+- Python 3.10 or later, standard library. The original command overwrites results.json; use a disposable extracted copy for any separately requested replay.
+- The original executable behind the earlier graph handoff was not recovered by this follow-up. This package contains the follow-up implementation, not a substitute claim of custody over that earlier executable.
+- This assembly inherits the recorded scientific checks and does not establish deployment behavior or public permission.
+- Preserved archive: RISING-TIDE-003B-RESEARCH-PACKET.zip. The attached files are inspection selections; they do not replace its complete runtime directory. No public archive URL or permission is implied. Full figures, historical versions and omitted dependencies remain in that archive.
+
+## Evidence available for inspection
+
+The files below preserve the selected original bytes. Existing scientific checks remain completed; this gathering adds no experiment. Source code, data and receipts are presented with the scope stated in their original records. Any original reproduction instructions describe the original archive layout, not this smaller inspection packet.
+
+Publication review covers these exact selected bytes. Full archives and any figures remain preserved separately; their public release is a separate decision.

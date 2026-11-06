@@ -1,0 +1,255 @@
+{
+  "article": "article.md",
+  "artifact_type": "failed-attempt",
+  "claim_scope": "A restricted modern-notation pilot; the scorer was not validated as a detector of mathematical content. No inference that mathematics is absent from the Dial.",
+  "date": "2026-10-17",
+  "downloads": [
+    {
+      "bytes": 2439,
+      "original_path": "article.md",
+      "sha256": "4116f241abb4cbee1c0c064fa0fa8e1770f6eea118f7de5525f7e0d8aa251fe0",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 10277,
+      "original_path": "files/MATH-02/REPORT.md",
+      "sha256": "a7a3e4cc196ce59feabf80c8fdc46a341f9e0124301dc48ee5758b7330d326f5",
+      "url": "files/files/MATH-02/REPORT.md.txt"
+    },
+    {
+      "bytes": 5413,
+      "original_path": "files/MATH-02/PROTOCOL-FROZEN.md",
+      "sha256": "f0439afaafd7f65701bf7f30e52a0d13b9590ee816dd00dfaf6a52e402d7bccf",
+      "url": "files/files/MATH-02/PROTOCOL-FROZEN.md.txt"
+    },
+    {
+      "bytes": 736,
+      "original_path": "files/MATH-02/PRE-SCORE-FREEZE.json",
+      "sha256": "c3995e9d38c08edc4116314172911d846211f0ceb437fd21544754dadc57190b",
+      "url": "files/files/MATH-02/PRE-SCORE-FREEZE.json.txt"
+    },
+    {
+      "bytes": 659,
+      "original_path": "files/MATH-02/EXTRACTION-NOTES.txt",
+      "sha256": "6c09f4db7dfa5dc3f8c256fbf38c4eea6d0566c7943ff3c5c1c8e08759dbef10",
+      "url": "files/files/MATH-02/EXTRACTION-NOTES.txt.txt"
+    },
+    {
+      "bytes": 54854,
+      "original_path": "files/MATH-02/RESULTS.json",
+      "sha256": "c162e7a460b1a0e416bdf6a077d1f2c809c8591d410c2a7d61d0cef7b10e5119",
+      "url": "files/files/MATH-02/RESULTS.json.txt"
+    },
+    {
+      "bytes": 654,
+      "original_path": "files/MATH-02/VERIFICATION.json",
+      "sha256": "5e8d40f15965a353d4d8a5eec66ca3fcc5c9cd07e074d05a060717723b6faf11",
+      "url": "files/files/MATH-02/VERIFICATION.json.txt"
+    },
+    {
+      "bytes": 3506,
+      "original_path": "files/MATH-02/SOURCE-MANIFEST.json",
+      "sha256": "17939f4276995fbf3b7d4a13073a99eea6171d6b8d7c97f9dc59d8aa9452d753",
+      "url": "files/files/MATH-02/SOURCE-MANIFEST.json.txt"
+    },
+    {
+      "bytes": 72823,
+      "original_path": "files/MATH-02/controls.json",
+      "sha256": "79b1b225f57a26e9487d9074b6d641bc62a430e892f81eb07ea147758db1ba1d",
+      "url": "files/files/MATH-02/controls.json.txt"
+    },
+    {
+      "bytes": 6301,
+      "original_path": "files/MATH-02/run.py",
+      "sha256": "9e9671a3fdc927fc360b8d2f48d049867f63bd04b0b6f81a41911723e6247ab2",
+      "url": "files/files/MATH-02/run.py.txt"
+    },
+    {
+      "bytes": 2801,
+      "original_path": "files/MATH-02/verify.py",
+      "sha256": "54c7f732b96ee35350c0291c948e7a504f76037e079d589316b08081530d6d40",
+      "url": "files/files/MATH-02/verify.py.txt"
+    },
+    {
+      "bytes": 3655,
+      "original_path": "files/MATH-02/extract.py",
+      "sha256": "e1bf448dd06ea27fa0f65989f42df051dc0102a9673a74dbb8af7e73c81e9f6b",
+      "url": "files/files/MATH-02/extract.py.txt"
+    },
+    {
+      "bytes": 14301,
+      "original_path": "files/MATH-02/original_math01.py",
+      "sha256": "ab3743a646d7adce20738c1e3f9f3b8e3f2fb08f93e59995eca066b9a241e043",
+      "url": "files/files/MATH-02/original_math01.py.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; prepared from completed research records.",
+      "bytes": 2439,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "article",
+      "sha256": "4116f241abb4cbee1c0c064fa0fa8e1770f6eea118f7de5525f7e0d8aa251fe0"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 10277,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/MATH-02/REPORT.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "original",
+      "sha256": "a7a3e4cc196ce59feabf80c8fdc46a341f9e0124301dc48ee5758b7330d326f5"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 5413,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/MATH-02/PROTOCOL-FROZEN.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "original",
+      "sha256": "f0439afaafd7f65701bf7f30e52a0d13b9590ee816dd00dfaf6a52e402d7bccf"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 736,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/MATH-02/PRE-SCORE-FREEZE.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "c3995e9d38c08edc4116314172911d846211f0ceb437fd21544754dadc57190b"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 659,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/MATH-02/EXTRACTION-NOTES.txt",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "original",
+      "sha256": "6c09f4db7dfa5dc3f8c256fbf38c4eea6d0566c7943ff3c5c1c8e08759dbef10"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 54854,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/MATH-02/RESULTS.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "c162e7a460b1a0e416bdf6a077d1f2c809c8591d410c2a7d61d0cef7b10e5119"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 654,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/MATH-02/VERIFICATION.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "5e8d40f15965a353d4d8a5eec66ca3fcc5c9cd07e074d05a060717723b6faf11"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 3506,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/MATH-02/SOURCE-MANIFEST.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "17939f4276995fbf3b7d4a13073a99eea6171d6b8d7c97f9dc59d8aa9452d753"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 72823,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/MATH-02/controls.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "79b1b225f57a26e9487d9074b6d641bc62a430e892f81eb07ea147758db1ba1d"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 6301,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/MATH-02/run.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "9e9671a3fdc927fc360b8d2f48d049867f63bd04b0b6f81a41911723e6247ab2"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 2801,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/MATH-02/verify.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "54c7f732b96ee35350c0291c948e7a504f76037e079d589316b08081530d6d40"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 3655,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/MATH-02/extract.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "e1bf448dd06ea27fa0f65989f42df051dc0102a9673a74dbb8af7e73c81e9f6b"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 14301,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/MATH-02/original_math01.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "ab3743a646d7adce20738c1e3f9f3b8e3f2fb08f93e59995eca066b9a241e043"
+    }
+  ],
+  "finding": "Only 2/5 known-math sources exceeded the frozen detection threshold. Only 2/5 language sources were eligible, and the registry controls were ineligible. Calibration remained incomplete and the detection criterion failed.",
+  "gardens": [],
+  "id": "dial-math-02-calibration",
+  "limitations": [
+    "The two eligible language controls are not a 0/5 false-positive result; registry specificity was never measured.",
+    "Synthetic controls check the implementation and do not rescue weak real-source detection.",
+    "The CRLF source-offset verifier correction preserved scores and frozen experiment files; same operator/code lineage is not an independent audit.",
+    "Third-party source texts and offsets remain in the preserved archive. Raw-source republication needs its own notice/rights decision; this smaller selection is not a self-contained calibration bundle.",
+    "Preserved archive: PHAISTOS-MATH-02-EVIDENCE.zip. The attached files are inspection selections; they do not replace its complete runtime directory. No public archive URL or permission is implied. Full figures, historical versions and omitted dependencies remain in that archive.",
+    "S01–S45 identities and Pen/Pencil alternatives remain as recorded. Display orientation is not proven reading direction; no decoding or acceptance of Visual Families follows."
+  ],
+  "method": "The original frozen calibration held out source documents, preserved the scorer and recorded eligibility gates, synthetic implementation controls, result vectors and a corrected verifier. The original source archive has now been connected to its existing report.",
+  "open_questions": [
+    "Follow-on research remains separate from this completed record; exact publication review does not require a rerun."
+  ],
+  "package_sha256": "70b93d93bad260ccf4823fc1818f77ea37d96211134c243be11b4b0166828236",
+  "provenance": {
+    "authors": [
+      "The Bridges Group — Phaistos Dial",
+      "Original research contributors as credited in the retained experiment record"
+    ],
+    "change_note": "Version 2 is a public selected-file edition of previously checked v1. Scientific findings unchanged; the original review/archive remains in private custody.",
+    "origin": "Original PHAISTOS-MATH-02-EVIDENCE.zip; recovered from its historical Library identity. Existing report and executable evidence reunited."
+  },
+  "publication": {
+    "attribution": "The Bridges Group — Phaistos Dial; original research contributors as credited in retained records.",
+    "intent": "request-review",
+    "license": "All rights reserved. No new open-source license granted.",
+    "rights": "Owner-requested public reading and downloading of the selected exhibit only; preserves private originals; not an open permission for derivative commercial redistribution."
+  },
+  "question": "Does the preserved MATH-01 scorer distinguish known mathematical content from the declared control families?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Dial MATH-02: calibration failed its detection gate",
+  "version": 2
+}

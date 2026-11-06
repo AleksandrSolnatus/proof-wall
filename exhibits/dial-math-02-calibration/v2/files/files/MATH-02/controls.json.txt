@@ -1,0 +1,4207 @@
+{
+  "symbol_maps": {
+    "math": {
+      "(": "S01",
+      ")": "S02",
+      "+": "S03",
+      "-": "S04",
+      "0": "S05",
+      "1": "S06",
+      "2": "S07",
+      "3": "S08",
+      "4": "S09",
+      "5": "S10",
+      "6": "S11",
+      "7": "S12",
+      "8": "S13",
+      "9": "S14",
+      "<": "S15",
+      "=": "S16",
+      ">": "S17",
+      "A": "S18",
+      "B": "S19",
+      "F": "S20",
+      "M": "S21",
+      "N": "S22",
+      "^": "S23",
+      "a": "S24",
+      "b": "S25",
+      "c": "S26",
+      "d": "S27",
+      "f": "S28",
+      "h": "S29",
+      "m": "S30",
+      "n": "S31",
+      "u": "S32",
+      "x": "S33",
+      "y": "S34"
+    },
+    "language": {
+      "A": "S01",
+      "H": "S02",
+      "I": "S03",
+      "M": "S04",
+      "N": "S05",
+      "O": "S06",
+      "S": "S07",
+      "T": "S08",
+      "W": "S09",
+      "Y": "S10",
+      "a": "S11",
+      "b": "S12",
+      "c": "S13",
+      "d": "S14",
+      "e": "S15",
+      "f": "S16",
+      "g": "S17",
+      "h": "S18",
+      "i": "S19",
+      "j": "S20",
+      "k": "S21",
+      "l": "S22",
+      "m": "S23",
+      "n": "S24",
+      "o": "S25",
+      "p": "S26",
+      "r": "S27",
+      "s": "S28",
+      "t": "S29",
+      "u": "S30",
+      "v": "S31",
+      "w": "S32",
+      "y": "S33"
+    },
+    "registry": {
+      "-": "S01",
+      "4": "S02",
+      "A": "S03",
+      "B": "S04",
+      "C": "S05",
+      "D": "S06",
+      "E": "S07",
+      "F": "S08",
+      "G": "S09",
+      "H": "S10",
+      "I": "S11",
+      "K": "S12",
+      "L": "S13",
+      "M": "S14",
+      "N": "S15",
+      "O": "S16",
+      "P": "S17",
+      "Q": "S18",
+      "R": "S19",
+      "S": "S20",
+      "T": "S21",
+      "U": "S22",
+      "V": "S23",
+      "Y": "S24",
+      "a": "S25",
+      "b": "S26",
+      "c": "S27",
+      "d": "S28",
+      "e": "S29",
+      "f": "S30",
+      "g": "S31",
+      "h": "S32",
+      "i": "S33",
+      "j": "S34",
+      "k": "S35",
+      "m": "S36",
+      "n": "S37",
+      "o": "S38",
+      "p": "S39",
+      "q": "S40",
+      "r": "S41",
+      "s": "S42",
+      "t": "S43",
+      "u": "S44",
+      "v": "S45",
+      "x": "S46",
+      "y": "S47",
+      "z": "S48"
+    }
+  },
+  "cells": [
+    {
+      "category": "math",
+      "source": "wentworth",
+      "source_cell": 1,
+      "original": "4 + 3",
+      "tokens": [
+        "4",
+        "+",
+        "3"
+      ],
+      "locator": {
+        "character_offset": 33073,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S09",
+        "S03",
+        "S08"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "wentworth",
+      "source_cell": 2,
+      "original": "a + b",
+      "tokens": [
+        "a",
+        "+",
+        "b"
+      ],
+      "locator": {
+        "character_offset": 33166,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S24",
+        "S03",
+        "S25"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "wentworth",
+      "source_cell": 3,
+      "original": "4 - 3",
+      "tokens": [
+        "4",
+        "-",
+        "3"
+      ],
+      "locator": {
+        "character_offset": 33388,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S09",
+        "S04",
+        "S08"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "wentworth",
+      "source_cell": 4,
+      "original": "a - b",
+      "tokens": [
+        "a",
+        "-",
+        "b"
+      ],
+      "locator": {
+        "character_offset": 33489,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S24",
+        "S04",
+        "S25"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "wentworth",
+      "source_cell": 5,
+      "original": "8 + 4 = 12",
+      "tokens": [
+        "8",
+        "+",
+        "4",
+        "=",
+        "1",
+        "2"
+      ],
+      "locator": {
+        "character_offset": 35011,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S13",
+        "S03",
+        "S09",
+        "S16",
+        "S06",
+        "S07"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "wentworth",
+      "source_cell": 6,
+      "original": "8 + 4",
+      "tokens": [
+        "8",
+        "+",
+        "4"
+      ],
+      "locator": {
+        "character_offset": 35035,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S13",
+        "S03",
+        "S09"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "wentworth",
+      "source_cell": 7,
+      "original": "x + y = 20",
+      "tokens": [
+        "x",
+        "+",
+        "y",
+        "=",
+        "2",
+        "0"
+      ],
+      "locator": {
+        "character_offset": 35085,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S33",
+        "S03",
+        "S34",
+        "S16",
+        "S07",
+        "S05"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "wentworth",
+      "source_cell": 8,
+      "original": "x + y",
+      "tokens": [
+        "x",
+        "+",
+        "y"
+      ],
+      "locator": {
+        "character_offset": 35109,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S33",
+        "S03",
+        "S34"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "wentworth",
+      "source_cell": 9,
+      "original": "9 + 6 > 12",
+      "tokens": [
+        "9",
+        "+",
+        "6",
+        ">",
+        "1",
+        "2"
+      ],
+      "locator": {
+        "character_offset": 35485,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S14",
+        "S03",
+        "S11",
+        "S17",
+        "S06",
+        "S07"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "wentworth",
+      "source_cell": 10,
+      "original": "9 + 6",
+      "tokens": [
+        "9",
+        "+",
+        "6"
+      ],
+      "locator": {
+        "character_offset": 35509,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S14",
+        "S03",
+        "S11"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "wentworth",
+      "source_cell": 11,
+      "original": "9 + 6 < 16",
+      "tokens": [
+        "9",
+        "+",
+        "6",
+        "<",
+        "1",
+        "6"
+      ],
+      "locator": {
+        "character_offset": 35545,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S14",
+        "S03",
+        "S11",
+        "S15",
+        "S06",
+        "S11"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "wentworth",
+      "source_cell": 12,
+      "original": "(a + b)",
+      "tokens": [
+        "(",
+        "a",
+        "+",
+        "b",
+        ")"
+      ],
+      "locator": {
+        "character_offset": 36169,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S01",
+        "S24",
+        "S03",
+        "S25",
+        "S02"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "couturat",
+      "source_cell": 1,
+      "original": "2 + 3 = 5",
+      "tokens": [
+        "2",
+        "+",
+        "3",
+        "=",
+        "5"
+      ],
+      "locator": {
+        "character_offset": 3926,
+        "encoding": "latin1"
+      },
+      "signs": [
+        "S07",
+        "S03",
+        "S08",
+        "S16",
+        "S10"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "couturat",
+      "source_cell": 2,
+      "original": "a < b",
+      "tokens": [
+        "a",
+        "<",
+        "b"
+      ],
+      "locator": {
+        "character_offset": 28420,
+        "encoding": "latin1"
+      },
+      "signs": [
+        "S24",
+        "S15",
+        "S25"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "couturat",
+      "source_cell": 3,
+      "original": "a = b",
+      "tokens": [
+        "a",
+        "=",
+        "b"
+      ],
+      "locator": {
+        "character_offset": 30640,
+        "encoding": "latin1"
+      },
+      "signs": [
+        "S24",
+        "S16",
+        "S25"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "couturat",
+      "source_cell": 4,
+      "original": "b < a",
+      "tokens": [
+        "b",
+        "<",
+        "a"
+      ],
+      "locator": {
+        "character_offset": 30709,
+        "encoding": "latin1"
+      },
+      "signs": [
+        "S25",
+        "S15",
+        "S24"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "couturat",
+      "source_cell": 5,
+      "original": "b = a",
+      "tokens": [
+        "b",
+        "=",
+        "a"
+      ],
+      "locator": {
+        "character_offset": 31637,
+        "encoding": "latin1"
+      },
+      "signs": [
+        "S25",
+        "S16",
+        "S24"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "couturat",
+      "source_cell": 6,
+      "original": "a > b",
+      "tokens": [
+        "a",
+        ">",
+        "b"
+      ],
+      "locator": {
+        "character_offset": 31801,
+        "encoding": "latin1"
+      },
+      "signs": [
+        "S24",
+        "S17",
+        "S25"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "couturat",
+      "source_cell": 7,
+      "original": "a + b",
+      "tokens": [
+        "a",
+        "+",
+        "b"
+      ],
+      "locator": {
+        "character_offset": 38787,
+        "encoding": "latin1"
+      },
+      "signs": [
+        "S24",
+        "S03",
+        "S25"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "couturat",
+      "source_cell": 8,
+      "original": "x + y",
+      "tokens": [
+        "x",
+        "+",
+        "y"
+      ],
+      "locator": {
+        "character_offset": 41421,
+        "encoding": "latin1"
+      },
+      "signs": [
+        "S33",
+        "S03",
+        "S34"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "couturat",
+      "source_cell": 9,
+      "original": "(a + b)",
+      "tokens": [
+        "(",
+        "a",
+        "+",
+        "b",
+        ")"
+      ],
+      "locator": {
+        "character_offset": 46422,
+        "encoding": "latin1"
+      },
+      "signs": [
+        "S01",
+        "S24",
+        "S03",
+        "S25",
+        "S02"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "couturat",
+      "source_cell": 10,
+      "original": "a = abc",
+      "tokens": [
+        "a",
+        "=",
+        "a",
+        "b",
+        "c"
+      ],
+      "locator": {
+        "character_offset": 49999,
+        "encoding": "latin1"
+      },
+      "signs": [
+        "S24",
+        "S16",
+        "S24",
+        "S25",
+        "S26"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "couturat",
+      "source_cell": 11,
+      "original": "ab = abc",
+      "tokens": [
+        "a",
+        "b",
+        "=",
+        "a",
+        "b",
+        "c"
+      ],
+      "locator": {
+        "character_offset": 50056,
+        "encoding": "latin1"
+      },
+      "signs": [
+        "S24",
+        "S25",
+        "S16",
+        "S24",
+        "S25",
+        "S26"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "couturat",
+      "source_cell": 12,
+      "original": "ab < c",
+      "tokens": [
+        "a",
+        "b",
+        "<",
+        "c"
+      ],
+      "locator": {
+        "character_offset": 50117,
+        "encoding": "latin1"
+      },
+      "signs": [
+        "S24",
+        "S25",
+        "S15",
+        "S26"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "thompson",
+      "source_cell": 1,
+      "original": "x + dx",
+      "tokens": [
+        "x",
+        "+",
+        "d",
+        "x"
+      ],
+      "locator": {
+        "character_offset": 43578,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S33",
+        "S03",
+        "S27",
+        "S33"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "thompson",
+      "source_cell": 2,
+      "original": "x^2",
+      "tokens": [
+        "x",
+        "^",
+        "2"
+      ],
+      "locator": {
+        "character_offset": 43848,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S33",
+        "S23",
+        "S07"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "thompson",
+      "source_cell": 3,
+      "original": "(dx)^2",
+      "tokens": [
+        "(",
+        "d",
+        "x",
+        ")",
+        "^",
+        "2"
+      ],
+      "locator": {
+        "character_offset": 44790,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S01",
+        "S27",
+        "S33",
+        "S02",
+        "S23",
+        "S07"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "thompson",
+      "source_cell": 4,
+      "original": "y + dy",
+      "tokens": [
+        "y",
+        "+",
+        "d",
+        "y"
+      ],
+      "locator": {
+        "character_offset": 48703,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S34",
+        "S03",
+        "S27",
+        "S34"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "thompson",
+      "source_cell": 5,
+      "original": "y - dy",
+      "tokens": [
+        "y",
+        "-",
+        "d",
+        "y"
+      ],
+      "locator": {
+        "character_offset": 50104,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S34",
+        "S04",
+        "S27",
+        "S34"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "thompson",
+      "source_cell": 6,
+      "original": "x = 19",
+      "tokens": [
+        "x",
+        "=",
+        "1",
+        "9"
+      ],
+      "locator": {
+        "character_offset": 50533,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S33",
+        "S16",
+        "S06",
+        "S14"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "thompson",
+      "source_cell": 7,
+      "original": "y = 180",
+      "tokens": [
+        "y",
+        "=",
+        "1",
+        "8",
+        "0"
+      ],
+      "locator": {
+        "character_offset": 50550,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S34",
+        "S16",
+        "S06",
+        "S13",
+        "S05"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "thompson",
+      "source_cell": 8,
+      "original": "x + dx = 20",
+      "tokens": [
+        "x",
+        "+",
+        "d",
+        "x",
+        "=",
+        "2",
+        "0"
+      ],
+      "locator": {
+        "character_offset": 50631,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S33",
+        "S03",
+        "S27",
+        "S33",
+        "S16",
+        "S07",
+        "S05"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "thompson",
+      "source_cell": 9,
+      "original": "y = F(x)",
+      "tokens": [
+        "y",
+        "=",
+        "F",
+        "(",
+        "x",
+        ")"
+      ],
+      "locator": {
+        "character_offset": 55566,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S34",
+        "S16",
+        "S20",
+        "S01",
+        "S33",
+        "S02"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "thompson",
+      "source_cell": 10,
+      "original": "y = f(x)",
+      "tokens": [
+        "y",
+        "=",
+        "f",
+        "(",
+        "x",
+        ")"
+      ],
+      "locator": {
+        "character_offset": 55578,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S34",
+        "S16",
+        "S28",
+        "S01",
+        "S33",
+        "S02"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "thompson",
+      "source_cell": 11,
+      "original": "y=x^2",
+      "tokens": [
+        "y",
+        "=",
+        "x",
+        "^",
+        "2"
+      ],
+      "locator": {
+        "character_offset": 58757,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S34",
+        "S16",
+        "S33",
+        "S23",
+        "S07"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "thompson",
+      "source_cell": 12,
+      "original": "u = 7x^2 + 3",
+      "tokens": [
+        "u",
+        "=",
+        "7",
+        "x",
+        "^",
+        "2",
+        "+",
+        "3"
+      ],
+      "locator": {
+        "character_offset": 60639,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S32",
+        "S16",
+        "S12",
+        "S33",
+        "S23",
+        "S07",
+        "S03",
+        "S08"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "whitehead",
+      "source_cell": 1,
+      "original": "2 + 3 = 3 + 2",
+      "tokens": [
+        "2",
+        "+",
+        "3",
+        "=",
+        "3",
+        "+",
+        "2"
+      ],
+      "locator": {
+        "character_offset": 33314,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S07",
+        "S03",
+        "S08",
+        "S16",
+        "S08",
+        "S03",
+        "S07"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "whitehead",
+      "source_cell": 2,
+      "original": "x + y = y + x",
+      "tokens": [
+        "x",
+        "+",
+        "y",
+        "=",
+        "y",
+        "+",
+        "x"
+      ],
+      "locator": {
+        "character_offset": 33426,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S33",
+        "S03",
+        "S34",
+        "S16",
+        "S34",
+        "S03",
+        "S33"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "whitehead",
+      "source_cell": 3,
+      "original": "3 > 2",
+      "tokens": [
+        "3",
+        ">",
+        "2"
+      ],
+      "locator": {
+        "character_offset": 33479,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S08",
+        "S17",
+        "S07"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "whitehead",
+      "source_cell": 4,
+      "original": "y > x",
+      "tokens": [
+        "y",
+        ">",
+        "x"
+      ],
+      "locator": {
+        "character_offset": 33605,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S34",
+        "S17",
+        "S33"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "whitehead",
+      "source_cell": 5,
+      "original": "x + 2 = 2 + x",
+      "tokens": [
+        "x",
+        "+",
+        "2",
+        "=",
+        "2",
+        "+",
+        "x"
+      ],
+      "locator": {
+        "character_offset": 35055,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S33",
+        "S03",
+        "S07",
+        "S16",
+        "S07",
+        "S03",
+        "S33"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "whitehead",
+      "source_cell": 6,
+      "original": "x + 2 = 3",
+      "tokens": [
+        "x",
+        "+",
+        "2",
+        "=",
+        "3"
+      ],
+      "locator": {
+        "character_offset": 35112,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S33",
+        "S03",
+        "S07",
+        "S16",
+        "S08"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "whitehead",
+      "source_cell": 7,
+      "original": "x + 2 > 3",
+      "tokens": [
+        "x",
+        "+",
+        "2",
+        ">",
+        "3"
+      ],
+      "locator": {
+        "character_offset": 35165,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S33",
+        "S03",
+        "S07",
+        "S17",
+        "S08"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "whitehead",
+      "source_cell": 8,
+      "original": "x = 3 - 2 = 1",
+      "tokens": [
+        "x",
+        "=",
+        "3",
+        "-",
+        "2",
+        "=",
+        "1"
+      ],
+      "locator": {
+        "character_offset": 36302,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S33",
+        "S16",
+        "S08",
+        "S04",
+        "S07",
+        "S16",
+        "S06"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "whitehead",
+      "source_cell": 9,
+      "original": "x + y = 1",
+      "tokens": [
+        "x",
+        "+",
+        "y",
+        "=",
+        "1"
+      ],
+      "locator": {
+        "character_offset": 37688,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S33",
+        "S03",
+        "S34",
+        "S16",
+        "S06"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "whitehead",
+      "source_cell": 10,
+      "original": "x = 4",
+      "tokens": [
+        "x",
+        "=",
+        "4"
+      ],
+      "locator": {
+        "character_offset": 38892,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S33",
+        "S16",
+        "S09"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "whitehead",
+      "source_cell": 11,
+      "original": "x + y > 1",
+      "tokens": [
+        "x",
+        "+",
+        "y",
+        ">",
+        "1"
+      ],
+      "locator": {
+        "character_offset": 39016,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S33",
+        "S03",
+        "S34",
+        "S17",
+        "S06"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "whitehead",
+      "source_cell": 12,
+      "original": "0A = 1",
+      "tokens": [
+        "0",
+        "A",
+        "=",
+        "1"
+      ],
+      "locator": {
+        "character_offset": 41549,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S05",
+        "S18",
+        "S16",
+        "S06"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "demorgan_calculus",
+      "source_cell": 1,
+      "original": "x + a",
+      "tokens": [
+        "x",
+        "+",
+        "a"
+      ],
+      "locator": {
+        "character_offset": 38323,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S33",
+        "S03",
+        "S24"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "demorgan_calculus",
+      "source_cell": 2,
+      "original": "x + m",
+      "tokens": [
+        "x",
+        "+",
+        "m"
+      ],
+      "locator": {
+        "character_offset": 38398,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S33",
+        "S03",
+        "S30"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "demorgan_calculus",
+      "source_cell": 3,
+      "original": "x + m +  a",
+      "tokens": [
+        "x",
+        "+",
+        "m",
+        "+",
+        "a"
+      ],
+      "locator": {
+        "character_offset": 38410,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S33",
+        "S03",
+        "S30",
+        "S03",
+        "S24"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "demorgan_calculus",
+      "source_cell": 4,
+      "original": "1 + 2",
+      "tokens": [
+        "1",
+        "+",
+        "2"
+      ],
+      "locator": {
+        "character_offset": 43393,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S06",
+        "S03",
+        "S07"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "demorgan_calculus",
+      "source_cell": 5,
+      "original": "1 + 2 + 3",
+      "tokens": [
+        "1",
+        "+",
+        "2",
+        "+",
+        "3"
+      ],
+      "locator": {
+        "character_offset": 43421,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S06",
+        "S03",
+        "S07",
+        "S03",
+        "S08"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "demorgan_calculus",
+      "source_cell": 6,
+      "original": "BN + NA",
+      "tokens": [
+        "B",
+        "N",
+        "+",
+        "N",
+        "A"
+      ],
+      "locator": {
+        "character_offset": 47162,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S19",
+        "S22",
+        "S03",
+        "S22",
+        "S18"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "demorgan_calculus",
+      "source_cell": 7,
+      "original": "BM + MA",
+      "tokens": [
+        "B",
+        "M",
+        "+",
+        "M",
+        "A"
+      ],
+      "locator": {
+        "character_offset": 49702,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S19",
+        "S21",
+        "S03",
+        "S21",
+        "S18"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "demorgan_calculus",
+      "source_cell": 8,
+      "original": "m +  n",
+      "tokens": [
+        "m",
+        "+",
+        "n"
+      ],
+      "locator": {
+        "character_offset": 50410,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S30",
+        "S03",
+        "S31"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "demorgan_calculus",
+      "source_cell": 9,
+      "original": "2a + h",
+      "tokens": [
+        "2",
+        "a",
+        "+",
+        "h"
+      ],
+      "locator": {
+        "character_offset": 55543,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S07",
+        "S24",
+        "S03",
+        "S29"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "demorgan_calculus",
+      "source_cell": 10,
+      "original": "x +  h",
+      "tokens": [
+        "x",
+        "+",
+        "h"
+      ],
+      "locator": {
+        "character_offset": 59805,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S33",
+        "S03",
+        "S29"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "demorgan_calculus",
+      "source_cell": 11,
+      "original": "x = 5",
+      "tokens": [
+        "x",
+        "=",
+        "5"
+      ],
+      "locator": {
+        "character_offset": 60250,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S33",
+        "S16",
+        "S10"
+      ]
+    },
+    {
+      "category": "math",
+      "source": "demorgan_calculus",
+      "source_cell": 12,
+      "original": "f(x + h)",
+      "tokens": [
+        "f",
+        "(",
+        "x",
+        "+",
+        "h",
+        ")"
+      ],
+      "locator": {
+        "character_offset": 60993,
+        "encoding": "utf8"
+      },
+      "signs": [
+        "S28",
+        "S01",
+        "S33",
+        "S03",
+        "S29",
+        "S02"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "alice.raw",
+      "source_cell": 1,
+      "original": "Alice",
+      "tokens": [
+        "A",
+        "l",
+        "i",
+        "c",
+        "e"
+      ],
+      "locator": {
+        "character_offset": 1562,
+        "encoding": "utf8",
+        "anchor": "Alice was beginning"
+      },
+      "signs": [
+        "S01",
+        "S22",
+        "S19",
+        "S13",
+        "S15"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "alice.raw",
+      "source_cell": 2,
+      "original": "was",
+      "tokens": [
+        "w",
+        "a",
+        "s"
+      ],
+      "locator": {
+        "character_offset": 1568,
+        "encoding": "utf8",
+        "anchor": "Alice was beginning"
+      },
+      "signs": [
+        "S32",
+        "S11",
+        "S28"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "alice.raw",
+      "source_cell": 3,
+      "original": "beginning",
+      "tokens": [
+        "b",
+        "e",
+        "g",
+        "i",
+        "n",
+        "n",
+        "i",
+        "n",
+        "g"
+      ],
+      "locator": {
+        "character_offset": 1572,
+        "encoding": "utf8",
+        "anchor": "Alice was beginning"
+      },
+      "signs": [
+        "S12",
+        "S15",
+        "S17",
+        "S19",
+        "S24",
+        "S24",
+        "S19",
+        "S24",
+        "S17"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "alice.raw",
+      "source_cell": 4,
+      "original": "to",
+      "tokens": [
+        "t",
+        "o"
+      ],
+      "locator": {
+        "character_offset": 1582,
+        "encoding": "utf8",
+        "anchor": "Alice was beginning"
+      },
+      "signs": [
+        "S29",
+        "S25"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "alice.raw",
+      "source_cell": 5,
+      "original": "get",
+      "tokens": [
+        "g",
+        "e",
+        "t"
+      ],
+      "locator": {
+        "character_offset": 1585,
+        "encoding": "utf8",
+        "anchor": "Alice was beginning"
+      },
+      "signs": [
+        "S17",
+        "S15",
+        "S29"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "alice.raw",
+      "source_cell": 6,
+      "original": "very",
+      "tokens": [
+        "v",
+        "e",
+        "r",
+        "y"
+      ],
+      "locator": {
+        "character_offset": 1589,
+        "encoding": "utf8",
+        "anchor": "Alice was beginning"
+      },
+      "signs": [
+        "S31",
+        "S15",
+        "S27",
+        "S33"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "alice.raw",
+      "source_cell": 7,
+      "original": "tired",
+      "tokens": [
+        "t",
+        "i",
+        "r",
+        "e",
+        "d"
+      ],
+      "locator": {
+        "character_offset": 1594,
+        "encoding": "utf8",
+        "anchor": "Alice was beginning"
+      },
+      "signs": [
+        "S29",
+        "S19",
+        "S27",
+        "S15",
+        "S14"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "alice.raw",
+      "source_cell": 8,
+      "original": "of",
+      "tokens": [
+        "o",
+        "f"
+      ],
+      "locator": {
+        "character_offset": 1600,
+        "encoding": "utf8",
+        "anchor": "Alice was beginning"
+      },
+      "signs": [
+        "S25",
+        "S16"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "alice.raw",
+      "source_cell": 9,
+      "original": "sitting",
+      "tokens": [
+        "s",
+        "i",
+        "t",
+        "t",
+        "i",
+        "n",
+        "g"
+      ],
+      "locator": {
+        "character_offset": 1603,
+        "encoding": "utf8",
+        "anchor": "Alice was beginning"
+      },
+      "signs": [
+        "S28",
+        "S19",
+        "S29",
+        "S29",
+        "S19",
+        "S24",
+        "S17"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "alice.raw",
+      "source_cell": 10,
+      "original": "by",
+      "tokens": [
+        "b",
+        "y"
+      ],
+      "locator": {
+        "character_offset": 1611,
+        "encoding": "utf8",
+        "anchor": "Alice was beginning"
+      },
+      "signs": [
+        "S12",
+        "S33"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "alice.raw",
+      "source_cell": 11,
+      "original": "her",
+      "tokens": [
+        "h",
+        "e",
+        "r"
+      ],
+      "locator": {
+        "character_offset": 1614,
+        "encoding": "utf8",
+        "anchor": "Alice was beginning"
+      },
+      "signs": [
+        "S18",
+        "S15",
+        "S27"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "alice.raw",
+      "source_cell": 12,
+      "original": "sister",
+      "tokens": [
+        "s",
+        "i",
+        "s",
+        "t",
+        "e",
+        "r"
+      ],
+      "locator": {
+        "character_offset": 1618,
+        "encoding": "utf8",
+        "anchor": "Alice was beginning"
+      },
+      "signs": [
+        "S28",
+        "S19",
+        "S28",
+        "S29",
+        "S15",
+        "S27"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "austen.txt",
+      "source_cell": 1,
+      "original": "It",
+      "tokens": [
+        "I",
+        "t"
+      ],
+      "locator": {
+        "character_offset": 35962,
+        "encoding": "utf8",
+        "anchor": "It is a truth"
+      },
+      "signs": [
+        "S03",
+        "S29"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "austen.txt",
+      "source_cell": 2,
+      "original": "is",
+      "tokens": [
+        "i",
+        "s"
+      ],
+      "locator": {
+        "character_offset": 35965,
+        "encoding": "utf8",
+        "anchor": "It is a truth"
+      },
+      "signs": [
+        "S19",
+        "S28"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "austen.txt",
+      "source_cell": 3,
+      "original": "a",
+      "tokens": [
+        "a"
+      ],
+      "locator": {
+        "character_offset": 35968,
+        "encoding": "utf8",
+        "anchor": "It is a truth"
+      },
+      "signs": [
+        "S11"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "austen.txt",
+      "source_cell": 4,
+      "original": "truth",
+      "tokens": [
+        "t",
+        "r",
+        "u",
+        "t",
+        "h"
+      ],
+      "locator": {
+        "character_offset": 35970,
+        "encoding": "utf8",
+        "anchor": "It is a truth"
+      },
+      "signs": [
+        "S29",
+        "S27",
+        "S30",
+        "S29",
+        "S18"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "austen.txt",
+      "source_cell": 5,
+      "original": "universally",
+      "tokens": [
+        "u",
+        "n",
+        "i",
+        "v",
+        "e",
+        "r",
+        "s",
+        "a",
+        "l",
+        "l",
+        "y"
+      ],
+      "locator": {
+        "character_offset": 35976,
+        "encoding": "utf8",
+        "anchor": "It is a truth"
+      },
+      "signs": [
+        "S30",
+        "S24",
+        "S19",
+        "S31",
+        "S15",
+        "S27",
+        "S28",
+        "S11",
+        "S22",
+        "S22",
+        "S33"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "austen.txt",
+      "source_cell": 6,
+      "original": "acknowledged",
+      "tokens": [
+        "a",
+        "c",
+        "k",
+        "n",
+        "o",
+        "w",
+        "l",
+        "e",
+        "d",
+        "g",
+        "e",
+        "d"
+      ],
+      "locator": {
+        "character_offset": 35988,
+        "encoding": "utf8",
+        "anchor": "It is a truth"
+      },
+      "signs": [
+        "S11",
+        "S13",
+        "S21",
+        "S24",
+        "S25",
+        "S32",
+        "S22",
+        "S15",
+        "S14",
+        "S17",
+        "S15",
+        "S14"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "austen.txt",
+      "source_cell": 7,
+      "original": "that",
+      "tokens": [
+        "t",
+        "h",
+        "a",
+        "t"
+      ],
+      "locator": {
+        "character_offset": 36002,
+        "encoding": "utf8",
+        "anchor": "It is a truth"
+      },
+      "signs": [
+        "S29",
+        "S18",
+        "S11",
+        "S29"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "austen.txt",
+      "source_cell": 8,
+      "original": "a",
+      "tokens": [
+        "a"
+      ],
+      "locator": {
+        "character_offset": 36007,
+        "encoding": "utf8",
+        "anchor": "It is a truth"
+      },
+      "signs": [
+        "S11"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "austen.txt",
+      "source_cell": 9,
+      "original": "single",
+      "tokens": [
+        "s",
+        "i",
+        "n",
+        "g",
+        "l",
+        "e"
+      ],
+      "locator": {
+        "character_offset": 36009,
+        "encoding": "utf8",
+        "anchor": "It is a truth"
+      },
+      "signs": [
+        "S28",
+        "S19",
+        "S24",
+        "S17",
+        "S22",
+        "S15"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "austen.txt",
+      "source_cell": 10,
+      "original": "man",
+      "tokens": [
+        "m",
+        "a",
+        "n"
+      ],
+      "locator": {
+        "character_offset": 36016,
+        "encoding": "utf8",
+        "anchor": "It is a truth"
+      },
+      "signs": [
+        "S23",
+        "S11",
+        "S24"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "austen.txt",
+      "source_cell": 11,
+      "original": "in",
+      "tokens": [
+        "i",
+        "n"
+      ],
+      "locator": {
+        "character_offset": 36020,
+        "encoding": "utf8",
+        "anchor": "It is a truth"
+      },
+      "signs": [
+        "S19",
+        "S24"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "austen.txt",
+      "source_cell": 12,
+      "original": "possession",
+      "tokens": [
+        "p",
+        "o",
+        "s",
+        "s",
+        "e",
+        "s",
+        "s",
+        "i",
+        "o",
+        "n"
+      ],
+      "locator": {
+        "character_offset": 36023,
+        "encoding": "utf8",
+        "anchor": "It is a truth"
+      },
+      "signs": [
+        "S26",
+        "S25",
+        "S28",
+        "S28",
+        "S15",
+        "S28",
+        "S28",
+        "S19",
+        "S25",
+        "S24"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "doyle.txt",
+      "source_cell": 1,
+      "original": "To",
+      "tokens": [
+        "T",
+        "o"
+      ],
+      "locator": {
+        "character_offset": 1565,
+        "encoding": "utf8",
+        "anchor": "To Sherlock Holmes"
+      },
+      "signs": [
+        "S08",
+        "S25"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "doyle.txt",
+      "source_cell": 2,
+      "original": "Sherlock",
+      "tokens": [
+        "S",
+        "h",
+        "e",
+        "r",
+        "l",
+        "o",
+        "c",
+        "k"
+      ],
+      "locator": {
+        "character_offset": 1568,
+        "encoding": "utf8",
+        "anchor": "To Sherlock Holmes"
+      },
+      "signs": [
+        "S07",
+        "S18",
+        "S15",
+        "S27",
+        "S22",
+        "S25",
+        "S13",
+        "S21"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "doyle.txt",
+      "source_cell": 3,
+      "original": "Holmes",
+      "tokens": [
+        "H",
+        "o",
+        "l",
+        "m",
+        "e",
+        "s"
+      ],
+      "locator": {
+        "character_offset": 1577,
+        "encoding": "utf8",
+        "anchor": "To Sherlock Holmes"
+      },
+      "signs": [
+        "S02",
+        "S25",
+        "S22",
+        "S23",
+        "S15",
+        "S28"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "doyle.txt",
+      "source_cell": 4,
+      "original": "she",
+      "tokens": [
+        "s",
+        "h",
+        "e"
+      ],
+      "locator": {
+        "character_offset": 1584,
+        "encoding": "utf8",
+        "anchor": "To Sherlock Holmes"
+      },
+      "signs": [
+        "S28",
+        "S18",
+        "S15"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "doyle.txt",
+      "source_cell": 5,
+      "original": "is",
+      "tokens": [
+        "i",
+        "s"
+      ],
+      "locator": {
+        "character_offset": 1588,
+        "encoding": "utf8",
+        "anchor": "To Sherlock Holmes"
+      },
+      "signs": [
+        "S19",
+        "S28"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "doyle.txt",
+      "source_cell": 6,
+      "original": "always",
+      "tokens": [
+        "a",
+        "l",
+        "w",
+        "a",
+        "y",
+        "s"
+      ],
+      "locator": {
+        "character_offset": 1591,
+        "encoding": "utf8",
+        "anchor": "To Sherlock Holmes"
+      },
+      "signs": [
+        "S11",
+        "S22",
+        "S32",
+        "S11",
+        "S33",
+        "S28"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "doyle.txt",
+      "source_cell": 7,
+      "original": "the",
+      "tokens": [
+        "t",
+        "h",
+        "e"
+      ],
+      "locator": {
+        "character_offset": 1599,
+        "encoding": "utf8",
+        "anchor": "To Sherlock Holmes"
+      },
+      "signs": [
+        "S29",
+        "S18",
+        "S15"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "doyle.txt",
+      "source_cell": 8,
+      "original": "woman",
+      "tokens": [
+        "w",
+        "o",
+        "m",
+        "a",
+        "n"
+      ],
+      "locator": {
+        "character_offset": 1604,
+        "encoding": "utf8",
+        "anchor": "To Sherlock Holmes"
+      },
+      "signs": [
+        "S32",
+        "S25",
+        "S23",
+        "S11",
+        "S24"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "doyle.txt",
+      "source_cell": 9,
+      "original": "I",
+      "tokens": [
+        "I"
+      ],
+      "locator": {
+        "character_offset": 1611,
+        "encoding": "utf8",
+        "anchor": "To Sherlock Holmes"
+      },
+      "signs": [
+        "S03"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "doyle.txt",
+      "source_cell": 10,
+      "original": "have",
+      "tokens": [
+        "h",
+        "a",
+        "v",
+        "e"
+      ],
+      "locator": {
+        "character_offset": 1613,
+        "encoding": "utf8",
+        "anchor": "To Sherlock Holmes"
+      },
+      "signs": [
+        "S18",
+        "S11",
+        "S31",
+        "S15"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "doyle.txt",
+      "source_cell": 11,
+      "original": "seldom",
+      "tokens": [
+        "s",
+        "e",
+        "l",
+        "d",
+        "o",
+        "m"
+      ],
+      "locator": {
+        "character_offset": 1618,
+        "encoding": "utf8",
+        "anchor": "To Sherlock Holmes"
+      },
+      "signs": [
+        "S28",
+        "S15",
+        "S22",
+        "S14",
+        "S25",
+        "S23"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "doyle.txt",
+      "source_cell": 12,
+      "original": "heard",
+      "tokens": [
+        "h",
+        "e",
+        "a",
+        "r",
+        "d"
+      ],
+      "locator": {
+        "character_offset": 1625,
+        "encoding": "utf8",
+        "anchor": "To Sherlock Holmes"
+      },
+      "signs": [
+        "S18",
+        "S15",
+        "S11",
+        "S27",
+        "S14"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "shelley.txt",
+      "source_cell": 1,
+      "original": "You",
+      "tokens": [
+        "Y",
+        "o",
+        "u"
+      ],
+      "locator": {
+        "character_offset": 1600,
+        "encoding": "utf8",
+        "anchor": "You will rejoice"
+      },
+      "signs": [
+        "S10",
+        "S25",
+        "S30"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "shelley.txt",
+      "source_cell": 2,
+      "original": "will",
+      "tokens": [
+        "w",
+        "i",
+        "l",
+        "l"
+      ],
+      "locator": {
+        "character_offset": 1604,
+        "encoding": "utf8",
+        "anchor": "You will rejoice"
+      },
+      "signs": [
+        "S32",
+        "S19",
+        "S22",
+        "S22"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "shelley.txt",
+      "source_cell": 3,
+      "original": "rejoice",
+      "tokens": [
+        "r",
+        "e",
+        "j",
+        "o",
+        "i",
+        "c",
+        "e"
+      ],
+      "locator": {
+        "character_offset": 1609,
+        "encoding": "utf8",
+        "anchor": "You will rejoice"
+      },
+      "signs": [
+        "S27",
+        "S15",
+        "S20",
+        "S25",
+        "S19",
+        "S13",
+        "S15"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "shelley.txt",
+      "source_cell": 4,
+      "original": "to",
+      "tokens": [
+        "t",
+        "o"
+      ],
+      "locator": {
+        "character_offset": 1617,
+        "encoding": "utf8",
+        "anchor": "You will rejoice"
+      },
+      "signs": [
+        "S29",
+        "S25"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "shelley.txt",
+      "source_cell": 5,
+      "original": "hear",
+      "tokens": [
+        "h",
+        "e",
+        "a",
+        "r"
+      ],
+      "locator": {
+        "character_offset": 1620,
+        "encoding": "utf8",
+        "anchor": "You will rejoice"
+      },
+      "signs": [
+        "S18",
+        "S15",
+        "S11",
+        "S27"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "shelley.txt",
+      "source_cell": 6,
+      "original": "that",
+      "tokens": [
+        "t",
+        "h",
+        "a",
+        "t"
+      ],
+      "locator": {
+        "character_offset": 1625,
+        "encoding": "utf8",
+        "anchor": "You will rejoice"
+      },
+      "signs": [
+        "S29",
+        "S18",
+        "S11",
+        "S29"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "shelley.txt",
+      "source_cell": 7,
+      "original": "no",
+      "tokens": [
+        "n",
+        "o"
+      ],
+      "locator": {
+        "character_offset": 1630,
+        "encoding": "utf8",
+        "anchor": "You will rejoice"
+      },
+      "signs": [
+        "S24",
+        "S25"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "shelley.txt",
+      "source_cell": 8,
+      "original": "disaster",
+      "tokens": [
+        "d",
+        "i",
+        "s",
+        "a",
+        "s",
+        "t",
+        "e",
+        "r"
+      ],
+      "locator": {
+        "character_offset": 1633,
+        "encoding": "utf8",
+        "anchor": "You will rejoice"
+      },
+      "signs": [
+        "S14",
+        "S19",
+        "S28",
+        "S11",
+        "S28",
+        "S29",
+        "S15",
+        "S27"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "shelley.txt",
+      "source_cell": 9,
+      "original": "has",
+      "tokens": [
+        "h",
+        "a",
+        "s"
+      ],
+      "locator": {
+        "character_offset": 1642,
+        "encoding": "utf8",
+        "anchor": "You will rejoice"
+      },
+      "signs": [
+        "S18",
+        "S11",
+        "S28"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "shelley.txt",
+      "source_cell": 10,
+      "original": "accompanied",
+      "tokens": [
+        "a",
+        "c",
+        "c",
+        "o",
+        "m",
+        "p",
+        "a",
+        "n",
+        "i",
+        "e",
+        "d"
+      ],
+      "locator": {
+        "character_offset": 1646,
+        "encoding": "utf8",
+        "anchor": "You will rejoice"
+      },
+      "signs": [
+        "S11",
+        "S13",
+        "S13",
+        "S25",
+        "S23",
+        "S26",
+        "S11",
+        "S24",
+        "S19",
+        "S15",
+        "S14"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "shelley.txt",
+      "source_cell": 11,
+      "original": "the",
+      "tokens": [
+        "t",
+        "h",
+        "e"
+      ],
+      "locator": {
+        "character_offset": 1658,
+        "encoding": "utf8",
+        "anchor": "You will rejoice"
+      },
+      "signs": [
+        "S29",
+        "S18",
+        "S15"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "shelley.txt",
+      "source_cell": 12,
+      "original": "commencement",
+      "tokens": [
+        "c",
+        "o",
+        "m",
+        "m",
+        "e",
+        "n",
+        "c",
+        "e",
+        "m",
+        "e",
+        "n",
+        "t"
+      ],
+      "locator": {
+        "character_offset": 1663,
+        "encoding": "utf8",
+        "anchor": "You will rejoice"
+      },
+      "signs": [
+        "S13",
+        "S25",
+        "S23",
+        "S23",
+        "S15",
+        "S24",
+        "S13",
+        "S15",
+        "S23",
+        "S15",
+        "S24",
+        "S29"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "twain.txt",
+      "source_cell": 1,
+      "original": "TOM",
+      "tokens": [
+        "T",
+        "O",
+        "M"
+      ],
+      "locator": {
+        "character_offset": 8097,
+        "encoding": "utf8",
+        "anchor": "TOM!\u201d"
+      },
+      "signs": [
+        "S08",
+        "S06",
+        "S04"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "twain.txt",
+      "source_cell": 2,
+      "original": "No",
+      "tokens": [
+        "N",
+        "o"
+      ],
+      "locator": {
+        "character_offset": 8106,
+        "encoding": "utf8",
+        "anchor": "TOM!\u201d"
+      },
+      "signs": [
+        "S05",
+        "S25"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "twain.txt",
+      "source_cell": 3,
+      "original": "answer",
+      "tokens": [
+        "a",
+        "n",
+        "s",
+        "w",
+        "e",
+        "r"
+      ],
+      "locator": {
+        "character_offset": 8109,
+        "encoding": "utf8",
+        "anchor": "TOM!\u201d"
+      },
+      "signs": [
+        "S11",
+        "S24",
+        "S28",
+        "S32",
+        "S15",
+        "S27"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "twain.txt",
+      "source_cell": 4,
+      "original": "What",
+      "tokens": [
+        "W",
+        "h",
+        "a",
+        "t"
+      ],
+      "locator": {
+        "character_offset": 8121,
+        "encoding": "utf8",
+        "anchor": "TOM!\u201d"
+      },
+      "signs": [
+        "S09",
+        "S18",
+        "S11",
+        "S29"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "twain.txt",
+      "source_cell": 5,
+      "original": "s",
+      "tokens": [
+        "s"
+      ],
+      "locator": {
+        "character_offset": 8126,
+        "encoding": "utf8",
+        "anchor": "TOM!\u201d"
+      },
+      "signs": [
+        "S28"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "twain.txt",
+      "source_cell": 6,
+      "original": "gone",
+      "tokens": [
+        "g",
+        "o",
+        "n",
+        "e"
+      ],
+      "locator": {
+        "character_offset": 8128,
+        "encoding": "utf8",
+        "anchor": "TOM!\u201d"
+      },
+      "signs": [
+        "S17",
+        "S25",
+        "S24",
+        "S15"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "twain.txt",
+      "source_cell": 7,
+      "original": "with",
+      "tokens": [
+        "w",
+        "i",
+        "t",
+        "h"
+      ],
+      "locator": {
+        "character_offset": 8133,
+        "encoding": "utf8",
+        "anchor": "TOM!\u201d"
+      },
+      "signs": [
+        "S32",
+        "S19",
+        "S29",
+        "S18"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "twain.txt",
+      "source_cell": 8,
+      "original": "that",
+      "tokens": [
+        "t",
+        "h",
+        "a",
+        "t"
+      ],
+      "locator": {
+        "character_offset": 8138,
+        "encoding": "utf8",
+        "anchor": "TOM!\u201d"
+      },
+      "signs": [
+        "S29",
+        "S18",
+        "S11",
+        "S29"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "twain.txt",
+      "source_cell": 9,
+      "original": "boy",
+      "tokens": [
+        "b",
+        "o",
+        "y"
+      ],
+      "locator": {
+        "character_offset": 8143,
+        "encoding": "utf8",
+        "anchor": "TOM!\u201d"
+      },
+      "signs": [
+        "S12",
+        "S25",
+        "S33"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "twain.txt",
+      "source_cell": 10,
+      "original": "I",
+      "tokens": [
+        "I"
+      ],
+      "locator": {
+        "character_offset": 8148,
+        "encoding": "utf8",
+        "anchor": "TOM!\u201d"
+      },
+      "signs": [
+        "S03"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "twain.txt",
+      "source_cell": 11,
+      "original": "wonder",
+      "tokens": [
+        "w",
+        "o",
+        "n",
+        "d",
+        "e",
+        "r"
+      ],
+      "locator": {
+        "character_offset": 8150,
+        "encoding": "utf8",
+        "anchor": "TOM!\u201d"
+      },
+      "signs": [
+        "S32",
+        "S25",
+        "S24",
+        "S14",
+        "S15",
+        "S27"
+      ]
+    },
+    {
+      "category": "language",
+      "source": "twain.txt",
+      "source_cell": 12,
+      "original": "You",
+      "tokens": [
+        "Y",
+        "o",
+        "u"
+      ],
+      "locator": {
+        "character_offset": 8158,
+        "encoding": "utf8",
+        "anchor": "TOM!\u201d"
+      },
+      "signs": [
+        "S10",
+        "S25",
+        "S30"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "methods.csv",
+      "source_cell": 1,
+      "original": "ACL",
+      "tokens": [
+        "A",
+        "C",
+        "L"
+      ],
+      "locator": {
+        "csv_record_index": 2,
+        "field": "Method Name"
+      },
+      "signs": [
+        "S03",
+        "S05",
+        "S13"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "methods.csv",
+      "source_cell": 2,
+      "original": "BIND",
+      "tokens": [
+        "B",
+        "I",
+        "N",
+        "D"
+      ],
+      "locator": {
+        "csv_record_index": 4,
+        "field": "Method Name"
+      },
+      "signs": [
+        "S04",
+        "S11",
+        "S15",
+        "S06"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "methods.csv",
+      "source_cell": 3,
+      "original": "CHECKIN",
+      "tokens": [
+        "C",
+        "H",
+        "E",
+        "C",
+        "K",
+        "I",
+        "N"
+      ],
+      "locator": {
+        "csv_record_index": 5,
+        "field": "Method Name"
+      },
+      "signs": [
+        "S05",
+        "S10",
+        "S07",
+        "S05",
+        "S12",
+        "S11",
+        "S15"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "methods.csv",
+      "source_cell": 4,
+      "original": "CHECKOUT",
+      "tokens": [
+        "C",
+        "H",
+        "E",
+        "C",
+        "K",
+        "O",
+        "U",
+        "T"
+      ],
+      "locator": {
+        "csv_record_index": 6,
+        "field": "Method Name"
+      },
+      "signs": [
+        "S05",
+        "S10",
+        "S07",
+        "S05",
+        "S12",
+        "S16",
+        "S22",
+        "S21"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "methods.csv",
+      "source_cell": 5,
+      "original": "CONNECT",
+      "tokens": [
+        "C",
+        "O",
+        "N",
+        "N",
+        "E",
+        "C",
+        "T"
+      ],
+      "locator": {
+        "csv_record_index": 7,
+        "field": "Method Name"
+      },
+      "signs": [
+        "S05",
+        "S16",
+        "S15",
+        "S15",
+        "S07",
+        "S05",
+        "S21"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "methods.csv",
+      "source_cell": 6,
+      "original": "COPY",
+      "tokens": [
+        "C",
+        "O",
+        "P",
+        "Y"
+      ],
+      "locator": {
+        "csv_record_index": 8,
+        "field": "Method Name"
+      },
+      "signs": [
+        "S05",
+        "S16",
+        "S17",
+        "S24"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "methods.csv",
+      "source_cell": 7,
+      "original": "DELETE",
+      "tokens": [
+        "D",
+        "E",
+        "L",
+        "E",
+        "T",
+        "E"
+      ],
+      "locator": {
+        "csv_record_index": 9,
+        "field": "Method Name"
+      },
+      "signs": [
+        "S06",
+        "S07",
+        "S13",
+        "S07",
+        "S21",
+        "S07"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "methods.csv",
+      "source_cell": 8,
+      "original": "GET",
+      "tokens": [
+        "G",
+        "E",
+        "T"
+      ],
+      "locator": {
+        "csv_record_index": 10,
+        "field": "Method Name"
+      },
+      "signs": [
+        "S09",
+        "S07",
+        "S21"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "methods.csv",
+      "source_cell": 9,
+      "original": "HEAD",
+      "tokens": [
+        "H",
+        "E",
+        "A",
+        "D"
+      ],
+      "locator": {
+        "csv_record_index": 11,
+        "field": "Method Name"
+      },
+      "signs": [
+        "S10",
+        "S07",
+        "S03",
+        "S06"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "methods.csv",
+      "source_cell": 10,
+      "original": "LABEL",
+      "tokens": [
+        "L",
+        "A",
+        "B",
+        "E",
+        "L"
+      ],
+      "locator": {
+        "csv_record_index": 12,
+        "field": "Method Name"
+      },
+      "signs": [
+        "S13",
+        "S03",
+        "S04",
+        "S07",
+        "S13"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "methods.csv",
+      "source_cell": 11,
+      "original": "LINK",
+      "tokens": [
+        "L",
+        "I",
+        "N",
+        "K"
+      ],
+      "locator": {
+        "csv_record_index": 13,
+        "field": "Method Name"
+      },
+      "signs": [
+        "S13",
+        "S11",
+        "S15",
+        "S12"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "methods.csv",
+      "source_cell": 12,
+      "original": "LOCK",
+      "tokens": [
+        "L",
+        "O",
+        "C",
+        "K"
+      ],
+      "locator": {
+        "csv_record_index": 14,
+        "field": "Method Name"
+      },
+      "signs": [
+        "S13",
+        "S16",
+        "S05",
+        "S12"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "protocols.csv",
+      "source_cell": 1,
+      "original": "HOPOPT",
+      "tokens": [
+        "H",
+        "O",
+        "P",
+        "O",
+        "P",
+        "T"
+      ],
+      "locator": {
+        "csv_record_index": 2,
+        "field": "Keyword"
+      },
+      "signs": [
+        "S10",
+        "S16",
+        "S17",
+        "S16",
+        "S17",
+        "S21"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "protocols.csv",
+      "source_cell": 2,
+      "original": "ICMP",
+      "tokens": [
+        "I",
+        "C",
+        "M",
+        "P"
+      ],
+      "locator": {
+        "csv_record_index": 3,
+        "field": "Keyword"
+      },
+      "signs": [
+        "S11",
+        "S05",
+        "S14",
+        "S17"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "protocols.csv",
+      "source_cell": 3,
+      "original": "IGMP",
+      "tokens": [
+        "I",
+        "G",
+        "M",
+        "P"
+      ],
+      "locator": {
+        "csv_record_index": 4,
+        "field": "Keyword"
+      },
+      "signs": [
+        "S11",
+        "S09",
+        "S14",
+        "S17"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "protocols.csv",
+      "source_cell": 4,
+      "original": "GGP",
+      "tokens": [
+        "G",
+        "G",
+        "P"
+      ],
+      "locator": {
+        "csv_record_index": 5,
+        "field": "Keyword"
+      },
+      "signs": [
+        "S09",
+        "S09",
+        "S17"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "protocols.csv",
+      "source_cell": 5,
+      "original": "IPv4",
+      "tokens": [
+        "I",
+        "P",
+        "v",
+        "4"
+      ],
+      "locator": {
+        "csv_record_index": 6,
+        "field": "Keyword"
+      },
+      "signs": [
+        "S11",
+        "S17",
+        "S45",
+        "S02"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "protocols.csv",
+      "source_cell": 6,
+      "original": "ST",
+      "tokens": [
+        "S",
+        "T"
+      ],
+      "locator": {
+        "csv_record_index": 7,
+        "field": "Keyword"
+      },
+      "signs": [
+        "S20",
+        "S21"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "protocols.csv",
+      "source_cell": 7,
+      "original": "TCP",
+      "tokens": [
+        "T",
+        "C",
+        "P"
+      ],
+      "locator": {
+        "csv_record_index": 8,
+        "field": "Keyword"
+      },
+      "signs": [
+        "S21",
+        "S05",
+        "S17"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "protocols.csv",
+      "source_cell": 8,
+      "original": "CBT",
+      "tokens": [
+        "C",
+        "B",
+        "T"
+      ],
+      "locator": {
+        "csv_record_index": 9,
+        "field": "Keyword"
+      },
+      "signs": [
+        "S05",
+        "S04",
+        "S21"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "protocols.csv",
+      "source_cell": 9,
+      "original": "EGP",
+      "tokens": [
+        "E",
+        "G",
+        "P"
+      ],
+      "locator": {
+        "csv_record_index": 10,
+        "field": "Keyword"
+      },
+      "signs": [
+        "S07",
+        "S09",
+        "S17"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "protocols.csv",
+      "source_cell": 10,
+      "original": "IGP",
+      "tokens": [
+        "I",
+        "G",
+        "P"
+      ],
+      "locator": {
+        "csv_record_index": 11,
+        "field": "Keyword"
+      },
+      "signs": [
+        "S11",
+        "S09",
+        "S17"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "protocols.csv",
+      "source_cell": 11,
+      "original": "NVP-II",
+      "tokens": [
+        "N",
+        "V",
+        "P",
+        "-",
+        "I",
+        "I"
+      ],
+      "locator": {
+        "csv_record_index": 13,
+        "field": "Keyword"
+      },
+      "signs": [
+        "S15",
+        "S23",
+        "S17",
+        "S01",
+        "S11",
+        "S11"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "protocols.csv",
+      "source_cell": 12,
+      "original": "PUP",
+      "tokens": [
+        "P",
+        "U",
+        "P"
+      ],
+      "locator": {
+        "csv_record_index": 14,
+        "field": "Keyword"
+      },
+      "signs": [
+        "S17",
+        "S22",
+        "S17"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "services.csv",
+      "source_cell": 1,
+      "original": "tcpmux",
+      "tokens": [
+        "t",
+        "c",
+        "p",
+        "m",
+        "u",
+        "x"
+      ],
+      "locator": {
+        "csv_record_index": 4,
+        "field": "Service Name"
+      },
+      "signs": [
+        "S43",
+        "S27",
+        "S39",
+        "S36",
+        "S44",
+        "S46"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "services.csv",
+      "source_cell": 2,
+      "original": "rje",
+      "tokens": [
+        "r",
+        "j",
+        "e"
+      ],
+      "locator": {
+        "csv_record_index": 12,
+        "field": "Service Name"
+      },
+      "signs": [
+        "S41",
+        "S34",
+        "S29"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "services.csv",
+      "source_cell": 3,
+      "original": "echo",
+      "tokens": [
+        "e",
+        "c",
+        "h",
+        "o"
+      ],
+      "locator": {
+        "csv_record_index": 16,
+        "field": "Service Name"
+      },
+      "signs": [
+        "S29",
+        "S27",
+        "S32",
+        "S38"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "services.csv",
+      "source_cell": 4,
+      "original": "discard",
+      "tokens": [
+        "d",
+        "i",
+        "s",
+        "c",
+        "a",
+        "r",
+        "d"
+      ],
+      "locator": {
+        "csv_record_index": 20,
+        "field": "Service Name"
+      },
+      "signs": [
+        "S28",
+        "S33",
+        "S42",
+        "S27",
+        "S25",
+        "S41",
+        "S28"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "services.csv",
+      "source_cell": 5,
+      "original": "systat",
+      "tokens": [
+        "s",
+        "y",
+        "s",
+        "t",
+        "a",
+        "t"
+      ],
+      "locator": {
+        "csv_record_index": 26,
+        "field": "Service Name"
+      },
+      "signs": [
+        "S42",
+        "S47",
+        "S42",
+        "S43",
+        "S25",
+        "S43"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "services.csv",
+      "source_cell": 6,
+      "original": "daytime",
+      "tokens": [
+        "d",
+        "a",
+        "y",
+        "t",
+        "i",
+        "m",
+        "e"
+      ],
+      "locator": {
+        "csv_record_index": 30,
+        "field": "Service Name"
+      },
+      "signs": [
+        "S28",
+        "S25",
+        "S47",
+        "S43",
+        "S33",
+        "S36",
+        "S29"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "services.csv",
+      "source_cell": 7,
+      "original": "qotd",
+      "tokens": [
+        "q",
+        "o",
+        "t",
+        "d"
+      ],
+      "locator": {
+        "csv_record_index": 38,
+        "field": "Service Name"
+      },
+      "signs": [
+        "S40",
+        "S38",
+        "S43",
+        "S28"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "services.csv",
+      "source_cell": 8,
+      "original": "msp",
+      "tokens": [
+        "m",
+        "s",
+        "p"
+      ],
+      "locator": {
+        "csv_record_index": 40,
+        "field": "Service Name"
+      },
+      "signs": [
+        "S36",
+        "S42",
+        "S39"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "services.csv",
+      "source_cell": 9,
+      "original": "chargen",
+      "tokens": [
+        "c",
+        "h",
+        "a",
+        "r",
+        "g",
+        "e",
+        "n"
+      ],
+      "locator": {
+        "csv_record_index": 42,
+        "field": "Service Name"
+      },
+      "signs": [
+        "S27",
+        "S32",
+        "S25",
+        "S41",
+        "S31",
+        "S29",
+        "S37"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "services.csv",
+      "source_cell": 10,
+      "original": "ftp-data",
+      "tokens": [
+        "f",
+        "t",
+        "p",
+        "-",
+        "d",
+        "a",
+        "t",
+        "a"
+      ],
+      "locator": {
+        "csv_record_index": 44,
+        "field": "Service Name"
+      },
+      "signs": [
+        "S30",
+        "S43",
+        "S39",
+        "S01",
+        "S28",
+        "S25",
+        "S43",
+        "S25"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "services.csv",
+      "source_cell": 11,
+      "original": "ftp",
+      "tokens": [
+        "f",
+        "t",
+        "p"
+      ],
+      "locator": {
+        "csv_record_index": 47,
+        "field": "Service Name"
+      },
+      "signs": [
+        "S30",
+        "S43",
+        "S39"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "services.csv",
+      "source_cell": 12,
+      "original": "ssh",
+      "tokens": [
+        "s",
+        "s",
+        "h"
+      ],
+      "locator": {
+        "csv_record_index": 50,
+        "field": "Service Name"
+      },
+      "signs": [
+        "S42",
+        "S42",
+        "S32"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "iana.raw",
+      "source_cell": 1,
+      "original": "AD",
+      "tokens": [
+        "A",
+        "D"
+      ],
+      "locator": {
+        "line": 31,
+        "field": "country code"
+      },
+      "signs": [
+        "S03",
+        "S06"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "iana.raw",
+      "source_cell": 2,
+      "original": "AE",
+      "tokens": [
+        "A",
+        "E"
+      ],
+      "locator": {
+        "line": 32,
+        "field": "country code"
+      },
+      "signs": [
+        "S03",
+        "S07"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "iana.raw",
+      "source_cell": 3,
+      "original": "AF",
+      "tokens": [
+        "A",
+        "F"
+      ],
+      "locator": {
+        "line": 33,
+        "field": "country code"
+      },
+      "signs": [
+        "S03",
+        "S08"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "iana.raw",
+      "source_cell": 4,
+      "original": "AG",
+      "tokens": [
+        "A",
+        "G"
+      ],
+      "locator": {
+        "line": 34,
+        "field": "country code"
+      },
+      "signs": [
+        "S03",
+        "S09"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "iana.raw",
+      "source_cell": 5,
+      "original": "AI",
+      "tokens": [
+        "A",
+        "I"
+      ],
+      "locator": {
+        "line": 35,
+        "field": "country code"
+      },
+      "signs": [
+        "S03",
+        "S11"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "iana.raw",
+      "source_cell": 6,
+      "original": "AL",
+      "tokens": [
+        "A",
+        "L"
+      ],
+      "locator": {
+        "line": 36,
+        "field": "country code"
+      },
+      "signs": [
+        "S03",
+        "S13"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "iana.raw",
+      "source_cell": 7,
+      "original": "AM",
+      "tokens": [
+        "A",
+        "M"
+      ],
+      "locator": {
+        "line": 37,
+        "field": "country code"
+      },
+      "signs": [
+        "S03",
+        "S14"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "iana.raw",
+      "source_cell": 8,
+      "original": "AO",
+      "tokens": [
+        "A",
+        "O"
+      ],
+      "locator": {
+        "line": 38,
+        "field": "country code"
+      },
+      "signs": [
+        "S03",
+        "S16"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "iana.raw",
+      "source_cell": 9,
+      "original": "AQ",
+      "tokens": [
+        "A",
+        "Q"
+      ],
+      "locator": {
+        "line": 39,
+        "field": "country code"
+      },
+      "signs": [
+        "S03",
+        "S18"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "iana.raw",
+      "source_cell": 10,
+      "original": "AR",
+      "tokens": [
+        "A",
+        "R"
+      ],
+      "locator": {
+        "line": 40,
+        "field": "country code"
+      },
+      "signs": [
+        "S03",
+        "S19"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "iana.raw",
+      "source_cell": 11,
+      "original": "AS",
+      "tokens": [
+        "A",
+        "S"
+      ],
+      "locator": {
+        "line": 41,
+        "field": "country code"
+      },
+      "signs": [
+        "S03",
+        "S20"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "iana.raw",
+      "source_cell": 12,
+      "original": "AT",
+      "tokens": [
+        "A",
+        "T"
+      ],
+      "locator": {
+        "line": 42,
+        "field": "country code"
+      },
+      "signs": [
+        "S03",
+        "S21"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "languages.txt",
+      "source_cell": 1,
+      "original": "aa",
+      "tokens": [
+        "a",
+        "a"
+      ],
+      "locator": {
+        "registry_record_index": 1,
+        "field": "Subtag",
+        "type": "language"
+      },
+      "signs": [
+        "S25",
+        "S25"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "languages.txt",
+      "source_cell": 2,
+      "original": "ab",
+      "tokens": [
+        "a",
+        "b"
+      ],
+      "locator": {
+        "registry_record_index": 2,
+        "field": "Subtag",
+        "type": "language"
+      },
+      "signs": [
+        "S25",
+        "S26"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "languages.txt",
+      "source_cell": 3,
+      "original": "ae",
+      "tokens": [
+        "a",
+        "e"
+      ],
+      "locator": {
+        "registry_record_index": 3,
+        "field": "Subtag",
+        "type": "language"
+      },
+      "signs": [
+        "S25",
+        "S29"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "languages.txt",
+      "source_cell": 4,
+      "original": "af",
+      "tokens": [
+        "a",
+        "f"
+      ],
+      "locator": {
+        "registry_record_index": 4,
+        "field": "Subtag",
+        "type": "language"
+      },
+      "signs": [
+        "S25",
+        "S30"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "languages.txt",
+      "source_cell": 5,
+      "original": "ak",
+      "tokens": [
+        "a",
+        "k"
+      ],
+      "locator": {
+        "registry_record_index": 5,
+        "field": "Subtag",
+        "type": "language"
+      },
+      "signs": [
+        "S25",
+        "S35"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "languages.txt",
+      "source_cell": 6,
+      "original": "am",
+      "tokens": [
+        "a",
+        "m"
+      ],
+      "locator": {
+        "registry_record_index": 6,
+        "field": "Subtag",
+        "type": "language"
+      },
+      "signs": [
+        "S25",
+        "S36"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "languages.txt",
+      "source_cell": 7,
+      "original": "an",
+      "tokens": [
+        "a",
+        "n"
+      ],
+      "locator": {
+        "registry_record_index": 7,
+        "field": "Subtag",
+        "type": "language"
+      },
+      "signs": [
+        "S25",
+        "S37"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "languages.txt",
+      "source_cell": 8,
+      "original": "ar",
+      "tokens": [
+        "a",
+        "r"
+      ],
+      "locator": {
+        "registry_record_index": 8,
+        "field": "Subtag",
+        "type": "language"
+      },
+      "signs": [
+        "S25",
+        "S41"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "languages.txt",
+      "source_cell": 9,
+      "original": "as",
+      "tokens": [
+        "a",
+        "s"
+      ],
+      "locator": {
+        "registry_record_index": 9,
+        "field": "Subtag",
+        "type": "language"
+      },
+      "signs": [
+        "S25",
+        "S42"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "languages.txt",
+      "source_cell": 10,
+      "original": "av",
+      "tokens": [
+        "a",
+        "v"
+      ],
+      "locator": {
+        "registry_record_index": 10,
+        "field": "Subtag",
+        "type": "language"
+      },
+      "signs": [
+        "S25",
+        "S45"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "languages.txt",
+      "source_cell": 11,
+      "original": "ay",
+      "tokens": [
+        "a",
+        "y"
+      ],
+      "locator": {
+        "registry_record_index": 11,
+        "field": "Subtag",
+        "type": "language"
+      },
+      "signs": [
+        "S25",
+        "S47"
+      ]
+    },
+    {
+      "category": "registry",
+      "source": "languages.txt",
+      "source_cell": 12,
+      "original": "az",
+      "tokens": [
+        "a",
+        "z"
+      ],
+      "locator": {
+        "registry_record_index": 12,
+        "field": "Subtag",
+        "type": "language"
+      },
+      "signs": [
+        "S25",
+        "S48"
+      ]
+    }
+  ]
+}

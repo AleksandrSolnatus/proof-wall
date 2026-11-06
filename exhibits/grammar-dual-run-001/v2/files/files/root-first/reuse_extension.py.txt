@@ -1,0 +1,151 @@
+#!/usr/bin/env python3
+"""ROOT-GRAMMAR-001 append-only reuse test; source constraints immutable inside cache.
+
+One certified problem base; multiple independently checked added query clauses.
+Covers compilation amortization, not generalization to unrelated problems.
+"""
+from __future__ import annotations
+import json, random, statistics, time
+from pathlib import Path
+import root_grammar001 as R
+import grammar001 as F
+
+BASE=Path(__file__).resolve().parent
+SEED=133001
+
+class ReuseCache:
+    def __init__(self,n,base):
+        self.n=n
+        # Base's constraint set is frozen; changing it requires construction of a new cache.
+        self.base=tuple(tuple(c) for c in base)
+        self.dsu, self.reduced,_,self.relations,self.trace,self.cost,self.conflict=R.compile_root(n,self.base)
+    def solve(self,query):
+        rclauses=[list(c) for c in self.reduced]
+        for clause in query:
+            mapped=set()
+            for lit in clause:
+                root,parity=self.dsu.find(abs(lit))
+                positive=(lit>0)^bool(parity)
+                mapped.add(root if positive else -root)
+            if any(-lit in mapped for lit in mapped): continue
+            rclauses.append(list(mapped))
+        if self.conflict: return None
+        rc=F.Cost()
+        root_ids=sorted({abs(x) for c in rclauses for x in c})
+        def dfs(a):
+            status,now=F.propagate(rclauses,a,rc,[])
+            if status=='UNSAT': return None
+            if status=='SAT': return now
+            root=next(x for x in root_ids if x not in now)
+            for bit in (False,True):
+                result=dfs({**now,root:bit})
+                if result is not None: return result
+            return None
+        outcome=dfs({})
+        if outcome is None: return None
+        bits=R.expand(self.n,self.dsu,outcome)
+        assert R.verify_original(list(self.base)+query,bits,R.RootCost())
+        return R.solution_string(self.n,bits)
+
+def queries(n,rng,count):
+    ret=[]
+    for j in range(count):
+        if j%4==0:
+            i=rng.randrange(1,n+1); ret.append([[i],[-i]])  # explicitly inconsistent
+        elif j%4==1:
+            i,k=rng.sample(range(1,n+1),2)
+            ret.append([[i if rng.randrange(2) else -i],
+                        [k if rng.randrange(2) else -k]])
+        else:
+            ret.append([[v if rng.randrange(2) else -v
+                         for v in rng.sample(range(1,n+1),rng.choice((1,2,3)))]])
+    return ret
+
+def solve_fixed(n,base,query):
+    solution=F.hybrid(n,base+query)[0]
+    if solution is not None:
+        a={i+1:solution[i]=='1' for i in range(n)}
+        assert R.verify_original(base+query,a,R.RootCost())
+    return solution
+
+def solve_root_fresh(n,base,query):
+    return R.hybrid_root(n,base+query)['solution']
+
+def case(n,n_queries=64):
+    rng=random.Random(SEED+n)
+    # A connected, internally consistent chain; fresh query clauses are not in the cached base.
+    hidden={i:rng.randrange(2) for i in range(1,n+1)}
+    b=[cl for i in range(1,n) for cl in R.encoded_xor(i,i+1,hidden[i]^hidden[i+1])]
+    qq=queries(n,rng,n_queries)
+    cache=ReuseCache(n,b)
+    rows=[]
+    for j,q in enumerate(qq):
+        oracle=F.independent_reference(n,b+q)
+        f=solve_fixed(n,b,q)
+        fresh=solve_root_fresh(n,b,q)
+        cached=cache.solve(q)
+        for sol in (f,fresh,cached):
+            assert (sol is None)==(not oracle)
+            if sol: assert sol in oracle
+        rows.append({'query_id':j,'clauses':q,'model_count':len(oracle),
+                     'fixed_hybrid_witness':f,'fresh_root_witness':fresh,'cached_witness':cached})
+    # Mutation control: a changed base is *not* an append-only query; rebuild is mandatory.
+    old_edge=hidden[1]^hidden[2]
+    changed_base=R.encoded_xor(1,2,old_edge^1)+b[2:]
+    mutation_query=[[1],[2 if old_edge==0 else -2]]
+    original_models=F.independent_reference(n,b+mutation_query)
+    mutated_models=F.independent_reference(n,changed_base+mutation_query)
+    assert original_models and not mutated_models
+    assert cache.solve(mutation_query) in original_models
+    updated_cache=ReuseCache(n,changed_base)
+    assert updated_cache.solve(mutation_query) is None
+    # All algorithm calls are reexecuted per measurement; *cache construction* is paid once per batch.
+    batch_sizes=[1,2,4,8,16,32,64]
+    series={}
+    for k in batch_sizes:
+        if k>len(qq): continue
+        sets=[('fixed',lambda: [solve_fixed(n,b,q) for q in qq[:k]]),
+              ('fresh_root',lambda: [solve_root_fresh(n,b,q) for q in qq[:k]]),
+              ('cached_root',lambda: [cc.solve(q) for cc in [ReuseCache(n,b)] for q in qq[:k]])]
+        records={name:[] for name,_ in sets}
+        rng_b=random.Random(SEED+n+k)
+        for batch in range(7):
+            rng_b.shuffle(sets)
+            for name,fn in sets:
+                fn() # warm
+                start=time.process_time_ns()
+                for _ in range(12): fn()
+                records[name].append((time.process_time_ns()-start)/12000) # microseconds per batch of k queries
+        series[str(k)]={name:{'median_total_us':round(statistics.median(v),2),
+                               'min_us':round(min(v),2),'max_us':round(max(v),2)}
+                        for name,v in records.items()}
+    return {'n':n,'base_clauses':b,'base_relations':len(cache.relations),
+            'base_builder_cost':R.asdict(cache.cost),
+            'mutation_control':{'old_base_sat_count':len(original_models),
+                                'changed_base_sat_count':len(mutated_models),
+                                'cache_was_rebuilt':True,
+                                'point':'Changing a base parity clause invalidates old grammar; not an append-only query'},
+            'query_count':len(qq),'query_results':rows,'timings':series,
+            'cache_contract':'immutable exact base CNF; new additive query clauses only; any change to base requires rebuilding'}
+
+def main():
+    studies=[case(8),case(12)]
+    summary={}
+    for study in studies:
+        n=study['n']
+        break_even=[int(k) for k,v in study['timings'].items()
+                    if v['cached_root']['median_total_us'] < v['fixed']['median_total_us']]
+        summary[str(n)]={'smallest_observed_sampled_break_even_k':min(break_even) if break_even else None,
+                         'k64_total_us':{method:values['median_total_us']
+                                         for method,values in study['timings']['64'].items()},
+                         'satisfiable_queries':sum(r['model_count']>0 for r in study['query_results']),
+                         'unsatisfiable_queries':sum(r['model_count']==0 for r in study['query_results'])}
+    record={'name':'ROOT-GRAMMAR-001-REUSE-EXTENSION','studies':studies,'summary':summary,
+            'limits':['query family shares unchanged parity base, not unseen unrelated CNFs',
+                      'microbenchmarks are Python process CPU microseconds on one machine',
+                      'query oracle only used after executing methods, not to pick constraints',
+                      'grammar cache does not accept mutation of the original base']}
+    (BASE/'reuse-results.json').write_text(json.dumps(record,indent=2)+'\n')
+    print(json.dumps(summary,indent=2))
+
+if __name__=='__main__':main()

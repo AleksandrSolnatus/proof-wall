@@ -1,0 +1,28 @@
+# Dial Geometry 02: an unstable representation stopped inference
+
+## Original question
+
+Are the declared landmark measurements stable enough to support the proposed radial-shell and angle tests?
+
+## Method and recorded result
+
+The preserved execution measures all 45 standardized drawings under the frozen representation checks. Its gate fails before inferential sampling; code, landmark records, diagnostics and saved checks are retained.
+
+All 45 signs were audited; zero qualified for the frozen landmark representation and no substantive null draws followed.
+
+## Scope and limits
+
+Completed failure of one mechanical representation, not a conclusion against underlying geometric organization or an archaeological interpretation.
+
+- Standardized drawings are not ancient impression measurements; the result does not refute shell/angle organization itself.
+- The original recipe requires Python with numpy/scipy/Pillow/matplotlib and Inkscape. It specifies how to extract the included reference ZIP and restore the expected source layout. No dependencies were installed or environment recreated here.
+- The full 167-member archive includes all standardized source SVGs, reference ZIP, per-sign data and diagnostic PNGs. The 2 MB self-contained illustrated report opens only on selection. Same-executor separate-code checks are not an independent human review.
+- This assembly inherits the recorded scientific checks and does not establish deployment behavior or public permission.
+- Preserved archive: Phaistos_Geometry_02_Execution_2026-10-06.zip. The attached files are inspection selections; they do not replace its complete runtime directory. No public archive URL or permission is implied. Full figures, historical versions and omitted dependencies remain in that archive.
+- S01–S45 identities and Pen/Pencil alternatives remain as recorded. Display orientation is not proven reading direction; no decoding or acceptance of Visual Families follows.
+
+## Evidence available for inspection
+
+The files below preserve the selected original bytes. Existing scientific checks remain completed; this gathering adds no experiment. Source code, data and receipts are presented with the scope stated in their original records. Any original reproduction instructions describe the original archive layout, not this smaller inspection packet.
+
+Publication review covers these exact selected bytes. Full archives and any figures remain preserved separately; their public release is a separate decision.

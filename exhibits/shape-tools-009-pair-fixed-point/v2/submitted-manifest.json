@@ -1,0 +1,124 @@
+{
+  "article": "article.md",
+  "artifact_type": "failed-attempt",
+  "claim_scope": "A limitation of the specified finite probing procedure, alongside its successful cases. It is not a lower bound for every SAT solver.",
+  "date": "2026-11-05",
+  "files": [
+    {
+      "attribution": "The Bridges Group — QUARK; prepared from completed research records.",
+      "bytes": 2179,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "article",
+      "sha256": "0b7dfd721b249ce6924bb4d8eb061c5ae14d5c0711f35eccd676ac1c815733b5"
+    },
+    {
+      "attribution": "The Bridges Group — QUARK; original authors/contributors as credited in retained source.",
+      "bytes": 6119,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/baseline.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "f68083341f0c971b16118978ca1c19c90e0f9d6b05200d4fb0e51b305c6c16d7"
+    },
+    {
+      "attribution": "The Bridges Group — QUARK; original authors/contributors as credited in retained source.",
+      "bytes": 5987,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/experiment.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "4541e0cce7aeb5dbb75e1610aa3c828dd94e2f7607b17b0bac62a7796d07e606"
+    },
+    {
+      "attribution": "The Bridges Group — QUARK; original authors/contributors as credited in retained source.",
+      "bytes": 465,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/original-checksums.txt",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "e729c111824781921e88288bfcb9f0d9e61ab0cb95ce438fc09259112da96d06"
+    },
+    {
+      "attribution": "The Bridges Group — QUARK; original authors/contributors as credited in retained source.",
+      "bytes": 7212,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/prior008.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "00a92664e94220611dadacc0b0020f0a6ee8fb640a78ac434892d95f595b81b7"
+    },
+    {
+      "attribution": "Public redacted excerpt of original research file; source retained unchanged in private archive.",
+      "bytes": 12133,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/report-public-excerpt.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "38b2e51435a0f9fa43155b5ab4782b94d99838e4a34927684b1f6f19b2610ba0"
+    },
+    {
+      "attribution": "The Bridges Group — QUARK; original authors/contributors as credited in retained source.",
+      "bytes": 1274459,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/results.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "22599fb0e27c6749449211ce52ef1b25798d724fdafcb9d01f111c520b180b83"
+    },
+    {
+      "attribution": "The Bridges Group — QUARK; original authors/contributors as credited in retained source.",
+      "bytes": 4171,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/run.log.txt",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "a9980418f8e6bfe8f3c9682a787a837e3454473ecd89596a21cc710123c9faf4"
+    }
+  ],
+  "finding": "For the tested odd K4 parity contradiction, pair/single-assumption probing reaches a fixed point without discovering the needed refutation.",
+  "gardens": [],
+  "id": "shape-tools-009-pair-fixed-point",
+  "limitations": [
+    "Lower bound for this specified probing procedure, not for every solver. A failed assumption alone is not a proof that the unconditioned formula is UNSAT.",
+    "Python source, prior implementation and baseline are included. Use the archived report for the original command and accounting; no command was executed during assembly.",
+    "All seven original members are directly attached. Result counters retain overlapping/related controls and do not imply independent sampled hard instances or a timing result.",
+    "This assembly inherits the recorded scientific checks and does not establish deployment behavior or public permission.",
+    "Preserved archive: SHAPE-TOOLS-009-2026-11-05.zip. The attached files are inspection selections; they do not replace its complete runtime directory. No public archive URL or permission is implied. Full figures, historical versions and omitted dependencies remain in that archive.",
+    "Public source selections omit specified private identifiers or provenance-sensitive inputs; private originals and source hashes remain preserved."
+  ],
+  "method": "The original experiment extends a prior probing implementation, preserves its fixed-point counterexample and controls, and retains trace replay, truth-table checking, mutation failures and work counters.",
+  "open_questions": [
+    "Further generalization remains a separate research question; it is not a prerequisite for presenting the recorded bounded outcome."
+  ],
+  "provenance": {
+    "authors": [
+      "The Bridges Group — QUARK",
+      "Original research contributors as credited in the retained experiment record"
+    ],
+    "change_note": "Version 2 is a public selected-file edition of previously checked v1. Scientific findings unchanged; private source references redacted; the original review/archive remains in private custody.",
+    "origin": "Unchanged original archive SHAPE-TOOLS-009-2026-11-05.zip; SHA-256 c6a1b643dc9bb18d62da5c8f0286da468205381c1627b1ee9118508e9984c1d4. Original source authorship and verification scope remain in the report."
+  },
+  "publication": {
+    "attribution": "The Bridges Group — QUARK; original research contributors as credited in retained records.",
+    "intent": "request-review",
+    "license": "All rights reserved. No new open-source license granted.",
+    "rights": "Owner-requested public reading and downloading of the selected exhibit only; preserves private originals; not an open permission for derivative commercial redistribution."
+  },
+  "question": "Does repeatedly learning from all single- and pair-assumption probes always resolve the tested local-rule failures?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Shape Tools 009: when repeated pair probing stops learning",
+  "version": 2
+}

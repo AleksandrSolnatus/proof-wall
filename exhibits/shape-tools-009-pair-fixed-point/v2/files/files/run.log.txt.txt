@@ -1,0 +1,95 @@
+counting_subsets {'input_literals': 12288, 'assignment_rows': 44672, 'calls': 60112, 'passes': 147434, 'checker_literal_visits': 1092777, 'clause_visits': 1218584, 'literal_visits': 2482612, 'assignments': 168145, 'probes': 56576, 'probes_1': 14144, 'assumption_literals_built': 99008, 'proof_steps': 166957, 'probes_2': 42432, 'cases': 1024, 'unsat': 1, 'detected': 1, 'rounds': 1768, 'learned': 2620, 'failed_probes': 11434}
+pure_three_subsets {'input_literals': 3072, 'assignment_rows': 6360, 'calls': 10780, 'passes': 24070, 'checker_literal_visits': 190916, 'clause_visits': 185670, 'literal_visits': 434366, 'assignments': 22885, 'probes': 9702, 'probes_1': 3234, 'assumption_literals_built': 16170, 'proof_steps': 22614, 'probes_2': 6468, 'cases': 256, 'unsat': 1, 'detected': 1, 'rounds': 539, 'learned': 864, 'failed_probes': 2094}
+counting_sign_flips {'input_literals': 384, 'assignment_rows': 512, 'calls': 544, 'passes': 1152, 'clause_visits': 11136, 'literal_visits': 24512, 'checker_literal_visits': 6112, 'assignments': 1856, 'probes': 512, 'probes_1': 128, 'assumption_literals_built': 896, 'proof_steps': 1792, 'failed_probes': 448, 'probes_2': 384, 'cases': 16, 'unsat': 16, 'detected': 16, 'rounds': 16, 'learned': 352}
+K4_all_charges {'input_literals': 768, 'assignment_rows': 2048, 'calls': 1184, 'passes': 3104, 'clause_visits': 55424, 'literal_visits': 154752, 'checker_literal_visits': 63360, 'assignments': 2880, 'probes': 1152, 'probes_1': 192, 'assumption_literals_built': 2112, 'proof_steps': 2880, 'probes_2': 960, 'cases': 16, 'unsat': 8, 'detected': 0, 'rounds': 16, 'learned': 0}
+K4_delete_one {'input_literals': 720, 'assignment_rows': 2048, 'calls': 1184, 'passes': 3056, 'clause_visits': 51504, 'literal_visits': 143184, 'checker_literal_visits': 59664, 'assignments': 2832, 'probes': 1152, 'probes_1': 192, 'assumption_literals_built': 2112, 'proof_steps': 2832, 'probes_2': 960, 'cases': 16, 'unsat': 0, 'detected': 0, 'rounds': 16, 'learned': 0}
+selected {
+  "counting": {
+    "status": "UNSAT",
+    "new": [
+      22
+    ],
+    "counts": {
+      "input_literals": 24,
+      "assignment_rows": 32,
+      "calls": 34,
+      "passes": 72,
+      "clause_visits": 697,
+      "literal_visits": 1534,
+      "checker_literal_visits": 382,
+      "assignments": 116,
+      "probes": 32,
+      "probes_1": 8,
+      "assumption_literals_built": 56,
+      "proof_steps": 112,
+      "failed_probes": 28,
+      "probes_2": 24
+    }
+  },
+  "pure_three": {
+    "status": "UNSAT",
+    "new": [
+      12,
+      6
+    ],
+    "counts": {
+      "input_literals": 24,
+      "assignment_rows": 24,
+      "calls": 40,
+      "passes": 76,
+      "clause_visits": 900,
+      "literal_visits": 2284,
+      "checker_literal_visits": 500,
+      "assignments": 91,
+      "probes": 36,
+      "probes_1": 12,
+      "assumption_literals_built": 60,
+      "proof_steps": 90,
+      "probes_2": 24,
+      "failed_probes": 30
+    }
+  },
+  "K4_odd": {
+    "status": "UNKNOWN",
+    "new": [
+      0
+    ],
+    "counts": {
+      "input_literals": 48,
+      "assignment_rows": 128,
+      "calls": 74,
+      "passes": 194,
+      "clause_visits": 3464,
+      "literal_visits": 9672,
+      "checker_literal_visits": 3960,
+      "assignments": 180,
+      "probes": 72,
+      "probes_1": 12,
+      "assumption_literals_built": 132,
+      "proof_steps": 180,
+      "probes_2": 60
+    }
+  },
+  "K4_even": {
+    "status": "UNKNOWN",
+    "new": [
+      0
+    ],
+    "counts": {
+      "input_literals": 48,
+      "assignment_rows": 128,
+      "calls": 74,
+      "passes": 194,
+      "clause_visits": 3464,
+      "literal_visits": 9672,
+      "checker_literal_visits": 3960,
+      "assignments": 180,
+      "probes": 72,
+      "probes_1": 12,
+      "assumption_literals_built": 132,
+      "proof_steps": 180,
+      "probes_2": 60
+    }
+  }
+}
+triple {"odd": {"calls": 160, "passes": 400, "clause_visits": 6120, "literal_visits": 16824, "assignments": 864, "probes": 160, "failed": 144, "checker_literal_visits": 2880}, "even": {"calls": 160, "passes": 472, "clause_visits": 8800, "literal_visits": 23664, "assignments": 864, "probes": 160, "failed": 16, "checker_literal_visits": 9024}}

@@ -1,0 +1,27 @@
+# Arepo P-32 — completed divergence-onset audit
+
+## Original question
+
+What can the already-saved P-29/P-30 ledgers establish about the order of divergence, without running new simulations?
+
+## Method and recorded result
+
+The historical audit compares existing saved observables, intervals and event records under its frozen analysis plan. The packet contains that analysis source, full outputs and recorded independent checks; no analyzer or solver is executed now.
+
+The prepared existing-data audit is complete. Its recorded observations do not identify one uniquely first causal stage at the saved time resolution. Rain remains scientifically unresolved.
+
+## Scope and limits
+
+The completed October 2 retrospective audit and its archived numerical resolution limits, not physical-water acceptance.
+
+- Quarter-second aggregate observations cannot recover an unrecorded within-step causal order.
+- The original P-29/P-30 archives are exact external dependencies; they are not included in this staging packet.
+- The optional regression against the earlier narrower audit needs that separate pinned source.
+- No native app, physical system, new trajectory or solver is tested by this assembly.
+- Preserved archive: P32_Divergence_Onset_Audit_Completed_2026-10-02.zip. The attached files are inspection selections; they do not replace its complete runtime directory. No public archive URL or permission is implied. Full figures, historical versions and omitted dependencies remain in that archive.
+
+## Evidence available for inspection
+
+The files below preserve the selected original bytes. Existing scientific checks remain completed; this gathering adds no experiment. Source code, data and receipts are presented with the scope stated in their original records. Any original reproduction instructions describe the original archive layout, not this smaller inspection packet.
+
+Publication review covers these exact selected bytes. Full archives and any figures remain preserved separately; their public release is a separate decision.

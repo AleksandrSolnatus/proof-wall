@@ -1,0 +1,134 @@
+#!/usr/bin/env python3
+"""Read-only independent interval audit; no optimizer or Rulebench imports.
+
+The instance parser is deliberately specific to the preserved Rocky-002 prompt.
+Model prose was reviewed separately; see report for the requirement mapping.
+"""
+from pathlib import Path
+import base64
+import csv
+import hashlib
+import io
+import json
+import os
+import re
+import sys
+from collections import Counter
+
+ROOT = Path(__file__).resolve().parent
+PROMPT = ROOT / 'originals/Rocky_Scheduling_002_Prompt.txt'
+CSV = ROOT / 'originals/MATH/TOOLS/RULEBENCH_SCHEDULING_003/Rocky-002-Checked-2304.csv'
+EXPECTED = {
+    PROMPT.name: '525c850f053b305f21951daed7824549b73dce861faeefbcb0495903a0393dfc',
+    CSV.name: '228057c8750b9255f1d4209a49ace22b37d128492be585508cfa760fa7fa8d0d',
+}
+
+def require(condition, detail):
+    if not condition:
+        raise ValueError(detail)
+
+def digest(data):
+    return hashlib.sha256(data).hexdigest()
+
+def audit():
+    original_bytes, csv_bytes = PROMPT.read_bytes(), CSV.read_bytes()
+    for path, data in [(PROMPT, original_bytes), (CSV, csv_bytes)]:
+        require(digest(data) == EXPECTED[path.name], 'Original bytes changed: ' + path.name)
+    original = original_bytes.decode('utf-8', errors='strict')
+    require(original.count('BEGIN INSTANCE') == original.count('END INSTANCE') == 1,
+            'Expected exactly one instance block')
+    match = re.search(r'^BEGIN INSTANCE\n(.*?)\nEND INSTANCE$', original, flags=re.M | re.S)
+    require(match is not None, 'Original instance wrapper missing')
+    numeric = match.group(1).splitlines()
+    require(all(re.fullmatch(r'[0-9]+(?: [0-9]+)*', line) for line in numeric), 'Malformed instance row')
+    jobs, machines = map(int, numeric[0].split())
+    require((jobs, machines) == (30, 20), 'Unexpected instance dimensions')
+    require(len(numeric) == jobs + 1, 'Wrong number of job routes')
+    operations = {}
+    for job, line in enumerate(numeric[1:]):
+        values = list(map(int, line.split()))
+        require(len(values) == 40, 'Wrong route length')
+        require(sorted(values[::2]) == list(range(machines)), 'Route does not visit every machine once')
+        for stage, (machine, duration) in enumerate(zip(values[::2], values[1::2])):
+            require(duration > 0, 'Nonpositive duration')
+            operations[job, stage] = (machine, duration)
+
+    text = csv_bytes.decode('utf-8', errors='strict')
+    rows = list(csv.reader(io.StringIO(text, newline='')))
+    require(rows.pop(0) == ['job', 'stage', 'machine', 'start', 'finish'], 'Unexpected raw CSV header')
+    require(len(rows) == 600, 'Wrong candidate row count')
+    require(all(len(r) == 5 and all(re.fullmatch(r'0|[1-9][0-9]*', v) for v in r) for r in rows),
+            'Noncanonical integer field or extra column')
+    values = [tuple(map(int, r)) for r in rows]
+    keys = [(j, s) for j, s, m, a, b in values]
+    require(Counter(keys) == Counter(operations.keys()), 'Missing, duplicate, or unexpected operation')
+    require(all(i == 20 * j + s for i, (j, s) in enumerate(keys)), 'Unexpected original row order')
+    by_key = {(j, s): (m, a, b) for j, s, m, a, b in values}
+    for j, s, m, a, b in values:
+        expected_machine, duration = operations[j, s]
+        require(m == expected_machine, 'Machine mismatch')
+        require(a >= 0 and b - a == duration, 'Negative start or duration mismatch')
+        if s:
+            require(a >= by_key[j, s - 1][2], 'Job precedence conflict')
+    machine_pair_checks = 0
+    for i, left in enumerate(values):
+        for right in values[i + 1:]:
+            if left[2] == right[2]:
+                machine_pair_checks += 1
+                require(left[4] <= right[3] or right[4] <= left[3], 'Machine interval conflict')
+    makespan = max(r[4] for r in values)
+    require(makespan == 2304, 'Historical finish mismatch')
+
+    receipt = json.loads((ROOT / 'receipts/pr8-original-requirements.json').read_text())
+    require(base64.b64decode(receipt['inputs']['original']['data']) == original_bytes,
+            'Receipt original snapshot differs')
+    require(base64.b64decode(receipt['inputs']['candidateCsv']['data']) == csv_bytes,
+            'Receipt CSV snapshot differs')
+    require(receipt['binding']['originalFileSha256'] == digest(original_bytes), 'Wrong prompt binding')
+    require(receipt['binding']['candidateCsvSha256'] == digest(csv_bytes), 'Wrong CSV binding')
+    checked = receipt['checker']['candidate']['schedule']
+    fields = ['job', 'stage', 'machine', 'start', 'finish']
+    require([tuple(r[f] for f in fields) for r in checked] == values,
+            'PR CSV-to-JSON conversion changed values or row order')
+    require(receipt['checker']['candidate']['makespan'] == makespan, 'Wrong captured finish claim')
+    require(receipt['status'] == 'unsupported' and receipt['solveCalls'] == 0, 'Unexpected PR result')
+
+    identities = []
+    for path, data in [(PROMPT, original_bytes), (CSV, csv_bytes)]:
+        attrs = {n: os.getxattr(path, n).decode() for n in os.listxattr(path) if n.startswith('user.library-')}
+        identities.append({'path': str(path.relative_to(ROOT)), 'bytes': len(data),
+                           'sha256': digest(data), 'library_identity_attributes': attrs})
+    # Confirm that neither the original input nor candidate was modified by any check.
+    require(PROMPT.read_bytes() == original_bytes and CSV.read_bytes() == csv_bytes, 'Original mutated')
+    return {
+        'schema': 'rocky-pr8-real-input-audit-1',
+        'independent_of_rulebench_implementation': True,
+        'originals': identities,
+        'instance': {'jobs': jobs, 'machines': machines, 'operations': len(operations),
+                     'route_operations_per_job': 20, 'intervals': 'half-open [start,finish)'},
+        'csv': {'raw_header': fields, 'rows': len(rows), 'unique_operation_keys': len(set(keys)),
+                'every_expected_operation_exactly_once': True,
+                'csv_to_receipt_json_values_and_order_identical': True,
+                'six_column_conversion_performed': False,
+                'index_column_in_raw_file': False,
+                'row_ordinal_equals_20_job_plus_stage': True,
+                'reason': 'Recovered original bytes already have the five-column header.'},
+        'independent_interval_result': {
+            'feasible': True, 'makespan': makespan, 'duration_and_machine_checks': 600,
+            'job_precedence_checks': jobs * 19, 'same_machine_pair_checks': machine_pair_checks,
+            'integer_nonnegative_times': True, 'solver_calls': 0,
+            'optimality': 'not_assessed', 'best_known_status': 'not_assessed'},
+        'pr8_result': {'executed': True, 'status': receipt['status'], 'valid': receipt['valid'],
+                      'feasibility': receipt['feasibility'], 'solve_calls': receipt['solveCalls'],
+                      'semantic_feasibility_gate': 'not_run',
+                      'raw_snapshot_bytes_verified': True,
+                      'reproduced_historical_feasibility': False},
+        'source_boundaries': 'Independent audit checks the fixed-route feasibility MODEL reviewed in the report. It does not fulfill optimization or other original deliverables.',
+    }
+
+if __name__ == '__main__':
+    try:
+        print(json.dumps(audit(), indent=2))
+    except Exception as exc:
+        print('AUDIT FAILED: ' + str(exc), file=sys.stderr)
+        sys.exit(1)

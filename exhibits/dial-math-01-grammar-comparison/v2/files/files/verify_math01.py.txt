@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+"""Recompute frozen cross-validation summaries and audit role-table inventory (not independent validation)."""
+import csv, hashlib, json, math, pathlib
+import run_math01 as r
+root=pathlib.Path(__file__).resolve().parent
+corpus=root.parent/'inputs'/'corpus_masked.json'
+record=json.loads((root/'results.json').read_text())
+a=r.load(corpus,'S07'); b=r.load(corpus,'S25')
+fams=r.families(a,b); folds,_=r.fold_assign(a,fams)
+assert len(fams)==record['metadata']['family_count']
+for key,cells in (('S07',a),('S25',b)):
+    res=r.evaluate(cells,folds)
+    got=record['variants'][key]['observed']
+    for model in r.MODELS:
+        assert math.isclose(res['bits_per_token'][model],got['bits_per_token'][model],rel_tol=0,abs_tol=1e-11)
+    for model in ('W_face-continuity','D_language-bigram'):
+        assert math.isclose(res['edge_bits_per_target'][model],got['edge_bits_per_target'][model],rel_tol=0,abs_tol=1e-11)
+    assert res['edge_n']==57
+rows=list(csv.DictReader((root.parent/'MATH-01-ROLE-TABLE.csv').open()))
+assert len(rows)==45 and set(x['sign'] for x in rows)==set(r.SIGNS)
+assert sum(int(x['count_S07_C28']) for x in rows)==237
+assert sum(int(x['count_S25_C28']) for x in rows)==237
+assert sum(int(x['start_S07_C28']) for x in rows)==60
+assert sum(int(x['end_S07_C28']) for x in rows)==60
+assert sum(int(x['middle_S07_C28']) for x in rows)==117
+assert next(x for x in rows if x['sign']=='S02')['start_S07_C28']=='18'
+assert hashlib.sha256(corpus.read_bytes()).hexdigest()==r.SOURCE_SHA
+print('PASS: source digest, eligibility, 45 role rows, 5-fold model-score replay, 57 valid boundary starts, and variants')

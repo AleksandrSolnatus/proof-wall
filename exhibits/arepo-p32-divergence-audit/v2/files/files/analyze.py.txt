@@ -1,0 +1,219 @@
+#!/usr/bin/env python3
+"""P32 read-only retrospective analysis. Standard library; no historical code imports."""
+import argparse, array, csv, hashlib, json, math, pathlib, sys
+
+STAGES=['dKEExternal','dKEPredictCap','dKEReconstruction','dKEFloorVelocityRule','dKEViscosity','dKEPostCap']
+COUNTS=['pairCorrections','cohesionPairs','repulsionEvaluations','shellEvaluations','positiveAttractionEvaluations','relationBranchTransitions','repulsionToShellTransitions','shellToRepulsionTransitions','attractionCapEvents','reconstructionSamples','floorClampEvents','wallClampEvents','floorContactParticleSteps','speedCapPredictEvents','speedCapPostEvents','correctionCapEvents']
+SUMS=['repulsionDemand','repulsionApplied','attractionRawRequest','cohesionApplied','netPairCorrection','boundaryProjectionDistance','reconstructionDeltaVSum']
+MAXIMA=['maxAttractionRawRequest','maxUncappedPairRequest','reconstructionDeltaVMax']
+EP_PRIMARY=['overlapMaxFractionOfSpacing','overlapRms','minimumNeighborDistance','residualUncappedEndpointDemand','residualNetRepulsionDemand','rmsSpeed','maxSpeed','kineticEnergyProxy']
+EVENTS=['correctionCapEvents','attractionCapEvents','speedCapPredictEvents','speedCapPostEvents','relationBranchTransitions','repulsionToShellTransitions','shellToRepulsionTransitions','floorClampEvents','wallClampEvents','floorContactParticleSteps']
+WINDOWS={'early':[0,1],'full':[0,30],'late':[25,30]}
+PLAN_HASH='103df258d15b1475ac05ab921446a99829938713821acd6200a230618ff2ca55'
+
+def sha(b):return hashlib.sha256(b).hexdigest()
+def dump(p,x):p.write_text(json.dumps(x,indent=2,allow_nan=False)+'\n')
+def csvwrite(p,rows):
+    with p.open('w') as f:
+        w=csv.DictWriter(f,fieldnames=list(rows[0]),lineterminator='\n');w.writeheader();w.writerows(rows)
+def finite(x):
+    if isinstance(x,dict):return all(finite(v) for v in x.values())
+    if isinstance(x,list):return all(finite(v) for v in x)
+    return x is None or not isinstance(x,(float,int)) or math.isfinite(x)
+def divide(a,b):return a/b if b else None
+def pairs():
+    result=[]
+    def add(group,l,r):result.append(dict(comparison=l+'__minus__'+r,group=group,left=l,right=r))
+    for law in 'AC':
+        for l,r in [('0.0125','0.00625'),('0.0125','0.003125'),('0.00625','0.003125')]:add('fixed_dt',f'fixed_{law}_{l}',f'fixed_{law}_{r}')
+    for dt in ['0.003125','0.00625','0.0125']:add('fixed_law',f'fixed_C_{dt}',f'fixed_A_{dt}')
+    for law in 'AC':
+        for dt in ['0.003125','0.0125']:add('scaled_vs_fixed',f'dt2_{law}_{dt}',f'fixed_{law}_{dt}')
+    for dt in ['0.003125','0.0125']:add('scaled_law',f'dt2_C_{dt}',f'dt2_A_{dt}')
+    for law in 'AC':
+        for l,r in [('dt2_'+law+'_0.0125','fixed_'+law+'_0.00625'),('dt2_'+law+'_0.0125','dt2_'+law+'_0.003125'),('fixed_'+law+'_0.00625','dt2_'+law+'_0.003125')]:add('scaled_dt_shared_base',l,r)
+    assert len(result)==21
+    return result
+
+def endpoint_denom(key,p,s):
+    spacing=p['spacing']; N=s['count']; M=s['representedMass']; cap=p['speedCap']
+    if key in ('residualUncappedEndpointDemand','residualNetRepulsionDemand'):return p['relaxation']*N*spacing
+    if key in ('kineticEnergyProxy','potentialEnergyProxy'):return .5*M*cap*cap
+    if key in ('meanSpeed','rmsSpeed','maxSpeed','comVx','comVy'):return cap
+    if key in ('momentumX','momentumY'):return M*cap
+    if key in ('surfaceVariance','occupiedSurfaceVariance'):return spacing*spacing
+    if key in ('maxHeight','meanSurfaceHeight','surfaceStd','occupiedWidth','comX','comY','overlapMean','overlapRms','overlapMax','minimumNeighborDistance','minimumY'):return spacing
+    if key in ('floorConnectedCount','count','overlapPairs','degenerateSkippedPairs'):return N
+    if key=='representedMass':return M
+    if key=='occupiedBinCount':return 64
+    if key=='nominalArea':return N*spacing*spacing
+    return 1
+
+def interval_denom(key,p,s):
+    a=s['intervalActivity']; steps=round(.25/p['dt']); N=s['count']; ps=N*steps; passes=ps*p['iterations']
+    if key in STAGES:return .5*s['representedMass']*p['speedCap']**2
+    if key in ['speedCapPredictEvents','speedCapPostEvents','floorContactParticleSteps','reconstructionSamples']:return ps
+    if key in ['floorClampEvents','wallClampEvents']:return passes
+    if key=='correctionCapEvents':return a['repulsionEvaluations']
+    if key=='attractionCapEvents':return a['positiveAttractionEvaluations']
+    if key in ['relationBranchTransitions','repulsionToShellTransitions','shellToRepulsionTransitions']:return a['repulsionEvaluations']+a['shellEvaluations']
+    if key in ['pairCorrections','repulsionEvaluations','cohesionPairs','shellEvaluations','positiveAttractionEvaluations']:return passes
+    if key in ['repulsionDemand','repulsionApplied']:return a['repulsionEvaluations']*p['spacing']
+    if key in ['attractionRawRequest','cohesionApplied']:return a['positiveAttractionEvaluations']*p['spacing']
+    if key in ['netPairCorrection','boundaryProjectionDistance']:return passes*p['spacing']
+    if key=='reconstructionDeltaVSum':return a['reconstructionSamples']*p['speedCap']
+    if key in ['maxUncappedPairRequest','maxAttractionRawRequest']:return p['spacing']
+    if key in ['reconstructionDeltaVRms','reconstructionDeltaVMax']:return p['speedCap']
+    raise ValueError(key)
+
+def qualifies(a,b):return a is not None and b is not None and abs(a-b)>max(1e-8,.10*max(abs(a),abs(b)))
+def firsts(rows):
+    first=next((i for i,r in enumerate(rows) if r['qualifies']),None)
+    sustained=next((i for i in range(len(rows)-1) if rows[i]['qualifies'] and rows[i+1]['qualifies']),None)
+    return first,sustained
+def bracket(t):return [max(0,t-.25),t]
+def validate_metrics(d):
+    ss=d['samples'];p=d['parameters'];assert len(ss)==121 and finite(d)
+    assert [s['t'] for s in ss]==[i*.25 for i in range(121)]
+    assert all(v==0 for v in ss[0]['intervalActivity'].values())
+    errors=[]
+    for i,s in enumerate(ss):
+        assert s['count']==s['representedMass']==3834
+        assert len(s['surfaceProfile'])==64 and sum(s['coordinationHistogram'])==s['count']
+        assert math.isclose(s['kineticEnergyProxy'],.5*s['representedMass']*s['rmsSpeed']**2,rel_tol=1e-12,abs_tol=1e-8)
+        if i:
+            a=s['intervalActivity'];assert a['reconstructionSamples']==round(.25/p['dt'])*s['count']
+            assert all(isinstance(a[k],int) and a[k]>=0 for k in COUNTS)
+            ps=round(.25/p['dt'])*s['count'];pps=ps*p['iterations']
+            assert all(a[k]<=ps for k in ['speedCapPredictEvents','speedCapPostEvents','floorContactParticleSteps'])
+            assert all(a[k]<=pps for k in ['floorClampEvents','wallClampEvents'])
+            assert a['correctionCapEvents']<=a['repulsionEvaluations'] and a['attractionCapEvents']<=a['positiveAttractionEvaluations']
+            assert a['relationBranchTransitions']==a['repulsionToShellTransitions']+a['shellToRepulsionTransitions']
+            err=abs(s['kineticEnergyProxy']-ss[i-1]['kineticEnergyProxy']-math.fsum(a[k] for k in STAGES));assert err<1e-6;errors.append(err)
+    return max(errors)
+
+def schema(d):
+    sk=list(d['samples'][0]);ik=list(d['samples'][0]['intervalActivity'])
+    return dict(plan_sha256=PLAN_HASH,comparison_pairs=pairs(),endpoint_keys=sk,interval_keys=ik,
+        endpoint_primary=EP_PRIMARY,interval_primary=ik,threshold='abs(l-r)>max(1e-8,0.10*max(abs(l),abs(r)))',persistence=2,
+        exact_implementation='endpoint_denom and interval_denom in analyze.py; all normalization denominators are exported rowwise',
+        normalization_notes={'counts':'particle-step/pass opportunities except caps use corresponding evaluations; transitions use all pair branch evaluations','displacement_sums':'per corresponding pair evaluation and spacing, or particle-pass and spacing','stage_energy':'0.5*M*speedCap^2 per interval; raw per-second rates also emitted','raw_residual':'preserved alongside coefficient-corrected normalization; not work','maxima':'never sum','RMS':'weighted squares using reconstructionSamples'},
+        context='two rows before through two after first and sustained onset; event windows likewise',plots='none')
+
+def run(originals,out,freeze=False):
+    originals=pathlib.Path(originals).resolve();out=pathlib.Path(out).resolve();out.mkdir(parents=True,exist_ok=True)
+    p30=originals/'p30/Rain_DT_Control_003';p29=originals/'p29/Rain_AC_Sensitivity_002'
+    assert sha((out/'ANALYSIS_PLAN.md').read_bytes())==PLAN_HASH
+    prot=json.loads((p30/'PROTOCOL_FROZEN.json').read_text());caseids=[c['id'] for c in prot['cases']]
+    first=json.loads((p30/'results'/f'{caseids[0]}.metrics.json').read_text())
+    if freeze:
+        dump(out/'SCHEMA_IMPLEMENTATION.json',schema(first));(out/'SCHEMA_IMPLEMENTATION.sha256').write_text(sha((out/'SCHEMA_IMPLEMENTATION.json').read_bytes())+'  SCHEMA_IMPLEMENTATION.json\n');return
+    assert json.loads((out/'CUSTODY_VERIFICATION.json').read_text())['status']=='PASS'
+    assert json.loads((out/'SCHEMA_IMPLEMENTATION.json').read_text())==schema(first)
+    identities=[];maps={a['label']:{m['path']:m for m in a['members']} for a in json.loads((out/'REQUIRED_ARCHIVES.json').read_text())}
+    def read(path):
+        b=path.read_bytes();rel=path.relative_to(originals);study=rel.parts[0];member='/'.join(rel.parts[1:]);m=maps[study][member]
+        assert sha(b)==m['sha256'] and len(b)==m['size_bytes'],member
+        identities.append(dict(path=str(rel),bytes=len(b),sha256=sha(b)));return b
+    read(p30/'src/solver.cpp');read(p30/'PROTOCOL_FROZEN.json');read(p29/'P29_PROTOCOL_FROZEN.json')
+    T=json.loads(read(p30/'inputs/T0.json'));assert sha(read(p29/'inputs/source/preserved/T0.json'))==sha((p30/'inputs/T0.json').read_bytes())
+    raw={};normalized={};endrows=[];introws=[];vectorrows=[];casevalidation={};windowrows=[];events=[];event_context=[];parity={}
+    for cid in caseids:
+        d=json.loads(read(p30/'results'/f'{cid}.metrics.json'));err=validate_metrics(d);p=d['parameters'];ss=d['samples'];raw[cid]=d;normalized[cid]={}
+        assert list(ss[0])==list(first['samples'][0]);assert d['frameCount']==31 and d['frameInterval']==1
+        f=json.loads(read(p30/'results'/f'{cid}.final.json'));assert f['elapsed']==30 and f['rainEnabled'] is False
+        assert len(f['pellets'])==3834 and finite(f)
+        assert [(x['id'],x['r']) for x in f['pellets']]==[(x['id'],x['r']) for x in T['pellets']]
+        b=read(p30/'results'/f'{cid}.positions.f64');assert len(b)==31*3834*2*8
+        arr=array.array('d');arr.frombytes(b)
+        if sys.byteorder!='little':arr.byteswap()
+        assert all(math.isfinite(v) for v in arr)
+        assert min(arr[0::2])>=p['radius']-1e-10 and max(arr[0::2])<=p['worldW']-p['radius']+1e-10
+        assert max(arr[1::2])<=p['floorY']-p['radius']+1e-10
+        assert list(arr[:7668])==[v for q in T['pellets'] for v in (q['x'],q['y'])]
+        assert list(arr[-7668:])==[v for q in f['pellets'] for v in (q['x'],q['y'])]
+        casevalidation[cid]=dict(closure_max=err,frame_count=31,frame_bytes=len(b),frame_checks='PASS',dt=p['dt'],steps_per_interval=round(.25/p['dt']))
+        if cid.startswith('fixed_'):
+            other=cid.replace('fixed_','original_');od=json.loads(read(p29/'results'/f'{other}.metrics.json'));of=json.loads(read(p29/'results'/f'{other}.final.json'))
+            assert od['samples']==ss and read(p29/'results'/f'{other}.positions.f64')==b
+            fc=json.loads(json.dumps(f));assert fc['P'].pop('attractionCap')==.012;assert fc==of
+            parity[cid]=dict(p29_case=other,samples_equal=True,positions_bytes_equal=True,final_semantic_equal=True,removed_metadata='P.attractionCap=0.012 only',independent_replicate=False)
+        for i,s in enumerate(ss):
+            t=s['t'];normalized[cid][t]={}
+            for key,value in s.items():
+                if key=='intervalActivity':continue
+                if isinstance(value,list):
+                    vectorrows.append(dict(case=cid,t=t,observable=key,values=value));continue
+                den=endpoint_denom(key,p,s);val=divide(value,den) if value is not None else None
+                endrows.append(dict(case=cid,t=t,observable=key,raw=value,denominator=den,normalized=val,primary=key in EP_PRIMARY))
+                if key in EP_PRIMARY:normalized[cid][t]['endpoint.'+key]=(value,val)
+            if i:
+                for key,value in s['intervalActivity'].items():
+                    den=interval_denom(key,p,s);val=divide(value,den)
+                    kind='signed_sum' if key in STAGES else 'count' if key in COUNTS else 'sum' if key in SUMS else 'maximum' if key in MAXIMA else 'sample_weighted_RMS'
+                    introws.append(dict(case=cid,start=t-.25,end=t,observable=key,kind=kind,raw=value,per_second=value/.25 if kind in ('signed_sum','count','sum') else None,denominator=den,normalized=val))
+                    normalized[cid][t]['interval.'+key]=(value,val)
+        for name,(lo,hi) in WINDOWS.items():
+            samplewin=[s for s in ss if lo<=s['t']<=hi];iw=[s for s in ss if lo<s['t']<=hi];assert len(iw)==round((hi-lo)/.25)
+            for key in ss[0]['intervalActivity']:
+                vals=[s['intervalActivity'][key] for s in iw]
+                kind='signed_sum' if key in STAGES else 'count' if key in COUNTS else 'sum' if key in SUMS else 'maximum' if key in MAXIMA else 'sample_weighted_RMS'
+                v=max(vals) if kind=='maximum' else math.sqrt(math.fsum(s['intervalActivity'][key]**2*s['intervalActivity']['reconstructionSamples'] for s in iw)/sum(s['intervalActivity']['reconstructionSamples'] for s in iw)) if kind=='sample_weighted_RMS' else math.fsum(vals)
+                windowrows.append(dict(case=cid,window=name,type='interval',observable=key,aggregation=kind,samples=len(iw),value=v,per_second=v/(hi-lo) if kind in ('signed_sum','sum','count') else None))
+            for key in ss[0]:
+                if key in ('intervalActivity','surfaceProfile','coordinationHistogram','t'):continue
+                vals=[s[key] for s in samplewin if s[key] is not None]
+                windowrows.append(dict(case=cid,window=name,type='endpoint',observable=key,aggregation='sample_mean',samples=len(vals),value=math.fsum(vals)/len(vals) if vals else None,per_second=None))
+        for key in EVENTS+STAGES:
+            for sign in ([1,-1] if key in STAGES else [1]):
+                flags=[s['intervalActivity'][key]/interval_denom(key,p,s)*sign>1e-8 if key in STAGES else s['intervalActivity'][key]>0 for s in ss[1:]]
+                ix=next((j+1 for j,v in enumerate(flags) if v),None)
+                events.append(dict(case=cid,observable=key,event='positive_above_tolerance' if key in STAGES and sign==1 else 'negative_below_tolerance' if key in STAGES else 'nonzero_count',start=ss[ix]['t']-.25 if ix else None,end=ss[ix]['t'] if ix else None,preceding_value=ss[ix-1]['intervalActivity'][key] if ix else None,preceding_interval_recorded=bool(ix and ix>1),value=ss[ix]['intervalActivity'][key] if ix else None,within_bin_order='unknown' if ix else 'absent'))
+                if ix:
+                    for j in range(max(1,ix-2),min(120,ix+2)+1):event_context.append(dict(case=cid,event=key+':'+str(sign),onset_end=ss[ix]['t'],start=ss[j]['t']-.25,end=ss[j]['t'],value=ss[j]['intervalActivity'][key],rmsSpeed=ss[j]['rmsSpeed'],predict_caps=ss[j]['intervalActivity']['speedCapPredictEvents'],post_caps=ss[j]['intervalActivity']['speedCapPostEvents']))
+    paired=[];onsets=[];contexts=[];vector_diffs=[]
+    for cmp in pairs():
+        left=cmp['left'];right=cmp['right'];ld=raw[left];rd=raw[right]
+        assert set(normalized[left])==set(normalized[right])
+        for obs in ['endpoint.'+k for k in EP_PRIMARY]+['interval.'+k for k in first['samples'][0]['intervalActivity']]:
+            rows=[]
+            for t in sorted(normalized[left]):
+                if obs not in normalized[left][t]:continue
+                lr,ln=normalized[left][t][obs];rr,rn=normalized[right][t][obs]
+                row=dict(comparison=cmp['comparison'],group=cmp['group'],left=left,right=right,observable=obs,start=max(0,t-.25),end=t,left_raw=lr,right_raw=rr,raw_difference=lr-rr if lr is not None and rr is not None else None,left_normalized=ln,right_normalized=rn,normalized_difference=ln-rn if ln is not None and rn is not None else None,threshold=max(1e-8,.1*max(abs(ln),abs(rn))) if ln is not None and rn is not None else None,qualifies=qualifies(ln,rn))
+                rows.append(row);paired.append(row)
+            ix,sus=firsts(rows)
+            onsets.append(dict(comparison=cmp['comparison'],group=cmp['group'],observable=obs,first_start=rows[ix]['start'] if ix is not None else None,first_end=rows[ix]['end'] if ix is not None else None,already_present_at_zero=bool(ix is not None and rows[ix]['end']==0),first_left_raw=rows[ix]['left_raw'] if ix is not None else None,first_right_raw=rows[ix]['right_raw'] if ix is not None else None,first_normalized_difference=rows[ix]['normalized_difference'] if ix is not None else None,preceding_end=rows[ix-1]['end'] if ix is not None and ix>0 else None,preceding_qualifies=rows[ix-1]['qualifies'] if ix is not None and ix>0 else None,sustained_start=rows[sus]['start'] if sus is not None else None,sustained_end=rows[sus]['end'] if sus is not None else None,qualifying_samples=sum(r['qualifies'] for r in rows),classification='absent' if ix is None else 'already_present_at_zero' if rows[ix]['end']==0 else 'observed_bracket_only'))
+            selected={j for v in [ix,sus] if v is not None for j in range(max(0,v-2),min(len(rows),v+3))}
+            for j in sorted(selected):
+                row=rows[j];t=row['end'];ls=ld['samples'][round(t*4)];rs=rd['samples'][round(t*4)]
+                contexts.append(dict(**row,first_departure_end=rows[ix]['end'] if ix is not None else None,sustained_departure_end=rows[sus]['end'] if sus is not None else None,left_rms=ls['rmsSpeed'],right_rms=rs['rmsSpeed'],left_caps=ls['intervalActivity']['speedCapPredictEvents']+ls['intervalActivity']['speedCapPostEvents'],right_caps=rs['intervalActivity']['speedCapPredictEvents']+rs['intervalActivity']['speedCapPostEvents']))
+        for ls,rs in zip(ld['samples'],rd['samples']):
+            for k in ['surfaceProfile','coordinationHistogram']:
+                lv=ls[k];rv=rs[k];n=max(len(lv),len(rv));vector_diffs.append(dict(comparison=cmp['comparison'],t=ls['t'],observable=k,left=lv,right=rv,difference=[(lv[j] if j<len(lv) else 0)-(rv[j] if j<len(rv) else 0) for j in range(n)]))
+    ordering=[]
+    for cmp in pairs():
+        selected=[r for r in onsets if r['comparison']==cmp['comparison']]
+        bins=sorted(set(r['first_end'] for r in selected if r['first_end'] is not None))
+        for r in selected:
+            end=r['first_end'];ties=[x['observable'] for x in selected if end is not None and x['first_end']==end]
+            ordering.append(dict(comparison=cmp['comparison'],observable=r['observable'],start=r['first_start'],end=end,bracket_rank=bins.index(end)+1 if end is not None else None,tied_candidate_count=len(ties),ordering='absent' if end is None else 'already_present_at_zero' if end==0 else 'unresolved_within_shared_bracket' if len(ties)>1 else 'observable_bracket_order_only',causal_order_established=False))
+    csvwrite(out/'ordering.csv',ordering)
+    csvwrite(out/'endpoint_values.csv',endrows);csvwrite(out/'interval_values.csv',introws);csvwrite(out/'window_summary.csv',windowrows);csvwrite(out/'events.csv',events);csvwrite(out/'event_context.csv',event_context);csvwrite(out/'paired_departures.csv',paired);csvwrite(out/'onsets.csv',onsets);csvwrite(out/'onset_context.csv',contexts)
+    dump(out/'endpoint_vectors.json',vectorrows);dump(out/'paired_vectors.json',vector_diffs)
+    # Compare corresponding prior preserved results only as a regression check; original audit is never executed or edited.
+    priorpath=out.parent/'inputs/research/rain/energy-ledger-audit-2026-10-02/results.json'
+    regression={}
+    if priorpath.exists():
+        prior=json.loads(priorpath.read_text())
+        for cid in caseids:
+            for w in WINDOWS:
+                for k in STAGES:
+                    v=next(r['value'] for r in windowrows if r['case']==cid and r['window']==w and r['observable']==k and r['type']=='interval')
+                    assert v==prior['cases']['p30/'+cid]['windows'][w]['totals'][k]
+        regression=dict(status='PASS',prior_commit='72109425e20e95137f36b450ba71909913c88714',ten_matching_case_stage_window_totals=True,prior_reexecuted=False)
+    dump(out/'INPUT_IDENTITIES.json',identities)
+    report=dict(status='PASS',plan_sha256=PLAN_HASH,schema_sha256=sha((out/'SCHEMA_IMPLEMENTATION.json').read_bytes()),analysis_sha256=sha(pathlib.Path(__file__).read_bytes()),unique_case_count=10,endpoint_samples=1210,intervals=1200,comparison_count=len(pairs()),onset_rows=len(onsets),paired_rows=len(paired),case_validation=casevalidation,control_parity=parity,shared_base_cases=['fixed_A_0.00625','fixed_C_0.00625'],independent_replicates_added=0,prior_regression=regression,scientific_acceptance=False)
+    dump(out/'ANALYSIS_VALIDATION.json',report);print(json.dumps({k:v for k,v in report.items() if k not in ('case_validation','control_parity')},indent=2))
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('originals');p.add_argument('output');p.add_argument('--freeze-schema',action='store_true');a=p.parse_args();run(a.originals,a.output,a.freeze_schema)

@@ -1,0 +1,131 @@
+"""One frozen-source failed-literal sweep. python3 experiment.py; no dependencies."""
+import itertools as it,json,copy,platform
+from collections import Counter
+from pathlib import Path
+import baseline
+
+def propagate(f,assumption=None):
+    assigned={} if assumption is None else {abs(assumption):assumption>0}
+    trace=[]; counts=Counter(calls=1)
+    while True:
+        counts['passes']+=1; changed=False
+        for i,c in enumerate(f):
+            counts['clause_visits']+=1; counts['literal_visits']+=len(c)
+            values=[None if abs(x) not in assigned else assigned[abs(x)]==(x>0) for x in c]
+            if True in values: continue
+            free=[x for x,v in zip(c,values) if v is None]
+            if not free: return dict(steps=trace,conflict=i,counts=dict(counts))
+            if len(free)==1:
+                x=free[0]; assigned[abs(x)]=x>0; trace.append([x,i]); counts['assignments']+=1; changed=True
+        if not changed:return dict(steps=trace,conflict=None,counts=dict(counts))
+
+def replay(f,assumption,proof):
+    # Independent replay: signed-literal set, explicit reason-index and unit checks.
+    known=set() if assumption is None else {assumption}
+    checked=0
+    for x,i in proof['steps']:
+        assert type(i) is int and 0<=i<len(f)
+        c=set(f[i]); checked+=len(c)
+        assert x in c and x not in known and -x not in known
+        assert all(-y in known for y in c if y!=x)
+        known.add(x)
+    i=proof['conflict']
+    if i is not None:
+        assert type(i) is int and 0<=i<len(f)
+        checked+=len(f[i]); assert all(-x in known for x in f[i])
+    else:
+        for c in f:
+            checked+=len(c)
+            if any(x in known for x in c):continue
+            assert len([x for x in c if -x not in known])>=2
+    return checked
+
+def sweep(f,n):
+    counts=Counter(input_literals=sum(map(len,f)))
+    initial=propagate(f); counts.update(initial['counts'])
+    probes=[]; learned=[]
+    # Deliberately complete all 2n tests on unchanged F, including if initial UP fails.
+    for v in range(1,n+1):
+        for sign in (-1,1):
+            a=sign*v; proof=propagate(f,a); counts.update(proof['counts'])
+            probes.append(dict(assumption=a,proof=proof))
+            if proof['conflict'] is not None: learned.append(-a)
+    final=propagate(f+[[x] for x in learned]); counts.update(final['counts'])
+    return dict(initial=initial,probes=probes,learned=learned,final=final,counts=dict(counts),
+                status='UNSAT' if final['conflict'] is not None else 'UNKNOWN')
+
+def check(f,n,r):
+    checked=replay(f,None,r['initial']); learned=[]
+    assert [p['assumption'] for p in r['probes']]==[s*v for v in range(1,n+1) for s in (-1,1)]
+    for p in r['probes']:
+        checked+=replay(f,p['assumption'],p['proof'])
+        if p['proof']['conflict'] is not None:learned.append(-p['assumption'])
+    assert r['learned']==learned
+    checked+=replay(f+[[x] for x in learned],None,r['final'])
+    assert (r['status']=='UNSAT')==(r['final']['conflict'] is not None)
+    models=[]
+    for a in range(1<<n):
+        val=lambda x:bool(a&(1<<(abs(x)-1)))==(x>0)
+        original=all(any(val(x) for x in c) for c in f)
+        after=original and all(val(x) for x in learned)
+        assert original==after
+        if original:models.append(a)
+    assert r['status']!='UNSAT' or not models
+    return dict(models=len(models),assignment_rows=1<<n,checker_literal_visits=checked)
+
+def counting():
+    return [list(c) for c in it.combinations(range(1,5),2)]+[[-x for x in c] for c in it.combinations(range(1,5),3)]
+
+def parity(charges):
+    edges=list(it.combinations(range(4),2)); f=[]
+    for v,charge in enumerate(charges):
+        vs=[i+1 for i,e in enumerate(edges) if v in e]
+        for bits in it.product((0,1),repeat=3):
+            if sum(bits)%2!=charge:f.append([(-x if b else x) for x,b in zip(vs,bits)])
+    return f
+
+def main():
+    target=counting(); pure=[[s*x for s,x in zip(signs,(1,2,3))] for signs in it.product((-1,1),repeat=3)]
+    suites={
+      'counting_subsets':[( [c for i,c in enumerate(target) if mask>>i&1],4) for mask in range(1<<10)],
+      'pure_three_subsets':[( [c for i,c in enumerate(pure) if mask>>i&1],3) for mask in range(1<<8)],
+      'counting_sign_flips':[([[x*signs[abs(x)-1] for x in c] for c in target],4) for signs in it.product((-1,1),repeat=4)],
+      'K4_all_charges':[(parity(charges),6) for charges in it.product((0,1),repeat=4)]}
+    hard=parity((1,0,0,0)); suites['K4_delete_one']=[(hard[:i]+hard[i+1:],6) for i in range(16)]
+    totals={}; records=[]
+    for name,cases in suites.items():
+        stats=Counter()
+        for index,(f,n) in enumerate(cases):
+            r=sweep(f,n); audit=check(f,n,r)
+            stats.update(cases=1,unsat=audit['models']==0,detected=r['status']=='UNSAT',
+                         learned_units=len(r['learned']),failed_probes=sum(p['proof']['conflict'] is not None for p in r['probes']),
+                         proof_steps=sum(len(p['proof']['steps']) for p in r['probes'])+len(r['initial']['steps'])+len(r['final']['steps']))
+            stats.update({k:v for k,v in audit.items() if k!='models'}); stats.update(r['counts'])
+            records.append(dict(suite=name,index=index,n=n,m=len(f),models=audit['models'],status=r['status'],learned=r['learned'],counts=r['counts']))
+        totals[name]=dict(stats)
+    selected={}
+    for name,f,n in [('counting',target,4),('minimal_pure_three_miss',pure,3),('K4_odd',hard,6),('K4_even',parity((0,0,0,0)),6)]:
+        r=sweep(f,n); audit=check(f,n,r)
+        b,cert,_,d=baseline.run(tuple(frozenset(c) for c in f),False)
+        selected[name]=dict(formula=f,n=n,run=r,audit=audit,old_shape_new_clauses=len(cert),old_shape_depth=d)
+    assert selected['counting']['run']['learned']==[1,2,3,4]
+    assert selected['counting']['run']['status']=='UNSAT' and selected['counting']['old_shape_new_clauses']==0
+    assert selected['K4_odd']['run']['status']=='UNKNOWN' and selected['K4_odd']['audit']['models']==0 and selected['K4_odd']['old_shape_new_clauses']==0
+    assert selected['K4_even']['audit']['models']==8
+    mutations={}
+    r=sweep(target,4)
+    bad=copy.deepcopy(r); bad['learned'][0]*=-1
+    try:check(target,4,bad)
+    except AssertionError:mutations['wrong_learned_sign']=True
+    bad=copy.deepcopy(r); bad['probes'][0]['proof']['steps'][0][1]=-1
+    try:check(target,4,bad)
+    except AssertionError:mutations['negative_reason_index']=True
+    bad=copy.deepcopy(r); bad['probes'][0]['proof']['steps'][0][0]*=-1
+    try:check(target,4,bad)
+    except AssertionError:mutations['wrong_propagated_sign']=True
+    assert len(mutations)==3
+    result=dict(status='PASS',python=platform.python_version(),seed=None,sweep='one frozen-source sweep, both values, then one final UP',totals=totals,records=records,selected=selected,mutations_rejected=mutations)
+    Path(__file__).with_name('results.json').write_text(json.dumps(result,indent=2))
+    print(json.dumps(dict(totals=totals,selected={k:dict(status=v['run']['status'],learned=v['run']['learned'],cost=v['run']['counts'],models=v['audit']['models'],old_new=v['old_shape_new_clauses']) for k,v in selected.items()}),indent=2))
+
+if __name__=='__main__':main()

@@ -1,0 +1,130 @@
+# Rocky-002 × Rulebench PR #8: real-input compatibility test
+
+**Executed result: PR #8 did not certify the complete original input.** The actual command ran and returned `unsupported` (exit 2), with zero solver calls. It stopped at original-input parsing; its semantic feasibility gate was not run. A separate Python interval audit of the recovered schedule against the original fixed-route model passes at makespan **2304**.
+
+Execution: November 4, 2026, 11:44 p.m. America/Phoenix (November 5, 06:44 UTC). This is a compatibility and feasibility check of an existing schedule, not a new optimization result, optimality claim, or best-known-schedule claim.
+
+## Inputs and provenance
+
+Both files were recovered as original bytes, without rewriting them. The original Library items were not replaced or modified. The packet preserves byte-for-byte local copies and records stable identities, backing file IDs, available version attributes, lengths, and SHA-256 hashes.
+
+| Original | Stable Library ID | Backing file ID | Bytes |
+|---|---|---|---:|
+| `Rocky_Scheduling_002_Prompt.txt` | `[private-library-ref]` | `[private-file-ref]` | 6057 |
+| `Rocky-002-Checked-2304.csv` | `[private-library-ref]` | `[private-file-ref]` | 9994 |
+
+Original paths:
+
+- `/Rocky_Scheduling_002_Prompt.txt`
+- `/MATH/TOOLS/RULEBENCH_SCHEDULING_003/Rocky-002-Checked-2304.csv`
+
+SHA-256:
+
+```text
+Prompt  525c850f053b305f21951daed7824549b73dce861faeefbcb0495903a0393dfc
+CSV     228057c8750b9255f1d4209a49ace22b37d128492be585508cfa760fa7fa8d0d
+```
+
+Search metadata supplied no version ID; materialized identity attributes report version `0` for each. These are recorded as returned, not interpreted as a version-history guarantee. Original identity details remain in `evidence/sources-search.json` and `evidence/independent-audit.json` even if ZIP extraction does not retain filesystem extended attributes.
+
+## Header discrepancy and lossless conversion investigation
+
+The original downloaded CSV header is already:
+
+```csv
+job,stage,machine,start,finish
+```
+
+The six-column header appears in the Library search's extracted sheet representation for the **same** file identity:
+
+```csv
+index,job,stage,machine,start,finish
+```
+
+That extracted representation is not the persisted CSV byte stream. The raw file has 600 five-field rows and no index column. The evidence packet retains the discrepancy in `evidence/header-discrepancy-search.json`. No separate raw six-column export was recovered in the filename searches, so **no six-to-five-column conversion was performed or claimed as verified**.
+
+The lossless path for this actual artifact is identity: pass the original five-column bytes directly. The checker receipt retains those identical bytes in base64. Its captured JSON candidate was compared row-for-row against the original CSV: all 3,000 scheduling field values and the row order are unchanged.
+
+Operation identity is `(job, stage)` under the original requirements. All 600 such pairs occur exactly once. The original row ordinal equals `20 * job + stage` for every row. An index defined by that formula would be redundant and recoverable from the existing fields, but the complete six-column display was not audited as an independently supplied raw file. Arbitrary extra index values should not be dropped on the strength of a header alone. A future six-column file would require its own byte identity, complete index verification, and byte-for-byte reconstruction check with retained index/format metadata.
+
+For this run, no mathematical scheduling information was removed: no column or row was dropped, no value was repaired, and no candidate was re-sorted.
+
+## Actual PR #8 execution
+
+Source: [Rulebench PR #8](https://github.com/AleksandrSolnatus/rulebench/pull/8).
+
+Pinned head: `30322af484cfa4530ee364e91649322c7784de99`.
+
+The local executable source snapshot was retrieved at that immutable head. All 16 included repository files were checked against the Git tree's blob hashes and byte lengths. PR #8's own adapter additionally verified its validator dependency manifest. No PR source was edited. The packet contains the checker and its required source files, not a full frontend checkout.
+
+Runtime: Node `v24.22.1`, Python `3.12.14`. No package installation or optimizer was needed. The previously reported 200 GitHub Actions checks were not rerun: this task ran the actual real-input command below, not the general test suite.
+
+Executed from `pr8-source/`:
+
+```sh
+node scripts/check-schedule-file.mjs \
+  ../originals/Rocky_Scheduling_002_Prompt.txt \
+  ../originals/MATH/TOOLS/RULEBENCH_SCHEDULING_003/Rocky-002-Checked-2304.csv \
+  --makespan 2304 \
+  --receipt ../receipts/pr8-original-requirements.json
+```
+
+`--makespan 2304` supplies a claim to validate; it does not request optimization.
+
+| Observation | Result |
+|---|---|
+| Command execution | Completed |
+| Exit code | `2` |
+| Receipt status | `unsupported` |
+| Feasibility | `not_certified` |
+| Solver calls reported | `0` |
+| Original presence and JSON support gates | Passed |
+| Original parsing/consistency gate | Unsupported |
+| All four final result gates | Not run |
+| Original and candidate byte snapshots | Match recovered originals exactly |
+| CSV-to-JSON conversion | All values and row order preserved |
+| PR reproduction of historical feasibility | **No: stopped before feasibility evaluation** |
+
+The blocking error identifies content outside a single instance wrapper. `lib/rulebench/source.mjs` accepts only a bare `BEGIN INSTANCE` / `END INSTANCE` wrapper with surrounding whitespace. The 6,057-byte original prompt also contains its title, MODEL, INPUT FORMAT, and REQUIRED DELIVERABLES prose. That full prompt therefore falls outside the parser's supported grammar.
+
+This is an input compatibility limitation, not evidence of an infeasible schedule. Removing the surrounding prose would create a different requirements input. This test did not replace the original prompt with an instance-only file or present such a run as validation of the original bytes.
+
+Receipt: `receipts/pr8-original-requirements.json`. Exact command, stdout, stderr, runtime and exit code: `evidence/pr8-original-run.json`.
+
+## Independent feasibility audit
+
+`audit_real_inputs.py` is a separate, assistant-authored Python implementation. It imports no Rulebench code and performs no search, repair, or optimization. It reads the numeric instance from the preserved original prompt, while the following mapping records the reviewed feasibility MODEL. It is not an independent human review or a formal proof assistant result.
+
+| Original feasibility requirement | Audit |
+|---|---|
+| 30 jobs, 20 machines, 20 operations per job | Exact dimensions; 600 expected `(job, stage)` pairs |
+| Every job visits each machine once | Every source route is a permutation of machines 0–19 |
+| No omitted or duplicate operations | Complete multiset equality; 600 unique pairs |
+| Specified machine and full stated duration | 600 exact machine and duration checks |
+| No interruption or split operation | Exactly one contiguous full-duration interval per operation |
+| Required job order; waiting allowed | 570 adjacent-stage precedence inequalities |
+| At most one operation per machine | 8,700 same-machine interval-pair checks |
+| Integer, nonnegative starts; availability from zero | Strict integer fields and nonnegative intervals |
+| Half-open intervals; zero setup/transfer time | Endpoint equality is allowed in nonoverlap and precedence checks |
+| Continuous machine availability; no further resource limits | Original MODEL explicitly states these assumptions |
+| Makespan is the final operation finish | Maximum finish is 2304 |
+
+**Audit result: feasible, makespan 2304.** This agrees with the historical November 1 feasibility result supplied in the task. It does not verify the provenance of the earlier independent report, compute a new lower bound, establish optimality, or compare this candidate with other known schedules. The original optimization and reporting deliverables remain outside this focused feasibility test.
+
+The audit also decodes both raw-file snapshots from the PR receipt and checks exact byte equality and SHA-256 bindings. The preserved original files were rechecked for changes after execution; their hashes are unchanged.
+
+## Reproduction and scope
+
+Extract this packet, then run:
+
+```sh
+bash REPRODUCE.sh
+```
+
+The script rechecks original hashes, the historical receipt bindings, the independent feasibility result, and the pinned source snapshot. It then invokes the unmodified PR checker with the original files and writes a fresh receipt in a newly created directory. Expected checker exit code is `2`, with status `unsupported`. Node 22.13+ and Python 3 are required. No network access or npm installation is needed for this source snapshot.
+
+The underlying checker command was executed as recorded above. `REPRODUCE.sh` is a convenience wrapper provided for future reruns; it was syntax-checked but not itself executed, to avoid generating a redundant second checker receipt.
+
+Preserved files include originals, the actual PR receipt, audit output/code, exact PR execution record, source hashes, original identities, and a packet-wide SHA-256 manifest. The general regression suite, a six-column-file conversion, any optimizer, merges, deployments, and changes to existing artifacts were not performed.
+
+The concrete remaining compatibility issue is support for the complete Rocky requirements document. A future parser or explicit source-bound requirements translation must account for all surrounding requirements before this exact original-file workflow can produce a feasibility pass.

@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "node",
+    "scripts/check-schedule-file.mjs",
+    "../originals/Rocky_Scheduling_002_Prompt.txt",
+    "../originals/MATH/TOOLS/RULEBENCH_SCHEDULING_003/Rocky-002-Checked-2304.csv",
+    "--makespan",
+    "2304",
+    "--receipt",
+    "../receipts/pr8-original-requirements.json"
+  ],
+  "working_directory": "pr8-source",
+  "started_at": "2026-11-05T06:44:20.420407+00:00",
+  "exit_code": 2,
+  "stdout": "Schedule not certified (unsupported).\nUnsupported content outside a single instance wrapper; preserve additional requirements in a supported original format.\nThis does not prove the problem impossible. Solver calls: 0.\n",
+  "stderr": "",
+  "node_version": "v24.22.1"
+}

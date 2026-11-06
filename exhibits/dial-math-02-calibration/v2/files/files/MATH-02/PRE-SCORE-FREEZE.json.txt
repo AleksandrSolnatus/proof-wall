@@ -1,0 +1,13 @@
+{
+  "timestamp_utc": "2026-10-17T21:00:07.792396+00:00",
+  "scores_seen": false,
+  "sha256": {
+    "PROTOCOL-FROZEN.md": "f0439afaafd7f65701bf7f30e52a0d13b9590ee816dd00dfaf6a52e402d7bccf",
+    "EXTRACTION-NOTES.txt": "6c09f4db7dfa5dc3f8c256fbf38c4eea6d0566c7943ff3c5c1c8e08759dbef10",
+    "extract.py": "e1bf448dd06ea27fa0f65989f42df051dc0102a9673a74dbb8af7e73c81e9f6b",
+    "run.py": "9e9671a3fdc927fc360b8d2f48d049867f63bd04b0b6f81a41911723e6247ab2",
+    "original_math01.py": "ab3743a646d7adce20738c1e3f9f3b8e3f2fb08f93e59995eca066b9a241e043",
+    "controls.json": "79b1b225f57a26e9487d9074b6d641bc62a430e892f81eb07ea147758db1ba1d",
+    "SOURCE-MANIFEST.json": "17939f4276995fbf3b7d4a13073a99eea6171d6b8d7c97f9dc59d8aa9452d753"
+  }
+}

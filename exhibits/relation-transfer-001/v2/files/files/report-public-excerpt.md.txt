@@ -1,0 +1,130 @@
+# RELATION-TRANSFER-001: a discovery survives a bounded local transfer
+
+Private review, 2026-11-05. **Result: yes, for this fixed-source, one-step example, using an explicit adapter and a separately checked record binding the original capsule to the translated proposal.** Actual Rulebench-generated capsules passed Lotus's independently implemented Python checker. The source theorem, mapped target clause, and complete target solution set were preserved. A bare field conversion does not preserve provenance, and the original implementations contain type-validation gaps described below.
+
+No PR was changed or merged. No service, flower, website, or plugin was deployed or published. No real contribution was approved. All approval experiments used simulated records in temporary databases that were deleted. The final readback still showed both PRs open, draft, unmerged, and at the same heads.
+
+## Implementations and evidence
+
+| Project | Pinned commit | Source |
+|---|---|---|
+| Rulebench PR #10 | `8f6ef35e9282320bae6d7ec42738f454d9dbb882` | [private source route withheld] |
+| Lotus Garden PR #2 | `38850f70d7f396b590a04e93f5966a7843f0c47d` | [private source route withheld] |
+
+The packet preserves 22 relevant upstream files without modification. Their bytes were checked against their Git blob hashes and the pinned repository trees. `evidence/retrieval.json` records the original responses, contents, refs, blob hashes, and trees. `evidence/final-pr-status.json` records the closing readback. These checks identify retrieved bytes and revisions; they are not digital signatures establishing authorship, and do not establish mathematical truth.
+
+Execution used Node v24.22.1 and Python 3.12.14, without additional packages. The original Rulebench relation suite passed **38 checks**. The original Lotus relation suites passed **13 test methods**, including subtests and disposable custody/approval simulations. The PR description's earlier count of three integration methods is stale relative to this head: four integration methods ran. Full repository suites, deployment behavior, remote transport, and live plugin behavior were not tested.
+
+## What actually crossed the boundary
+
+`generate.mjs` reads the exact source and target literals from the preserved Rulebench demo, calls its actual `discoverRelations`, and uses the mapping from the actual Lotus worked example. It does not manufacture proof capsules or replace them with Lotus's canned proposal. Discovery returns two capsules; each carries one resolution step. The adapter emits one Lotus proposal for each.
+
+Original source, with zero-based clause indices:
+
+```text
+0: -1  2     (not a OR b)
+1:  1 -2     (a OR not b)
+2:  2  3     (b OR c)
+3: -2 -3     (not b OR not c)
+```
+
+The first capsule resolves parents `[0,3]` on pivot `2`, producing `[-1,-3]`. The second resolves `[1,2]` on pivot `2`, producing `[1,3]`. **A single capsule proves one clause; the two together express `a != c`.** Neither capsule claims the entire source or target solution as its conclusion.
+
+| Preserved information | Rulebench representation | Lotus representation / treatment |
+|---|---|---|
+| Source premises | Original DIMACS bytes inside capsule | Fixed trusted fixture; adapter requires exactly the same ordered normalized clauses and variable count |
+| Proof parents | `steps[0].left`, `.right` | `parents`, unchanged zero-based indices |
+| Resolution variable | `steps[0].pivot` | `pivot`, unchanged |
+| Derived clause | `steps[0].result` and `conclusion` | `lemma`, with integer types and ordering preserved |
+| Variable map | `{"1":4,"2":2,"3":1}` | `[4,2,1]`, entry i maps source variable i+1 |
+| Changed target | Original DIMACS bytes | Explicit variable count and normalized clauses, in the same clause order |
+| Consequence in target | `mappedLemma` | `mapped_lemma`; Lotus independently recomputes it |
+| Claimed count | Rulebench exhaustive audit | `target_model_count`; Lotus independently recomputes it |
+| Original bytes / digests / implementation revisions | Capsule and retrieval evidence | Separate binding record; not silently inserted into Lotus's strict eight-field proposal |
+
+The first real translated proposal is:
+
+```json
+{
+  "parents": [0, 3],
+  "pivot": 2,
+  "lemma": [-1, -3],
+  "mapping": [4, 2, 1],
+  "target_variables": 5,
+  "target_clauses": [[2, -4], [-2, 4], [1, 2], [-1, -2], [3, 5]],
+  "mapped_lemma": [-1, -4],
+  "target_model_count": 6
+}
+```
+
+The mapped clauses are `[-1,-4]` and `[1,4]`. For each, Rulebench and Lotus independently replayed resolution, checked the injective signed map, and confirmed all four mapped source premises. Both counted **6 models before and 6 after** adding the clause.
+
+A third, separately written truth-table check compared the actual model sets, not just their sizes. In variable order `x1,x2,x3,x4,x5`, both sets were exactly:
+
+```text
+01011  01110  01111  10001  10100  10101
+```
+
+There were four successful transfer/control cases: both genuine capsules, the negative capsule with all mapping polarities flipped, and the negative capsule with a harmless source comment and correctly updated digest. The last control distinguishes logical equivalence from byte identity. All four were valid and remained pending in the main disposable custody test.
+
+The mathematical justification is resolution soundness plus the checked premise embedding: every target assignment satisfies the mapped premises and therefore the mapped conclusion. Adding that conclusion removes no assignment. Counts corroborate this. In this specific append-a-clause setting, the new model set is a subset of the old one, so equal finite counts also imply equal sets; the extra oracle nevertheless recorded the sets explicitly.
+
+## Rejections, custody, and discovered limitations
+
+| Test group | Observed result |
+|---|---|
+| Adapter adversaries and unsupported inputs | **20/20 rejected** |
+| Direct Lotus invalid proposals | **27/27 rejected** |
+| Attempts to approve those failed Lotus submissions | **27/27 blocked**, records stayed pending |
+| Stored packet tampering | **4/4 approval attempts blocked** |
+| Separate source/proposal binding attacks | **6/6 rejected** |
+| Valid custody | Four valid transferred/control proposals stayed pending; no approved record in that test database |
+| Positive approval control | One valid simulated packet approved in a separate disposable database and rechecked by a second scripted local Store client |
+
+Inputs included altered resolvents/conclusions, wrong pivots, self/forward parent references, incorrect and colliding maps, wrong signs, missing map entries, removal of each target premise, missing source premises, changed source clauses with freshly recomputed hashes, incorrect claimed counts, extra approval fields, unsupported multi-step capsules, target bounds, duplicate clauses, and tautologies. Not every adapter rejection means a false theorem: a valid reordered source, a valid shortened source, a multi-step proof, or a nine-variable target can be outside this intentionally narrow translation contract.
+
+The tamper controls were especially useful. Lotus blocked approval when an invalid proposal was stored with a recomputed matching checksum, when a forged successful check accompanied that invalid proposal, when the problem digest was changed, and when packet bytes changed without rehashing. Therefore tested approval failures were not enforced by checksum comparison alone. `Store.moderate` freshly called the mathematical checker. This is evidence about these sequential local API paths, not a proof against arbitrary database writers, races, or every possible malicious input.
+
+**Finding 1 — source provenance is lost by naive projection.** Lotus's proposal does not contain the Rulebench capsule, its source text, source digest, or producer identity. Two deliberately unsafe projection controls passed Lotus even though the starting capsule had either a corrupt digest or a changed unused source premise. Lotus correctly proved the proposal against its own fixed fixture; it had no evidence that this was the same original artifact. The adapter rejected both cases. The packet's independent Python binding check also rejects source substitution and rehashed incorrect translated fields. Keep the original capsule, target bytes, revision evidence, and binding record together. A successful Lotus receipt alone does not authenticate Rulebench provenance.
+
+**Finding 2 — Rulebench's proof literal validation is not fully type-strict.** `verifyCapsule` compares proof arrays through `join(',')`. Numeric strings such as `["-1","-3"]` in both the step result and conclusion passed verification and reuse. The adapter rejects these before conversion. The demonstrated literals denote the same numbers when coerced, so this is not a demonstrated false theorem; it is a representation ambiguity across languages.
+
+**Finding 3 — Lotus's lemma array validation admits booleans/floats.** It compares `lemma` and `mapped_lemma` directly to integer arrays. Python considers `True == 1` and `1.0 == 1`. Four probes—boolean source lemma, boolean mapped lemma, float source lemma, float mapped lemma—passed the unmodified checker and reached simulated approval in a separate disposable database. Thus the broad claim “all malformed proposals are rejected before approval” is false at these heads. The intended normalized mathematical clauses remained true in these probes. The strict independent binding check rejects changed types even after their file hashes are recomputed.
+
+The bridge is therefore a successful bounded experiment with explicit guards, not a release-ready automatic trust path. Before integrating it, add direct integer validation to Rulebench's result/conclusion arrays and Lotus's lemma/mapped-lemma arrays, and preserve source-to-proposal binding through custody and later retrieval. Those are identified follow-up changes, not changes made to either PR in this experiment.
+
+## Computational work
+
+Counters below are per operation or per transferred capsule as labeled. They are not a complete count of every primitive operation in the harness.
+
+| Stage | Measured or explicit work |
+|---|---|
+| Original discovery, once for both capsules | 6 clause pairs; 6 candidate pivots reaching resolution; 2 proofs constructed; no assignment enumeration or external solver |
+| Structural translation, per capsule | Compare 4 ordered source clauses / 8 literals; copy 1 proof step and 3 mapping entries; parse 5 target clauses / 10 literals; enforce shared bounds and types |
+| Rulebench reuse inside adapter, per capsule | Replay 1 proof step; match 4 premises; visit 64 target assignments across before/after audits; 190 clause evaluations |
+| Lotus independent checking, per capsule | Check 1 proof pivot; match 4 premises; visit another 64 target assignments; 190 clause evaluations |
+| Additional research validation | Independent binding replay; source and target truth tables; Store submission rechecks; approval-attempt rechecks; file hashing and serialization |
+| Direct discovery on changed target, control | 10 clause pairs; 6 candidate pivots reaching resolution; 2 proofs constructed; no assignment enumeration |
+
+The original compact capsule sizes reported by Rulebench were **257 bytes** and **253 bytes**. Original-source preservation, translated proposals, binding records, and receipts add storage; those bytes remain in the packet rather than being counted as free. Parser, normalization, hashing, set operations, serialization, and I/O are not all represented in the upstream counters. `pivotsExamined` counts candidates with opposite pivot literals, not every loop iteration testing a possible variable.
+
+In final run `run-002`, 200 measured iterations after 20 warmups gave median **0.067 ms** for adapter plus Rulebench audited reuse, and **0.181 ms** for Lotus's independent `checkers.check` call. The respective 95th percentiles were 1.253 ms and 1.835 ms, showing substantial runtime noise. These exclude process startup, file I/O, SQLite custody, and original discovery. Each benchmark also performs its own repeated verification work: 220 x 64 assignment visits per side including warmups. They are local component timings, not an end-to-end or general speedup result.
+
+For this tiny example, direct target rediscovery only examines 10 pairs. The conservative transfer performs two full target audits before custody and adds conversion/provenance work. **No computational saving has been established.** Finding the map was not attempted; it was explicitly supplied. This remains distinct from the no-edit-hints recognition experiment.
+
+## Reproduce and inspect
+
+From the extracted packet directory:
+
+```bash
+python3 verify_snapshot.py
+node upstream/rulebench/tests/relation-capsule.mjs
+PYTHONPATH=upstream/lotus-garden python3 -m unittest discover -s upstream/lotus-garden/tests -p 'test_relation_pollen*.py' -v
+python3 run.py --out results/reproduction
+```
+
+`results/run-002/generated.json` contains all original generated capsules, adapter adversaries, Rulebench results, translation counters, and the direct-discovery control. `valid-0-*` and `valid-1-*` contain the actual capsules, translated proposals, and source-binding records. `summary.json` records independent verification, exact model sets, custody outcomes, all four type gaps, and binding tests. `lotus-adversaries.json` preserves each rejected proposal and approval denial. `custody-valid-pending-packets.json` preserves the local pending receipts; their UUIDs identify deleted test databases, not live contributions.
+
+The original demo output, upstream test logs, first exploratory run, and corrected final run are retained. The only initial execution error was a missing Python import path; the corrected command above succeeded. Reproduction will vary in timings, timestamps, and temporary UUIDs.
+
+**Established:** a real proof-carrying discovery generated in Rulebench can survive explicit local translation and independent Lotus verification without changing the proved clause or target solutions. **Still unverified:** remote/cross-host delivery, outside-agent participation, deployed custody of the source-binding record, arbitrary source formulas, general proof languages, unknown-map recognition, unrestricted interoperability, or a net speedup.

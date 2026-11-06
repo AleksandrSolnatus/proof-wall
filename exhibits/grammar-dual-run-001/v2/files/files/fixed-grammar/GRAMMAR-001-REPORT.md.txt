@@ -1,0 +1,40 @@
+# GRAMMAR-001 — Small SAT Grammar-Only Test
+
+Date: 2026-10-15
+Status: EXECUTED LOCALLY, toy demonstration; not a theorem, scalability result, or independent benchmark.
+
+## Question
+When a small SAT problem is allowed to yield *forced* deductions before any branching, when does the grammar settle the question, and when must it remain silent?
+
+## Shared definitions
+- Problem P: a conjunction of clauses of signed Boolean variables.
+- Root facts K0: initially empty assignment.
+- Grammar G: **unit propagation** only. If all literals but one in a clause are false, the remaining literal must be true. An all-false clause certifies contradiction. If every clause is already true under a partial assignment, any completion satisfies P.
+- Silence: no further forced units, but some clauses remain unresolved. **Silence is not UNSAT.**
+- Costs: instrumented clause and literal inspections, propagation passes, branch decisions, and complete assignments. Clause inspections are *not* equal-cost time units: they are used only for simple within-toy comparisons. No setup/design costs or wall-time measurements included.
+
+## Executed cases
+| Case | Ground truth (satisfying assignments) | Grammar-only | Forced assignments | Grammar clause visits | First-solution exhaustive-search visits | Propagation + branching visits |
+|---|---:|---|---:|---:|---:|---:|
+| CHAIN_SAT | 1 | SAT | 4 | 12 | 30 | 12 |
+| CHAIN_UNSAT | 0 | UNSAT | 2 | 3 | 7 | 3 |
+| XOR_SAT | 2 | SILENT | 0 | 4 | 3 | 10 |
+| HIDDEN_UNSAT | 0 | SILENT | 0 | 8 | 10 | 15 |
+| TAUTOLOGY_SAT | 4 | SILENT | 0 | 4 | 2 | 12 |
+
+The exhaustive truth-table *oracle* was independently reimplemented with a second predicate and checked every assignment in every case. The first-solution baseline stops at its first SAT witness (or enumerates all for UNSAT) to match the hybrid's goal; all-solutions oracle is retained separately. Hybrid solver solutions were independently checked against the enumerated truth table.
+
+## Logical-equivalence controls
+For every case, reversed clause order, bijective variable renaming, and flipping the sign of variable 1 each preserved both the number of satisfying assignments and grammar's SAT/UNSAT/SILENT classification. These are implementation controls, not evidence of statistical robustness or consistent speed.
+
+## Findings
+1. A sound but intentionally limited grammar can solve some problems without branching; it can also produce a short contradiction certificate.
+2. Silence is crucial. On HIDDEN_UNSAT, the original formula has no model, but the grammar cannot establish that.
+3. Grammar is not a free gain: measured clause visits rose with propagation-plus-branching in XOR_SAT, HIDDEN_UNSAT, and TAUTOLOGY_SAT. The last is trivially satisfiable but requires an additional tautology-recognition rule to notice without guessing.
+4. A richer grammar may expose more structure, but rule discovery, construction, verification, and repeated scans must all be charged. There is no P=NP conclusion.
+
+## Reproduction
+Run `python3 grammar001.py`; it recreates `results.json` and asserts oracle consistency and the three equivalent transformations for each of the five cases. All sources and raw traces are retained in this folder. No network, workers, or laboratory installations are needed.
+
+## Separate protected idea
+The user's *root-first co-constructed grammar* hypothesis is recorded in `MATH-ROOT-FIRST-GRAMMAR-SEED.md` but was **not** tested as part of GRAMMAR-001.

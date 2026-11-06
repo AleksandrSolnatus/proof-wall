@@ -1,0 +1,13 @@
+# Mechanical landmark dictionary
+
+See PROTOCOL_FROZEN.md and code/geometry.py for exact executable rules.
+
+| Code | Rule | Control support |
+|---|---|---|
+| E | Pruned skeleton endpoint, eight-neighbor degree1, merged candidate groups | Pruned skeleton of its original ink component |
+| J | Pruned skeleton junction cluster, degree≥3 | Same original-component skeleton |
+| H | Centroid-nearest white pixel of a sufficiently large enclosed void | Its own enclosed white region |
+
+Source center: filled-area centroid, red + in audit. Scale: maximum filled-pixel distance R. Blue endpoint, orange junction, purple void centroid. No anatomical labels. Central radius<.05R excluded; near-duplicate landmarks removed at .015R with fixed class ordering. An H label is geometric void-centroid information, not an eye or other pictorial claim.
+
+These graph landmarks may be affected by raster skeleton branch artifacts. The fixed multi-resolution/rotation/contour gate determines adequacy; it may not be relaxed after failure. Null points preserve class counts and region affiliation, but do not claim to be actual endpoint/junction pixels in a generative drawing. Results are limited to the frozen conditional-position model.

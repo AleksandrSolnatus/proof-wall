@@ -1,0 +1,27 @@
+# Relation Transfer 001: a checked relation crosses tools
+
+## Original question
+
+Can a real Rulebench proof capsule cross into Lotus while preserving its conclusion, target solutions and original source binding?
+
+## Method and recorded result
+
+A fixed-source one-step adapter translates actual generated capsules. The archived local run retains independently implemented checks, source/target fixtures, binding records, model-set comparison and adversarial controls.
+
+Actual Rulebench proof capsules passed an independently implemented Lotus checker through a fixed-source adapter and preserved source binding.
+
+## Scope and limits
+
+Pinned local implementations and a narrow one-step/fixed-source transfer contract. Disposable approval simulations are not real publication approvals or live service tests.
+
+- Local, fixed-source one-step transfer; type-validation gaps retained. No live transport/deployment or real approval tested.
+- Node.js 22.13+ and Python 3; no third-party package installation or network is required by the archived recipe. This is a focused source snapshot, not full repository suites.
+- Upstream private-source snapshots, both recorded runs and rejection cases remain in the original ZIP. Final run-002 is selected for direct browsing; run-001 is not silently pooled with it. Source validation gaps remain disclosed.
+- This assembly inherits the recorded scientific checks and does not establish deployment behavior or public permission.
+- Preserved archive: RELATION-TRANSFER-001-REPRODUCIBLE-PACKET.zip. The attached files are inspection selections; they do not replace its complete runtime directory. No public archive URL or permission is implied. Full figures, historical versions and omitted dependencies remain in that archive.
+
+## Evidence available for inspection
+
+The files below preserve the selected original bytes. Existing scientific checks remain completed; this gathering adds no experiment. Source code, data and receipts are presented with the scope stated in their original records. Any original reproduction instructions describe the original archive layout, not this smaller inspection packet.
+
+Publication review covers these exact selected bytes. Full archives and any figures remain preserved separately; their public release is a separate decision.

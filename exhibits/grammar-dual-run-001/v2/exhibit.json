@@ -1,0 +1,333 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "The original 31 finite cases and two controlled fixed-base query families; no general SAT acceleration or unseen-structure transfer.",
+  "date": "2026-10-15",
+  "downloads": [
+    {
+      "bytes": 2031,
+      "original_path": "article.md",
+      "sha256": "09f18671affeccc0bc80a68340baf482eebd1ced158066a5361a67d30a0b2041",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 9220,
+      "original_path": "files/DUAL-RUN-REPORT.md",
+      "sha256": "1a9df78e5eafbb5edc818b3c28618e53cca183e8ab3cb7eb846419e0b96bd1ec",
+      "url": "files/files/DUAL-RUN-REPORT.md.txt"
+    },
+    {
+      "bytes": 2927,
+      "original_path": "files/MATH-ROOT-FIRST-GRAMMAR-SEED.md",
+      "sha256": "b932d952e9a335af3ffbffe4698c2a774bdb46b89931df4d9e0f146f171ab00f",
+      "url": "files/files/MATH-ROOT-FIRST-GRAMMAR-SEED.md.txt"
+    },
+    {
+      "bytes": 4752,
+      "original_path": "files/README.md",
+      "sha256": "ef175962428657e42bb1c2ef44daa903f6adb9ff1855a5334be60e5478e9fe58",
+      "url": "files/files/README.md.txt"
+    },
+    {
+      "bytes": 1455,
+      "original_path": "files/SHA256SUMS.txt",
+      "sha256": "7b759d269157945b0dd69993d8e0760b6ee92e76be3c5717dfd748160ec5d9a7",
+      "url": "files/files/SHA256SUMS.txt.txt"
+    },
+    {
+      "bytes": 3460,
+      "original_path": "files/fixed-grammar/GRAMMAR-001-REPORT.md",
+      "sha256": "ea20178050e2ee17af9ecf47361c4e085a5f77a31c27ee471d7bab01c8bc5686",
+      "url": "files/files/fixed-grammar/GRAMMAR-001-REPORT.md.txt"
+    },
+    {
+      "bytes": 14812,
+      "original_path": "files/fixed-grammar/baseline-recorded.json",
+      "sha256": "d37b96802b615c5835ad20af5e4d880d1f84c275b282910c29dfc6c7d50f8a09",
+      "url": "files/files/fixed-grammar/baseline-recorded.json.txt"
+    },
+    {
+      "bytes": 9072,
+      "original_path": "files/fixed-grammar/grammar001.py",
+      "sha256": "3545fe97fa979122d134a209b556e25a85c985694455274fdff6ba14f9c0d75b",
+      "url": "files/files/fixed-grammar/grammar001.py.txt"
+    },
+    {
+      "bytes": 14812,
+      "original_path": "files/fixed-grammar/results.json",
+      "sha256": "d37b96802b615c5835ad20af5e4d880d1f84c275b282910c29dfc6c7d50f8a09",
+      "url": "files/files/fixed-grammar/results.json.txt"
+    },
+    {
+      "bytes": 33930,
+      "original_path": "files/root-first/benchmark.json",
+      "sha256": "d4b2c83d67ddbce1031df8d2424c952f64acb38b799018c2de22ef19cf8b1903",
+      "url": "files/files/root-first/benchmark.json.txt"
+    },
+    {
+      "bytes": 2749,
+      "original_path": "files/root-first/benchmark.py",
+      "sha256": "fd44e0a6f8de0f925f82d78deac869cab3cd0b91a85a43aba96bfbef10518b98",
+      "url": "files/files/root-first/benchmark.py.txt"
+    },
+    {
+      "bytes": 4809,
+      "original_path": "files/root-first/console.txt",
+      "sha256": "97e1bf5ae0dea1144446d3c6e7ebb4df7777769858b50f7b42dfea90024e3faf",
+      "url": "files/files/root-first/console.txt.txt"
+    },
+    {
+      "bytes": 286130,
+      "original_path": "files/root-first/results.json",
+      "sha256": "474880b8be0ad7227695c3269e8fc7e1c2c21b31e8858b6718c7ef7a8dbf219d",
+      "url": "files/files/root-first/results.json.txt"
+    },
+    {
+      "bytes": 51013,
+      "original_path": "files/root-first/reuse-results.json",
+      "sha256": "eacbfdb7c2e81063fbba17ef3d0b86e72bcec2b70edd7bbd464cb33b7f6983d8",
+      "url": "files/files/root-first/reuse-results.json.txt"
+    },
+    {
+      "bytes": 7278,
+      "original_path": "files/root-first/reuse_extension.py",
+      "sha256": "89ef2c9c74135a742fc2ec1fa5b090e2d9e04de40cbb9d53a7a9e66aec0651a1",
+      "url": "files/files/root-first/reuse_extension.py.txt"
+    },
+    {
+      "bytes": 18057,
+      "original_path": "files/root-first/root_grammar001.py",
+      "sha256": "0a3cf33500291e8ecc7ff6b4758627239548cab6935b440d254c0eb3ca64a021",
+      "url": "files/files/root-first/root_grammar001.py.txt"
+    },
+    {
+      "bytes": 6078,
+      "original_path": "files/run-log.txt",
+      "sha256": "59eb6f61f88620927799760a7a92d9def4ee1f25bae5d8c9f5db161a29e23034",
+      "url": "files/files/run-log.txt.txt"
+    },
+    {
+      "bytes": 908,
+      "original_path": "files/run_all.py",
+      "sha256": "a671c0e5602e80e03c3d0fe9c556e90f1c8f530ad81d1b16ee0d832c5121d0cd",
+      "url": "files/files/run_all.py.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "The Bridges Group — MATH; prepared from completed research records.",
+      "bytes": 2031,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "article",
+      "sha256": "09f18671affeccc0bc80a68340baf482eebd1ced158066a5361a67d30a0b2041"
+    },
+    {
+      "attribution": "The Bridges Group — MATH; original authors/contributors as credited in retained source.",
+      "bytes": 9220,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/DUAL-RUN-REPORT.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "original",
+      "sha256": "1a9df78e5eafbb5edc818b3c28618e53cca183e8ab3cb7eb846419e0b96bd1ec"
+    },
+    {
+      "attribution": "The Bridges Group — MATH; original authors/contributors as credited in retained source.",
+      "bytes": 2927,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/MATH-ROOT-FIRST-GRAMMAR-SEED.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "original",
+      "sha256": "b932d952e9a335af3ffbffe4698c2a774bdb46b89931df4d9e0f146f171ab00f"
+    },
+    {
+      "attribution": "The Bridges Group — MATH; original authors/contributors as credited in retained source.",
+      "bytes": 4752,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/README.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "original",
+      "sha256": "ef175962428657e42bb1c2ef44daa903f6adb9ff1855a5334be60e5478e9fe58"
+    },
+    {
+      "attribution": "The Bridges Group — MATH; original authors/contributors as credited in retained source.",
+      "bytes": 1455,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/SHA256SUMS.txt",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "7b759d269157945b0dd69993d8e0760b6ee92e76be3c5717dfd748160ec5d9a7"
+    },
+    {
+      "attribution": "The Bridges Group — MATH; original authors/contributors as credited in retained source.",
+      "bytes": 3460,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/fixed-grammar/GRAMMAR-001-REPORT.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "original",
+      "sha256": "ea20178050e2ee17af9ecf47361c4e085a5f77a31c27ee471d7bab01c8bc5686"
+    },
+    {
+      "attribution": "The Bridges Group — MATH; original authors/contributors as credited in retained source.",
+      "bytes": 14812,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/fixed-grammar/baseline-recorded.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "d37b96802b615c5835ad20af5e4d880d1f84c275b282910c29dfc6c7d50f8a09"
+    },
+    {
+      "attribution": "The Bridges Group — MATH; original authors/contributors as credited in retained source.",
+      "bytes": 9072,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/fixed-grammar/grammar001.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "3545fe97fa979122d134a209b556e25a85c985694455274fdff6ba14f9c0d75b"
+    },
+    {
+      "attribution": "The Bridges Group — MATH; original authors/contributors as credited in retained source.",
+      "bytes": 14812,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/fixed-grammar/results.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "d37b96802b615c5835ad20af5e4d880d1f84c275b282910c29dfc6c7d50f8a09"
+    },
+    {
+      "attribution": "The Bridges Group — MATH; original authors/contributors as credited in retained source.",
+      "bytes": 33930,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/root-first/benchmark.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "d4b2c83d67ddbce1031df8d2424c952f64acb38b799018c2de22ef19cf8b1903"
+    },
+    {
+      "attribution": "The Bridges Group — MATH; original authors/contributors as credited in retained source.",
+      "bytes": 2749,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/root-first/benchmark.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "fd44e0a6f8de0f925f82d78deac869cab3cd0b91a85a43aba96bfbef10518b98"
+    },
+    {
+      "attribution": "The Bridges Group — MATH; original authors/contributors as credited in retained source.",
+      "bytes": 4809,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/root-first/console.txt",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "97e1bf5ae0dea1144446d3c6e7ebb4df7777769858b50f7b42dfea90024e3faf"
+    },
+    {
+      "attribution": "The Bridges Group — MATH; original authors/contributors as credited in retained source.",
+      "bytes": 286130,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/root-first/results.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "474880b8be0ad7227695c3269e8fc7e1c2c21b31e8858b6718c7ef7a8dbf219d"
+    },
+    {
+      "attribution": "The Bridges Group — MATH; original authors/contributors as credited in retained source.",
+      "bytes": 51013,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/root-first/reuse-results.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "eacbfdb7c2e81063fbba17ef3d0b86e72bcec2b70edd7bbd464cb33b7f6983d8"
+    },
+    {
+      "attribution": "The Bridges Group — MATH; original authors/contributors as credited in retained source.",
+      "bytes": 7278,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/root-first/reuse_extension.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "89ef2c9c74135a742fc2ec1fa5b090e2d9e04de40cbb9d53a7a9e66aec0651a1"
+    },
+    {
+      "attribution": "The Bridges Group — MATH; original authors/contributors as credited in retained source.",
+      "bytes": 18057,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/root-first/root_grammar001.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "0a3cf33500291e8ecc7ff6b4758627239548cab6935b440d254c0eb3ca64a021"
+    },
+    {
+      "attribution": "The Bridges Group — MATH; original authors/contributors as credited in retained source.",
+      "bytes": 6078,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/run-log.txt",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "59eb6f61f88620927799760a7a92d9def4ee1f25bae5d8c9f5db161a29e23034"
+    },
+    {
+      "attribution": "The Bridges Group — MATH; original authors/contributors as credited in retained source.",
+      "bytes": 908,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/run_all.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "a671c0e5602e80e03c3d0fe9c556e90f1c8f530ad81d1b16ee0d832c5121d0cd"
+    }
+  ],
+  "finding": "Grammar-only resolution rose from 2/31 to 21/31 and hybrid branches fell from 69 to 38. Fresh compilation lost to the fixed hybrid in the reported timing groups; shared-base reuse repaid after sampled batches of 4 or 8 queries.",
+  "gardens": [],
+  "id": "grammar-dual-run-001",
+  "limitations": [
+    "The richer admission grammar was predeclared; it was not autonomously discovered.",
+    "Branch counts are not CPU time. Timing excludes research/design and independent exhaustive audits; small Python microbenchmarks are not general rankings.",
+    "Renaming and clause-order controls do not constitute independently sampled problems.",
+    "Preserved archive: MATH-GRAMMAR-DUAL-RUN-001-EVIDENCE-2026-10-15.zip. The attached files are inspection selections; they do not replace its complete runtime directory. No public archive URL or permission is implied. Full figures, historical versions and omitted dependencies remain in that archive."
+  ],
+  "method": "The original miniature compares fixed unit propagation with predeclared certified parity relations, then tests 64 additive queries on each of two unchanged bases. The source, saved result ledgers, controls and CPU-accounting records are retained.",
+  "open_questions": [
+    "Follow-on research remains separate from this completed record; exact publication review does not require a rerun."
+  ],
+  "package_sha256": "ea54ed1fbfcc0f68f9f5b191794a548972c767700a91c1af63914a9f0f8de40c",
+  "provenance": {
+    "authors": [
+      "The Bridges Group — MATH",
+      "Original research contributors as credited in the retained experiment record"
+    ],
+    "change_note": "Version 2 is a public selected-file edition of previously checked v1. Scientific findings unchanged; the original review/archive remains in private custody.",
+    "origin": "Original MATH-GRAMMAR-DUAL-RUN-001-EVIDENCE-2026-10-15.zip; recovered from its historical Library identity. Existing report and executable evidence reunited."
+  },
+  "publication": {
+    "attribution": "The Bridges Group — MATH; original research contributors as credited in retained records.",
+    "intent": "request-review",
+    "license": "All rights reserved. No new open-source license granted.",
+    "rights": "Owner-requested public reading and downloading of the selected exhibit only; preserves private originals; not an open permission for derivative commercial redistribution."
+  },
+  "question": "When do source-certified relations reduce branching, and when can repeated use repay their construction cost?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Grammar Dual Run 001: stronger inference has a construction cost",
+  "version": 2
+}

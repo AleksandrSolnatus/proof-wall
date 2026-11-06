@@ -1,0 +1,73 @@
+{
+  "status": "PASS",
+  "checks": {
+    "original_archives_members_crc_internal_manifests_and_extraction": [
+      {
+        "label": "p29",
+        "sha256": "bfa07cdb5f32a78292959c0b52614f0709685d1f9300720b2ec9d8a69ca6bc51",
+        "members": 514,
+        "manifests": {
+          "Rain_AC_Sensitivity_002/MANIFEST.sha256": 513,
+          "Rain_AC_Sensitivity_002/inputs/MANIFEST.sha256": 20
+        }
+      },
+      {
+        "label": "p30",
+        "sha256": "6d491c4e5c6ac006f04ae824db0ee91e1434b34fc4c5fac16972388b0b70a724",
+        "members": 445,
+        "manifests": {
+          "Rain_DT_Control_003/MANIFEST.sha256": 444,
+          "Rain_DT_Control_003/PROTOCOL.sha256": 1
+        }
+      }
+    ],
+    "ten_unique_cases_121_endpoints_120_intervals": true,
+    "maximum_kinetic_closure_error": 6.44708052277565e-07,
+    "six_exact_sample_frame_final_controls": [
+      "fixed_A_0.003125",
+      "fixed_C_0.003125",
+      "fixed_A_0.00625",
+      "fixed_C_0.00625",
+      "fixed_A_0.0125",
+      "fixed_C_0.0125"
+    ],
+    "all_frames_finite_bounded_31x3834x2": true,
+    "derived_outputs": {
+      "status": "PASS",
+      "comparison_count": 21,
+      "observable_groups": 861,
+      "paired_rows": 103488,
+      "onsets": 861,
+      "onset_context_rows": 2667,
+      "events": 220,
+      "event_context_rows": 409,
+      "window_rows": 2040,
+      "tie_groups_preserved": 54,
+      "all_raw_normalized_exposure_threshold_onset_persistence_context_event_window_and_vector_rows_recomputed": true,
+      "ordering_rows_verified": 861,
+      "outputs_sha256": {
+        "REQUIRED_ARCHIVES.json": "06571653de53d8d70c4da87dc86b2d5f410086b381d17744869ca322a3b145ae",
+        "onsets.csv": "4b60f24a8de551dd593b8a6eaf54487e3bf7d44a1736638e59e90bff6c556401",
+        "endpoint_values.csv": "4b9b9ee3273de4e316abfc268cd017467ebe0201e4e4a086c068e77017315237",
+        "endpoint_vectors.json": "e89df0d8f8600bc42d5328a632a8d68226f459401ef3024e47ea1212041adb90",
+        "INPUT_IDENTITIES.json": "a06370e35f15b4d42a20cac02798574dc581874324a9d3fa1597938c65fd17a6",
+        "paired_departures.csv": "7fd31bbc21dd1369931685ccff5a33dd59ce4e01dcbcb41846a074a54736c6e6",
+        "window_summary.csv": "9705206f9e922f587f19c934ab8bda91bd99d31be775a8cc9894af6bc8f105ed",
+        "paired_vectors.json": "91af2900e03227132355df43be60a175701a90e040c0888aaaf7611cd694358a",
+        "onset_context.csv": "bae928ce73fc0a6df4b342afbf6e6b50fc6aa8ef2959fbce87f016a9918c8e88",
+        "TEST_RESULTS.json": "a67aa816aa87c585fe09f8b35e05484f81112c904dc1f38e510caf444cab1c52",
+        "interval_values.csv": "ae679af6d37462663e54f859ac1f7f4e28b8a96b3415589a8a05ff8dfcf092bc",
+        "events.csv": "a64e0a6877f75c99e3be90669c10b43e9f83d701510780a30edf70ce6f76642b",
+        "SCHEMA_IMPLEMENTATION.json": "779d2273f5def750e22cad49d51df3c2c45e49457ab80a4661c6346c8f0869ee",
+        "ANALYSIS_VALIDATION.json": "8544ed8d289eda249c13786a37dc1d11bd3f1a1759b301695328163b5e1247b8",
+        "ordering.csv": "30b032f4272982f36ab6ed39e5530281a1762eba41ab0e1a27d20d0d6d61b92d",
+        "CUSTODY_VERIFICATION.json": "bad35911826969078004f63ae4386dcc4d70f2d50d1c930cb7be4b3023c28d53",
+        "event_context.csv": "2ec41feb39690ab68dec6c921b4a51ffdb7aa55fe0f1f5926013ba09a1f8a7d2"
+      }
+    }
+  },
+  "simulation": false,
+  "archived_code_executed": false,
+  "plan_sha256": "103df258d15b1475ac05ab921446a99829938713821acd6200a230618ff2ca55",
+  "verifier_sha256": "1b54639a90689883cbeaa3529af092317836883e321f12cecad6660c624a7e13"
+}

@@ -1,0 +1,35 @@
+import pathlib,json,hashlib,collections,math,csv,platform,subprocess
+import numpy as np
+P=pathlib.Path(__file__).resolve().parents[1]
+r=json.loads((P/'PRIMARY_LOCK.json').read_text());records=json.loads((P/'STABILITY.json').read_text());tests=[]
+for rec in records:
+ pts=np.array([m['normalized_yx'] for m in rec['landmarks']]);n=len(pts)
+ radial=None
+ if n>=3:
+  count=0;total=0
+  for a in range(n):
+   for b in range(a):
+    ra=math.hypot(*pts[a]);rb=math.hypot(*pts[b]);count+=abs(ra-rb)<=.03;total+=1
+  radial=count/total
+ angular=None
+ if n>=4:
+  angles=sorted(math.atan2(p[0],p[1])%(2*math.pi) for p in pts);gaps=[angles[j+1]-angles[j] for j in range(n-1)]+[angles[0]+2*math.pi-angles[-1]];target=2*math.pi/n
+  angular=sum(math.exp(-.5*((gap-target)/(.15*target))**2) for gap in gaps)/n
+ for v,w in zip([radial,angular],rec['primary_statistics_descriptive']):assert (v is None and w is None) or abs(v-w)<1e-12
+ assert rec['stability_pass']==(not any(v['failures'] for v in rec['variants']))
+ tests.append({'sign':rec['sign'],'independent_score_arithmetic':'PASS','stability_rule_recount':'PASS'})
+assert len(records)==45
+qualified=[x['sign'] for x in records if x['stability_pass'] and x['landmark_count']>=4]
+assert qualified==r['qualified_stable_signs'] and (len(qualified)>=8)==r['system_gate_pass']
+if not r['system_gate_pass']:
+ assert all(x['inference']=='NOT RUN' and x['status']=='INCONCLUSIVE' for x in r['results']) and all(x['accepted']==0 for x in r['nulls'])
+ assert not list((P/'records').glob('*_null.npz'))
+freeze=json.loads((P/'receipts/PREFREEZE.json').read_text())
+for f,h in freeze['hashes'].items():assert hashlib.sha256(pathlib.Path(f).read_bytes()).hexdigest()==h
+failures=collections.Counter()
+for rec in records:
+ for v in rec['variants']:
+  for f in v['failures']:failures[f]+=1
+runtime={'python':platform.python_version(),'numpy':np.__version__,'inkscape':subprocess.check_output(['inkscape','--version'],text=True).strip()}
+result={'verifier':'Separate implementation by same executor; no independent human or separate-agent review claimed.','checks':tests,'source_and_frozen_code_hashes_unchanged':True,'global_gate_recount':'PASS','no_nulls_on_failed_system_gate':not r['system_gate_pass'],'failure_category_variant_occurrences':dict(failures),'runtime':runtime,'qualified_stable_signs':qualified,'primary_verdict':r['status'],'interpretation_limit':'Chosen endpoint/junction/void landmark representation stability; not a verdict against circles, shells or connected-outline geometry.'}
+(P/'receipts/VERIFICATION.json').write_text(json.dumps(result,indent=2));print('VERIFICATION PASS')

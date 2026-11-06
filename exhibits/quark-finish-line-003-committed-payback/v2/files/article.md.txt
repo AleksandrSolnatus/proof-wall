@@ -1,0 +1,26 @@
+# QUARK Finish Line 003: committed payback
+
+## Original question
+
+Does an atomic two-move cross/cancel improve termination and worst-case cost on the stated ternary rings?
+
+## Method and recorded result
+
+Existing protocol, finite enumerator and all-size potential argument; independently written action generator within the original same-session experiment.
+
+An atomic cross-and-cancel macro reduces the stated potential by n−2, but optional shortcuts do not improve the guaranteed worst case.
+
+## Scope and limits
+
+Finite 9,828-start enumeration with the given rules plus mathematical termination/worst-case arguments contingent on atomic moves.
+
+- Atomic action assumption; no measured synchronization/hardware result and no change to canonical Q002 grammar.
+- The original 003 checks are same-session, not a new independent external review.
+- No performance claim about atomic reservation and synchronization overhead.
+- Preserved archive: QUARK-FINISH-LINE-003-2026-10-30.zip. The attached files are inspection selections; they do not replace its complete runtime directory. No public archive URL or permission is implied. Full figures, historical versions and omitted dependencies remain in that archive.
+
+## Evidence available for inspection
+
+The files below preserve the selected original bytes. Existing scientific checks remain completed; this gathering adds no experiment. Source code, data and receipts are presented with the scope stated in their original records. Any original reproduction instructions describe the original archive layout, not this smaller inspection packet.
+
+Publication review covers these exact selected bytes. Full archives and any figures remain preserved separately; their public release is a separate decision.

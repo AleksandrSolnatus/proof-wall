@@ -1,0 +1,280 @@
+#!/usr/bin/env python3
+"""Phaistos Dial MATH-01: restricted-grammar exploratory CV with immutable masked input.
+No outside training, icon interpretation, semantic fitting, or mutation of original corpus.
+Python standard library only. Declared seed and models are frozen in this source.
+"""
+import argparse, collections, copy, csv, hashlib, json, math, pathlib, random, statistics
+
+SOURCE_SHA = '18ee5ac70b21696e7ed60616e3a265eaf0261fdd49779464e254a7e916f74a24'
+SEED = 20261014
+SHUFFLES = 399
+FOLDS = 5
+PRIOR = 20.0
+SIGNS = tuple(f'S{i:02d}' for i in range(1, 46))
+MODELS = ('F_unigram','A_infix','B_prefix-procedure','C_center-relation','D_language-bigram','E_record-fields','W_face-continuity')
+
+
+def load(source, variant):
+    raw = pathlib.Path(source).read_bytes()
+    if hashlib.sha256(raw).hexdigest() != SOURCE_SHA:
+        raise ValueError('Source SHA-256 does not match authorized frozen corpus')
+    data = json.loads(raw)
+    cells = []
+    for c in data['cells']:
+        if (c['face'], c['cell']) == ('Pen','C08'):
+            continue
+        signs=list(c['signs'])
+        if (c['face'],c['cell']) == ('Pencil','C24'):
+            if signs != ['S07','S45','[MASK]']:
+                raise ValueError('Unrecognized Pencil C24 masking')
+            signs=['S07','S45','S07']  # archived successful mask reveal, not a transcription repair
+        if (c['face'],c['cell']) == ('Pencil','C28'):
+            if signs != ['S02','S06','S35','S23','S07']:
+                raise ValueError('Unrecognized Pencil C28 input')
+            signs[-1] = variant  # independently declared alternate, never choose on outcome
+        if not signs or any(s not in SIGNS for s in signs):
+            raise ValueError('Invalid sign token')
+        cells.append({'face': c['face'],'cell':c['cell'],'signs':signs})
+    totals={face:sum(len(c['signs']) for c in cells if c['face']==face) for face in ('Pen','Pencil')}
+    if len(cells)!=60 or totals!={'Pen':118,'Pencil':119} or len({s for c in cells for s in c['signs']})!=45:
+        raise ValueError(f'Eligibility invariant failed: {len(cells)}, {totals}')
+    return cells
+
+
+def dist1(a, b):
+    if abs(len(a)-len(b))>1:return False
+    if len(a)==len(b):return sum(x!=y for x,y in zip(a,b)) <= 1
+    shorter,longer = (a,b) if len(a)<len(b) else (b,a)
+    return any(shorter == longer[:i]+longer[i+1:] for i in range(len(longer)))
+
+
+def families(a, b):
+    n=len(a); parent=list(range(n))
+    def root(i):
+        while i!=parent[i]:
+            parent[i]=parent[parent[i]]; i=parent[i]
+        return i
+    def union(i,j):
+        i=root(i);j=root(j)
+        if i!=j:parent[max(i,j)]=min(i,j)
+    for i in range(n):
+        for j in range(i+1,n):
+            for data in (a,b):
+                aa=data[i]['signs']; bb=data[j]['signs']
+                if aa==bb or (len(aa)<=len(bb) and any(aa==bb[k:k+len(aa)] for k in range(len(bb)-len(aa)+1))) or (len(bb)<len(aa) and any(bb==aa[k:k+len(bb)] for k in range(len(aa)-len(bb)+1))) or dist1(aa,bb):
+                    union(i,j);break
+    keys={(c['face'],c['cell']):i for i,c in enumerate(a)}
+    # Conservative linkage of the already documented Pen multi-cell repeated passage.
+    for c1,c2 in [('C14','C20'),('C15','C21'),('C16','C22')]:
+        union(keys['Pen',c1],keys['Pen',c2])
+    for c in ['C14','C15','C16','C20','C21','C22']:
+        union(keys['Pen','C14'],keys['Pen',c])
+    groups=collections.defaultdict(list)
+    for i in range(n):groups[root(i)].append(i)
+    return sorted((tuple(g) for g in groups.values()),key=lambda g:(-sum(len(a[i]['signs']) for i in g),tuple((a[i]['face'],a[i]['cell']) for i in g)))
+
+
+def fold_assign(a, fams):
+    assignment={}; sizes=[0]*FOLDS
+    for gi,g in enumerate(fams):
+        f=min(range(FOLDS),key=lambda k:(sizes[k],k))
+        for i in g:assignment[i]=f
+        sizes[f]+=sum(len(a[i]['signs']) for i in g)
+    return assignment,sizes
+
+
+def prev_cells(cells):
+    lut={(c['face'],int(c['cell'][1:])):i for i,c in enumerate(cells)}
+    return {i:lut.get((c['face'],int(c['cell'][1:])-1)) for i,c in enumerate(cells)}
+
+
+def train(cells, ids, prec):
+    gl=collections.Counter(x for i in ids for x in cells[i]['signs']); total=sum(gl.values())
+    base={s:(gl[s]+0.5)/(total+0.5*len(SIGNS)) for s in SIGNS}
+    role=collections.defaultdict(collections.Counter)
+    for i in ids:
+        ss=cells[i]['signs'];n=len(ss)
+        for j,s in enumerate(ss):
+            # infix requires operand/operator alternation beginning at first archived slot
+            role['A',j%2][s]+=1
+            role['C','relation' if j==(n-1)//2 else 'operand'][s]+=1
+            role['E','head' if j==0 else ('tail' if j==n-1 else 'middle')][s]+=1
+            if j==0:
+                role['B','head'][s]+=1; role['D','head'][s]+=1;role['W','head'][s]+=1
+            else:
+                role['B',ss[0]][s]+=1
+                role['D',ss[j-1]][s]+=1
+                role['W','within',ss[j-1]][s]+=1
+    idset=set(ids)
+    for i in ids:
+        pi=prec[i]
+        if pi is not None and pi in idset:
+            role['W','across',cells[pi]['signs'][-1]][cells[i]['signs'][0]]+=1
+    return base,role
+
+
+def p_role(role, key, token, base):
+    c=role.get(key)
+    if c is None:return base[token]
+    n=sum(c.values())
+    return (c[token]+PRIOR*base[token])/(n+PRIOR)
+
+
+def tokenprob(model,cells,i,j,base,role,prec):
+    c=cells[i];ss=c['signs'];n=len(ss);s=ss[j]
+    if model=='F_unigram':return base[s]
+    if model=='A_infix':return p_role(role,('A',j%2),s,base)
+    if model=='B_prefix-procedure':return p_role(role,('B','head') if j==0 else ('B',ss[0]),s,base)
+    if model=='C_center-relation':return p_role(role,('C','relation' if j==(n-1)//2 else 'operand'),s,base)
+    if model=='D_language-bigram':return p_role(role,('D','head') if j==0 else ('D',ss[j-1]),s,base)
+    if model=='E_record-fields':return p_role(role,('E','head' if j==0 else ('tail' if j==n-1 else 'middle')),s,base)
+    if model=='W_face-continuity':
+        if j!=0:return p_role(role,('W','within',ss[j-1]),s,base)
+        prev=prec[i]
+        if prev is None:return p_role(role,('W','head'),s,base)
+        return p_role(role,('W','across',cells[prev]['signs'][-1]),s,base)
+    raise ValueError(model)
+
+
+def evaluate(cells,assign,detail=False):
+    prec=prev_cells(cells)
+    loss=collections.Counter();fold_loss=collections.defaultdict(lambda:collections.Counter())
+    rowloss=collections.defaultdict(lambda:collections.Counter());edges=collections.Counter();edge_n=0
+    fold_n=collections.Counter()
+    for f in range(FOLDS):
+        trainids=[i for i in range(len(cells)) if assign[i]!=f]
+        testids=[i for i in range(len(cells)) if assign[i]==f]
+        base,role=train(cells,trainids,prec)
+        for i in testids:
+            for j in range(len(cells[i]['signs'])):
+                fold_n[f]+=1
+                for model in MODELS:
+                    L=-math.log2(tokenprob(model,cells,i,j,base,role,prec))
+                    loss[model]+=L;fold_loss[f][model]+=L;rowloss[i][model]+=L
+                if j==0 and prec[i] is not None:
+                    edge_n+=1
+                    for model in ('W_face-continuity','D_language-bigram'):
+                        edges[model]+=-math.log2(tokenprob(model,cells,i,j,base,role,prec))
+    n=sum(len(c['signs']) for c in cells)
+    output={'bits_per_token':{m:loss[m]/n for m in MODELS},
+            'fold_bits_per_token':{str(f):{m:fold_loss[f][m]/fold_n[f] for m in MODELS} for f in range(FOLDS)},
+            'edge_bits_per_target':{m:edges[m]/edge_n for m in ('W_face-continuity','D_language-bigram')},
+            'edge_n':edge_n,'n_tokens':n}
+    if detail:output['cell_loss_bits']={cells[i]['face']+'.'+cells[i]['cell']:dict(rowloss[i]) for i in range(len(cells))}
+    return output
+
+
+def shuffled(cells,rng,kind):
+    x=copy.deepcopy(cells)
+    if kind=='within':
+        for c in x:rng.shuffle(c['signs'])
+    elif kind=='interior':
+        for c in x:
+            z=c['signs'];v=z[1:-1];rng.shuffle(v);c['signs']=z[:1]+v+z[-1:]
+    elif kind=='whole-order':
+        # shuffle full cell sign strings among addresses, inside each face, separately
+        for face in ('Pen','Pencil'):
+            idx=[i for i,c in enumerate(x) if c['face']==face]
+            sequences=[x[i]['signs'][:] for i in idx];rng.shuffle(sequences)
+            for i,seq in zip(idx,sequences):x[i]['signs']=seq
+    else:raise ValueError(kind)
+    return x
+
+
+def comparison(sc):
+    v=sc['bits_per_token']
+    maths=('A_infix','B_prefix-procedure','C_center-relation')
+    other=('D_language-bigram','E_record-fields')
+    champion=min(maths,key=lambda k:(v[k],k));challenger=min(other,key=lambda k:(v[k],k))
+    return {'best_math_model':champion,'best_math_bits_per_token':v[champion],
+            'best_nonmath_model':challenger,'best_nonmath_bits_per_token':v[challenger],
+            'math_advantage_bits_per_token':v[challenger]-v[champion],
+            'A_minus_D_bits_per_token':v['A_infix']-v['D_language-bigram'],
+            'A_advantage_vs_D_bits_per_token':v['D_language-bigram']-v['A_infix'],
+            'face_continuity_advantage_bits_per_boundary_start':sc['edge_bits_per_target']['D_language-bigram']-sc['edge_bits_per_target']['W_face-continuity']}
+
+
+def role_rows(cellsA,cellsB):
+    allcounts=collections.Counter(s for c in cellsA for s in c['signs'])
+    def per(cells):
+        occ=collections.Counter();first=collections.Counter();last=collections.Counter();inter=collections.Counter();parityop=collections.Counter();middle_rel=collections.Counter();loc=collections.defaultdict(list)
+        for c in cells:
+            ss=c['signs'];n=len(ss)
+            for j,s in enumerate(ss):
+                occ[s]+=1
+                if j==0:first[s]+=1
+                elif j==n-1:last[s]+=1
+                else:inter[s]+=1
+                parityop[s]+=(j%2==1)
+                middle_rel[s]+=(j==(n-1)//2)
+                loc[s].append(c['face']+'.'+c['cell']+':'+str(j+1))
+        return occ,first,last,inter,parityop,middle_rel,loc
+    a=per(cellsA);b=per(cellsB)
+    rows=[]
+    for s in SIGNS:
+        n=a[0][s];init=a[1][s];last=a[2][s];middle=a[3][s]
+        rates={'start':init/n if n else 0,'end':last/n if n else 0,'internal':middle/n if n else 0}
+        if n < 5: tendency='insufficient-repeat evidence'
+        elif max(rates.values()) >= .65:
+            tendency='descriptive '+max(rates,key=rates.get)+' concentration'
+        else:tendency='mixed positions'
+        role='not identified (no mathematical semantics inferred)'
+        u='very high' if n<5 else ('high' if n<10 else 'high; dependence and model ambiguity')
+        rows.append({'sign':s,'count_S07_C28':n,'count_S25_C28':b[0][s],
+                     'start_S07_C28':init,'middle_S07_C28':middle,'end_S07_C28':last,
+                     'parity_class1_S07_C28':a[4][s],'central_position_S07_C28':a[5][s],
+                     'start_S25_C28':b[1][s],'end_S25_C28':b[2][s],
+                     'tentative_structural_tendency':tendency,'tentative_mathematical_role':role,
+                     'uncertainty':u,'locations_S07_C28':'; '.join(a[6][s])})
+    return rows
+
+
+def motifs(cells,k):
+    items=collections.defaultdict(list)
+    for c in cells:
+        s=c['signs']
+        for i in range(len(s)-k+1):items[tuple(s[i:i+k])].append(c['face']+'.'+c['cell'])
+    return [{'motif':' '.join(x),'occurrences':len(y),'distinct_cells':len(set(y)), 'cell_locations':sorted(set(y))} for x,y in sorted(items.items(),key=lambda x:(-len(x[1]),x[0])) if len(y)>=2][:12]
+
+
+def run(source,root):
+    root=pathlib.Path(root);root.mkdir(parents=True,exist_ok=True)
+    a=load(source,'S07');b=load(source,'S25')
+    fams=families(a,b);assign,sizes=fold_assign(a,fams)
+    allres={};rng=random.Random(SEED)
+    for label,cells in [('S07',a),('S25',b)]:
+        observed=evaluate(cells,assign,True);obscomp=comparison(observed)
+        nulls={}
+        for typ in ('within','interior','whole-order'):
+            nulls[typ]=[]
+            for _ in range(SHUFFLES):
+                score=evaluate(shuffled(cells,rng,typ),assign)
+                nulls[typ].append(comparison(score))
+        def emp_ge(values,actual):return (1+sum(x>=actual-1e-12 for x in values))/(len(values)+1)
+        stats={}
+        for typ,data in nulls.items():
+            stats[typ]={k:{'mean':statistics.fmean(x[k] for x in data),
+                            'min':min(x[k] for x in data),'max':max(x[k] for x in data),
+                            'p_upper':emp_ge([x[k] for x in data],obscomp[k])}
+                        for k in ('math_advantage_bits_per_token','A_advantage_vs_D_bits_per_token','face_continuity_advantage_bits_per_boundary_start')}
+        allres[label]={'observed':observed,'comparison':obscomp,'nulls':stats,'motifs2':motifs(cells,2),'motifs3':motifs(cells,3)}
+        print(label, json.dumps({'scores':observed['bits_per_token'], 'comparisons':obscomp, 'nulls':stats},sort_keys=True),flush=True)
+    meta={'source_sha256':SOURCE_SHA,'restored_pencil_c24':['S07','S45','S07'],'excluded':['Pen.C08'],
+          'variants':['Pencil.C28=S07','Pencil.C28=S25'], 'seed':SEED,'shuffle_replicates_each':SHUFFLES,
+          'folds':FOLDS,'role_prior_concentration':PRIOR,'models':MODELS,
+          'family_count':len(fams),'family_group_sizes':sorted([len(g) for g in fams],reverse=True),
+          'fold_token_sizes':sizes,'fold_membership':{a[i]['face']+'.'+a[i]['cell']:assign[i] for i in range(len(a))},
+          'caveat':'This is a retrospective computational holdout; not an independent blind experiment.'}
+    (root/'results.json').write_text(json.dumps({'metadata':meta,'variants':allres},indent=2,sort_keys=True)+'\n')
+    (root/'folds.json').write_text(json.dumps(meta['fold_membership'],indent=2,sort_keys=True)+'\n')
+    rows=role_rows(a,b)
+    with (root.parent/'MATH-01-ROLE-TABLE.csv').open('w',newline='') as f:
+        w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
+    print('Wrote',str(root/'results.json'))
+
+if __name__=='__main__':
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--source',default=str(pathlib.Path(__file__).resolve().parent.parent/'inputs'/'corpus_masked.json'))
+    parser.add_argument('--out',default=str(pathlib.Path(__file__).resolve().parent))
+    v=parser.parse_args()
+    run(v.source,v.out)

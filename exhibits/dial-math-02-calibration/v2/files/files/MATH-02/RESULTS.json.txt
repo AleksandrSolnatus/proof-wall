@@ -1,0 +1,2744 @@
+{
+  "status": "INCOMPLETE_CALIBRATION",
+  "original_manifest_files_verified": 11,
+  "original_replay": {
+    "S07": {
+      "max_abs_error": 0.0,
+      "scores": {
+        "F_unigram": 5.547135108260038,
+        "A_infix": 5.832173456718992,
+        "B_prefix-procedure": 5.566820697893895,
+        "C_center-relation": 5.965323016877417,
+        "D_language-bigram": 5.2948569460593475,
+        "E_record-fields": 5.801393755738162,
+        "W_face-continuity": 5.359191299475796
+      },
+      "profile": {
+        "cells": 60,
+        "tokens": 237,
+        "types": 45,
+        "length_histogram": {
+          "2": 6,
+          "3": 16,
+          "4": 21,
+          "5": 12,
+          "6": 2,
+          "7": 3
+        },
+        "top_symbol_fraction": 0.0759493670886076,
+        "collision_probability": 0.03565043266824001,
+        "duplicate_cell_excess": 8
+      }
+    },
+    "S25": {
+      "max_abs_error": 0.0,
+      "scores": {
+        "F_unigram": 5.553004630494442,
+        "A_infix": 5.833700825318454,
+        "B_prefix-procedure": 5.55104672848584,
+        "C_center-relation": 5.97021778867418,
+        "D_language-bigram": 5.279583425865349,
+        "E_record-fields": 5.804915328749332,
+        "W_face-continuity": 5.3480133863016865
+      },
+      "profile": {
+        "cells": 60,
+        "tokens": 237,
+        "types": 45,
+        "length_histogram": {
+          "2": 6,
+          "3": 16,
+          "4": 21,
+          "5": 12,
+          "6": 2,
+          "7": 3
+        },
+        "top_symbol_fraction": 0.0759493670886076,
+        "collision_probability": 0.03529285561038404,
+        "duplicate_cell_excess": 8
+      }
+    }
+  },
+  "classes": {
+    "math": {
+      "profile": {
+        "cells": 60,
+        "tokens": 267,
+        "types": 34,
+        "length_histogram": {
+          "3": 24,
+          "4": 7,
+          "5": 14,
+          "6": 9,
+          "7": 5,
+          "8": 1
+        },
+        "top_symbol_fraction": 0.15355805243445692,
+        "collision_probability": 0.06606403649573371,
+        "duplicate_cell_excess": 3
+      },
+      "profile_matched": true,
+      "folds": [
+        {
+          "source": "wentworth",
+          "train_cells": 34,
+          "train_tokens": 160,
+          "train_sources": 4,
+          "test_tokens": 50,
+          "purged_train_cells": 14,
+          "test_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "train_indices": [
+            12,
+            15,
+            16,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            45,
+            47,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            58
+          ],
+          "status": "SCORED",
+          "bits_per_token": {
+            "F_unigram": 5.060940754800815,
+            "A_infix": 5.262025575021999,
+            "B_prefix-procedure": 5.127809494562667,
+            "C_center-relation": 5.1424803205105505,
+            "D_language-bigram": 5.2456935267066145,
+            "E_record-fields": 5.156826704448437
+          },
+          "math_advantage": 0.029017209885769724,
+          "positive_math_call": false,
+          "advantage_including_unigram": -0.06686873976185215,
+          "best_model": "F_unigram",
+          "relabel_max_abs_error": 0.0
+        },
+        {
+          "source": "couturat",
+          "train_cells": 35,
+          "train_tokens": 164,
+          "train_sources": 4,
+          "test_tokens": 46,
+          "purged_train_cells": 13,
+          "test_indices": [
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "train_indices": [
+            0,
+            2,
+            4,
+            5,
+            8,
+            9,
+            10,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            45,
+            47,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            58
+          ],
+          "status": "SCORED",
+          "bits_per_token": {
+            "F_unigram": 6.353478311965839,
+            "A_infix": 7.514516323656198,
+            "B_prefix-procedure": 6.608363537007019,
+            "C_center-relation": 7.843434543960016,
+            "D_language-bigram": 6.663001794069919,
+            "E_record-fields": 6.909537033260329
+          },
+          "math_advantage": 0.0546382570628996,
+          "positive_math_call": true,
+          "advantage_including_unigram": -0.25488522504118016,
+          "best_model": "F_unigram",
+          "relabel_max_abs_error": 0.0
+        },
+        {
+          "source": "thompson",
+          "train_cells": 48,
+          "train_tokens": 205,
+          "train_sources": 4,
+          "test_tokens": 62,
+          "purged_train_cells": 0,
+          "test_indices": [
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35
+          ],
+          "train_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59
+          ],
+          "status": "SCORED",
+          "bits_per_token": {
+            "F_unigram": 5.263242560491795,
+            "A_infix": 5.846177301197007,
+            "B_prefix-procedure": 5.319756764110247,
+            "C_center-relation": 5.854414483056962,
+            "D_language-bigram": 5.1607746904471075,
+            "E_record-fields": 5.813756947284641
+          },
+          "math_advantage": -0.15898207366313954,
+          "positive_math_call": false,
+          "advantage_including_unigram": -0.15898207366313954,
+          "best_model": "D_language-bigram",
+          "relabel_max_abs_error": 0.0
+        },
+        {
+          "source": "whitehead",
+          "train_cells": 39,
+          "train_tokens": 171,
+          "train_sources": 4,
+          "test_tokens": 61,
+          "purged_train_cells": 9,
+          "test_indices": [
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47
+          ],
+          "train_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56
+          ],
+          "status": "SCORED",
+          "bits_per_token": {
+            "F_unigram": 4.32749286366597,
+            "A_infix": 3.887092532730929,
+            "B_prefix-procedure": 4.208630369430586,
+            "C_center-relation": 4.429754528320094,
+            "D_language-bigram": 4.178568523154341,
+            "E_record-fields": 4.3211426478343675
+          },
+          "math_advantage": 0.29147599042341144,
+          "positive_math_call": true,
+          "advantage_including_unigram": 0.29147599042341144,
+          "best_model": "A_infix",
+          "relabel_max_abs_error": 0.0
+        },
+        {
+          "source": "demorgan_calculus",
+          "train_cells": 41,
+          "train_tokens": 187,
+          "train_sources": 4,
+          "test_tokens": 48,
+          "purged_train_cells": 7,
+          "test_indices": [
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59
+          ],
+          "train_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            47
+          ],
+          "status": "SCORED",
+          "bits_per_token": {
+            "F_unigram": 5.33449132380247,
+            "A_infix": 5.8403661390815325,
+            "B_prefix-procedure": 5.567187377940816,
+            "C_center-relation": 6.192218160331273,
+            "D_language-bigram": 5.3816092134419256,
+            "E_record-fields": 5.688023993767428
+          },
+          "math_advantage": -0.18557816449889053,
+          "positive_math_call": false,
+          "advantage_including_unigram": -0.23269605413834604,
+          "best_model": "F_unigram",
+          "relabel_max_abs_error": 0.0
+        }
+      ],
+      "dependency_component_sizes": [
+        11,
+        8,
+        4,
+        3,
+        3,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "status": "SCORED",
+      "pooled_eligible_folds": {
+        "F_unigram": 5.212212460925481,
+        "A_infix": 5.57558891942322,
+        "B_prefix-procedure": 5.296447803302309,
+        "C_center-relation": 5.799015733785194,
+        "D_language-bigram": 5.2507891828760105,
+        "E_record-fields": 5.515909448325011
+      },
+      "pooled_contrast": {
+        "math_advantage": -0.04565862042629831,
+        "positive_math_call": false,
+        "advantage_including_unigram": -0.08423534237682784,
+        "best_model": "F_unigram"
+      },
+      "scored_sources": 5,
+      "positive_sources": 2,
+      "positive_fraction_wilson95": [
+        0.11762077423265177,
+        0.7692757187239805
+      ]
+    },
+    "language": {
+      "profile": {
+        "cells": 60,
+        "tokens": 265,
+        "types": 33,
+        "length_histogram": {
+          "1": 5,
+          "2": 11,
+          "3": 12,
+          "4": 10,
+          "5": 5,
+          "6": 7,
+          "7": 2,
+          "8": 2,
+          "9": 1,
+          "10": 1,
+          "11": 2,
+          "12": 2
+        },
+        "top_symbol_fraction": 0.1169811320754717,
+        "collision_probability": 0.05809033733562036,
+        "duplicate_cell_excess": 8
+      },
+      "profile_matched": true,
+      "folds": [
+        {
+          "source": "alice.raw",
+          "train_cells": 10,
+          "train_tokens": 51,
+          "train_sources": 3,
+          "test_tokens": 51,
+          "purged_train_cells": 38,
+          "test_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "train_indices": [
+            15,
+            36,
+            37,
+            38,
+            47,
+            48,
+            53,
+            54,
+            58,
+            59
+          ],
+          "status": "BLOCKED_TRAINING_SUPPORT"
+        },
+        {
+          "source": "austen.txt",
+          "train_cells": 16,
+          "train_tokens": 70,
+          "train_sources": 3,
+          "test_tokens": 59,
+          "purged_train_cells": 32,
+          "test_indices": [
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "train_indices": [
+            0,
+            4,
+            5,
+            6,
+            7,
+            9,
+            36,
+            37,
+            38,
+            47,
+            48,
+            53,
+            54,
+            56,
+            58,
+            59
+          ],
+          "status": "SCORED",
+          "bits_per_token": {
+            "F_unigram": 5.245038291985705,
+            "A_infix": 5.752730043899943,
+            "B_prefix-procedure": 5.396860411429483,
+            "C_center-relation": 5.621053204738119,
+            "D_language-bigram": 5.310905139896681,
+            "E_record-fields": 5.561762165649688
+          },
+          "math_advantage": -0.0859552715328018,
+          "positive_math_call": false,
+          "advantage_including_unigram": -0.15182211944377766,
+          "best_model": "F_unigram",
+          "relabel_max_abs_error": 0.0
+        },
+        {
+          "source": "doyle.txt",
+          "train_cells": 17,
+          "train_tokens": 75,
+          "train_sources": 4,
+          "test_tokens": 51,
+          "purged_train_cells": 31,
+          "test_indices": [
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35
+          ],
+          "train_indices": [
+            0,
+            4,
+            5,
+            6,
+            7,
+            9,
+            15,
+            36,
+            37,
+            38,
+            47,
+            48,
+            53,
+            54,
+            56,
+            58,
+            59
+          ],
+          "status": "SCORED",
+          "bits_per_token": {
+            "F_unigram": 5.254040051753174,
+            "A_infix": 5.548013383398968,
+            "B_prefix-procedure": 5.346634450787158,
+            "C_center-relation": 5.774532808600011,
+            "D_language-bigram": 5.319967617009552,
+            "E_record-fields": 5.585489290906882
+          },
+          "math_advantage": -0.026666833777605703,
+          "positive_math_call": false,
+          "advantage_including_unigram": -0.0925943990339837,
+          "best_model": "F_unigram",
+          "relabel_max_abs_error": 0.0
+        },
+        {
+          "source": "shelley.txt",
+          "train_cells": 12,
+          "train_tokens": 46,
+          "train_sources": 3,
+          "test_tokens": 63,
+          "purged_train_cells": 36,
+          "test_indices": [
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47
+          ],
+          "train_indices": [
+            0,
+            4,
+            5,
+            6,
+            7,
+            9,
+            15,
+            48,
+            53,
+            54,
+            56,
+            58
+          ],
+          "status": "BLOCKED_TRAINING_SUPPORT"
+        },
+        {
+          "source": "twain.txt",
+          "train_cells": 9,
+          "train_tokens": 47,
+          "train_sources": 3,
+          "test_tokens": 41,
+          "purged_train_cells": 39,
+          "test_indices": [
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59
+          ],
+          "train_indices": [
+            0,
+            4,
+            5,
+            6,
+            7,
+            15,
+            37,
+            38,
+            47
+          ],
+          "status": "BLOCKED_TRAINING_SUPPORT"
+        }
+      ],
+      "dependency_component_sizes": [
+        43,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "status": "PARTIAL_OR_BLOCKED",
+      "pooled_eligible_folds": {
+        "F_unigram": 5.249211835150622,
+        "A_infix": 5.6578159558494905,
+        "B_prefix-procedure": 5.373573829677133,
+        "C_center-relation": 5.692211930164996,
+        "D_language-bigram": 5.31510683383083,
+        "E_record-fields": 5.572762923723476
+      },
+      "pooled_contrast": {
+        "math_advantage": -0.05846699584630244,
+        "positive_math_call": false,
+        "advantage_including_unigram": -0.12436199452651042,
+        "best_model": "F_unigram"
+      },
+      "scored_sources": 2,
+      "positive_sources": 0,
+      "positive_fraction_wilson95": [
+        0.0,
+        0.6576197724933345
+      ]
+    },
+    "registry": {
+      "profile": {
+        "cells": 60,
+        "tokens": 212,
+        "types": 48,
+        "length_histogram": {
+          "2": 25,
+          "3": 12,
+          "4": 10,
+          "5": 1,
+          "6": 5,
+          "7": 5,
+          "8": 2
+        },
+        "top_symbol_fraction": 0.08962264150943396,
+        "collision_probability": 0.03429312349101314,
+        "duplicate_cell_excess": 0
+      },
+      "profile_matched": false,
+      "folds": [],
+      "status": "INELIGIBLE_ALPHABET"
+    }
+  },
+  "synthetic": {
+    "A": {
+      "profile": {
+        "cells": 60,
+        "tokens": 237,
+        "types": 44,
+        "length_histogram": {
+          "2": 6,
+          "3": 16,
+          "4": 21,
+          "5": 12,
+          "6": 2,
+          "7": 3
+        },
+        "top_symbol_fraction": 0.08016877637130802,
+        "collision_probability": 0.029500107273117356,
+        "duplicate_cell_excess": 0
+      },
+      "fold_sizes": [
+        48,
+        49,
+        48,
+        46,
+        46
+      ],
+      "cells": [
+        {
+          "face": "Synthetic",
+          "cell": "C01",
+          "signs": [
+            "S12",
+            "S08",
+            "S22",
+            "S02",
+            "S42"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C02",
+          "signs": [
+            "S44",
+            "S09",
+            "S32"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C03",
+          "signs": [
+            "S22",
+            "S08",
+            "S43"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C04",
+          "signs": [
+            "S16",
+            "S03",
+            "S22"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C05",
+          "signs": [
+            "S27",
+            "S06",
+            "S39",
+            "S10",
+            "S19"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C06",
+          "signs": [
+            "S31",
+            "S03",
+            "S11",
+            "S09"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C07",
+          "signs": [
+            "S34",
+            "S06",
+            "S35"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C08",
+          "signs": [
+            "S32",
+            "S08",
+            "S35"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C09",
+          "signs": [
+            "S26",
+            "S05",
+            "S31",
+            "S06",
+            "S36"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C10",
+          "signs": [
+            "S38",
+            "S05",
+            "S34",
+            "S02"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C11",
+          "signs": [
+            "S22",
+            "S10",
+            "S33",
+            "S07",
+            "S35"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C12",
+          "signs": [
+            "S29",
+            "S05"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C13",
+          "signs": [
+            "S21",
+            "S05",
+            "S38",
+            "S08",
+            "S16",
+            "S03"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C14",
+          "signs": [
+            "S11",
+            "S05"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C15",
+          "signs": [
+            "S42",
+            "S06",
+            "S19",
+            "S02"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C16",
+          "signs": [
+            "S35",
+            "S03",
+            "S32",
+            "S02",
+            "S42",
+            "S03",
+            "S14"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C17",
+          "signs": [
+            "S42",
+            "S03"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C18",
+          "signs": [
+            "S35",
+            "S02",
+            "S15",
+            "S03"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C19",
+          "signs": [
+            "S36",
+            "S09",
+            "S15",
+            "S02",
+            "S25",
+            "S10"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C20",
+          "signs": [
+            "S43",
+            "S09"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C21",
+          "signs": [
+            "S11",
+            "S02",
+            "S24",
+            "S02"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C22",
+          "signs": [
+            "S18",
+            "S09",
+            "S39",
+            "S08",
+            "S30",
+            "S04",
+            "S43"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C23",
+          "signs": [
+            "S42",
+            "S06",
+            "S36",
+            "S01"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C24",
+          "signs": [
+            "S41",
+            "S06",
+            "S37"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C25",
+          "signs": [
+            "S30",
+            "S02",
+            "S11",
+            "S09"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C26",
+          "signs": [
+            "S25",
+            "S03",
+            "S20"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C27",
+          "signs": [
+            "S23",
+            "S08",
+            "S29"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C28",
+          "signs": [
+            "S14",
+            "S01",
+            "S39",
+            "S01",
+            "S29",
+            "S08",
+            "S36"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C29",
+          "signs": [
+            "S20",
+            "S01"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C30",
+          "signs": [
+            "S45",
+            "S06",
+            "S41"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C31",
+          "signs": [
+            "S23",
+            "S08",
+            "S44",
+            "S02",
+            "S33"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C32",
+          "signs": [
+            "S34",
+            "S07",
+            "S40",
+            "S10"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C33",
+          "signs": [
+            "S34",
+            "S08",
+            "S42",
+            "S10"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C34",
+          "signs": [
+            "S41",
+            "S10",
+            "S19"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C35",
+          "signs": [
+            "S33",
+            "S09",
+            "S45",
+            "S08"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C36",
+          "signs": [
+            "S11",
+            "S08",
+            "S43",
+            "S05"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C37",
+          "signs": [
+            "S12",
+            "S10",
+            "S44",
+            "S08"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C38",
+          "signs": [
+            "S29",
+            "S06",
+            "S34",
+            "S08",
+            "S44"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C39",
+          "signs": [
+            "S35",
+            "S08",
+            "S34",
+            "S02"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C40",
+          "signs": [
+            "S23",
+            "S05",
+            "S43",
+            "S02"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C41",
+          "signs": [
+            "S43",
+            "S07",
+            "S38",
+            "S06"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C42",
+          "signs": [
+            "S40",
+            "S05",
+            "S15",
+            "S08"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C43",
+          "signs": [
+            "S45",
+            "S10",
+            "S45",
+            "S08",
+            "S38"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C44",
+          "signs": [
+            "S36",
+            "S10",
+            "S41"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C45",
+          "signs": [
+            "S38",
+            "S03",
+            "S38"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C46",
+          "signs": [
+            "S18",
+            "S06",
+            "S26",
+            "S10",
+            "S40"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C47",
+          "signs": [
+            "S25",
+            "S04",
+            "S37",
+            "S05"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C48",
+          "signs": [
+            "S36",
+            "S07",
+            "S36",
+            "S04"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C49",
+          "signs": [
+            "S34",
+            "S09",
+            "S31"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C50",
+          "signs": [
+            "S33",
+            "S10",
+            "S15"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C51",
+          "signs": [
+            "S29",
+            "S10",
+            "S35",
+            "S07",
+            "S40"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C52",
+          "signs": [
+            "S25",
+            "S08",
+            "S43",
+            "S01"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C53",
+          "signs": [
+            "S13",
+            "S07",
+            "S12"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C54",
+          "signs": [
+            "S40",
+            "S06",
+            "S44"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C55",
+          "signs": [
+            "S12",
+            "S04",
+            "S35",
+            "S07"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C56",
+          "signs": [
+            "S38",
+            "S09",
+            "S17",
+            "S03",
+            "S26"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C57",
+          "signs": [
+            "S32",
+            "S08",
+            "S15",
+            "S03",
+            "S38"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C58",
+          "signs": [
+            "S39",
+            "S02",
+            "S30",
+            "S08",
+            "S24"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C59",
+          "signs": [
+            "S44",
+            "S05",
+            "S41",
+            "S09"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C60",
+          "signs": [
+            "S44",
+            "S01"
+          ]
+        }
+      ],
+      "status": "SCORED",
+      "bits_per_token": {
+        "F_unigram": 5.523672158917706,
+        "A_infix": 4.880165630504911,
+        "B_prefix-procedure": 5.589028005610094,
+        "C_center-relation": 5.768411144453613,
+        "D_language-bigram": 5.575470932924819,
+        "E_record-fields": 5.717254850945147,
+        "W_face-continuity": 5.54127388161473
+      },
+      "math_advantage": 0.6953053024199081,
+      "positive_math_call": true,
+      "advantage_including_unigram": 0.6435065284127948,
+      "best_model": "A_infix"
+    },
+    "B": {
+      "profile": {
+        "cells": 60,
+        "tokens": 237,
+        "types": 45,
+        "length_histogram": {
+          "2": 6,
+          "3": 16,
+          "4": 21,
+          "5": 12,
+          "6": 2,
+          "7": 3
+        },
+        "top_symbol_fraction": 0.06751054852320675,
+        "collision_probability": 0.025852821282986483,
+        "duplicate_cell_excess": 3
+      },
+      "fold_sizes": [
+        49,
+        46,
+        48,
+        47,
+        47
+      ],
+      "cells": [
+        {
+          "face": "Synthetic",
+          "cell": "C01",
+          "signs": [
+            "S05",
+            "S45",
+            "S43",
+            "S44",
+            "S41"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C02",
+          "signs": [
+            "S05",
+            "S38",
+            "S41"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C03",
+          "signs": [
+            "S01",
+            "S11",
+            "S12"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C04",
+          "signs": [
+            "S01",
+            "S08",
+            "S12"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C05",
+          "signs": [
+            "S03",
+            "S27",
+            "S27",
+            "S25",
+            "S26"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C06",
+          "signs": [
+            "S03",
+            "S24",
+            "S26",
+            "S23"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C07",
+          "signs": [
+            "S05",
+            "S39",
+            "S39"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C08",
+          "signs": [
+            "S04",
+            "S31",
+            "S33"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C09",
+          "signs": [
+            "S02",
+            "S17",
+            "S20",
+            "S20",
+            "S20"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C10",
+          "signs": [
+            "S03",
+            "S24",
+            "S28",
+            "S23"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C11",
+          "signs": [
+            "S01",
+            "S08",
+            "S06",
+            "S07",
+            "S06"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C12",
+          "signs": [
+            "S05",
+            "S45"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C13",
+          "signs": [
+            "S04",
+            "S34",
+            "S35",
+            "S37",
+            "S32",
+            "S35"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C14",
+          "signs": [
+            "S05",
+            "S41"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C15",
+          "signs": [
+            "S03",
+            "S28",
+            "S27",
+            "S26"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C16",
+          "signs": [
+            "S02",
+            "S16",
+            "S20",
+            "S21",
+            "S15",
+            "S20",
+            "S19"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C17",
+          "signs": [
+            "S03",
+            "S23"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C18",
+          "signs": [
+            "S05",
+            "S40",
+            "S38",
+            "S39"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C19",
+          "signs": [
+            "S01",
+            "S12",
+            "S13",
+            "S06",
+            "S09",
+            "S09"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C20",
+          "signs": [
+            "S03",
+            "S24"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C21",
+          "signs": [
+            "S03",
+            "S27",
+            "S23",
+            "S24"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C22",
+          "signs": [
+            "S01",
+            "S13",
+            "S10",
+            "S06",
+            "S11",
+            "S11",
+            "S11"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C23",
+          "signs": [
+            "S02",
+            "S17",
+            "S18",
+            "S21"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C24",
+          "signs": [
+            "S04",
+            "S37",
+            "S33"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C25",
+          "signs": [
+            "S05",
+            "S40",
+            "S38",
+            "S38"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C26",
+          "signs": [
+            "S02",
+            "S19",
+            "S15"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C27",
+          "signs": [
+            "S05",
+            "S43",
+            "S39"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C28",
+          "signs": [
+            "S05",
+            "S38",
+            "S38",
+            "S40",
+            "S41",
+            "S39",
+            "S41"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C29",
+          "signs": [
+            "S02",
+            "S18"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C30",
+          "signs": [
+            "S01",
+            "S07",
+            "S09"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C31",
+          "signs": [
+            "S03",
+            "S29",
+            "S25",
+            "S29",
+            "S26"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C32",
+          "signs": [
+            "S04",
+            "S37",
+            "S37",
+            "S32"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C33",
+          "signs": [
+            "S04",
+            "S37",
+            "S37",
+            "S36"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C34",
+          "signs": [
+            "S04",
+            "S36",
+            "S30"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C35",
+          "signs": [
+            "S04",
+            "S32",
+            "S34",
+            "S33"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C36",
+          "signs": [
+            "S05",
+            "S40",
+            "S45",
+            "S38"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C37",
+          "signs": [
+            "S02",
+            "S21",
+            "S21",
+            "S17"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C38",
+          "signs": [
+            "S05",
+            "S44",
+            "S41",
+            "S38",
+            "S40"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C39",
+          "signs": [
+            "S01",
+            "S09",
+            "S09",
+            "S10"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C40",
+          "signs": [
+            "S03",
+            "S29",
+            "S26",
+            "S25"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C41",
+          "signs": [
+            "S02",
+            "S17",
+            "S18",
+            "S21"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C42",
+          "signs": [
+            "S03",
+            "S22",
+            "S22",
+            "S28"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C43",
+          "signs": [
+            "S02",
+            "S18",
+            "S14",
+            "S19",
+            "S16"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C44",
+          "signs": [
+            "S04",
+            "S32",
+            "S34"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C45",
+          "signs": [
+            "S04",
+            "S32",
+            "S34"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C46",
+          "signs": [
+            "S01",
+            "S08",
+            "S12",
+            "S12",
+            "S07"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C47",
+          "signs": [
+            "S05",
+            "S45",
+            "S45",
+            "S44"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C48",
+          "signs": [
+            "S02",
+            "S20",
+            "S15",
+            "S17"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C49",
+          "signs": [
+            "S05",
+            "S43",
+            "S39"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C50",
+          "signs": [
+            "S02",
+            "S16",
+            "S19"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C51",
+          "signs": [
+            "S05",
+            "S43",
+            "S42",
+            "S44",
+            "S45"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C52",
+          "signs": [
+            "S04",
+            "S33",
+            "S32",
+            "S36"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C53",
+          "signs": [
+            "S03",
+            "S26",
+            "S24"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C54",
+          "signs": [
+            "S01",
+            "S06",
+            "S11"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C55",
+          "signs": [
+            "S04",
+            "S35",
+            "S34",
+            "S36"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C56",
+          "signs": [
+            "S03",
+            "S25",
+            "S23",
+            "S22",
+            "S23"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C57",
+          "signs": [
+            "S05",
+            "S45",
+            "S38",
+            "S43",
+            "S39"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C58",
+          "signs": [
+            "S03",
+            "S29",
+            "S27",
+            "S29",
+            "S23"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C59",
+          "signs": [
+            "S03",
+            "S26",
+            "S28",
+            "S27"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C60",
+          "signs": [
+            "S05",
+            "S38"
+          ]
+        }
+      ],
+      "status": "SCORED",
+      "bits_per_token": {
+        "F_unigram": 5.856890032458246,
+        "A_infix": 6.058438456601491,
+        "B_prefix-procedure": 3.8946482997043246,
+        "C_center-relation": 6.206688066383561,
+        "D_language-bigram": 5.334630095138429,
+        "E_record-fields": 5.608748975996773,
+        "W_face-continuity": 5.700954536605765
+      },
+      "math_advantage": 1.4399817954341048,
+      "positive_math_call": true,
+      "advantage_including_unigram": 1.4399817954341048,
+      "best_model": "B_prefix-procedure"
+    },
+    "C": {
+      "profile": {
+        "cells": 60,
+        "tokens": 237,
+        "types": 45,
+        "length_histogram": {
+          "2": 6,
+          "3": 16,
+          "4": 21,
+          "5": 12,
+          "6": 2,
+          "7": 3
+        },
+        "top_symbol_fraction": 0.04219409282700422,
+        "collision_probability": 0.02277765858542516,
+        "duplicate_cell_excess": 0
+      },
+      "fold_sizes": [
+        49,
+        47,
+        47,
+        47,
+        47
+      ],
+      "cells": [
+        {
+          "face": "Synthetic",
+          "cell": "C01",
+          "signs": [
+            "S16",
+            "S41",
+            "S05",
+            "S24",
+            "S33"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C02",
+          "signs": [
+            "S13",
+            "S09",
+            "S25"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C03",
+          "signs": [
+            "S11",
+            "S03",
+            "S25"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C04",
+          "signs": [
+            "S12",
+            "S06",
+            "S38"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C05",
+          "signs": [
+            "S34",
+            "S20",
+            "S07",
+            "S18",
+            "S25"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C06",
+          "signs": [
+            "S18",
+            "S03",
+            "S35",
+            "S36"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C07",
+          "signs": [
+            "S15",
+            "S09",
+            "S30"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C08",
+          "signs": [
+            "S45",
+            "S09",
+            "S18"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C09",
+          "signs": [
+            "S12",
+            "S15",
+            "S01",
+            "S18",
+            "S11"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C10",
+          "signs": [
+            "S34",
+            "S09",
+            "S34",
+            "S26"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C11",
+          "signs": [
+            "S23",
+            "S35",
+            "S05",
+            "S12",
+            "S40"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C12",
+          "signs": [
+            "S07",
+            "S29"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C13",
+          "signs": [
+            "S24",
+            "S37",
+            "S09",
+            "S41",
+            "S34",
+            "S28"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C14",
+          "signs": [
+            "S06",
+            "S20"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C15",
+          "signs": [
+            "S21",
+            "S03",
+            "S38",
+            "S18"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C16",
+          "signs": [
+            "S24",
+            "S23",
+            "S37",
+            "S10",
+            "S12",
+            "S27",
+            "S12"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C17",
+          "signs": [
+            "S01",
+            "S20"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C18",
+          "signs": [
+            "S31",
+            "S09",
+            "S38",
+            "S29"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C19",
+          "signs": [
+            "S37",
+            "S13",
+            "S01",
+            "S36",
+            "S14",
+            "S25"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C20",
+          "signs": [
+            "S05",
+            "S30"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C21",
+          "signs": [
+            "S18",
+            "S06",
+            "S43",
+            "S41"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C22",
+          "signs": [
+            "S26",
+            "S34",
+            "S16",
+            "S07",
+            "S20",
+            "S38",
+            "S25"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C23",
+          "signs": [
+            "S17",
+            "S06",
+            "S35",
+            "S16"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C24",
+          "signs": [
+            "S37",
+            "S01",
+            "S15"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C25",
+          "signs": [
+            "S22",
+            "S05",
+            "S26",
+            "S24"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C26",
+          "signs": [
+            "S14",
+            "S01",
+            "S32"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C27",
+          "signs": [
+            "S29",
+            "S10",
+            "S29"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C28",
+          "signs": [
+            "S37",
+            "S44",
+            "S32",
+            "S09",
+            "S20",
+            "S41",
+            "S43"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C29",
+          "signs": [
+            "S01",
+            "S16"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C30",
+          "signs": [
+            "S26",
+            "S01",
+            "S17"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C31",
+          "signs": [
+            "S19",
+            "S17",
+            "S03",
+            "S33",
+            "S36"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C32",
+          "signs": [
+            "S24",
+            "S08",
+            "S37",
+            "S34"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C33",
+          "signs": [
+            "S27",
+            "S07",
+            "S30",
+            "S13"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C34",
+          "signs": [
+            "S22",
+            "S02",
+            "S40"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C35",
+          "signs": [
+            "S35",
+            "S04",
+            "S21",
+            "S37"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C36",
+          "signs": [
+            "S19",
+            "S04",
+            "S39",
+            "S13"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C37",
+          "signs": [
+            "S38",
+            "S04",
+            "S20",
+            "S19"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C38",
+          "signs": [
+            "S13",
+            "S45",
+            "S10",
+            "S36",
+            "S14"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C39",
+          "signs": [
+            "S17",
+            "S06",
+            "S16",
+            "S17"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C40",
+          "signs": [
+            "S39",
+            "S03",
+            "S11",
+            "S23"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C41",
+          "signs": [
+            "S42",
+            "S04",
+            "S25",
+            "S25"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C42",
+          "signs": [
+            "S43",
+            "S03",
+            "S35",
+            "S13"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C43",
+          "signs": [
+            "S30",
+            "S13",
+            "S07",
+            "S22",
+            "S24"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C44",
+          "signs": [
+            "S39",
+            "S08",
+            "S19"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C45",
+          "signs": [
+            "S19",
+            "S01",
+            "S30"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C46",
+          "signs": [
+            "S38",
+            "S43",
+            "S09",
+            "S45",
+            "S38"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C47",
+          "signs": [
+            "S12",
+            "S06",
+            "S14",
+            "S22"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C48",
+          "signs": [
+            "S40",
+            "S06",
+            "S18",
+            "S42"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C49",
+          "signs": [
+            "S20",
+            "S03",
+            "S27"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C50",
+          "signs": [
+            "S31",
+            "S06",
+            "S18"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C51",
+          "signs": [
+            "S37",
+            "S27",
+            "S04",
+            "S30",
+            "S20"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C52",
+          "signs": [
+            "S45",
+            "S05",
+            "S12",
+            "S13"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C53",
+          "signs": [
+            "S40",
+            "S05",
+            "S28"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C54",
+          "signs": [
+            "S29",
+            "S10",
+            "S20"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C55",
+          "signs": [
+            "S34",
+            "S10",
+            "S14",
+            "S34"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C56",
+          "signs": [
+            "S35",
+            "S37",
+            "S01",
+            "S27",
+            "S34"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C57",
+          "signs": [
+            "S29",
+            "S41",
+            "S09",
+            "S32",
+            "S34"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C58",
+          "signs": [
+            "S30",
+            "S11",
+            "S02",
+            "S29",
+            "S17"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C59",
+          "signs": [
+            "S32",
+            "S06",
+            "S35",
+            "S25"
+          ]
+        },
+        {
+          "face": "Synthetic",
+          "cell": "C60",
+          "signs": [
+            "S06",
+            "S43"
+          ]
+        }
+      ],
+      "status": "SCORED",
+      "bits_per_token": {
+        "F_unigram": 5.632300122323843,
+        "A_infix": 5.834184686335314,
+        "B_prefix-procedure": 5.782107981432076,
+        "C_center-relation": 5.01859053569235,
+        "D_language-bigram": 5.816460155857548,
+        "E_record-fields": 5.819330832958683,
+        "W_face-continuity": 5.733180255333874
+      },
+      "math_advantage": 0.7978696201651987,
+      "positive_math_call": true,
+      "advantage_including_unigram": 0.6137095866314937,
+      "best_model": "C_center-relation"
+    }
+  },
+  "python": "3.12.14",
+  "cpu_seconds": 0.04564127799999999
+}

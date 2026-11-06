@@ -1,0 +1,251 @@
+{
+  "verifier": "Separate implementation by same executor; no independent human or separate-agent review claimed.",
+  "checks": [
+    {
+      "sign": "S01",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S02",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S03",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S04",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S05",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S06",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S07",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S08",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S09",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S10",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S11",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S12",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S13",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S14",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S15",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S16",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S17",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S18",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S19",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S20",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S21",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S22",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S23",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S24",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S25",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S26",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S27",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S28",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S29",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S30",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S31",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S32",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S33",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S34",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S35",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S36",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S37",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S38",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S39",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S40",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S41",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S42",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S43",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S44",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    },
+    {
+      "sign": "S45",
+      "independent_score_arithmetic": "PASS",
+      "stability_rule_recount": "PASS"
+    }
+  ],
+  "source_and_frozen_code_hashes_unchanged": true,
+  "global_gate_recount": "PASS",
+  "no_nulls_on_failed_system_gate": true,
+  "failure_category_variant_occurrences": {
+    "J count": 261,
+    "topology": 72,
+    "E count": 99,
+    "J position": 9,
+    "E position": 12,
+    "angular stability": 19,
+    "radial stability": 5,
+    "H count": 2
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "inkscape": "Inkscape 1.2.2 (b0a8486541, 2022-12-01)"
+  },
+  "qualified_stable_signs": [],
+  "primary_verdict": "INCONCLUSIVE",
+  "interpretation_limit": "Chosen endpoint/junction/void landmark representation stability; not a verdict against circles, shells or connected-outline geometry."
+}

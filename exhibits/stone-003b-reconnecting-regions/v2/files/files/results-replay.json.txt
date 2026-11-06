@@ -1,0 +1,2458 @@
+{
+  "schema": "stone003b-v1",
+  "suite": "replay",
+  "date_local": "2026-11-04",
+  "environment": {
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41"
+  },
+  "max_bucket_rows": 262144,
+  "run_seconds": 0.010078424999960589,
+  "rows": [
+    {
+      "suite": "replay",
+      "case": "original-16-variable-bridges",
+      "step": 0,
+      "n": 16,
+      "regions": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          3,
+          11
+        ],
+        [
+          4,
+          12
+        ],
+        [
+          5,
+          13
+        ],
+        [
+          6,
+          14
+        ],
+        [
+          7,
+          15
+        ]
+      ],
+      "added_clauses": [
+        [
+          -1,
+          9
+        ],
+        [
+          1,
+          -9
+        ],
+        [
+          -2,
+          10
+        ],
+        [
+          2,
+          -10
+        ],
+        [
+          -3,
+          11
+        ],
+        [
+          3,
+          -11
+        ],
+        [
+          -4,
+          12
+        ],
+        [
+          4,
+          -12
+        ],
+        [
+          -5,
+          13
+        ],
+        [
+          5,
+          -13
+        ],
+        [
+          -6,
+          14
+        ],
+        [
+          6,
+          -14
+        ],
+        [
+          -7,
+          15
+        ],
+        [
+          7,
+          -15
+        ],
+        [
+          -8,
+          16
+        ],
+        [
+          8,
+          -16
+        ]
+      ],
+      "clauses": [
+        [
+          -1,
+          9
+        ],
+        [
+          1,
+          -9
+        ],
+        [
+          -2,
+          10
+        ],
+        [
+          2,
+          -10
+        ],
+        [
+          -3,
+          11
+        ],
+        [
+          3,
+          -11
+        ],
+        [
+          -4,
+          12
+        ],
+        [
+          4,
+          -12
+        ],
+        [
+          -5,
+          13
+        ],
+        [
+          5,
+          -13
+        ],
+        [
+          -6,
+          14
+        ],
+        [
+          6,
+          -14
+        ],
+        [
+          -7,
+          15
+        ],
+        [
+          7,
+          -15
+        ],
+        [
+          -8,
+          16
+        ],
+        [
+          8,
+          -16
+        ]
+      ],
+      "metadata": {},
+      "interface": {
+        "local_cache_lookups": 8,
+        "local_cache_hits": 0,
+        "local_candidates": 32,
+        "local_clause_evaluations": 56,
+        "local_projection_bit_steps": 0,
+        "plan_graph_pair_visits": 0,
+        "plan_fill_pair_tests": 0,
+        "plan_candidate_visits": 0,
+        "plan_fill_edge_attempts": 0,
+        "induced_width": 0,
+        "max_bucket_variables": 0,
+        "max_bucket_rows": 0,
+        "elimination_cache_lookups": 0,
+        "elimination_key_factor_ids": 0,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 0,
+        "factor_table_lookups": 0,
+        "projection_bit_steps": 0,
+        "integer_multiplies": 8,
+        "integer_additions": 0,
+        "max_integer_bits": 9,
+        "factor_membership_tests": 0,
+        "status": "EXACT",
+        "count": 256,
+        "summary_seconds": 7.580600004075677e-05,
+        "plan_seconds": 1.3055999943389907e-05,
+        "eliminate_seconds": 4.157000034865632e-06,
+        "query_seconds": 9.384500003761787e-05,
+        "stored_table_cells": 8,
+        "peak_table_slots": 9,
+        "cached_elimination_tables": 0,
+        "cached_local_tables": 8,
+        "boundary_variables": 0,
+        "max_region_boundary": 0,
+        "source_clause_count": 16,
+        "source_literal_count": 32,
+        "cumulative_local_candidates": 32,
+        "cumulative_bucket_rows": 0,
+        "end_to_end_query_seconds": 0.00010209100003066851,
+        "ingest_seconds": 6.696299999475741e-05,
+        "total_seconds": 0.00016905400002542592,
+        "new_cross_rows": 0,
+        "new_boundary_variables": 0,
+        "new_routing_literal_reads": 32
+      },
+      "fresh_interface": {
+        "local_cache_lookups": 8,
+        "local_cache_hits": 0,
+        "local_candidates": 32,
+        "local_clause_evaluations": 56,
+        "local_projection_bit_steps": 0,
+        "plan_graph_pair_visits": 0,
+        "plan_fill_pair_tests": 0,
+        "plan_candidate_visits": 0,
+        "plan_fill_edge_attempts": 0,
+        "induced_width": 0,
+        "max_bucket_variables": 0,
+        "max_bucket_rows": 0,
+        "elimination_cache_lookups": 0,
+        "elimination_key_factor_ids": 0,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 0,
+        "factor_table_lookups": 0,
+        "projection_bit_steps": 0,
+        "integer_multiplies": 8,
+        "integer_additions": 0,
+        "max_integer_bits": 9,
+        "factor_membership_tests": 0,
+        "status": "EXACT",
+        "count": 256,
+        "summary_seconds": 4.8529999958191183e-05,
+        "plan_seconds": 2.3540000029242947e-06,
+        "eliminate_seconds": 1.5860000530665275e-06,
+        "query_seconds": 5.324299991116277e-05,
+        "stored_table_cells": 8,
+        "peak_table_slots": 9,
+        "cached_elimination_tables": 0,
+        "cached_local_tables": 8,
+        "boundary_variables": 0,
+        "max_region_boundary": 0,
+        "source_clause_count": 16,
+        "source_literal_count": 32,
+        "cumulative_local_candidates": 32,
+        "cumulative_bucket_rows": 0,
+        "end_to_end_query_seconds": 5.813300003865152e-05,
+        "ingest_seconds": 4.370399994968466e-05,
+        "total_seconds": 0.00010183699998833617
+      },
+      "incremental_bdd": {
+        "status": "EXACT",
+        "count": 256,
+        "reachable_nodes": 24,
+        "allocated_nodes": 224,
+        "apply_cache_entries": 192,
+        "apply_calls_new": 432,
+        "compile_or_update_seconds": 0.00046405799992044194,
+        "count_seconds": 2.5912000069183705e-05,
+        "inspection_seconds": 1.1201999996046652e-05,
+        "total_seconds": 0.0005011719999856723
+      },
+      "fresh_bdd": {
+        "status": "EXACT",
+        "count": 256,
+        "reachable_nodes": 24,
+        "allocated_nodes": 224,
+        "apply_cache_entries": 192,
+        "apply_calls_new": 432,
+        "compile_or_update_seconds": 0.0002997340000092663,
+        "count_seconds": 2.235199997357995e-05,
+        "inspection_seconds": 7.310999990295386e-06,
+        "total_seconds": 0.00032939699997314165
+      },
+      "archived_component_baseline": {
+        "step": "start",
+        "new_clauses": [],
+        "exact_count": 256,
+        "independent_full_oracle": 256,
+        "components": 8,
+        "largest_component_variables": 2,
+        "component_enumeration_candidates": 32,
+        "incremental_cache_new_candidates": 0,
+        "incremental_cache_total_candidates": 64,
+        "incremental_cached_components": 8,
+        "full_enumeration_candidates": 65536,
+        "component_recompute_seconds": 0.000126
+      }
+    },
+    {
+      "suite": "replay",
+      "case": "original-16-variable-bridges",
+      "step": 1,
+      "n": 16,
+      "regions": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          3,
+          11
+        ],
+        [
+          4,
+          12
+        ],
+        [
+          5,
+          13
+        ],
+        [
+          6,
+          14
+        ],
+        [
+          7,
+          15
+        ]
+      ],
+      "added_clauses": [
+        [
+          1
+        ]
+      ],
+      "clauses": [
+        [
+          -1,
+          9
+        ],
+        [
+          1,
+          -9
+        ],
+        [
+          -2,
+          10
+        ],
+        [
+          2,
+          -10
+        ],
+        [
+          -3,
+          11
+        ],
+        [
+          3,
+          -11
+        ],
+        [
+          -4,
+          12
+        ],
+        [
+          4,
+          -12
+        ],
+        [
+          -5,
+          13
+        ],
+        [
+          5,
+          -13
+        ],
+        [
+          -6,
+          14
+        ],
+        [
+          6,
+          -14
+        ],
+        [
+          -7,
+          15
+        ],
+        [
+          7,
+          -15
+        ],
+        [
+          -8,
+          16
+        ],
+        [
+          8,
+          -16
+        ],
+        [
+          1
+        ]
+      ],
+      "metadata": {},
+      "interface": {
+        "local_cache_lookups": 8,
+        "local_cache_hits": 7,
+        "local_candidates": 4,
+        "local_clause_evaluations": 9,
+        "local_projection_bit_steps": 0,
+        "plan_graph_pair_visits": 0,
+        "plan_fill_pair_tests": 0,
+        "plan_candidate_visits": 0,
+        "plan_fill_edge_attempts": 0,
+        "induced_width": 0,
+        "max_bucket_variables": 0,
+        "max_bucket_rows": 0,
+        "elimination_cache_lookups": 0,
+        "elimination_key_factor_ids": 0,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 0,
+        "factor_table_lookups": 0,
+        "projection_bit_steps": 0,
+        "integer_multiplies": 8,
+        "integer_additions": 0,
+        "max_integer_bits": 8,
+        "factor_membership_tests": 0,
+        "status": "EXACT",
+        "count": 128,
+        "summary_seconds": 2.0568000081766513e-05,
+        "plan_seconds": 2.514000016162754e-06,
+        "eliminate_seconds": 1.7190000107802916e-06,
+        "query_seconds": 2.523500006645918e-05,
+        "stored_table_cells": 9,
+        "peak_table_slots": 10,
+        "cached_elimination_tables": 0,
+        "cached_local_tables": 9,
+        "boundary_variables": 0,
+        "max_region_boundary": 0,
+        "source_clause_count": 17,
+        "source_literal_count": 33,
+        "cumulative_local_candidates": 36,
+        "cumulative_bucket_rows": 0,
+        "end_to_end_query_seconds": 2.9516999916268105e-05,
+        "ingest_seconds": 5.347999945115589e-06,
+        "total_seconds": 3.4864999861383694e-05,
+        "new_cross_rows": 0,
+        "new_boundary_variables": 0,
+        "new_routing_literal_reads": 1
+      },
+      "fresh_interface": {
+        "local_cache_lookups": 8,
+        "local_cache_hits": 0,
+        "local_candidates": 32,
+        "local_clause_evaluations": 58,
+        "local_projection_bit_steps": 0,
+        "plan_graph_pair_visits": 0,
+        "plan_fill_pair_tests": 0,
+        "plan_candidate_visits": 0,
+        "plan_fill_edge_attempts": 0,
+        "induced_width": 0,
+        "max_bucket_variables": 0,
+        "max_bucket_rows": 0,
+        "elimination_cache_lookups": 0,
+        "elimination_key_factor_ids": 0,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 0,
+        "factor_table_lookups": 0,
+        "projection_bit_steps": 0,
+        "integer_multiplies": 8,
+        "integer_additions": 0,
+        "max_integer_bits": 8,
+        "factor_membership_tests": 0,
+        "status": "EXACT",
+        "count": 128,
+        "summary_seconds": 3.271499997481442e-05,
+        "plan_seconds": 1.7989999605561025e-06,
+        "eliminate_seconds": 1.3949999129181379e-06,
+        "query_seconds": 3.625600004397711e-05,
+        "stored_table_cells": 8,
+        "peak_table_slots": 9,
+        "cached_elimination_tables": 0,
+        "cached_local_tables": 8,
+        "boundary_variables": 0,
+        "max_region_boundary": 0,
+        "source_clause_count": 17,
+        "source_literal_count": 33,
+        "cumulative_local_candidates": 32,
+        "cumulative_bucket_rows": 0,
+        "end_to_end_query_seconds": 3.915199999937613e-05,
+        "ingest_seconds": 3.094900000633061e-05,
+        "total_seconds": 7.010100000570674e-05
+      },
+      "incremental_bdd": {
+        "status": "EXACT",
+        "count": 128,
+        "reachable_nodes": 23,
+        "allocated_nodes": 225,
+        "apply_cache_entries": 193,
+        "apply_calls_new": 4,
+        "compile_or_update_seconds": 3.987000013694342e-06,
+        "count_seconds": 8.05700005912513e-06,
+        "inspection_seconds": 5.816999987473537e-06,
+        "total_seconds": 1.786100006029301e-05
+      },
+      "fresh_bdd": {
+        "status": "EXACT",
+        "count": 128,
+        "reachable_nodes": 23,
+        "allocated_nodes": 225,
+        "apply_cache_entries": 193,
+        "apply_calls_new": 436,
+        "compile_or_update_seconds": 0.00024260800000774907,
+        "count_seconds": 8.078000064415392e-06,
+        "inspection_seconds": 5.337999937182758e-06,
+        "total_seconds": 0.0002560240000093472
+      },
+      "archived_component_baseline": {
+        "step": "unit x1",
+        "new_clauses": [
+          [
+            1
+          ]
+        ],
+        "exact_count": 128,
+        "independent_full_oracle": 128,
+        "components": 8,
+        "largest_component_variables": 2,
+        "component_enumeration_candidates": 32,
+        "incremental_cache_new_candidates": 4,
+        "incremental_cache_total_candidates": 68,
+        "incremental_cached_components": 8,
+        "full_enumeration_candidates": 65536,
+        "component_recompute_seconds": 8e-05
+      }
+    },
+    {
+      "suite": "replay",
+      "case": "original-16-variable-bridges",
+      "step": 2,
+      "n": 16,
+      "regions": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          3,
+          11
+        ],
+        [
+          4,
+          12
+        ],
+        [
+          5,
+          13
+        ],
+        [
+          6,
+          14
+        ],
+        [
+          7,
+          15
+        ]
+      ],
+      "added_clauses": [
+        [
+          -1,
+          -2
+        ]
+      ],
+      "clauses": [
+        [
+          -1,
+          9
+        ],
+        [
+          1,
+          -9
+        ],
+        [
+          -2,
+          10
+        ],
+        [
+          2,
+          -10
+        ],
+        [
+          -3,
+          11
+        ],
+        [
+          3,
+          -11
+        ],
+        [
+          -4,
+          12
+        ],
+        [
+          4,
+          -12
+        ],
+        [
+          -5,
+          13
+        ],
+        [
+          5,
+          -13
+        ],
+        [
+          -6,
+          14
+        ],
+        [
+          6,
+          -14
+        ],
+        [
+          -7,
+          15
+        ],
+        [
+          7,
+          -15
+        ],
+        [
+          -8,
+          16
+        ],
+        [
+          8,
+          -16
+        ],
+        [
+          1
+        ],
+        [
+          -1,
+          -2
+        ]
+      ],
+      "metadata": {},
+      "interface": {
+        "local_cache_lookups": 8,
+        "local_cache_hits": 6,
+        "local_candidates": 8,
+        "local_clause_evaluations": 16,
+        "local_projection_bit_steps": 3,
+        "plan_graph_pair_visits": 1,
+        "plan_fill_pair_tests": 0,
+        "plan_candidate_visits": 3,
+        "plan_fill_edge_attempts": 0,
+        "induced_width": 1,
+        "max_bucket_variables": 2,
+        "max_bucket_rows": 4,
+        "elimination_cache_lookups": 2,
+        "elimination_key_factor_ids": 4,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 6,
+        "factor_table_lookups": 12,
+        "projection_bit_steps": 16,
+        "integer_multiplies": 19,
+        "integer_additions": 6,
+        "max_integer_bits": 7,
+        "factor_membership_tests": 17,
+        "status": "EXACT",
+        "count": 64,
+        "summary_seconds": 2.171400001316215e-05,
+        "plan_seconds": 1.310799996190326e-05,
+        "eliminate_seconds": 3.768199997011834e-05,
+        "query_seconds": 7.306199995582574e-05,
+        "stored_table_cells": 20,
+        "peak_table_slots": 21,
+        "cached_elimination_tables": 2,
+        "cached_local_tables": 11,
+        "boundary_variables": 2,
+        "max_region_boundary": 1,
+        "source_clause_count": 18,
+        "source_literal_count": 35,
+        "cumulative_local_candidates": 44,
+        "cumulative_bucket_rows": 6,
+        "end_to_end_query_seconds": 7.642699995358271e-05,
+        "ingest_seconds": 1.575399994635518e-05,
+        "total_seconds": 9.218099989993789e-05,
+        "new_cross_rows": 4,
+        "new_boundary_variables": 2,
+        "new_routing_literal_reads": 2
+      },
+      "fresh_interface": {
+        "local_cache_lookups": 8,
+        "local_cache_hits": 0,
+        "local_candidates": 32,
+        "local_clause_evaluations": 58,
+        "local_projection_bit_steps": 3,
+        "plan_graph_pair_visits": 1,
+        "plan_fill_pair_tests": 0,
+        "plan_candidate_visits": 3,
+        "plan_fill_edge_attempts": 0,
+        "induced_width": 1,
+        "max_bucket_variables": 2,
+        "max_bucket_rows": 4,
+        "elimination_cache_lookups": 2,
+        "elimination_key_factor_ids": 4,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 6,
+        "factor_table_lookups": 12,
+        "projection_bit_steps": 16,
+        "integer_multiplies": 19,
+        "integer_additions": 6,
+        "max_integer_bits": 7,
+        "factor_membership_tests": 17,
+        "status": "EXACT",
+        "count": 64,
+        "summary_seconds": 3.4621999930095626e-05,
+        "plan_seconds": 2.4339999981748406e-05,
+        "eliminate_seconds": 3.637999998318264e-05,
+        "query_seconds": 9.589299997969647e-05,
+        "stored_table_cells": 17,
+        "peak_table_slots": 18,
+        "cached_elimination_tables": 2,
+        "cached_local_tables": 8,
+        "boundary_variables": 2,
+        "max_region_boundary": 1,
+        "source_clause_count": 18,
+        "source_literal_count": 35,
+        "cumulative_local_candidates": 32,
+        "cumulative_bucket_rows": 6,
+        "end_to_end_query_seconds": 9.925699998802884e-05,
+        "ingest_seconds": 3.8257000028352195e-05,
+        "total_seconds": 0.00013751400001638103
+      },
+      "incremental_bdd": {
+        "status": "EXACT",
+        "count": 64,
+        "reachable_nodes": 22,
+        "allocated_nodes": 229,
+        "apply_cache_entries": 197,
+        "apply_calls_new": 11,
+        "compile_or_update_seconds": 7.324999955926614e-06,
+        "count_seconds": 7.890000006227638e-06,
+        "inspection_seconds": 6.265000024541223e-06,
+        "total_seconds": 2.1479999986695475e-05
+      },
+      "fresh_bdd": {
+        "status": "EXACT",
+        "count": 64,
+        "reachable_nodes": 22,
+        "allocated_nodes": 229,
+        "apply_cache_entries": 197,
+        "apply_calls_new": 447,
+        "compile_or_update_seconds": 0.00024387200005548948,
+        "count_seconds": 7.755000069664675e-06,
+        "inspection_seconds": 5.863999945177056e-06,
+        "total_seconds": 0.0002574910000703312
+      },
+      "archived_component_baseline": {
+        "step": "bridge x1,x2",
+        "new_clauses": [
+          [
+            -1,
+            -2
+          ]
+        ],
+        "exact_count": 64,
+        "independent_full_oracle": 64,
+        "components": 7,
+        "largest_component_variables": 4,
+        "component_enumeration_candidates": 40,
+        "incremental_cache_new_candidates": 16,
+        "incremental_cache_total_candidates": 84,
+        "incremental_cached_components": 7,
+        "full_enumeration_candidates": 65536,
+        "component_recompute_seconds": 9.3e-05
+      }
+    },
+    {
+      "suite": "replay",
+      "case": "original-16-variable-bridges",
+      "step": 3,
+      "n": 16,
+      "regions": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          3,
+          11
+        ],
+        [
+          4,
+          12
+        ],
+        [
+          5,
+          13
+        ],
+        [
+          6,
+          14
+        ],
+        [
+          7,
+          15
+        ]
+      ],
+      "added_clauses": [
+        [
+          -2,
+          3,
+          9
+        ]
+      ],
+      "clauses": [
+        [
+          -1,
+          9
+        ],
+        [
+          1,
+          -9
+        ],
+        [
+          -2,
+          10
+        ],
+        [
+          2,
+          -10
+        ],
+        [
+          -3,
+          11
+        ],
+        [
+          3,
+          -11
+        ],
+        [
+          -4,
+          12
+        ],
+        [
+          4,
+          -12
+        ],
+        [
+          -5,
+          13
+        ],
+        [
+          5,
+          -13
+        ],
+        [
+          -6,
+          14
+        ],
+        [
+          6,
+          -14
+        ],
+        [
+          -7,
+          15
+        ],
+        [
+          7,
+          -15
+        ],
+        [
+          -8,
+          16
+        ],
+        [
+          8,
+          -16
+        ],
+        [
+          1
+        ],
+        [
+          -1,
+          -2
+        ],
+        [
+          -2,
+          3,
+          9
+        ]
+      ],
+      "metadata": {},
+      "interface": {
+        "local_cache_lookups": 8,
+        "local_cache_hits": 6,
+        "local_candidates": 8,
+        "local_clause_evaluations": 16,
+        "local_projection_bit_steps": 4,
+        "plan_graph_pair_visits": 5,
+        "plan_fill_pair_tests": 11,
+        "plan_candidate_visits": 10,
+        "plan_fill_edge_attempts": 2,
+        "induced_width": 2,
+        "max_bucket_variables": 3,
+        "max_bucket_rows": 8,
+        "elimination_cache_lookups": 4,
+        "elimination_key_factor_ids": 8,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 22,
+        "factor_table_lookups": 50,
+        "projection_bit_steps": 94,
+        "integer_multiplies": 56,
+        "integer_additions": 22,
+        "max_integer_bits": 7,
+        "factor_membership_tests": 32,
+        "status": "EXACT",
+        "count": 64,
+        "summary_seconds": 2.1101000015733007e-05,
+        "plan_seconds": 1.9846999975925428e-05,
+        "eliminate_seconds": 4.702400008227414e-05,
+        "query_seconds": 8.845399997881032e-05,
+        "stored_table_cells": 45,
+        "peak_table_slots": 46,
+        "cached_elimination_tables": 6,
+        "cached_local_tables": 13,
+        "boundary_variables": 4,
+        "max_region_boundary": 2,
+        "source_clause_count": 19,
+        "source_literal_count": 38,
+        "cumulative_local_candidates": 52,
+        "cumulative_bucket_rows": 28,
+        "end_to_end_query_seconds": 9.147000002940331e-05,
+        "ingest_seconds": 1.1516999961713736e-05,
+        "total_seconds": 0.00010298699999111705,
+        "new_cross_rows": 8,
+        "new_boundary_variables": 2,
+        "new_routing_literal_reads": 3
+      },
+      "fresh_interface": {
+        "local_cache_lookups": 8,
+        "local_cache_hits": 0,
+        "local_candidates": 32,
+        "local_clause_evaluations": 58,
+        "local_projection_bit_steps": 6,
+        "plan_graph_pair_visits": 5,
+        "plan_fill_pair_tests": 11,
+        "plan_candidate_visits": 10,
+        "plan_fill_edge_attempts": 2,
+        "induced_width": 2,
+        "max_bucket_variables": 3,
+        "max_bucket_rows": 8,
+        "elimination_cache_lookups": 4,
+        "elimination_key_factor_ids": 8,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 22,
+        "factor_table_lookups": 50,
+        "projection_bit_steps": 94,
+        "integer_multiplies": 56,
+        "integer_additions": 22,
+        "max_integer_bits": 7,
+        "factor_membership_tests": 32,
+        "status": "EXACT",
+        "count": 64,
+        "summary_seconds": 3.465200006758096e-05,
+        "plan_seconds": 1.5738000001874752e-05,
+        "eliminate_seconds": 4.23799999680341e-05,
+        "query_seconds": 9.319600007984263e-05,
+        "stored_table_cells": 36,
+        "peak_table_slots": 37,
+        "cached_elimination_tables": 4,
+        "cached_local_tables": 8,
+        "boundary_variables": 4,
+        "max_region_boundary": 2,
+        "source_clause_count": 19,
+        "source_literal_count": 38,
+        "cumulative_local_candidates": 32,
+        "cumulative_bucket_rows": 22,
+        "end_to_end_query_seconds": 9.616200009077147e-05,
+        "ingest_seconds": 7.170199990014225e-05,
+        "total_seconds": 0.00016786399999091373
+      },
+      "incremental_bdd": {
+        "status": "EXACT",
+        "count": 64,
+        "reachable_nodes": 22,
+        "allocated_nodes": 231,
+        "apply_cache_entries": 201,
+        "apply_calls_new": 12,
+        "compile_or_update_seconds": 7.675000006202026e-06,
+        "count_seconds": 7.542000048488262e-06,
+        "inspection_seconds": 5.6249999715873855e-06,
+        "total_seconds": 2.0842000026277674e-05
+      },
+      "fresh_bdd": {
+        "status": "EXACT",
+        "count": 64,
+        "reachable_nodes": 22,
+        "allocated_nodes": 231,
+        "apply_cache_entries": 201,
+        "apply_calls_new": 459,
+        "compile_or_update_seconds": 0.0003162629999451383,
+        "count_seconds": 7.341000014093879e-06,
+        "inspection_seconds": 5.50599997950485e-06,
+        "total_seconds": 0.000329109999938737
+      },
+      "archived_component_baseline": {
+        "step": "bridge x2,x3",
+        "new_clauses": [
+          [
+            -2,
+            3,
+            9
+          ]
+        ],
+        "exact_count": 64,
+        "independent_full_oracle": 64,
+        "components": 6,
+        "largest_component_variables": 6,
+        "component_enumeration_candidates": 84,
+        "incremental_cache_new_candidates": 64,
+        "incremental_cache_total_candidates": 148,
+        "incremental_cached_components": 6,
+        "full_enumeration_candidates": 65536,
+        "component_recompute_seconds": 0.000159
+      }
+    },
+    {
+      "suite": "replay",
+      "case": "original-16-variable-bridges",
+      "step": 4,
+      "n": 16,
+      "regions": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          3,
+          11
+        ],
+        [
+          4,
+          12
+        ],
+        [
+          5,
+          13
+        ],
+        [
+          6,
+          14
+        ],
+        [
+          7,
+          15
+        ]
+      ],
+      "added_clauses": [
+        [
+          -3,
+          4,
+          10
+        ]
+      ],
+      "clauses": [
+        [
+          -1,
+          9
+        ],
+        [
+          1,
+          -9
+        ],
+        [
+          -2,
+          10
+        ],
+        [
+          2,
+          -10
+        ],
+        [
+          -3,
+          11
+        ],
+        [
+          3,
+          -11
+        ],
+        [
+          -4,
+          12
+        ],
+        [
+          4,
+          -12
+        ],
+        [
+          -5,
+          13
+        ],
+        [
+          5,
+          -13
+        ],
+        [
+          -6,
+          14
+        ],
+        [
+          6,
+          -14
+        ],
+        [
+          -7,
+          15
+        ],
+        [
+          7,
+          -15
+        ],
+        [
+          -8,
+          16
+        ],
+        [
+          8,
+          -16
+        ],
+        [
+          1
+        ],
+        [
+          -1,
+          -2
+        ],
+        [
+          -2,
+          3,
+          9
+        ],
+        [
+          -3,
+          4,
+          10
+        ]
+      ],
+      "metadata": {},
+      "interface": {
+        "local_cache_lookups": 8,
+        "local_cache_hits": 6,
+        "local_candidates": 8,
+        "local_clause_evaluations": 14,
+        "local_projection_bit_steps": 6,
+        "plan_graph_pair_visits": 9,
+        "plan_fill_pair_tests": 45,
+        "plan_candidate_visits": 21,
+        "plan_fill_edge_attempts": 4,
+        "induced_width": 2,
+        "max_bucket_variables": 3,
+        "max_bucket_rows": 8,
+        "elimination_cache_lookups": 6,
+        "elimination_key_factor_ids": 12,
+        "elimination_cache_hits": 1,
+        "bucket_rows_reused": 8,
+        "bucket_rows_computed": 30,
+        "factor_table_lookups": 62,
+        "projection_bit_steps": 126,
+        "integer_multiplies": 67,
+        "integer_additions": 30,
+        "max_integer_bits": 6,
+        "factor_membership_tests": 50,
+        "status": "EXACT",
+        "count": 48,
+        "summary_seconds": 4.27659999786556e-05,
+        "plan_seconds": 2.6721000040197396e-05,
+        "eliminate_seconds": 5.8179999996355036e-05,
+        "query_seconds": 0.0001281460000654988,
+        "stored_table_cells": 74,
+        "peak_table_slots": 75,
+        "cached_elimination_tables": 11,
+        "cached_local_tables": 15,
+        "boundary_variables": 6,
+        "max_region_boundary": 2,
+        "source_clause_count": 20,
+        "source_literal_count": 41,
+        "cumulative_local_candidates": 60,
+        "cumulative_bucket_rows": 58,
+        "end_to_end_query_seconds": 0.00013129500007380557,
+        "ingest_seconds": 1.0051000003841182e-05,
+        "total_seconds": 0.00014134600007764675,
+        "new_cross_rows": 8,
+        "new_boundary_variables": 2,
+        "new_routing_literal_reads": 3
+      },
+      "fresh_interface": {
+        "local_cache_lookups": 8,
+        "local_cache_hits": 0,
+        "local_candidates": 32,
+        "local_clause_evaluations": 58,
+        "local_projection_bit_steps": 10,
+        "plan_graph_pair_visits": 9,
+        "plan_fill_pair_tests": 45,
+        "plan_candidate_visits": 21,
+        "plan_fill_edge_attempts": 4,
+        "induced_width": 2,
+        "max_bucket_variables": 3,
+        "max_bucket_rows": 8,
+        "elimination_cache_lookups": 6,
+        "elimination_key_factor_ids": 12,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 38,
+        "factor_table_lookups": 78,
+        "projection_bit_steps": 158,
+        "integer_multiplies": 83,
+        "integer_additions": 38,
+        "max_integer_bits": 6,
+        "factor_membership_tests": 50,
+        "status": "EXACT",
+        "count": 48,
+        "summary_seconds": 3.589499999634427e-05,
+        "plan_seconds": 2.4877999976524734e-05,
+        "eliminate_seconds": 7.738399995105283e-05,
+        "query_seconds": 0.00013853500001914654,
+        "stored_table_cells": 55,
+        "peak_table_slots": 56,
+        "cached_elimination_tables": 6,
+        "cached_local_tables": 8,
+        "boundary_variables": 6,
+        "max_region_boundary": 2,
+        "source_clause_count": 20,
+        "source_literal_count": 41,
+        "cumulative_local_candidates": 32,
+        "cumulative_bucket_rows": 38,
+        "end_to_end_query_seconds": 0.0001415460000089297,
+        "ingest_seconds": 4.5678999981646484e-05,
+        "total_seconds": 0.00018722499999057618
+      },
+      "incremental_bdd": {
+        "status": "EXACT",
+        "count": 48,
+        "reachable_nodes": 23,
+        "allocated_nodes": 240,
+        "apply_cache_entries": 210,
+        "apply_calls_new": 22,
+        "compile_or_update_seconds": 1.1876999906235142e-05,
+        "count_seconds": 8.338999919033085e-06,
+        "inspection_seconds": 6.935999977031315e-06,
+        "total_seconds": 2.7151999802299542e-05
+      },
+      "fresh_bdd": {
+        "status": "EXACT",
+        "count": 48,
+        "reachable_nodes": 23,
+        "allocated_nodes": 240,
+        "apply_cache_entries": 210,
+        "apply_calls_new": 481,
+        "compile_or_update_seconds": 0.0002381199999490491,
+        "count_seconds": 8.49000002745015e-06,
+        "inspection_seconds": 6.442999961109308e-06,
+        "total_seconds": 0.00025305299993760855
+      },
+      "archived_component_baseline": {
+        "step": "bridge x3,x4",
+        "new_clauses": [
+          [
+            -3,
+            4,
+            10
+          ]
+        ],
+        "exact_count": 48,
+        "independent_full_oracle": 48,
+        "components": 5,
+        "largest_component_variables": 8,
+        "component_enumeration_candidates": 272,
+        "incremental_cache_new_candidates": 256,
+        "incremental_cache_total_candidates": 404,
+        "incremental_cached_components": 5,
+        "full_enumeration_candidates": 65536,
+        "component_recompute_seconds": 0.00043
+      }
+    },
+    {
+      "suite": "replay",
+      "case": "original-16-variable-bridges",
+      "step": 5,
+      "n": 16,
+      "regions": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          3,
+          11
+        ],
+        [
+          4,
+          12
+        ],
+        [
+          5,
+          13
+        ],
+        [
+          6,
+          14
+        ],
+        [
+          7,
+          15
+        ]
+      ],
+      "added_clauses": [
+        [
+          -4,
+          5,
+          11
+        ]
+      ],
+      "clauses": [
+        [
+          -1,
+          9
+        ],
+        [
+          1,
+          -9
+        ],
+        [
+          -2,
+          10
+        ],
+        [
+          2,
+          -10
+        ],
+        [
+          -3,
+          11
+        ],
+        [
+          3,
+          -11
+        ],
+        [
+          -4,
+          12
+        ],
+        [
+          4,
+          -12
+        ],
+        [
+          -5,
+          13
+        ],
+        [
+          5,
+          -13
+        ],
+        [
+          -6,
+          14
+        ],
+        [
+          6,
+          -14
+        ],
+        [
+          -7,
+          15
+        ],
+        [
+          7,
+          -15
+        ],
+        [
+          -8,
+          16
+        ],
+        [
+          8,
+          -16
+        ],
+        [
+          1
+        ],
+        [
+          -1,
+          -2
+        ],
+        [
+          -2,
+          3,
+          9
+        ],
+        [
+          -3,
+          4,
+          10
+        ],
+        [
+          -4,
+          5,
+          11
+        ]
+      ],
+      "metadata": {},
+      "interface": {
+        "local_cache_lookups": 8,
+        "local_cache_hits": 6,
+        "local_candidates": 8,
+        "local_clause_evaluations": 14,
+        "local_projection_bit_steps": 6,
+        "plan_graph_pair_visits": 13,
+        "plan_fill_pair_tests": 106,
+        "plan_candidate_visits": 36,
+        "plan_fill_edge_attempts": 6,
+        "induced_width": 2,
+        "max_bucket_variables": 3,
+        "max_bucket_rows": 8,
+        "elimination_cache_lookups": 8,
+        "elimination_key_factor_ids": 16,
+        "elimination_cache_hits": 3,
+        "bucket_rows_reused": 24,
+        "bucket_rows_computed": 30,
+        "factor_table_lookups": 62,
+        "projection_bit_steps": 126,
+        "integer_multiplies": 66,
+        "integer_additions": 30,
+        "max_integer_bits": 6,
+        "factor_membership_tests": 67,
+        "status": "EXACT",
+        "count": 40,
+        "summary_seconds": 2.2209999997357954e-05,
+        "plan_seconds": 3.983300007348589e-05,
+        "eliminate_seconds": 6.429600000501523e-05,
+        "query_seconds": 0.0001268500000151107,
+        "stored_table_cells": 103,
+        "peak_table_slots": 104,
+        "cached_elimination_tables": 16,
+        "cached_local_tables": 17,
+        "boundary_variables": 8,
+        "max_region_boundary": 2,
+        "source_clause_count": 21,
+        "source_literal_count": 44,
+        "cumulative_local_candidates": 68,
+        "cumulative_bucket_rows": 88,
+        "end_to_end_query_seconds": 0.00013029500007633033,
+        "ingest_seconds": 1.1861999951179314e-05,
+        "total_seconds": 0.00014215700002750964,
+        "new_cross_rows": 8,
+        "new_boundary_variables": 2,
+        "new_routing_literal_reads": 3
+      },
+      "fresh_interface": {
+        "local_cache_lookups": 8,
+        "local_cache_hits": 0,
+        "local_candidates": 32,
+        "local_clause_evaluations": 58,
+        "local_projection_bit_steps": 14,
+        "plan_graph_pair_visits": 13,
+        "plan_fill_pair_tests": 106,
+        "plan_candidate_visits": 36,
+        "plan_fill_edge_attempts": 6,
+        "induced_width": 2,
+        "max_bucket_variables": 3,
+        "max_bucket_rows": 8,
+        "elimination_cache_lookups": 8,
+        "elimination_key_factor_ids": 16,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 54,
+        "factor_table_lookups": 110,
+        "projection_bit_steps": 230,
+        "integer_multiplies": 114,
+        "integer_additions": 54,
+        "max_integer_bits": 6,
+        "factor_membership_tests": 67,
+        "status": "EXACT",
+        "count": 40,
+        "summary_seconds": 3.737700001238409e-05,
+        "plan_seconds": 5.424200003290025e-05,
+        "eliminate_seconds": 7.83979999141593e-05,
+        "query_seconds": 0.00017054399995686254,
+        "stored_table_cells": 74,
+        "peak_table_slots": 75,
+        "cached_elimination_tables": 8,
+        "cached_local_tables": 8,
+        "boundary_variables": 8,
+        "max_region_boundary": 2,
+        "source_clause_count": 21,
+        "source_literal_count": 44,
+        "cumulative_local_candidates": 32,
+        "cumulative_bucket_rows": 54,
+        "end_to_end_query_seconds": 0.0001734149999492729,
+        "ingest_seconds": 4.943600004025939e-05,
+        "total_seconds": 0.00022285099998953228
+      },
+      "incremental_bdd": {
+        "status": "EXACT",
+        "count": 40,
+        "reachable_nodes": 25,
+        "allocated_nodes": 251,
+        "apply_cache_entries": 222,
+        "apply_calls_new": 28,
+        "compile_or_update_seconds": 1.261700003851729e-05,
+        "count_seconds": 8.62999991113611e-06,
+        "inspection_seconds": 6.475000077443838e-06,
+        "total_seconds": 2.7722000027097238e-05
+      },
+      "fresh_bdd": {
+        "status": "EXACT",
+        "count": 40,
+        "reachable_nodes": 25,
+        "allocated_nodes": 251,
+        "apply_cache_entries": 222,
+        "apply_calls_new": 509,
+        "compile_or_update_seconds": 0.00018537799996920512,
+        "count_seconds": 7.504999985030736e-06,
+        "inspection_seconds": 6.172999974296545e-06,
+        "total_seconds": 0.0001990559999285324
+      },
+      "archived_component_baseline": {
+        "step": "bridge x4,x5",
+        "new_clauses": [
+          [
+            -4,
+            5,
+            11
+          ]
+        ],
+        "exact_count": 40,
+        "independent_full_oracle": 40,
+        "components": 4,
+        "largest_component_variables": 10,
+        "component_enumeration_candidates": 1036,
+        "incremental_cache_new_candidates": 1024,
+        "incremental_cache_total_candidates": 1428,
+        "incremental_cached_components": 4,
+        "full_enumeration_candidates": 65536,
+        "component_recompute_seconds": 0.00199
+      }
+    },
+    {
+      "suite": "replay",
+      "case": "original-16-variable-bridges",
+      "step": 6,
+      "n": 16,
+      "regions": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          3,
+          11
+        ],
+        [
+          4,
+          12
+        ],
+        [
+          5,
+          13
+        ],
+        [
+          6,
+          14
+        ],
+        [
+          7,
+          15
+        ]
+      ],
+      "added_clauses": [
+        [
+          -5,
+          6,
+          12
+        ]
+      ],
+      "clauses": [
+        [
+          -1,
+          9
+        ],
+        [
+          1,
+          -9
+        ],
+        [
+          -2,
+          10
+        ],
+        [
+          2,
+          -10
+        ],
+        [
+          -3,
+          11
+        ],
+        [
+          3,
+          -11
+        ],
+        [
+          -4,
+          12
+        ],
+        [
+          4,
+          -12
+        ],
+        [
+          -5,
+          13
+        ],
+        [
+          5,
+          -13
+        ],
+        [
+          -6,
+          14
+        ],
+        [
+          6,
+          -14
+        ],
+        [
+          -7,
+          15
+        ],
+        [
+          7,
+          -15
+        ],
+        [
+          -8,
+          16
+        ],
+        [
+          8,
+          -16
+        ],
+        [
+          1
+        ],
+        [
+          -1,
+          -2
+        ],
+        [
+          -2,
+          3,
+          9
+        ],
+        [
+          -3,
+          4,
+          10
+        ],
+        [
+          -4,
+          5,
+          11
+        ],
+        [
+          -5,
+          6,
+          12
+        ]
+      ],
+      "metadata": {},
+      "interface": {
+        "local_cache_lookups": 8,
+        "local_cache_hits": 6,
+        "local_candidates": 8,
+        "local_clause_evaluations": 14,
+        "local_projection_bit_steps": 6,
+        "plan_graph_pair_visits": 17,
+        "plan_fill_pair_tests": 193,
+        "plan_candidate_visits": 55,
+        "plan_fill_edge_attempts": 8,
+        "induced_width": 2,
+        "max_bucket_variables": 3,
+        "max_bucket_rows": 8,
+        "elimination_cache_lookups": 10,
+        "elimination_key_factor_ids": 20,
+        "elimination_cache_hits": 5,
+        "bucket_rows_reused": 40,
+        "bucket_rows_computed": 30,
+        "factor_table_lookups": 62,
+        "projection_bit_steps": 126,
+        "integer_multiplies": 65,
+        "integer_additions": 30,
+        "max_integer_bits": 6,
+        "factor_membership_tests": 84,
+        "status": "EXACT",
+        "count": 36,
+        "summary_seconds": 2.0215999938955065e-05,
+        "plan_seconds": 5.3748999903291406e-05,
+        "eliminate_seconds": 6.321400007891498e-05,
+        "query_seconds": 0.00013768700000582612,
+        "stored_table_cells": 132,
+        "peak_table_slots": 133,
+        "cached_elimination_tables": 21,
+        "cached_local_tables": 19,
+        "boundary_variables": 10,
+        "max_region_boundary": 2,
+        "source_clause_count": 22,
+        "source_literal_count": 47,
+        "cumulative_local_candidates": 76,
+        "cumulative_bucket_rows": 118,
+        "end_to_end_query_seconds": 0.00014047600006961147,
+        "ingest_seconds": 9.656999964136048e-06,
+        "total_seconds": 0.00015013300003374752,
+        "new_cross_rows": 8,
+        "new_boundary_variables": 2,
+        "new_routing_literal_reads": 3
+      },
+      "fresh_interface": {
+        "local_cache_lookups": 8,
+        "local_cache_hits": 0,
+        "local_candidates": 32,
+        "local_clause_evaluations": 58,
+        "local_projection_bit_steps": 18,
+        "plan_graph_pair_visits": 17,
+        "plan_fill_pair_tests": 193,
+        "plan_candidate_visits": 55,
+        "plan_fill_edge_attempts": 8,
+        "induced_width": 2,
+        "max_bucket_variables": 3,
+        "max_bucket_rows": 8,
+        "elimination_cache_lookups": 10,
+        "elimination_key_factor_ids": 20,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 70,
+        "factor_table_lookups": 142,
+        "projection_bit_steps": 302,
+        "integer_multiplies": 145,
+        "integer_additions": 70,
+        "max_integer_bits": 6,
+        "factor_membership_tests": 84,
+        "status": "EXACT",
+        "count": 36,
+        "summary_seconds": 3.5006000075554766e-05,
+        "plan_seconds": 4.963699996096693e-05,
+        "eliminate_seconds": 9.363799995298905e-05,
+        "query_seconds": 0.00017878800008475082,
+        "stored_table_cells": 93,
+        "peak_table_slots": 94,
+        "cached_elimination_tables": 10,
+        "cached_local_tables": 8,
+        "boundary_variables": 10,
+        "max_region_boundary": 2,
+        "source_clause_count": 22,
+        "source_literal_count": 47,
+        "cumulative_local_candidates": 32,
+        "cumulative_bucket_rows": 70,
+        "end_to_end_query_seconds": 0.0001814379999132143,
+        "ingest_seconds": 5.116599993471027e-05,
+        "total_seconds": 0.00023260399984792457
+      },
+      "incremental_bdd": {
+        "status": "EXACT",
+        "count": 36,
+        "reachable_nodes": 28,
+        "allocated_nodes": 264,
+        "apply_cache_entries": 239,
+        "apply_calls_new": 38,
+        "compile_or_update_seconds": 3.08420000010301e-05,
+        "count_seconds": 1.0284000040883257e-05,
+        "inspection_seconds": 8.135000030051742e-06,
+        "total_seconds": 4.92610000719651e-05
+      },
+      "fresh_bdd": {
+        "status": "EXACT",
+        "count": 36,
+        "reachable_nodes": 28,
+        "allocated_nodes": 264,
+        "apply_cache_entries": 239,
+        "apply_calls_new": 547,
+        "compile_or_update_seconds": 0.0002641990000711303,
+        "count_seconds": 2.231700000265846e-05,
+        "inspection_seconds": 7.041999992907222e-06,
+        "total_seconds": 0.00029355800006669597
+      },
+      "archived_component_baseline": {
+        "step": "bridge x5,x6",
+        "new_clauses": [
+          [
+            -5,
+            6,
+            12
+          ]
+        ],
+        "exact_count": 36,
+        "independent_full_oracle": 36,
+        "components": 3,
+        "largest_component_variables": 12,
+        "component_enumeration_candidates": 4104,
+        "incremental_cache_new_candidates": 4096,
+        "incremental_cache_total_candidates": 5524,
+        "incremental_cached_components": 3,
+        "full_enumeration_candidates": 65536,
+        "component_recompute_seconds": 0.00844
+      }
+    },
+    {
+      "suite": "replay",
+      "case": "original-16-variable-bridges",
+      "step": 7,
+      "n": 16,
+      "regions": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          3,
+          11
+        ],
+        [
+          4,
+          12
+        ],
+        [
+          5,
+          13
+        ],
+        [
+          6,
+          14
+        ],
+        [
+          7,
+          15
+        ]
+      ],
+      "added_clauses": [
+        [
+          -6,
+          7,
+          13
+        ]
+      ],
+      "clauses": [
+        [
+          -1,
+          9
+        ],
+        [
+          1,
+          -9
+        ],
+        [
+          -2,
+          10
+        ],
+        [
+          2,
+          -10
+        ],
+        [
+          -3,
+          11
+        ],
+        [
+          3,
+          -11
+        ],
+        [
+          -4,
+          12
+        ],
+        [
+          4,
+          -12
+        ],
+        [
+          -5,
+          13
+        ],
+        [
+          5,
+          -13
+        ],
+        [
+          -6,
+          14
+        ],
+        [
+          6,
+          -14
+        ],
+        [
+          -7,
+          15
+        ],
+        [
+          7,
+          -15
+        ],
+        [
+          -8,
+          16
+        ],
+        [
+          8,
+          -16
+        ],
+        [
+          1
+        ],
+        [
+          -1,
+          -2
+        ],
+        [
+          -2,
+          3,
+          9
+        ],
+        [
+          -3,
+          4,
+          10
+        ],
+        [
+          -4,
+          5,
+          11
+        ],
+        [
+          -5,
+          6,
+          12
+        ],
+        [
+          -6,
+          7,
+          13
+        ]
+      ],
+      "metadata": {},
+      "interface": {
+        "local_cache_lookups": 8,
+        "local_cache_hits": 6,
+        "local_candidates": 8,
+        "local_clause_evaluations": 14,
+        "local_projection_bit_steps": 6,
+        "plan_graph_pair_visits": 21,
+        "plan_fill_pair_tests": 306,
+        "plan_candidate_visits": 78,
+        "plan_fill_edge_attempts": 10,
+        "induced_width": 2,
+        "max_bucket_variables": 3,
+        "max_bucket_rows": 8,
+        "elimination_cache_lookups": 12,
+        "elimination_key_factor_ids": 24,
+        "elimination_cache_hits": 7,
+        "bucket_rows_reused": 56,
+        "bucket_rows_computed": 30,
+        "factor_table_lookups": 62,
+        "projection_bit_steps": 126,
+        "integer_multiplies": 64,
+        "integer_additions": 30,
+        "max_integer_bits": 6,
+        "factor_membership_tests": 101,
+        "status": "EXACT",
+        "count": 32,
+        "summary_seconds": 2.0898000002489425e-05,
+        "plan_seconds": 8.888499996828614e-05,
+        "eliminate_seconds": 7.060100006128778e-05,
+        "query_seconds": 0.00018086800002947712,
+        "stored_table_cells": 161,
+        "peak_table_slots": 162,
+        "cached_elimination_tables": 26,
+        "cached_local_tables": 21,
+        "boundary_variables": 12,
+        "max_region_boundary": 2,
+        "source_clause_count": 23,
+        "source_literal_count": 50,
+        "cumulative_local_candidates": 84,
+        "cumulative_bucket_rows": 148,
+        "end_to_end_query_seconds": 0.00018382299992936169,
+        "ingest_seconds": 1.040600000123959e-05,
+        "total_seconds": 0.00019422899993060128,
+        "new_cross_rows": 8,
+        "new_boundary_variables": 2,
+        "new_routing_literal_reads": 3
+      },
+      "fresh_interface": {
+        "local_cache_lookups": 8,
+        "local_cache_hits": 0,
+        "local_candidates": 32,
+        "local_clause_evaluations": 58,
+        "local_projection_bit_steps": 22,
+        "plan_graph_pair_visits": 21,
+        "plan_fill_pair_tests": 306,
+        "plan_candidate_visits": 78,
+        "plan_fill_edge_attempts": 10,
+        "induced_width": 2,
+        "max_bucket_variables": 3,
+        "max_bucket_rows": 8,
+        "elimination_cache_lookups": 12,
+        "elimination_key_factor_ids": 24,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 86,
+        "factor_table_lookups": 174,
+        "projection_bit_steps": 374,
+        "integer_multiplies": 176,
+        "integer_additions": 86,
+        "max_integer_bits": 6,
+        "factor_membership_tests": 101,
+        "status": "EXACT",
+        "count": 32,
+        "summary_seconds": 3.7571999996544037e-05,
+        "plan_seconds": 7.27249999954438e-05,
+        "eliminate_seconds": 0.00013281499991535384,
+        "query_seconds": 0.00024362499993912934,
+        "stored_table_cells": 112,
+        "peak_table_slots": 113,
+        "cached_elimination_tables": 12,
+        "cached_local_tables": 8,
+        "boundary_variables": 12,
+        "max_region_boundary": 2,
+        "source_clause_count": 23,
+        "source_literal_count": 50,
+        "cumulative_local_candidates": 32,
+        "cumulative_bucket_rows": 86,
+        "end_to_end_query_seconds": 0.00024636600005578657,
+        "ingest_seconds": 7.445099993219628e-05,
+        "total_seconds": 0.00032081699998798285
+      },
+      "incremental_bdd": {
+        "status": "EXACT",
+        "count": 32,
+        "reachable_nodes": 31,
+        "allocated_nodes": 283,
+        "apply_cache_entries": 262,
+        "apply_calls_new": 50,
+        "compile_or_update_seconds": 2.6242999979331216e-05,
+        "count_seconds": 1.209200001994759e-05,
+        "inspection_seconds": 9.357999942949391e-06,
+        "total_seconds": 4.76929999422282e-05
+      },
+      "fresh_bdd": {
+        "status": "EXACT",
+        "count": 32,
+        "reachable_nodes": 31,
+        "allocated_nodes": 283,
+        "apply_cache_entries": 262,
+        "apply_calls_new": 597,
+        "compile_or_update_seconds": 0.00032373999999890657,
+        "count_seconds": 2.3391000013361918e-05,
+        "inspection_seconds": 8.153000067068206e-06,
+        "total_seconds": 0.0003552840000793367
+      },
+      "archived_component_baseline": {
+        "step": "bridge x6,x7",
+        "new_clauses": [
+          [
+            -6,
+            7,
+            13
+          ]
+        ],
+        "exact_count": 32,
+        "independent_full_oracle": 32,
+        "components": 2,
+        "largest_component_variables": 14,
+        "component_enumeration_candidates": 16388,
+        "incremental_cache_new_candidates": 16384,
+        "incremental_cache_total_candidates": 21908,
+        "incremental_cached_components": 2,
+        "full_enumeration_candidates": 65536,
+        "component_recompute_seconds": 0.038241
+      }
+    },
+    {
+      "suite": "replay",
+      "case": "original-16-variable-bridges",
+      "step": 8,
+      "n": 16,
+      "regions": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          3,
+          11
+        ],
+        [
+          4,
+          12
+        ],
+        [
+          5,
+          13
+        ],
+        [
+          6,
+          14
+        ],
+        [
+          7,
+          15
+        ]
+      ],
+      "added_clauses": [
+        [
+          -7,
+          8,
+          14
+        ]
+      ],
+      "clauses": [
+        [
+          -1,
+          9
+        ],
+        [
+          1,
+          -9
+        ],
+        [
+          -2,
+          10
+        ],
+        [
+          2,
+          -10
+        ],
+        [
+          -3,
+          11
+        ],
+        [
+          3,
+          -11
+        ],
+        [
+          -4,
+          12
+        ],
+        [
+          4,
+          -12
+        ],
+        [
+          -5,
+          13
+        ],
+        [
+          5,
+          -13
+        ],
+        [
+          -6,
+          14
+        ],
+        [
+          6,
+          -14
+        ],
+        [
+          -7,
+          15
+        ],
+        [
+          7,
+          -15
+        ],
+        [
+          -8,
+          16
+        ],
+        [
+          8,
+          -16
+        ],
+        [
+          1
+        ],
+        [
+          -1,
+          -2
+        ],
+        [
+          -2,
+          3,
+          9
+        ],
+        [
+          -3,
+          4,
+          10
+        ],
+        [
+          -4,
+          5,
+          11
+        ],
+        [
+          -5,
+          6,
+          12
+        ],
+        [
+          -6,
+          7,
+          13
+        ],
+        [
+          -7,
+          8,
+          14
+        ]
+      ],
+      "metadata": {},
+      "interface": {
+        "local_cache_lookups": 8,
+        "local_cache_hits": 6,
+        "local_candidates": 8,
+        "local_clause_evaluations": 14,
+        "local_projection_bit_steps": 6,
+        "plan_graph_pair_visits": 25,
+        "plan_fill_pair_tests": 445,
+        "plan_candidate_visits": 105,
+        "plan_fill_edge_attempts": 12,
+        "induced_width": 2,
+        "max_bucket_variables": 3,
+        "max_bucket_rows": 8,
+        "elimination_cache_lookups": 14,
+        "elimination_key_factor_ids": 28,
+        "elimination_cache_hits": 9,
+        "bucket_rows_reused": 72,
+        "bucket_rows_computed": 30,
+        "factor_table_lookups": 62,
+        "projection_bit_steps": 126,
+        "integer_multiplies": 63,
+        "integer_additions": 30,
+        "max_integer_bits": 5,
+        "factor_membership_tests": 118,
+        "status": "EXACT",
+        "count": 28,
+        "summary_seconds": 2.158799998142058e-05,
+        "plan_seconds": 9.724899996399472e-05,
+        "eliminate_seconds": 9.312500003488822e-05,
+        "query_seconds": 0.0002125519999935932,
+        "stored_table_cells": 190,
+        "peak_table_slots": 191,
+        "cached_elimination_tables": 31,
+        "cached_local_tables": 23,
+        "boundary_variables": 14,
+        "max_region_boundary": 2,
+        "source_clause_count": 24,
+        "source_literal_count": 53,
+        "cumulative_local_candidates": 92,
+        "cumulative_bucket_rows": 178,
+        "end_to_end_query_seconds": 0.00021566400005212927,
+        "ingest_seconds": 1.0754999948403565e-05,
+        "total_seconds": 0.00022641900000053283,
+        "new_cross_rows": 8,
+        "new_boundary_variables": 2,
+        "new_routing_literal_reads": 3
+      },
+      "fresh_interface": {
+        "local_cache_lookups": 8,
+        "local_cache_hits": 0,
+        "local_candidates": 32,
+        "local_clause_evaluations": 58,
+        "local_projection_bit_steps": 26,
+        "plan_graph_pair_visits": 25,
+        "plan_fill_pair_tests": 445,
+        "plan_candidate_visits": 105,
+        "plan_fill_edge_attempts": 12,
+        "induced_width": 2,
+        "max_bucket_variables": 3,
+        "max_bucket_rows": 8,
+        "elimination_cache_lookups": 14,
+        "elimination_key_factor_ids": 28,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 102,
+        "factor_table_lookups": 206,
+        "projection_bit_steps": 446,
+        "integer_multiplies": 207,
+        "integer_additions": 102,
+        "max_integer_bits": 5,
+        "factor_membership_tests": 118,
+        "status": "EXACT",
+        "count": 28,
+        "summary_seconds": 4.7909000045365246e-05,
+        "plan_seconds": 8.885299996563845e-05,
+        "eliminate_seconds": 0.00015494900003432122,
+        "query_seconds": 0.0002922290000242356,
+        "stored_table_cells": 131,
+        "peak_table_slots": 132,
+        "cached_elimination_tables": 14,
+        "cached_local_tables": 8,
+        "boundary_variables": 14,
+        "max_region_boundary": 2,
+        "source_clause_count": 24,
+        "source_literal_count": 53,
+        "cumulative_local_candidates": 32,
+        "cumulative_bucket_rows": 102,
+        "end_to_end_query_seconds": 0.0002951160000748132,
+        "ingest_seconds": 5.907299998852977e-05,
+        "total_seconds": 0.000354189000063343
+      },
+      "incremental_bdd": {
+        "status": "EXACT",
+        "count": 28,
+        "reachable_nodes": 34,
+        "allocated_nodes": 308,
+        "apply_cache_entries": 291,
+        "apply_calls_new": 62,
+        "compile_or_update_seconds": 5.697299991425098e-05,
+        "count_seconds": 2.585100003216212e-05,
+        "inspection_seconds": 1.070599989816401e-05,
+        "total_seconds": 9.35299998445771e-05
+      },
+      "fresh_bdd": {
+        "status": "EXACT",
+        "count": 28,
+        "reachable_nodes": 34,
+        "allocated_nodes": 308,
+        "apply_cache_entries": 291,
+        "apply_calls_new": 659,
+        "compile_or_update_seconds": 0.0005417060000354468,
+        "count_seconds": 1.1343999972268648e-05,
+        "inspection_seconds": 8.918000048652175e-06,
+        "total_seconds": 0.0005619680000563676
+      },
+      "archived_component_baseline": {
+        "step": "bridge x7,x8",
+        "new_clauses": [
+          [
+            -7,
+            8,
+            14
+          ]
+        ],
+        "exact_count": 28,
+        "independent_full_oracle": 28,
+        "components": 1,
+        "largest_component_variables": 16,
+        "component_enumeration_candidates": 65536,
+        "incremental_cache_new_candidates": 65536,
+        "incremental_cache_total_candidates": 87444,
+        "incremental_cached_components": 1,
+        "full_enumeration_candidates": 65536,
+        "component_recompute_seconds": 0.137146
+      }
+    }
+  ]
+}

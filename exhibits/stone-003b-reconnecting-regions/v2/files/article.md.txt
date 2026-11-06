@@ -1,0 +1,27 @@
+# Stone 003B: When the Pieces Reconnect
+
+## Original question
+
+Can exact regional summaries answer new connecting constraints without expanding the complete connected formula?
+
+## Method and recorded result
+
+The archived prototype retains weighted boundary tables and cached variable-elimination calculations, compares alternative representations, and checks outputs with independent original-variable oracles.
+
+Exact weighted regional summaries can avoid full expansion on narrow connections; dense interactions can still exceed the chosen representation budget.
+
+## Scope and limits
+
+The recorded finite sequence experiments and their exact-count checks, including an explicit resource stop. Neither this method nor its comparison establishes an arbitrary-SAT complexity bound.
+
+- Correlated snapshots, not 703 independent hard problems. Incremental decision diagrams beat this prototype in the four reported median comparisons.
+- Python 3.10 or later, standard library. Preserve the original outputs before any separately commissioned replay; timing outputs change.
+- Large chain/grid/general/random-cross ledgers, baseline source, history and preserved Stone 003 originals stay inside the unchanged archive. The preserved Stone 003 evidence also supports PW-004; it is not a new rerun.
+- This assembly inherits the recorded scientific checks and does not establish deployment behavior or public permission.
+- Preserved archive: STONE-003B-WHEN-THE-PIECES-RECONNECT-2026-11-04.zip. The attached files are inspection selections; they do not replace its complete runtime directory. No public archive URL or permission is implied. Full figures, historical versions and omitted dependencies remain in that archive.
+
+## Evidence available for inspection
+
+The files below preserve the selected original bytes. Existing scientific checks remain completed; this gathering adds no experiment. Source code, data and receipts are presented with the scope stated in their original records. Any original reproduction instructions describe the original archive layout, not this smaller inspection packet.
+
+Publication review covers these exact selected bytes. Full archives and any figures remain preserved separately; their public release is a separate decision.

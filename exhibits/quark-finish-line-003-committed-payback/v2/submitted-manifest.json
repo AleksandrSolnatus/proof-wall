@@ -1,0 +1,92 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "Finite 9,828-start enumeration with the given rules plus mathematical termination/worst-case arguments contingent on atomic moves.",
+  "date": "2026-10-30",
+  "files": [
+    {
+      "attribution": "The Bridges Group — QUARK; prepared from completed research records.",
+      "bytes": 1751,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "article",
+      "sha256": "b5abe95d6de5eae89b28e80d1ffe70541f5c17ff835db1346496d05143e2b6f0"
+    },
+    {
+      "attribution": "The Bridges Group — QUARK; original authors/contributors as credited in retained source.",
+      "bytes": 5778,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/REPORT.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "original",
+      "sha256": "f9432ae8f9bb20fa4f2ca47140a183f2a3f9ff0f2df207aa9cd9e41d56e6fa30"
+    },
+    {
+      "attribution": "The Bridges Group — QUARK; original authors/contributors as credited in retained source.",
+      "bytes": 1925,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/FROZEN_PROTOCOL.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "original",
+      "sha256": "a834aa3b80cd27f1f931876ff760bbe7d9e8f5377ea3b1b03de087d7d0fffa8e"
+    },
+    {
+      "attribution": "The Bridges Group — QUARK; original authors/contributors as credited in retained source.",
+      "bytes": 3443,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/experiment.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "f9f86a6842f872e22832026916ac01a0d8bb347c3b28d3b106b83d654b6c63c5"
+    },
+    {
+      "attribution": "The Bridges Group — QUARK; original authors/contributors as credited in retained source.",
+      "bytes": 4980,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/RESULTS.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "a19346ece2352884a4137286b4f199636d8f8a0576e5baaefafddd7f45454123"
+    }
+  ],
+  "finding": "An atomic cross-and-cancel macro reduces the stated potential by n−2, but optional shortcuts do not improve the guaranteed worst case.",
+  "gardens": [],
+  "id": "quark-finish-line-003-committed-payback",
+  "limitations": [
+    "Atomic action assumption; no measured synchronization/hardware result and no change to canonical Q002 grammar.",
+    "The original 003 checks are same-session, not a new independent external review.",
+    "No performance claim about atomic reservation and synchronization overhead.",
+    "Preserved archive: QUARK-FINISH-LINE-003-2026-10-30.zip. The attached files are inspection selections; they do not replace its complete runtime directory. No public archive URL or permission is implied. Full figures, historical versions and omitted dependencies remain in that archive."
+  ],
+  "method": "Existing protocol, finite enumerator and all-size potential argument; independently written action generator within the original same-session experiment.",
+  "open_questions": [
+    "Whether locally prioritizing selected actions can improve guaranteed worst-case cost without worsening other cases is a separately proposed experiment."
+  ],
+  "provenance": {
+    "authors": [
+      "The Bridges Group — QUARK",
+      "Original research contributors as credited in the retained experiment record"
+    ],
+    "change_note": "Version 2 is a public selected-file edition of previously checked v1. Scientific findings unchanged; the original review/archive remains in private custody.",
+    "origin": "Exact preserved original ZIP SHA-256 d0304b240b6f626747e125885cb790af5f08eab0d26a5e0c80482d5c39c67e55; frozen protocol SHA-256 a834aa3b80cd27f1f931876ff760bbe7d9e8f5377ea3b1b03de087d7d0fffa8e"
+  },
+  "publication": {
+    "attribution": "The Bridges Group — QUARK; original research contributors as credited in retained records.",
+    "intent": "request-review",
+    "license": "All rights reserved. No new open-source license granted.",
+    "rights": "Owner-requested public reading and downloading of the selected exhibit only; preserves private originals; not an open permission for derivative commercial redistribution."
+  },
+  "question": "Does an atomic two-move cross/cancel improve termination and worst-case cost on the stated ternary rings?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "QUARK Finish Line 003: committed payback",
+  "version": 2
+}

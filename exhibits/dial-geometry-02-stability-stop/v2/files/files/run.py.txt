@@ -1,0 +1,111 @@
+import pathlib,json,hashlib,datetime,time,csv,math,itertools,collections,sys
+import numpy as np
+from scipy.stats import beta
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from geometry import extract,render,scores,match,synthetic_tests
+P=pathlib.Path(__file__).resolve().parents[1];SRC=P.parent/'sources/reference/Phaistos_Dial_Reference_Pack_v1.0/assets';start=time.monotonic();deadline=start+2700
+
+def clean(x):
+ if isinstance(x,np.ndarray):return x.tolist()
+ if isinstance(x,np.generic):return x.item()
+ if isinstance(x,dict):return {k:clean(v) for k,v in x.items()}
+ if isinstance(x,(tuple,list)):return [clean(v) for v in x]
+ return x
+
+def save(name,x): (P/name).write_text(json.dumps(clean(x),indent=2))
+def table(name,rows):
+ fields=list(dict.fromkeys(k for x in rows for k in x))
+ with (P/name).open('w') as f:
+  w=csv.DictWriter(f,fields);w.writeheader();w.writerows(rows)
+
+def bound(g):
+ n=len(g['marks']);D=(2*math.ceil(.015*g['R'])+1)**2;M=[len(s) for s in g['supports']]
+ labeled=math.prod(max(0,m-i*D) for i,m in enumerate(M))
+ return {'support_sizes':M,'excluded_pixel_upper':D,'N_labeled_lower':str(labeled),'N_visible_lower':str(labeled//math.factorial(n))}
+
+def toy_sampler():
+ supports=[np.array([[0.,.6],[0.,.8],[.4,0.]]),np.array([[0.,.6],[0.,.8],[.4,0.]])];weights=collections.Counter();labeled=0
+ for a in supports[0]:
+  for b in supports[1]:
+   if np.linalg.norm(a-b)<.015:continue
+   labeled+=1;weights[tuple(sorted([tuple(a),tuple(b)]))]+=1
+ assert labeled==6 and len(weights)==3 and set(weights.values())=={2}
+ return {'labeled_admissible':labeled,'visible':len(weights),'multiplicity':2,'proposal_probability':'1/9 each labeled pair; conditional probability1/6; visible weight2/6','separation_rejection_pass':True,'sampler_uniformity':'Independent uniform integer-index selection gives uniform product-support proposals. Reject pair distances<.015. Every admissible labeled configuration has the same proposal probability, so accepted draws have uniform labeled measure.'}
+
+receipt=json.loads((P/'receipts/PREFREEZE.json').read_text())
+for f,h in receipt['hashes'].items():assert hashlib.sha256(pathlib.Path(f).read_bytes()).hexdigest()==h
+save('receipts/TESTS.json',{'synthetic':synthetic_tests(),'toy_sampler':toy_sampler()})
+print('Synthetic checks PASS',flush=True)
+allrecords=[];geometries={};stable=[];quality=[];audits=[]
+for i in range(1,46):
+ sign=f'S{i:02d}';source=SRC/(sign+'.svg')
+ if time.monotonic()>deadline:raise RuntimeError('source time cap')
+ alpha=render(source,1024);g=extract(alpha);geometries[sign]=g
+ variants=[]
+ for name,N,angle,threshold in [('resolution512',512,0,.5),('rotation17',1024,17,.5),('rotation53',1024,53,.5),('rotation131',1024,131,.5),('threshold045',1024,0,.45),('threshold055',1024,0,.55)]:
+  if time.monotonic()>deadline:raise RuntimeError('variant time cap')
+  a=alpha if name.startswith('threshold') else render(source,N,angle)
+  q=extract(a,threshold);v=match(g,q,angle);v.update({'variant':name,'resolution':N,'angle':angle,'threshold':threshold});variants.append(v)
+ failures=[v['variant']+': '+','.join(v['failures']) for v in variants if v['failures']]
+ n=len(g['marks']);passed=not failures
+ if passed and n>=4:stable.append(sign)
+ rec={'sign':sign,'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'center_yx_pixels':g['center'],'R_pixels':g['R'],'components':g['components'],'holes':g['holes'],'landmarks':[{'class':m['class'],'yx_pixel':m['yx'],'normalized_yx':pt,'region':m['region']} for m,pt in zip(g['marks'],g['points'])],'landmark_count':n,'stability_pass':passed,'failures':failures,'variants':variants,'primary_statistics_descriptive':scores(g['points']),'null_support':bound(g)}
+ save(f'records/{sign}.json',rec);allrecords.append(rec)
+ quality.append({'sign':sign,'landmarks':n,'components':g['components'],'holes':g['holes'],'stable':passed,'failures':'; '.join(failures)})
+ fig,ax=plt.subplots(figsize=(5,5));ax.imshow(g['mask'],cmap='gray_r');ax.plot(g['center'][1],g['center'][0],'r+',ms=12)
+ colors={'E':'#208cff','J':'#e07800','H':'#b000cc'}
+ for j,m in enumerate(g['marks']):ax.plot(m['yx'][1],m['yx'][0],'o',ms=5,color=colors[m['class']]);ax.text(m['yx'][1]+6,m['yx'][0],m['class']+str(j+1),fontsize=7,color=colors[m['class']])
+ ax.set_title(sign+' — '+('stable' if passed else 'unstable')+f' ({n} landmarks)');ax.set_xlim(0,1024);ax.set_ylim(1024,0);ax.axis('off');fig.tight_layout();fig.savefig(P/f'figures/{sign}.png',dpi=110);plt.close(fig)
+ audits.append(f'<section><h3>{sign}: {"stable" if passed else "unstable"}, {n} landmarks</h3><img src="figures/{sign}.png"><p>{"; ".join(failures) if failures else "All mandatory representation checks passed."}</p></section>')
+ print(sign,'landmarks',n,'stable',passed,'seconds',round(time.monotonic()-start,1),flush=True)
+ table('STABILITY.csv',quality);save('STABILITY.json',allrecords)
+# Before any random draw, complete corpus-wide representation gate.
+system_pass=len(stable)>=8
+save('SYSTEM_GATE.json',{'stable_signs_with_at_least4_landmarks':stable,'minimum_required':8,'passed':system_pass,'outcome':'PROCEED' if system_pass else 'INCONCLUSIVE — landmark representation failed','elapsed_seconds':time.monotonic()-start})
+results=[];nulls=[]
+for i,rec in enumerate(allrecords,1):
+ sign=rec['sign'];g=geometries[sign];n=len(g['marks']);b=rec['null_support'];fail=[]
+ if not system_pass:fail.append('corpus landmark representation gate failed')
+ if not rec['stability_pass']:fail.append('landmark stability failed')
+ if n<4:fail.append('insufficient landmarks for two endpoints')
+ if int(b['N_visible_lower'])<=10000:fail.append('visible support not certified >10000')
+ obs=scores(g['points'])
+ if fail:
+  for e,v in zip(['radial','angular'],obs):results.append({'sign':sign,'endpoint':e,'observed_descriptive':v,'status':'INCONCLUSIVE','reason':'; '.join(fail),'inference':'NOT RUN'})
+  nulls.append({'sign':sign,'status':'NOT RUN','reason':'; '.join(fail),'seed':2026100600+i,'accepted':0,'proposals':0,'support_lower':b['N_visible_lower']});continue
+ for pt,support in zip(g['points'],g['supports']):assert np.any(np.linalg.norm(support-pt,axis=1)<1e-12)
+ assert min(np.linalg.norm(g['points'][a]-g['points'][c]) for a in range(n) for c in range(a))>=.015
+ rng=np.random.default_rng(2026100600+i);accepted=[];proposals=0
+ while len(accepted)<9999 and proposals<199980 and time.monotonic()<deadline:
+  batch=min(1000,199980-proposals)
+  config=np.stack([s[rng.integers(len(s),size=batch)] for s in g['supports']],axis=1)
+  distances=np.linalg.norm(config[:,:,None,:]-config[:,None,:,:],axis=3);valid=np.all(distances[:,np.triu_indices(n,1)[0],np.triu_indices(n,1)[1]]>=.015,axis=1)
+  for row in config[valid]:
+   accepted.append(row)
+   if len(accepted)==9999:break
+  proposals+=batch
+ if len(accepted)!=9999:
+  reason='proposal/time cap'
+  for e,v in zip(['radial','angular'],obs):results.append({'sign':sign,'endpoint':e,'observed_descriptive':v,'status':'INCONCLUSIVE','reason':reason,'inference':'PARTIAL NOT SCORED'})
+  nulls.append({'sign':sign,'status':'PARTIAL','accepted':len(accepted),'proposals':proposals,'seed':2026100600+i});continue
+ arr=np.stack(accepted);ss=np.array([scores(a) for a in arr]);np.savez_compressed(P/f'records/{sign}_null.npz',points=arr,scores=ss)
+ visible=len({tuple(sorted(map(tuple,a))) for a in arr});counts=[collections.Counter(col) for col in ss.T]
+ validnull=visible>=1000 and all(len(c)>1 and max(c.values())/9999<=.95 for c in counts)
+ nulls.append({'sign':sign,'status':'COMPLETE','accepted':9999,'proposals':proposals,'seed':2026100600+i,'visible_unique':visible,'support_lower':b['N_visible_lower'],'valid_null_resolution':validnull})
+ for ei,(e,v) in enumerate(zip(['radial','angular'],obs)):
+  a=ss[:,ei];K=int(np.count_nonzero(a>=v));pv=(K+1)/10000;padj=min(1,90*pv);upper=float(beta.ppf(.95,K+1,9999-K)) if K<9999 else 1.
+  med=float(np.median(a));effect=float(v-med);critical=float(np.quantile(a,1-.05/90,method='higher'));power=float(np.mean(a+.15>=critical))
+  candidate=padj<=.05 and effect>=.15
+  passed=candidate and 90*upper<=.05 and validnull
+  status='PASS' if passed else ('FAIL' if validnull and power>=.8 and not candidate else 'INCONCLUSIVE')
+  results.append({'sign':sign,'endpoint':e,'observed_descriptive':v,'null_median':med,'effect':effect,'p':pv,'p_Bonferroni90':padj,'CP_upper95':upper,'corrected_CP_upper95':min(1,90*upper),'null_min':float(a.min()),'null_max':float(a.max()),'largest_null_atom':max(counts[ei].values())/9999,'shift_calibration_power':power,'status':status,'reason':'frozen corrected/effect/uncertainty/power rule','inference':'RUN'})
+ print('NULL COMPLETE',sign,'seconds',round(time.monotonic()-start,1),flush=True)
+# Primary lock precedes explanatory rendering and no secondary computation is permitted.
+globalstatus='PASS' if any(x['status']=='PASS' for x in results) else ('INCONCLUSIVE' if any(x['status']=='INCONCLUSIVE' for x in results) else 'FAIL')
+table('PRIMARY_RESULTS.csv',results);table('NULL_SUMMARY.csv',nulls)
+save('PRIMARY_LOCK.json',{'locked_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'status':globalstatus,'system_gate_pass':system_pass,'qualified_stable_signs':stable,'results':results,'nulls':nulls,'elapsed_seconds':time.monotonic()-start,'no_postlock_sensitivities':True})
+(P/'POSTLOCK_SENSITIVITIES.md').write_text('No optional sensitivities preregistered or run. Rotation/resolution/threshold variants were mandatory representation preconditions. Primary result locked before report construction.\n')
+(P/'AUDIT.html').write_text('<!doctype html><meta charset="utf-8"><title>Geometry 02 landmark audit</title><style>body{font:16px system-ui;max-width:1100px;margin:auto;padding:24px}section{display:inline-block;width:48%;vertical-align:top}img{width:100%}p{overflow-wrap:anywhere}</style><h1>Geometry 02 — landmark audit</h1><p>Red +: filled-area centroid. Blue E: skeleton endpoint. Orange J: skeleton junction. Purple H: enclosed-void centroid. Standardized drawings only. '+globalstatus+'</p>'+''.join(audits))
+print('PRIMARY LOCK',globalstatus,'stable qualifying',len(stable),'elapsed',round(time.monotonic()-start,1),flush=True)

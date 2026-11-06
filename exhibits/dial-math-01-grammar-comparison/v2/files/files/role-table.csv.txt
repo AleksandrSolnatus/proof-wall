@@ -1,0 +1,46 @@
+sign,count_S07_C28,count_S25_C28,start_S07_C28,middle_S07_C28,end_S07_C28,parity_class1_S07_C28,central_position_S07_C28,start_S25_C28,end_S25_C28,tentative_structural_tendency,tentative_mathematical_role,uncertainty,locations_S07_C28
+S01,11,11,1,3,7,9,1,1,7,mixed positions,not identified (no mathematical semantics inferred),high; dependence and model ambiguity,Pen.C01:4; Pen.C11:1; Pen.C15:2; Pen.C21:2; Pen.C26:4; Pen.C30:2; Pencil.C07:2; Pencil.C08:4; Pencil.C12:4; Pencil.C15:3; Pencil.C17:4
+S02,18,18,18,0,0,0,0,18,0,descriptive start concentration,not identified (no mathematical semantics inferred),high; dependence and model ambiguity,Pen.C01:1; Pen.C05:1; Pen.C10:1; Pen.C12:1; Pen.C14:1; Pen.C16:1; Pen.C17:1; Pen.C19:1; Pen.C20:1; Pen.C22:1; Pen.C23:1; Pen.C26:1; Pen.C29:1; Pencil.C01:1; Pencil.C03:1; Pencil.C11:1; Pencil.C17:1; Pencil.C28:1
+S03,2,2,0,2,0,2,2,0,0,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pen.C28:2; Pen.C31:2
+S04,1,1,0,1,0,0,1,0,0,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pen.C05:3
+S05,1,1,0,0,1,1,0,0,1,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pencil.C03:4
+S06,3,3,2,1,0,1,0,2,0,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pen.C24:1; Pencil.C16:1; Pencil.C28:2
+S07,18,17,4,6,8,5,0,4,7,mixed positions,not identified (no mathematical semantics inferred),high; dependence and model ambiguity,Pen.C03:3; Pen.C06:3; Pen.C11:4; Pencil.C01:5; Pencil.C02:3; Pencil.C08:2; Pencil.C10:1; Pencil.C18:3; Pencil.C20:3; Pencil.C21:4; Pencil.C23:1; Pencil.C24:1; Pencil.C24:3; Pencil.C25:1; Pencil.C26:4; Pencil.C27:5; Pencil.C28:5; Pencil.C30:2
+S08,5,5,0,1,4,2,1,0,4,descriptive end concentration,not identified (no mathematical semantics inferred),high,Pen.C07:3; Pencil.C18:4; Pencil.C19:2; Pencil.C21:5; Pencil.C26:5
+S09,2,2,1,1,0,1,1,1,0,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pencil.C17:2; Pencil.C27:1
+S10,4,4,2,2,0,2,0,2,0,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pen.C14:4; Pen.C20:4; Pen.C28:1; Pen.C31:1
+S11,1,1,0,0,1,1,0,0,1,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pen.C13:2
+S12,16,16,0,12,4,14,4,0,4,descriptive internal concentration,not identified (no mathematical semantics inferred),high; dependence and model ambiguity,Pen.C01:2; Pen.C02:3; Pen.C05:2; Pen.C06:4; Pen.C10:2; Pen.C12:2; Pen.C16:2; Pen.C17:2; Pen.C19:2; Pen.C22:2; Pen.C23:2; Pen.C25:3; Pen.C26:2; Pen.C29:2; Pencil.C01:2; Pencil.C05:4
+S13,6,6,2,3,1,0,3,2,1,mixed positions,not identified (no mathematical semantics inferred),high,Pen.C01:3; Pen.C26:3; Pen.C30:1; Pencil.C07:1; Pencil.C08:3; Pencil.C19:3
+S14,2,2,0,2,0,2,2,0,0,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pen.C23:4; Pencil.C14:2
+S15,1,1,1,0,0,0,0,1,0,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pencil.C08:1
+S16,2,2,2,0,0,0,0,2,0,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pencil.C06:1; Pencil.C14:1
+S17,1,1,0,1,0,0,0,0,0,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pen.C24:3
+S18,11,11,0,6,5,6,2,0,5,mixed positions,not identified (no mathematical semantics inferred),high; dependence and model ambiguity,Pen.C01:5; Pen.C14:6; Pen.C20:6; Pen.C23:6; Pen.C24:2; Pencil.C06:3; Pencil.C08:5; Pencil.C14:3; Pencil.C23:2; Pencil.C25:3; Pencil.C27:4
+S19,3,3,0,2,1,3,1,0,1,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pen.C10:4; Pen.C24:4; Pen.C27:2
+S20,2,2,0,2,0,1,0,0,0,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pencil.C05:3; Pencil.C13:4
+S21,2,2,0,0,2,0,0,0,2,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pen.C17:7; Pen.C29:7
+S22,5,5,4,1,0,0,1,4,0,descriptive start concentration,not identified (no mathematical semantics inferred),high,Pencil.C01:3; Pencil.C04:1; Pencil.C09:1; Pencil.C21:1; Pencil.C26:1
+S23,11,11,1,9,1,5,2,1,1,descriptive internal concentration,not identified (no mathematical semantics inferred),high; dependence and model ambiguity,Pen.C12:4; Pen.C14:5; Pen.C18:2; Pen.C20:5; Pen.C27:1; Pencil.C03:3; Pencil.C06:2; Pencil.C22:3; Pencil.C25:2; Pencil.C28:4; Pencil.C29:3
+S24,6,6,1,4,1,4,3,1,1,descriptive internal concentration,not identified (no mathematical semantics inferred),high,Pen.C02:1; Pencil.C05:2; Pencil.C10:2; Pencil.C13:2; Pencil.C13:3; Pencil.C25:4
+S25,7,8,0,4,3,5,4,0,4,mixed positions,not identified (no mathematical semantics inferred),high,Pen.C14:3; Pen.C20:3; Pencil.C04:2; Pencil.C09:4; Pencil.C12:2; Pencil.C22:4; Pencil.C29:4
+S26,6,6,0,3,3,6,3,0,3,mixed positions,not identified (no mathematical semantics inferred),high,Pen.C09:2; Pen.C16:4; Pen.C19:4; Pen.C22:4; Pen.C25:2; Pencil.C11:2
+S27,15,15,5,8,2,4,2,5,2,mixed positions,not identified (no mathematical semantics inferred),high; dependence and model ambiguity,Pen.C06:1; Pen.C07:1; Pen.C14:2; Pen.C17:3; Pen.C17:4; Pen.C20:2; Pen.C23:3; Pen.C23:7; Pen.C29:3; Pen.C29:4; Pencil.C02:1; Pencil.C04:3; Pencil.C12:1; Pencil.C17:3; Pencil.C22:1
+S28,2,2,2,0,0,0,2,2,0,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pen.C15:1; Pen.C21:1
+S29,11,11,8,3,0,3,1,8,0,descriptive start concentration,not identified (no mathematical semantics inferred),high; dependence and model ambiguity,Pen.C03:1; Pen.C04:1; Pen.C04:2; Pencil.C13:1; Pencil.C15:1; Pencil.C18:1; Pencil.C19:1; Pencil.C20:1; Pencil.C21:2; Pencil.C26:2; Pencil.C29:1
+S30,1,1,0,1,0,1,0,0,0,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pencil.C27:2
+S31,5,5,2,3,0,0,0,2,0,mixed positions,not identified (no mathematical semantics inferred),high,Pen.C09:1; Pen.C16:3; Pen.C19:3; Pen.C22:3; Pen.C25:1
+S32,3,3,0,3,0,0,2,0,0,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pen.C12:3; Pen.C23:5; Pencil.C16:3
+S33,6,6,2,1,3,2,2,2,3,mixed positions,not identified (no mathematical semantics inferred),high,Pen.C05:5; Pen.C18:1; Pencil.C05:1; Pencil.C07:4; Pencil.C15:2; Pencil.C16:5
+S34,3,3,0,2,1,2,2,0,1,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pen.C04:3; Pencil.C22:2; Pencil.C29:2
+S35,11,11,0,4,7,3,1,0,7,mixed positions,not identified (no mathematical semantics inferred),high; dependence and model ambiguity,Pen.C09:3; Pen.C10:5; Pen.C17:5; Pen.C27:3; Pen.C29:5; Pencil.C02:4; Pencil.C10:4; Pencil.C13:5; Pencil.C16:2; Pencil.C23:3; Pencil.C28:3
+S36,4,4,0,4,0,1,3,0,0,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pencil.C11:3; Pencil.C18:2; Pencil.C21:3; Pencil.C26:3
+S37,4,4,0,4,0,4,2,0,0,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pen.C17:6; Pen.C29:6; Pencil.C03:2; Pencil.C09:2
+S38,4,4,0,1,3,0,0,0,3,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pen.C12:5; Pen.C28:3; Pen.C31:3; Pencil.C12:3
+S39,4,4,1,3,0,1,2,1,0,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pen.C13:1; Pencil.C07:3; Pencil.C16:4; Pencil.C27:3
+S40,6,6,0,5,1,4,1,0,1,descriptive internal concentration,not identified (no mathematical semantics inferred),high,Pen.C02:2; Pen.C05:4; Pen.C11:3; Pencil.C01:4; Pencil.C10:3; Pencil.C11:4
+S41,2,2,0,2,0,1,2,0,0,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pen.C10:3; Pen.C11:2
+S42,1,1,0,1,0,0,0,0,0,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pencil.C09:3
+S43,1,1,0,0,1,1,0,0,1,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pencil.C06:4
+S44,1,1,0,1,0,1,1,0,0,insufficient-repeat evidence,not identified (no mathematical semantics inferred),very high,Pen.C07:2
+S45,6,6,1,5,0,5,6,1,0,descriptive internal concentration,not identified (no mathematical semantics inferred),high,Pen.C03:2; Pen.C06:2; Pencil.C02:2; Pencil.C20:2; Pencil.C24:2; Pencil.C30:1

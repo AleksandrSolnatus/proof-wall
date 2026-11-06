@@ -1,0 +1,65 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 2299,
+      "sha256": "f5261534c19316f44df46acbd2eef466424db8fda7bfbf044e79a97aa0cfa1ff"
+    },
+    "exhibit.json": {
+      "bytes": 11399,
+      "sha256": "58c36f8b356a066982fbc1ee2d153f2ff8c0874aa15fdfe18355304b908d9ad8"
+    },
+    "files/adapter.mjs": {
+      "bytes": 2455,
+      "sha256": "7509689dcda0c59e4bb0acaa50c929d359e089fab7a101b40c7de31cac5dde51"
+    },
+    "files/capsule.json": {
+      "bytes": 362,
+      "sha256": "39b636f6dfe81ffb06e39daa7e29b51e7a3660d2ba86762bbbc18f6e04bb2861"
+    },
+    "files/final-summary.json": {
+      "bytes": 15994,
+      "sha256": "2ab9305d39a442edb9eda68852f7da116c19e9882d3469baa3891964512d1349"
+    },
+    "files/original-checksums.json": {
+      "bytes": 7211,
+      "sha256": "4fec969248030b50b07473cd0de428df50d39024375f58ff7f5427523ca0427b"
+    },
+    "files/original-readme.md": {
+      "bytes": 2128,
+      "sha256": "261a64695d9bd8b5c0edd9eb43ba348cee60d5ec61185d64ff6f8ed28d3b7845"
+    },
+    "files/report-public-excerpt.md": {
+      "bytes": 14324,
+      "sha256": "d2ad4520343697cd479ddd0e5e4642199f852793d7b6a4be3e9011011534f73d"
+    },
+    "files/run.py": {
+      "bytes": 14858,
+      "sha256": "b80d14cb21ed218b6a33a0fd1332b23cbce130ef766bbf22429f00224962c7d8"
+    },
+    "files/source-binding.json": {
+      "bytes": 964,
+      "sha256": "88e8bd4a2b03b56a1fddfef4b1fae860ff02cdc7369a7fe5bff779b4f4ecba1f"
+    },
+    "files/source.cnf.txt": {
+      "bytes": 38,
+      "sha256": "85a2cca6886038925af2543594d7db3836b88c5d489de8b2e020fd9711f3adeb"
+    },
+    "files/target.cnf.txt": {
+      "bytes": 44,
+      "sha256": "ac311804420c03b8830a1fc20863a1994992def6b29a634b4eaa00cf51ef8080"
+    },
+    "files/translated-proposal.json": {
+      "bytes": 395,
+      "sha256": "f14cddfa9f3463688f693eb99957ffc0d308190f5529bab4d84a24d8c32f6dbe"
+    },
+    "files/valid-checks.json": {
+      "bytes": 6181,
+      "sha256": "b1146603e91c3a47dae3613570a40e9974ea8cfc49ae0ff089b3c37c0f0c317f"
+    },
+    "files/verify_snapshot.py": {
+      "bytes": 1018,
+      "sha256": "55495f869625fcfc009e1688cdfcd018d4b4e0b038ce224cc58164a548e59370"
+    }
+  },
+  "package_sha256": "a452a3fbdf9761054c5357cbbcd6a0dd4778606d9c9e53689c852d47bf2ea534"
+}

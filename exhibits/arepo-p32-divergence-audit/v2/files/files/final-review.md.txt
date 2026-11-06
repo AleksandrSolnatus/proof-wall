@@ -1,0 +1,18 @@
+# Final independent review — P32 existing-data audit
+
+Reviewer: /root/source_review. Recommendation: accept the bounded original-packing retrospective audit as completed with recorded resolution limits. This is technical review of custody, calculations, report and reproduction recipe, not acceptance of a physical-water law or proof of causal stage priority. Parent recovered the exact prepared scope; this reviewer did not independently retrieve the Library prompt.
+
+I independently verified original archive bytes, member CRC/SHA and extracted bytes, internal manifests, all ten case schemas/frames and all six exact fixed controls; recomputed every paired row, threshold, first/sustained onset, context, event, window and vector output; and checked all ordering rows and retained ties. Full details and hashes are in INDEPENDENT_VERIFICATION.json. I checked REPRODUCTION_VERIFICATION.json's byte-identical rerun hashes against the present files.
+
+The final report table matches the first/sustained onset outputs. Its quoted initial conditions, fixed-C quarter/half/three-quarter-second geometry, residuals, speeds and energy/cap values match original saved data. The scalar-demand decrease and coefficient normalization are described accurately. The dt2 transient-versus-persistent exceptions match the outputs. Floor/wall/contact/branch first-bin claims and absent pair/attraction caps match the event inventory. Shared baselines and six provenance controls are not presented as independent replicates. No causal or physical acceptance is claimed; missing within-bin and pair/boundary energy separation remain explicit.
+
+The recipe uses the self-contained result files and prescribed sibling archive/original layout; optional prior-regression availability is qualified. It verifies copied deliverables before derived-file overwrite, retains originals, uses no historical solver execution, and explains that assertions require nonoptimized Python. Original archive access remains necessary for reproduction, as documented.
+
+Raw review corrections and qualifications: the frozen pair list totals 21, not an initially suggested 23; first-bin activity is interval-censored rather than left-censored; inherited CRC claims were distinguished from fresh consumer checks; scope provenance was attributed to the parent's recovered prompt. These corrections were integrated before final review. Seven corrupted-data fixtures exercise meaningful validation failures; hash/baseline predicates are correctly described as predicates rather than full pipeline rejection tests. No unresolved technical dissent remains. Library publication, tracker mutation and final external receipt verification belong to the parent and were not performed by this reviewer.
+
+Reviewed narrative hashes:
+
+- `REPORT.md`: `2f64584ad931699f76add65c5ce74a3748b89e0fb9bc471bc94c428baf8574f8`
+- `README.md`: `2912c20a018e1e2b3e250d97fe17e70998b7d11244b3e10dfebe67cf4e469e6d`
+- `REPRODUCE.md`: `85890501988946c820792eebf3b829b72d32ddb8fff725f80fc233f2faa81941`
+- `IMPLEMENTATION_LOG.md`: `09bd41e78f4f1f5475a80f96da3ea0d42e12ae9fa720e9fd9fd0914fd0814cd4`

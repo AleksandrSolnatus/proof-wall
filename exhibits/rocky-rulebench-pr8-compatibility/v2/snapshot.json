@@ -1,0 +1,33 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 2241,
+      "sha256": "214ccca266dde6f80a7f8573edd371dc5f0e1c508c38536ff228a6cb4db839f4"
+    },
+    "exhibit.json": {
+      "bytes": 6815,
+      "sha256": "d1db27a6d431460bb500bc93e837a0a2bc4eb429dbb5776cb62a508d91fb3709"
+    },
+    "files/REPRODUCE.sh.txt": {
+      "bytes": 1410,
+      "sha256": "e63b95230ec844dd5dc5a3c6e03c080d9964b33df29d3bce209437f535fc80b1"
+    },
+    "files/audit_real_inputs.py": {
+      "bytes": 7390,
+      "sha256": "188aa84ab33a0ec45c5dd981cc26dc036c3c95c37777b74345a5906ab2b5547f"
+    },
+    "files/original-checksums.txt": {
+      "bytes": 2989,
+      "sha256": "25ba595c38d1b41abee75e010c14713f984af9152f4a1c4ec7c0668d75fe6766"
+    },
+    "files/original-command-result.json": {
+      "bytes": 693,
+      "sha256": "08e60e70544d57aa14c7173de0c692201fe136ba0c00713c1369fa60103e167b"
+    },
+    "files/report-public-excerpt.md": {
+      "bytes": 9669,
+      "sha256": "35348b1872642c05f531440ba3c830078342a3576346c4027e62133b35b663e3"
+    }
+  },
+  "package_sha256": "64361af459e03834d634aaa50024521256183ea8567632caa91886d8d19b637e"
+}

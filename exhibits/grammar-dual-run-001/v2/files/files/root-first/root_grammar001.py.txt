@@ -1,0 +1,393 @@
+#!/usr/bin/env python3
+"""ROOT-GRAMMAR-001: root-first, instance-conditioned *sound* SAT grammar.
+
+A pre-registered finite language:
+  root: Boolean variable, negation, OR and AND;
+  words: a==b / a!=b *only* after seeing the exact two-clause certificate;
+  composition: union-find with XOR parity, normalized clauses, unit propagation;
+  silence: no remaining forced conclusion before branching.
+
+The rules never learn from the expected answer or the independent oracle.
+All reasoning charged; exhaustive truth tables verify small instances afterwards.
+"""
+from __future__ import annotations
+import itertools, json, random, statistics, sys, time
+from dataclasses import dataclass, asdict
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'fixed-grammar'))
+import grammar001 as fixed
+
+BASE = Path(__file__).resolve().parent
+SEED = 20261015
+
+@dataclass
+class RootCost:
+    parse_literal_reads: int = 0
+    signature_membership_tests: int = 0
+    relations_derived: int = 0
+    local_proof_cases: int = 0
+    local_proof_clause_evaluations: int = 0
+    union_calls: int = 0
+    find_calls: int = 0
+    parent_traversals: int = 0
+    residual_literal_rewrites: int = 0
+    removed_certificate_clauses: int = 0
+    removed_tautologies: int = 0
+    normalized_duplicate_literals: int = 0
+    normalized_tautologies: int = 0
+    witness_clause_checks: int = 0
+    witness_literal_checks: int = 0
+    branch_decisions: int = 0
+    branch_nodes: int = 0
+
+class ParityDSU:
+    def __init__(self,n,cost):
+        self.parent=list(range(n+1))
+        self.rank=[0]*(n+1)
+        self.xor_to_parent=[0]*(n+1)
+        self.cost=cost
+    def find(self, v):
+        self.cost.find_calls += 1
+        parity=0
+        while self.parent[v]!=v:
+            parity ^= self.xor_to_parent[v]
+            v=self.parent[v]
+            self.cost.parent_traversals += 1
+        return v,parity
+    def add_relation(self,a,b,xor):
+        self.cost.union_calls += 1
+        ra,pa=self.find(a)
+        rb,pb=self.find(b)
+        if ra==rb:
+            return (pa ^ pb)==xor
+        difference=pa ^ pb ^ xor
+        if self.rank[ra]<self.rank[rb]:
+            self.parent[ra]=rb
+            self.xor_to_parent[ra]=difference
+        else:
+            self.parent[rb]=ra
+            self.xor_to_parent[rb]=difference
+            if self.rank[ra]==self.rank[rb]: self.rank[ra]+=1
+        return True
+
+def clause_truth(c,a):
+    return any((lit>0)==a[abs(lit)] for lit in c)
+
+def pair_certificate(a,b,parity,c1,c2,cost):
+    """Check the *local* 2-bit truth table, not the instance's SAT answer."""
+    for av,bv in itertools.product((False,True), repeat=2):
+        cost.local_proof_cases += 1
+        values={a:av,b:bv}
+        lhs=clause_truth(c1,values) and clause_truth(c2,values)
+        cost.local_proof_clause_evaluations += 2
+        assert lhs == ((int(av)^int(bv))==parity), 'Bad derived relation'
+
+def compile_root(n,clauses):
+    """Instance co-constructs equality/inequality words if licensed by exact clauses."""
+    cost=RootCost()
+    dsu=ParityDSU(n,cost)
+    signatures={}
+    taut_indices=set()
+    for idx,c in enumerate(clauses):
+        assert all(1<=abs(x)<=n for x in c)
+        cost.parse_literal_reads+=len(c)
+        literals=set(c)
+        if any(-lit in literals for lit in literals):
+            taut_indices.add(idx)
+            cost.removed_tautologies+=1
+            continue
+        if len(literals)==2:
+            x,y=sorted(literals,key=lambda lit:abs(lit))
+            if abs(x)!=abs(y):
+                a,b=abs(x),abs(y)
+                s=(x>0,y>0)
+                signatures.setdefault((a,b),{}).setdefault(s,idx)
+    trace=[]; covered=set(taut_indices); relations=[]; contradiction=False
+    for (a,b), signs in sorted(signatures.items()):
+        for parity, pair in ((1,((True,True),(False,False))),
+                             (0,((True,False),(False,True)))):
+            cost.signature_membership_tests+=2
+            if not all(k in signs for k in pair): continue
+            ia,ib=(signs[k] for k in pair)
+            pair_certificate(a,b,parity,clauses[ia],clauses[ib],cost)
+            cost.relations_derived+=1
+            covered.update((ia,ib))
+            relation={"roots":[a,b],"relation":"different" if parity else "equal",
+                      "xor":parity,"from_original_clauses":[ia+1,ib+1]}
+            relations.append(relation)
+            if not dsu.add_relation(a,b,parity):
+                trace.append({"event":"inconsistent_relationships", "relation":relation})
+                contradiction=True
+    cost.removed_certificate_clauses=len(covered-taut_indices)
+    reduced=[]; residual_sources=[]
+    if not contradiction:
+        for idx,c in enumerate(clauses):
+            if idx in covered: continue
+            mapped=set()
+            for literal in c:
+                cost.residual_literal_rewrites += 1
+                root,offset=dsu.find(abs(literal))
+                sign=(literal>0) ^ bool(offset)
+                mapped.add(root if sign else -root)
+            if any(-lit in mapped for lit in mapped):
+                cost.normalized_tautologies+=1
+                continue
+            cost.normalized_duplicate_literals+=len(c)-len(mapped)
+            reduced.append(sorted(mapped,key=lambda x:(abs(x),x<0)))
+            residual_sources.append(idx+1)
+    trace.extend([{"event":"admitted_word",**r} for r in relations])
+    trace.append({"event":"compiled", "variables":n,"residual_clauses":len(reduced),
+                  "covered_clauses":sorted(i+1 for i in covered)})
+    return dsu,reduced,residual_sources,relations,trace,cost,contradiction
+
+def expand(n,dsu,root_a):
+    expanded={}
+    for v in range(1,n+1):
+        root,offset=dsu.find(v)
+        expanded[v]=bool(root_a.get(root,False)) ^ bool(offset)
+    return expanded
+
+def solution_string(n,a):
+    return ''.join('1' if a[i] else '0' for i in range(1,n+1))
+
+def verify_original(clauses,assignment,cost):
+    """Independent witness checker counts its own original-formula inspections."""
+    for c in clauses:
+        cost.witness_clause_checks += 1
+        okay=False
+        for lit in c:
+            cost.witness_literal_checks+=1
+            if ((lit>0)==assignment[abs(lit)]):
+                okay=True; break
+        if not okay: return False
+    return True
+
+def grammar_only(n,clauses):
+    dsu,reduced,sources,relations,trace,bc,conflict=compile_root(n,clauses)
+    rc=fixed.Cost()
+    if conflict:
+        return {"status":"UNSAT","witness":None,"trace":trace,
+                "cost":asdict(bc),"propagation":asdict(rc),"residual_clauses":reduced,
+                "relations":relations,"partial_roots":{}, "silence_is_not_unsat":False}
+    status,root_a=fixed.propagate(reduced,{},rc,trace)
+    witness=None
+    if status=='SAT':
+        a=expand(n,dsu,root_a)
+        assert verify_original(clauses,a,bc)
+        witness=solution_string(n,a)
+    return {"status":status,"witness":witness,"trace":trace,
+            "cost":asdict(bc),"propagation":asdict(rc),"residual_clauses":reduced,
+            "relations":relations,"partial_roots":{str(k):int(v) for k,v in root_a.items()},
+            "silence_is_not_unsat":status=='SILENT'}
+
+def hybrid_root(n,clauses):
+    dsu,reduced,sources,relations,trace,bc,conflict=compile_root(n,clauses)
+    rc=fixed.Cost()
+    if conflict:
+        return {"solution":None,"cost":asdict(bc),"propagation":asdict(rc),"trace":trace}
+    root_ids=sorted(set(abs(lit) for c in reduced for lit in c))
+    def dfs(root_a):
+        bc.branch_nodes+=1
+        status,forced=fixed.propagate(reduced,root_a,rc,trace)
+        if status=='UNSAT': return None
+        if status=='SAT': return forced
+        unassigned=next((v for v in root_ids if v not in forced),None)
+        if unassigned is None: raise AssertionError('Silent with no unassigned roots')
+        for value in (False,True):
+            bc.branch_decisions+=1
+            res=dfs({**forced,unassigned:value})
+            if res is not None: return res
+        return None
+    root_assignment=dfs({})
+    witness=None
+    if root_assignment is not None:
+        a=expand(n,dsu,root_assignment)
+        assert verify_original(clauses,a,bc)
+        witness=solution_string(n,a)
+    return {"solution":witness,"cost":asdict(bc),"propagation":asdict(rc),"trace":trace}
+
+def sham_hybrid(n,clauses):
+    """Run the same grammar-building pipeline; ignore its knowledge when solving."""
+    _,_,_,relations,_,bc,_=compile_root(n,clauses)
+    witness,fc,_=fixed.hybrid(n,clauses)
+    return {"solution":witness,"builder_cost":asdict(bc),
+            "fixed_search_cost":fc,"unused_relations":len(relations)}
+
+def encoded_xor(a,b,parity):
+    assert a!=b
+    if parity==1: return [[a,b],[-a,-b]]
+    return [[a,-b],[-a,b]]
+
+def make_parity(n, rng, unsat=False):
+    model={i:rng.randrange(2) for i in range(1,n+1)}
+    edges=[]
+    for v in range(2,n+1):
+        u=rng.randrange(1,v)
+        edges.append((u,v,model[u]^model[v]))
+    if not unsat:
+        for _ in range(2):
+            a,b=rng.sample(range(1,n+1),2)
+            edges.append((a,b,model[a]^model[b]))
+    else:
+        a,b=rng.sample(range(1,n+1),2)
+        edges.append((a,b,(model[a]^model[b])^1))
+    clauses=[c for a,b,p in edges for c in encoded_xor(a,b,p)]
+    rng.shuffle(clauses)
+    for c in clauses: rng.shuffle(c)
+    return clauses
+
+def make_random_three(n,m,rng):
+    out=[]
+    for _ in range(m):
+        variables=rng.sample(range(1,n+1),3)
+        out.append([v if rng.randrange(2) else -v for v in variables])
+    return out
+
+def transformed(n,clauses,rng):
+    perm=list(range(1,n+1)); rng.shuffle(perm)
+    signs=[0]+[rng.randrange(2) for _ in range(n)]
+    new=[]
+    for c in clauses:
+        mapped=[perm[abs(l)-1]*(1 if (l>0) ^ bool(signs[abs(l)]) else -1) for l in c]
+        rng.shuffle(mapped)
+        new.append(mapped)
+    rng.shuffle(new)
+    return new
+
+def checker_full_equivalence(n,clauses,reduced,relations):
+    """Post-hoc truth-table checker of *all* assignments, not just SAT count."""
+    cost=RootCost(); dsu=ParityDSU(n,cost)
+    for r in relations:
+        if not dsu.add_relation(*r['roots'],r['xor']):
+            # Contradictory relation certificates imply UNSAT.
+            assert len(fixed.independent_reference(n,clauses))==0
+            return {"checked_assignments":2**n,"equivalent":True,
+                    "kind":"contradictory_certified_parity_relations"}
+    for bits in itertools.product((False,True),repeat=n):
+        a={i+1:bits[i] for i in range(n)}
+        original=all(clause_truth(c,a) for c in clauses)
+        pari=all((int(a[r['roots'][0]])^int(a[r['roots'][1]]))==r['xor'] for r in relations)
+        roots={i:int(a[i]) for i in range(1,n+1) if dsu.find(i)[0]==i}
+        compact=all(clause_truth(c,roots) for c in reduced)
+        assert original==(pari and compact),f'Translation broke at {bits}'
+    return {"checked_assignments":2**n,"equivalent":True,
+            "kind":"truth_table_all_assignments"}
+
+def make_cases():
+    rng=random.Random(SEED)
+    cases=[]
+    for name,c in fixed.CASES.items():
+        cases.append((name,c['nvars'],c['clauses'],'original'))
+    # Cases established in advance to exercise the proposed compositional rules.
+    cases += [
+        ('PARITY_CHAIN_SAT',5,encoded_xor(1,2,0)+encoded_xor(2,3,1)+encoded_xor(3,4,0)+encoded_xor(4,5,1),'constructed'),
+        ('PARITY_CYCLE_UNSAT',4,encoded_xor(1,2,0)+encoded_xor(2,3,0)+encoded_xor(3,4,0)+encoded_xor(4,1,1),'constructed'),
+        ('PARITY_COLLAPSE_SAT',4,encoded_xor(1,2,0)+encoded_xor(2,3,0)+encoded_xor(3,4,1)+[[1,2,3]],'constructed'),
+        ('PARITY_PLUS_HARD_RESIDUAL',5,encoded_xor(1,2,1)+[[3,4,5],[-3,-4,5],[3,-4,-5],[-3,4,-5]],'constructed'),
+        ('HALF_SIGNATURE_NEGATIVE',3,[[1,2],[-2,3]],'negative'),
+        ('DUPLICATE_AND_TAUTOLOGY',3,encoded_xor(1,2,0)+[[1,-1],[2,-2],[3,-3],[1,-2]],'constructed')]
+    # Test set generated *after* defining the algebraic rule, not used to pick it.
+    for n in (4,6,8):
+        for i in range(2):
+            cases.append((f'HELDOUT_PARITY_SAT_n{n}_i{i}',n,make_parity(n,rng,False),'heldout_parity'))
+            cases.append((f'HELDOUT_PARITY_UNSAT_n{n}_i{i}',n,make_parity(n,rng,True),'heldout_parity'))
+    for n,m in ((5,11),(6,19),(7,25),(8,32)):
+        for i in range(2):
+            cases.append((f'HELDOUT_RANDOM3_n{n}_i{i}',n,make_random_three(n,m,rng),'heldout_no_motif'))
+    return cases
+
+def as_bool_solution(sol,solutions):
+    assert (sol is None)==(len(solutions)==0)
+    if sol is not None: assert sol in solutions
+
+def run_one(name,n,clauses,group,transform_rng):
+    truth=fixed.independent_reference(n,clauses)
+    assert truth==fixed.exhaustive(n,clauses)[0]
+    gc=fixed.Cost(); gtrace=[]
+    g_status,g_partial=fixed.propagate(clauses,{},gc,gtrace)
+    fh,fh_cost,_=fixed.hybrid(n,clauses)
+    rg=grammar_only(n,clauses)
+    rh=hybrid_root(n,clauses)
+    sham=sham_hybrid(n,clauses)
+    first,brute_cost=fixed.first_solution_search(n,clauses)
+    as_bool_solution(fh,truth)
+    as_bool_solution(rh['solution'],truth)
+    as_bool_solution(sham['solution'],truth)
+    as_bool_solution(first,truth)
+    assert sham['solution']==fh
+    if rg['status']=='SAT':
+        assert rg['witness'] in truth
+    if rg['status']=='UNSAT':
+        assert not truth
+    # Forced values must hold in every satisfying model.
+    for root,v in rg['partial_roots'].items():
+        for sol in truth:
+            assert int(sol[int(root)-1])==v
+    equivalence=checker_full_equivalence(n,clauses,rg['residual_clauses'],rg['relations'])
+    # For every case, independently relabel/sign-flip/reorder and retest.
+    cc=transformed(n,clauses,transform_rng)
+    transformed_oracle=fixed.independent_reference(n,cc)
+    rgt=grammar_only(n,cc)
+    fgt=fixed.propagate(cc,{},fixed.Cost(),[])[0]
+    assert len(transformed_oracle)==len(truth)
+    assert rgt['status']==rg['status'],(name,rgt['status'],rg['status'])
+    assert fgt==g_status,(name,fgt,g_status)
+    assert rgt['status']=='SILENT' or ((rgt['status']=='SAT')==bool(transformed_oracle))
+    return {'case':name,'kind':group,'n':n,'clauses':clauses,'sat_model_count':len(truth),
+        'oracle_all_models':truth if n<=5 else None,
+        'baseline_brute_first':{'solution':first,'cost':brute_cost},
+        'fixed_grammar':{'status':g_status,'forced':{str(k):int(v) for k,v in g_partial.items()},
+                         'cost':asdict(gc)},
+        'fixed_hybrid':{'solution':fh,'cost':fh_cost},
+        'root_grammar':rg,
+        'root_hybrid':rh,
+        'sham_hybrid':sham,
+        'posthoc_checker':equivalence,
+        'control':{'rename_flip_reorder':True,'root_status':rgt['status'],
+                   'fixed_status':fgt,'sat_model_count':len(transformed_oracle)}}
+
+def choose_summary(rows):
+    def count_status(k,group=None):
+        subset=[r for r in rows if group is None or r['kind']==group]
+        return {s:sum(r[k]['status']==s for r in subset) for s in ('SAT','UNSAT','SILENT')}
+    ret={
+      'number_of_cases':len(rows),
+      'case_groups':{kind:sum(r['kind']==kind for r in rows) for kind in sorted(set(r['kind'] for r in rows))},
+      'root_grammar':count_status('root_grammar'),
+      'fixed_grammar':count_status('fixed_grammar'),
+      'root_grammar_heldout_parity':count_status('root_grammar','heldout_parity'),
+      'fixed_grammar_heldout_parity':count_status('fixed_grammar','heldout_parity'),
+      'root_grammar_heldout_no_motif':count_status('root_grammar','heldout_no_motif'),
+      'fixed_grammar_heldout_no_motif':count_status('fixed_grammar','heldout_no_motif'),
+      'root_hybrid_vs_fixed_hybrid':{
+        'fewer_branch_decisions':sum(r['root_hybrid']['cost']['branch_decisions'] < r['fixed_hybrid']['cost']['decisions'] for r in rows),
+        'equal_branch_decisions':sum(r['root_hybrid']['cost']['branch_decisions'] == r['fixed_hybrid']['cost']['decisions'] for r in rows),
+        'more_branch_decisions':sum(r['root_hybrid']['cost']['branch_decisions'] > r['fixed_hybrid']['cost']['decisions'] for r in rows),
+        'root_total_branch_decisions':sum(r['root_hybrid']['cost']['branch_decisions'] for r in rows),
+        'fixed_total_branch_decisions':sum(r['fixed_hybrid']['cost']['decisions'] for r in rows)},
+      'root_builder_work':{
+        'total_signature_probes':sum(r['root_hybrid']['cost']['signature_membership_tests'] for r in rows),
+        'total_parse_literals':sum(r['root_hybrid']['cost']['parse_literal_reads'] for r in rows),
+        'total_local_proof_cases':sum(r['root_hybrid']['cost']['local_proof_cases'] for r in rows),
+        'total_relation_inferences':sum(r['root_hybrid']['cost']['relations_derived'] for r in rows)},
+      'checks':{'exhaustive_equivalence_checks':len(rows),'metamorphic_controls':len(rows),
+                'max_n':max(r['n'] for r in rows)}
+    }
+    return ret
+
+def main():
+    cases=make_cases()
+    transform_rng=random.Random(SEED+300)
+    rows=[run_one(*case,transform_rng) for case in cases]
+    summ=choose_summary(rows)
+    out={'experiment':'ROOT-GRAMMAR-001','date':'2026-10-15',
+         'method':'Parity motifs from paired binary clauses -> sound equality/difference roots -> normalized residual -> unit propagation, optional search over roots',
+         'comparison':'Original unit propagation, original unit-plus-branching, sham build ignored, first-solution enumeration',
+         'seed':SEED, 'summary':summ, 'cases':rows}
+    (BASE/'results.json').write_text(json.dumps(out,indent=2)+'\n')
+    print('ROOT-GRAMMAR-001',summ)
+    print('CASE                          | n | models | fixed only | root only | fixed branches | root branches | roots | residual')
+    for r in rows:
+        print(f"{r['case'][:29]:29} | {r['n']:1} | {r['sat_model_count']:>6} | {r['fixed_grammar']['status']:<10} | {r['root_grammar']['status']:<9} | {r['fixed_hybrid']['cost']['decisions']:>14} | {r['root_hybrid']['cost']['branch_decisions']:>13} | {len(r['root_grammar']['relations']):>5} | {len(r['root_grammar']['residual_clauses']):>8}")
+
+if __name__=='__main__': main()

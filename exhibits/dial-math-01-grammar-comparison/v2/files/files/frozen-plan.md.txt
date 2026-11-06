@@ -1,0 +1,26 @@
+# MATH-01 retrospective computational model freeze
+
+This plan and `run_math01.py` were written before running the experiment's computational model comparisons. The source is a pre-existing, fully studied corpus; computational holdouts cannot therefore count as an independent prospective blind challenge.
+
+## Source and exclusion
+SHA-256 must be 18ee5ac70b21696e7ed60616e3a265eaf0261fdd49779464e254a7e916f74a24. Exclude entire Pen.C08 (do not join C07 to C09); Pencil.C24 is restored from the accepted blind result as S07 S45 S07. Pencil.C28 final S07/S25 are independently evaluated. No face-transition evidence assumed; within-cell order treated as archival sequence, not confirmed original reading direction.
+
+## Model ladder and predictive target
+All models predict identity of each held-out occurrence S01-S45 from its position in a cell and/or adjacent/context signs that are supplied as visible context, after training excludes the entire dependency family. This is *conditional identity prediction*, not de novo decoding. Loss = mean negative log2 probability (bits/token), smaller is better. All use Jeffreys-smoothed global frequencies (0.5 pseudocount per type), and specialized emissions shrink toward training-global prior with fixed concentration 20. This shared regularization is an explicit form of complexity control; predictive held-out loss penalizes unused high-parameter models. No tuning on the outcome. Models:
+
+- F: global-frequency unigram control.
+- A: restricted infix algebra, assumed value/operator alternating by archived cell slot (even/odd, with first slot value).
+- B: procedural prefix opcode head, later arguments predicted from head identity (not preceding argument).
+- C: centered relation sign (floor((n-1)/2)), versus noncentral operands.
+- D: language-like first-order within-cell Markov model, special cell start.
+- E: nonmath record field grammar, fixed first / middle / last distributions.
+- W: within-cell Markov model plus across-cell adjacency at physically consecutive cell addresses on the same face; source and target train cells must both be in train to count boundary training evidence. No Pen C07→C09 and no face bridge.
+
+## Prespecified CV
+5-fold deterministic group assignment. Conservative groups are connected components under exact-match, contiguous substring, or Levenshtein distance <=1 of entire cell strings (union across both C28 variants); multi-cell Pen C14-C16/C20-C22 passage linked. Greedy token-balancing fold assignment, shared both variants. Held-out sign evaluated conditional on already observable head/previous sign when applicable; this is explicitly not a test of jointly reconstructing the whole withheld cell.
+
+## Controls
+399 Monte Carlo draws each per variant with deterministic RNG seed 20261014, consuming state sequentially. Within-cell shuffle preserves each cell's sign multiset and length and global face counts while destroying order. Interior-only shuffle preserves each cell's first/last, interior sign multiset, length and boundaries while destroying interior order. Whole-cell-order shuffle exchanges complete sign strings among addresses within faces, preserving face-level signs and full cell strings, but NOT cell-length-at-address or repeated-passage locations. Its primary use is across-cell continuity reference; do not treat it as an address-conditioned or length-at-address null. All controls retain original dependency-fold identities for scoring, which can make shuffled corpora less dependent than observed. This sensitivity is reported, not hidden. Full reference-family comparisons are exploratory rather than confirmatory as mathematically specific grammar families have not been validated externally.
+
+## Comparison, no opportunistic selection
+Primary descriptive comparison: A-infix vs D-language-like bigram, with lower out-of-fold bits/token winning. Secondary predeclared family-selection statistic: minimum loss among A/B/C versus minimum among D/E, applying *the same* selection under each shuffled control. Also assess W versus D on first-position tokens that possess an actual preceding cell. Empirical upper-tail p = (1 + number of control statistics >= observed) / 400. Both C28 variants must agree to consider a stable structural result, and any candidate must defeat meaningful alternatives on independent blind evidence before 'SUPPORTED STRUCTURAL DIFFERENCE'. A posteriori analyses do not satisfy that independent-blind criterion.

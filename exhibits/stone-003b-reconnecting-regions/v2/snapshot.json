@@ -1,0 +1,69 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 2253,
+      "sha256": "60ec56a88178fcecf8f0dd6be831d42b3afb863a83c1a8731b6fb754d2766d4a"
+    },
+    "exhibit.json": {
+      "bytes": 11603,
+      "sha256": "08cddc27516fc0aba23036876897146b31bedd69f36ba1d925756cd6b2cfd5fe"
+    },
+    "files/benchmark.json": {
+      "bytes": 14732,
+      "sha256": "386ed20b4db366bc0fbe9df3a75db3c21d0194541a1b77fd931e7cbd9e06288c"
+    },
+    "files/independent-check.log.txt": {
+      "bytes": 736,
+      "sha256": "505c684151d868fdc95d8124c905c6aa0519a23b0f0e2157071efa041bb4ac08"
+    },
+    "files/independent_check.py": {
+      "bytes": 6855,
+      "sha256": "53bf8a5d189b5da5bc124a251434acc840644591427850f6dd224fbe34fbae62"
+    },
+    "files/interface_engine.py": {
+      "bytes": 12729,
+      "sha256": "962c258638e0a4df668ea62cf3ce286cef06b33d4b6c5cc5510a5efce5415f00"
+    },
+    "files/method-and-proof.md": {
+      "bytes": 6745,
+      "sha256": "84c422dbc7c9f46f348ed28b92348d5566e84602d89d3016baafd3ed328eb6b5"
+    },
+    "files/original-manifest.sha256.txt": {
+      "bytes": 4269,
+      "sha256": "3a76a45ceb2be44d66e6eee6a6c229b1664c8804e5c03eed1336c4583c7f0205"
+    },
+    "files/original-readme.md": {
+      "bytes": 2110,
+      "sha256": "8722ba7537836d24fd49b329d8d0215623ea69c5a7c4e07c03e4a18c80154972"
+    },
+    "files/report.md": {
+      "bytes": 15098,
+      "sha256": "e7dbe7a3833b06f5a13e2c30f470d774d5365043d126e5a5e27b2eb20b5124d1"
+    },
+    "files/results-cliques.json": {
+      "bytes": 140738,
+      "sha256": "1fa969c1429a7c9328f81e756f4e192aecb7fb1191457822d63f05b832950014"
+    },
+    "files/results-replay.json": {
+      "bytes": 58547,
+      "sha256": "078439293ba65d683defb20d938ab40251e6383531025c2342a6da206a64b334"
+    },
+    "files/run-receipt.json": {
+      "bytes": 473,
+      "sha256": "7768609a40d8859cfb22a533a191769016966e77fc644c93cf6cd35978da8440"
+    },
+    "files/run_experiments.py": {
+      "bytes": 10297,
+      "sha256": "9270900bb773752a8178dbf260a36a6075d5e936974648f0e131144395602ece"
+    },
+    "files/summary.json": {
+      "bytes": 18637,
+      "sha256": "3587cd5725d6f9288334969487e0efd7f46e590ec02018fd1324a13c06957ceb"
+    },
+    "files/verification.json": {
+      "bytes": 297168,
+      "sha256": "3bf57ab093351930a6275e30198fa6dc63a0a682090416ab101a9e18a1c2b7e8"
+    }
+  },
+  "package_sha256": "0385ffd9bbc788c6b463e67fb6657e26f19f8c6f1cbb365e0ea4bb72d8fec693"
+}

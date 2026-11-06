@@ -1,0 +1,481 @@
+#!/usr/bin/env python3
+"""Rising Tide 003B: exact-length reachability after graph edits.
+
+Pure Python, standard library only. Run: python3 experiment.py
+All inputs and algorithm parameters are fixed below before measurement.
+The ledger counts declared work events, not CPU instructions or seconds.
+"""
+from collections import Counter
+from copy import deepcopy
+from pathlib import Path
+import hashlib
+import json
+import platform
+import random
+
+
+HERE = Path(__file__).resolve().parent
+H = 7                         # P_0 .. P_7, lengths at most 255
+LENGTHS = [1, 2, 3, 5, 9, 17, 33, 65, 100, 127, 128, 191, 255]
+ORIGINAL_LENGTHS = [1, 2, 3, 4, 5, 8, 13, 16, 31, 32, 63, 64, 100, 127]
+RANDOM_SEED = 20261104
+
+
+def charge(c, key, n=1):
+    c[key] += n
+
+
+def eye(q):
+    return [[int(i == j) for j in range(q)] for i in range(q)]
+
+
+def matrix_product(a, b, c):
+    q = len(a)
+    out = [[0] * q for _ in range(q)]
+    for i in range(q):
+        for j in range(q):
+            z = 0
+            for k in range(q):
+                z |= a[i][k] & b[k][j]
+            out[i][j] = z
+    charge(c, 'product_terms', q**3)
+    charge(c, 'accumulator_updates', q**3)
+    charge(c, 'cell_writes', q*q)
+    return out
+
+
+def square_counts(a, c):
+    q = len(a)
+    out = [[sum(a[i][k] * a[k][j] for k in range(q))
+            for j in range(q)] for i in range(q)]
+    charge(c, 'product_terms', q**3)
+    charge(c, 'accumulator_updates', q**3)
+    charge(c, 'cell_writes', q*q)
+    return out
+
+
+def build_library(a, h, c, with_counts=False, borrow_base=False):
+    q = len(a)
+    p = [a if borrow_base else deepcopy(a)]
+    counts = []
+    if not borrow_base:
+        charge(c, 'cell_writes', q*q)
+    for _ in range(h):
+        if with_counts:
+            s = square_counts(p[-1], c)
+            counts.append(s)
+            p.append([[int(x > 0) for x in row] for row in s])
+            charge(c, 'threshold_checks', q*q)
+            charge(c, 'cell_writes', q*q)
+        else:
+            p.append(matrix_product(p[-1], p[-1], c))
+    return p, counts
+
+
+def vector_product(v, a, c):
+    q = len(v)
+    out = [0] * q
+    for j in range(q):
+        z = 0
+        for k in range(q):
+            z |= v[k] & a[k][j]
+        out[j] = z
+    charge(c, 'product_terms', q*q)
+    charge(c, 'accumulator_updates', q*q)
+    charge(c, 'cell_writes', q)
+    return out
+
+
+def cached_pair(p, n, s, t, c):
+    """Single-pair query: row selection, then vector products, not full A^n."""
+    charge(c, 'query_validation', 3)
+    if n == 0:
+        charge(c, 'answer_reads')
+        return int(s == t)
+    charge(c, 'single_power_test')
+    if n & (n-1) == 0:
+        charge(c, 'query_bit_tests', n.bit_length())
+        charge(c, 'power_lookups')
+        charge(c, 'answer_reads')
+        return p[n.bit_length()-1][s][t]
+    v = None
+    for j in range(n.bit_length()):
+        charge(c, 'query_bit_tests')
+        if (n >> j) & 1:
+            charge(c, 'power_lookups')
+            if v is None:
+                v = p[j][s][:]
+                charge(c, 'row_reads', len(v))
+                charge(c, 'cell_writes', len(v))
+            else:
+                v = vector_product(v, p[j], c)
+    charge(c, 'answer_reads')
+    return v[t]
+
+
+def fresh_pair(a, n, s, t, c):
+    p, _ = build_library(a, max(0, n.bit_length()-1), c, borrow_base=True)
+    return cached_pair(p, n, s, t, c)
+
+
+def reference_matrix(a, n):
+    """Independent oracle: enumerate reachable vertex sets one step at a time."""
+    q = len(a)
+    edges = [{j for j in range(q) if a[i][j]} for i in range(q)]
+    out = []
+    for s in range(q):
+        front = {s}
+        for _ in range(n):
+            front = {v for u in front for v in edges[u]}
+        out.append([int(t in front) for t in range(q)])
+    return out
+
+
+def check_pair(a, n, s, t, claimed, c):
+    """Stateless check from the current raw graph; cost is charged per answer."""
+    q = len(a)
+    edges = []
+    for row in a:
+        neighbors = []
+        for j, b in enumerate(row):
+            charge(c, 'checker_graph_reads')
+            if b:
+                neighbors.append(j)
+                charge(c, 'checker_neighbor_writes')
+        edges.append(neighbors)
+    front = {s}
+    charge(c, 'checker_set_writes')
+    for _ in range(n):
+        nxt = set()
+        charge(c, 'checker_step_dispatch')
+        for u in front:
+            charge(c, 'checker_vertex_visits')
+            for v in edges[u]:
+                nxt.add(v)
+                charge(c, 'checker_edge_visits')
+                charge(c, 'checker_set_writes')
+        front = nxt
+    truth = int(t in front)
+    charge(c, 'checker_answer_comparisons')
+    if claimed != truth:
+        raise AssertionError((n, s, t, claimed, truth))
+    return truth
+
+
+def repair_library(p, counts, changes, c, force_sparse=False):
+    """Apply net Boolean changes, maintaining integer two-half-walk counts.
+
+    Before and after each layer, counts[j] is the ordinary integer square
+    of Boolean p[j]. For a cell change d E_ab, update row a using OLD p[j],
+    then write the changed cell, then update column b using NEW p[j].
+    This includes the d^2 E_ab^2 term even for self-loop edits.
+    """
+    q = len(p[0])
+    trace = []
+    for j in range(len(counts)):
+        charge(c, 'layer_dispatch')
+        if not changes:
+            trace.append({'layer': j, 'mode': 'unchanged_stop',
+                          'input_changes': 0, 'output_changes': 0})
+            return trace
+        a, support = p[j], counts[j]
+        d = len(changes)
+        charge(c, 'repair_selection')
+        # Fixed, conservative threshold; not tuned to measured workloads.
+        sparse = force_sparse or 8*d <= q*q
+        next_changes = []
+        if sparse:
+            dirty = set()
+            for u, v, new in changes:
+                old = a[u][v]
+                delta = new-old
+                assert delta in (-1, 1)
+                charge(c, 'change_reads', 3)
+                for k in range(q):
+                    coefficient = a[v][k]
+                    support[u][k] += delta * coefficient
+                    charge(c, 'delta_coefficient_reads')
+                    charge(c, 'accumulator_updates')
+                    if coefficient:
+                        dirty.add((u, k))
+                        charge(c, 'dirty_set_updates')
+                a[u][v] = new
+                charge(c, 'cell_writes')
+                for k in range(q):
+                    coefficient = a[k][u]
+                    support[k][v] += delta * coefficient
+                    charge(c, 'delta_coefficient_reads')
+                    charge(c, 'accumulator_updates')
+                    if coefficient:
+                        dirty.add((k, v))
+                        charge(c, 'dirty_set_updates')
+            # Deterministic q^2 scan rather than an estimated sorting charge.
+            # This deliberately charges even unaffected coordinates.
+            for u in range(q):
+                for v in range(q):
+                    charge(c, 'dirty_membership_checks')
+                    if (u, v) not in dirty:
+                        continue
+                    assert 0 <= support[u][v] <= q
+                    new = int(support[u][v] > 0)
+                    charge(c, 'threshold_checks')
+                    charge(c, 'difference_checks')
+                    if new != p[j+1][u][v]:
+                        next_changes.append((u, v, new))
+                        charge(c, 'change_record_writes', 3)
+            mode = 'sparse_repair'
+        else:
+            for u, v, new in changes:
+                a[u][v] = new
+                charge(c, 'change_reads', 3)
+                charge(c, 'cell_writes')
+            support = square_counts(a, c)
+            counts[j] = support
+            for u in range(q):
+                for v in range(q):
+                    new = int(support[u][v] > 0)
+                    charge(c, 'threshold_checks')
+                    charge(c, 'difference_checks')
+                    if new != p[j+1][u][v]:
+                        next_changes.append((u, v, new))
+                        charge(c, 'change_record_writes', 3)
+            mode = 'dense_fallback'
+        trace.append({'layer': j, 'mode': mode, 'input_changes': d,
+                      'output_changes': len(next_changes)})
+        changes = next_changes
+    for u, v, new in changes:
+        p[-1][u][v] = new
+        charge(c, 'change_reads', 3)
+        charge(c, 'cell_writes')
+    return trace
+
+
+def audit_state(a, p, counts):
+    """Research-only audit, outside each method's online ledger."""
+    q = len(a)
+    entries = 0
+    for j, matrix in enumerate(p):
+        ref = reference_matrix(a, 1 << j)
+        assert matrix == ref, ('power mismatch', j)
+        entries += q*q
+        if j < len(counts):
+            # Independently expressed ordinary square of the oracle matrix.
+            columns = list(zip(*ref))
+            support = [[sum(x*y for x, y in zip(row, col))
+                        for col in columns] for row in ref]
+            assert counts[j] == support, ('support mismatch', j)
+            entries += q*q
+    return entries
+
+
+def replicate_original():
+    a = [[0]*5 for _ in range(5)]
+    for u, v in [(0,1),(1,2),(2,3),(3,4),(4,1),(1,3),(2,0)]:
+        a[u][v] = 1
+    p, _ = build_library(a, 7, Counter())
+    for n in range(128):
+        x = eye(5)
+        for j in range(n.bit_length()):
+            if (n >> j) & 1:
+                x = matrix_product(x, p[j], Counter())
+        assert x == reference_matrix(a, n)
+    square_sum = sum(n.bit_length()-1 for n in ORIGINAL_LENGTHS)
+    pop_sum = sum(n.bit_count() for n in ORIGINAL_LENGTHS)
+    return {
+        'exact_matrix_checks': 128,
+        'graph': a, 'lengths': ORIGINAL_LENGTHS,
+        'reported_identity_accumulator_convention': {
+            'repeated': sum(ORIGINAL_LENGTHS), 'retained_preprocessing': 7,
+            'retained_query': pop_sum, 'retained_total': 7+pop_sum,
+            'fresh_binary': square_sum+pop_sum},
+        'skip_identity_and_build_only_needed_powers': {
+            'repeated': sum(n-1 for n in ORIGINAL_LENGTHS),
+            'retained_preprocessing': 6,
+            'retained_query': pop_sum-len(ORIGINAL_LENGTHS),
+            'retained_total': 6+pop_sum-len(ORIGINAL_LENGTHS),
+            'fresh_binary': square_sum+pop_sum-len(ORIGINAL_LENGTHS)}
+    }
+
+
+def frontier_checks():
+    q = 257
+    sets = []
+    for h in range(7):
+        powers = [0] + [1 << j for j in range(h+1)]
+        feasible = set(powers) | {x+y for x in powers for y in powers}
+        assert len({x % q for x in feasible}) == len(feasible)
+        sets.append(feasible)
+    rows = []
+    for h in range(1, 7):
+        witness = 1 << (h+1)
+        assert sets[h-1] < sets[h]
+        assert witness not in sets[h-1] and witness in sets[h]
+        assert (1 << h) in sets[h-1]  # original witness was already feasible
+        rows.append({'new_largest_stored_exponent': 1 << h,
+                     'new_one_product_witness': witness,
+                     'before_size': len(sets[h-1]), 'after_size': len(sets[h])})
+    return {'cycle_vertices': q, 'strict_transitions': 6, 'rows': rows,
+            'scope': 'full-matrix expressions from stored powers and identity; one product; free lookup'}
+
+
+def exhaustive_checks():
+    cases = entries = 0
+    q, h = 3, 4
+    for mask in range(1 << (q*q)):
+        a = [[(mask >> (i*q+j)) & 1 for j in range(q)] for i in range(q)]
+        for u in range(q):
+            for v in range(q):
+                p, counts = build_library(a, h, Counter(), True)
+                new = 1-a[u][v]
+                repair_library(p, counts, [(u, v, new)], Counter(), True)
+                b = deepcopy(a)
+                b[u][v] = new
+                entries += audit_state(b, p, counts)
+                cases += 1
+    # A wrong result must be rejected, including a zero-length query.
+    rejections = 0
+    for n, s, t in [(0,0,0), (0,0,1), (3,0,1)]:
+        a = [[1,1],[0,1]]
+        truth = reference_matrix(a, n)[s][t]
+        try:
+            check_pair(a, n, s, t, 1-truth, Counter())
+        except AssertionError:
+            rejections += 1
+    assert rejections == 3
+    return {'all_3_vertex_graphs': 512, 'single_edge_toggles': cases,
+            'matrix_and_count_entries_checked': entries,
+            'deliberately_wrong_answers_rejected': rejections}
+
+
+def fixtures():
+    q = 32
+    cycles = [[0]*q for _ in range(q)]
+    for i in range(q):
+        cycles[i][(i//8)*8+(i+1)%8] = 1
+    dense = [[1]*q for _ in range(q)]
+    r = 16
+    q = 2*r+2
+    bridge = eye(q)
+    u, v = r, r+1
+    for i in range(r):
+        bridge[i][u] = 1
+    for j in range(r+2, q):
+        bridge[v][j] = 1
+    rng = random.Random(RANDOM_SEED)
+    sparse = [[int(rng.random() < .07) for _ in range(24)] for _ in range(24)]
+    edits = [(rng.randrange(24), rng.randrange(24)) for _ in range(12)]
+    return [
+        ('local_cycle', cycles, [(0,1)]*8, LENGTHS),
+        ('redundant_dense', dense, [(0,1)]*8, LENGTHS),
+        ('bridge_spread', bridge, [(u,v)]*8, LENGTHS),
+        ('random_sparse', sparse, edits, LENGTHS),
+        ('short_query_negative_control', bridge, [(u,v)]*8, [1])
+    ]
+
+
+def pack_cost(ledger):
+    checker = sum(v for k, v in ledger.items() if k.startswith('checker_'))
+    total = sum(ledger.values())
+    return {'total': total, 'online_algorithm': total-checker,
+            'answer_verification': checker, 'ledger': dict(sorted(ledger.items()))}
+
+
+def run_fixture(name, original, edits, lengths):
+    a = deepcopy(original)
+    q = len(a)
+    names = ['rebuild', 'fresh_binary', 'repair']
+    ledgers = {n: Counter() for n in names}
+    phases = {n: [] for n in names}
+    for c in ledgers.values():
+        charge(c, 'initial_graph_validation', q*q)
+        charge(c, 'cell_writes', q*q)
+    p, counts = build_library(a, H, ledgers['repair'], True)
+    warm_snapshot = Counter(ledgers['repair'])
+    phases['repair'].append({'phase': 'initial_acquisition', **pack_cost(warm_snapshot)})
+    traces = []
+    exact_answers = audit_entries = 0
+    versions = []
+    for version in range(len(edits)+1):
+        starts = {n: Counter(ledgers[n]) for n in names}
+        edit = None
+        if version:
+            u, v = edits[version-1]
+            new = 1-a[u][v]
+            edit = [u, v, new]
+            for c in ledgers.values():
+                charge(c, 'edit_validation', 4)
+            a[u][v] = new
+            for n in ['rebuild', 'fresh_binary']:
+                charge(ledgers[n], 'cell_writes')
+            trace = repair_library(p, counts, [(u,v,new)], ledgers['repair'])
+            traces.append({'version': version, 'edit': edit, 'layers': trace})
+        rebuilt, _ = build_library(a, H, ledgers['rebuild'])
+        # Audit every retained matrix and its supporting counts independently.
+        audit_entries += audit_state(a, p, counts)
+        assert p == rebuilt
+        query_rows = []
+        for i, n in enumerate(lengths):
+            s, t = (i+version) % q, (3*i+2*version+1) % q
+            answers = {
+                'rebuild': cached_pair(rebuilt, n, s, t, ledgers['rebuild']),
+                'fresh_binary': fresh_pair(a, n, s, t, ledgers['fresh_binary']),
+                'repair': cached_pair(p, n, s, t, ledgers['repair'])
+            }
+            assert len(set(answers.values())) == 1
+            for method, answer in answers.items():
+                check_pair(a, n, s, t, answer, ledgers[method])
+                exact_answers += 1
+            query_rows.append({'n': n, 's': s, 't': t, 'answer': answers['repair']})
+        versions.append({'version': version, 'edit': edit,
+                         'graph': deepcopy(a), 'queries': query_rows})
+        for method in names:
+            diff = ledgers[method]-starts[method]
+            phases[method].append({'phase': 'version', 'version': version,
+                                  **pack_cost(diff)})
+    totals = {n: pack_cost(ledgers[n]) for n in names}
+    assert len({totals[n]['answer_verification'] for n in names}) == 1
+    return {
+        'name': name, 'vertices': q, 'edits': len(edits),
+        'queries': len(versions)*len(lengths),
+        'exact_answer_checks': exact_answers, 'research_audit_entries': audit_entries,
+        'fixed_horizon': 255, 'costs': totals, 'phases': phases,
+        'edit_traces': traces, 'versions': versions,
+        'repair_state_cell_counts': {'boolean': (H+1)*q*q,
+                                    'integer_support_counts': H*q*q},
+        'logical_state_bits_upper_bound': (H+1)*q*q + H*q*q*q.bit_length()
+    }
+
+
+def main():
+    result = {
+        'experiment': 'RISING-TIDE-003B',
+        'date_local': '2026-11-04', 'timezone': 'America/Phoenix',
+        'python': platform.python_version(),
+        'code_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        'protocol': {'H': H, 'lengths': LENGTHS, 'seed': RANDOM_SEED,
+                     'sparse_threshold': '8 * changed_cells <= q^2',
+                     'scope': 'versioned graph edits; single-pair exact-length queries',
+                     'cost_model': 'declared work events including a full dirty scan; not wall-clock'},
+        'original_replication': replicate_original(),
+        'restricted_frontier': frontier_checks(),
+        'exhaustive_correctness': exhaustive_checks(),
+        'fixtures': []
+    }
+    print('Original, frontier, and exhaustive checks passed.', flush=True)
+    for args in fixtures():
+        row = run_fixture(*args)
+        result['fixtures'].append(row)
+        print(json.dumps({'fixture': row['name'], 'queries': row['queries'],
+                          'costs': {k: v['total'] for k,v in row['costs'].items()}}), flush=True)
+    result['summary'] = {
+        'independent_query_checks': sum(f['exact_answer_checks'] for f in result['fixtures']),
+        'query_instances': sum(f['queries'] for f in result['fixtures']),
+        'dynamic_research_audit_entries': sum(f['research_audit_entries'] for f in result['fixtures']),
+        'all_passed': True
+    }
+    (HERE/'results.json').write_text(json.dumps(result, indent=2)+'\n')
+    print(json.dumps(result['summary']), flush=True)
+
+
+if __name__ == '__main__':
+    main()

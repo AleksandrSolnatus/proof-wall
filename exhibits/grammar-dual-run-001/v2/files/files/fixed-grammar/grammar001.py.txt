@@ -1,0 +1,211 @@
+#!/usr/bin/env python3
+"""GRAMMAR-001: transparent miniature SAT unit-propagation experiment.
+
+Standard grammar: unit propagation only; no inference by guesswork.
+Controls: exhaustive truth-table reference and a branch-and-propagate hybrid.
+No theorem claims. Native Python, no third-party requirements.
+"""
+import itertools
+import json
+from dataclasses import dataclass, asdict
+from pathlib import Path
+
+CASES = {
+    "CHAIN_SAT": {
+        "nvars": 4, "clauses": [[1], [-1,2], [-2,3], [-3,4]],
+        "intent": "Unit clauses should force a complete satisfying assignment."
+    },
+    "CHAIN_UNSAT": {
+        "nvars": 2, "clauses": [[1], [-1,2], [-2]],
+        "intent": "Unit propagation should expose an actual contradiction."
+    },
+    "XOR_SAT": {
+        "nvars": 2, "clauses": [[1,2], [-1,-2]],
+        "intent": "Satisfiable but no unit is available initially: grammar should fall silent."
+    },
+    "HIDDEN_UNSAT": {
+        "nvars": 2,
+        "clauses": [[1,2], [-1,-2], [1,-2], [-1,2]],
+        "intent": "Unsatisfiable with no initial units: grammar should fall silent, not declare SAT."
+    },
+    "TAUTOLOGY_SAT": {
+        "nvars": 2, "clauses": [[1,-1], [2,-2]],
+        "intent": "A trivial satisfiable formula can silence unit propagation unless tautology recognition is added."
+    }
+}
+
+@dataclass
+class Cost:
+    clause_visits: int = 0
+    literal_visits: int = 0
+    candidate_assignments: int = 0
+    decisions: int = 0
+    propagation_passes: int = 0
+    newly_forced: int = 0
+    branch_nodes: int = 0
+
+
+def inspect_clause(clause, assignment, cost):
+    """Returns ('true'|'open'|'false', unassigned literals)."""
+    cost.clause_visits += 1
+    remaining=[]
+    for lit in clause:
+        cost.literal_visits += 1
+        v=assignment.get(abs(lit))
+        if v is None:
+            remaining.append(lit)
+        elif (lit > 0) == v:
+            return 'true', []
+    return ('open' if remaining else 'false'), remaining
+
+
+def propagate(clauses, assignment, cost, trace):
+    """Soundly force units until a fixed point. Never branch."""
+    assignment=assignment.copy()
+    while True:
+        cost.propagation_passes += 1
+        changed=False
+        for i, clause in enumerate(clauses):
+            state, remaining=inspect_clause(clause, assignment, cost)
+            if state=='false':
+                trace.append({'event':'contradiction','clause':i+1,'clause_lits':clause})
+                return 'UNSAT', assignment
+            if state=='open' and len(remaining)==1:
+                lit=remaining[0]
+                var=abs(lit)
+                value=(lit > 0)
+                if var in assignment:
+                    raise AssertionError('Forced already-set variable')
+                assignment[var]=value
+                cost.newly_forced += 1
+                trace.append({'event':'forced','var':var,'value':value,'because_clause':i+1})
+                changed=True
+        if not changed:
+            break
+    # A partial assignment where every clause is already true proves SAT.
+    cost.propagation_passes += 1
+    states=[inspect_clause(c, assignment, cost)[0] for c in clauses]
+    return ('SAT' if all(s=='true' for s in states) else 'SILENT'), assignment
+
+
+def satisfies(clauses, assignment, cost):
+    for c in clauses:
+        state, _ = inspect_clause(c, assignment, cost)
+        if state != 'true':
+            return False
+    return True
+
+
+def exhaustive(n, clauses):
+    cost=Cost()
+    satisfying=[]
+    for values in itertools.product((False,True),repeat=n):
+        assignment={i+1: v for i,v in enumerate(values)}
+        cost.candidate_assignments += 1
+        if satisfies(clauses, assignment, cost):
+            satisfying.append(''.join('1' if v else '0' for v in values))
+    return satisfying, asdict(cost)
+
+
+def first_solution_search(n, clauses):
+    """Exhaustive, but stop at first witness; fair goal-match with hybrid."""
+    cost=Cost()
+    for values in itertools.product((False,True), repeat=n):
+        a={i+1:v for i,v in enumerate(values)}
+        cost.candidate_assignments+=1
+        if satisfies(clauses,a,cost):
+            return ''.join('1' if v else '0' for v in values), asdict(cost)
+    return None, asdict(cost)
+
+
+def independent_reference(n, clauses):
+    """Uninstrumented evaluator independent of inspect_clause."""
+    results=[]
+    for bits in itertools.product((False,True), repeat=n):
+        a={i+1:bits[i] for i in range(n)}
+        if all(any(((lit>0) == a[abs(lit)]) for lit in clause) for clause in clauses):
+            results.append(''.join('1' if v else '0' for v in bits))
+    return results
+
+
+def hybrid(n, clauses):
+    cost=Cost(); trace=[]
+    def dfs(a):
+        cost.branch_nodes+=1
+        status, a=propagate(clauses, a, cost, trace)
+        if status=='UNSAT':
+            return None
+        if status=='SAT':
+            # Complete any still unassigned vars arbitrarily; all clauses already satisfied.
+            result={i:a.get(i, False) for i in range(1,n+1)}
+            return result
+        first=next(i for i in range(1,n+1) if i not in a)
+        for choice in (False,True):
+            cost.decisions += 1
+            result=dfs({**a, first:choice})
+            if result is not None:
+                return result
+        return None
+    result=dfs({})
+    sol=None if result is None else ''.join('1' if result[i] else '0' for i in range(1,n+1))
+    return sol, asdict(cost), trace
+
+
+def main():
+    rows=[]
+    for name, case in CASES.items():
+        n, clauses=case['nvars'],case['clauses']
+        reference, exhaustive_cost=exhaustive(n, clauses)
+        assert reference == independent_reference(n, clauses), 'Independent evaluator disagreement'
+        first_solution, first_cost=first_solution_search(n, clauses)
+        assert (first_solution is None) == (not reference)
+        grammar_cost=Cost(); grammar_trace=[]
+        grammar_status, grammar_assignment=propagate(clauses, {}, grammar_cost, grammar_trace)
+        hybrid_solution, hybrid_cost, hybrid_trace=hybrid(n, clauses)
+        if grammar_status=='SAT':
+            assert reference
+        if grammar_status=='UNSAT':
+            assert not reference
+        assert (hybrid_solution is None) == (not reference)
+        if hybrid_solution:
+            assert hybrid_solution in reference
+        # Controls: logically equivalent bijective renamings and clause reordering.
+        renamed=[[ (1 if lit>0 else -1) * (n+1-abs(lit)) for lit in clause]
+                 for clause in clauses]
+        flipped=[[ -lit if abs(lit)==1 else lit for lit in clause] for clause in clauses]
+        controls=[]
+        for label, cc in [('reversed_clauses', list(reversed(clauses))),
+                          ('renamed_variables',renamed),
+                          ('flipped_variable_1',flipped)]:
+            ct=Cost()
+            cs, ca=propagate(cc,{},ct,[])
+            assert cs==grammar_status, f'{name} {label} changed grammar status'
+            assert len(independent_reference(n, cc))==len(reference)
+            controls.append({'transformation':label,'grammar_status':cs,
+                'satisfying_assignment_count':len(reference),
+                'grammar_clause_visits':ct.clause_visits})
+        rows.append({
+            'name':name, 'intent':case['intent'], 'nvars':n, 'clauses':clauses,
+            'reference_sat_count':len(reference), 'reference_solutions':reference,
+            'grammar_only': {'status':grammar_status,'partial_assignment':{
+                str(i):int(v) for i,v in sorted(grammar_assignment.items())},
+                'trace':grammar_trace,'cost':asdict(grammar_cost)},
+            'hybrid': {'solution':hybrid_solution,'trace':hybrid_trace,'cost':hybrid_cost},
+            'first_solution_search': {'solution':first_solution,'cost':first_cost},
+            'logical_equivalence_controls':controls,
+            'exhaustive':{'cost':exhaustive_cost}
+        })
+    path=Path(__file__).with_name('results.json')
+    path.write_text(json.dumps({'name':'GRAMMAR-001','conditions':{
+        'inference':'unit propagation only','baseline':'first-solution exhaustive search until SAT witness or full UNSAT; separate all-solutions truth table is an oracle',
+        'hybrid':'unit propagation before deterministic False-then-True branching',
+        'cost_note':'Counts are clause and literal inspections, not equal-time unit operations. Rule-design costs excluded. Logical equivalence controls verify status invariance, not speed invariance.'},
+        'cases':rows},indent=2)+'\n')
+    print(f"Wrote {path}")
+    print('CASE               REF SAT   GRAMMAR    FORCED   HYBRID DECISIONS    CLAUSE VISITS (grammar/first-solution/hybrid)')
+    for row in rows:
+        g=row['grammar_only']; h=row['hybrid']; e=row['first_solution_search']
+        print(f"{row['name']:<18} {row['reference_sat_count']:>3}       {g['status']:<8}   {g['cost']['newly_forced']:>2}       {h['cost']['decisions']:>3}                  {g['cost']['clause_visits']:>3}/{e['cost']['clause_visits']:<3}/{h['cost']['clause_visits']:<3}")
+
+if __name__ == '__main__':
+    main()

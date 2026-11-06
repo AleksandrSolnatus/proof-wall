@@ -1,0 +1,61 @@
+# P6-R1 Execution Report — One-cell context robustness follow-up
+
+**Execution date:** 2026-10-01 (America/Phoenix)  
+**Scope:** Phaistos Dial Numbers / structure only  
+**Status:** EXECUTED once after direct user authorization; post-run verification PASS  
+**Exposure:** fully exposed to P-6 and earlier Numbers findings; not blind and not an independent replication
+
+## Question
+
+Does the low boundary/internal partnership overlap survive when dependence extends one immediately adjacent physical cell beyond both ends of each already identified exact repeated Pen passage?
+
+## Frozen change only
+
+P-6 protected Pen C14–C16 and C20–C22. P6-R1 protected the two separate five-cell units **C13–C17** and **C19–C23**. Every other eligible cell, including all Pencil cells, remained a singleton. No new motif search, similarity rule, radius tuning, alternative null, extra seed, or extra draw was used.
+
+## Custody and deterministic preflight
+
+- Raw `corpus_masked.json`: 9,159 bytes; SHA-256 `18ee5ac70b21696e7ed60616e3a265eaf0261fdd49779464e254a7e916f74a24` — PASS.
+- Frozen P6-R1 protocol SHA-256 `9edbcc7330a402526f27db1b4085ddfa7aca97748dcc97a47e5b74104cbfb29e` — PASS.
+- P-6 baseline protocol SHA-256 `dc121a0a48989e6efe1426da32ae6c650314014dd673579c95cd96aa04ee4976` — PASS.
+- P-6 baseline ZIP SHA-256 `7e02d0a7a83e1fb7119bf4faba9a57f74bc2b498bd4c8b9ceeb37401dcce1cbd`; ZIP CRC test PASS; five members recovered intact.
+- Frozen implementation SHA-256 `68a437eef4f4c3e9a00baac3fa01a9b58de91cdd07ad9176a5535a393c5029eb` before any random draw; unchanged after execution — PASS.
+- Runtime: CPython 3.13.5 on Linux x86_64.
+- Valid physical boundaries recomputed: 28 Pen + 29 Pencil = 57 for both readings.
+- Observed primary statistic recomputed from source: **T = 6** for S07 and S25.
+- P6-R1 units: 22 Pen units (two five-cell blocks + 20 singletons) and 30 Pencil singleton units.
+- All deterministic identity, block, unit-order, protected-boundary, within-cell-adjacency, hole/no-bridge, and observed-statistic checks passed before sampling.
+
+## Measured result
+
+Frozen sampler: Python `random.Random`; 200,000 accepted pooled arrangements per reading; seeds 2026092901 (S07) and 2026092902 (S25); ties included in the lower tail; add-one probability `(K+1)/(N+1)`.
+
+| Study | C28 final | T obs | N | K (T<=6) | Raw tail | Add-one p | Reference mean | 2.5% | 97.5% | 95% Wilson interval | Gate |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---|---|
+| Archived P-6 | S07 | 6 | 200000 | 9610 | 0.04805 | 0.04805476 | 10.19182 | 6 | 15 | archived report: ~4.712%–4.900% | survived narrowly |
+| Archived P-6 | S25 | 6 | 200000 | 8898 | 0.04449 | 0.04449478 | 10.28365 | 6 | 15 | archived report: ~4.360%–4.540% | survived narrowly |
+| **P6-R1** | **S07** | **6** | **200000** | **7318** | **0.036590** | **0.036594817** | **10.40301** | **6** | **15** | **3.5776%–3.7422%** | **survives** |
+| **P6-R1** | **S25** | **6** | **200000** | **6695** | **0.033475** | **0.033479833** | **10.49478** | **6** | **15** | **3.2696%–3.4272%** | **survives** |
+
+**Governing max add-one probability:** `0.036594817` (S07).
+
+Under the pre-frozen rule, **the observation is not weakened by P6-R1 and survives this particular sensitivity check**. Neither Wilson interval spans 0.05, so the fixed threshold decision is not numerically borderline at the specified draw budget.
+
+Relative to P-6, protecting the one-cell context produced lower lower-tail probabilities in this fixed reference (S07 about 4.805% -> 3.659%; S25 about 4.449% -> 3.348%). This is a property of this predeclared reference distribution; it does **not** retroactively strengthen P-6 or prove that the protected neighbors are historically dependent.
+
+## Post-run verification
+
+The two compressed raw draw ledgers contain exactly 200,000 accepted T values each. Recounting those saved ledgers reproduces each K and full distribution table in `P6_R1_RESULTS.json`; their SHA-256 values also match the execution record. The implementation, protocol, and original source hashes remained unchanged after the run. No second Monte Carlo execution was performed.
+
+## Limitations
+
+- This is one **exposed sensitivity study**, not a blind or independent replication.
+- The reference protects exactly one neighboring cell on each side of the two already identified exact repeated passages; it does not model near-copies, every possible longer-range dependence, semantic structure, or historical copying.
+- The result is structural only. It establishes no language, meaning, reading direction, separator function, sign sound, or decipherment.
+- P-5's missing original Numbers generator / exact original stochastic provenance remains unresolved; P6-R1 does not close that historical gap.
+- P-26's separate historical omnibus relational result remains FINAL NOT YET / untrusted; no repair or validation of that analysis was performed here.
+- The P-6 packet froze `random.Random` and seeds but did not preserve an exact Python runtime version for the P-6 execution. P6-R1 records its own runtime explicitly.
+
+## Stop boundary
+
+No P-6 rerun, no extra P6-R1 seeds or draws, no alternative block radius, no semantics, and no next Dial/Rain experiment were started.

@@ -1,0 +1,98 @@
+# MATH-02 execution report
+
+**Outcome: incomplete calibration; the eligible known-math controls did not meet the detection criterion.**
+
+The original MATH-01 scorer is not validated as a test of mathematical content. In this restricted modern-notation pilot, only 2 of 5 mathematical sources exceeded the frozen +0.05 bits/token detection threshold. The pooled mathematical-family advantage was −0.045659 bits/token against D/E. This is evidence against relying on this particular instrument for the sampled notation, not evidence that mathematics is absent from the Dial.
+
+## What ran
+
+Recovered the original evidence package; verified all 11 manifest entries; preserved the scorer byte-for-byte; exactly replayed both original observed-score vectors (maximum error 0). No original 399-draw null simulations were rerun. Froze protocol, extraction, code and controls before calibration scoring. Executed five mathematical source holdouts, two eligible language holdouts, and three synthetic implementation controls. Three language holdouts were blocked by the frozen minimum retained-training requirement; registry controls were ineligible and were never scored. Full calibration is therefore incomplete, not a completed sensitivity-and-specificity validation.
+
+Run requested October 17, 2026 America/Phoenix. Machine UTC freeze timestamp: 2026-10-17T21:00:07.792396+00:00. Both are recorded rather than silently reconciling differing session/host clocks.
+
+## Known mathematics
+
+Source labels come from published mathematical works by five different authors. Each contributes the first 12 distinct eligible complete short inline expressions, with exact original strings and offsets retained. Sampling deliberately restricts to simple ASCII linear notation; fractions, TeX macros, complex layouts, and longer formulae are excluded. Thus this is neither a representative sample of all mathematics nor a test of ancient notation.
+
+| Held-out source | Retained training tokens | Math advantage, bits/token | Positive at >0.05? | Best of A–F |
+|---|---:|---:|---|---|
+| wentworth | 160 | +0.029017 | No | F_unigram |
+| couturat | 164 | +0.054638 | Yes | F_unigram |
+| thompson | 205 | -0.158982 | No | D_language-bigram |
+| whitehead | 171 | +0.291476 | Yes | A_infix |
+| demorgan_calculus | 187 | -0.185578 | No | F_unigram |
+
+A positive advantage means the best of A/B/C predicts better than the best of D/E. Models are selected identically in every source comparison. The pooled losses were B = 5.296448, D = 5.250789, and F = 5.212212 bits/token; F, the unigram baseline, was best overall. Including F among alternatives makes the pooled mathematical advantage −0.084235. The descriptive source detection fraction is 2/5 = 40%, with an approximate Wilson 95% interval of 11.8%–76.9%. This is a tiny, purposively selected source set, not a population sensitivity estimate. It fails the prespecified success requirement.
+
+## Negative controls and prerequisite failures
+
+| Source | Status | Retained training tokens | Math advantage |
+|---|---|---:|---:|
+| alice.raw | BLOCKED_TRAINING_SUPPORT | 51 | Not scored |
+| austen.txt | SCORED | 70 | -0.0859552715328018 |
+| doyle.txt | SCORED | 75 | -0.026666833777605703 |
+| shelley.txt | BLOCKED_TRAINING_SUPPORT | 46 | Not scored |
+| twain.txt | BLOCKED_TRAINING_SUPPORT | 47 | Not scored |
+
+Only Austen and Doyle retained at least 60 training tokens after conservative dependency-component purging. Neither generated a positive math call. Carroll, Shelley and Twain retained 51, 46 and 47 tokens respectively and were not scored. Reporting 0/5 false positives would be wrong; only 2/5 language sources were evaluable.
+
+The registry sample contains 48 distinct characters, exceeding the preserved 45-symbol scorer. Its 60 cells / 212 tokens do not make it eligible. No lowercasing, symbol merging, source replacement or alphabet expansion was used to rescue the run. These were identifier records from five IANA registries, a narrower rival than full multi-field administrative records. No registry specificity result exists.
+
+## Matching and limitations
+
+| Corpus | Cells | Tokens | Observed types | Largest symbol share | Collision probability | Repeated-cell excess |
+|---|---:|---:|---:|---:|---:|---:|
+| Dial S07 | 60 | 237 | 45 | 0.0759 | 0.0357 | 8 |
+| math | 60 | 267 | 34 | 0.1536 | 0.0661 | 3 |
+| language | 60 | 265 | 33 | 0.1170 | 0.0581 | 8 |
+| registry | 60 | 212 | 48 | 0.0896 | 0.0343 | 0 |
+
+Math and language meet the frozen token-count and observed-type tolerances, but are not fully profile-matched to the Dial. Their character repetition is greater; math lengths range 3–8 and language 1–12, versus Dial 2–7. RESULTS.json contains complete histograms. The JSON field profile_matched refers only to the two numeric eligibility tolerances, not equality of length or repetition profiles.
+
+The prior remains exactly 45 categories even when fewer characters occur. Characters are bijectively masked within each class; words, formulae and registry codes are the respective cells. These tokenization choices are not known equivalents of Disc signs or cell boundaries. Language uses ASCII letter runs, splitting contractions; case is preserved. The first extraction halted on the registry alphabet assertion, then the code was adjusted before scoring solely to retain and report ineligibility. Selection and thresholds were unchanged.
+
+Whole source documents/registries are held out. Exact, substring and edit-distance≤1 relations define connected components; training cells in components touching the held-out source are purged. This is a declared adaptation of the original dependency exclusion to whole-source folds, not identical original fold allocation. Held-out contexts remain visible as in MATH-01. Whole-source transfer, heterogeneous notation and aggressive purging can hurt all model families; the run does not isolate which limitation explains every failure.
+
+## Implementation controls and verification
+
+| Synthetic generator | Winning model | Math-family advantage |
+|---|---|---:|
+| A | A_infix | +0.695305 |
+| B | B_prefix-procedure | +1.439982 |
+| C | C_center-relation | +0.797870 |
+
+Each synthetic generator uses 60 cells and the Dial length sequence (237 tokens), with disjoint role distributions designed for A, B or C. Each intended model won. These are implementation controls, not independent empirical evidence of mathematical recognition. Their success does not rescue the observed real-source failures.
+
+Verification passed: original evidence checksums; both original observed score vectors; all frozen input/code hashes; raw-source hashes; all 180 control mappings; math/language source offsets; source separation and component purging; replay of all 7 eligible empirical folds; an independently written unigram calculation; and bijective symbol relabeling invariance. The verifier initially normalized CRLF line endings while checking raw character offsets; this verifier-only issue was corrected to decode original bytes. Scores and frozen experiment files were unchanged. Same operator/code lineage: not an independent audit.
+
+Measured calibration/replay/implementation-control CPU time inside run.py: 0.045641 seconds on Python 3.12.14. This excludes source discovery, downloading, extraction and reporting; it is not a comparative speed claim.
+
+## Decision and next action
+
+Preserve the original MATH-01 predictive results, but do not promote them to mathematical-content discrimination. MATH-02 did not pass its calibration gate: known-math detection was weak on the selected controls, language evaluation was incomplete, and the structured rival could not be evaluated. No decipherment, absence-of-mathematics, or universal inability claim follows.
+
+The next work should address the instrument and control design before another Dial-content claim: obtain short source-backed samples compatible with 45 identities and enough independent material after purging, with explicitly justified tokenization and closer repetition/length matching. Any revised design is a new, separately frozen experiment; do not lower the alphabet/training gates, tune A/B/C, or replace failed sources within this run. No revised experiment was executed here.
+
+## Reproduction and custody
+
+Unzip the evidence bundle and run `python3 MATH-02/run.py`, then `python3 MATH-02/verify.py` from the extracted root. Only Python standard library is needed for scoring. Raw sources, URLs, checksums, audited controls, protocol, original scorer, original evidence tree, all results and verification are included. `extract.py` rebuilds the controls from the retained source bytes without downloading. A rerun rewrites RESULTS.json timing; preserve the original bundle as the execution record.
+
+Original MATH folder, packets 001/002, Dial sources, project tracker and other historical records were not modified. No external messages were sent. Sources inspected but not used: NIST DLMF trigonometric identities (direct download returned 403), and De Morgan Elements of Arithmetic (HTML format; retained as a sourced but unused candidate).
+
+## Primary-source locations
+
+- wentworth.tex: https://www.gutenberg.org/files/36670/36670-t/36670-t.tex
+- couturat.tex: https://www.gutenberg.org/files/10836/10836-t/10836-t.tex
+- thompson.tex: https://www.gutenberg.org/files/33283/33283-t/33283-t.tex
+- whitehead.tex: https://www.gutenberg.org/files/41568/41568-t/41568-t.tex
+- demorgan_calculus.tex: https://www.gutenberg.org/files/39041/39041-t/39041-t.tex
+- austen.txt: https://www.gutenberg.org/cache/epub/1342/pg1342.txt
+- doyle.txt: https://www.gutenberg.org/cache/epub/1661/pg1661.txt
+- shelley.txt: https://www.gutenberg.org/cache/epub/84/pg84.txt
+- twain.txt: https://www.gutenberg.org/cache/epub/74/pg74.txt
+- methods.csv: https://www.iana.org/assignments/http-methods/methods.csv
+- protocols.csv: https://www.iana.org/assignments/protocol-numbers/protocol-numbers-1.csv
+- services.csv: https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.csv
+- languages.txt: https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
+- alice.raw: https://www.gutenberg.org/cache/epub/11/pg11.txt
+- iana.raw: https://data.iana.org/time-zones/tzdb-2024a/iso3166.tab

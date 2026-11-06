@@ -1,0 +1,66 @@
+# P-32 — completed retrospective divergence-onset audit
+
+The requested existing-data audit is complete, with resolution limits. **No uniquely first causal stage is identifiable. Rain remains scientifically UNRESOLVED; falling-rain transfer stays blocked.** This completes the original-packing archive custody, observable inventory and comparison gaps; it does not upgrade the narrower PR9 audit or accept a physical-water law.
+
+The first qualifying differences depend on observable and control. For fixed C double dt, multiple recorded quantities depart in the first `(0,0.25]` interval under the frozen descriptive rule. Some are decreases, not evidence of increasing failure. Maximum overlap, minimum spacing and RMS speed first depart from both base and half C by the saved endpoint at **0.5 s**, before first recorded caps in **(0.5,0.75] s**. The dt-squared double-dt failures are already strongly agitated, capped and geometrically different in the first saved interval. Their intra-interval ordering is unresolved.
+
+## Evidence custody and scope
+
+This worker independently retrieved the exact original ZIPs through authorized private Git commit `1b183b96661159081d69816286a772c13424e9dc` after the Library download route failed. Both original SHA-256, Git blob identity and length checks pass; CRC, safe member paths, complete member sets, all **959 member hashes**, and extracted bytes pass. P29's current manifests cover 513 package files and 20 staged input files; P30's covers 444 package files plus the protocol hash. The historical P28 manifest is retained as provenance, not misread as current P29 closure. Original Library identities and hashes are in `REQUIRED_ARCHIVES.json`; fresh consumer results are in `CUSTODY_VERIFICATION.json` and `INDEPENDENT_VERIFICATION.json`.
+
+Exactly **ten unique P30 original-packing cases**, 1,210 endpoint samples and 1,200 quarter-second intervals were analyzed. Six fixed P30 controls equal their P29 original counterparts in every saved sample and position byte; final states are equal after removing only the documented added default `P.attractionCap=0.012` metadata. They add no independent replicates. A/C base-dt records are shared between fixed and dt2 modes, not duplicate runs. P29 expanded packing is outside this audit's comparison set; PR9's broader results remain unchanged.
+
+The frozen, prior-exposed plan is `ANALYSIS_PLAN.md`, SHA-256 `103df258d15b1475ac05ab921446a99829938713821acd6200a230618ff2ca55`. Its historical statement that custody was blocked records preparation time; the new custody receipt resolves that gate. No thresholds were tuned after results. `SCHEMA_IMPLEMENTATION.json` fixed column/exposure mappings before computation. The 21 declared pairs cover all within-law fixed half/base/double contrasts, fixed C/A at each dt, dt2/fixed within law at half/double, dt2 C/A at half/double, and dt2 half/shared-base/double contrasts within law.
+
+## Rules and recorded quantities
+
+For each normalized primary scalar, departure means `abs(left-right)>max(1e-8,0.10*max(abs(left),abs(right)))`. This is a descriptive 10% rule, **not a validated instability threshold**. First departure and first two-consecutive-bin episode are separate. Raw signed differences and all time rows remain available. First cap occurrence and positive/negative energy-stage events are separate definitions, not substitutes for paired departures. Endpoint changes are bracketed between saved observations; interval activity belongs to `(previous time,current time]`. No subinterval timestamps are assigned.
+
+The complete inventory includes all 39 endpoint keys (including time, two vectors and interval container), all 33 activity fields, every 64-bin surface profile and coordination histogram. Eight primary endpoint observables cover overlap fraction/RMS, minimum spacing, two residual demands, RMS/max speed and kinetic proxy. All activity fields are compared with stated normalization; other endpoint/shape fields remain context. Source inspection and `SCHEMA_IMPLEMENTATION.json` distinguish endpoint observations from signed interval sums, noncumulative reset counters, maxima and sample-weighted RMS.
+
+Residual endpoint demand is coefficient-weighted. Raw demand and demand divided by `relaxation*N*spacing` are both retained; net residual uses vector cancellation and is not the scalar overlap sum. Neither is work or energy. Energy normalization uses `0.5*M*speedCap^2`; raw stage sums and per-second rates are also saved. RMS speed is not kinetic energy. Half/base/double dt provide 80/40/20 steps per saved bin, hence 306,720/153,360/76,680 particle-step opportunities. Caps and contact counts use the relevant particle-step, particle-pass or pair-evaluation denominator; zero exposure is null. Maxima are never summed; reconstruction RMS combines sample-weighted squares. The late window uses 20 full activity intervals, distinct from 21 endpoint samples.
+
+Source order is external velocity update → prediction speed cap → position prediction → five pair-correction/boundary-projection passes → velocity reconstruction → floor velocity rule → one viscosity update → post-viscosity speed cap. Historical wording saying viscosity acts “per pass” is inaccurate for this source. Separate energies for position prediction, attractive/repulsive pair correction and boundary position projection were not recorded. Reconstruction combines the latter operations. The later floor-velocity ledger does not isolate boundary projection.
+
+## Fixed-law C double-dt ordering
+
+Times below are the **end of the first qualifying saved bracket**, not exact onset timestamps. Entries `first / two-bin` distinguish transients and persistence. All unlisted candidates, control pairs, absent events and context rows are in the tables.
+
+| Observable | C double vs C base | C double vs C half | C double vs A double |
+| --- | --- | --- | --- |
+| Maximum overlap fraction | 0.50 / 0.50 | 0.50 / 0.50 | 0.50 / 0.50 |
+| Minimum spacing | 0.50 / 0.50 | 0.50 / 0.50 | 0.50 / 0.50 |
+| Overlap RMS | 0.25 / 0.25 | 0.50 / 0.50 | 0.25 / 0.25 |
+| Scalar residual demand | 0.25 / 0.25 | 0.50 / 0.50 | 0.25 / 0.25 |
+| Net residual demand | 0.25 / 0.25 | 0.50 / 0.50 | 0.25 / 0.75 |
+| RMS speed | 0.50 / 0.50 | 0.50 / 0.50 | 0.25 / 0.25 |
+| Kinetic proxy | 0.25 / 0.25 | 0.25 / 0.25 | 0.25 / 0.25 |
+| Reconstruction energy | 0.25 / 0.25 | 0.25 / 0.25 | 0.75 / 0.75 |
+| Boundary projection distance per particle-pass/spacing | 0.25 / 0.25 | 0.25 / 0.25 | 0.25 / 0.25 |
+| Prediction/post speed-cap exposure | 0.75 / 0.75 | 0.75 / 0.75 | 0.75 / 0.75 |
+
+All runs start from the same deposited state, already moving at RMS 4.1362614. At 0.25 s, fixed C double's scalar residual demand is **266.5666**, below base C's **309.8439**; its overlap RMS is also smaller. Its kinetic proxy is 41,046.68 versus base 48,621.76. Thus the first qualifying differences cannot all be called growth. Reconstruction, floor rule, viscosity, boundary and branch/exposure differences share early bins; no unique earliest stage survives the saved resolution and choice of control.
+
+By 0.5 s, fixed C double's maximum overlap is **0.890410 of spacing**, versus base 0.568354, half 0.334958 and same-dt A 0.563643. Minimum neighbor spacing is 0.0328771 versus 0.1294937, 0.1995127 and 0.1309072. RMS speed is **6.893884**, versus 3.426235, 2.872940 and 3.407503. These saved departures precede the cap-bearing bin, but endpoint geometry does not establish whether an unrecorded within-step projection or pair operation initiated them.
+
+In `(0.5,0.75]`, fixed C double has 20 prediction and 93 post-viscosity cap events and reconstruction +802,823.91 proxy units. Its preceding two reconstruction intervals were negative. **Positive reconstruction itself is not failure-specific:** base C first becomes positive in the same bin without caps; half C already has a positive first interval, and fixed A half/base also do. Fixed A double's first positive reconstruction is `(0.75,1]`.
+
+Across 30 s, fixed C double has 159 prediction plus 633 post caps (792 total); its last cap-bearing bin ends at 14 s. No late-window caps remain. Reconstruction/viscosity exchange persists afterward, consistent with the unchanged narrower audit. Pair correction and attraction caps are absent in all ten cases. Floor/wall/contact and branch events are already present in the first interval across the cases and do not isolate a first failure mechanism. The saved full tables preserve their exposure differences.
+
+## Separate dt-squared failures and half-dt controls
+
+At double dt, both scaled laws show maximum-overlap/minimum-spacing, overlap-RMS, speed, all six energy-stage and boundary-projection departures against their same-law fixed controls in `(0,0.25]`. RMS is **30.71868 (A)** and **30.55342 (C)** at 0.25 s, versus fixed A 3.041878 and fixed C 4.627303. First-bin prediction cap fractions are 0.169158/0.171296 and post-cap fractions 0.536215/0.528573 of particle-step opportunities for A/C respectively. Reconstruction, cap removal and geometric departure are tied at saved resolution; source stage order cannot recover the unrecorded first event.
+
+Coefficient normalization matters: scaled A's first raw scalar residual is 698.88185, but relaxation is four times fixed. After removing that coefficient, it is close to fixed A's 177.86598; the declared normalized scalar-demand departure first qualifies at **0.5 s**, and is a decrease. Scaled C's first normalized scalar-demand departure qualifies at 0.25 s even though its raw value is larger. Do not interpret raw cross-mode magnitudes as unchanged geometry. Scaled C's maximum-overlap departure starts at 0.25 s but the first two-bin episode begins at 1 s; its net residual first departs at 0.25 s with the first two-bin episode at 1.75 s. These transients were retained, not discarded to sharpen an onset claim.
+
+Half-dt scaled cases, their fixed same-dt controls and both shared baselines are included in all prescribed contrasts. They have no speed caps in the 30-s record. Late endpoint means reproduce the historical context: half-dt scaled A RMS 0.0542465 versus fixed A 8.922130; scaled C 0.0118046 versus fixed C 0.0150462. This is finite deterministic sensitivity, not continuum convergence, law acceptance, or a new rescue experiment.
+
+## Verification, limits and completion
+
+`ANALYSIS_VALIDATION.json`, `TEST_RESULTS.json` and independent agent verification pass. Independent calculations cover every 103,488 paired row, 861 onset/ordering rows, 2,667 onset-context rows, 220 events, 409 event contexts, 2,040 window rows and all vector differences. Fifty-four tied onset groups are retained. Maximum six-stage kinetic closure error is **6.44708052277565e-7**, below inherited 1e-6 tolerance. Saved positions have 31 frames × 3,834 particles × two float64 coordinates, finite/bounded, with exact initial/final positions and ID/radius integrity. All six fixed controls match as described above. Stage-window totals for the ten matching prior-audit cases match exactly without rerunning or modifying that audit.
+
+Seven mutated-data fixtures reject gaps, changed mass, nonfinite geometry, energy corruption, cumulative reconstruction counts, wrong dt exposure and impossible cap counts. Additional threshold/null/persistence and baseline/hash predicates pass; those latter predicates are not mislabeled full pipeline failure tests. Deterministic rerun and final review receipts accompany the delivery.
+
+This supports **observable ordering with tied/insufficient within-interval separation**, not causal stage priority. One-second positions cannot recover intermediate quarter-second geometry; interval nets hide signs, peaks and particle histories; unrecorded attractive/repulsive/boundary energies cannot be recovered without new observations. No physical calibration, ensemble, particle refinement, continuum convergence, native/device validation or new trajectory was performed or accepted.
+
+All prepared P32 existing-data requirements have been performed; remaining attribution gaps are limitations of the recorded evidence rather than ignored analysis. Task completion is therefore qualified completion, with the water-model question unresolved. At most one next study remains proposed: a separately authorized, observer-transparent short replay of original C double onset with base C and double A controls, recording per-step pair/boundary/reconstruction stages. **It was not executed here.** Rain stays paused and transfer blocked.

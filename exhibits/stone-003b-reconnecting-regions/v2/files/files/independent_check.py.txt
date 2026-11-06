@@ -1,0 +1,171 @@
+#!/usr/bin/env python3
+"""Independent verification of Stone 003B results; imports neither solver.
+
+Small formulas: exhaustive bit-parallel truth tables over original variables.
+Larger equality-region formulas: check a bijective substitution, then exhaustive
+truth tables (<=20 representatives) or an independent graph recurrence.
+The graph recurrence counts independent sets by include/exclude, not elimination.
+"""
+from __future__ import annotations
+import copy
+import json
+from functools import lru_cache
+from pathlib import Path
+from time import perf_counter
+
+HERE = Path(__file__).resolve().parent
+SETUP_SECONDS: dict[int, float] = {}
+
+
+@lru_cache(maxsize=None)
+def masks(n: int):
+    if not 0 <= n <= 20:
+        raise ValueError("Truth table intentionally limited to 20 variables")
+    start = perf_counter()
+    all_rows = (1 << (1 << n)) - 1
+    columns = tuple((all_rows // ((1 << (1 << v))+1)) << (1 << v) for v in range(n))
+    SETUP_SECONDS[n] = perf_counter()-start
+    return all_rows, columns
+
+
+def truth_count(n: int, clauses: list[list[int]]) -> int:
+    all_rows, columns = masks(n)
+    accepted = all_rows
+    for clause in clauses:
+        satisfied = 0
+        for literal in clause:
+            assert isinstance(literal, int) and literal != 0 and abs(literal) <= n
+            column = columns[abs(literal)-1]
+            satisfied |= column if literal > 0 else all_rows ^ column
+        accepted &= satisfied
+    return accepted.bit_count()
+
+
+def scalar_count(n: int, clauses: list[list[int]]) -> int:
+    return sum(all(any(((assignment >> (abs(lit)-1)) & 1) == (lit > 0)
+                       for lit in clause) for clause in clauses)
+               for assignment in range(1 << n))
+
+
+def reduce_equal_regions(row: dict):
+    regions = row['regions']
+    n = row['n']
+    assert sorted(v for block in regions for v in block) == list(range(n))
+    assert all(len(block) == 2 for block in regions)
+    remaining = [tuple(clause) for clause in row['clauses']]
+    representatives = {}
+    for index, (x, y) in enumerate(regions):
+        # Each removed pair forces y=x. There are no remaining occurrences of y.
+        remaining.remove((-(x+1), y+1))
+        remaining.remove((x+1, -(y+1)))
+        representatives[x+1] = index+1
+    reduced=[]
+    for clause in remaining:
+        assert all(abs(lit) in representatives for lit in clause)
+        reduced.append([representatives[abs(lit)] * (1 if lit > 0 else -1)
+                        for lit in clause])
+    return len(regions), reduced
+
+
+def graph_count(n: int, clauses: list[list[int]]):
+    neighbors = [0] * n
+    for clause in clauses:
+        assert len(clause) == 2 and all(lit < 0 for lit in clause)
+        a, b = -clause[0]-1, -clause[1]-1
+        assert a != b
+        neighbors[a] |= 1 << b
+        neighbors[b] |= 1 << a
+
+    @lru_cache(maxsize=None)
+    def recur(vertices: int):
+        if vertices == 0:
+            return 1
+        # Count sets excluding v, plus sets including v (remove its neighbors).
+        first = vertices & -vertices
+        v = first.bit_length()-1
+        rest = vertices ^ first
+        return recur(rest) + recur(rest & ~neighbors[v])
+    count = recur((1 << n)-1)
+    return count, recur.cache_info().currsize
+
+
+def oracle(row: dict):
+    n = row['n']
+    if n <= 20:
+        result = truth_count(n,row['clauses'])
+        if n <= 7:
+            assert result == scalar_count(n,row['clauses'])
+        return result, 'full-original-truth-table', {'assignments': 1 << n}
+    assert row['metadata'].get('equality_regions') is True
+    m, reduced = reduce_equal_regions(row)
+    if m <= 20:
+        return truth_count(m,reduced), 'checked-equality-bijection+truth-table', {'assignments':1<<m}
+    result, states = graph_count(m,reduced)
+    return result, 'checked-equality-bijection+independent-graph-recurrence', {'recurrence_states':states}
+
+
+def check_one(row: dict):
+    start = perf_counter()
+    expected, method, work = oracle(row)
+    checked=[]
+    budgeted=[]
+    for key in ['interface','fresh_interface','incremental_bdd','fresh_bdd']:
+        if key not in row:
+            continue
+        value = row[key]
+        if value['status'] == 'EXACT':
+            assert value['count'] == expected, (row['case'],row['step'],key,value['count'],expected)
+            checked.append(key)
+        else:
+            assert value['status'] == 'BUDGET_EXCEEDED'
+            assert value['count'] is None
+            assert value['required_bucket_rows'] > value['row_budget']
+            budgeted.append(key)
+    return {'suite':row['suite'],'case':row['case'],'step':row['step'],
+            'expected_count':expected,'oracle':method,'oracle_work':work,
+            'checked_exact_methods':checked,'budgeted_methods':budgeted,
+            'seconds':perf_counter()-start}
+
+
+def must_reject(row: dict):
+    try:
+        check_one(row)
+    except (AssertionError,ValueError):
+        return True
+    raise AssertionError('A deliberately corrupt record was not rejected')
+
+
+def main():
+    start = perf_counter()
+    data=[]
+    for path in sorted(HERE.glob('results_*.json')):
+        data.extend(json.loads(path.read_text())['rows'])
+    receipts = [check_one(row) for row in data]
+    mutations=[]
+    first=copy.deepcopy(data[0])
+    first['interface']['count'] += 1
+    mutations.append(must_reject(first))
+    hidden=copy.deepcopy(next(r for r in data if r['case']=='hidden-inequality' and r['step']==1))
+    hidden['interface']['count']=1
+    mutations.append(must_reject(hidden))
+    stopped=copy.deepcopy(next(r for r in data if r['interface']['status']=='BUDGET_EXCEEDED'))
+    stopped['interface'].update(status='EXACT',count=0)
+    mutations.append(must_reject(stopped))
+    broken_source=copy.deepcopy(next(r for r in data if r['n']>20 and r['metadata'].get('equality_regions')))
+    del broken_source['clauses'][0]
+    mutations.append(must_reject(broken_source))
+    summary={'status':'PASS','snapshots':len(data),
+             'interface_exact_snapshots':sum(r['interface']['status']=='EXACT' for r in data),
+             'interface_budget_stops':sum(r['interface']['status']=='BUDGET_EXCEEDED' for r in data),
+             'exact_method_comparisons':sum(len(r['checked_exact_methods']) for r in receipts),
+             'oracle_counts':{name:sum(r['oracle']==name for r in receipts) for name in sorted(set(r['oracle'] for r in receipts))},
+             'scalar_truth_table_crosschecks':sum(r['n']<=7 for r in data),
+             'corruption_tests_rejected':len(mutations),
+             'truth_mask_setup_seconds':SETUP_SECONDS,
+             'total_seconds':perf_counter()-start,'receipts':receipts}
+    (HERE/'verification.json').write_text(json.dumps(summary,indent=2)+'\n')
+    printable={k:v for k,v in summary.items() if k!='receipts'}
+    print(json.dumps(printable,indent=2))
+
+if __name__=='__main__':
+    main()

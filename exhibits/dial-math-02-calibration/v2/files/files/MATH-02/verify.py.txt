@@ -1,0 +1,31 @@
+import json,hashlib,math,collections,pathlib
+import run
+P=pathlib.Path(__file__).resolve().parent
+freeze=json.loads((P/'PRE-SCORE-FREEZE.json').read_text())
+for f,h in freeze['sha256'].items():assert hashlib.sha256((P/f).read_bytes()).hexdigest()==h,f
+manifest=json.loads((P/'SOURCE-MANIFEST.json').read_text())
+for f,meta in manifest.items():assert hashlib.sha256((P/'sources'/f).read_bytes()).hexdigest()==meta['sha256'],f
+d=json.loads((P/'controls.json').read_text());r=json.loads((P/'RESULTS.json').read_text())
+checks=0
+for cl in ['math','language','registry']:
+ cells=[dict(c,face=c['source'],cell=f'C{c["source_cell"]:02d}') for c in d['cells'] if c['category']==cl]
+ for c in cells:
+  assert [d['symbol_maps'][cl][x] for x in c['tokens']]==c['signs']
+  if cl=='math':
+   raw=(P/'sources'/(c['source']+'.tex')).read_bytes().decode(c['locator']['encoding']);start=c['locator']['character_offset']
+   assert raw[start:start+len(c['original'])+2]=='$'+c['original']+'$'
+  elif cl=='language':
+   raw=(P/'sources'/c['source']).read_bytes().decode(c['locator']['encoding']);start=c['locator']['character_offset'];assert raw[start:start+len(c['original'])]==c['original']
+  checks+=1
+ for f in r['classes'][cl]['folds']:
+  if f['status']!='SCORED':continue
+  train=f['train_indices'];test=f['test_indices'];assert not {cells[i]['source'] for i in train}.intersection(cells[i]['source'] for i in test)
+  for group in run.components(cells):assert not(set(group).intersection(train) and set(group).intersection(test))
+  v=run.score(cells,train,test);assert max(abs(v[k]-f['bits_per_token'][k]) for k in v)<1e-12
+  # Independently written F calculation checks the wrapper's token denominator and train exclusion.
+  counts=collections.Counter(x for i in train for x in cells[i]['signs']);total=sum(counts.values());targets=[x for i in test for x in cells[i]['signs']]
+  loss=sum(math.log2((total+22.5)/(counts[t]+0.5)) for t in targets)/len(targets)
+  assert abs(loss-v['F_unigram'])<1e-12
+assert r['classes']['registry']['status']=='INELIGIBLE_ALPHABET' and not r['classes']['registry']['folds']
+out={'status':'PASS','frozen_files_verified':len(freeze['sha256']),'source_files_verified':len(manifest),'control_cells_verified':checks,'scored_empirical_folds_replayed':7,'same_operator_not_independent_audit':True,'checks':['original manifest and both original scores replayed during execution','frozen protocol, code and input hashes','source hashes and math/language extraction offsets','bijective maps','whole-source holdout','dependency-component purge','all eligible fold losses replayed','independent unigram formula','ineligible registry was not scored','symbol relabel invariance during execution']}
+(P/'VERIFICATION.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

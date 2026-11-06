@@ -1,0 +1,190 @@
+[
+  {
+    "name": "valid-0",
+    "lotus": {
+      "valid": true,
+      "checker_version": "lotus-checkers/1",
+      "evidence": {
+        "checked_relation": [
+          -1,
+          -3
+        ],
+        "mapped_relation": [
+          -1,
+          -4
+        ],
+        "premises_matched": 4,
+        "target_models_before": 6,
+        "target_models_after": 6,
+        "exact_solution_set_preserved": true,
+        "mathematical_scope": "Resolution consequence under signed injective source embedding",
+        "publication_approved": false
+      },
+      "uncertainty": [
+        "One fixed source formula and one-step ordinary resolution; not general theorem discovery.",
+        "A candidate proves sound reuse only when all mapped premises occur in the target.",
+        "The target is bounded to eight Boolean variables; enumeration corroborates exact model-set preservation.",
+        "Finding the proof and mapping is unmeasured visitor work; no global speedup is claimed.",
+        "A passed check remains pending until the owner explicitly approves a specific packet."
+      ],
+      "work": {
+        "proof_pivots_checked": 1,
+        "premises_matched": 4,
+        "target_assignments_checked": 64,
+        "target_clause_evaluations": 190,
+        "derivation_search_cost": "not measured; supplied by visitor, checked by LOTUS"
+      }
+    },
+    "lotusNs": 322983,
+    "target_models": [
+      "01011",
+      "01110",
+      "01111",
+      "10001",
+      "10100",
+      "10101"
+    ],
+    "same_actual_model_set": true
+  },
+  {
+    "name": "valid-1",
+    "lotus": {
+      "valid": true,
+      "checker_version": "lotus-checkers/1",
+      "evidence": {
+        "checked_relation": [
+          1,
+          3
+        ],
+        "mapped_relation": [
+          1,
+          4
+        ],
+        "premises_matched": 4,
+        "target_models_before": 6,
+        "target_models_after": 6,
+        "exact_solution_set_preserved": true,
+        "mathematical_scope": "Resolution consequence under signed injective source embedding",
+        "publication_approved": false
+      },
+      "uncertainty": [
+        "One fixed source formula and one-step ordinary resolution; not general theorem discovery.",
+        "A candidate proves sound reuse only when all mapped premises occur in the target.",
+        "The target is bounded to eight Boolean variables; enumeration corroborates exact model-set preservation.",
+        "Finding the proof and mapping is unmeasured visitor work; no global speedup is claimed.",
+        "A passed check remains pending until the owner explicitly approves a specific packet."
+      ],
+      "work": {
+        "proof_pivots_checked": 1,
+        "premises_matched": 4,
+        "target_assignments_checked": 64,
+        "target_clause_evaluations": 190,
+        "derivation_search_cost": "not measured; supplied by visitor, checked by LOTUS"
+      }
+    },
+    "lotusNs": 236051,
+    "target_models": [
+      "01011",
+      "01110",
+      "01111",
+      "10001",
+      "10100",
+      "10101"
+    ],
+    "same_actual_model_set": true
+  },
+  {
+    "name": "valid-signed-polarity",
+    "lotus": {
+      "valid": true,
+      "checker_version": "lotus-checkers/1",
+      "evidence": {
+        "checked_relation": [
+          -1,
+          -3
+        ],
+        "mapped_relation": [
+          1,
+          4
+        ],
+        "premises_matched": 4,
+        "target_models_before": 6,
+        "target_models_after": 6,
+        "exact_solution_set_preserved": true,
+        "mathematical_scope": "Resolution consequence under signed injective source embedding",
+        "publication_approved": false
+      },
+      "uncertainty": [
+        "One fixed source formula and one-step ordinary resolution; not general theorem discovery.",
+        "A candidate proves sound reuse only when all mapped premises occur in the target.",
+        "The target is bounded to eight Boolean variables; enumeration corroborates exact model-set preservation.",
+        "Finding the proof and mapping is unmeasured visitor work; no global speedup is claimed.",
+        "A passed check remains pending until the owner explicitly approves a specific packet."
+      ],
+      "work": {
+        "proof_pivots_checked": 1,
+        "premises_matched": 4,
+        "target_assignments_checked": 64,
+        "target_clause_evaluations": 190,
+        "derivation_search_cost": "not measured; supplied by visitor, checked by LOTUS"
+      }
+    },
+    "lotusNs": 4686188,
+    "target_models": [
+      "01011",
+      "01110",
+      "01111",
+      "10001",
+      "10100",
+      "10101"
+    ],
+    "same_actual_model_set": true
+  },
+  {
+    "name": "valid-source-comment",
+    "lotus": {
+      "valid": true,
+      "checker_version": "lotus-checkers/1",
+      "evidence": {
+        "checked_relation": [
+          -1,
+          -3
+        ],
+        "mapped_relation": [
+          -1,
+          -4
+        ],
+        "premises_matched": 4,
+        "target_models_before": 6,
+        "target_models_after": 6,
+        "exact_solution_set_preserved": true,
+        "mathematical_scope": "Resolution consequence under signed injective source embedding",
+        "publication_approved": false
+      },
+      "uncertainty": [
+        "One fixed source formula and one-step ordinary resolution; not general theorem discovery.",
+        "A candidate proves sound reuse only when all mapped premises occur in the target.",
+        "The target is bounded to eight Boolean variables; enumeration corroborates exact model-set preservation.",
+        "Finding the proof and mapping is unmeasured visitor work; no global speedup is claimed.",
+        "A passed check remains pending until the owner explicitly approves a specific packet."
+      ],
+      "work": {
+        "proof_pivots_checked": 1,
+        "premises_matched": 4,
+        "target_assignments_checked": 64,
+        "target_clause_evaluations": 190,
+        "derivation_search_cost": "not measured; supplied by visitor, checked by LOTUS"
+      }
+    },
+    "lotusNs": 288997,
+    "target_models": [
+      "01011",
+      "01110",
+      "01111",
+      "10001",
+      "10100",
+      "10101"
+    ],
+    "same_actual_model_set": true
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "stable_signs_with_at_least4_landmarks": [],
+  "minimum_required": 8,
+  "passed": false,
+  "outcome": "INCONCLUSIVE \u2014 landmark representation failed",
+  "elapsed_seconds": 226.0858937640005
+}

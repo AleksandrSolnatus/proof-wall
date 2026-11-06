@@ -1,0 +1,170 @@
+#!/usr/bin/env python3
+"""Independent read-only custody/data/output verification. No archived code imported."""
+from pathlib import Path, PurePosixPath
+import hashlib,json,math,stat,struct,zipfile,zlib,csv,argparse
+from collections import defaultdict
+from decimal import Decimal
+O=Path(__file__).resolve().parent; R=O.parent
+ORIGINALS=R/'originals'; CUSTODY=R/'custody'
+def read(p):return json.loads(p.read_text())
+def digest(b):return hashlib.sha256(b).hexdigest()
+def same(a,b):
+ if isinstance(a,(float,int)) and not isinstance(a,bool):assert math.isclose(a,b,rel_tol=2e-12,abs_tol=1e-10),(a,b)
+ else:assert a==b,(a,b)
+def finite(x):
+ if isinstance(x,dict):return all(finite(v) for v in x.values())
+ if isinstance(x,list):return all(finite(v) for v in x)
+ return not isinstance(x,float) or math.isfinite(x)
+STAGES=['dKEExternal','dKEPredictCap','dKEReconstruction','dKEFloorVelocityRule','dKEViscosity','dKEPostCap']
+
+def scalar(x):
+ if x=='':return None
+ if x in ('True','False'):return x=='True'
+ return float(x)
+def checkcell(cell,value):
+ val=scalar(cell)
+ if value is None:assert val is None
+ elif isinstance(value,bool):assert val is value
+ else:same(val,value)
+def rows(name):
+ with (O/name).open() as f:return list(csv.DictReader(f))
+def endden(k,p,s):
+ groups=[(['residualUncappedEndpointDemand','residualNetRepulsionDemand'],p['relaxation']*s['count']*p['spacing']),(['kineticEnergyProxy','potentialEnergyProxy'],.5*s['representedMass']*p['speedCap']**2),(['meanSpeed','rmsSpeed','maxSpeed','comVx','comVy'],p['speedCap']),(['momentumX','momentumY'],s['representedMass']*p['speedCap']),(['surfaceVariance','occupiedSurfaceVariance'],p['spacing']**2),(['maxHeight','meanSurfaceHeight','surfaceStd','occupiedWidth','comX','comY','overlapMean','overlapRms','overlapMax','minimumNeighborDistance','minimumY'],p['spacing']),(['floorConnectedCount','count','overlapPairs','degenerateSkippedPairs'],s['count']),(['representedMass'],s['representedMass']),(['occupiedBinCount'],64),(['nominalArea'],s['count']*p['spacing']**2)]
+ return next((d for ks,d in groups if k in ks),1)
+def actden(k,p,s):
+ a=s['intervalActivity'];n=s['count'];ns=n*(.25/p['dt']);passes=ns*p['iterations'];spacing=p['spacing'];cap=p['speedCap']
+ if k in STAGES:return .5*s['representedMass']*cap**2
+ mapping={'speedCapPredictEvents':ns,'speedCapPostEvents':ns,'floorContactParticleSteps':ns,'reconstructionSamples':ns,'floorClampEvents':passes,'wallClampEvents':passes,'correctionCapEvents':a['repulsionEvaluations'],'attractionCapEvents':a['positiveAttractionEvaluations'],'reconstructionDeltaVSum':a['reconstructionSamples']*cap,'maxUncappedPairRequest':spacing,'maxAttractionRawRequest':spacing,'reconstructionDeltaVRms':cap,'reconstructionDeltaVMax':cap}
+ if k in mapping:return mapping[k]
+ if k in ['relationBranchTransitions','repulsionToShellTransitions','shellToRepulsionTransitions']:return a['repulsionEvaluations']+a['shellEvaluations']
+ if k in ['pairCorrections','repulsionEvaluations','cohesionPairs','shellEvaluations','positiveAttractionEvaluations']:return passes
+ if k in ['repulsionDemand','repulsionApplied']:return a['repulsionEvaluations']*spacing
+ if k in ['attractionRawRequest','cohesionApplied']:return a['positiveAttractionEvaluations']*spacing
+ if k in ['netPairCorrection','boundaryProjectionDistance']:return passes*spacing
+ raise AssertionError(k)
+def get(cases,cid,t,obs):
+ s=cases[cid]['samples'][round(t*4)];p=cases[cid]['parameters'];typ,k=obs.split('.',1)
+ raw=s[k] if typ=='endpoint' else s['intervalActivity'][k];den=endden(k,p,s) if typ=='endpoint' else actden(k,p,s)
+ return raw,raw/den if raw is not None and den else None
+
+def verify_outputs(cases):
+ validation=read(O/'ANALYSIS_VALIDATION.json');assert digest((O/'analyze.py').read_bytes())==validation['analysis_sha256'];assert validation['unique_case_count']==10 and validation['endpoint_samples']==1210 and validation['intervals']==1200 and validation['comparison_count']==21
+ expected=set()
+ for law in 'AC':
+  for l,r in [('.0125','.00625'),('.0125','.003125'),('.00625','.003125')]:expected.add((f'fixed_{law}_0{l}',f'fixed_{law}_0{r}'))
+  for dt in ['0.003125','0.0125']:expected.add((f'dt2_{law}_{dt}',f'fixed_{law}_{dt}'))
+  ids=[f'dt2_{law}_0.0125',f'fixed_{law}_0.00625',f'dt2_{law}_0.003125']
+  expected.update([(ids[0],ids[1]),(ids[0],ids[2]),(ids[1],ids[2])])
+ for mode,dts in [('fixed',['0.003125','0.00625','0.0125']),('dt2',['0.003125','0.0125'])]:
+  expected.update((f'{mode}_C_{dt}',f'{mode}_A_{dt}') for dt in dts)
+ schema=read(O/'SCHEMA_IMPLEMENTATION.json');assert {(p['left'],p['right']) for p in schema['comparison_pairs']}==expected and len(expected)==21
+ endpoint=rows('endpoint_values.csv');interval=rows('interval_values.csv');seen=set()
+ maxima={'maxAttractionRawRequest','maxUncappedPairRequest','reconstructionDeltaVMax'}
+ for rs,typ in [(endpoint,'endpoint'),(interval,'interval')]:
+  for row in rs:
+   cid=row['case'];t=float(row['t'] if typ=='endpoint' else row['end']);k=row['observable'];identity=(cid,t,typ,k);assert identity not in seen;seen.add(identity)
+   raw,norm=get(cases,cid,t,typ+'.'+k);checkcell(row['raw'],raw);checkcell(row['normalized'],norm);s=cases[cid]['samples'][round(t*4)];p=cases[cid]['parameters'];checkcell(row['denominator'],endden(k,p,s) if typ=='endpoint' else actden(k,p,s))
+   if typ=='interval':checkcell(row['start'],t-.25);checkcell(row['per_second'],None if k in maxima or k=='reconstructionDeltaVRms' else raw*4)
+ expected_seen={(cid,s['t'],'endpoint',k) for cid,d in cases.items() for s in d['samples'] for k,v in s.items() if not isinstance(v,(dict,list))}
+ expected_seen.update((cid,s['t'],'interval',k) for cid,d in cases.items() for s in d['samples'][1:] for k in s['intervalActivity']);assert seen==expected_seen
+ paired=rows('paired_departures.csv');groups=defaultdict(list);actualpairs=set()
+ for row in paired:
+  l,r=row['left'],row['right'];actualpairs.add((l,r));t=float(row['end']);obs=row['observable'];lr,ln=get(cases,l,t,obs);rr,rn=get(cases,r,t,obs);threshold=max(1e-8,.1*max(abs(ln),abs(rn))) if ln is not None and rn is not None else None;q=threshold is not None and abs(ln-rn)>threshold
+  for key,v in [('left_raw',lr),('right_raw',rr),('raw_difference',lr-rr if lr is not None and rr is not None else None),('left_normalized',ln),('right_normalized',rn),('normalized_difference',ln-rn if threshold is not None else None),('threshold',threshold),('qualifies',q),('start',max(0,t-.25))]:checkcell(row[key],v)
+  groups[(row['comparison'],obs)].append(row)
+ assert actualpairs==expected and len(groups)==21*41
+ context_expected=set();onsets=rows('onsets.csv');assert len(onsets)==len(groups);tie_groups=defaultdict(list)
+ for o in onsets:
+  key=(o['comparison'],o['observable']);rs=groups[key];assert len(rs)==(121 if key[1].startswith('endpoint.') else 120);assert [float(x['end']) for x in rs]==[i/4 for i in range(0 if len(rs)==121 else 1,121)]
+  flags=[r['qualifies']=='True' for r in rs];fi=next((i for i,v in enumerate(flags) if v),None);su=next((i for i in range(len(flags)-1) if flags[i] and flags[i+1]),None)
+  for prefix,idx in [('first',fi),('sustained',su)]:
+   for suffix in ['start','end']:checkcell(o[prefix+'_'+suffix],float(rs[idx][suffix]) if idx is not None else None)
+  checkcell(o['qualifying_samples'],sum(flags));checkcell(o['already_present_at_zero'],fi is not None and float(rs[fi]['end'])==0)
+  checkcell(o['preceding_end'],float(rs[fi-1]['end']) if fi is not None and fi>0 else None);checkcell(o['preceding_qualifies'],flags[fi-1] if fi is not None and fi>0 else None)
+  for out,col in [('first_left_raw','left_raw'),('first_right_raw','right_raw'),('first_normalized_difference','normalized_difference')]:checkcell(o[out],scalar(rs[fi][col]) if fi is not None else None)
+  for idx in [fi,su]:
+   if idx is not None:
+    context_expected.update((*key,rs[j]['end']) for j in range(max(0,idx-2),min(len(rs),idx+3)))
+  if fi is not None:tie_groups[(key[0],o['first_end'])].append(key[1])
+ order=rows('ordering.csv');assert len(order)==len(onsets)
+ omap={(o['comparison'],o['observable']):o for o in onsets}
+ for o in order:
+  ref=omap[(o['comparison'],o['observable'])];t=scalar(ref['first_end']);times=sorted({scalar(r['first_end']) for r in onsets if r['comparison']==o['comparison'] and r['first_end']!=''});ties=len(tie_groups[(o['comparison'],ref['first_end'])]) if t is not None else 0
+  checkcell(o['start'],scalar(ref['first_start']));checkcell(o['end'],t);checkcell(o['bracket_rank'],times.index(t)+1 if t is not None else None);checkcell(o['tied_candidate_count'],ties);checkcell(o['causal_order_established'],False)
+  assert o['ordering']==('absent' if t is None else 'already_present_at_zero' if t==0 else 'unresolved_within_shared_bracket' if ties>1 else 'observable_bracket_order_only')
+ context=rows('onset_context.csv');assert { (r['comparison'],r['observable'],r['end']) for r in context}==context_expected and len(context)==len(context_expected)
+ indexed={(r['comparison'],r['observable'],r['end']):r for r in paired}
+ for r in context:
+  for k,v in indexed[(r['comparison'],r['observable'],r['end'])].items():assert r[k]==v
+  for side in ['left','right']:
+   s=cases[r[side]]['samples'][round(float(r['end'])*4)];checkcell(r[side+'_rms'],s['rmsSpeed']);checkcell(r[side+'_caps'],s['intervalActivity']['speedCapPredictEvents']+s['intervalActivity']['speedCapPostEvents'])
+ events=rows('events.csv');assert len(events)==10*22;event_ctx=set()
+ for e in events:
+  cid=e['case'];k=e['observable'];sign=-1 if e['event']=='negative_below_tolerance' else 1;ss=cases[cid]['samples'];flags=[(get(cases,cid,s['t'],'interval.'+k)[1]*sign>1e-8) if k in STAGES else s['intervalActivity'][k]>0 for s in ss[1:]];idx=next((i+1 for i,v in enumerate(flags) if v),None)
+  for key,v in [('end',ss[idx]['t'] if idx else None),('start',ss[idx]['t']-.25 if idx else None),('value',ss[idx]['intervalActivity'][k] if idx else None),('preceding_value',ss[idx-1]['intervalActivity'][k] if idx else None),('preceding_interval_recorded',bool(idx and idx>1))]:checkcell(e[key],v)
+  assert e['within_bin_order']==('unknown' if idx else 'absent')
+  if idx:event_ctx.update((cid,k+':'+str(sign),ss[j]['t'],ss[idx]['t']) for j in range(max(1,idx-2),min(120,idx+2)+1))
+ ec=rows('event_context.csv');assert {(r['case'],r['event'],float(r['end']),float(r['onset_end'])) for r in ec}==event_ctx and len(ec)==len(event_ctx)
+ for r in ec:
+  s=cases[r['case']]['samples'][round(float(r['end'])*4)];checkcell(r['value'],s['intervalActivity'][r['event'].split(':')[0]]);checkcell(r['rmsSpeed'],s['rmsSpeed']);checkcell(r['predict_caps'],s['intervalActivity']['speedCapPredictEvents']);checkcell(r['post_caps'],s['intervalActivity']['speedCapPostEvents'])
+ ws=rows('window_summary.csv');windows={'early':(0,1),'full':(0,30),'late':(25,30)}
+ for row in ws:
+  lo,hi=windows[row['window']];k=row['observable'];ss=cases[row['case']]['samples'];iv=row['type']=='interval';selected=[s for s in ss if (lo<s['t']<=hi if iv else lo<=s['t']<=hi)];vals=[s['intervalActivity'][k] if iv else s[k] for s in selected];vals=[v for v in vals if v is not None];checkcell(row['samples'],len(vals))
+  if not iv:val=float(sum(map(lambda v:Decimal(str(v)),vals))/len(vals)) if vals else None
+  elif k in maxima:val=max(vals)
+  elif k=='reconstructionDeltaVRms':val=math.sqrt(sum(s['intervalActivity'][k]**2*s['intervalActivity']['reconstructionSamples'] for s in selected)/sum(s['intervalActivity']['reconstructionSamples'] for s in selected))
+  else:val=float(sum(Decimal(str(v)) for v in vals))
+  checkcell(row['value'],val);checkcell(row['per_second'],val/(hi-lo) if iv and k not in maxima and k!='reconstructionDeltaVRms' else None)
+ vectors=read(O/'endpoint_vectors.json');assert len(vectors)==10*121*2
+ for v in vectors:assert v['values']==cases[v['case']]['samples'][round(v['t']*4)][v['observable']]
+ pv=read(O/'paired_vectors.json');assert len(pv)==21*121*2
+ for v in pv:
+  l,r=v['comparison'].split('__minus__');ls=cases[l]['samples'][round(v['t']*4)][v['observable']];rs=cases[r]['samples'][round(v['t']*4)][v['observable']];assert v['left']==ls and v['right']==rs;assert v['difference']==[(ls[j] if j<len(ls) else 0)-(rs[j] if j<len(rs) else 0) for j in range(max(len(ls),len(rs)))]
+ return dict(status='PASS',comparison_count=21,observable_groups=len(groups),paired_rows=len(paired),onsets=len(onsets),onset_context_rows=len(context),events=len(events),event_context_rows=len(ec),window_rows=len(ws),tie_groups_preserved=sum(len(v)>1 for v in tie_groups.values()),all_raw_normalized_exposure_threshold_onset_persistence_context_event_window_and_vector_rows_recomputed=True,ordering_rows_verified=len(order),outputs_sha256={p.name:digest(p.read_bytes()) for p in O.iterdir() if p.suffix in ('.csv','.json') and p.name!='INDEPENDENT_VERIFICATION.json'})
+
+def main():
+ checks={};archives=[]
+ for item in read(O/'REQUIRED_ARCHIVES.json'):
+  f=CUSTODY/item['archive_name'];b=f.read_bytes();assert digest(b)==item['sha256'] and len(b)==item['size_bytes']
+  base=ORIGINALS/item['label']
+  with zipfile.ZipFile(f) as z:
+   names=z.namelist();assert len(names)==len(set(names)); expected={m['path']:m for m in item['members']}
+   assert set(n for n in names if not n.endswith('/'))==set(expected)
+   for info in z.infolist():
+    p=PurePosixPath(info.filename);assert not p.is_absolute() and '..' not in p.parts and '\\' not in info.filename and not stat.S_ISLNK(info.external_attr>>16)
+   for n,m in expected.items():
+    v=z.read(n);assert len(v)==m['size_bytes'] and digest(v)==m['sha256'] and f'{zlib.crc32(v):08x}'==m['zip_crc32'];assert (base/n).read_bytes()==v
+   root='Rain_AC_Sensitivity_002' if item['label']=='p29' else 'Rain_DT_Control_003'
+   manifests=[root+'/MANIFEST.sha256',root+('/inputs/MANIFEST.sha256' if item['label']=='p29' else '/PROTOCOL.sha256')]
+   counts={}
+   for n in manifests:
+    count=0
+    for line in z.read(n).decode().splitlines():
+     if not line.strip():continue
+     h,rel=line.split(None,1);rel=rel.lstrip('*');assert digest(z.read(str(PurePosixPath(n).parent/rel)))==h;count+=1
+    counts[n]=count
+  archives.append(dict(label=item['label'],sha256=digest(b),members=len(expected),manifests=counts))
+ checks['original_archives_members_crc_internal_manifests_and_extraction']=archives
+ p30=ORIGINALS/'p30/Rain_DT_Control_003';p29=ORIGINALS/'p29/Rain_AC_Sensitivity_002'; cases={};closure=0; parity=[]
+ for record in read(p30/'PROTOCOL_FROZEN.json')['cases']:
+  name=record['id'];d=read(p30/'results'/f'{name}.metrics.json');cases[name]=d;ss=d['samples'];p=d['parameters'];assert len(ss)==121 and finite(d);assert [s['t'] for s in ss]==[i/4 for i in range(121)]
+  assert all(v==0 for v in ss[0]['intervalActivity'].values())
+  for i,s in enumerate(ss):
+   assert s['count']==s['representedMass']==3834;assert len(s['surfaceProfile'])==64;assert sum(s['coordinationHistogram'])==3834;same(s['kineticEnergyProxy'],.5*3834*s['rmsSpeed']**2)
+   if not i:continue
+   a=s['intervalActivity'];assert a['reconstructionSamples']==3834*round(.25/p['dt']);assert a['relationBranchTransitions']==a['repulsionToShellTransitions']+a['shellToRepulsionTransitions'];assert a['pairCorrections']==a['repulsionEvaluations'];assert a['cohesionPairs']==a['positiveAttractionEvaluations']
+   err=abs(s['kineticEnergyProxy']-ss[i-1]['kineticEnergyProxy']-math.fsum(a[k] for k in STAGES));assert err<1e-6;closure=max(closure,err)
+  frames=(p30/'results'/f'{name}.positions.f64').read_bytes();assert len(frames)==31*3834*2*8
+  for x,y in struct.iter_unpack('<dd',frames):assert math.isfinite(x) and math.isfinite(y) and p['radius']-1e-10<=x<=p['worldW']-p['radius']+1e-10 and y<=p['floorY']-p['radius']+1e-10
+  final=read(p30/'results'/f'{name}.final.json');initial=read(p30/'inputs/T0.json');assert final['elapsed']==30 and finite(final)
+  assert [(x['id'],x['r']) for x in final['pellets']]==[(x['id'],x['r']) for x in initial['pellets']]
+  if name.startswith('fixed_'):
+   old=name.replace('fixed_','original_');assert ss==read(p29/'results'/f'{old}.metrics.json')['samples'];assert frames==(p29/'results'/f'{old}.positions.f64').read_bytes()
+   older=read(p29/'results'/f'{old}.final.json');final['P'].pop('attractionCap');assert final==older;parity.append(name)
+ assert len(cases)==10 and len(parity)==6
+ checks['ten_unique_cases_121_endpoints_120_intervals']=True;checks['maximum_kinetic_closure_error']=closure;checks['six_exact_sample_frame_final_controls']=parity;checks['all_frames_finite_bounded_31x3834x2']=True
+ if (O/'ANALYSIS_VALIDATION.json').exists():checks['derived_outputs']=verify_outputs(cases)
+ receipt={'status':'PASS' if 'derived_outputs' in checks else 'DATA_PASS_OUTPUTS_PENDING','checks':checks,'simulation':False,'archived_code_executed':False,'plan_sha256':digest((O/'ANALYSIS_PLAN.md').read_bytes()),'verifier_sha256':digest(Path(__file__).read_bytes())}
+ (O/'INDEPENDENT_VERIFICATION.json').write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps(receipt,indent=2))
+if __name__=='__main__':
+ parser=argparse.ArgumentParser();parser.add_argument('--originals',type=Path,default=ORIGINALS);parser.add_argument('--custody',type=Path,default=CUSTODY);a=parser.parse_args();ORIGINALS=a.originals.resolve();CUSTODY=a.custody.resolve();main()

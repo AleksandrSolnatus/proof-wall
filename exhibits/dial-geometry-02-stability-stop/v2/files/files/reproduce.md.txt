@@ -1,0 +1,3 @@
+# Reproduction
+
+Run from the delivered folder's parent with the original reference pack extracted at geometry02/sources/reference/Phaistos_Dial_Reference_Pack_v1.0. Python requires numpy, scipy, pillow and matplotlib; SVG rendering requires Inkscape. code/geometry.py contains the thinning/extraction definitions without requiring a replacement font or external sign data. code/run.py executes the frozen bounded method; primary hashes are in receipts/PREFREEZE.json. Relative paths in that receipt describe the original workspace. Deterministic records/figures can be regenerated using the same exact sources and versions. Any rerun of random inference would be a new execution and is not performed by this delivery.

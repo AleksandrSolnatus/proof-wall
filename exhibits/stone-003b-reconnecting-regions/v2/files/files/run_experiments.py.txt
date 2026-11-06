@@ -1,0 +1,235 @@
+#!/usr/bin/env python3
+"""Stone 003B experiments. Run in this directory; results are exploratory timings."""
+from __future__ import annotations
+import argparse
+import hashlib
+import json
+import platform
+import random
+import sys
+from pathlib import Path
+from time import perf_counter
+from interface_engine import InterfaceCounter
+from baseline_bdd import BDD
+
+HERE = Path(__file__).resolve().parent
+ROW_CAP = 262144
+
+
+def bdd_query(bdd: BDD, root: int, *, seconds: float, new_apply_calls: int) -> dict:
+    start = perf_counter()
+    count = bdd.count(root)
+    count_seconds = perf_counter()-start
+    start = perf_counter()
+    reachable = bdd.reachable(root)
+    inspection_seconds = perf_counter()-start
+    return {"status": "EXACT", "count": count, "reachable_nodes": reachable,
+            "allocated_nodes": bdd.next_id-2, "apply_cache_entries": len(bdd.apply_cache),
+            "apply_calls_new": new_apply_calls, "compile_or_update_seconds": seconds,
+            "count_seconds": count_seconds, "inspection_seconds": inspection_seconds,
+            "total_seconds": seconds+count_seconds+inspection_seconds}
+
+
+def paired(m: int):
+    regions = [[2*i, 2*i+1] for i in range(m)]
+    clauses = [cl for x, y in regions for cl in [[-(x+1),y+1],[x+1,-(y+1)]]]
+    return regions, clauses, [r[0]+1 for r in regions]
+
+
+def run_sequence(suite: str, name: str, n: int, regions: list[list[int]],
+                 initial: list[list[int]], batches: list[list[list[int]]],
+                 metadata: dict | None = None, compare_fresh: bool = True,
+                 bdd_comparison: bool = True) -> list[dict]:
+    start = perf_counter()
+    counter = InterfaceCounter(n, regions, max_bucket_rows=ROW_CAP)
+    setup_seconds = perf_counter()-start
+    order = [v for region in regions for v in region]
+    start = perf_counter()
+    incremental_bdd = BDD(order) if bdd_comparison else None
+    bdd_setup_seconds = perf_counter()-start
+    root = 1
+    active = []
+    records = []
+    for step, batch in enumerate([initial] + batches):
+        start = perf_counter()
+        additions = [counter.add(cl) for cl in batch]
+        add_seconds = perf_counter()-start + (setup_seconds if step == 0 else 0.)
+        active.extend(batch)
+        start = perf_counter()
+        got = counter.query()
+        got["end_to_end_query_seconds"] = perf_counter()-start
+        got["ingest_seconds"] = add_seconds
+        got["total_seconds"] = add_seconds+got["end_to_end_query_seconds"]
+        got["new_cross_rows"] = sum(r['new_cross_table_rows'] for r in additions)
+        got["new_boundary_variables"] = sum(len(r['promoted_variables']) for r in additions)
+        got["new_routing_literal_reads"] = sum(r['routing_literal_reads'] for r in additions)
+        record = {"suite": suite, "case": name, "step": step, "n": n,
+                  "regions": regions, "added_clauses": batch, "clauses": active[:],
+                  "metadata": metadata or {}, "interface": got}
+        if compare_fresh:
+            start = perf_counter()
+            fresh = InterfaceCounter(n, regions, max_bucket_rows=ROW_CAP)
+            for cl in active:
+                fresh.add(cl)
+            rebuild_seconds = perf_counter()-start
+            start = perf_counter()
+            fresh_got = fresh.query()
+            fresh_got["end_to_end_query_seconds"] = perf_counter()-start
+            fresh_got["ingest_seconds"] = rebuild_seconds
+            fresh_got["total_seconds"] = rebuild_seconds+fresh_got["end_to_end_query_seconds"]
+            record["fresh_interface"] = fresh_got
+            assert got['status'] == fresh_got['status'], (name, step, got, fresh_got)
+            if got['status'] == 'EXACT':
+                assert got['count'] == fresh_got['count'], (name, step)
+        if bdd_comparison:
+            calls_before = incremental_bdd.apply_calls
+            start = perf_counter()
+            for cl in batch:
+                root = incremental_bdd.add(root, cl)
+            elapsed = perf_counter()-start+(bdd_setup_seconds if step == 0 else 0.)
+            record['incremental_bdd'] = bdd_query(incremental_bdd, root, seconds=elapsed,
+                        new_apply_calls=incremental_bdd.apply_calls-calls_before)
+            start = perf_counter()
+            fresh_bdd = BDD(order)
+            fresh_root = fresh_bdd.compile(active)
+            elapsed = perf_counter()-start
+            record['fresh_bdd'] = bdd_query(fresh_bdd, fresh_root, seconds=elapsed,
+                        new_apply_calls=fresh_bdd.apply_calls)
+            assert record['fresh_bdd']['count'] == record['incremental_bdd']['count']
+            if got['status'] == 'EXACT':
+                assert got['count'] == record['fresh_bdd']['count'], (name, step, got)
+        records.append(record)
+    final = records[-1]
+    q = final['interface']
+    print(f"{name}: snapshots={len(records)}; {q['status']}; count={q['count']}; "
+          f"max bucket={q['max_bucket_variables']} vars; "
+          f"new rows={q['bucket_rows_computed']}; reused={q['bucket_rows_reused']}; "
+          f"final total={q['total_seconds']:.6f}s", flush=True)
+    return records
+
+
+def suite_replay():
+    original = json.loads((HERE/'original/math_stone_003/results.json').read_text())
+    regions = [[i,8+i] for i in range(8)]
+    initial = [cl for x,y in regions for cl in [[-(x+1),y+1],[x+1,-(y+1)]]]
+    batches = [row['new_clauses'] for row in original['trials']['locality_and_bridging'][1:]]
+    rows = run_sequence('replay', 'original-16-variable-bridges', 16, regions, initial, batches)
+    for record, archived in zip(rows, original['trials']['locality_and_bridging']):
+        record['archived_component_baseline'] = archived
+        assert record['interface']['count'] == archived['exact_count']
+    return rows
+
+
+def suite_chains():
+    rows = []
+    for m in [8,16,32,64]:
+        regions, initial, reps = paired(m)
+        batches = [[[-reps[i],-reps[i+1]]] for i in range(m-1)]
+        rows += run_sequence('chain', f'chain-{m}-regions', 2*m, regions, initial, batches,
+                             {'equality_regions': True, 'graph': 'path'})
+    return rows
+
+
+def suite_cliques():
+    rows = []
+    for m in [4,8,12,16,18,20]:
+        regions, initial, reps = paired(m)
+        extra = [[-reps[i],-reps[j]] for i in range(m) for j in range(i+1,m)]
+        rows += run_sequence('clique', f'clique-{m}-regions', 2*m, regions, initial, [extra],
+                             {'equality_regions': True, 'graph': 'clique', 'expected_count':m+1})
+    return rows
+
+
+def suite_grids():
+    rows = []
+    for side in [3,4,5]:
+        m = side*side
+        regions, initial, reps = paired(m)
+        edges = []
+        for i in range(side):
+            for j in range(side):
+                u = i*side+j
+                if i+1 < side:
+                    edges.append([-reps[u],-reps[u+side]])
+                if j+1 < side:
+                    edges.append([-reps[u],-reps[u+1]])
+        batches = [[cl] for cl in edges]
+        rows += run_sequence('grid', f'grid-{side}x{side}', 2*m, regions, initial, batches,
+                             {'equality_regions': True, 'graph': 'grid', 'side':side})
+    return rows
+
+
+def suite_random_cross():
+    rows = []
+    for m in [8,12,16,20]:
+        for seed in [31003,31007,31013]:
+            rng = random.Random(seed + m*100)
+            regions, initial, reps = paired(m)
+            clauses = []
+            for _ in range(round(4.25*m)):
+                clauses.append([v*(1 if rng.getrandbits(1) else -1) for v in rng.sample(reps,3)])
+            marks = sorted(set([m,2*m,3*m,4*m,len(clauses)]))
+            start = 0
+            batches = []
+            for stop in marks:
+                batches.append(clauses[start:stop])
+                start = stop
+            rows += run_sequence('random_cross', f'random-cross-{m}-{seed}', 2*m,
+                                  regions, initial, batches,
+                                  {'equality_regions':True,'seed':seed+m*100})
+    return rows
+
+
+def suite_general():
+    rows = []
+    for n in [6,9,12]:
+        for seed in range(12):
+            rng = random.Random(33000+100*n+seed)
+            regions = [list(range(i,i+3)) for i in range(0,n,3)]
+            initial = []
+            for r in regions:
+                for _ in range(2):
+                    initial.append([(v+1)*(1 if rng.getrandbits(1) else -1)
+                                    for v in rng.sample(r,2)])
+            batches=[]
+            for k in range(10):
+                width = 1 if k==7 and seed%3==0 else 3
+                batches.append([[(v+1)*(1 if rng.getrandbits(1) else -1)
+                                  for v in rng.sample(range(n),width)]])
+            rows += run_sequence('general', f'general-{n}-{seed}', n, regions, initial,
+                                 batches, {'seed':33000+100*n+seed}, compare_fresh=False)
+    return rows
+
+
+def suite_edge_cases():
+    rows=[]
+    for name,initial,batches in [
+        ('hidden-equality',[[-1,2],[1,-2],[1],[3],[1,3]],[[[-3,2]]]),
+        ('hidden-inequality',[[1,2],[-1,-2],[1],[3],[1,3]],[[[-3,2]]]),
+        ('empty-clause',[],[[[]]]),
+        ('tautology-duplicates',[],[[[1,-1]],[[1,1,3]],[[1,1,3]],[[-1]],[[-3]]]),
+        ('unit-conflict',[],[[[1]],[[-1]]]),
+    ]:
+        rows += run_sequence('edge_cases',name,3,[[0,1],[2]],initial,batches)
+    return rows
+
+SUITES = {'replay':suite_replay,'chains':suite_chains,'cliques':suite_cliques,
+          'grids':suite_grids,'random_cross':suite_random_cross,'general':suite_general,
+          'edge_cases':suite_edge_cases}
+
+
+def main():
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--suites',nargs='+',choices=list(SUITES),default=list(SUITES))
+    args=parser.parse_args()
+    for suite in args.suites:
+        start=perf_counter()
+        rows=SUITES[suite]()
+        output={'schema':'stone003b-v1','suite':suite,'date_local':'2026-11-04',
+                'environment':{'python':sys.version,'platform':platform.platform()},
+                'max_bucket_rows':ROW_CAP,'run_seconds':perf_counter()-start,'rows':rows}
+        (HERE/f'results_{suite}.json').write_text(json.dumps(output,indent=2)+'\n')
+        print(f'SAVED {suite}: {len(rows)} snapshots; {output["run_seconds"]:.3f}s',flush=True)
+
+if __name__=='__main__':
+    main()

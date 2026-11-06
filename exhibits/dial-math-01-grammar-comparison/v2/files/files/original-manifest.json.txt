@@ -1,0 +1,26 @@
+{
+  "blind_phase": "retrospective computational holdout, not prospective blind",
+  "completed_at": "2026-10-14",
+  "draws_per_null_per_variant": 399,
+  "eligible_cells": 60,
+  "eligible_tokens": 237,
+  "experiment": "PHAISTOS DIAL \u2014 MATH-01",
+  "files": {
+    "MATH-01-CONTROLS.md": "e0c7e30cd97c618a2b0d5c18864df0f7fb5a4480e7e86cb6f6b1feae8c1df533",
+    "MATH-01-NEXT.md": "4e35c88cc7efe2e50ec228025b0213bb7d113af1c1e8fbe492d73a6af70a20b0",
+    "MATH-01-REPORT.md": "19c8b12bad445ad3bc6d9b8eea8097090432018242fb7b4b4b9ff692f4bf6430",
+    "MATH-01-REPRODUCIBILITY/PLAN-FROZEN.md": "e207ffe22f4ed495f0f71ca4d619427a6c1808df8759ae86d41ca22b866f5bdf",
+    "MATH-01-REPRODUCIBILITY/folds.json": "9f651d391a2dc57b7039ee2840a5ac8fdf2f24b3258910ef77d4e61489be263b",
+    "MATH-01-REPRODUCIBILITY/results.json": "34a2373482fcf42fb7403df2a2c6f39f685e473723d2e4f64c94d88c91581e7a",
+    "MATH-01-REPRODUCIBILITY/run_math01.py": "ab3743a646d7adce20738c1e3f9f3b8e3f2fb08f93e59995eca066b9a241e043",
+    "MATH-01-REPRODUCIBILITY/verify_math01.py": "7c684d43654395ff2ca2bbfd980e21e2c458f15420cf71a3cefe0276c678e406",
+    "MATH-01-ROLE-TABLE.csv": "0b171bf32d62f429df6dc5bb99fe744f9bb36741199ed4b34834288b300d9ce1",
+    "inputs/corpus_masked.json": "18ee5ac70b21696e7ed60616e3a265eaf0261fdd49779464e254a7e916f74a24"
+  },
+  "freeze_plan_sha256": "e207ffe22f4ed495f0f71ca4d619427a6c1808df8759ae86d41ca22b866f5bdf",
+  "freeze_script_sha256": "ab3743a646d7adce20738c1e3f9f3b8e3f2fb08f93e59995eca066b9a241e043",
+  "python_standard_library_only": true,
+  "seed": 20261014,
+  "source_original": "inputs/corpus_masked.json",
+  "source_sha256": "18ee5ac70b21696e7ed60616e3a265eaf0261fdd49779464e254a7e916f74a24"
+}

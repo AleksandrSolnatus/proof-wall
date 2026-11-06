@@ -1,0 +1,350 @@
+#!/usr/bin/env python3
+import argparse, csv, gzip, hashlib, json, math, platform, random, sys, time
+from collections import Counter, defaultdict
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+INPUT = ROOT / "source" / "original" / "corpus_masked.json"
+PROTOCOL = ROOT / "reference" / "P6_R1_FROZEN_Robustness_Protocol_2026-09-29.md"
+BASELINE_PROTOCOL = ROOT / "reference" / "NULL_PROTOCOL_FROZEN.md"
+BASELINE_RESULTS = ROOT / "reference" / "P6_NULL_RESULTS.json"
+DRAWS = 200_000
+SEEDS = {"S07": 2026092901, "S25": 2026092902}
+FIXED_BLOCKS = {
+    "Pen": [
+        tuple(f"C{i:02d}" for i in range(13, 18)),
+        tuple(f"C{i:02d}" for i in range(19, 24)),
+    ],
+    "Pencil": [],
+}
+EXPECTED_SOURCE_SHA256 = "18ee5ac70b21696e7ed60616e3a265eaf0261fdd49779464e254a7e916f74a24"
+EXPECTED_PROTOCOL_SHA256 = "9edbcc7330a402526f27db1b4085ddfa7aca97748dcc97a47e5b74104cbfb29e"
+EXPECTED_BASELINE_PROTOCOL_SHA256 = "dc121a0a48989e6efe1426da32ae6c650314014dd673579c95cd96aa04ee4976"
+
+
+def sha256(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def load_cells(c28_final):
+    raw = json.load(open(INPUT, "r", encoding="utf-8"))
+    cells = []
+    for x in raw["cells"]:
+        if x["face"] == "Pen" and x["cell"] == "C08":
+            continue
+        signs = list(x["signs"])
+        if x["face"] == "Pencil" and x["cell"] == "C24":
+            signs = ["S07" if s == "[MASK]" else s for s in signs]
+        if x["face"] == "Pencil" and x["cell"] == "C28":
+            signs[-1] = c28_final
+        cells.append({"face": x["face"], "cell": x["cell"], "signs": tuple(signs)})
+    return cells
+
+
+def by_face(cells):
+    out = defaultdict(list)
+    for c in cells:
+        out[c["face"]].append(c)
+    for f in out:
+        out[f].sort(key=lambda c: int(c["cell"][1:]))
+    return dict(out)
+
+
+def make_fixed_units(cells):
+    faces = by_face(cells)
+    out = {}
+    for face, fcells in faces.items():
+        addr_map = {c["cell"]: c for c in fcells}
+        used = set()
+        units = []
+        for block_addresses in FIXED_BLOCKS.get(face, []):
+            if any(a not in addr_map for a in block_addresses):
+                raise RuntimeError(f"Missing fixed block address in {face}: {block_addresses}")
+            nums = [int(a[1:]) for a in block_addresses]
+            if nums != list(range(nums[0], nums[-1] + 1)):
+                raise RuntimeError(f"Non-consecutive fixed block: {block_addresses}")
+            if any(a in used for a in block_addresses):
+                raise RuntimeError(f"Overlapping fixed blocks: {block_addresses}")
+            units.append(tuple(addr_map[a] for a in block_addresses))
+            used.update(block_addresses)
+        for c in fcells:
+            if c["cell"] not in used:
+                units.append((c,))
+        out[face] = units
+    return out
+
+
+def internal_unordered_counter(cells):
+    ctr = Counter()
+    for c in cells:
+        for a, b in zip(c["signs"], c["signs"][1:]):
+            ctr[tuple(sorted((a, b)))] += 1
+    return ctr
+
+
+def internal_unordered_types(cells):
+    return set(internal_unordered_counter(cells))
+
+
+def attach_slots(expanded, slot_labels):
+    if len(expanded) != len(slot_labels):
+        raise RuntimeError("Expanded units do not fit slots.")
+    out = []
+    for c, slot in zip(expanded, slot_labels):
+        cc = dict(c)
+        cc["_slot"] = slot
+        out.append(cc)
+    return out
+
+
+def arrangement_from_observed(cells):
+    result = {}
+    for face, fcells in by_face(cells).items():
+        result[face] = attach_slots(fcells, [c["cell"] for c in fcells])
+    return result
+
+
+def valid_boundaries(assigned_by_face):
+    pairs = []
+    labels = []
+    for face, fcells in assigned_by_face.items():
+        addrs = [int(c["_slot"][1:]) for c in fcells]
+        for i in range(len(fcells) - 1):
+            if addrs[i + 1] != addrs[i] + 1:
+                continue
+            pairs.append((fcells[i]["signs"][-1], fcells[i + 1]["signs"][0]))
+            labels.append((face, fcells[i]["_slot"], fcells[i + 1]["_slot"]))
+    return pairs, labels
+
+
+def boundary_overlap_stat(assigned, internal_types):
+    pairs, _ = valid_boundaries(assigned)
+    boundary_types = {tuple(sorted(p)) for p in pairs}
+    return len(boundary_types & internal_types), boundary_types
+
+
+def sample_assignment(units_by_face, cells, rng):
+    # Intentionally mirrors P-6's sampler mechanics exactly except for fixed P6-R1 units.
+    faces = by_face(cells)
+    result = {}
+    for face, units in units_by_face.items():
+        slot_labels = [c["cell"] for c in faces[face]]
+        hole_split = 7 if face == "Pen" else None
+        while True:
+            order = list(range(len(units)))
+            rng.shuffle(order)
+            expanded = []
+            pos = 0
+            bad = False
+            for ui in order:
+                block = units[ui]
+                L = len(block)
+                if hole_split is not None and L > 1:
+                    if pos < hole_split and pos + L > hole_split:
+                        bad = True
+                        break
+                expanded.extend(block)
+                pos += L
+            if bad:
+                continue
+            result[face] = attach_slots(expanded, slot_labels)
+            break
+    return result
+
+
+def quantile_nearest(vals, q):
+    vals = sorted(vals)
+    i = int(round(q * (len(vals) - 1)))
+    return vals[i]
+
+
+def wilson_interval(k, n, z=1.959963984540054):
+    phat = k / n
+    denom = 1.0 + z * z / n
+    center = (phat + z * z / (2 * n)) / denom
+    half = z * math.sqrt(phat * (1 - phat) / n + z * z / (4 * n * n)) / denom
+    return center - half, center + half
+
+
+def flattened_counter(units):
+    ctr = Counter()
+    for face_units in units.values():
+        for unit in face_units:
+            for c in unit:
+                for a, b in zip(c["signs"], c["signs"][1:]):
+                    ctr[tuple(sorted((a, b)))] += 1
+    return ctr
+
+
+def preflight_one(c28_final):
+    cells = load_cells(c28_final)
+    faces = by_face(cells)
+    units = make_fixed_units(cells)
+    internal_ctr = internal_unordered_counter(cells)
+    obs = arrangement_from_observed(cells)
+    pairs, labels = valid_boundaries(obs)
+    t_obs, btypes = boundary_overlap_stat(obs, set(internal_ctr))
+
+    pencil = {c["cell"]: c for c in faces["Pencil"]}
+    checks = {
+        "c24_restored": list(pencil["C24"]["signs"]) == ["S07", "S45", "S07"],
+        "c28_final_exact": pencil["C28"]["signs"][-1] == c28_final,
+        "pen_c08_absent": all(c["cell"] != "C08" for c in faces["Pen"]),
+        "no_c07_c09_bridge": ("Pen", "C07", "C09") not in labels,
+        "pen_boundary_count_28": sum(1 for x in labels if x[0] == "Pen") == 28,
+        "pencil_boundary_count_29": sum(1 for x in labels if x[0] == "Pencil") == 29,
+        "pooled_boundary_count_57": len(labels) == 57,
+        "observed_T_is_6": t_obs == 6,
+        "internal_adjacency_multiset_preserved_by_units": internal_ctr == flattened_counter(units),
+        "two_pen_blocks_exact": [tuple(c["cell"] for c in u) for u in units["Pen"] if len(u) > 1] == FIXED_BLOCKS["Pen"],
+        "no_pencil_blocks": all(len(u) == 1 for u in units["Pencil"]),
+        "pen_unit_count_22": len(units["Pen"]) == 22,
+        "pencil_unit_count_30": len(units["Pencil"]) == 30,
+        "pen_unit_order_locked_then_singletons": [tuple(c["cell"] for c in u) for u in units["Pen"][:2]] == FIXED_BLOCKS["Pen"] and all(len(u) == 1 for u in units["Pen"][2:]),
+    }
+    protected = [("Pen", "C13", "C14"), ("Pen", "C14", "C15"), ("Pen", "C15", "C16"), ("Pen", "C16", "C17"),
+                 ("Pen", "C19", "C20"), ("Pen", "C20", "C21"), ("Pen", "C21", "C22"), ("Pen", "C22", "C23")]
+    checks["all_eight_within_block_boundaries_observed"] = all(p in labels for p in protected)
+    checks["four_newly_protected_boundaries_observed"] = all(p in labels for p in [
+        ("Pen", "C13", "C14"), ("Pen", "C16", "C17"), ("Pen", "C19", "C20"), ("Pen", "C22", "C23")])
+    checks["all_checks_pass"] = all(checks.values())
+    return {
+        "c28_final": c28_final,
+        "checks": checks,
+        "cell_counts": {f: len(v) for f, v in faces.items()},
+        "unit_addresses": {f: [[c["cell"] for c in u] for u in us] for f, us in units.items()},
+        "boundary_counts": {
+            "Pen": sum(1 for x in labels if x[0] == "Pen"),
+            "Pencil": sum(1 for x in labels if x[0] == "Pencil"),
+            "pooled": len(labels),
+        },
+        "observed_primary_stat": t_obs,
+        "observed_unique_unordered_boundary_types": len(btypes),
+        "internal_unordered_type_count": len(internal_ctr),
+        "internal_unordered_adjacency_total": sum(internal_ctr.values()),
+    }
+
+
+def preflight():
+    identity = {
+        "source_sha256": sha256(INPUT),
+        "source_sha256_expected": EXPECTED_SOURCE_SHA256,
+        "p6_r1_protocol_sha256": sha256(PROTOCOL),
+        "p6_r1_protocol_sha256_expected": EXPECTED_PROTOCOL_SHA256,
+        "baseline_protocol_sha256": sha256(BASELINE_PROTOCOL),
+        "baseline_protocol_sha256_expected": EXPECTED_BASELINE_PROTOCOL_SHA256,
+        "baseline_results_sha256": sha256(BASELINE_RESULTS),
+    }
+    identity["all_identity_checks_pass"] = (
+        identity["source_sha256"] == EXPECTED_SOURCE_SHA256
+        and identity["p6_r1_protocol_sha256"] == EXPECTED_PROTOCOL_SHA256
+        and identity["baseline_protocol_sha256"] == EXPECTED_BASELINE_PROTOCOL_SHA256
+    )
+    runs = [preflight_one("S07"), preflight_one("S25")]
+    out = {
+        "status": "PASS" if identity["all_identity_checks_pass"] and all(r["checks"]["all_checks_pass"] for r in runs) else "FAIL",
+        "runtime": {"python": sys.version, "implementation": platform.python_implementation(), "platform": platform.platform()},
+        "identity": identity,
+        "readings": runs,
+    }
+    (ROOT / "preflight" / "P6_R1_PREFLIGHT.json").write_text(json.dumps(out, indent=2), encoding="utf-8")
+    return out
+
+
+def run_one(c28_final, seed):
+    cells = load_cells(c28_final)
+    units = make_fixed_units(cells)
+    internal = internal_unordered_types(cells)
+    obs_assign = arrangement_from_observed(cells)
+    obs, obs_boundary_types = boundary_overlap_stat(obs_assign, internal)
+    if obs != 6:
+        raise RuntimeError(f"Observed T precondition failed for {c28_final}: {obs}")
+    rng = random.Random(seed)
+    vals = []
+    le = 0
+    accepted = 0
+    start = time.perf_counter()
+    for _ in range(DRAWS):
+        assn = sample_assignment(units, cells, rng)
+        st, _ = boundary_overlap_stat(assn, internal)
+        vals.append(st)
+        accepted += 1
+        if st <= obs:
+            le += 1
+    elapsed = time.perf_counter() - start
+    counts = Counter(vals)
+    raw_tail = le / DRAWS
+    mc_p = (le + 1) / (DRAWS + 1)
+    wlo, whi = wilson_interval(le, DRAWS)
+    raw_path = ROOT / "raw" / f"P6_R1_T_{c28_final}.csv.gz"
+    with gzip.open(raw_path, "wt", encoding="utf-8", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["accepted_draw", "T"])
+        for i, v in enumerate(vals, 1):
+            w.writerow([i, v])
+    return {
+        "c28_final": c28_final,
+        "seed": seed,
+        "accepted_draws": accepted,
+        "observed_primary_stat": obs,
+        "observed_unique_unordered_boundary_types": len(obs_boundary_types),
+        "internal_unordered_type_count": len(internal),
+        "lower_tail_count_le_observed": le,
+        "lower_tail_frequency": raw_tail,
+        "monte_carlo_p_add_one": mc_p,
+        "reference_mean": sum(vals) / len(vals),
+        "q025_nearest_index": quantile_nearest(vals, 0.025),
+        "q975_nearest_index": quantile_nearest(vals, 0.975),
+        "wilson_95_raw_tail": [wlo, whi],
+        "wilson_spans_0_05": wlo <= 0.05 <= whi,
+        "distribution_counts": {str(k): v for k, v in sorted(counts.items())},
+        "min": min(vals),
+        "max": max(vals),
+        "elapsed_seconds": elapsed,
+        "raw_draw_file": str(raw_path.relative_to(ROOT)),
+        "raw_draw_sha256": sha256(raw_path),
+        "weakening_criterion_met": mc_p >= 0.05,
+    }
+
+
+def execute():
+    pf = json.loads((ROOT / "preflight" / "P6_R1_PREFLIGHT.json").read_text(encoding="utf-8"))
+    if pf.get("status") != "PASS":
+        raise RuntimeError("Preflight is not PASS; refusing Monte Carlo execution.")
+    results = {
+        "title": "P6-R1 one-cell-context robustness execution",
+        "status": "EXECUTED",
+        "scope": "One frozen exposed sensitivity test; no P-6 rerun",
+        "draw_budget_per_reading": DRAWS,
+        "runs": [run_one("S07", SEEDS["S07"]), run_one("S25", SEEDS["S25"])],
+    }
+    maxp = max(r["monte_carlo_p_add_one"] for r in results["runs"])
+    weakened = any(r["weakening_criterion_met"] for r in results["runs"])
+    results["overall"] = {
+        "governing_max_add_one_probability": maxp,
+        "observation_weakened_under_followup": weakened,
+        "survives_this_particular_sensitivity_check": not weakened,
+        "responsible_readings": [r["c28_final"] for r in results["runs"] if r["weakening_criterion_met"]],
+        "numerically_borderline_readings": [r["c28_final"] for r in results["runs"] if r["wilson_spans_0_05"]],
+    }
+    out = ROOT / "results" / "P6_R1_RESULTS.json"
+    out.write_text(json.dumps(results, indent=2), encoding="utf-8")
+    return results
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("mode", choices=["preflight", "execute"])
+    args = ap.parse_args()
+    if args.mode == "preflight":
+        print(json.dumps(preflight(), indent=2))
+    else:
+        print(json.dumps(execute(), indent=2))
+
+
+if __name__ == "__main__":
+    main()

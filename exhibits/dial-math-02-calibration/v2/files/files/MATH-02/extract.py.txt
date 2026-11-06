@@ -1,0 +1,56 @@
+import pathlib,re,json,csv,hashlib,collections
+P=pathlib.Path(__file__).resolve().parent
+S=P/'sources'
+def read(name):
+ b=(S/name).read_bytes()
+ try:return b.decode('utf8'),'utf8'
+ except UnicodeDecodeError:return b.decode('latin1'),'latin1'
+rows=[]
+def add(cl,source,values):
+ assert len(values)>=12,(source,len(values))
+ for n,v in enumerate(values[:12]):rows.append(dict(category=cl,source=source,source_cell=n+1,**v))
+for name in ['wentworth','couturat','thompson','whitehead','demorgan_calculus']:
+ s,enc=read(name+'.tex');start=s.index(r'\begin{document}');seen=set();vals=[]
+ for m in re.finditer(r'(?<!\\)\$([^$]*?)(?<!\\)\$',s[start:],re.S):
+  q=re.sub(r'\s+','',m[1])
+  if 3<=len(q)<=8 and re.fullmatch(r"[A-Za-z0-9+\-=<>*/^()']+",q) and re.search(r'[+\-=<>*/^]',q) and q not in seen:
+   seen.add(q);vals.append(dict(original=m[1],tokens=list(q),locator={'character_offset':start+m.start(),'encoding':enc}))
+ add('math',name,vals)
+for name,anchor in [('alice.raw','Alice was beginning'),('austen.txt','It is a truth'),('doyle.txt','To Sherlock Holmes'),('shelley.txt','You will rejoice'),('twain.txt','TOM!”')]:
+ s,enc=read(name);start=s.index(anchor);vals=[]
+ for m in re.finditer('[A-Za-z]+',s[start:]):
+  vals.append(dict(original=m[0],tokens=list(m[0]),locator={'character_offset':start+m.start(),'encoding':enc,'anchor':anchor}))
+  if len(vals)==12:break
+ add('language',name,vals)
+for name,field in [('methods.csv','Method Name'),('protocols.csv','Keyword'),('services.csv','Service Name')]:
+ vals=[];seen=set()
+ for i,r in enumerate(csv.DictReader(read(name)[0].splitlines()),2):
+  q=r[field]
+  if re.fullmatch('[A-Za-z0-9-]{2,8}',q) and q not in seen:
+   seen.add(q);vals.append(dict(original=q,tokens=list(q),locator={'csv_record_index':i,'field':field}))
+ add('registry',name,vals)
+vals=[]
+for i,line in enumerate(read('iana.raw')[0].splitlines(),1):
+ if line and not line.startswith('#'):
+  q=line.split('\t')[0];vals.append(dict(original=q,tokens=list(q),locator={'line':i,'field':'country code'}))
+add('registry','iana.raw',vals)
+vals=[]
+for i,block in enumerate(read('languages.txt')[0].split('%%')):
+ fields=dict(line.split(': ',1) for line in block.splitlines() if ': ' in line and not line.startswith(' '))
+ if fields.get('Type')=='language' and re.fullmatch('[A-Za-z0-9-]{2,8}',fields.get('Subtag','')):
+  q=fields['Subtag'];vals.append(dict(original=q,tokens=list(q),locator={'registry_record_index':i,'field':'Subtag','type':'language'}))
+add('registry','languages.txt',vals)
+maps={}
+for cl in ['math','language','registry']:
+ alphabet=sorted({t for r in rows if r['category']==cl for t in r['tokens']})
+ maps[cl]={t:f'S{i+1:02d}' for i,t in enumerate(alphabet)}
+ for r in rows:
+  if r['category']==cl:r['signs']=[maps[cl][t] for t in r['tokens']]
+(P/'controls.json').write_text(json.dumps({'symbol_maps':maps,'cells':rows},indent=2)+'\n')
+urls=json.loads((S/'math_urls.json').read_text());urls={k+'.tex':v for k,v in urls.items()}
+urls.update(json.loads((S/'other_urls.json').read_text()))
+urls.update({'alice.raw':'https://www.gutenberg.org/cache/epub/11/pg11.txt','iana.raw':'https://data.iana.org/time-zones/tzdb-2024a/iso3166.tab','demorgan.raw':'https://www.gutenberg.org/cache/epub/68662/pg68662-images.html'})
+(P/'SOURCE-MANIFEST.json').write_text(json.dumps({k:{'url':v,'sha256':hashlib.sha256((S/k).read_bytes()).hexdigest(),'bytes':(S/k).stat().st_size,'used':any(r['source']==k or r['source']+'.tex'==k for r in rows)} for k,v in urls.items()},indent=2)+'\n')
+for cl in maps:
+ rr=[r for r in rows if r['category']==cl]
+ print(cl,'cells',len(rr),'tokens',sum(len(r['tokens']) for r in rr),'types',len(maps[cl]))

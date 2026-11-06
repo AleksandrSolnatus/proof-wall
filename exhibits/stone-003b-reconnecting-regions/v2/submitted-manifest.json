@@ -1,0 +1,193 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "The recorded finite sequence experiments and their exact-count checks, including an explicit resource stop. Neither this method nor its comparison establishes an arbitrary-SAT complexity bound.",
+  "date": "2026-11-04",
+  "files": [
+    {
+      "attribution": "The Bridges Group — MATH / Stones; prepared from completed research records.",
+      "bytes": 2253,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "article",
+      "sha256": "60ec56a88178fcecf8f0dd6be831d42b3afb863a83c1a8731b6fb754d2766d4a"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Stones; original authors/contributors as credited in retained source.",
+      "bytes": 14732,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/benchmark.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "386ed20b4db366bc0fbe9df3a75db3c21d0194541a1b77fd931e7cbd9e06288c"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Stones; original authors/contributors as credited in retained source.",
+      "bytes": 736,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/independent-check.log.txt",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "505c684151d868fdc95d8124c905c6aa0519a23b0f0e2157071efa041bb4ac08"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Stones; original authors/contributors as credited in retained source.",
+      "bytes": 6855,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/independent_check.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "53bf8a5d189b5da5bc124a251434acc840644591427850f6dd224fbe34fbae62"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Stones; original authors/contributors as credited in retained source.",
+      "bytes": 12729,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/interface_engine.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "962c258638e0a4df668ea62cf3ce286cef06b33d4b6c5cc5510a5efce5415f00"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Stones; original authors/contributors as credited in retained source.",
+      "bytes": 6745,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/method-and-proof.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "proof",
+      "sha256": "84c422dbc7c9f46f348ed28b92348d5566e84602d89d3016baafd3ed328eb6b5"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Stones; original authors/contributors as credited in retained source.",
+      "bytes": 4269,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/original-manifest.sha256.txt",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "3a76a45ceb2be44d66e6eee6a6c229b1664c8804e5c03eed1336c4583c7f0205"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Stones; original authors/contributors as credited in retained source.",
+      "bytes": 2110,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/original-readme.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "original",
+      "sha256": "8722ba7537836d24fd49b329d8d0215623ea69c5a7c4e07c03e4a18c80154972"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Stones; original authors/contributors as credited in retained source.",
+      "bytes": 15098,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/report.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "original",
+      "sha256": "e7dbe7a3833b06f5a13e2c30f470d774d5365043d126e5a5e27b2eb20b5124d1"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Stones; original authors/contributors as credited in retained source.",
+      "bytes": 140738,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/results-cliques.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "1fa969c1429a7c9328f81e756f4e192aecb7fb1191457822d63f05b832950014"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Stones; original authors/contributors as credited in retained source.",
+      "bytes": 58547,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/results-replay.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "078439293ba65d683defb20d938ab40251e6383531025c2342a6da206a64b334"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Stones; original authors/contributors as credited in retained source.",
+      "bytes": 473,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/run-receipt.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "7768609a40d8859cfb22a533a191769016966e77fc644c93cf6cd35978da8440"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Stones; original authors/contributors as credited in retained source.",
+      "bytes": 10297,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/run_experiments.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "9270900bb773752a8178dbf260a36a6075d5e936974648f0e131144395602ece"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Stones; original authors/contributors as credited in retained source.",
+      "bytes": 18637,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/summary.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "3587cd5725d6f9288334969487e0efd7f46e590ec02018fd1324a13c06957ceb"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Stones; original authors/contributors as credited in retained source.",
+      "bytes": 297168,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/verification.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "3bf57ab093351930a6275e30198fa6dc63a0a682090416ab101a9e18a1c2b7e8"
+    }
+  ],
+  "finding": "Exact weighted regional summaries can avoid full expansion on narrow connections; dense interactions can still exceed the chosen representation budget.",
+  "gardens": [],
+  "id": "stone-003b-reconnecting-regions",
+  "limitations": [
+    "Correlated snapshots, not 703 independent hard problems. Incremental decision diagrams beat this prototype in the four reported median comparisons.",
+    "Python 3.10 or later, standard library. Preserve the original outputs before any separately commissioned replay; timing outputs change.",
+    "Large chain/grid/general/random-cross ledgers, baseline source, history and preserved Stone 003 originals stay inside the unchanged archive. The preserved Stone 003 evidence also supports PW-004; it is not a new rerun.",
+    "This assembly inherits the recorded scientific checks and does not establish deployment behavior or public permission.",
+    "Preserved archive: STONE-003B-WHEN-THE-PIECES-RECONNECT-2026-11-04.zip. The attached files are inspection selections; they do not replace its complete runtime directory. No public archive URL or permission is implied. Full figures, historical versions and omitted dependencies remain in that archive."
+  ],
+  "method": "The archived prototype retains weighted boundary tables and cached variable-elimination calculations, compares alternative representations, and checks outputs with independent original-variable oracles.",
+  "open_questions": [
+    "Further generalization remains a separate research question; it is not a prerequisite for presenting the recorded bounded outcome."
+  ],
+  "provenance": {
+    "authors": [
+      "The Bridges Group — MATH / Stones",
+      "Original research contributors as credited in the retained experiment record"
+    ],
+    "change_note": "Version 2 is a public selected-file edition of previously checked v1. Scientific findings unchanged; the original review/archive remains in private custody.",
+    "origin": "Unchanged original archive STONE-003B-WHEN-THE-PIECES-RECONNECT-2026-11-04.zip; SHA-256 893b7d595acd73a1b5bdcab2b60640693c0963160ed511dec6ed850a522046b2. Original source authorship and verification scope remain in the report."
+  },
+  "publication": {
+    "attribution": "The Bridges Group — MATH / Stones; original research contributors as credited in retained records.",
+    "intent": "request-review",
+    "license": "All rights reserved. No new open-source license granted.",
+    "rights": "Owner-requested public reading and downloading of the selected exhibit only; preserves private originals; not an open permission for derivative commercial redistribution."
+  },
+  "question": "Can exact regional summaries answer new connecting constraints without expanding the complete connected formula?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Stone 003B: When the Pieces Reconnect",
+  "version": 2
+}

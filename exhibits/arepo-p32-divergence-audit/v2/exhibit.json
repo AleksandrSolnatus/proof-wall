@@ -1,0 +1,303 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "The completed October 2 retrospective audit and its archived numerical resolution limits, not physical-water acceptance.",
+  "date": "2026-10-02",
+  "downloads": [
+    {
+      "bytes": 2037,
+      "original_path": "article.md",
+      "sha256": "6d7ead9cd224167f166ec2d757265fb5604aadd381cd91ed33682b4f24198bc5",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 9343,
+      "original_path": "files/analysis-plan.md",
+      "sha256": "103df258d15b1475ac05ab921446a99829938713821acd6200a230618ff2ca55",
+      "url": "files/files/analysis-plan.md.txt"
+    },
+    {
+      "bytes": 21366,
+      "original_path": "files/analyze.py",
+      "sha256": "036b720cfe81706ab40d9d9eafe79c237b33a80777184051f2621510d3b4be34",
+      "url": "files/files/analyze.py.txt"
+    },
+    {
+      "bytes": 1187,
+      "original_path": "files/custody-verification.json",
+      "sha256": "bad35911826969078004f63ae4386dcc4d70f2d50d1c930cb7be4b3023c28d53",
+      "url": "files/files/custody-verification.json.txt"
+    },
+    {
+      "bytes": 3122,
+      "original_path": "files/final-review.md",
+      "sha256": "cf8e43be3859dcde2ce80247e83d26605b4ad821618aa7ceefb84eeec74395d2",
+      "url": "files/files/final-review.md.txt"
+    },
+    {
+      "bytes": 3499,
+      "original_path": "files/independent-verification.json",
+      "sha256": "76b0176e9cfd073283df9c8ec7f7bdc5611f63552c2ec4ab00ff0a899a01f096",
+      "url": "files/files/independent-verification.json.txt"
+    },
+    {
+      "bytes": 17225,
+      "original_path": "files/independent_verify.py",
+      "sha256": "1b54639a90689883cbeaa3529af092317836883e321f12cecad6660c624a7e13",
+      "url": "files/files/independent_verify.py.txt"
+    },
+    {
+      "bytes": 146737,
+      "original_path": "files/onsets.csv",
+      "sha256": "4b60f24a8de551dd593b8a6eaf54487e3bf7d44a1736638e59e90bff6c556401",
+      "url": "files/files/onsets.csv.txt"
+    },
+    {
+      "bytes": 2826,
+      "original_path": "files/original-manifest.sha256.txt",
+      "sha256": "51456d337b730ac07c6b7a5a7025dfd2eb3c169c0a16ac408532677c2f0fb7c6",
+      "url": "files/files/original-manifest.sha256.txt.txt"
+    },
+    {
+      "bytes": 2691,
+      "original_path": "files/original-readme.md",
+      "sha256": "2912c20a018e1e2b3e250d97fe17e70998b7d11244b3e10dfebe67cf4e469e6d",
+      "url": "files/files/original-readme.md.txt"
+    },
+    {
+      "bytes": 12518,
+      "original_path": "files/report.md",
+      "sha256": "2f64584ad931699f76add65c5ce74a3748b89e0fb9bc471bc94c428baf8574f8",
+      "url": "files/files/report.md.txt"
+    },
+    {
+      "bytes": 3881,
+      "original_path": "files/reproduce-public-excerpt.md",
+      "sha256": "2e1c5c3d9e75026af1a1aeff588a045b424def4d53f8c9c5efcef6caad728a34",
+      "url": "files/files/reproduce-public-excerpt.md.txt"
+    },
+    {
+      "bytes": 7548,
+      "original_path": "files/schema-implementation.json",
+      "sha256": "779d2273f5def750e22cad49d51df3c2c45e49457ab80a4661c6346c8f0869ee",
+      "url": "files/files/schema-implementation.json.txt"
+    },
+    {
+      "bytes": 2547,
+      "original_path": "files/test_analysis.py",
+      "sha256": "6c42f3455298ef513f201cff9914bad5ced435de740ca688a8d29e7a2e2e0f68",
+      "url": "files/files/test_analysis.py.txt"
+    },
+    {
+      "bytes": 3285,
+      "original_path": "files/verify_custody.py",
+      "sha256": "1f11a5f87195bac3cd06e4edd01ca94d6326008ae82f67b290957ff85e7fa664",
+      "url": "files/files/verify_custody.py.txt"
+    },
+    {
+      "bytes": 164811,
+      "original_path": "files/window-summary.csv",
+      "sha256": "9705206f9e922f587f19c934ab8bda91bd99d31be775a8cc9894af6bc8f105ed",
+      "url": "files/files/window-summary.csv.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "The Bridges Group — Arepo; prepared from completed research records.",
+      "bytes": 2037,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "article",
+      "sha256": "6d7ead9cd224167f166ec2d757265fb5604aadd381cd91ed33682b4f24198bc5"
+    },
+    {
+      "attribution": "The Bridges Group — Arepo; original authors/contributors as credited in retained source.",
+      "bytes": 9343,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/analysis-plan.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "original",
+      "sha256": "103df258d15b1475ac05ab921446a99829938713821acd6200a230618ff2ca55"
+    },
+    {
+      "attribution": "The Bridges Group — Arepo; original authors/contributors as credited in retained source.",
+      "bytes": 21366,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/analyze.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "036b720cfe81706ab40d9d9eafe79c237b33a80777184051f2621510d3b4be34"
+    },
+    {
+      "attribution": "The Bridges Group — Arepo; original authors/contributors as credited in retained source.",
+      "bytes": 1187,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/custody-verification.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "bad35911826969078004f63ae4386dcc4d70f2d50d1c930cb7be4b3023c28d53"
+    },
+    {
+      "attribution": "The Bridges Group — Arepo; original authors/contributors as credited in retained source.",
+      "bytes": 3122,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/final-review.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "cf8e43be3859dcde2ce80247e83d26605b4ad821618aa7ceefb84eeec74395d2"
+    },
+    {
+      "attribution": "The Bridges Group — Arepo; original authors/contributors as credited in retained source.",
+      "bytes": 3499,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/independent-verification.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "76b0176e9cfd073283df9c8ec7f7bdc5611f63552c2ec4ab00ff0a899a01f096"
+    },
+    {
+      "attribution": "The Bridges Group — Arepo; original authors/contributors as credited in retained source.",
+      "bytes": 17225,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/independent_verify.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "1b54639a90689883cbeaa3529af092317836883e321f12cecad6660c624a7e13"
+    },
+    {
+      "attribution": "The Bridges Group — Arepo; original authors/contributors as credited in retained source.",
+      "bytes": 146737,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/csv",
+      "path": "files/onsets.csv",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "4b60f24a8de551dd593b8a6eaf54487e3bf7d44a1736638e59e90bff6c556401"
+    },
+    {
+      "attribution": "The Bridges Group — Arepo; original authors/contributors as credited in retained source.",
+      "bytes": 2826,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/original-manifest.sha256.txt",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "51456d337b730ac07c6b7a5a7025dfd2eb3c169c0a16ac408532677c2f0fb7c6"
+    },
+    {
+      "attribution": "The Bridges Group — Arepo; original authors/contributors as credited in retained source.",
+      "bytes": 2691,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/original-readme.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "original",
+      "sha256": "2912c20a018e1e2b3e250d97fe17e70998b7d11244b3e10dfebe67cf4e469e6d"
+    },
+    {
+      "attribution": "The Bridges Group — Arepo; original authors/contributors as credited in retained source.",
+      "bytes": 12518,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/report.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "original",
+      "sha256": "2f64584ad931699f76add65c5ce74a3748b89e0fb9bc471bc94c428baf8574f8"
+    },
+    {
+      "attribution": "Public redacted excerpt of original research file; source retained unchanged in private archive.",
+      "bytes": 3881,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/reproduce-public-excerpt.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "2e1c5c3d9e75026af1a1aeff588a045b424def4d53f8c9c5efcef6caad728a34"
+    },
+    {
+      "attribution": "The Bridges Group — Arepo; original authors/contributors as credited in retained source.",
+      "bytes": 7548,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/schema-implementation.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "779d2273f5def750e22cad49d51df3c2c45e49457ab80a4661c6346c8f0869ee"
+    },
+    {
+      "attribution": "The Bridges Group — Arepo; original authors/contributors as credited in retained source.",
+      "bytes": 2547,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/test_analysis.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "6c42f3455298ef513f201cff9914bad5ced435de740ca688a8d29e7a2e2e0f68"
+    },
+    {
+      "attribution": "The Bridges Group — Arepo; original authors/contributors as credited in retained source.",
+      "bytes": 3285,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/verify_custody.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "1f11a5f87195bac3cd06e4edd01ca94d6326008ae82f67b290957ff85e7fa664"
+    },
+    {
+      "attribution": "The Bridges Group — Arepo; original authors/contributors as credited in retained source.",
+      "bytes": 164811,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/csv",
+      "path": "files/window-summary.csv",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "9705206f9e922f587f19c934ab8bda91bd99d31be775a8cc9894af6bc8f105ed"
+    }
+  ],
+  "finding": "The prepared existing-data audit is complete. Its recorded observations do not identify one uniquely first causal stage at the saved time resolution. Rain remains scientifically unresolved.",
+  "gardens": [],
+  "id": "arepo-p32-divergence-audit",
+  "limitations": [
+    "Quarter-second aggregate observations cannot recover an unrecorded within-step causal order.",
+    "The original P-29/P-30 archives are exact external dependencies; they are not included in this staging packet.",
+    "The optional regression against the earlier narrower audit needs that separate pinned source.",
+    "No native app, physical system, new trajectory or solver is tested by this assembly.",
+    "Preserved archive: P32_Divergence_Onset_Audit_Completed_2026-10-02.zip. The attached files are inspection selections; they do not replace its complete runtime directory. No public archive URL or permission is implied. Full figures, historical versions and omitted dependencies remain in that archive.",
+    "Public source selections omit specified private identifiers or provenance-sensitive inputs; private originals and source hashes remain preserved."
+  ],
+  "method": "The historical audit compares existing saved observables, intervals and event records under its frozen analysis plan. The packet contains that analysis source, full outputs and recorded independent checks; no analyzer or solver is executed now.",
+  "open_questions": [
+    "A separately authorized finer-observation study could test causal order. It is not required to accept this audit as completed."
+  ],
+  "package_sha256": "07240a2d093790cf2f4b0f557ce988a26a58bf18aff6b499b9bf09e855af5e2d",
+  "provenance": {
+    "authors": [
+      "The Bridges Group — Arepo",
+      "Original research contributors as credited in the retained experiment record"
+    ],
+    "change_note": "Version 2 is a public selected-file edition of previously checked v1. Scientific findings unchanged; private source references redacted; the original review/archive remains in private custody.",
+    "origin": "Original P32_Divergence_Onset_Audit_Completed_2026-10-02.zip; SHA-256 d5eacdc810ed25338e3202da5d7fd38eae4e5418b3a62763e7607c07fe1f4023. Original reports and receipts retain their own authorship and verification scope."
+  },
+  "publication": {
+    "attribution": "The Bridges Group — Arepo; original research contributors as credited in retained records.",
+    "intent": "request-review",
+    "license": "All rights reserved. No new open-source license granted.",
+    "rights": "Owner-requested public reading and downloading of the selected exhibit only; preserves private originals; not an open permission for derivative commercial redistribution."
+  },
+  "question": "What can the already-saved P-29/P-30 ledgers establish about the order of divergence, without running new simulations?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Arepo P-32 — completed divergence-onset audit",
+  "version": 2
+}

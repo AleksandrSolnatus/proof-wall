@@ -1,0 +1,29 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 1751,
+      "sha256": "b5abe95d6de5eae89b28e80d1ffe70541f5c17ff835db1346496d05143e2b6f0"
+    },
+    "exhibit.json": {
+      "bytes": 5419,
+      "sha256": "26c5bd82799f1f150ae2d1bcb8892ddad248c2874500a8fe948aee99153f4c5d"
+    },
+    "files/FROZEN_PROTOCOL.md": {
+      "bytes": 1925,
+      "sha256": "a834aa3b80cd27f1f931876ff760bbe7d9e8f5377ea3b1b03de087d7d0fffa8e"
+    },
+    "files/REPORT.md": {
+      "bytes": 5778,
+      "sha256": "f9432ae8f9bb20fa4f2ca47140a183f2a3f9ff0f2df207aa9cd9e41d56e6fa30"
+    },
+    "files/RESULTS.json": {
+      "bytes": 4980,
+      "sha256": "a19346ece2352884a4137286b4f199636d8f8a0576e5baaefafddd7f45454123"
+    },
+    "files/experiment.py": {
+      "bytes": 3443,
+      "sha256": "f9f86a6842f872e22832026916ac01a0d8bb347c3b28d3b106b83d654b6c63c5"
+    }
+  },
+  "package_sha256": "cb2fcb4ec36a3220a8e996c90db5f2f87e7c3b93cd0f0191fee101207f7c92ac"
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "private-relation-transfer-evidence-1",
+  "rulebench_commit": "8f6ef35e9282320bae6d7ec42738f454d9dbb882",
+  "lotus_commit": "38850f70d7f396b590a04e93f5966a7843f0c47d",
+  "capsule_file": "valid-0-capsule.json",
+  "capsule_bytes_sha256": "39b636f6dfe81ffb06e39daa7e29b51e7a3660d2ba86762bbbc18f6e04bb2861",
+  "proposal_file": "valid-0-proposal.json",
+  "proposal_bytes_sha256": "f14cddfa9f3463688f693eb99957ffc0d308190f5529bab4d84a24d8c32f6dbe",
+  "original_source_sha256": "85a2cca6886038925af2543594d7db3836b88c5d489de8b2e020fd9711f3adeb",
+  "original_target_sha256": "ac311804420c03b8830a1fc20863a1994992def6b29a634b4eaa00cf51ef8080",
+  "mapping": {
+    "1": 4,
+    "2": 2,
+    "3": 1
+  },
+  "lotus_problem_file": "lotus-problem.json",
+  "lotus_problem_bytes_sha256": "1d3158a9d4a548c8d0095544ec1988cef15204944b7e688f4706953d0724118e",
+  "note": "Hashes bind locally preserved bytes, not authorship or truth. Independent proof replay is required."
+}

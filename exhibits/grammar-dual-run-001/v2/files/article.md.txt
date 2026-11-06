@@ -1,0 +1,26 @@
+# Grammar Dual Run 001: stronger inference has a construction cost
+
+## Original question
+
+When do source-certified relations reduce branching, and when can repeated use repay their construction cost?
+
+## Method and recorded result
+
+The original miniature compares fixed unit propagation with predeclared certified parity relations, then tests 64 additive queries on each of two unchanged bases. The source, saved result ledgers, controls and CPU-accounting records are retained.
+
+Grammar-only resolution rose from 2/31 to 21/31 and hybrid branches fell from 69 to 38. Fresh compilation lost to the fixed hybrid in the reported timing groups; shared-base reuse repaid after sampled batches of 4 or 8 queries.
+
+## Scope and limits
+
+The original 31 finite cases and two controlled fixed-base query families; no general SAT acceleration or unseen-structure transfer.
+
+- The richer admission grammar was predeclared; it was not autonomously discovered.
+- Branch counts are not CPU time. Timing excludes research/design and independent exhaustive audits; small Python microbenchmarks are not general rankings.
+- Renaming and clause-order controls do not constitute independently sampled problems.
+- Preserved archive: MATH-GRAMMAR-DUAL-RUN-001-EVIDENCE-2026-10-15.zip. The attached files are inspection selections; they do not replace its complete runtime directory. No public archive URL or permission is implied. Full figures, historical versions and omitted dependencies remain in that archive.
+
+## Evidence available for inspection
+
+The files below preserve the selected original bytes. Existing scientific checks remain completed; this gathering adds no experiment. Source code, data and receipts are presented with the scope stated in their original records. Any original reproduction instructions describe the original archive layout, not this smaller inspection packet.
+
+Publication review covers these exact selected bytes. Full archives and any figures remain preserved separately; their public release is a separate decision.

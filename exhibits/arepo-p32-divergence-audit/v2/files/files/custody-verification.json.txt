@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "archive_commit": "1b183b96661159081d69816286a772c13424e9dc",
+  "archives": [
+    {
+      "label": "p29",
+      "file": "Rain_AC_Sensitivity_002_P29_COMPLETED.zip",
+      "bytes": 97857477,
+      "sha256": "bfa07cdb5f32a78292959c0b52614f0709685d1f9300720b2ec9d8a69ca6bc51",
+      "git_blob": "e2cbbff6b86ff26647738af7102257704a240bab",
+      "crc": "PASS",
+      "members": 514,
+      "member_hashes": "PASS",
+      "manifests": {
+        "Rain_AC_Sensitivity_002/MANIFEST.sha256": 513,
+        "Rain_AC_Sensitivity_002/inputs/MANIFEST.sha256": 20
+      }
+    },
+    {
+      "label": "p30",
+      "file": "Rain_DT_Control_003_P30_COMPLETED.zip",
+      "bytes": 22829644,
+      "sha256": "6d491c4e5c6ac006f04ae824db0ee91e1434b34fc4c5fac16972388b0b70a724",
+      "git_blob": "b73d1e3b0a68bb8ecf17ce206f6a8babf6789764",
+      "crc": "PASS",
+      "members": 445,
+      "member_hashes": "PASS",
+      "manifests": {
+        "Rain_DT_Control_003/MANIFEST.sha256": 444,
+        "Rain_DT_Control_003/PROTOCOL.sha256": 1
+      }
+    }
+  ],
+  "historical_P28_manifest": "Preserved provenance only; not interpreted as current P29 package manifest",
+  "simulation": false
+}

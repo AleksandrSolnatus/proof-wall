@@ -1,0 +1,8645 @@
+{
+  "schema": "stone003b-v1",
+  "suite": "cliques",
+  "date_local": "2026-11-04",
+  "environment": {
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41"
+  },
+  "max_bucket_rows": 262144,
+  "run_seconds": 6.15400334900005,
+  "rows": [
+    {
+      "suite": "clique",
+      "case": "clique-4-regions",
+      "step": 0,
+      "n": 8,
+      "regions": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "added_clauses": [
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          -2
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          3,
+          -4
+        ],
+        [
+          -5,
+          6
+        ],
+        [
+          5,
+          -6
+        ],
+        [
+          -7,
+          8
+        ],
+        [
+          7,
+          -8
+        ]
+      ],
+      "clauses": [
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          -2
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          3,
+          -4
+        ],
+        [
+          -5,
+          6
+        ],
+        [
+          5,
+          -6
+        ],
+        [
+          -7,
+          8
+        ],
+        [
+          7,
+          -8
+        ]
+      ],
+      "metadata": {
+        "equality_regions": true,
+        "graph": "clique",
+        "expected_count": 5
+      },
+      "interface": {
+        "local_cache_lookups": 4,
+        "local_cache_hits": 0,
+        "local_candidates": 16,
+        "local_clause_evaluations": 28,
+        "local_projection_bit_steps": 0,
+        "plan_graph_pair_visits": 0,
+        "plan_fill_pair_tests": 0,
+        "plan_candidate_visits": 0,
+        "plan_fill_edge_attempts": 0,
+        "induced_width": 0,
+        "max_bucket_variables": 0,
+        "max_bucket_rows": 0,
+        "elimination_cache_lookups": 0,
+        "elimination_key_factor_ids": 0,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 0,
+        "factor_table_lookups": 0,
+        "projection_bit_steps": 0,
+        "integer_multiplies": 4,
+        "integer_additions": 0,
+        "max_integer_bits": 5,
+        "factor_membership_tests": 0,
+        "status": "EXACT",
+        "count": 16,
+        "summary_seconds": 3.2808000014483696e-05,
+        "plan_seconds": 2.805000008265779e-06,
+        "eliminate_seconds": 1.4570000530511606e-06,
+        "query_seconds": 3.7539999993896345e-05,
+        "stored_table_cells": 4,
+        "peak_table_slots": 5,
+        "cached_elimination_tables": 0,
+        "cached_local_tables": 4,
+        "boundary_variables": 0,
+        "max_region_boundary": 0,
+        "source_clause_count": 8,
+        "source_literal_count": 16,
+        "cumulative_local_candidates": 16,
+        "cumulative_bucket_rows": 0,
+        "end_to_end_query_seconds": 4.2291999989174656e-05,
+        "ingest_seconds": 3.1669999998484855e-05,
+        "total_seconds": 7.396199998765951e-05,
+        "new_cross_rows": 0,
+        "new_boundary_variables": 0,
+        "new_routing_literal_reads": 16
+      },
+      "fresh_interface": {
+        "local_cache_lookups": 4,
+        "local_cache_hits": 0,
+        "local_candidates": 16,
+        "local_clause_evaluations": 28,
+        "local_projection_bit_steps": 0,
+        "plan_graph_pair_visits": 0,
+        "plan_fill_pair_tests": 0,
+        "plan_candidate_visits": 0,
+        "plan_fill_edge_attempts": 0,
+        "induced_width": 0,
+        "max_bucket_variables": 0,
+        "max_bucket_rows": 0,
+        "elimination_cache_lookups": 0,
+        "elimination_key_factor_ids": 0,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 0,
+        "factor_table_lookups": 0,
+        "projection_bit_steps": 0,
+        "integer_multiplies": 4,
+        "integer_additions": 0,
+        "max_integer_bits": 5,
+        "factor_membership_tests": 0,
+        "status": "EXACT",
+        "count": 16,
+        "summary_seconds": 4.9006000040208164e-05,
+        "plan_seconds": 1.354000005449052e-06,
+        "eliminate_seconds": 1.0200000133409048e-06,
+        "query_seconds": 5.180000005111651e-05,
+        "stored_table_cells": 4,
+        "peak_table_slots": 5,
+        "cached_elimination_tables": 0,
+        "cached_local_tables": 4,
+        "boundary_variables": 0,
+        "max_region_boundary": 0,
+        "source_clause_count": 8,
+        "source_literal_count": 16,
+        "cumulative_local_candidates": 16,
+        "cumulative_bucket_rows": 0,
+        "end_to_end_query_seconds": 5.458900000121503e-05,
+        "ingest_seconds": 1.755200003117352e-05,
+        "total_seconds": 7.214100003238855e-05
+      },
+      "incremental_bdd": {
+        "status": "EXACT",
+        "count": 16,
+        "reachable_nodes": 12,
+        "allocated_nodes": 64,
+        "apply_cache_entries": 48,
+        "apply_calls_new": 120,
+        "compile_or_update_seconds": 8.742700003949722e-05,
+        "count_seconds": 6.796999969083117e-06,
+        "inspection_seconds": 5.174000079932739e-06,
+        "total_seconds": 9.939800008851307e-05
+      },
+      "fresh_bdd": {
+        "status": "EXACT",
+        "count": 16,
+        "reachable_nodes": 12,
+        "allocated_nodes": 64,
+        "apply_cache_entries": 48,
+        "apply_calls_new": 120,
+        "compile_or_update_seconds": 4.6234000024014676e-05,
+        "count_seconds": 4.379999950288038e-06,
+        "inspection_seconds": 3.5089999528281623e-06,
+        "total_seconds": 5.412299992713088e-05
+      }
+    },
+    {
+      "suite": "clique",
+      "case": "clique-4-regions",
+      "step": 1,
+      "n": 8,
+      "regions": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "added_clauses": [
+        [
+          -1,
+          -3
+        ],
+        [
+          -1,
+          -5
+        ],
+        [
+          -1,
+          -7
+        ],
+        [
+          -3,
+          -5
+        ],
+        [
+          -3,
+          -7
+        ],
+        [
+          -5,
+          -7
+        ]
+      ],
+      "clauses": [
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          -2
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          3,
+          -4
+        ],
+        [
+          -5,
+          6
+        ],
+        [
+          5,
+          -6
+        ],
+        [
+          -7,
+          8
+        ],
+        [
+          7,
+          -8
+        ],
+        [
+          -1,
+          -3
+        ],
+        [
+          -1,
+          -5
+        ],
+        [
+          -1,
+          -7
+        ],
+        [
+          -3,
+          -5
+        ],
+        [
+          -3,
+          -7
+        ],
+        [
+          -5,
+          -7
+        ]
+      ],
+      "metadata": {
+        "equality_regions": true,
+        "graph": "clique",
+        "expected_count": 5
+      },
+      "interface": {
+        "local_cache_lookups": 4,
+        "local_cache_hits": 0,
+        "local_candidates": 16,
+        "local_clause_evaluations": 28,
+        "local_projection_bit_steps": 8,
+        "plan_graph_pair_visits": 6,
+        "plan_fill_pair_tests": 15,
+        "plan_candidate_visits": 10,
+        "plan_fill_edge_attempts": 4,
+        "induced_width": 3,
+        "max_bucket_variables": 4,
+        "max_bucket_rows": 16,
+        "elimination_cache_lookups": 4,
+        "elimination_key_factor_ids": 13,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 30,
+        "factor_table_lookups": 112,
+        "projection_bit_steps": 200,
+        "integer_multiplies": 113,
+        "integer_additions": 30,
+        "max_integer_bits": 3,
+        "factor_membership_tests": 23,
+        "status": "EXACT",
+        "count": 5,
+        "summary_seconds": 2.7842000008604373e-05,
+        "plan_seconds": 1.8131999922843534e-05,
+        "eliminate_seconds": 6.411300000763731e-05,
+        "query_seconds": 0.00011053800005811354,
+        "stored_table_cells": 51,
+        "peak_table_slots": 52,
+        "cached_elimination_tables": 4,
+        "cached_local_tables": 8,
+        "boundary_variables": 4,
+        "max_region_boundary": 1,
+        "source_clause_count": 14,
+        "source_literal_count": 28,
+        "cumulative_local_candidates": 32,
+        "cumulative_bucket_rows": 30,
+        "end_to_end_query_seconds": 0.00011386899996068678,
+        "ingest_seconds": 0.00010445400005210104,
+        "total_seconds": 0.00021832300001278782,
+        "new_cross_rows": 24,
+        "new_boundary_variables": 4,
+        "new_routing_literal_reads": 12
+      },
+      "fresh_interface": {
+        "local_cache_lookups": 4,
+        "local_cache_hits": 0,
+        "local_candidates": 16,
+        "local_clause_evaluations": 28,
+        "local_projection_bit_steps": 8,
+        "plan_graph_pair_visits": 6,
+        "plan_fill_pair_tests": 15,
+        "plan_candidate_visits": 10,
+        "plan_fill_edge_attempts": 4,
+        "induced_width": 3,
+        "max_bucket_variables": 4,
+        "max_bucket_rows": 16,
+        "elimination_cache_lookups": 4,
+        "elimination_key_factor_ids": 13,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 30,
+        "factor_table_lookups": 112,
+        "projection_bit_steps": 200,
+        "integer_multiplies": 113,
+        "integer_additions": 30,
+        "max_integer_bits": 3,
+        "factor_membership_tests": 23,
+        "status": "EXACT",
+        "count": 5,
+        "summary_seconds": 2.192900001318776e-05,
+        "plan_seconds": 1.4468000017586746e-05,
+        "eliminate_seconds": 5.661199998030497e-05,
+        "query_seconds": 9.345900002699636e-05,
+        "stored_table_cells": 47,
+        "peak_table_slots": 48,
+        "cached_elimination_tables": 4,
+        "cached_local_tables": 4,
+        "boundary_variables": 4,
+        "max_region_boundary": 1,
+        "source_clause_count": 14,
+        "source_literal_count": 28,
+        "cumulative_local_candidates": 16,
+        "cumulative_bucket_rows": 30,
+        "end_to_end_query_seconds": 9.622699997180462e-05,
+        "ingest_seconds": 4.4639999941864517e-05,
+        "total_seconds": 0.00014086699991366913
+      },
+      "incremental_bdd": {
+        "status": "EXACT",
+        "count": 5,
+        "reachable_nodes": 17,
+        "allocated_nodes": 99,
+        "apply_cache_entries": 92,
+        "apply_calls_new": 106,
+        "compile_or_update_seconds": 4.549099992345873e-05,
+        "count_seconds": 7.720999974480947e-06,
+        "inspection_seconds": 5.034999958297703e-06,
+        "total_seconds": 5.824699985623738e-05
+      },
+      "fresh_bdd": {
+        "status": "EXACT",
+        "count": 5,
+        "reachable_nodes": 17,
+        "allocated_nodes": 99,
+        "apply_cache_entries": 92,
+        "apply_calls_new": 226,
+        "compile_or_update_seconds": 8.230699995692703e-05,
+        "count_seconds": 6.595000058950973e-06,
+        "inspection_seconds": 3.994000053353375e-06,
+        "total_seconds": 9.289600006923138e-05
+      }
+    },
+    {
+      "suite": "clique",
+      "case": "clique-8-regions",
+      "step": 0,
+      "n": 16,
+      "regions": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          12,
+          13
+        ],
+        [
+          14,
+          15
+        ]
+      ],
+      "added_clauses": [
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          -2
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          3,
+          -4
+        ],
+        [
+          -5,
+          6
+        ],
+        [
+          5,
+          -6
+        ],
+        [
+          -7,
+          8
+        ],
+        [
+          7,
+          -8
+        ],
+        [
+          -9,
+          10
+        ],
+        [
+          9,
+          -10
+        ],
+        [
+          -11,
+          12
+        ],
+        [
+          11,
+          -12
+        ],
+        [
+          -13,
+          14
+        ],
+        [
+          13,
+          -14
+        ],
+        [
+          -15,
+          16
+        ],
+        [
+          15,
+          -16
+        ]
+      ],
+      "clauses": [
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          -2
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          3,
+          -4
+        ],
+        [
+          -5,
+          6
+        ],
+        [
+          5,
+          -6
+        ],
+        [
+          -7,
+          8
+        ],
+        [
+          7,
+          -8
+        ],
+        [
+          -9,
+          10
+        ],
+        [
+          9,
+          -10
+        ],
+        [
+          -11,
+          12
+        ],
+        [
+          11,
+          -12
+        ],
+        [
+          -13,
+          14
+        ],
+        [
+          13,
+          -14
+        ],
+        [
+          -15,
+          16
+        ],
+        [
+          15,
+          -16
+        ]
+      ],
+      "metadata": {
+        "equality_regions": true,
+        "graph": "clique",
+        "expected_count": 9
+      },
+      "interface": {
+        "local_cache_lookups": 8,
+        "local_cache_hits": 0,
+        "local_candidates": 32,
+        "local_clause_evaluations": 56,
+        "local_projection_bit_steps": 0,
+        "plan_graph_pair_visits": 0,
+        "plan_fill_pair_tests": 0,
+        "plan_candidate_visits": 0,
+        "plan_fill_edge_attempts": 0,
+        "induced_width": 0,
+        "max_bucket_variables": 0,
+        "max_bucket_rows": 0,
+        "elimination_cache_lookups": 0,
+        "elimination_key_factor_ids": 0,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 0,
+        "factor_table_lookups": 0,
+        "projection_bit_steps": 0,
+        "integer_multiplies": 8,
+        "integer_additions": 0,
+        "max_integer_bits": 9,
+        "factor_membership_tests": 0,
+        "status": "EXACT",
+        "count": 256,
+        "summary_seconds": 3.490200003852806e-05,
+        "plan_seconds": 1.7449999631935498e-06,
+        "eliminate_seconds": 1.4109999710854026e-06,
+        "query_seconds": 3.841900002043985e-05,
+        "stored_table_cells": 8,
+        "peak_table_slots": 9,
+        "cached_elimination_tables": 0,
+        "cached_local_tables": 8,
+        "boundary_variables": 0,
+        "max_region_boundary": 0,
+        "source_clause_count": 16,
+        "source_literal_count": 32,
+        "cumulative_local_candidates": 32,
+        "cumulative_bucket_rows": 0,
+        "end_to_end_query_seconds": 4.134200003136357e-05,
+        "ingest_seconds": 2.804900009323319e-05,
+        "total_seconds": 6.939100012459676e-05,
+        "new_cross_rows": 0,
+        "new_boundary_variables": 0,
+        "new_routing_literal_reads": 32
+      },
+      "fresh_interface": {
+        "local_cache_lookups": 8,
+        "local_cache_hits": 0,
+        "local_candidates": 32,
+        "local_clause_evaluations": 56,
+        "local_projection_bit_steps": 0,
+        "plan_graph_pair_visits": 0,
+        "plan_fill_pair_tests": 0,
+        "plan_candidate_visits": 0,
+        "plan_fill_edge_attempts": 0,
+        "induced_width": 0,
+        "max_bucket_variables": 0,
+        "max_bucket_rows": 0,
+        "elimination_cache_lookups": 0,
+        "elimination_key_factor_ids": 0,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 0,
+        "factor_table_lookups": 0,
+        "projection_bit_steps": 0,
+        "integer_multiplies": 8,
+        "integer_additions": 0,
+        "max_integer_bits": 9,
+        "factor_membership_tests": 0,
+        "status": "EXACT",
+        "count": 256,
+        "summary_seconds": 2.7346000024408568e-05,
+        "plan_seconds": 1.3549999948736513e-06,
+        "eliminate_seconds": 1.2299999525566818e-06,
+        "query_seconds": 3.0245999937505985e-05,
+        "stored_table_cells": 8,
+        "peak_table_slots": 9,
+        "cached_elimination_tables": 0,
+        "cached_local_tables": 8,
+        "boundary_variables": 0,
+        "max_region_boundary": 0,
+        "source_clause_count": 16,
+        "source_literal_count": 32,
+        "cumulative_local_candidates": 32,
+        "cumulative_bucket_rows": 0,
+        "end_to_end_query_seconds": 3.2455999985359085e-05,
+        "ingest_seconds": 2.333099996576493e-05,
+        "total_seconds": 5.578699995112402e-05
+      },
+      "incremental_bdd": {
+        "status": "EXACT",
+        "count": 256,
+        "reachable_nodes": 24,
+        "allocated_nodes": 224,
+        "apply_cache_entries": 192,
+        "apply_calls_new": 432,
+        "compile_or_update_seconds": 0.00015996000001905486,
+        "count_seconds": 9.033000083036313e-06,
+        "inspection_seconds": 6.419999976969848e-06,
+        "total_seconds": 0.00017541300007906102
+      },
+      "fresh_bdd": {
+        "status": "EXACT",
+        "count": 256,
+        "reachable_nodes": 24,
+        "allocated_nodes": 224,
+        "apply_cache_entries": 192,
+        "apply_calls_new": 432,
+        "compile_or_update_seconds": 0.00018847700005153456,
+        "count_seconds": 8.38899995869724e-06,
+        "inspection_seconds": 5.9909999663432245e-06,
+        "total_seconds": 0.00020285699997657503
+      }
+    },
+    {
+      "suite": "clique",
+      "case": "clique-8-regions",
+      "step": 1,
+      "n": 16,
+      "regions": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          12,
+          13
+        ],
+        [
+          14,
+          15
+        ]
+      ],
+      "added_clauses": [
+        [
+          -1,
+          -3
+        ],
+        [
+          -1,
+          -5
+        ],
+        [
+          -1,
+          -7
+        ],
+        [
+          -1,
+          -9
+        ],
+        [
+          -1,
+          -11
+        ],
+        [
+          -1,
+          -13
+        ],
+        [
+          -1,
+          -15
+        ],
+        [
+          -3,
+          -5
+        ],
+        [
+          -3,
+          -7
+        ],
+        [
+          -3,
+          -9
+        ],
+        [
+          -3,
+          -11
+        ],
+        [
+          -3,
+          -13
+        ],
+        [
+          -3,
+          -15
+        ],
+        [
+          -5,
+          -7
+        ],
+        [
+          -5,
+          -9
+        ],
+        [
+          -5,
+          -11
+        ],
+        [
+          -5,
+          -13
+        ],
+        [
+          -5,
+          -15
+        ],
+        [
+          -7,
+          -9
+        ],
+        [
+          -7,
+          -11
+        ],
+        [
+          -7,
+          -13
+        ],
+        [
+          -7,
+          -15
+        ],
+        [
+          -9,
+          -11
+        ],
+        [
+          -9,
+          -13
+        ],
+        [
+          -9,
+          -15
+        ],
+        [
+          -11,
+          -13
+        ],
+        [
+          -11,
+          -15
+        ],
+        [
+          -13,
+          -15
+        ]
+      ],
+      "clauses": [
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          -2
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          3,
+          -4
+        ],
+        [
+          -5,
+          6
+        ],
+        [
+          5,
+          -6
+        ],
+        [
+          -7,
+          8
+        ],
+        [
+          7,
+          -8
+        ],
+        [
+          -9,
+          10
+        ],
+        [
+          9,
+          -10
+        ],
+        [
+          -11,
+          12
+        ],
+        [
+          11,
+          -12
+        ],
+        [
+          -13,
+          14
+        ],
+        [
+          13,
+          -14
+        ],
+        [
+          -15,
+          16
+        ],
+        [
+          15,
+          -16
+        ],
+        [
+          -1,
+          -3
+        ],
+        [
+          -1,
+          -5
+        ],
+        [
+          -1,
+          -7
+        ],
+        [
+          -1,
+          -9
+        ],
+        [
+          -1,
+          -11
+        ],
+        [
+          -1,
+          -13
+        ],
+        [
+          -1,
+          -15
+        ],
+        [
+          -3,
+          -5
+        ],
+        [
+          -3,
+          -7
+        ],
+        [
+          -3,
+          -9
+        ],
+        [
+          -3,
+          -11
+        ],
+        [
+          -3,
+          -13
+        ],
+        [
+          -3,
+          -15
+        ],
+        [
+          -5,
+          -7
+        ],
+        [
+          -5,
+          -9
+        ],
+        [
+          -5,
+          -11
+        ],
+        [
+          -5,
+          -13
+        ],
+        [
+          -5,
+          -15
+        ],
+        [
+          -7,
+          -9
+        ],
+        [
+          -7,
+          -11
+        ],
+        [
+          -7,
+          -13
+        ],
+        [
+          -7,
+          -15
+        ],
+        [
+          -9,
+          -11
+        ],
+        [
+          -9,
+          -13
+        ],
+        [
+          -9,
+          -15
+        ],
+        [
+          -11,
+          -13
+        ],
+        [
+          -11,
+          -15
+        ],
+        [
+          -13,
+          -15
+        ]
+      ],
+      "metadata": {
+        "equality_regions": true,
+        "graph": "clique",
+        "expected_count": 9
+      },
+      "interface": {
+        "local_cache_lookups": 8,
+        "local_cache_hits": 0,
+        "local_candidates": 32,
+        "local_clause_evaluations": 56,
+        "local_projection_bit_steps": 16,
+        "plan_graph_pair_visits": 28,
+        "plan_fill_pair_tests": 378,
+        "plan_candidate_visits": 36,
+        "plan_fill_edge_attempts": 56,
+        "induced_width": 7,
+        "max_bucket_variables": 8,
+        "max_bucket_rows": 256,
+        "elimination_cache_lookups": 8,
+        "elimination_key_factor_ids": 43,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 510,
+        "factor_table_lookups": 3840,
+        "projection_bit_steps": 8200,
+        "integer_multiplies": 3841,
+        "integer_additions": 510,
+        "max_integer_bits": 4,
+        "factor_membership_tests": 127,
+        "status": "EXACT",
+        "count": 9,
+        "summary_seconds": 3.5987000046588946e-05,
+        "plan_seconds": 6.874100006371009e-05,
+        "eliminate_seconds": 0.0009425289999853703,
+        "query_seconds": 0.001047691000053419,
+        "stored_table_cells": 391,
+        "peak_table_slots": 392,
+        "cached_elimination_tables": 8,
+        "cached_local_tables": 16,
+        "boundary_variables": 8,
+        "max_region_boundary": 1,
+        "source_clause_count": 44,
+        "source_literal_count": 88,
+        "cumulative_local_candidates": 64,
+        "cumulative_bucket_rows": 510,
+        "end_to_end_query_seconds": 0.0010510949999797958,
+        "ingest_seconds": 0.00010281599998052116,
+        "total_seconds": 0.001153910999960317,
+        "new_cross_rows": 112,
+        "new_boundary_variables": 8,
+        "new_routing_literal_reads": 56
+      },
+      "fresh_interface": {
+        "local_cache_lookups": 8,
+        "local_cache_hits": 0,
+        "local_candidates": 32,
+        "local_clause_evaluations": 56,
+        "local_projection_bit_steps": 16,
+        "plan_graph_pair_visits": 28,
+        "plan_fill_pair_tests": 378,
+        "plan_candidate_visits": 36,
+        "plan_fill_edge_attempts": 56,
+        "induced_width": 7,
+        "max_bucket_variables": 8,
+        "max_bucket_rows": 256,
+        "elimination_cache_lookups": 8,
+        "elimination_key_factor_ids": 43,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 510,
+        "factor_table_lookups": 3840,
+        "projection_bit_steps": 8200,
+        "integer_multiplies": 3841,
+        "integer_additions": 510,
+        "max_integer_bits": 4,
+        "factor_membership_tests": 127,
+        "status": "EXACT",
+        "count": 9,
+        "summary_seconds": 3.5113999956593034e-05,
+        "plan_seconds": 6.986899995808926e-05,
+        "eliminate_seconds": 0.0010926490000429112,
+        "query_seconds": 0.001198078000015812,
+        "stored_table_cells": 383,
+        "peak_table_slots": 384,
+        "cached_elimination_tables": 8,
+        "cached_local_tables": 8,
+        "boundary_variables": 8,
+        "max_region_boundary": 1,
+        "source_clause_count": 44,
+        "source_literal_count": 88,
+        "cumulative_local_candidates": 32,
+        "cumulative_bucket_rows": 510,
+        "end_to_end_query_seconds": 0.0012022829999978057,
+        "ingest_seconds": 0.00015021999990949553,
+        "total_seconds": 0.0013525029999073013
+      },
+      "incremental_bdd": {
+        "status": "EXACT",
+        "count": 9,
+        "reachable_nodes": 37,
+        "allocated_nodes": 469,
+        "apply_cache_entries": 584,
+        "apply_calls_new": 868,
+        "compile_or_update_seconds": 0.0002986879999298253,
+        "count_seconds": 3.027200000360608e-05,
+        "inspection_seconds": 1.1042999972232792e-05,
+        "total_seconds": 0.0003400029999056642
+      },
+      "fresh_bdd": {
+        "status": "EXACT",
+        "count": 9,
+        "reachable_nodes": 37,
+        "allocated_nodes": 469,
+        "apply_cache_entries": 584,
+        "apply_calls_new": 1300,
+        "compile_or_update_seconds": 0.00041228099996715173,
+        "count_seconds": 1.2074999972355727e-05,
+        "inspection_seconds": 8.9369999614064e-06,
+        "total_seconds": 0.00043329299990091386
+      }
+    },
+    {
+      "suite": "clique",
+      "case": "clique-12-regions",
+      "step": 0,
+      "n": 24,
+      "regions": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          12,
+          13
+        ],
+        [
+          14,
+          15
+        ],
+        [
+          16,
+          17
+        ],
+        [
+          18,
+          19
+        ],
+        [
+          20,
+          21
+        ],
+        [
+          22,
+          23
+        ]
+      ],
+      "added_clauses": [
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          -2
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          3,
+          -4
+        ],
+        [
+          -5,
+          6
+        ],
+        [
+          5,
+          -6
+        ],
+        [
+          -7,
+          8
+        ],
+        [
+          7,
+          -8
+        ],
+        [
+          -9,
+          10
+        ],
+        [
+          9,
+          -10
+        ],
+        [
+          -11,
+          12
+        ],
+        [
+          11,
+          -12
+        ],
+        [
+          -13,
+          14
+        ],
+        [
+          13,
+          -14
+        ],
+        [
+          -15,
+          16
+        ],
+        [
+          15,
+          -16
+        ],
+        [
+          -17,
+          18
+        ],
+        [
+          17,
+          -18
+        ],
+        [
+          -19,
+          20
+        ],
+        [
+          19,
+          -20
+        ],
+        [
+          -21,
+          22
+        ],
+        [
+          21,
+          -22
+        ],
+        [
+          -23,
+          24
+        ],
+        [
+          23,
+          -24
+        ]
+      ],
+      "clauses": [
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          -2
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          3,
+          -4
+        ],
+        [
+          -5,
+          6
+        ],
+        [
+          5,
+          -6
+        ],
+        [
+          -7,
+          8
+        ],
+        [
+          7,
+          -8
+        ],
+        [
+          -9,
+          10
+        ],
+        [
+          9,
+          -10
+        ],
+        [
+          -11,
+          12
+        ],
+        [
+          11,
+          -12
+        ],
+        [
+          -13,
+          14
+        ],
+        [
+          13,
+          -14
+        ],
+        [
+          -15,
+          16
+        ],
+        [
+          15,
+          -16
+        ],
+        [
+          -17,
+          18
+        ],
+        [
+          17,
+          -18
+        ],
+        [
+          -19,
+          20
+        ],
+        [
+          19,
+          -20
+        ],
+        [
+          -21,
+          22
+        ],
+        [
+          21,
+          -22
+        ],
+        [
+          -23,
+          24
+        ],
+        [
+          23,
+          -24
+        ]
+      ],
+      "metadata": {
+        "equality_regions": true,
+        "graph": "clique",
+        "expected_count": 13
+      },
+      "interface": {
+        "local_cache_lookups": 12,
+        "local_cache_hits": 0,
+        "local_candidates": 48,
+        "local_clause_evaluations": 84,
+        "local_projection_bit_steps": 0,
+        "plan_graph_pair_visits": 0,
+        "plan_fill_pair_tests": 0,
+        "plan_candidate_visits": 0,
+        "plan_fill_edge_attempts": 0,
+        "induced_width": 0,
+        "max_bucket_variables": 0,
+        "max_bucket_rows": 0,
+        "elimination_cache_lookups": 0,
+        "elimination_key_factor_ids": 0,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 0,
+        "factor_table_lookups": 0,
+        "projection_bit_steps": 0,
+        "integer_multiplies": 12,
+        "integer_additions": 0,
+        "max_integer_bits": 13,
+        "factor_membership_tests": 0,
+        "status": "EXACT",
+        "count": 4096,
+        "summary_seconds": 4.8218999950222496e-05,
+        "plan_seconds": 3.0270000479504233e-06,
+        "eliminate_seconds": 2.2039999976186664e-06,
+        "query_seconds": 5.387900000641821e-05,
+        "stored_table_cells": 12,
+        "peak_table_slots": 13,
+        "cached_elimination_tables": 0,
+        "cached_local_tables": 12,
+        "boundary_variables": 0,
+        "max_region_boundary": 0,
+        "source_clause_count": 24,
+        "source_literal_count": 48,
+        "cumulative_local_candidates": 48,
+        "cumulative_bucket_rows": 0,
+        "end_to_end_query_seconds": 5.7771999991018674e-05,
+        "ingest_seconds": 3.792400002566865e-05,
+        "total_seconds": 9.569600001668732e-05,
+        "new_cross_rows": 0,
+        "new_boundary_variables": 0,
+        "new_routing_literal_reads": 48
+      },
+      "fresh_interface": {
+        "local_cache_lookups": 12,
+        "local_cache_hits": 0,
+        "local_candidates": 48,
+        "local_clause_evaluations": 84,
+        "local_projection_bit_steps": 0,
+        "plan_graph_pair_visits": 0,
+        "plan_fill_pair_tests": 0,
+        "plan_candidate_visits": 0,
+        "plan_fill_edge_attempts": 0,
+        "induced_width": 0,
+        "max_bucket_variables": 0,
+        "max_bucket_rows": 0,
+        "elimination_cache_lookups": 0,
+        "elimination_key_factor_ids": 0,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 0,
+        "factor_table_lookups": 0,
+        "projection_bit_steps": 0,
+        "integer_multiplies": 12,
+        "integer_additions": 0,
+        "max_integer_bits": 13,
+        "factor_membership_tests": 0,
+        "status": "EXACT",
+        "count": 4096,
+        "summary_seconds": 3.958299998885195e-05,
+        "plan_seconds": 1.7609999076739768e-06,
+        "eliminate_seconds": 1.8509999790694565e-06,
+        "query_seconds": 4.3627999957607244e-05,
+        "stored_table_cells": 12,
+        "peak_table_slots": 13,
+        "cached_elimination_tables": 0,
+        "cached_local_tables": 12,
+        "boundary_variables": 0,
+        "max_region_boundary": 0,
+        "source_clause_count": 24,
+        "source_literal_count": 48,
+        "cumulative_local_candidates": 48,
+        "cumulative_bucket_rows": 0,
+        "end_to_end_query_seconds": 4.61409999843454e-05,
+        "ingest_seconds": 3.216300001440686e-05,
+        "total_seconds": 7.830399999875226e-05
+      },
+      "incremental_bdd": {
+        "status": "EXACT",
+        "count": 4096,
+        "reachable_nodes": 36,
+        "allocated_nodes": 480,
+        "apply_cache_entries": 432,
+        "apply_calls_new": 936,
+        "compile_or_update_seconds": 0.002123684000025605,
+        "count_seconds": 1.4854000028208247e-05,
+        "inspection_seconds": 1.1950999919463356e-05,
+        "total_seconds": 0.002150488999973277
+      },
+      "fresh_bdd": {
+        "status": "EXACT",
+        "count": 4096,
+        "reachable_nodes": 36,
+        "allocated_nodes": 480,
+        "apply_cache_entries": 432,
+        "apply_calls_new": 936,
+        "compile_or_update_seconds": 0.00036030700005085237,
+        "count_seconds": 1.2091000030522991e-05,
+        "inspection_seconds": 8.310999987770629e-06,
+        "total_seconds": 0.000380709000069146
+      }
+    },
+    {
+      "suite": "clique",
+      "case": "clique-12-regions",
+      "step": 1,
+      "n": 24,
+      "regions": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          12,
+          13
+        ],
+        [
+          14,
+          15
+        ],
+        [
+          16,
+          17
+        ],
+        [
+          18,
+          19
+        ],
+        [
+          20,
+          21
+        ],
+        [
+          22,
+          23
+        ]
+      ],
+      "added_clauses": [
+        [
+          -1,
+          -3
+        ],
+        [
+          -1,
+          -5
+        ],
+        [
+          -1,
+          -7
+        ],
+        [
+          -1,
+          -9
+        ],
+        [
+          -1,
+          -11
+        ],
+        [
+          -1,
+          -13
+        ],
+        [
+          -1,
+          -15
+        ],
+        [
+          -1,
+          -17
+        ],
+        [
+          -1,
+          -19
+        ],
+        [
+          -1,
+          -21
+        ],
+        [
+          -1,
+          -23
+        ],
+        [
+          -3,
+          -5
+        ],
+        [
+          -3,
+          -7
+        ],
+        [
+          -3,
+          -9
+        ],
+        [
+          -3,
+          -11
+        ],
+        [
+          -3,
+          -13
+        ],
+        [
+          -3,
+          -15
+        ],
+        [
+          -3,
+          -17
+        ],
+        [
+          -3,
+          -19
+        ],
+        [
+          -3,
+          -21
+        ],
+        [
+          -3,
+          -23
+        ],
+        [
+          -5,
+          -7
+        ],
+        [
+          -5,
+          -9
+        ],
+        [
+          -5,
+          -11
+        ],
+        [
+          -5,
+          -13
+        ],
+        [
+          -5,
+          -15
+        ],
+        [
+          -5,
+          -17
+        ],
+        [
+          -5,
+          -19
+        ],
+        [
+          -5,
+          -21
+        ],
+        [
+          -5,
+          -23
+        ],
+        [
+          -7,
+          -9
+        ],
+        [
+          -7,
+          -11
+        ],
+        [
+          -7,
+          -13
+        ],
+        [
+          -7,
+          -15
+        ],
+        [
+          -7,
+          -17
+        ],
+        [
+          -7,
+          -19
+        ],
+        [
+          -7,
+          -21
+        ],
+        [
+          -7,
+          -23
+        ],
+        [
+          -9,
+          -11
+        ],
+        [
+          -9,
+          -13
+        ],
+        [
+          -9,
+          -15
+        ],
+        [
+          -9,
+          -17
+        ],
+        [
+          -9,
+          -19
+        ],
+        [
+          -9,
+          -21
+        ],
+        [
+          -9,
+          -23
+        ],
+        [
+          -11,
+          -13
+        ],
+        [
+          -11,
+          -15
+        ],
+        [
+          -11,
+          -17
+        ],
+        [
+          -11,
+          -19
+        ],
+        [
+          -11,
+          -21
+        ],
+        [
+          -11,
+          -23
+        ],
+        [
+          -13,
+          -15
+        ],
+        [
+          -13,
+          -17
+        ],
+        [
+          -13,
+          -19
+        ],
+        [
+          -13,
+          -21
+        ],
+        [
+          -13,
+          -23
+        ],
+        [
+          -15,
+          -17
+        ],
+        [
+          -15,
+          -19
+        ],
+        [
+          -15,
+          -21
+        ],
+        [
+          -15,
+          -23
+        ],
+        [
+          -17,
+          -19
+        ],
+        [
+          -17,
+          -21
+        ],
+        [
+          -17,
+          -23
+        ],
+        [
+          -19,
+          -21
+        ],
+        [
+          -19,
+          -23
+        ],
+        [
+          -21,
+          -23
+        ]
+      ],
+      "clauses": [
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          -2
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          3,
+          -4
+        ],
+        [
+          -5,
+          6
+        ],
+        [
+          5,
+          -6
+        ],
+        [
+          -7,
+          8
+        ],
+        [
+          7,
+          -8
+        ],
+        [
+          -9,
+          10
+        ],
+        [
+          9,
+          -10
+        ],
+        [
+          -11,
+          12
+        ],
+        [
+          11,
+          -12
+        ],
+        [
+          -13,
+          14
+        ],
+        [
+          13,
+          -14
+        ],
+        [
+          -15,
+          16
+        ],
+        [
+          15,
+          -16
+        ],
+        [
+          -17,
+          18
+        ],
+        [
+          17,
+          -18
+        ],
+        [
+          -19,
+          20
+        ],
+        [
+          19,
+          -20
+        ],
+        [
+          -21,
+          22
+        ],
+        [
+          21,
+          -22
+        ],
+        [
+          -23,
+          24
+        ],
+        [
+          23,
+          -24
+        ],
+        [
+          -1,
+          -3
+        ],
+        [
+          -1,
+          -5
+        ],
+        [
+          -1,
+          -7
+        ],
+        [
+          -1,
+          -9
+        ],
+        [
+          -1,
+          -11
+        ],
+        [
+          -1,
+          -13
+        ],
+        [
+          -1,
+          -15
+        ],
+        [
+          -1,
+          -17
+        ],
+        [
+          -1,
+          -19
+        ],
+        [
+          -1,
+          -21
+        ],
+        [
+          -1,
+          -23
+        ],
+        [
+          -3,
+          -5
+        ],
+        [
+          -3,
+          -7
+        ],
+        [
+          -3,
+          -9
+        ],
+        [
+          -3,
+          -11
+        ],
+        [
+          -3,
+          -13
+        ],
+        [
+          -3,
+          -15
+        ],
+        [
+          -3,
+          -17
+        ],
+        [
+          -3,
+          -19
+        ],
+        [
+          -3,
+          -21
+        ],
+        [
+          -3,
+          -23
+        ],
+        [
+          -5,
+          -7
+        ],
+        [
+          -5,
+          -9
+        ],
+        [
+          -5,
+          -11
+        ],
+        [
+          -5,
+          -13
+        ],
+        [
+          -5,
+          -15
+        ],
+        [
+          -5,
+          -17
+        ],
+        [
+          -5,
+          -19
+        ],
+        [
+          -5,
+          -21
+        ],
+        [
+          -5,
+          -23
+        ],
+        [
+          -7,
+          -9
+        ],
+        [
+          -7,
+          -11
+        ],
+        [
+          -7,
+          -13
+        ],
+        [
+          -7,
+          -15
+        ],
+        [
+          -7,
+          -17
+        ],
+        [
+          -7,
+          -19
+        ],
+        [
+          -7,
+          -21
+        ],
+        [
+          -7,
+          -23
+        ],
+        [
+          -9,
+          -11
+        ],
+        [
+          -9,
+          -13
+        ],
+        [
+          -9,
+          -15
+        ],
+        [
+          -9,
+          -17
+        ],
+        [
+          -9,
+          -19
+        ],
+        [
+          -9,
+          -21
+        ],
+        [
+          -9,
+          -23
+        ],
+        [
+          -11,
+          -13
+        ],
+        [
+          -11,
+          -15
+        ],
+        [
+          -11,
+          -17
+        ],
+        [
+          -11,
+          -19
+        ],
+        [
+          -11,
+          -21
+        ],
+        [
+          -11,
+          -23
+        ],
+        [
+          -13,
+          -15
+        ],
+        [
+          -13,
+          -17
+        ],
+        [
+          -13,
+          -19
+        ],
+        [
+          -13,
+          -21
+        ],
+        [
+          -13,
+          -23
+        ],
+        [
+          -15,
+          -17
+        ],
+        [
+          -15,
+          -19
+        ],
+        [
+          -15,
+          -21
+        ],
+        [
+          -15,
+          -23
+        ],
+        [
+          -17,
+          -19
+        ],
+        [
+          -17,
+          -21
+        ],
+        [
+          -17,
+          -23
+        ],
+        [
+          -19,
+          -21
+        ],
+        [
+          -19,
+          -23
+        ],
+        [
+          -21,
+          -23
+        ]
+      ],
+      "metadata": {
+        "equality_regions": true,
+        "graph": "clique",
+        "expected_count": 13
+      },
+      "interface": {
+        "local_cache_lookups": 12,
+        "local_cache_hits": 0,
+        "local_candidates": 48,
+        "local_clause_evaluations": 84,
+        "local_projection_bit_steps": 24,
+        "plan_graph_pair_visits": 66,
+        "plan_fill_pair_tests": 2145,
+        "plan_candidate_visits": 78,
+        "plan_fill_edge_attempts": 220,
+        "induced_width": 11,
+        "max_bucket_variables": 12,
+        "max_bucket_rows": 4096,
+        "elimination_cache_lookups": 12,
+        "elimination_key_factor_ids": 89,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 8190,
+        "factor_table_lookups": 94208,
+        "projection_bit_steps": 213000,
+        "integer_multiplies": 94209,
+        "integer_additions": 8190,
+        "max_integer_bits": 4,
+        "factor_membership_tests": 375,
+        "status": "EXACT",
+        "count": 13,
+        "summary_seconds": 5.5993000046328234e-05,
+        "plan_seconds": 0.00024219499994160287,
+        "eliminate_seconds": 0.024966139000071053,
+        "query_seconds": 0.025265071000035277,
+        "stored_table_cells": 4395,
+        "peak_table_slots": 4396,
+        "cached_elimination_tables": 12,
+        "cached_local_tables": 24,
+        "boundary_variables": 12,
+        "max_region_boundary": 1,
+        "source_clause_count": 90,
+        "source_literal_count": 180,
+        "cumulative_local_candidates": 96,
+        "cumulative_bucket_rows": 8190,
+        "end_to_end_query_seconds": 0.02527282300002298,
+        "ingest_seconds": 0.00023722399998860055,
+        "total_seconds": 0.025510047000011582,
+        "new_cross_rows": 264,
+        "new_boundary_variables": 12,
+        "new_routing_literal_reads": 132
+      },
+      "fresh_interface": {
+        "local_cache_lookups": 12,
+        "local_cache_hits": 0,
+        "local_candidates": 48,
+        "local_clause_evaluations": 84,
+        "local_projection_bit_steps": 24,
+        "plan_graph_pair_visits": 66,
+        "plan_fill_pair_tests": 2145,
+        "plan_candidate_visits": 78,
+        "plan_fill_edge_attempts": 220,
+        "induced_width": 11,
+        "max_bucket_variables": 12,
+        "max_bucket_rows": 4096,
+        "elimination_cache_lookups": 12,
+        "elimination_key_factor_ids": 89,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 8190,
+        "factor_table_lookups": 94208,
+        "projection_bit_steps": 213000,
+        "integer_multiplies": 94209,
+        "integer_additions": 8190,
+        "max_integer_bits": 4,
+        "factor_membership_tests": 375,
+        "status": "EXACT",
+        "count": 13,
+        "summary_seconds": 5.125899997437955e-05,
+        "plan_seconds": 0.00024224300000241783,
+        "eliminate_seconds": 0.027075340999999753,
+        "query_seconds": 0.027369687000032172,
+        "stored_table_cells": 4383,
+        "peak_table_slots": 4384,
+        "cached_elimination_tables": 12,
+        "cached_local_tables": 12,
+        "boundary_variables": 12,
+        "max_region_boundary": 1,
+        "source_clause_count": 90,
+        "source_literal_count": 180,
+        "cumulative_local_candidates": 48,
+        "cumulative_bucket_rows": 8190,
+        "end_to_end_query_seconds": 0.027377620000038405,
+        "ingest_seconds": 0.0002915640000082931,
+        "total_seconds": 0.027669184000046698
+      },
+      "incremental_bdd": {
+        "status": "EXACT",
+        "count": 13,
+        "reachable_nodes": 57,
+        "allocated_nodes": 1239,
+        "apply_cache_entries": 1796,
+        "apply_calls_new": 2926,
+        "compile_or_update_seconds": 0.0009308490000421443,
+        "count_seconds": 2.2037999997337465e-05,
+        "inspection_seconds": 1.4428999975280021e-05,
+        "total_seconds": 0.0009673160000147618
+      },
+      "fresh_bdd": {
+        "status": "EXACT",
+        "count": 13,
+        "reachable_nodes": 57,
+        "allocated_nodes": 1239,
+        "apply_cache_entries": 1796,
+        "apply_calls_new": 3862,
+        "compile_or_update_seconds": 0.0018801139999595762,
+        "count_seconds": 2.147200007129868e-05,
+        "inspection_seconds": 1.5027000017653336e-05,
+        "total_seconds": 0.0019166130000485282
+      }
+    },
+    {
+      "suite": "clique",
+      "case": "clique-16-regions",
+      "step": 0,
+      "n": 32,
+      "regions": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          12,
+          13
+        ],
+        [
+          14,
+          15
+        ],
+        [
+          16,
+          17
+        ],
+        [
+          18,
+          19
+        ],
+        [
+          20,
+          21
+        ],
+        [
+          22,
+          23
+        ],
+        [
+          24,
+          25
+        ],
+        [
+          26,
+          27
+        ],
+        [
+          28,
+          29
+        ],
+        [
+          30,
+          31
+        ]
+      ],
+      "added_clauses": [
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          -2
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          3,
+          -4
+        ],
+        [
+          -5,
+          6
+        ],
+        [
+          5,
+          -6
+        ],
+        [
+          -7,
+          8
+        ],
+        [
+          7,
+          -8
+        ],
+        [
+          -9,
+          10
+        ],
+        [
+          9,
+          -10
+        ],
+        [
+          -11,
+          12
+        ],
+        [
+          11,
+          -12
+        ],
+        [
+          -13,
+          14
+        ],
+        [
+          13,
+          -14
+        ],
+        [
+          -15,
+          16
+        ],
+        [
+          15,
+          -16
+        ],
+        [
+          -17,
+          18
+        ],
+        [
+          17,
+          -18
+        ],
+        [
+          -19,
+          20
+        ],
+        [
+          19,
+          -20
+        ],
+        [
+          -21,
+          22
+        ],
+        [
+          21,
+          -22
+        ],
+        [
+          -23,
+          24
+        ],
+        [
+          23,
+          -24
+        ],
+        [
+          -25,
+          26
+        ],
+        [
+          25,
+          -26
+        ],
+        [
+          -27,
+          28
+        ],
+        [
+          27,
+          -28
+        ],
+        [
+          -29,
+          30
+        ],
+        [
+          29,
+          -30
+        ],
+        [
+          -31,
+          32
+        ],
+        [
+          31,
+          -32
+        ]
+      ],
+      "clauses": [
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          -2
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          3,
+          -4
+        ],
+        [
+          -5,
+          6
+        ],
+        [
+          5,
+          -6
+        ],
+        [
+          -7,
+          8
+        ],
+        [
+          7,
+          -8
+        ],
+        [
+          -9,
+          10
+        ],
+        [
+          9,
+          -10
+        ],
+        [
+          -11,
+          12
+        ],
+        [
+          11,
+          -12
+        ],
+        [
+          -13,
+          14
+        ],
+        [
+          13,
+          -14
+        ],
+        [
+          -15,
+          16
+        ],
+        [
+          15,
+          -16
+        ],
+        [
+          -17,
+          18
+        ],
+        [
+          17,
+          -18
+        ],
+        [
+          -19,
+          20
+        ],
+        [
+          19,
+          -20
+        ],
+        [
+          -21,
+          22
+        ],
+        [
+          21,
+          -22
+        ],
+        [
+          -23,
+          24
+        ],
+        [
+          23,
+          -24
+        ],
+        [
+          -25,
+          26
+        ],
+        [
+          25,
+          -26
+        ],
+        [
+          -27,
+          28
+        ],
+        [
+          27,
+          -28
+        ],
+        [
+          -29,
+          30
+        ],
+        [
+          29,
+          -30
+        ],
+        [
+          -31,
+          32
+        ],
+        [
+          31,
+          -32
+        ]
+      ],
+      "metadata": {
+        "equality_regions": true,
+        "graph": "clique",
+        "expected_count": 17
+      },
+      "interface": {
+        "local_cache_lookups": 16,
+        "local_cache_hits": 0,
+        "local_candidates": 64,
+        "local_clause_evaluations": 112,
+        "local_projection_bit_steps": 0,
+        "plan_graph_pair_visits": 0,
+        "plan_fill_pair_tests": 0,
+        "plan_candidate_visits": 0,
+        "plan_fill_edge_attempts": 0,
+        "induced_width": 0,
+        "max_bucket_variables": 0,
+        "max_bucket_rows": 0,
+        "elimination_cache_lookups": 0,
+        "elimination_key_factor_ids": 0,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 0,
+        "factor_table_lookups": 0,
+        "projection_bit_steps": 0,
+        "integer_multiplies": 16,
+        "integer_additions": 0,
+        "max_integer_bits": 17,
+        "factor_membership_tests": 0,
+        "status": "EXACT",
+        "count": 65536,
+        "summary_seconds": 6.46990000632286e-05,
+        "plan_seconds": 3.6249999766369e-06,
+        "eliminate_seconds": 2.87299997125956e-06,
+        "query_seconds": 7.161100006669585e-05,
+        "stored_table_cells": 16,
+        "peak_table_slots": 17,
+        "cached_elimination_tables": 0,
+        "cached_local_tables": 16,
+        "boundary_variables": 0,
+        "max_region_boundary": 0,
+        "source_clause_count": 32,
+        "source_literal_count": 64,
+        "cumulative_local_candidates": 64,
+        "cumulative_bucket_rows": 0,
+        "end_to_end_query_seconds": 7.651599992186675e-05,
+        "ingest_seconds": 5.215600003793952e-05,
+        "total_seconds": 0.00012867199995980627,
+        "new_cross_rows": 0,
+        "new_boundary_variables": 0,
+        "new_routing_literal_reads": 64
+      },
+      "fresh_interface": {
+        "local_cache_lookups": 16,
+        "local_cache_hits": 0,
+        "local_candidates": 64,
+        "local_clause_evaluations": 112,
+        "local_projection_bit_steps": 0,
+        "plan_graph_pair_visits": 0,
+        "plan_fill_pair_tests": 0,
+        "plan_candidate_visits": 0,
+        "plan_fill_edge_attempts": 0,
+        "induced_width": 0,
+        "max_bucket_variables": 0,
+        "max_bucket_rows": 0,
+        "elimination_cache_lookups": 0,
+        "elimination_key_factor_ids": 0,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 0,
+        "factor_table_lookups": 0,
+        "projection_bit_steps": 0,
+        "integer_multiplies": 16,
+        "integer_additions": 0,
+        "max_integer_bits": 17,
+        "factor_membership_tests": 0,
+        "status": "EXACT",
+        "count": 65536,
+        "summary_seconds": 5.040200005623774e-05,
+        "plan_seconds": 2.1790000346300076e-06,
+        "eliminate_seconds": 2.3669999791309237e-06,
+        "query_seconds": 5.5298999996011844e-05,
+        "stored_table_cells": 16,
+        "peak_table_slots": 17,
+        "cached_elimination_tables": 0,
+        "cached_local_tables": 16,
+        "boundary_variables": 0,
+        "max_region_boundary": 0,
+        "source_clause_count": 32,
+        "source_literal_count": 64,
+        "cumulative_local_candidates": 64,
+        "cumulative_bucket_rows": 0,
+        "end_to_end_query_seconds": 5.8317000025454035e-05,
+        "ingest_seconds": 4.142399995998858e-05,
+        "total_seconds": 9.974099998544261e-05
+      },
+      "incremental_bdd": {
+        "status": "EXACT",
+        "count": 65536,
+        "reachable_nodes": 48,
+        "allocated_nodes": 832,
+        "apply_cache_entries": 768,
+        "apply_calls_new": 1632,
+        "compile_or_update_seconds": 0.0006029400000215901,
+        "count_seconds": 1.605800002835167e-05,
+        "inspection_seconds": 1.1801000027844566e-05,
+        "total_seconds": 0.0006307990000777863
+      },
+      "fresh_bdd": {
+        "status": "EXACT",
+        "count": 65536,
+        "reachable_nodes": 48,
+        "allocated_nodes": 832,
+        "apply_cache_entries": 768,
+        "apply_calls_new": 1632,
+        "compile_or_update_seconds": 0.00063369600002261,
+        "count_seconds": 1.560399994104955e-05,
+        "inspection_seconds": 1.1026000038327766e-05,
+        "total_seconds": 0.0006603260000019873
+      }
+    },
+    {
+      "suite": "clique",
+      "case": "clique-16-regions",
+      "step": 1,
+      "n": 32,
+      "regions": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          12,
+          13
+        ],
+        [
+          14,
+          15
+        ],
+        [
+          16,
+          17
+        ],
+        [
+          18,
+          19
+        ],
+        [
+          20,
+          21
+        ],
+        [
+          22,
+          23
+        ],
+        [
+          24,
+          25
+        ],
+        [
+          26,
+          27
+        ],
+        [
+          28,
+          29
+        ],
+        [
+          30,
+          31
+        ]
+      ],
+      "added_clauses": [
+        [
+          -1,
+          -3
+        ],
+        [
+          -1,
+          -5
+        ],
+        [
+          -1,
+          -7
+        ],
+        [
+          -1,
+          -9
+        ],
+        [
+          -1,
+          -11
+        ],
+        [
+          -1,
+          -13
+        ],
+        [
+          -1,
+          -15
+        ],
+        [
+          -1,
+          -17
+        ],
+        [
+          -1,
+          -19
+        ],
+        [
+          -1,
+          -21
+        ],
+        [
+          -1,
+          -23
+        ],
+        [
+          -1,
+          -25
+        ],
+        [
+          -1,
+          -27
+        ],
+        [
+          -1,
+          -29
+        ],
+        [
+          -1,
+          -31
+        ],
+        [
+          -3,
+          -5
+        ],
+        [
+          -3,
+          -7
+        ],
+        [
+          -3,
+          -9
+        ],
+        [
+          -3,
+          -11
+        ],
+        [
+          -3,
+          -13
+        ],
+        [
+          -3,
+          -15
+        ],
+        [
+          -3,
+          -17
+        ],
+        [
+          -3,
+          -19
+        ],
+        [
+          -3,
+          -21
+        ],
+        [
+          -3,
+          -23
+        ],
+        [
+          -3,
+          -25
+        ],
+        [
+          -3,
+          -27
+        ],
+        [
+          -3,
+          -29
+        ],
+        [
+          -3,
+          -31
+        ],
+        [
+          -5,
+          -7
+        ],
+        [
+          -5,
+          -9
+        ],
+        [
+          -5,
+          -11
+        ],
+        [
+          -5,
+          -13
+        ],
+        [
+          -5,
+          -15
+        ],
+        [
+          -5,
+          -17
+        ],
+        [
+          -5,
+          -19
+        ],
+        [
+          -5,
+          -21
+        ],
+        [
+          -5,
+          -23
+        ],
+        [
+          -5,
+          -25
+        ],
+        [
+          -5,
+          -27
+        ],
+        [
+          -5,
+          -29
+        ],
+        [
+          -5,
+          -31
+        ],
+        [
+          -7,
+          -9
+        ],
+        [
+          -7,
+          -11
+        ],
+        [
+          -7,
+          -13
+        ],
+        [
+          -7,
+          -15
+        ],
+        [
+          -7,
+          -17
+        ],
+        [
+          -7,
+          -19
+        ],
+        [
+          -7,
+          -21
+        ],
+        [
+          -7,
+          -23
+        ],
+        [
+          -7,
+          -25
+        ],
+        [
+          -7,
+          -27
+        ],
+        [
+          -7,
+          -29
+        ],
+        [
+          -7,
+          -31
+        ],
+        [
+          -9,
+          -11
+        ],
+        [
+          -9,
+          -13
+        ],
+        [
+          -9,
+          -15
+        ],
+        [
+          -9,
+          -17
+        ],
+        [
+          -9,
+          -19
+        ],
+        [
+          -9,
+          -21
+        ],
+        [
+          -9,
+          -23
+        ],
+        [
+          -9,
+          -25
+        ],
+        [
+          -9,
+          -27
+        ],
+        [
+          -9,
+          -29
+        ],
+        [
+          -9,
+          -31
+        ],
+        [
+          -11,
+          -13
+        ],
+        [
+          -11,
+          -15
+        ],
+        [
+          -11,
+          -17
+        ],
+        [
+          -11,
+          -19
+        ],
+        [
+          -11,
+          -21
+        ],
+        [
+          -11,
+          -23
+        ],
+        [
+          -11,
+          -25
+        ],
+        [
+          -11,
+          -27
+        ],
+        [
+          -11,
+          -29
+        ],
+        [
+          -11,
+          -31
+        ],
+        [
+          -13,
+          -15
+        ],
+        [
+          -13,
+          -17
+        ],
+        [
+          -13,
+          -19
+        ],
+        [
+          -13,
+          -21
+        ],
+        [
+          -13,
+          -23
+        ],
+        [
+          -13,
+          -25
+        ],
+        [
+          -13,
+          -27
+        ],
+        [
+          -13,
+          -29
+        ],
+        [
+          -13,
+          -31
+        ],
+        [
+          -15,
+          -17
+        ],
+        [
+          -15,
+          -19
+        ],
+        [
+          -15,
+          -21
+        ],
+        [
+          -15,
+          -23
+        ],
+        [
+          -15,
+          -25
+        ],
+        [
+          -15,
+          -27
+        ],
+        [
+          -15,
+          -29
+        ],
+        [
+          -15,
+          -31
+        ],
+        [
+          -17,
+          -19
+        ],
+        [
+          -17,
+          -21
+        ],
+        [
+          -17,
+          -23
+        ],
+        [
+          -17,
+          -25
+        ],
+        [
+          -17,
+          -27
+        ],
+        [
+          -17,
+          -29
+        ],
+        [
+          -17,
+          -31
+        ],
+        [
+          -19,
+          -21
+        ],
+        [
+          -19,
+          -23
+        ],
+        [
+          -19,
+          -25
+        ],
+        [
+          -19,
+          -27
+        ],
+        [
+          -19,
+          -29
+        ],
+        [
+          -19,
+          -31
+        ],
+        [
+          -21,
+          -23
+        ],
+        [
+          -21,
+          -25
+        ],
+        [
+          -21,
+          -27
+        ],
+        [
+          -21,
+          -29
+        ],
+        [
+          -21,
+          -31
+        ],
+        [
+          -23,
+          -25
+        ],
+        [
+          -23,
+          -27
+        ],
+        [
+          -23,
+          -29
+        ],
+        [
+          -23,
+          -31
+        ],
+        [
+          -25,
+          -27
+        ],
+        [
+          -25,
+          -29
+        ],
+        [
+          -25,
+          -31
+        ],
+        [
+          -27,
+          -29
+        ],
+        [
+          -27,
+          -31
+        ],
+        [
+          -29,
+          -31
+        ]
+      ],
+      "clauses": [
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          -2
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          3,
+          -4
+        ],
+        [
+          -5,
+          6
+        ],
+        [
+          5,
+          -6
+        ],
+        [
+          -7,
+          8
+        ],
+        [
+          7,
+          -8
+        ],
+        [
+          -9,
+          10
+        ],
+        [
+          9,
+          -10
+        ],
+        [
+          -11,
+          12
+        ],
+        [
+          11,
+          -12
+        ],
+        [
+          -13,
+          14
+        ],
+        [
+          13,
+          -14
+        ],
+        [
+          -15,
+          16
+        ],
+        [
+          15,
+          -16
+        ],
+        [
+          -17,
+          18
+        ],
+        [
+          17,
+          -18
+        ],
+        [
+          -19,
+          20
+        ],
+        [
+          19,
+          -20
+        ],
+        [
+          -21,
+          22
+        ],
+        [
+          21,
+          -22
+        ],
+        [
+          -23,
+          24
+        ],
+        [
+          23,
+          -24
+        ],
+        [
+          -25,
+          26
+        ],
+        [
+          25,
+          -26
+        ],
+        [
+          -27,
+          28
+        ],
+        [
+          27,
+          -28
+        ],
+        [
+          -29,
+          30
+        ],
+        [
+          29,
+          -30
+        ],
+        [
+          -31,
+          32
+        ],
+        [
+          31,
+          -32
+        ],
+        [
+          -1,
+          -3
+        ],
+        [
+          -1,
+          -5
+        ],
+        [
+          -1,
+          -7
+        ],
+        [
+          -1,
+          -9
+        ],
+        [
+          -1,
+          -11
+        ],
+        [
+          -1,
+          -13
+        ],
+        [
+          -1,
+          -15
+        ],
+        [
+          -1,
+          -17
+        ],
+        [
+          -1,
+          -19
+        ],
+        [
+          -1,
+          -21
+        ],
+        [
+          -1,
+          -23
+        ],
+        [
+          -1,
+          -25
+        ],
+        [
+          -1,
+          -27
+        ],
+        [
+          -1,
+          -29
+        ],
+        [
+          -1,
+          -31
+        ],
+        [
+          -3,
+          -5
+        ],
+        [
+          -3,
+          -7
+        ],
+        [
+          -3,
+          -9
+        ],
+        [
+          -3,
+          -11
+        ],
+        [
+          -3,
+          -13
+        ],
+        [
+          -3,
+          -15
+        ],
+        [
+          -3,
+          -17
+        ],
+        [
+          -3,
+          -19
+        ],
+        [
+          -3,
+          -21
+        ],
+        [
+          -3,
+          -23
+        ],
+        [
+          -3,
+          -25
+        ],
+        [
+          -3,
+          -27
+        ],
+        [
+          -3,
+          -29
+        ],
+        [
+          -3,
+          -31
+        ],
+        [
+          -5,
+          -7
+        ],
+        [
+          -5,
+          -9
+        ],
+        [
+          -5,
+          -11
+        ],
+        [
+          -5,
+          -13
+        ],
+        [
+          -5,
+          -15
+        ],
+        [
+          -5,
+          -17
+        ],
+        [
+          -5,
+          -19
+        ],
+        [
+          -5,
+          -21
+        ],
+        [
+          -5,
+          -23
+        ],
+        [
+          -5,
+          -25
+        ],
+        [
+          -5,
+          -27
+        ],
+        [
+          -5,
+          -29
+        ],
+        [
+          -5,
+          -31
+        ],
+        [
+          -7,
+          -9
+        ],
+        [
+          -7,
+          -11
+        ],
+        [
+          -7,
+          -13
+        ],
+        [
+          -7,
+          -15
+        ],
+        [
+          -7,
+          -17
+        ],
+        [
+          -7,
+          -19
+        ],
+        [
+          -7,
+          -21
+        ],
+        [
+          -7,
+          -23
+        ],
+        [
+          -7,
+          -25
+        ],
+        [
+          -7,
+          -27
+        ],
+        [
+          -7,
+          -29
+        ],
+        [
+          -7,
+          -31
+        ],
+        [
+          -9,
+          -11
+        ],
+        [
+          -9,
+          -13
+        ],
+        [
+          -9,
+          -15
+        ],
+        [
+          -9,
+          -17
+        ],
+        [
+          -9,
+          -19
+        ],
+        [
+          -9,
+          -21
+        ],
+        [
+          -9,
+          -23
+        ],
+        [
+          -9,
+          -25
+        ],
+        [
+          -9,
+          -27
+        ],
+        [
+          -9,
+          -29
+        ],
+        [
+          -9,
+          -31
+        ],
+        [
+          -11,
+          -13
+        ],
+        [
+          -11,
+          -15
+        ],
+        [
+          -11,
+          -17
+        ],
+        [
+          -11,
+          -19
+        ],
+        [
+          -11,
+          -21
+        ],
+        [
+          -11,
+          -23
+        ],
+        [
+          -11,
+          -25
+        ],
+        [
+          -11,
+          -27
+        ],
+        [
+          -11,
+          -29
+        ],
+        [
+          -11,
+          -31
+        ],
+        [
+          -13,
+          -15
+        ],
+        [
+          -13,
+          -17
+        ],
+        [
+          -13,
+          -19
+        ],
+        [
+          -13,
+          -21
+        ],
+        [
+          -13,
+          -23
+        ],
+        [
+          -13,
+          -25
+        ],
+        [
+          -13,
+          -27
+        ],
+        [
+          -13,
+          -29
+        ],
+        [
+          -13,
+          -31
+        ],
+        [
+          -15,
+          -17
+        ],
+        [
+          -15,
+          -19
+        ],
+        [
+          -15,
+          -21
+        ],
+        [
+          -15,
+          -23
+        ],
+        [
+          -15,
+          -25
+        ],
+        [
+          -15,
+          -27
+        ],
+        [
+          -15,
+          -29
+        ],
+        [
+          -15,
+          -31
+        ],
+        [
+          -17,
+          -19
+        ],
+        [
+          -17,
+          -21
+        ],
+        [
+          -17,
+          -23
+        ],
+        [
+          -17,
+          -25
+        ],
+        [
+          -17,
+          -27
+        ],
+        [
+          -17,
+          -29
+        ],
+        [
+          -17,
+          -31
+        ],
+        [
+          -19,
+          -21
+        ],
+        [
+          -19,
+          -23
+        ],
+        [
+          -19,
+          -25
+        ],
+        [
+          -19,
+          -27
+        ],
+        [
+          -19,
+          -29
+        ],
+        [
+          -19,
+          -31
+        ],
+        [
+          -21,
+          -23
+        ],
+        [
+          -21,
+          -25
+        ],
+        [
+          -21,
+          -27
+        ],
+        [
+          -21,
+          -29
+        ],
+        [
+          -21,
+          -31
+        ],
+        [
+          -23,
+          -25
+        ],
+        [
+          -23,
+          -27
+        ],
+        [
+          -23,
+          -29
+        ],
+        [
+          -23,
+          -31
+        ],
+        [
+          -25,
+          -27
+        ],
+        [
+          -25,
+          -29
+        ],
+        [
+          -25,
+          -31
+        ],
+        [
+          -27,
+          -29
+        ],
+        [
+          -27,
+          -31
+        ],
+        [
+          -29,
+          -31
+        ]
+      ],
+      "metadata": {
+        "equality_regions": true,
+        "graph": "clique",
+        "expected_count": 17
+      },
+      "interface": {
+        "local_cache_lookups": 16,
+        "local_cache_hits": 0,
+        "local_candidates": 64,
+        "local_clause_evaluations": 112,
+        "local_projection_bit_steps": 32,
+        "plan_graph_pair_visits": 120,
+        "plan_fill_pair_tests": 7140,
+        "plan_candidate_visits": 136,
+        "plan_fill_edge_attempts": 560,
+        "induced_width": 15,
+        "max_bucket_variables": 16,
+        "max_bucket_rows": 65536,
+        "elimination_cache_lookups": 16,
+        "elimination_key_factor_ids": 151,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 131070,
+        "factor_table_lookups": 2031616,
+        "projection_bit_steps": 4718600,
+        "integer_multiplies": 2031617,
+        "integer_additions": 131070,
+        "max_integer_bits": 5,
+        "factor_membership_tests": 831,
+        "status": "EXACT",
+        "count": 17,
+        "summary_seconds": 6.686300002911594e-05,
+        "plan_seconds": 0.0008802900000546288,
+        "eliminate_seconds": 0.5356754660000433,
+        "query_seconds": 0.5366234370000029,
+        "stored_table_cells": 66063,
+        "peak_table_slots": 66064,
+        "cached_elimination_tables": 16,
+        "cached_local_tables": 32,
+        "boundary_variables": 16,
+        "max_region_boundary": 1,
+        "source_clause_count": 152,
+        "source_literal_count": 304,
+        "cumulative_local_candidates": 128,
+        "cumulative_bucket_rows": 131070,
+        "end_to_end_query_seconds": 0.5366384489999518,
+        "ingest_seconds": 0.0009704050000891584,
+        "total_seconds": 0.537608854000041,
+        "new_cross_rows": 480,
+        "new_boundary_variables": 16,
+        "new_routing_literal_reads": 240
+      },
+      "fresh_interface": {
+        "local_cache_lookups": 16,
+        "local_cache_hits": 0,
+        "local_candidates": 64,
+        "local_clause_evaluations": 112,
+        "local_projection_bit_steps": 32,
+        "plan_graph_pair_visits": 120,
+        "plan_fill_pair_tests": 7140,
+        "plan_candidate_visits": 136,
+        "plan_fill_edge_attempts": 560,
+        "induced_width": 15,
+        "max_bucket_variables": 16,
+        "max_bucket_rows": 65536,
+        "elimination_cache_lookups": 16,
+        "elimination_key_factor_ids": 151,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 131070,
+        "factor_table_lookups": 2031616,
+        "projection_bit_steps": 4718600,
+        "integer_multiplies": 2031617,
+        "integer_additions": 131070,
+        "max_integer_bits": 5,
+        "factor_membership_tests": 831,
+        "status": "EXACT",
+        "count": 17,
+        "summary_seconds": 7.249299994782632e-05,
+        "plan_seconds": 0.0008049489999848447,
+        "eliminate_seconds": 0.533906467999941,
+        "query_seconds": 0.5347848010000007,
+        "stored_table_cells": 66047,
+        "peak_table_slots": 66048,
+        "cached_elimination_tables": 16,
+        "cached_local_tables": 16,
+        "boundary_variables": 16,
+        "max_region_boundary": 1,
+        "source_clause_count": 152,
+        "source_literal_count": 304,
+        "cumulative_local_candidates": 64,
+        "cumulative_bucket_rows": 131070,
+        "end_to_end_query_seconds": 0.5348003510000581,
+        "ingest_seconds": 0.0007929810000177895,
+        "total_seconds": 0.5355933320000759
+      },
+      "incremental_bdd": {
+        "status": "EXACT",
+        "count": 17,
+        "reachable_nodes": 77,
+        "allocated_nodes": 2537,
+        "apply_cache_entries": 4048,
+        "apply_calls_new": 6920,
+        "compile_or_update_seconds": 0.0039057479999655698,
+        "count_seconds": 3.7332000033529766e-05,
+        "inspection_seconds": 2.1687999947062053e-05,
+        "total_seconds": 0.003964767999946162
+      },
+      "fresh_bdd": {
+        "status": "EXACT",
+        "count": 17,
+        "reachable_nodes": 77,
+        "allocated_nodes": 2537,
+        "apply_cache_entries": 4048,
+        "apply_calls_new": 8552,
+        "compile_or_update_seconds": 0.003986899999972593,
+        "count_seconds": 3.057200001421734e-05,
+        "inspection_seconds": 2.1910999976171297e-05,
+        "total_seconds": 0.0040393829999629816
+      }
+    },
+    {
+      "suite": "clique",
+      "case": "clique-18-regions",
+      "step": 0,
+      "n": 36,
+      "regions": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          12,
+          13
+        ],
+        [
+          14,
+          15
+        ],
+        [
+          16,
+          17
+        ],
+        [
+          18,
+          19
+        ],
+        [
+          20,
+          21
+        ],
+        [
+          22,
+          23
+        ],
+        [
+          24,
+          25
+        ],
+        [
+          26,
+          27
+        ],
+        [
+          28,
+          29
+        ],
+        [
+          30,
+          31
+        ],
+        [
+          32,
+          33
+        ],
+        [
+          34,
+          35
+        ]
+      ],
+      "added_clauses": [
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          -2
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          3,
+          -4
+        ],
+        [
+          -5,
+          6
+        ],
+        [
+          5,
+          -6
+        ],
+        [
+          -7,
+          8
+        ],
+        [
+          7,
+          -8
+        ],
+        [
+          -9,
+          10
+        ],
+        [
+          9,
+          -10
+        ],
+        [
+          -11,
+          12
+        ],
+        [
+          11,
+          -12
+        ],
+        [
+          -13,
+          14
+        ],
+        [
+          13,
+          -14
+        ],
+        [
+          -15,
+          16
+        ],
+        [
+          15,
+          -16
+        ],
+        [
+          -17,
+          18
+        ],
+        [
+          17,
+          -18
+        ],
+        [
+          -19,
+          20
+        ],
+        [
+          19,
+          -20
+        ],
+        [
+          -21,
+          22
+        ],
+        [
+          21,
+          -22
+        ],
+        [
+          -23,
+          24
+        ],
+        [
+          23,
+          -24
+        ],
+        [
+          -25,
+          26
+        ],
+        [
+          25,
+          -26
+        ],
+        [
+          -27,
+          28
+        ],
+        [
+          27,
+          -28
+        ],
+        [
+          -29,
+          30
+        ],
+        [
+          29,
+          -30
+        ],
+        [
+          -31,
+          32
+        ],
+        [
+          31,
+          -32
+        ],
+        [
+          -33,
+          34
+        ],
+        [
+          33,
+          -34
+        ],
+        [
+          -35,
+          36
+        ],
+        [
+          35,
+          -36
+        ]
+      ],
+      "clauses": [
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          -2
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          3,
+          -4
+        ],
+        [
+          -5,
+          6
+        ],
+        [
+          5,
+          -6
+        ],
+        [
+          -7,
+          8
+        ],
+        [
+          7,
+          -8
+        ],
+        [
+          -9,
+          10
+        ],
+        [
+          9,
+          -10
+        ],
+        [
+          -11,
+          12
+        ],
+        [
+          11,
+          -12
+        ],
+        [
+          -13,
+          14
+        ],
+        [
+          13,
+          -14
+        ],
+        [
+          -15,
+          16
+        ],
+        [
+          15,
+          -16
+        ],
+        [
+          -17,
+          18
+        ],
+        [
+          17,
+          -18
+        ],
+        [
+          -19,
+          20
+        ],
+        [
+          19,
+          -20
+        ],
+        [
+          -21,
+          22
+        ],
+        [
+          21,
+          -22
+        ],
+        [
+          -23,
+          24
+        ],
+        [
+          23,
+          -24
+        ],
+        [
+          -25,
+          26
+        ],
+        [
+          25,
+          -26
+        ],
+        [
+          -27,
+          28
+        ],
+        [
+          27,
+          -28
+        ],
+        [
+          -29,
+          30
+        ],
+        [
+          29,
+          -30
+        ],
+        [
+          -31,
+          32
+        ],
+        [
+          31,
+          -32
+        ],
+        [
+          -33,
+          34
+        ],
+        [
+          33,
+          -34
+        ],
+        [
+          -35,
+          36
+        ],
+        [
+          35,
+          -36
+        ]
+      ],
+      "metadata": {
+        "equality_regions": true,
+        "graph": "clique",
+        "expected_count": 19
+      },
+      "interface": {
+        "local_cache_lookups": 18,
+        "local_cache_hits": 0,
+        "local_candidates": 72,
+        "local_clause_evaluations": 126,
+        "local_projection_bit_steps": 0,
+        "plan_graph_pair_visits": 0,
+        "plan_fill_pair_tests": 0,
+        "plan_candidate_visits": 0,
+        "plan_fill_edge_attempts": 0,
+        "induced_width": 0,
+        "max_bucket_variables": 0,
+        "max_bucket_rows": 0,
+        "elimination_cache_lookups": 0,
+        "elimination_key_factor_ids": 0,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 0,
+        "factor_table_lookups": 0,
+        "projection_bit_steps": 0,
+        "integer_multiplies": 18,
+        "integer_additions": 0,
+        "max_integer_bits": 19,
+        "factor_membership_tests": 0,
+        "status": "EXACT",
+        "count": 262144,
+        "summary_seconds": 0.00010141400002794398,
+        "plan_seconds": 4.919000048175803e-06,
+        "eliminate_seconds": 3.1409999792231247e-06,
+        "query_seconds": 0.00011001699999724224,
+        "stored_table_cells": 18,
+        "peak_table_slots": 19,
+        "cached_elimination_tables": 0,
+        "cached_local_tables": 18,
+        "boundary_variables": 0,
+        "max_region_boundary": 0,
+        "source_clause_count": 36,
+        "source_literal_count": 72,
+        "cumulative_local_candidates": 72,
+        "cumulative_bucket_rows": 0,
+        "end_to_end_query_seconds": 0.00011567600006401335,
+        "ingest_seconds": 6.599799996820366e-05,
+        "total_seconds": 0.000181674000032217,
+        "new_cross_rows": 0,
+        "new_boundary_variables": 0,
+        "new_routing_literal_reads": 72
+      },
+      "fresh_interface": {
+        "local_cache_lookups": 18,
+        "local_cache_hits": 0,
+        "local_candidates": 72,
+        "local_clause_evaluations": 126,
+        "local_projection_bit_steps": 0,
+        "plan_graph_pair_visits": 0,
+        "plan_fill_pair_tests": 0,
+        "plan_candidate_visits": 0,
+        "plan_fill_edge_attempts": 0,
+        "induced_width": 0,
+        "max_bucket_variables": 0,
+        "max_bucket_rows": 0,
+        "elimination_cache_lookups": 0,
+        "elimination_key_factor_ids": 0,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 0,
+        "factor_table_lookups": 0,
+        "projection_bit_steps": 0,
+        "integer_multiplies": 18,
+        "integer_additions": 0,
+        "max_integer_bits": 19,
+        "factor_membership_tests": 0,
+        "status": "EXACT",
+        "count": 262144,
+        "summary_seconds": 6.0963999999330554e-05,
+        "plan_seconds": 2.2830000716567156e-06,
+        "eliminate_seconds": 2.5659999209892703e-06,
+        "query_seconds": 6.616600001052575e-05,
+        "stored_table_cells": 18,
+        "peak_table_slots": 19,
+        "cached_elimination_tables": 0,
+        "cached_local_tables": 18,
+        "boundary_variables": 0,
+        "max_region_boundary": 0,
+        "source_clause_count": 36,
+        "source_literal_count": 72,
+        "cumulative_local_candidates": 72,
+        "cumulative_bucket_rows": 0,
+        "end_to_end_query_seconds": 6.960799998978473e-05,
+        "ingest_seconds": 4.9461999992672645e-05,
+        "total_seconds": 0.00011906999998245738
+      },
+      "incremental_bdd": {
+        "status": "EXACT",
+        "count": 262144,
+        "reachable_nodes": 54,
+        "allocated_nodes": 1044,
+        "apply_cache_entries": 972,
+        "apply_calls_new": 2052,
+        "compile_or_update_seconds": 0.0009123149999368252,
+        "count_seconds": 2.172300003167038e-05,
+        "inspection_seconds": 1.5030999975351733e-05,
+        "total_seconds": 0.0009490689999438473
+      },
+      "fresh_bdd": {
+        "status": "EXACT",
+        "count": 262144,
+        "reachable_nodes": 54,
+        "allocated_nodes": 1044,
+        "apply_cache_entries": 972,
+        "apply_calls_new": 2052,
+        "compile_or_update_seconds": 0.0012761039999986679,
+        "count_seconds": 1.900099994145421e-05,
+        "inspection_seconds": 1.4673000009679527e-05,
+        "total_seconds": 0.0013097779999498016
+      }
+    },
+    {
+      "suite": "clique",
+      "case": "clique-18-regions",
+      "step": 1,
+      "n": 36,
+      "regions": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          12,
+          13
+        ],
+        [
+          14,
+          15
+        ],
+        [
+          16,
+          17
+        ],
+        [
+          18,
+          19
+        ],
+        [
+          20,
+          21
+        ],
+        [
+          22,
+          23
+        ],
+        [
+          24,
+          25
+        ],
+        [
+          26,
+          27
+        ],
+        [
+          28,
+          29
+        ],
+        [
+          30,
+          31
+        ],
+        [
+          32,
+          33
+        ],
+        [
+          34,
+          35
+        ]
+      ],
+      "added_clauses": [
+        [
+          -1,
+          -3
+        ],
+        [
+          -1,
+          -5
+        ],
+        [
+          -1,
+          -7
+        ],
+        [
+          -1,
+          -9
+        ],
+        [
+          -1,
+          -11
+        ],
+        [
+          -1,
+          -13
+        ],
+        [
+          -1,
+          -15
+        ],
+        [
+          -1,
+          -17
+        ],
+        [
+          -1,
+          -19
+        ],
+        [
+          -1,
+          -21
+        ],
+        [
+          -1,
+          -23
+        ],
+        [
+          -1,
+          -25
+        ],
+        [
+          -1,
+          -27
+        ],
+        [
+          -1,
+          -29
+        ],
+        [
+          -1,
+          -31
+        ],
+        [
+          -1,
+          -33
+        ],
+        [
+          -1,
+          -35
+        ],
+        [
+          -3,
+          -5
+        ],
+        [
+          -3,
+          -7
+        ],
+        [
+          -3,
+          -9
+        ],
+        [
+          -3,
+          -11
+        ],
+        [
+          -3,
+          -13
+        ],
+        [
+          -3,
+          -15
+        ],
+        [
+          -3,
+          -17
+        ],
+        [
+          -3,
+          -19
+        ],
+        [
+          -3,
+          -21
+        ],
+        [
+          -3,
+          -23
+        ],
+        [
+          -3,
+          -25
+        ],
+        [
+          -3,
+          -27
+        ],
+        [
+          -3,
+          -29
+        ],
+        [
+          -3,
+          -31
+        ],
+        [
+          -3,
+          -33
+        ],
+        [
+          -3,
+          -35
+        ],
+        [
+          -5,
+          -7
+        ],
+        [
+          -5,
+          -9
+        ],
+        [
+          -5,
+          -11
+        ],
+        [
+          -5,
+          -13
+        ],
+        [
+          -5,
+          -15
+        ],
+        [
+          -5,
+          -17
+        ],
+        [
+          -5,
+          -19
+        ],
+        [
+          -5,
+          -21
+        ],
+        [
+          -5,
+          -23
+        ],
+        [
+          -5,
+          -25
+        ],
+        [
+          -5,
+          -27
+        ],
+        [
+          -5,
+          -29
+        ],
+        [
+          -5,
+          -31
+        ],
+        [
+          -5,
+          -33
+        ],
+        [
+          -5,
+          -35
+        ],
+        [
+          -7,
+          -9
+        ],
+        [
+          -7,
+          -11
+        ],
+        [
+          -7,
+          -13
+        ],
+        [
+          -7,
+          -15
+        ],
+        [
+          -7,
+          -17
+        ],
+        [
+          -7,
+          -19
+        ],
+        [
+          -7,
+          -21
+        ],
+        [
+          -7,
+          -23
+        ],
+        [
+          -7,
+          -25
+        ],
+        [
+          -7,
+          -27
+        ],
+        [
+          -7,
+          -29
+        ],
+        [
+          -7,
+          -31
+        ],
+        [
+          -7,
+          -33
+        ],
+        [
+          -7,
+          -35
+        ],
+        [
+          -9,
+          -11
+        ],
+        [
+          -9,
+          -13
+        ],
+        [
+          -9,
+          -15
+        ],
+        [
+          -9,
+          -17
+        ],
+        [
+          -9,
+          -19
+        ],
+        [
+          -9,
+          -21
+        ],
+        [
+          -9,
+          -23
+        ],
+        [
+          -9,
+          -25
+        ],
+        [
+          -9,
+          -27
+        ],
+        [
+          -9,
+          -29
+        ],
+        [
+          -9,
+          -31
+        ],
+        [
+          -9,
+          -33
+        ],
+        [
+          -9,
+          -35
+        ],
+        [
+          -11,
+          -13
+        ],
+        [
+          -11,
+          -15
+        ],
+        [
+          -11,
+          -17
+        ],
+        [
+          -11,
+          -19
+        ],
+        [
+          -11,
+          -21
+        ],
+        [
+          -11,
+          -23
+        ],
+        [
+          -11,
+          -25
+        ],
+        [
+          -11,
+          -27
+        ],
+        [
+          -11,
+          -29
+        ],
+        [
+          -11,
+          -31
+        ],
+        [
+          -11,
+          -33
+        ],
+        [
+          -11,
+          -35
+        ],
+        [
+          -13,
+          -15
+        ],
+        [
+          -13,
+          -17
+        ],
+        [
+          -13,
+          -19
+        ],
+        [
+          -13,
+          -21
+        ],
+        [
+          -13,
+          -23
+        ],
+        [
+          -13,
+          -25
+        ],
+        [
+          -13,
+          -27
+        ],
+        [
+          -13,
+          -29
+        ],
+        [
+          -13,
+          -31
+        ],
+        [
+          -13,
+          -33
+        ],
+        [
+          -13,
+          -35
+        ],
+        [
+          -15,
+          -17
+        ],
+        [
+          -15,
+          -19
+        ],
+        [
+          -15,
+          -21
+        ],
+        [
+          -15,
+          -23
+        ],
+        [
+          -15,
+          -25
+        ],
+        [
+          -15,
+          -27
+        ],
+        [
+          -15,
+          -29
+        ],
+        [
+          -15,
+          -31
+        ],
+        [
+          -15,
+          -33
+        ],
+        [
+          -15,
+          -35
+        ],
+        [
+          -17,
+          -19
+        ],
+        [
+          -17,
+          -21
+        ],
+        [
+          -17,
+          -23
+        ],
+        [
+          -17,
+          -25
+        ],
+        [
+          -17,
+          -27
+        ],
+        [
+          -17,
+          -29
+        ],
+        [
+          -17,
+          -31
+        ],
+        [
+          -17,
+          -33
+        ],
+        [
+          -17,
+          -35
+        ],
+        [
+          -19,
+          -21
+        ],
+        [
+          -19,
+          -23
+        ],
+        [
+          -19,
+          -25
+        ],
+        [
+          -19,
+          -27
+        ],
+        [
+          -19,
+          -29
+        ],
+        [
+          -19,
+          -31
+        ],
+        [
+          -19,
+          -33
+        ],
+        [
+          -19,
+          -35
+        ],
+        [
+          -21,
+          -23
+        ],
+        [
+          -21,
+          -25
+        ],
+        [
+          -21,
+          -27
+        ],
+        [
+          -21,
+          -29
+        ],
+        [
+          -21,
+          -31
+        ],
+        [
+          -21,
+          -33
+        ],
+        [
+          -21,
+          -35
+        ],
+        [
+          -23,
+          -25
+        ],
+        [
+          -23,
+          -27
+        ],
+        [
+          -23,
+          -29
+        ],
+        [
+          -23,
+          -31
+        ],
+        [
+          -23,
+          -33
+        ],
+        [
+          -23,
+          -35
+        ],
+        [
+          -25,
+          -27
+        ],
+        [
+          -25,
+          -29
+        ],
+        [
+          -25,
+          -31
+        ],
+        [
+          -25,
+          -33
+        ],
+        [
+          -25,
+          -35
+        ],
+        [
+          -27,
+          -29
+        ],
+        [
+          -27,
+          -31
+        ],
+        [
+          -27,
+          -33
+        ],
+        [
+          -27,
+          -35
+        ],
+        [
+          -29,
+          -31
+        ],
+        [
+          -29,
+          -33
+        ],
+        [
+          -29,
+          -35
+        ],
+        [
+          -31,
+          -33
+        ],
+        [
+          -31,
+          -35
+        ],
+        [
+          -33,
+          -35
+        ]
+      ],
+      "clauses": [
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          -2
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          3,
+          -4
+        ],
+        [
+          -5,
+          6
+        ],
+        [
+          5,
+          -6
+        ],
+        [
+          -7,
+          8
+        ],
+        [
+          7,
+          -8
+        ],
+        [
+          -9,
+          10
+        ],
+        [
+          9,
+          -10
+        ],
+        [
+          -11,
+          12
+        ],
+        [
+          11,
+          -12
+        ],
+        [
+          -13,
+          14
+        ],
+        [
+          13,
+          -14
+        ],
+        [
+          -15,
+          16
+        ],
+        [
+          15,
+          -16
+        ],
+        [
+          -17,
+          18
+        ],
+        [
+          17,
+          -18
+        ],
+        [
+          -19,
+          20
+        ],
+        [
+          19,
+          -20
+        ],
+        [
+          -21,
+          22
+        ],
+        [
+          21,
+          -22
+        ],
+        [
+          -23,
+          24
+        ],
+        [
+          23,
+          -24
+        ],
+        [
+          -25,
+          26
+        ],
+        [
+          25,
+          -26
+        ],
+        [
+          -27,
+          28
+        ],
+        [
+          27,
+          -28
+        ],
+        [
+          -29,
+          30
+        ],
+        [
+          29,
+          -30
+        ],
+        [
+          -31,
+          32
+        ],
+        [
+          31,
+          -32
+        ],
+        [
+          -33,
+          34
+        ],
+        [
+          33,
+          -34
+        ],
+        [
+          -35,
+          36
+        ],
+        [
+          35,
+          -36
+        ],
+        [
+          -1,
+          -3
+        ],
+        [
+          -1,
+          -5
+        ],
+        [
+          -1,
+          -7
+        ],
+        [
+          -1,
+          -9
+        ],
+        [
+          -1,
+          -11
+        ],
+        [
+          -1,
+          -13
+        ],
+        [
+          -1,
+          -15
+        ],
+        [
+          -1,
+          -17
+        ],
+        [
+          -1,
+          -19
+        ],
+        [
+          -1,
+          -21
+        ],
+        [
+          -1,
+          -23
+        ],
+        [
+          -1,
+          -25
+        ],
+        [
+          -1,
+          -27
+        ],
+        [
+          -1,
+          -29
+        ],
+        [
+          -1,
+          -31
+        ],
+        [
+          -1,
+          -33
+        ],
+        [
+          -1,
+          -35
+        ],
+        [
+          -3,
+          -5
+        ],
+        [
+          -3,
+          -7
+        ],
+        [
+          -3,
+          -9
+        ],
+        [
+          -3,
+          -11
+        ],
+        [
+          -3,
+          -13
+        ],
+        [
+          -3,
+          -15
+        ],
+        [
+          -3,
+          -17
+        ],
+        [
+          -3,
+          -19
+        ],
+        [
+          -3,
+          -21
+        ],
+        [
+          -3,
+          -23
+        ],
+        [
+          -3,
+          -25
+        ],
+        [
+          -3,
+          -27
+        ],
+        [
+          -3,
+          -29
+        ],
+        [
+          -3,
+          -31
+        ],
+        [
+          -3,
+          -33
+        ],
+        [
+          -3,
+          -35
+        ],
+        [
+          -5,
+          -7
+        ],
+        [
+          -5,
+          -9
+        ],
+        [
+          -5,
+          -11
+        ],
+        [
+          -5,
+          -13
+        ],
+        [
+          -5,
+          -15
+        ],
+        [
+          -5,
+          -17
+        ],
+        [
+          -5,
+          -19
+        ],
+        [
+          -5,
+          -21
+        ],
+        [
+          -5,
+          -23
+        ],
+        [
+          -5,
+          -25
+        ],
+        [
+          -5,
+          -27
+        ],
+        [
+          -5,
+          -29
+        ],
+        [
+          -5,
+          -31
+        ],
+        [
+          -5,
+          -33
+        ],
+        [
+          -5,
+          -35
+        ],
+        [
+          -7,
+          -9
+        ],
+        [
+          -7,
+          -11
+        ],
+        [
+          -7,
+          -13
+        ],
+        [
+          -7,
+          -15
+        ],
+        [
+          -7,
+          -17
+        ],
+        [
+          -7,
+          -19
+        ],
+        [
+          -7,
+          -21
+        ],
+        [
+          -7,
+          -23
+        ],
+        [
+          -7,
+          -25
+        ],
+        [
+          -7,
+          -27
+        ],
+        [
+          -7,
+          -29
+        ],
+        [
+          -7,
+          -31
+        ],
+        [
+          -7,
+          -33
+        ],
+        [
+          -7,
+          -35
+        ],
+        [
+          -9,
+          -11
+        ],
+        [
+          -9,
+          -13
+        ],
+        [
+          -9,
+          -15
+        ],
+        [
+          -9,
+          -17
+        ],
+        [
+          -9,
+          -19
+        ],
+        [
+          -9,
+          -21
+        ],
+        [
+          -9,
+          -23
+        ],
+        [
+          -9,
+          -25
+        ],
+        [
+          -9,
+          -27
+        ],
+        [
+          -9,
+          -29
+        ],
+        [
+          -9,
+          -31
+        ],
+        [
+          -9,
+          -33
+        ],
+        [
+          -9,
+          -35
+        ],
+        [
+          -11,
+          -13
+        ],
+        [
+          -11,
+          -15
+        ],
+        [
+          -11,
+          -17
+        ],
+        [
+          -11,
+          -19
+        ],
+        [
+          -11,
+          -21
+        ],
+        [
+          -11,
+          -23
+        ],
+        [
+          -11,
+          -25
+        ],
+        [
+          -11,
+          -27
+        ],
+        [
+          -11,
+          -29
+        ],
+        [
+          -11,
+          -31
+        ],
+        [
+          -11,
+          -33
+        ],
+        [
+          -11,
+          -35
+        ],
+        [
+          -13,
+          -15
+        ],
+        [
+          -13,
+          -17
+        ],
+        [
+          -13,
+          -19
+        ],
+        [
+          -13,
+          -21
+        ],
+        [
+          -13,
+          -23
+        ],
+        [
+          -13,
+          -25
+        ],
+        [
+          -13,
+          -27
+        ],
+        [
+          -13,
+          -29
+        ],
+        [
+          -13,
+          -31
+        ],
+        [
+          -13,
+          -33
+        ],
+        [
+          -13,
+          -35
+        ],
+        [
+          -15,
+          -17
+        ],
+        [
+          -15,
+          -19
+        ],
+        [
+          -15,
+          -21
+        ],
+        [
+          -15,
+          -23
+        ],
+        [
+          -15,
+          -25
+        ],
+        [
+          -15,
+          -27
+        ],
+        [
+          -15,
+          -29
+        ],
+        [
+          -15,
+          -31
+        ],
+        [
+          -15,
+          -33
+        ],
+        [
+          -15,
+          -35
+        ],
+        [
+          -17,
+          -19
+        ],
+        [
+          -17,
+          -21
+        ],
+        [
+          -17,
+          -23
+        ],
+        [
+          -17,
+          -25
+        ],
+        [
+          -17,
+          -27
+        ],
+        [
+          -17,
+          -29
+        ],
+        [
+          -17,
+          -31
+        ],
+        [
+          -17,
+          -33
+        ],
+        [
+          -17,
+          -35
+        ],
+        [
+          -19,
+          -21
+        ],
+        [
+          -19,
+          -23
+        ],
+        [
+          -19,
+          -25
+        ],
+        [
+          -19,
+          -27
+        ],
+        [
+          -19,
+          -29
+        ],
+        [
+          -19,
+          -31
+        ],
+        [
+          -19,
+          -33
+        ],
+        [
+          -19,
+          -35
+        ],
+        [
+          -21,
+          -23
+        ],
+        [
+          -21,
+          -25
+        ],
+        [
+          -21,
+          -27
+        ],
+        [
+          -21,
+          -29
+        ],
+        [
+          -21,
+          -31
+        ],
+        [
+          -21,
+          -33
+        ],
+        [
+          -21,
+          -35
+        ],
+        [
+          -23,
+          -25
+        ],
+        [
+          -23,
+          -27
+        ],
+        [
+          -23,
+          -29
+        ],
+        [
+          -23,
+          -31
+        ],
+        [
+          -23,
+          -33
+        ],
+        [
+          -23,
+          -35
+        ],
+        [
+          -25,
+          -27
+        ],
+        [
+          -25,
+          -29
+        ],
+        [
+          -25,
+          -31
+        ],
+        [
+          -25,
+          -33
+        ],
+        [
+          -25,
+          -35
+        ],
+        [
+          -27,
+          -29
+        ],
+        [
+          -27,
+          -31
+        ],
+        [
+          -27,
+          -33
+        ],
+        [
+          -27,
+          -35
+        ],
+        [
+          -29,
+          -31
+        ],
+        [
+          -29,
+          -33
+        ],
+        [
+          -29,
+          -35
+        ],
+        [
+          -31,
+          -33
+        ],
+        [
+          -31,
+          -35
+        ],
+        [
+          -33,
+          -35
+        ]
+      ],
+      "metadata": {
+        "equality_regions": true,
+        "graph": "clique",
+        "expected_count": 19
+      },
+      "interface": {
+        "local_cache_lookups": 18,
+        "local_cache_hits": 0,
+        "local_candidates": 72,
+        "local_clause_evaluations": 126,
+        "local_projection_bit_steps": 36,
+        "plan_graph_pair_visits": 153,
+        "plan_fill_pair_tests": 11628,
+        "plan_candidate_visits": 171,
+        "plan_fill_edge_attempts": 816,
+        "induced_width": 17,
+        "max_bucket_variables": 18,
+        "max_bucket_rows": 262144,
+        "elimination_cache_lookups": 18,
+        "elimination_key_factor_ids": 188,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 524286,
+        "factor_table_lookups": 9175040,
+        "projection_bit_steps": 21495816,
+        "integer_multiplies": 9175041,
+        "integer_additions": 524286,
+        "max_integer_bits": 5,
+        "factor_membership_tests": 1157,
+        "status": "EXACT",
+        "count": 19,
+        "summary_seconds": 0.00017032999994626152,
+        "plan_seconds": 0.0012920170000825237,
+        "eliminate_seconds": 2.4875982660000773,
+        "query_seconds": 2.4890616799999634,
+        "stored_table_cells": 262809,
+        "peak_table_slots": 262810,
+        "cached_elimination_tables": 18,
+        "cached_local_tables": 36,
+        "boundary_variables": 18,
+        "max_region_boundary": 1,
+        "source_clause_count": 189,
+        "source_literal_count": 378,
+        "cumulative_local_candidates": 144,
+        "cumulative_bucket_rows": 524286,
+        "end_to_end_query_seconds": 2.489081672999987,
+        "ingest_seconds": 0.0005080629999838493,
+        "total_seconds": 2.489589735999971,
+        "new_cross_rows": 612,
+        "new_boundary_variables": 18,
+        "new_routing_literal_reads": 306
+      },
+      "fresh_interface": {
+        "local_cache_lookups": 18,
+        "local_cache_hits": 0,
+        "local_candidates": 72,
+        "local_clause_evaluations": 126,
+        "local_projection_bit_steps": 36,
+        "plan_graph_pair_visits": 153,
+        "plan_fill_pair_tests": 11628,
+        "plan_candidate_visits": 171,
+        "plan_fill_edge_attempts": 816,
+        "induced_width": 17,
+        "max_bucket_variables": 18,
+        "max_bucket_rows": 262144,
+        "elimination_cache_lookups": 18,
+        "elimination_key_factor_ids": 188,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 524286,
+        "factor_table_lookups": 9175040,
+        "projection_bit_steps": 21495816,
+        "integer_multiplies": 9175041,
+        "integer_additions": 524286,
+        "max_integer_bits": 5,
+        "factor_membership_tests": 1157,
+        "status": "EXACT",
+        "count": 19,
+        "summary_seconds": 7.640900003025308e-05,
+        "plan_seconds": 0.0011350990000664751,
+        "eliminate_seconds": 2.480002141,
+        "query_seconds": 2.4812148110000862,
+        "stored_table_cells": 262791,
+        "peak_table_slots": 262792,
+        "cached_elimination_tables": 18,
+        "cached_local_tables": 18,
+        "boundary_variables": 18,
+        "max_region_boundary": 1,
+        "source_clause_count": 189,
+        "source_literal_count": 378,
+        "cumulative_local_candidates": 72,
+        "cumulative_bucket_rows": 524286,
+        "end_to_end_query_seconds": 2.4812321069999825,
+        "ingest_seconds": 0.0006576239999276368,
+        "total_seconds": 2.48188973099991
+      },
+      "incremental_bdd": {
+        "status": "EXACT",
+        "count": 19,
+        "reachable_nodes": 87,
+        "allocated_nodes": 3424,
+        "apply_cache_entries": 5664,
+        "apply_calls_new": 9843,
+        "compile_or_update_seconds": 0.007435932000021239,
+        "count_seconds": 4.013799991753331e-05,
+        "inspection_seconds": 2.5960000016311824e-05,
+        "total_seconds": 0.007502029999955084
+      },
+      "fresh_bdd": {
+        "status": "EXACT",
+        "count": 19,
+        "reachable_nodes": 87,
+        "allocated_nodes": 3424,
+        "apply_cache_entries": 5664,
+        "apply_calls_new": 11895,
+        "compile_or_update_seconds": 0.005280366000079084,
+        "count_seconds": 3.457299999354291e-05,
+        "inspection_seconds": 2.3829999918234535e-05,
+        "total_seconds": 0.005338768999990862
+      }
+    },
+    {
+      "suite": "clique",
+      "case": "clique-20-regions",
+      "step": 0,
+      "n": 40,
+      "regions": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          12,
+          13
+        ],
+        [
+          14,
+          15
+        ],
+        [
+          16,
+          17
+        ],
+        [
+          18,
+          19
+        ],
+        [
+          20,
+          21
+        ],
+        [
+          22,
+          23
+        ],
+        [
+          24,
+          25
+        ],
+        [
+          26,
+          27
+        ],
+        [
+          28,
+          29
+        ],
+        [
+          30,
+          31
+        ],
+        [
+          32,
+          33
+        ],
+        [
+          34,
+          35
+        ],
+        [
+          36,
+          37
+        ],
+        [
+          38,
+          39
+        ]
+      ],
+      "added_clauses": [
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          -2
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          3,
+          -4
+        ],
+        [
+          -5,
+          6
+        ],
+        [
+          5,
+          -6
+        ],
+        [
+          -7,
+          8
+        ],
+        [
+          7,
+          -8
+        ],
+        [
+          -9,
+          10
+        ],
+        [
+          9,
+          -10
+        ],
+        [
+          -11,
+          12
+        ],
+        [
+          11,
+          -12
+        ],
+        [
+          -13,
+          14
+        ],
+        [
+          13,
+          -14
+        ],
+        [
+          -15,
+          16
+        ],
+        [
+          15,
+          -16
+        ],
+        [
+          -17,
+          18
+        ],
+        [
+          17,
+          -18
+        ],
+        [
+          -19,
+          20
+        ],
+        [
+          19,
+          -20
+        ],
+        [
+          -21,
+          22
+        ],
+        [
+          21,
+          -22
+        ],
+        [
+          -23,
+          24
+        ],
+        [
+          23,
+          -24
+        ],
+        [
+          -25,
+          26
+        ],
+        [
+          25,
+          -26
+        ],
+        [
+          -27,
+          28
+        ],
+        [
+          27,
+          -28
+        ],
+        [
+          -29,
+          30
+        ],
+        [
+          29,
+          -30
+        ],
+        [
+          -31,
+          32
+        ],
+        [
+          31,
+          -32
+        ],
+        [
+          -33,
+          34
+        ],
+        [
+          33,
+          -34
+        ],
+        [
+          -35,
+          36
+        ],
+        [
+          35,
+          -36
+        ],
+        [
+          -37,
+          38
+        ],
+        [
+          37,
+          -38
+        ],
+        [
+          -39,
+          40
+        ],
+        [
+          39,
+          -40
+        ]
+      ],
+      "clauses": [
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          -2
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          3,
+          -4
+        ],
+        [
+          -5,
+          6
+        ],
+        [
+          5,
+          -6
+        ],
+        [
+          -7,
+          8
+        ],
+        [
+          7,
+          -8
+        ],
+        [
+          -9,
+          10
+        ],
+        [
+          9,
+          -10
+        ],
+        [
+          -11,
+          12
+        ],
+        [
+          11,
+          -12
+        ],
+        [
+          -13,
+          14
+        ],
+        [
+          13,
+          -14
+        ],
+        [
+          -15,
+          16
+        ],
+        [
+          15,
+          -16
+        ],
+        [
+          -17,
+          18
+        ],
+        [
+          17,
+          -18
+        ],
+        [
+          -19,
+          20
+        ],
+        [
+          19,
+          -20
+        ],
+        [
+          -21,
+          22
+        ],
+        [
+          21,
+          -22
+        ],
+        [
+          -23,
+          24
+        ],
+        [
+          23,
+          -24
+        ],
+        [
+          -25,
+          26
+        ],
+        [
+          25,
+          -26
+        ],
+        [
+          -27,
+          28
+        ],
+        [
+          27,
+          -28
+        ],
+        [
+          -29,
+          30
+        ],
+        [
+          29,
+          -30
+        ],
+        [
+          -31,
+          32
+        ],
+        [
+          31,
+          -32
+        ],
+        [
+          -33,
+          34
+        ],
+        [
+          33,
+          -34
+        ],
+        [
+          -35,
+          36
+        ],
+        [
+          35,
+          -36
+        ],
+        [
+          -37,
+          38
+        ],
+        [
+          37,
+          -38
+        ],
+        [
+          -39,
+          40
+        ],
+        [
+          39,
+          -40
+        ]
+      ],
+      "metadata": {
+        "equality_regions": true,
+        "graph": "clique",
+        "expected_count": 21
+      },
+      "interface": {
+        "local_cache_lookups": 20,
+        "local_cache_hits": 0,
+        "local_candidates": 80,
+        "local_clause_evaluations": 140,
+        "local_projection_bit_steps": 0,
+        "plan_graph_pair_visits": 0,
+        "plan_fill_pair_tests": 0,
+        "plan_candidate_visits": 0,
+        "plan_fill_edge_attempts": 0,
+        "induced_width": 0,
+        "max_bucket_variables": 0,
+        "max_bucket_rows": 0,
+        "elimination_cache_lookups": 0,
+        "elimination_key_factor_ids": 0,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 0,
+        "factor_table_lookups": 0,
+        "projection_bit_steps": 0,
+        "integer_multiplies": 20,
+        "integer_additions": 0,
+        "max_integer_bits": 21,
+        "factor_membership_tests": 0,
+        "status": "EXACT",
+        "count": 1048576,
+        "summary_seconds": 7.831799996438349e-05,
+        "plan_seconds": 6.102000043028966e-06,
+        "eliminate_seconds": 3.5580000030677184e-06,
+        "query_seconds": 8.846299999731855e-05,
+        "stored_table_cells": 20,
+        "peak_table_slots": 21,
+        "cached_elimination_tables": 0,
+        "cached_local_tables": 20,
+        "boundary_variables": 0,
+        "max_region_boundary": 0,
+        "source_clause_count": 40,
+        "source_literal_count": 80,
+        "cumulative_local_candidates": 80,
+        "cumulative_bucket_rows": 0,
+        "end_to_end_query_seconds": 9.497199994257244e-05,
+        "ingest_seconds": 6.991199995809438e-05,
+        "total_seconds": 0.00016488399990066682,
+        "new_cross_rows": 0,
+        "new_boundary_variables": 0,
+        "new_routing_literal_reads": 80
+      },
+      "fresh_interface": {
+        "local_cache_lookups": 20,
+        "local_cache_hits": 0,
+        "local_candidates": 80,
+        "local_clause_evaluations": 140,
+        "local_projection_bit_steps": 0,
+        "plan_graph_pair_visits": 0,
+        "plan_fill_pair_tests": 0,
+        "plan_candidate_visits": 0,
+        "plan_fill_edge_attempts": 0,
+        "induced_width": 0,
+        "max_bucket_variables": 0,
+        "max_bucket_rows": 0,
+        "elimination_cache_lookups": 0,
+        "elimination_key_factor_ids": 0,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 0,
+        "factor_table_lookups": 0,
+        "projection_bit_steps": 0,
+        "integer_multiplies": 20,
+        "integer_additions": 0,
+        "max_integer_bits": 21,
+        "factor_membership_tests": 0,
+        "status": "EXACT",
+        "count": 1048576,
+        "summary_seconds": 6.307099999958155e-05,
+        "plan_seconds": 2.163999965887342e-06,
+        "eliminate_seconds": 2.6179999395026243e-06,
+        "query_seconds": 6.820099997639772e-05,
+        "stored_table_cells": 20,
+        "peak_table_slots": 21,
+        "cached_elimination_tables": 0,
+        "cached_local_tables": 20,
+        "boundary_variables": 0,
+        "max_region_boundary": 0,
+        "source_clause_count": 40,
+        "source_literal_count": 80,
+        "cumulative_local_candidates": 80,
+        "cumulative_bucket_rows": 0,
+        "end_to_end_query_seconds": 7.123700004285638e-05,
+        "ingest_seconds": 4.889600006663386e-05,
+        "total_seconds": 0.00012013300010949024
+      },
+      "incremental_bdd": {
+        "status": "EXACT",
+        "count": 1048576,
+        "reachable_nodes": 60,
+        "allocated_nodes": 1280,
+        "apply_cache_entries": 1200,
+        "apply_calls_new": 2520,
+        "compile_or_update_seconds": 0.0009876550000171846,
+        "count_seconds": 2.1596999999928812e-05,
+        "inspection_seconds": 1.4962000022933353e-05,
+        "total_seconds": 0.0010242140000400468
+      },
+      "fresh_bdd": {
+        "status": "EXACT",
+        "count": 1048576,
+        "reachable_nodes": 60,
+        "allocated_nodes": 1280,
+        "apply_cache_entries": 1200,
+        "apply_calls_new": 2520,
+        "compile_or_update_seconds": 0.00140084100007698,
+        "count_seconds": 1.8298999975741026e-05,
+        "inspection_seconds": 1.4627000041400606e-05,
+        "total_seconds": 0.0014337670000941216
+      }
+    },
+    {
+      "suite": "clique",
+      "case": "clique-20-regions",
+      "step": 1,
+      "n": 40,
+      "regions": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          12,
+          13
+        ],
+        [
+          14,
+          15
+        ],
+        [
+          16,
+          17
+        ],
+        [
+          18,
+          19
+        ],
+        [
+          20,
+          21
+        ],
+        [
+          22,
+          23
+        ],
+        [
+          24,
+          25
+        ],
+        [
+          26,
+          27
+        ],
+        [
+          28,
+          29
+        ],
+        [
+          30,
+          31
+        ],
+        [
+          32,
+          33
+        ],
+        [
+          34,
+          35
+        ],
+        [
+          36,
+          37
+        ],
+        [
+          38,
+          39
+        ]
+      ],
+      "added_clauses": [
+        [
+          -1,
+          -3
+        ],
+        [
+          -1,
+          -5
+        ],
+        [
+          -1,
+          -7
+        ],
+        [
+          -1,
+          -9
+        ],
+        [
+          -1,
+          -11
+        ],
+        [
+          -1,
+          -13
+        ],
+        [
+          -1,
+          -15
+        ],
+        [
+          -1,
+          -17
+        ],
+        [
+          -1,
+          -19
+        ],
+        [
+          -1,
+          -21
+        ],
+        [
+          -1,
+          -23
+        ],
+        [
+          -1,
+          -25
+        ],
+        [
+          -1,
+          -27
+        ],
+        [
+          -1,
+          -29
+        ],
+        [
+          -1,
+          -31
+        ],
+        [
+          -1,
+          -33
+        ],
+        [
+          -1,
+          -35
+        ],
+        [
+          -1,
+          -37
+        ],
+        [
+          -1,
+          -39
+        ],
+        [
+          -3,
+          -5
+        ],
+        [
+          -3,
+          -7
+        ],
+        [
+          -3,
+          -9
+        ],
+        [
+          -3,
+          -11
+        ],
+        [
+          -3,
+          -13
+        ],
+        [
+          -3,
+          -15
+        ],
+        [
+          -3,
+          -17
+        ],
+        [
+          -3,
+          -19
+        ],
+        [
+          -3,
+          -21
+        ],
+        [
+          -3,
+          -23
+        ],
+        [
+          -3,
+          -25
+        ],
+        [
+          -3,
+          -27
+        ],
+        [
+          -3,
+          -29
+        ],
+        [
+          -3,
+          -31
+        ],
+        [
+          -3,
+          -33
+        ],
+        [
+          -3,
+          -35
+        ],
+        [
+          -3,
+          -37
+        ],
+        [
+          -3,
+          -39
+        ],
+        [
+          -5,
+          -7
+        ],
+        [
+          -5,
+          -9
+        ],
+        [
+          -5,
+          -11
+        ],
+        [
+          -5,
+          -13
+        ],
+        [
+          -5,
+          -15
+        ],
+        [
+          -5,
+          -17
+        ],
+        [
+          -5,
+          -19
+        ],
+        [
+          -5,
+          -21
+        ],
+        [
+          -5,
+          -23
+        ],
+        [
+          -5,
+          -25
+        ],
+        [
+          -5,
+          -27
+        ],
+        [
+          -5,
+          -29
+        ],
+        [
+          -5,
+          -31
+        ],
+        [
+          -5,
+          -33
+        ],
+        [
+          -5,
+          -35
+        ],
+        [
+          -5,
+          -37
+        ],
+        [
+          -5,
+          -39
+        ],
+        [
+          -7,
+          -9
+        ],
+        [
+          -7,
+          -11
+        ],
+        [
+          -7,
+          -13
+        ],
+        [
+          -7,
+          -15
+        ],
+        [
+          -7,
+          -17
+        ],
+        [
+          -7,
+          -19
+        ],
+        [
+          -7,
+          -21
+        ],
+        [
+          -7,
+          -23
+        ],
+        [
+          -7,
+          -25
+        ],
+        [
+          -7,
+          -27
+        ],
+        [
+          -7,
+          -29
+        ],
+        [
+          -7,
+          -31
+        ],
+        [
+          -7,
+          -33
+        ],
+        [
+          -7,
+          -35
+        ],
+        [
+          -7,
+          -37
+        ],
+        [
+          -7,
+          -39
+        ],
+        [
+          -9,
+          -11
+        ],
+        [
+          -9,
+          -13
+        ],
+        [
+          -9,
+          -15
+        ],
+        [
+          -9,
+          -17
+        ],
+        [
+          -9,
+          -19
+        ],
+        [
+          -9,
+          -21
+        ],
+        [
+          -9,
+          -23
+        ],
+        [
+          -9,
+          -25
+        ],
+        [
+          -9,
+          -27
+        ],
+        [
+          -9,
+          -29
+        ],
+        [
+          -9,
+          -31
+        ],
+        [
+          -9,
+          -33
+        ],
+        [
+          -9,
+          -35
+        ],
+        [
+          -9,
+          -37
+        ],
+        [
+          -9,
+          -39
+        ],
+        [
+          -11,
+          -13
+        ],
+        [
+          -11,
+          -15
+        ],
+        [
+          -11,
+          -17
+        ],
+        [
+          -11,
+          -19
+        ],
+        [
+          -11,
+          -21
+        ],
+        [
+          -11,
+          -23
+        ],
+        [
+          -11,
+          -25
+        ],
+        [
+          -11,
+          -27
+        ],
+        [
+          -11,
+          -29
+        ],
+        [
+          -11,
+          -31
+        ],
+        [
+          -11,
+          -33
+        ],
+        [
+          -11,
+          -35
+        ],
+        [
+          -11,
+          -37
+        ],
+        [
+          -11,
+          -39
+        ],
+        [
+          -13,
+          -15
+        ],
+        [
+          -13,
+          -17
+        ],
+        [
+          -13,
+          -19
+        ],
+        [
+          -13,
+          -21
+        ],
+        [
+          -13,
+          -23
+        ],
+        [
+          -13,
+          -25
+        ],
+        [
+          -13,
+          -27
+        ],
+        [
+          -13,
+          -29
+        ],
+        [
+          -13,
+          -31
+        ],
+        [
+          -13,
+          -33
+        ],
+        [
+          -13,
+          -35
+        ],
+        [
+          -13,
+          -37
+        ],
+        [
+          -13,
+          -39
+        ],
+        [
+          -15,
+          -17
+        ],
+        [
+          -15,
+          -19
+        ],
+        [
+          -15,
+          -21
+        ],
+        [
+          -15,
+          -23
+        ],
+        [
+          -15,
+          -25
+        ],
+        [
+          -15,
+          -27
+        ],
+        [
+          -15,
+          -29
+        ],
+        [
+          -15,
+          -31
+        ],
+        [
+          -15,
+          -33
+        ],
+        [
+          -15,
+          -35
+        ],
+        [
+          -15,
+          -37
+        ],
+        [
+          -15,
+          -39
+        ],
+        [
+          -17,
+          -19
+        ],
+        [
+          -17,
+          -21
+        ],
+        [
+          -17,
+          -23
+        ],
+        [
+          -17,
+          -25
+        ],
+        [
+          -17,
+          -27
+        ],
+        [
+          -17,
+          -29
+        ],
+        [
+          -17,
+          -31
+        ],
+        [
+          -17,
+          -33
+        ],
+        [
+          -17,
+          -35
+        ],
+        [
+          -17,
+          -37
+        ],
+        [
+          -17,
+          -39
+        ],
+        [
+          -19,
+          -21
+        ],
+        [
+          -19,
+          -23
+        ],
+        [
+          -19,
+          -25
+        ],
+        [
+          -19,
+          -27
+        ],
+        [
+          -19,
+          -29
+        ],
+        [
+          -19,
+          -31
+        ],
+        [
+          -19,
+          -33
+        ],
+        [
+          -19,
+          -35
+        ],
+        [
+          -19,
+          -37
+        ],
+        [
+          -19,
+          -39
+        ],
+        [
+          -21,
+          -23
+        ],
+        [
+          -21,
+          -25
+        ],
+        [
+          -21,
+          -27
+        ],
+        [
+          -21,
+          -29
+        ],
+        [
+          -21,
+          -31
+        ],
+        [
+          -21,
+          -33
+        ],
+        [
+          -21,
+          -35
+        ],
+        [
+          -21,
+          -37
+        ],
+        [
+          -21,
+          -39
+        ],
+        [
+          -23,
+          -25
+        ],
+        [
+          -23,
+          -27
+        ],
+        [
+          -23,
+          -29
+        ],
+        [
+          -23,
+          -31
+        ],
+        [
+          -23,
+          -33
+        ],
+        [
+          -23,
+          -35
+        ],
+        [
+          -23,
+          -37
+        ],
+        [
+          -23,
+          -39
+        ],
+        [
+          -25,
+          -27
+        ],
+        [
+          -25,
+          -29
+        ],
+        [
+          -25,
+          -31
+        ],
+        [
+          -25,
+          -33
+        ],
+        [
+          -25,
+          -35
+        ],
+        [
+          -25,
+          -37
+        ],
+        [
+          -25,
+          -39
+        ],
+        [
+          -27,
+          -29
+        ],
+        [
+          -27,
+          -31
+        ],
+        [
+          -27,
+          -33
+        ],
+        [
+          -27,
+          -35
+        ],
+        [
+          -27,
+          -37
+        ],
+        [
+          -27,
+          -39
+        ],
+        [
+          -29,
+          -31
+        ],
+        [
+          -29,
+          -33
+        ],
+        [
+          -29,
+          -35
+        ],
+        [
+          -29,
+          -37
+        ],
+        [
+          -29,
+          -39
+        ],
+        [
+          -31,
+          -33
+        ],
+        [
+          -31,
+          -35
+        ],
+        [
+          -31,
+          -37
+        ],
+        [
+          -31,
+          -39
+        ],
+        [
+          -33,
+          -35
+        ],
+        [
+          -33,
+          -37
+        ],
+        [
+          -33,
+          -39
+        ],
+        [
+          -35,
+          -37
+        ],
+        [
+          -35,
+          -39
+        ],
+        [
+          -37,
+          -39
+        ]
+      ],
+      "clauses": [
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          -2
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          3,
+          -4
+        ],
+        [
+          -5,
+          6
+        ],
+        [
+          5,
+          -6
+        ],
+        [
+          -7,
+          8
+        ],
+        [
+          7,
+          -8
+        ],
+        [
+          -9,
+          10
+        ],
+        [
+          9,
+          -10
+        ],
+        [
+          -11,
+          12
+        ],
+        [
+          11,
+          -12
+        ],
+        [
+          -13,
+          14
+        ],
+        [
+          13,
+          -14
+        ],
+        [
+          -15,
+          16
+        ],
+        [
+          15,
+          -16
+        ],
+        [
+          -17,
+          18
+        ],
+        [
+          17,
+          -18
+        ],
+        [
+          -19,
+          20
+        ],
+        [
+          19,
+          -20
+        ],
+        [
+          -21,
+          22
+        ],
+        [
+          21,
+          -22
+        ],
+        [
+          -23,
+          24
+        ],
+        [
+          23,
+          -24
+        ],
+        [
+          -25,
+          26
+        ],
+        [
+          25,
+          -26
+        ],
+        [
+          -27,
+          28
+        ],
+        [
+          27,
+          -28
+        ],
+        [
+          -29,
+          30
+        ],
+        [
+          29,
+          -30
+        ],
+        [
+          -31,
+          32
+        ],
+        [
+          31,
+          -32
+        ],
+        [
+          -33,
+          34
+        ],
+        [
+          33,
+          -34
+        ],
+        [
+          -35,
+          36
+        ],
+        [
+          35,
+          -36
+        ],
+        [
+          -37,
+          38
+        ],
+        [
+          37,
+          -38
+        ],
+        [
+          -39,
+          40
+        ],
+        [
+          39,
+          -40
+        ],
+        [
+          -1,
+          -3
+        ],
+        [
+          -1,
+          -5
+        ],
+        [
+          -1,
+          -7
+        ],
+        [
+          -1,
+          -9
+        ],
+        [
+          -1,
+          -11
+        ],
+        [
+          -1,
+          -13
+        ],
+        [
+          -1,
+          -15
+        ],
+        [
+          -1,
+          -17
+        ],
+        [
+          -1,
+          -19
+        ],
+        [
+          -1,
+          -21
+        ],
+        [
+          -1,
+          -23
+        ],
+        [
+          -1,
+          -25
+        ],
+        [
+          -1,
+          -27
+        ],
+        [
+          -1,
+          -29
+        ],
+        [
+          -1,
+          -31
+        ],
+        [
+          -1,
+          -33
+        ],
+        [
+          -1,
+          -35
+        ],
+        [
+          -1,
+          -37
+        ],
+        [
+          -1,
+          -39
+        ],
+        [
+          -3,
+          -5
+        ],
+        [
+          -3,
+          -7
+        ],
+        [
+          -3,
+          -9
+        ],
+        [
+          -3,
+          -11
+        ],
+        [
+          -3,
+          -13
+        ],
+        [
+          -3,
+          -15
+        ],
+        [
+          -3,
+          -17
+        ],
+        [
+          -3,
+          -19
+        ],
+        [
+          -3,
+          -21
+        ],
+        [
+          -3,
+          -23
+        ],
+        [
+          -3,
+          -25
+        ],
+        [
+          -3,
+          -27
+        ],
+        [
+          -3,
+          -29
+        ],
+        [
+          -3,
+          -31
+        ],
+        [
+          -3,
+          -33
+        ],
+        [
+          -3,
+          -35
+        ],
+        [
+          -3,
+          -37
+        ],
+        [
+          -3,
+          -39
+        ],
+        [
+          -5,
+          -7
+        ],
+        [
+          -5,
+          -9
+        ],
+        [
+          -5,
+          -11
+        ],
+        [
+          -5,
+          -13
+        ],
+        [
+          -5,
+          -15
+        ],
+        [
+          -5,
+          -17
+        ],
+        [
+          -5,
+          -19
+        ],
+        [
+          -5,
+          -21
+        ],
+        [
+          -5,
+          -23
+        ],
+        [
+          -5,
+          -25
+        ],
+        [
+          -5,
+          -27
+        ],
+        [
+          -5,
+          -29
+        ],
+        [
+          -5,
+          -31
+        ],
+        [
+          -5,
+          -33
+        ],
+        [
+          -5,
+          -35
+        ],
+        [
+          -5,
+          -37
+        ],
+        [
+          -5,
+          -39
+        ],
+        [
+          -7,
+          -9
+        ],
+        [
+          -7,
+          -11
+        ],
+        [
+          -7,
+          -13
+        ],
+        [
+          -7,
+          -15
+        ],
+        [
+          -7,
+          -17
+        ],
+        [
+          -7,
+          -19
+        ],
+        [
+          -7,
+          -21
+        ],
+        [
+          -7,
+          -23
+        ],
+        [
+          -7,
+          -25
+        ],
+        [
+          -7,
+          -27
+        ],
+        [
+          -7,
+          -29
+        ],
+        [
+          -7,
+          -31
+        ],
+        [
+          -7,
+          -33
+        ],
+        [
+          -7,
+          -35
+        ],
+        [
+          -7,
+          -37
+        ],
+        [
+          -7,
+          -39
+        ],
+        [
+          -9,
+          -11
+        ],
+        [
+          -9,
+          -13
+        ],
+        [
+          -9,
+          -15
+        ],
+        [
+          -9,
+          -17
+        ],
+        [
+          -9,
+          -19
+        ],
+        [
+          -9,
+          -21
+        ],
+        [
+          -9,
+          -23
+        ],
+        [
+          -9,
+          -25
+        ],
+        [
+          -9,
+          -27
+        ],
+        [
+          -9,
+          -29
+        ],
+        [
+          -9,
+          -31
+        ],
+        [
+          -9,
+          -33
+        ],
+        [
+          -9,
+          -35
+        ],
+        [
+          -9,
+          -37
+        ],
+        [
+          -9,
+          -39
+        ],
+        [
+          -11,
+          -13
+        ],
+        [
+          -11,
+          -15
+        ],
+        [
+          -11,
+          -17
+        ],
+        [
+          -11,
+          -19
+        ],
+        [
+          -11,
+          -21
+        ],
+        [
+          -11,
+          -23
+        ],
+        [
+          -11,
+          -25
+        ],
+        [
+          -11,
+          -27
+        ],
+        [
+          -11,
+          -29
+        ],
+        [
+          -11,
+          -31
+        ],
+        [
+          -11,
+          -33
+        ],
+        [
+          -11,
+          -35
+        ],
+        [
+          -11,
+          -37
+        ],
+        [
+          -11,
+          -39
+        ],
+        [
+          -13,
+          -15
+        ],
+        [
+          -13,
+          -17
+        ],
+        [
+          -13,
+          -19
+        ],
+        [
+          -13,
+          -21
+        ],
+        [
+          -13,
+          -23
+        ],
+        [
+          -13,
+          -25
+        ],
+        [
+          -13,
+          -27
+        ],
+        [
+          -13,
+          -29
+        ],
+        [
+          -13,
+          -31
+        ],
+        [
+          -13,
+          -33
+        ],
+        [
+          -13,
+          -35
+        ],
+        [
+          -13,
+          -37
+        ],
+        [
+          -13,
+          -39
+        ],
+        [
+          -15,
+          -17
+        ],
+        [
+          -15,
+          -19
+        ],
+        [
+          -15,
+          -21
+        ],
+        [
+          -15,
+          -23
+        ],
+        [
+          -15,
+          -25
+        ],
+        [
+          -15,
+          -27
+        ],
+        [
+          -15,
+          -29
+        ],
+        [
+          -15,
+          -31
+        ],
+        [
+          -15,
+          -33
+        ],
+        [
+          -15,
+          -35
+        ],
+        [
+          -15,
+          -37
+        ],
+        [
+          -15,
+          -39
+        ],
+        [
+          -17,
+          -19
+        ],
+        [
+          -17,
+          -21
+        ],
+        [
+          -17,
+          -23
+        ],
+        [
+          -17,
+          -25
+        ],
+        [
+          -17,
+          -27
+        ],
+        [
+          -17,
+          -29
+        ],
+        [
+          -17,
+          -31
+        ],
+        [
+          -17,
+          -33
+        ],
+        [
+          -17,
+          -35
+        ],
+        [
+          -17,
+          -37
+        ],
+        [
+          -17,
+          -39
+        ],
+        [
+          -19,
+          -21
+        ],
+        [
+          -19,
+          -23
+        ],
+        [
+          -19,
+          -25
+        ],
+        [
+          -19,
+          -27
+        ],
+        [
+          -19,
+          -29
+        ],
+        [
+          -19,
+          -31
+        ],
+        [
+          -19,
+          -33
+        ],
+        [
+          -19,
+          -35
+        ],
+        [
+          -19,
+          -37
+        ],
+        [
+          -19,
+          -39
+        ],
+        [
+          -21,
+          -23
+        ],
+        [
+          -21,
+          -25
+        ],
+        [
+          -21,
+          -27
+        ],
+        [
+          -21,
+          -29
+        ],
+        [
+          -21,
+          -31
+        ],
+        [
+          -21,
+          -33
+        ],
+        [
+          -21,
+          -35
+        ],
+        [
+          -21,
+          -37
+        ],
+        [
+          -21,
+          -39
+        ],
+        [
+          -23,
+          -25
+        ],
+        [
+          -23,
+          -27
+        ],
+        [
+          -23,
+          -29
+        ],
+        [
+          -23,
+          -31
+        ],
+        [
+          -23,
+          -33
+        ],
+        [
+          -23,
+          -35
+        ],
+        [
+          -23,
+          -37
+        ],
+        [
+          -23,
+          -39
+        ],
+        [
+          -25,
+          -27
+        ],
+        [
+          -25,
+          -29
+        ],
+        [
+          -25,
+          -31
+        ],
+        [
+          -25,
+          -33
+        ],
+        [
+          -25,
+          -35
+        ],
+        [
+          -25,
+          -37
+        ],
+        [
+          -25,
+          -39
+        ],
+        [
+          -27,
+          -29
+        ],
+        [
+          -27,
+          -31
+        ],
+        [
+          -27,
+          -33
+        ],
+        [
+          -27,
+          -35
+        ],
+        [
+          -27,
+          -37
+        ],
+        [
+          -27,
+          -39
+        ],
+        [
+          -29,
+          -31
+        ],
+        [
+          -29,
+          -33
+        ],
+        [
+          -29,
+          -35
+        ],
+        [
+          -29,
+          -37
+        ],
+        [
+          -29,
+          -39
+        ],
+        [
+          -31,
+          -33
+        ],
+        [
+          -31,
+          -35
+        ],
+        [
+          -31,
+          -37
+        ],
+        [
+          -31,
+          -39
+        ],
+        [
+          -33,
+          -35
+        ],
+        [
+          -33,
+          -37
+        ],
+        [
+          -33,
+          -39
+        ],
+        [
+          -35,
+          -37
+        ],
+        [
+          -35,
+          -39
+        ],
+        [
+          -37,
+          -39
+        ]
+      ],
+      "metadata": {
+        "equality_regions": true,
+        "graph": "clique",
+        "expected_count": 21
+      },
+      "interface": {
+        "local_cache_lookups": 20,
+        "local_cache_hits": 0,
+        "local_candidates": 80,
+        "local_clause_evaluations": 140,
+        "local_projection_bit_steps": 40,
+        "plan_graph_pair_visits": 190,
+        "plan_fill_pair_tests": 17955,
+        "plan_candidate_visits": 210,
+        "plan_fill_edge_attempts": 1140,
+        "induced_width": 19,
+        "max_bucket_variables": 20,
+        "max_bucket_rows": 1048576,
+        "elimination_cache_lookups": 1,
+        "elimination_key_factor_ids": 20,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 0,
+        "factor_table_lookups": 0,
+        "projection_bit_steps": 0,
+        "integer_multiplies": 0,
+        "integer_additions": 0,
+        "max_integer_bits": 0,
+        "factor_membership_tests": 210,
+        "status": "BUDGET_EXCEEDED",
+        "count": null,
+        "summary_seconds": 9.996799997225025e-05,
+        "plan_seconds": 0.0018466530000296189,
+        "eliminate_seconds": 3.9160999904197524e-05,
+        "required_bucket_rows": 1048576,
+        "budget_scope": [
+          0,
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16,
+          18,
+          20,
+          22,
+          24,
+          26,
+          28,
+          30,
+          32,
+          34,
+          36,
+          38
+        ],
+        "row_budget": 262144,
+        "query_seconds": 0.001991302999954314,
+        "stored_table_cells": 820,
+        "peak_table_slots": 822,
+        "cached_elimination_tables": 0,
+        "cached_local_tables": 40,
+        "boundary_variables": 20,
+        "max_region_boundary": 1,
+        "source_clause_count": 230,
+        "source_literal_count": 460,
+        "cumulative_local_candidates": 160,
+        "cumulative_bucket_rows": 0,
+        "end_to_end_query_seconds": 0.002000328000008267,
+        "ingest_seconds": 0.0006080389999851832,
+        "total_seconds": 0.00260836699999345,
+        "new_cross_rows": 760,
+        "new_boundary_variables": 20,
+        "new_routing_literal_reads": 380
+      },
+      "fresh_interface": {
+        "local_cache_lookups": 20,
+        "local_cache_hits": 0,
+        "local_candidates": 80,
+        "local_clause_evaluations": 140,
+        "local_projection_bit_steps": 40,
+        "plan_graph_pair_visits": 190,
+        "plan_fill_pair_tests": 17955,
+        "plan_candidate_visits": 210,
+        "plan_fill_edge_attempts": 1140,
+        "induced_width": 19,
+        "max_bucket_variables": 20,
+        "max_bucket_rows": 1048576,
+        "elimination_cache_lookups": 1,
+        "elimination_key_factor_ids": 20,
+        "elimination_cache_hits": 0,
+        "bucket_rows_reused": 0,
+        "bucket_rows_computed": 0,
+        "factor_table_lookups": 0,
+        "projection_bit_steps": 0,
+        "integer_multiplies": 0,
+        "integer_additions": 0,
+        "max_integer_bits": 0,
+        "factor_membership_tests": 210,
+        "status": "BUDGET_EXCEEDED",
+        "count": null,
+        "summary_seconds": 0.00015464399996290012,
+        "plan_seconds": 0.0016217380000398407,
+        "eliminate_seconds": 0.00018355500003508496,
+        "required_bucket_rows": 1048576,
+        "budget_scope": [
+          0,
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16,
+          18,
+          20,
+          22,
+          24,
+          26,
+          28,
+          30,
+          32,
+          34,
+          36,
+          38
+        ],
+        "row_budget": 262144,
+        "query_seconds": 0.001964200999964305,
+        "stored_table_cells": 800,
+        "peak_table_slots": 802,
+        "cached_elimination_tables": 0,
+        "cached_local_tables": 20,
+        "boundary_variables": 20,
+        "max_region_boundary": 1,
+        "source_clause_count": 230,
+        "source_literal_count": 460,
+        "cumulative_local_candidates": 80,
+        "cumulative_bucket_rows": 0,
+        "end_to_end_query_seconds": 0.0019729040000129316,
+        "ingest_seconds": 0.0006981620000487965,
+        "total_seconds": 0.002671066000061728
+      },
+      "incremental_bdd": {
+        "status": "EXACT",
+        "count": 21,
+        "reachable_nodes": 97,
+        "allocated_nodes": 4491,
+        "apply_cache_entries": 7660,
+        "apply_calls_new": 13490,
+        "compile_or_update_seconds": 0.00499643599994215,
+        "count_seconds": 4.0720000015426194e-05,
+        "inspection_seconds": 2.530200004002836e-05,
+        "total_seconds": 0.005062457999997605
+      },
+      "fresh_bdd": {
+        "status": "EXACT",
+        "count": 21,
+        "reachable_nodes": 97,
+        "allocated_nodes": 4491,
+        "apply_cache_entries": 7660,
+        "apply_calls_new": 16010,
+        "compile_or_update_seconds": 0.005749250999997457,
+        "count_seconds": 3.281699991930509e-05,
+        "inspection_seconds": 2.3812999984329508e-05,
+        "total_seconds": 0.005805880999901092
+      }
+    }
+  ]
+}

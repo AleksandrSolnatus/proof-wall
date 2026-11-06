@@ -1,0 +1,34 @@
+# MATH — Root-First / Co-Constructed Grammar (preserved seed)
+
+**Recorded:** 2026-10-15
+**Status:** UNTESTED IDEA / FOLLOW-ON AFTER GRAMMAR-001
+**Owner:** user + MATH conversation; no worker commissioned.
+
+## The observation (preserved in user's language)
+> “Mmmm Hebrew roots and adding. Start with defined things… agree on shared things firrst and then build a language with the problem. So instead of fighting you work toward it”
+>
+> “But your thing first I just don’t want to lose this”
+
+## Mathematical interpretation — provisional
+Use Hebrew roots and productive word-building as an **analogy**, not an assertion about Hebrew or a mathematical theorem:
+
+1. Agree on the smallest precisely defined primitives or shared facts: the “roots”.
+2. Specify which transformations are licensed: prefixes, patterns, relations, and combinations as analogues of valid inference rules.
+3. Derive increasingly expressive statements *with* the fixed problem by testing what each proposed rule actually preserves or entails.
+4. Attend to what becomes forced and to what remains unresolved; do not require the problem to yield an answer.
+5. Admit a new rule or remembered fact only if its meaning, soundness, verification cost, and reuse conditions survive scrutiny.
+
+Possible notation: P=fixed problem, R=agreed primitives, G_n=currently accepted sound grammar, K_n=certified derived knowledge. Extension G_(n+1) is not allowed to smuggle in the desired answer or assume facts absent from P. "Listen" is an operational metaphor for *deriving entailed consequences*, not granting agency to a formula.
+
+## Untested research question
+Does a small, compositional grammar built from agreed problem primitives provide *transferable* savings in downstream search compared with (i) a frozen general-purpose grammar and (ii) direct search, **after charging grammar-building, translation, proof checking, communication, and memory**?
+
+A future bounded test should predeclare how the grammar may grow; compare with identical-cost sham additions; test on held-out variable-renamed/reordered and genuinely new instances; log any soundness failure, ambiguity, or regression. It should also distinguish *syntactic* shared rules from *semantic* insight about a problem class. An instance-specific grammar can encode the answer, so compression/design cost and held-out transfer matter.
+
+## Order and continuity
+1. Complete and interpret GRAMMAR-001 first.
+2. Then consider ROOT-GRAMMAR-001 only under a new explicit decision.
+3. This note does not change the staged Terra MATH-SEVEN-001 queue, replace its evidence, or establish P=NP.
+
+**Retrieval handle:** `MATH-ROOT-FIRST-GRAMMAR-SEED`.
+**DOT-HANDOFF:** Preserve this seed separately from the executed toy results; open question is whether a co-constructed, root-first grammar improves *paid* out-of-sample solving. Next owner is the MATH conversation, with no execution scheduled.

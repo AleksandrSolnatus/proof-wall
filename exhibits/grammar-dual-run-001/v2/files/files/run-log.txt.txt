@@ -1,0 +1,66 @@
+RUN fixed-grammar/grammar001.py
+Wrote /mnt/data/math-grammar-two-runs/fixed-grammar/results.json
+CASE               REF SAT   GRAMMAR    FORCED   HYBRID DECISIONS    CLAUSE VISITS (grammar/first-solution/hybrid)
+CHAIN_SAT            1       SAT         4         0                   12/30 /12 
+CHAIN_UNSAT          0       UNSAT       2         0                    3/7  /3  
+XOR_SAT              2       SILENT      0         1                    4/3  /10 
+HIDDEN_UNSAT         0       SILENT      0         2                    8/10 /15 
+TAUTOLOGY_SAT        4       SILENT      0         2                    4/2  /12 
+RUN root-first/root_grammar001.py
+ROOT-GRAMMAR-001 {'number_of_cases': 31, 'case_groups': {'constructed': 5, 'heldout_no_motif': 8, 'heldout_parity': 12, 'negative': 1, 'original': 5}, 'root_grammar': {'SAT': 12, 'UNSAT': 9, 'SILENT': 10}, 'fixed_grammar': {'SAT': 1, 'UNSAT': 1, 'SILENT': 29}, 'root_grammar_heldout_parity': {'SAT': 6, 'UNSAT': 6, 'SILENT': 0}, 'fixed_grammar_heldout_parity': {'SAT': 0, 'UNSAT': 0, 'SILENT': 12}, 'root_grammar_heldout_no_motif': {'SAT': 0, 'UNSAT': 0, 'SILENT': 8}, 'fixed_grammar_heldout_no_motif': {'SAT': 0, 'UNSAT': 0, 'SILENT': 8}, 'root_hybrid_vs_fixed_hybrid': {'fewer_branch_decisions': 20, 'equal_branch_decisions': 11, 'more_branch_decisions': 0, 'root_total_branch_decisions': 38, 'fixed_total_branch_decisions': 69}, 'root_builder_work': {'total_signature_probes': 372, 'total_parse_literals': 940, 'total_local_proof_cases': 360, 'total_relation_inferences': 90}, 'checks': {'exhaustive_equivalence_checks': 31, 'metamorphic_controls': 31, 'max_n': 8}}
+CASE                          | n | models | fixed only | root only | fixed branches | root branches | roots | residual
+CHAIN_SAT                     | 4 |      1 | SAT        | SAT       |              0 |             0 |     0 |        4
+CHAIN_UNSAT                   | 2 |      0 | UNSAT      | UNSAT     |              0 |             0 |     0 |        3
+XOR_SAT                       | 2 |      2 | SILENT     | SAT       |              1 |             0 |     1 |        0
+HIDDEN_UNSAT                  | 2 |      0 | SILENT     | UNSAT     |              2 |             0 |     2 |        0
+TAUTOLOGY_SAT                 | 2 |      4 | SILENT     | SAT       |              2 |             0 |     0 |        0
+PARITY_CHAIN_SAT              | 5 |      2 | SILENT     | SAT       |              1 |             0 |     4 |        0
+PARITY_CYCLE_UNSAT            | 4 |      0 | SILENT     | UNSAT     |              2 |             0 |     4 |        0
+PARITY_COLLAPSE_SAT           | 4 |      1 | SILENT     | SAT       |              2 |             0 |     3 |        1
+PARITY_PLUS_HARD_RESIDUAL     | 5 |      8 | SILENT     | SILENT    |              3 |             2 |     1 |        4
+HALF_SIGNATURE_NEGATIVE       | 3 |      4 | SILENT     | SILENT    |              1 |             1 |     0 |        2
+DUPLICATE_AND_TAUTOLOGY       | 3 |      4 | SILENT     | SAT       |              2 |             0 |     1 |        0
+HELDOUT_PARITY_SAT_n4_i0      | 4 |      2 | SILENT     | SAT       |              1 |             0 |     5 |        0
+HELDOUT_PARITY_UNSAT_n4_i0    | 4 |      0 | SILENT     | UNSAT     |              2 |             0 |     4 |        0
+HELDOUT_PARITY_SAT_n4_i1      | 4 |      2 | SILENT     | SAT       |              1 |             0 |     4 |        0
+HELDOUT_PARITY_UNSAT_n4_i1    | 4 |      0 | SILENT     | UNSAT     |              2 |             0 |     4 |        0
+HELDOUT_PARITY_SAT_n6_i0      | 6 |      2 | SILENT     | SAT       |              1 |             0 |     5 |        0
+HELDOUT_PARITY_UNSAT_n6_i0    | 6 |      0 | SILENT     | UNSAT     |              2 |             0 |     6 |        0
+HELDOUT_PARITY_SAT_n6_i1      | 6 |      2 | SILENT     | SAT       |              1 |             0 |     7 |        0
+HELDOUT_PARITY_UNSAT_n6_i1    | 6 |      0 | SILENT     | UNSAT     |              2 |             0 |     6 |        0
+HELDOUT_PARITY_SAT_n8_i0      | 8 |      2 | SILENT     | SAT       |              1 |             0 |     9 |        0
+HELDOUT_PARITY_UNSAT_n8_i0    | 8 |      0 | SILENT     | UNSAT     |              2 |             0 |     8 |        0
+HELDOUT_PARITY_SAT_n8_i1      | 8 |      2 | SILENT     | SAT       |              1 |             0 |     8 |        0
+HELDOUT_PARITY_UNSAT_n8_i1    | 8 |      0 | SILENT     | UNSAT     |              2 |             0 |     8 |        0
+HELDOUT_RANDOM3_n5_i0         | 5 |      8 | SILENT     | SILENT    |              2 |             2 |     0 |       11
+HELDOUT_RANDOM3_n5_i1         | 5 |      9 | SILENT     | SILENT    |              4 |             4 |     0 |       11
+HELDOUT_RANDOM3_n6_i0         | 6 |      8 | SILENT     | SILENT    |              4 |             4 |     0 |       19
+HELDOUT_RANDOM3_n6_i1         | 6 |      7 | SILENT     | SILENT    |              2 |             2 |     0 |       19
+HELDOUT_RANDOM3_n7_i0         | 7 |      5 | SILENT     | SILENT    |              7 |             7 |     0 |       25
+HELDOUT_RANDOM3_n7_i1         | 7 |      7 | SILENT     | SILENT    |              6 |             6 |     0 |       25
+HELDOUT_RANDOM3_n8_i0         | 8 |      1 | SILENT     | SILENT    |              2 |             2 |     0 |       32
+HELDOUT_RANDOM3_n8_i1         | 8 |      0 | SILENT     | SILENT    |              8 |             8 |     0 |       32
+RUN root-first/reuse_extension.py
+{
+  "8": {
+    "smallest_observed_sampled_break_even_k": 8,
+    "k64_total_us": {
+      "fixed": 1664.4,
+      "fresh_root": 4768.54,
+      "cached_root": 616.85
+    },
+    "satisfiable_queries": 39,
+    "unsatisfiable_queries": 25
+  },
+  "12": {
+    "smallest_observed_sampled_break_even_k": 4,
+    "k64_total_us": {
+      "fixed": 2699.95,
+      "fresh_root": 7142.13,
+      "cached_root": 822.34
+    },
+    "satisfiable_queries": 44,
+    "unsatisfiable_queries": 20
+  }
+}
+PASS: original record reproduced; 31 root test cases and 128 append-only queries independently checked.

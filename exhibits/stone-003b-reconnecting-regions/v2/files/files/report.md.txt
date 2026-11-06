@@ -1,0 +1,142 @@
+# MATH / Stone 003B — When the Pieces Reconnect
+
+**Research date:** November 4, 2026.  
+**Parent:** Stone 003 — Expand Only What Matters.  
+**Status:** Checked bounded experiments; exact counting on the completed cases; one explicit resource stop. Not a proof of P = NP, P ≠ NP, or a generally improving learning algorithm.
+
+## The result in ordinary language
+
+The new version gets past the specific failure of the first version. Connecting regions does not automatically require unpacking their complete combined state. In a long chain, it can keep exact answers while handling only a small connection at a time.
+
+But small individual summaries are not sufficient. When many connections interact at once, the combined calculation can still become enormous. A different representation handled one of our failures cheaply. The obstacle is therefore not simply “connected versus separate”; it includes **the structure of the connections and the representation used to combine them**.
+
+The experiment ran **703 formula snapshots**, including 682 distinct canonical inputs when clause/literal order and exact duplicates are ignored. These are correlated sequential states, not 703 independently sampled hard problems. The interface counter returned **702 exact counts**, all independently matched, and **one BUDGET_EXCEEDED result**, never mislabeled UNSAT. The checker compared **2,414 exact method outputs**, rejected **four deliberately corrupted records**, and five additional API tests passed.
+
+## 1. What was built
+
+The implementation partitions variables into fixed, disjoint regions. Each region retains its original internal clauses. For every assignment of the variables that outside rules can touch, it stores the number of internal completions. Cross-region clauses remain explicit factors. Variable elimination then combines the regional tables without enumerating every full assignment.
+
+When a new rule exposes a previously hidden variable, that variable is promoted to the boundary and the affected region is rebuilt from its retained source. An old marginalized count is not treated as sufficient to reconstruct a newly exposed relationship.
+
+Unchanged regional tables and unchanged elimination calculations can be reused. Cached outputs are keyed by the eliminated variable and immutable input-factor identities; changed dependencies produce a different key. This is reuse of exact subcomputations across different questions, not merely remembering the final answer to an unchanged question.
+
+The prototype also rereads metadata, finds an elimination order, routes each added clause, keeps source clauses, and maintains caches. These costs are included in the measured solver times. It does not discover the region partition; the experimental partition is supplied.
+
+## 2. Replay of the first version's failure
+
+The exact original 16-variable reconnection sequence was replayed, not replaced with an easier example. Its final exact count is **28**.
+
+At the final update, the previous component-enumeration method examined **65,536 full assignments**. The new method performed **8 local candidate checks**, built an **8-row cross-clause factor**, and recomputed **30 global combination rows**, reusing computations that would otherwise cover **72 additional rows**. Its largest combination involved **3 variables / 8 assignments**.
+
+These are different work categories. Adding or dividing them is not a valid claim about total machine instructions or a 65,536-to-8 runtime speedup. The final update additionally performed 445 min-fill pair tests, 105 planning candidate visits, and 118 factor-membership tests. All nine snapshots returned the same counts as the independent original-variable truth-table checker.
+
+The real result is narrower and useful: **the full connected component did not have to be expanded**.
+
+## 3. Scaling the narrow-connection case
+
+The chain suite used 8, 16, 32, and 64 regions, each initially containing an equality pair. Clauses forbidding adjacent representatives from both being true were added one at a time. The largest case has **128 Boolean variables**, **63 connecting clauses**, and **64 successive formula states**.
+
+The final count is **27,777,890,035,288**. No global combination needed more than **two variables / four assignments**. The large count is not evidence of hard search: this family has an independently checkable simple structure.
+
+Across the 64 states:
+
+| Work category | Reuse retained work | Rebuild the same method each state |
+|---|---:|---:|
+| Local candidate assignments checked | 512 | 16,384 |
+| Global combination rows computed | 378 | 8,190 |
+
+The reuse run also ingested 252 cross-clause table rows, visited 45,759 planning candidates, and performed 41,664 min-fill pair tests. Its final retained tables occupied 633 numeric cells, plus source, indexes, cache keys, and other Python objects.
+
+Global table work alone fell by approximately **21.67×**. The measured total runtime fell by approximately **2.19×**, not 21.67×. Bookkeeping and order selection did not disappear.
+
+## 4. A counterexample to “small summaries are enough”
+
+Each region in the clique suite still exposes only **one Boolean variable**. Add a clause forbidding every pair of representatives from both being true. The result is an easy relation: at most one representative can be true.
+
+For this dense-table elimination implementation, however, all representatives must initially be combined together. With 18 regions it computed **524,286 global rows**. With 20 regions / 40 original variables, its next bucket would require **1,048,576 assignments**, above the declared **262,144-row cap**. It stopped before that allocation/evaluation and returned **BUDGET_EXCEEDED**, not false or UNSAT.
+
+The direct ordered decision diagram, using the declared region-adjacent ordering, represented the final 40-variable relation with **97 reachable nonterminal nodes** and returned **21 solutions**. The independent checker confirmed that count after verifying the equality substitution and exhaustively checking all 2^20 representative assignments.
+
+This distinction is central: **our dense-table representation failed on a problem another representation handled easily**. It is not a lower bound for every solver, and not evidence that this SAT instance is intrinsically hard.
+
+For the clique family, this implementation's row work is exactly 2^(m+1) − 2 when all elimination steps are allowed: 2^m + 2^(m−1) + … + 2. Changing elimination order does not remove the initial clique, but changing the representation can avoid dense expansion.
+
+## 5. Other controls
+
+The grid suite added links to 3×3, 4×4, and 5×5 region graphs. The 5×5 graph's final count was **55,447**, checked by an independent include/exclude graph recurrence after verifying the equality reduction. Its largest elimination combination had six variables. Width stayed modest in these finite tests, but not fixed at the chain's value.
+
+The random-cross suite used 12 seeded instances at 8, 12, 16, and 20 regions, queried at six stages each. These contain three-literal cross-region clauses. Reuse was often weak, and dense-table work grew substantially. This suite is reproducible but is not a certified distribution of adversarially hard SAT instances.
+
+The general suite used 36 seeded sequences on 6, 9, and 12 variables, with three-variable regions, internal clauses, and arbitrary new clauses touching previously hidden variables. All 396 snapshots were checked over the original variables, not through equality-specific algebra.
+
+Additional cases checked equality versus inequality after hidden-variable exposure, empty clauses, duplicate literals, duplicate clauses, tautologies, conflicting unit clauses, and repeat-query cache reuse. Both hidden-variable cases initially have the same exposed summary, but after the new rule one has one solution and the other zero. Retaining the source and rebuilding the exposed relationship preserves this distinction.
+
+## 6. Timing and memory, including comparisons that beat us
+
+The following are **seven-repeat medians in milliseconds for the complete sequence**, not per-update timings. Method order was randomized using seed 33003. The final benchmark was run after the ingestion-failure guard was fixed.
+
+| Sequence | Reused interfaces | Rebuilt interfaces | Incremental decision diagram | Rebuilt decision diagram |
+|---|---:|---:|---:|---:|
+| chain-64-regions | 43.520 | 95.515 | 33.274 | 1366.499 |
+| grid-5x5 | 16.427 | 29.673 | 15.849 | 199.819 |
+| original-16-variable-bridges | 1.221 | 1.910 | 0.394 | 2.220 |
+| random-cross-16-31013 | 231.099 | 231.962 | 10.103 | 40.476 |
+
+The interface counter does not beat the incremental decision-diagram baseline in any of these four median timing comparisons. It does beat rebuilding its own method on the narrow-connection sequences. On the selected random-cross sequence, that advantage is negligible.
+
+These prototype measurements include input ingestion, source retention, boundary updates, local compilation, min-fill order selection, cache bookkeeping, elimination, and result calculation. They exclude external oracle verification, generating the synthetic inputs, report/file serialization, and explicit reachable-node inspection. Counters are enabled in both prototypes but instrumentation is not identical. There is no controlled CPU isolation, production optimization, or claim about actual ChatGPT/library retrieval costs.
+
+A separate tracemalloc run measured peak Python-tracked allocation. Memory-instrumented timings were not used in the speed table. Preloaded experiment inputs and native process overhead are excluded, so these are not complete machine-memory measurements.
+
+| Sequence | Reused interfaces, bytes | Rebuilt interfaces, bytes | Incremental diagram, bytes | Rebuilt diagram, bytes |
+|---|---:|---:|---:|---:|
+| chain-64-regions | 288,592 | 488,372 | 5,296,720 | 5,163,802 |
+| grid-5x5 | 189,708 | 186,280 | 3,180,304 | 3,085,080 |
+| original-16-variable-bridges | 35,272 | 29,304 | 96,696 | 328,816 |
+| random-cross-16-31013 | 366,040 | 191,240 | 2,853,376 | 2,904,616 |
+
+Repeated recompilation can temporarily keep an old and new solver alive during construction in this Python harness. Cached interfaces retain old intermediate tables and can grow with the update history. The per-bucket row cap is not a total-memory or total-runtime bound.
+
+## 7. What “checked” means
+
+The independent checker imports neither solver implementation. It uses:
+
+* Full original-variable truth tables for **463 snapshots**; 147 small cases additionally agree with direct scalar enumeration.
+* A checked, one-to-one equality substitution followed by exhaustive representative truth tables for **103 snapshots**.
+* A checked equality substitution and an independent graph include/exclude recurrence for **137 snapshots**.
+
+The graph recurrence is not the tested elimination algorithm. The checker independently verifies output counts; it does not independently measure CPU timings or prove every implementation branch correct.
+
+The recorded verification pass took **0.204468 seconds** in this environment, including its truth-mask setup and mutation checks. This is separate from solver timings and is not a universal cheap-verification claim. Large arbitrary formulas would not necessarily admit these cheap oracles.
+
+Four corruptions were rejected: a wrong count, a stale hidden-variable answer, a budget stop relabeled as UNSAT, and a missing equality premise in a reduction. Five API tests passed, including rejection of invalid inputs and ensuring an oversized failed clause addition does not alter the formula.
+
+The original Stone 003 archive's checksums and 156 checks also passed. That original evidence is preserved separately and inside the packet; it is not counted as new results.
+
+## 8. Mathematical conclusion and its boundary
+
+For a region i with boundary S_i and hidden variables U_i, let W_i(s_i) count the assignments of U_i satisfying that region's internal clauses. If H contains the cross-region clauses and S is the union of all boundaries, then
+
+    #F = sum over assignments s to S of [H(s)] × product_i W_i(s restricted to S_i).
+
+This is exact because every full assignment corresponds uniquely to a boundary assignment and one internal assignment in each disjoint region. Once the boundary is fixed, the internal choices are independent. `METHOD-AND-PROOF.md` gives the argument and the cache invariant.
+
+A useful conditional bound follows: dense local tables are affordable when region sizes are bounded, and dense global elimination is affordable when intermediate interaction width stays bounded. Logarithmic bounds on both give polynomial table sizes, with polynomial order-selection and integer-arithmetic overhead for this implementation. No such bounds were proved for arbitrary CNF inputs or arbitrary update streams.
+
+This experiment counts **all solutions**, a stronger output requirement than deciding whether a solution exists. An expensive counting run is not a lower bound for SAT decision. Nor does a small final solution set ensure a cheap construction or update.
+
+These techniques connect directly to established **bucket/variable elimination** and **knowledge compilation**. This is a checked implementation and a project-specific experiment, not a novelty claim for those techniques. See Dechter (1999), DOI 10.1016/S0004-3702(99)00059-4, and Darwiche & Marquis (2002), DOI 10.1613/jair.989 / arXiv:1106.1819.
+
+## 9. What this changes in the research direction
+
+The first failure is repaired on the tested narrow-connection cases. The next target is more precise: preserve cheap **combinations of summaries**, not only cheap individual summaries.
+
+A defensible next experiment would let a bounded solver choose between dense interface tables and symbolic representations when predicted combination work grows, charging the recognition, conversion, retained-memory, and verification costs. It would need held-out update streams and an existing incremental solver baseline. A switch itself is not a proof that future problems always get cheaper.
+
+**Stone:** Keep exactly what the next question can touch; when the pieces reconnect, count the work of combining their relationships—not just the size of each piece.
+
+## Files and reproducibility
+
+`interface_engine.py` is the tested counter. `baseline_bdd.py` preserves the original BDD class. `run_experiments.py` generates the seeded suites. `results_*.json` hold all source formulas, stage-by-stage counts and counters. `independent_check.py`, `verification.json`, and logs hold the independent checks. `benchmark.py`, `benchmark.json`, and `benchmarks/` contain final repeated timings and separate allocation measurements. `test_engine.py` contains API regressions. `README.md` gives commands.
+
+Read the top-level manifest **before rerunning**. Reruns change timing fields, so freshly generated JSON will not match archived byte checksums. The manifest detects accidental byte changes; it is not an external signature or formal proof of the program.

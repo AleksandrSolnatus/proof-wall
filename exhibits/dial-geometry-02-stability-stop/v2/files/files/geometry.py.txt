@@ -1,0 +1,135 @@
+import numpy as np
+from scipy import ndimage as nd
+from scipy.optimize import linear_sum_assignment
+import pathlib,subprocess,tempfile,io
+from PIL import Image
+from xml.etree import ElementTree as ET
+STRUCT8=np.ones((3,3),int)
+STRUCT4=np.array([[0,1,0],[1,1,1],[0,1,0]])
+def thin(mask):
+ a=np.pad(mask.astype(np.uint8),1)
+ for iteration in range(2000):
+  changed=False
+  for step in (0,1):
+   c=a[1:-1,1:-1];p=[a[:-2,1:-1],a[:-2,2:],a[1:-1,2:],a[2:,2:],a[2:,1:-1],a[2:,:-2],a[1:-1,:-2],a[:-2,:-2]]
+   n=sum(p);trans=sum((p[i]==0)&(p[(i+1)%8]==1) for i in range(8))
+   if step==0:m=(p[0]*p[2]*p[4]==0)&(p[2]*p[4]*p[6]==0)
+   else:m=(p[0]*p[2]*p[6]==0)&(p[0]*p[4]*p[6]==0)
+   delete=(c==1)&(n>=2)&(n<=6)&(trans==1)&m
+   if delete.any():c[delete]=0;changed=True
+  if not changed:return a[1:-1,1:-1].astype(bool)
+ raise RuntimeError('thinning iteration cap')
+def render(source,N,angle=0):
+ root=ET.fromstring(pathlib.Path(source).read_text());ns='{http://www.w3.org/2000/svg}'
+ root.attrib['viewBox']='-30 -30 160 160';root.attrib['width']=str(N);root.attrib['height']=str(N)
+ g=ET.Element(ns+'g',{'transform':f'rotate({angle} 50 50)'})
+ for child in list(root):
+  if child.tag.endswith('path'):root.remove(child);g.append(child)
+ root.append(g)
+ with tempfile.TemporaryDirectory() as d:
+  svg=pathlib.Path(d)/'in.svg';png=pathlib.Path(d)/'out.png';svg.write_text(ET.tostring(root,encoding='unicode'))
+  q=subprocess.run(['inkscape',str(svg),'--export-type=png',f'--export-filename={png}',f'--export-width={N}',f'--export-height={N}'],capture_output=True,timeout=30)
+  if q.returncode:raise RuntimeError('SVG rendering failed')
+  rgba=np.asarray(Image.open(png).convert('RGBA'));return rgba[:,:,3]/255
+
+def degree(sk):return nd.convolve(sk.astype(int),STRUCT8,mode='constant')-sk
+
+def prune(sk,R):
+ sk=sk.copy()
+ for it in range(20):
+  deg=degree(sk);ends=np.argwhere(sk&(deg==1));remove=set()
+  for y,x in ends:
+   path=[(int(y),int(x))];prev=None;cur=path[0];length=0.
+   for k in range(int(np.ceil(.03*R))+3):
+    cy,cx=cur;neighbors=[(yy,xx) for yy in range(cy-1,cy+2) for xx in range(cx-1,cx+2) if (yy,xx)!=cur and 0<=yy<sk.shape[0] and 0<=xx<sk.shape[1] and sk[yy,xx] and (yy,xx)!=prev]
+    if len(neighbors)!=1:break
+    nxt=neighbors[0];length+=np.hypot(nxt[0]-cy,nxt[1]-cx)
+    if deg[nxt]>=3:
+     if length<=.03*R:remove.update(path)
+     break
+    if deg[nxt]<=1:break
+    path.append(nxt);prev,cur=cur,nxt
+    if length>.03*R:break
+  if not remove:return sk
+  for pt in remove:sk[pt]=False
+ raise RuntimeError('pruning iteration cap')
+
+def extract(alpha,threshold=.5):
+ mask=alpha>=threshold;pts=np.argwhere(mask);center=pts.mean(0);R=float(np.max(np.linalg.norm(pts-center,axis=1)))
+ labels,nc=nd.label(mask,STRUCT8);white,nw=nd.label(~mask,STRUCT4);external=set(white[0])|set(white[-1])|set(white[:,0])|set(white[:,-1]);holeids=[i for i in range(1,nw+1) if i not in external]
+ sk=prune(thin(mask),R);deg=degree(sk);marks=[]
+ for cls,raw in [('E',sk&(deg==1)),('J',sk&(deg>=3))]:
+  # Cluster connected candidate pixels then merge groups whose representative distance <=.02R.
+  ll,n=nd.label(raw,STRUCT8);clusters=[np.argwhere(ll==i) for i in range(1,n+1)];reps=[]
+  for cluster in clusters:
+   mean=cluster.mean(0);reps.append(cluster[np.argmin(np.sum((cluster-mean)**2,axis=1))])
+  if reps:
+   reps=np.array(reps);parent=list(range(len(reps)))
+   def root(i):
+    while parent[i]!=i:i=parent[i]
+    return i
+   for i in range(len(reps)):
+    for j in range(i):
+     if np.linalg.norm(reps[i]-reps[j])<=.02*R:parent[root(i)]=root(j)
+   groups={}
+   for i in range(len(reps)):groups.setdefault(root(i),[]).extend(clusters[i].tolist())
+   for group in groups.values():
+    group=np.array(sorted(set(map(tuple,group))));mean=group.mean(0);pt=group[np.argmin(np.sum((group-mean)**2,axis=1))];marks.append({'class':cls,'yx':pt,'region':('ink',int(labels[tuple(pt)]))})
+ for i in holeids:
+  hp=np.argwhere(white==i)
+  if len(hp)<.0005*R*R:continue
+  mean=hp.mean(0);pt=hp[np.argmin(np.sum((hp-mean)**2,axis=1))];marks.append({'class':'H','yx':pt,'region':('hole',i)})
+ # Central landmarks don't provide a defined bearing; class priority E,J,H fixed.
+ kept=[]
+ for m in sorted(marks,key=lambda m:({'E':0,'J':1,'H':2}[m['class']],*m['yx'])):
+  if np.linalg.norm(m['yx']-center)<.05*R:continue
+  if any(np.linalg.norm(m['yx']-k['yx'])<.015*R for k in kept):continue
+  kept.append(m)
+ supports=[]
+ for m in kept:
+  typ,reg=m['region'];support=np.argwhere((sk&(labels==reg)) if typ=='ink' else (white==reg));support=support[np.linalg.norm(support-center,axis=1)>=.05*R]
+  supports.append((support-center)/R)
+ points=np.array([(m['yx']-center)/R for m in kept]).reshape(-1,2)
+ return {'mask':mask,'skeleton':sk,'center':center,'R':R,'components':nc,'holes':len(holeids),'marks':kept,'points':points,'supports':supports,'alpha':alpha}
+
+def scores(points):
+ n=len(points);r=np.linalg.norm(points,axis=1)
+ radial=float(np.mean(np.abs(r[:,None]-r[None,:])[np.triu_indices(n,1)]<=.03)) if n>=3 else None
+ if n>=4:
+  angles=np.sort(np.mod(np.arctan2(points[:,0],points[:,1]),2*np.pi));gaps=np.diff(np.r_[angles,angles[0]+2*np.pi]);expected=2*np.pi/n
+  angular=float(np.mean(np.exp(-.5*((gaps-expected)/(.15*expected))**2)))
+ else:angular=None
+ return radial,angular
+
+def match(primary,other,angle):
+ # Inverse rotate in image y-down coordinates, then compare centered/scale-normalized landmarks by class.
+ th=np.deg2rad(angle);M=np.array([[np.cos(th),-np.sin(th)],[np.sin(th),np.cos(th)]])
+ otherpoints=other['points']@M.T
+ failures=[];maxerr=0.
+ if (primary['components'],primary['holes'])!=(other['components'],other['holes']):failures.append('topology')
+ for cls in ['E','J','H']:
+  a=primary['points'][[m['class']==cls for m in primary['marks']]];b=otherpoints[[m['class']==cls for m in other['marks']]]
+  if len(a)!=len(b):failures.append(cls+' count');continue
+  if len(a):
+   d=np.linalg.norm(a[:,None,:]-b[None,:,:],axis=2);ii,jj=linear_sum_assignment(d);err=float(max(d[ii,jj]));maxerr=max(maxerr,err)
+   if err>.04:failures.append(cls+' position')
+ # All center-relative normalized radii checked individually; descriptors only if point matching succeeded.
+ sa=scores(primary['points']);sb=scores(other['points'])
+ for name,v,w in zip(['radial','angular'],sa,sb):
+  if v is not None and w is not None and abs(v-w)>.08:failures.append(name+' stability')
+ return {'failures':failures,'max_matched_distance':maxerr,'primary_scores':sa,'variant_scores':sb,'variant_counts':{c:sum(m['class']==c for m in other['marks']) for c in ['E','J','H']},'topology':[other['components'],other['holes']]}
+
+def synthetic_tests():
+ from scipy import ndimage
+ tests={}
+ disk=np.zeros((128,128),bool);yy,xx=np.mgrid[:128,:128];disk[(yy-63.5)**2+(xx-63.5)**2<35**2]=1
+ sk=thin(disk);tests['filled_disk_thins']=int(sk.sum())<10
+ line=np.zeros((128,128),bool);line[60:65,25:100]=1;sl=thin(line);tests['line_two_endpoints']=int(np.count_nonzero(sl&(degree(sl)==1)))==2
+ ring=disk&~(((yy-63.5)**2+(xx-63.5)**2)<25**2);sr=thin(ring);tests['ring_topology']=nd.label(sr,STRUCT8)[1]==1 and nd.label(~sr,STRUCT4)[1]==2
+ pts=np.array([[0.,.8],[.8,0.],[0.,-.8],[-.8,0.]])
+ a=scores(pts);th=.47;rot=pts@np.array([[np.cos(th),-np.sin(th)],[np.sin(th),np.cos(th)]])
+ tests['analytic_rotation_invariance']=np.allclose(a,scores(rot),atol=1e-12);tests['four_point_shell_and_equispaced']=np.allclose(a,[1,1])
+ asymmetric=np.array([[0.,.2],[.5,.1],[.1,-.8],[-.3,.1]])
+ tests['asymmetric_scores_lower']=all(v<1 for v in scores(asymmetric))
+ assert all(tests.values()),tests
+ return tests

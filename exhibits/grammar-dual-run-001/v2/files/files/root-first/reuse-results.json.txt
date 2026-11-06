@@ -1,0 +1,2272 @@
+{
+  "name": "ROOT-GRAMMAR-001-REUSE-EXTENSION",
+  "studies": [
+    {
+      "n": 8,
+      "base_clauses": [
+        [
+          1,
+          2
+        ],
+        [
+          -1,
+          -2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          -2,
+          -3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          -3,
+          -4
+        ],
+        [
+          4,
+          -5
+        ],
+        [
+          -4,
+          5
+        ],
+        [
+          5,
+          -6
+        ],
+        [
+          -5,
+          6
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          -6,
+          -7
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          -7,
+          -8
+        ]
+      ],
+      "base_relations": 7,
+      "base_builder_cost": {
+        "parse_literal_reads": 28,
+        "signature_membership_tests": 28,
+        "relations_derived": 7,
+        "local_proof_cases": 28,
+        "local_proof_clause_evaluations": 56,
+        "union_calls": 7,
+        "find_calls": 458,
+        "parent_traversals": 385,
+        "residual_literal_rewrites": 0,
+        "removed_certificate_clauses": 14,
+        "removed_tautologies": 0,
+        "normalized_duplicate_literals": 0,
+        "normalized_tautologies": 0,
+        "witness_clause_checks": 0,
+        "witness_literal_checks": 0,
+        "branch_decisions": 0,
+        "branch_nodes": 0
+      },
+      "mutation_control": {
+        "old_base_sat_count": 1,
+        "changed_base_sat_count": 0,
+        "cache_was_rebuilt": true,
+        "point": "Changing a base parity clause invalidates old grammar; not an append-only query"
+      },
+      "query_count": 64,
+      "query_results": [
+        {
+          "query_id": 0,
+          "clauses": [
+            [
+              1
+            ],
+            [
+              -1
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 1,
+          "clauses": [
+            [
+              4
+            ],
+            [
+              -2
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 2,
+          "clauses": [
+            [
+              1
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "10100010",
+          "fresh_root_witness": "10100010",
+          "cached_witness": "10100010"
+        },
+        {
+          "query_id": 3,
+          "clauses": [
+            [
+              3
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "10100010",
+          "fresh_root_witness": "10100010",
+          "cached_witness": "10100010"
+        },
+        {
+          "query_id": 4,
+          "clauses": [
+            [
+              8
+            ],
+            [
+              -8
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 5,
+          "clauses": [
+            [
+              7
+            ],
+            [
+              1
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "10100010",
+          "fresh_root_witness": "10100010",
+          "cached_witness": "10100010"
+        },
+        {
+          "query_id": 6,
+          "clauses": [
+            [
+              -3,
+              2
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 7,
+          "clauses": [
+            [
+              5,
+              7
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 8,
+          "clauses": [
+            [
+              5
+            ],
+            [
+              -5
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 9,
+          "clauses": [
+            [
+              -1
+            ],
+            [
+              -6
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 10,
+          "clauses": [
+            [
+              7
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "10100010",
+          "fresh_root_witness": "10100010",
+          "cached_witness": "10100010"
+        },
+        {
+          "query_id": 11,
+          "clauses": [
+            [
+              3
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "10100010",
+          "fresh_root_witness": "10100010",
+          "cached_witness": "10100010"
+        },
+        {
+          "query_id": 12,
+          "clauses": [
+            [
+              6
+            ],
+            [
+              -6
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 13,
+          "clauses": [
+            [
+              3
+            ],
+            [
+              -4
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "10100010",
+          "fresh_root_witness": "10100010",
+          "cached_witness": "10100010"
+        },
+        {
+          "query_id": 14,
+          "clauses": [
+            [
+              -1
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 15,
+          "clauses": [
+            [
+              3,
+              7
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "10100010",
+          "fresh_root_witness": "10100010",
+          "cached_witness": "10100010"
+        },
+        {
+          "query_id": 16,
+          "clauses": [
+            [
+              3
+            ],
+            [
+              -3
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 17,
+          "clauses": [
+            [
+              -2
+            ],
+            [
+              4
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 18,
+          "clauses": [
+            [
+              7,
+              6
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 19,
+          "clauses": [
+            [
+              -6,
+              -3,
+              1
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 20,
+          "clauses": [
+            [
+              6
+            ],
+            [
+              -6
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 21,
+          "clauses": [
+            [
+              8
+            ],
+            [
+              -3
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 22,
+          "clauses": [
+            [
+              -4,
+              -1
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 23,
+          "clauses": [
+            [
+              5
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 24,
+          "clauses": [
+            [
+              3
+            ],
+            [
+              -3
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 25,
+          "clauses": [
+            [
+              7
+            ],
+            [
+              2
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 26,
+          "clauses": [
+            [
+              -4,
+              -1,
+              -7
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 27,
+          "clauses": [
+            [
+              5
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 28,
+          "clauses": [
+            [
+              6
+            ],
+            [
+              -6
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 29,
+          "clauses": [
+            [
+              -3
+            ],
+            [
+              7
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 30,
+          "clauses": [
+            [
+              -5,
+              -7
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 31,
+          "clauses": [
+            [
+              -8,
+              6
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 32,
+          "clauses": [
+            [
+              4
+            ],
+            [
+              -4
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 33,
+          "clauses": [
+            [
+              5
+            ],
+            [
+              3
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 34,
+          "clauses": [
+            [
+              5,
+              -3
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 35,
+          "clauses": [
+            [
+              1,
+              2,
+              -6
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 36,
+          "clauses": [
+            [
+              1
+            ],
+            [
+              -1
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 37,
+          "clauses": [
+            [
+              -7
+            ],
+            [
+              2
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 38,
+          "clauses": [
+            [
+              8
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 39,
+          "clauses": [
+            [
+              -3,
+              7,
+              1
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 40,
+          "clauses": [
+            [
+              8
+            ],
+            [
+              -8
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 41,
+          "clauses": [
+            [
+              -5
+            ],
+            [
+              -2
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "10100010",
+          "fresh_root_witness": "10100010",
+          "cached_witness": "10100010"
+        },
+        {
+          "query_id": 42,
+          "clauses": [
+            [
+              -4,
+              5
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 43,
+          "clauses": [
+            [
+              2
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 44,
+          "clauses": [
+            [
+              4
+            ],
+            [
+              -4
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 45,
+          "clauses": [
+            [
+              -6
+            ],
+            [
+              1
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "10100010",
+          "fresh_root_witness": "10100010",
+          "cached_witness": "10100010"
+        },
+        {
+          "query_id": 46,
+          "clauses": [
+            [
+              3,
+              5,
+              6
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 47,
+          "clauses": [
+            [
+              1,
+              -7
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 48,
+          "clauses": [
+            [
+              1
+            ],
+            [
+              -1
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 49,
+          "clauses": [
+            [
+              -2
+            ],
+            [
+              3
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "10100010",
+          "fresh_root_witness": "10100010",
+          "cached_witness": "10100010"
+        },
+        {
+          "query_id": 50,
+          "clauses": [
+            [
+              -6
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "10100010",
+          "fresh_root_witness": "10100010",
+          "cached_witness": "10100010"
+        },
+        {
+          "query_id": 51,
+          "clauses": [
+            [
+              -3
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 52,
+          "clauses": [
+            [
+              1
+            ],
+            [
+              -1
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 53,
+          "clauses": [
+            [
+              7
+            ],
+            [
+              8
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 54,
+          "clauses": [
+            [
+              -5
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "10100010",
+          "fresh_root_witness": "10100010",
+          "cached_witness": "10100010"
+        },
+        {
+          "query_id": 55,
+          "clauses": [
+            [
+              -1,
+              -7
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 56,
+          "clauses": [
+            [
+              2
+            ],
+            [
+              -2
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 57,
+          "clauses": [
+            [
+              3
+            ],
+            [
+              4
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 58,
+          "clauses": [
+            [
+              -7,
+              -8
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 59,
+          "clauses": [
+            [
+              5,
+              -6,
+              1
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "01011101",
+          "fresh_root_witness": "01011101",
+          "cached_witness": "01011101"
+        },
+        {
+          "query_id": 60,
+          "clauses": [
+            [
+              4
+            ],
+            [
+              -4
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 61,
+          "clauses": [
+            [
+              6
+            ],
+            [
+              1
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 62,
+          "clauses": [
+            [
+              1
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "10100010",
+          "fresh_root_witness": "10100010",
+          "cached_witness": "10100010"
+        },
+        {
+          "query_id": 63,
+          "clauses": [
+            [
+              1,
+              -8,
+              3
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "10100010",
+          "fresh_root_witness": "10100010",
+          "cached_witness": "10100010"
+        }
+      ],
+      "timings": {
+        "1": {
+          "fixed": {
+            "median_total_us": 7.94,
+            "min_us": 7.81,
+            "max_us": 9.61
+          },
+          "fresh_root": {
+            "median_total_us": 65.32,
+            "min_us": 64.53,
+            "max_us": 80.51
+          },
+          "cached_root": {
+            "median_total_us": 58.74,
+            "min_us": 55.87,
+            "max_us": 69.72
+          }
+        },
+        "2": {
+          "fixed": {
+            "median_total_us": 19.11,
+            "min_us": 17.75,
+            "max_us": 29.91
+          },
+          "fresh_root": {
+            "median_total_us": 129.96,
+            "min_us": 124.4,
+            "max_us": 3853.69
+          },
+          "cached_root": {
+            "median_total_us": 61.96,
+            "min_us": 60.31,
+            "max_us": 73.18
+          }
+        },
+        "4": {
+          "fixed": {
+            "median_total_us": 78.54,
+            "min_us": 77.54,
+            "max_us": 98.5
+          },
+          "fresh_root": {
+            "median_total_us": 279.36,
+            "min_us": 266.47,
+            "max_us": 302.78
+          },
+          "cached_root": {
+            "median_total_us": 83.57,
+            "min_us": 80.86,
+            "max_us": 96.23
+          }
+        },
+        "8": {
+          "fixed": {
+            "median_total_us": 191.74,
+            "min_us": 178.56,
+            "max_us": 201.1
+          },
+          "fresh_root": {
+            "median_total_us": 569.91,
+            "min_us": 554.73,
+            "max_us": 596.02
+          },
+          "cached_root": {
+            "median_total_us": 132.28,
+            "min_us": 119.55,
+            "max_us": 140.64
+          }
+        },
+        "16": {
+          "fixed": {
+            "median_total_us": 422.49,
+            "min_us": 405.33,
+            "max_us": 457.42
+          },
+          "fresh_root": {
+            "median_total_us": 1151.8,
+            "min_us": 1127.4,
+            "max_us": 1232.45
+          },
+          "cached_root": {
+            "median_total_us": 192.84,
+            "min_us": 186.11,
+            "max_us": 200.45
+          }
+        },
+        "32": {
+          "fixed": {
+            "median_total_us": 834.27,
+            "min_us": 819.29,
+            "max_us": 988.27
+          },
+          "fresh_root": {
+            "median_total_us": 2340.19,
+            "min_us": 2239.28,
+            "max_us": 2635.5
+          },
+          "cached_root": {
+            "median_total_us": 330.84,
+            "min_us": 308.11,
+            "max_us": 484.46
+          }
+        },
+        "64": {
+          "fixed": {
+            "median_total_us": 1664.4,
+            "min_us": 1635.34,
+            "max_us": 1850.65
+          },
+          "fresh_root": {
+            "median_total_us": 4768.54,
+            "min_us": 4607.8,
+            "max_us": 5806.81
+          },
+          "cached_root": {
+            "median_total_us": 616.85,
+            "min_us": 598.13,
+            "max_us": 675.2
+          }
+        }
+      },
+      "cache_contract": "immutable exact base CNF; new additive query clauses only; any change to base requires rebuilding"
+    },
+    {
+      "n": 12,
+      "base_clauses": [
+        [
+          1,
+          2
+        ],
+        [
+          -1,
+          -2
+        ],
+        [
+          2,
+          -3
+        ],
+        [
+          -2,
+          3
+        ],
+        [
+          3,
+          -4
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          4,
+          -5
+        ],
+        [
+          -4,
+          5
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          -5,
+          -6
+        ],
+        [
+          6,
+          -7
+        ],
+        [
+          -6,
+          7
+        ],
+        [
+          7,
+          -8
+        ],
+        [
+          -7,
+          8
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          -8,
+          -9
+        ],
+        [
+          9,
+          -10
+        ],
+        [
+          -9,
+          10
+        ],
+        [
+          10,
+          -11
+        ],
+        [
+          -10,
+          11
+        ],
+        [
+          11,
+          -12
+        ],
+        [
+          -11,
+          12
+        ]
+      ],
+      "base_relations": 11,
+      "base_builder_cost": {
+        "parse_literal_reads": 44,
+        "signature_membership_tests": 44,
+        "relations_derived": 11,
+        "local_proof_cases": 44,
+        "local_proof_clause_evaluations": 88,
+        "union_calls": 11,
+        "find_calls": 689,
+        "parent_traversals": 618,
+        "residual_literal_rewrites": 0,
+        "removed_certificate_clauses": 22,
+        "removed_tautologies": 0,
+        "normalized_duplicate_literals": 0,
+        "normalized_tautologies": 0,
+        "witness_clause_checks": 0,
+        "witness_literal_checks": 0,
+        "branch_decisions": 0,
+        "branch_nodes": 0
+      },
+      "mutation_control": {
+        "old_base_sat_count": 1,
+        "changed_base_sat_count": 0,
+        "cache_was_rebuilt": true,
+        "point": "Changing a base parity clause invalidates old grammar; not an append-only query"
+      },
+      "query_count": 64,
+      "query_results": [
+        {
+          "query_id": 0,
+          "clauses": [
+            [
+              5
+            ],
+            [
+              -5
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 1,
+          "clauses": [
+            [
+              -2
+            ],
+            [
+              -9
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "100001110000",
+          "fresh_root_witness": "100001110000",
+          "cached_witness": "100001110000"
+        },
+        {
+          "query_id": 2,
+          "clauses": [
+            [
+              10,
+              -8,
+              5
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 3,
+          "clauses": [
+            [
+              1,
+              3
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 4,
+          "clauses": [
+            [
+              5
+            ],
+            [
+              -5
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 5,
+          "clauses": [
+            [
+              2
+            ],
+            [
+              -8
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 6,
+          "clauses": [
+            [
+              -7
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 7,
+          "clauses": [
+            [
+              2,
+              -8,
+              12
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 8,
+          "clauses": [
+            [
+              5
+            ],
+            [
+              -5
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 9,
+          "clauses": [
+            [
+              -3
+            ],
+            [
+              -6
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 10,
+          "clauses": [
+            [
+              -8
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 11,
+          "clauses": [
+            [
+              2,
+              8
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 12,
+          "clauses": [
+            [
+              7
+            ],
+            [
+              -7
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 13,
+          "clauses": [
+            [
+              11
+            ],
+            [
+              2
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 14,
+          "clauses": [
+            [
+              2,
+              3,
+              -9
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 15,
+          "clauses": [
+            [
+              3,
+              4
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 16,
+          "clauses": [
+            [
+              1
+            ],
+            [
+              -1
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 17,
+          "clauses": [
+            [
+              9
+            ],
+            [
+              5
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 18,
+          "clauses": [
+            [
+              3
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 19,
+          "clauses": [
+            [
+              11,
+              8
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 20,
+          "clauses": [
+            [
+              1
+            ],
+            [
+              -1
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 21,
+          "clauses": [
+            [
+              -10
+            ],
+            [
+              2
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 22,
+          "clauses": [
+            [
+              4
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 23,
+          "clauses": [
+            [
+              -1,
+              -8,
+              -2
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 24,
+          "clauses": [
+            [
+              6
+            ],
+            [
+              -6
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 25,
+          "clauses": [
+            [
+              2
+            ],
+            [
+              5
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 26,
+          "clauses": [
+            [
+              9,
+              -6,
+              -11
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 27,
+          "clauses": [
+            [
+              -9
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "100001110000",
+          "fresh_root_witness": "100001110000",
+          "cached_witness": "100001110000"
+        },
+        {
+          "query_id": 28,
+          "clauses": [
+            [
+              1
+            ],
+            [
+              -1
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 29,
+          "clauses": [
+            [
+              -4
+            ],
+            [
+              -8
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 30,
+          "clauses": [
+            [
+              -5
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "100001110000",
+          "fresh_root_witness": "100001110000",
+          "cached_witness": "100001110000"
+        },
+        {
+          "query_id": 31,
+          "clauses": [
+            [
+              -6,
+              5
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 32,
+          "clauses": [
+            [
+              7
+            ],
+            [
+              -7
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 33,
+          "clauses": [
+            [
+              8
+            ],
+            [
+              1
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "100001110000",
+          "fresh_root_witness": "100001110000",
+          "cached_witness": "100001110000"
+        },
+        {
+          "query_id": 34,
+          "clauses": [
+            [
+              -11,
+              8
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "100001110000",
+          "fresh_root_witness": "100001110000",
+          "cached_witness": "100001110000"
+        },
+        {
+          "query_id": 35,
+          "clauses": [
+            [
+              6,
+              5
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 36,
+          "clauses": [
+            [
+              4
+            ],
+            [
+              -4
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 37,
+          "clauses": [
+            [
+              6
+            ],
+            [
+              -12
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "100001110000",
+          "fresh_root_witness": "100001110000",
+          "cached_witness": "100001110000"
+        },
+        {
+          "query_id": 38,
+          "clauses": [
+            [
+              4
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 39,
+          "clauses": [
+            [
+              5,
+              1,
+              7
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 40,
+          "clauses": [
+            [
+              7
+            ],
+            [
+              -7
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 41,
+          "clauses": [
+            [
+              -5
+            ],
+            [
+              7
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "100001110000",
+          "fresh_root_witness": "100001110000",
+          "cached_witness": "100001110000"
+        },
+        {
+          "query_id": 42,
+          "clauses": [
+            [
+              7
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "100001110000",
+          "fresh_root_witness": "100001110000",
+          "cached_witness": "100001110000"
+        },
+        {
+          "query_id": 43,
+          "clauses": [
+            [
+              -2,
+              -10
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "100001110000",
+          "fresh_root_witness": "100001110000",
+          "cached_witness": "100001110000"
+        },
+        {
+          "query_id": 44,
+          "clauses": [
+            [
+              10
+            ],
+            [
+              -10
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 45,
+          "clauses": [
+            [
+              9
+            ],
+            [
+              -3
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 46,
+          "clauses": [
+            [
+              2
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 47,
+          "clauses": [
+            [
+              11,
+              -1,
+              -2
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 48,
+          "clauses": [
+            [
+              5
+            ],
+            [
+              -5
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 49,
+          "clauses": [
+            [
+              -12
+            ],
+            [
+              -2
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "100001110000",
+          "fresh_root_witness": "100001110000",
+          "cached_witness": "100001110000"
+        },
+        {
+          "query_id": 50,
+          "clauses": [
+            [
+              2
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 51,
+          "clauses": [
+            [
+              -9,
+              -11
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "100001110000",
+          "fresh_root_witness": "100001110000",
+          "cached_witness": "100001110000"
+        },
+        {
+          "query_id": 52,
+          "clauses": [
+            [
+              3
+            ],
+            [
+              -3
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 53,
+          "clauses": [
+            [
+              -10
+            ],
+            [
+              1
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "100001110000",
+          "fresh_root_witness": "100001110000",
+          "cached_witness": "100001110000"
+        },
+        {
+          "query_id": 54,
+          "clauses": [
+            [
+              -10,
+              -11
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "100001110000",
+          "fresh_root_witness": "100001110000",
+          "cached_witness": "100001110000"
+        },
+        {
+          "query_id": 55,
+          "clauses": [
+            [
+              -8,
+              11
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 56,
+          "clauses": [
+            [
+              10
+            ],
+            [
+              -10
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 57,
+          "clauses": [
+            [
+              7
+            ],
+            [
+              -4
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "100001110000",
+          "fresh_root_witness": "100001110000",
+          "cached_witness": "100001110000"
+        },
+        {
+          "query_id": 58,
+          "clauses": [
+            [
+              -11
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "100001110000",
+          "fresh_root_witness": "100001110000",
+          "cached_witness": "100001110000"
+        },
+        {
+          "query_id": 59,
+          "clauses": [
+            [
+              -4
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "100001110000",
+          "fresh_root_witness": "100001110000",
+          "cached_witness": "100001110000"
+        },
+        {
+          "query_id": 60,
+          "clauses": [
+            [
+              8
+            ],
+            [
+              -8
+            ]
+          ],
+          "model_count": 0,
+          "fixed_hybrid_witness": null,
+          "fresh_root_witness": null,
+          "cached_witness": null
+        },
+        {
+          "query_id": 61,
+          "clauses": [
+            [
+              12
+            ],
+            [
+              4
+            ]
+          ],
+          "model_count": 1,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 62,
+          "clauses": [
+            [
+              -7,
+              1,
+              5
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        },
+        {
+          "query_id": 63,
+          "clauses": [
+            [
+              -12,
+              5,
+              -11
+            ]
+          ],
+          "model_count": 2,
+          "fixed_hybrid_witness": "011110001111",
+          "fresh_root_witness": "011110001111",
+          "cached_witness": "011110001111"
+        }
+      ],
+      "timings": {
+        "1": {
+          "fixed": {
+            "median_total_us": 11.23,
+            "min_us": 10.16,
+            "max_us": 17.44
+          },
+          "fresh_root": {
+            "median_total_us": 101.45,
+            "min_us": 93.49,
+            "max_us": 132.43
+          },
+          "cached_root": {
+            "median_total_us": 88.84,
+            "min_us": 85.84,
+            "max_us": 101.6
+          }
+        },
+        "2": {
+          "fixed": {
+            "median_total_us": 54.92,
+            "min_us": 49.84,
+            "max_us": 85.46
+          },
+          "fresh_root": {
+            "median_total_us": 223.66,
+            "min_us": 208.43,
+            "max_us": 233.33
+          },
+          "cached_root": {
+            "median_total_us": 113.66,
+            "min_us": 106.62,
+            "max_us": 151.39
+          }
+        },
+        "4": {
+          "fixed": {
+            "median_total_us": 170.54,
+            "min_us": 145.69,
+            "max_us": 191.49
+          },
+          "fresh_root": {
+            "median_total_us": 459.56,
+            "min_us": 435.15,
+            "max_us": 503.13
+          },
+          "cached_root": {
+            "median_total_us": 146.27,
+            "min_us": 127.89,
+            "max_us": 198.94
+          }
+        },
+        "8": {
+          "fixed": {
+            "median_total_us": 345.26,
+            "min_us": 327.53,
+            "max_us": 362.33
+          },
+          "fresh_root": {
+            "median_total_us": 897.22,
+            "min_us": 877.4,
+            "max_us": 1014.26
+          },
+          "cached_root": {
+            "median_total_us": 204.88,
+            "min_us": 196.07,
+            "max_us": 213.75
+          }
+        },
+        "16": {
+          "fixed": {
+            "median_total_us": 673.06,
+            "min_us": 627.95,
+            "max_us": 755.63
+          },
+          "fresh_root": {
+            "median_total_us": 1823.64,
+            "min_us": 1678.49,
+            "max_us": 1879.0
+          },
+          "cached_root": {
+            "median_total_us": 283.17,
+            "min_us": 269.32,
+            "max_us": 319.05
+          }
+        },
+        "32": {
+          "fixed": {
+            "median_total_us": 1318.95,
+            "min_us": 1263.65,
+            "max_us": 1614.28
+          },
+          "fresh_root": {
+            "median_total_us": 3613.76,
+            "min_us": 3343.36,
+            "max_us": 3976.74
+          },
+          "cached_root": {
+            "median_total_us": 451.91,
+            "min_us": 429.76,
+            "max_us": 575.51
+          }
+        },
+        "64": {
+          "fixed": {
+            "median_total_us": 2699.95,
+            "min_us": 2625.47,
+            "max_us": 2740.06
+          },
+          "fresh_root": {
+            "median_total_us": 7142.13,
+            "min_us": 6724.23,
+            "max_us": 7360.15
+          },
+          "cached_root": {
+            "median_total_us": 822.34,
+            "min_us": 797.15,
+            "max_us": 884.28
+          }
+        }
+      },
+      "cache_contract": "immutable exact base CNF; new additive query clauses only; any change to base requires rebuilding"
+    }
+  ],
+  "summary": {
+    "8": {
+      "smallest_observed_sampled_break_even_k": 8,
+      "k64_total_us": {
+        "fixed": 1664.4,
+        "fresh_root": 4768.54,
+        "cached_root": 616.85
+      },
+      "satisfiable_queries": 39,
+      "unsatisfiable_queries": 25
+    },
+    "12": {
+      "smallest_observed_sampled_break_even_k": 4,
+      "k64_total_us": {
+        "fixed": 2699.95,
+        "fresh_root": 7142.13,
+        "cached_root": 822.34
+      },
+      "satisfiable_queries": 44,
+      "unsatisfiable_queries": 20
+    }
+  },
+  "limits": [
+    "query family shares unchanged parity base, not unseen unrelated CNFs",
+    "microbenchmarks are Python process CPU microseconds on one machine",
+    "query oracle only used after executing methods, not to pick constraints",
+    "grammar cache does not accept mutation of the original base"
+  ]
+}

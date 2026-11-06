@@ -1,0 +1,144 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "The exact exposed structural-sensitivity experiment recorded on October 1, 2026. Not independent blind replication or decipherment.",
+  "date": "2026-10-01",
+  "files": [
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; prepared from completed research records.",
+      "bytes": 2024,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "article",
+      "sha256": "b9f54701054629b8a43260aa2592c0eb8b2942d949a6baf4f04d2bc69517eb78"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 9159,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/corpus_masked.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "18ee5ac70b21696e7ed60616e3a265eaf0261fdd49779464e254a7e916f74a24"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 2430,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/original-manifest.sha256.txt",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "422af5cd40a29a37221b75e469410f9e76eb2be11e36e99d1058b7ee2b9eaa58"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 1450,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/original-readme.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "original",
+      "sha256": "4f8cdbfd78bf95d9f36b4945cb5c241ab4155acb56899142e0f0efb9abe4f860"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 1083,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/postrun-verification.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "e3992acfa40c4e36caba640557b99138d2289a903f1b1f0ebc4aa9238182bd75"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 1327,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/presampling-manifest.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "b4fb8420e80857edd726df9335e9aaf5b8e323e518d710c4ee61a05a1de7d6f7"
+    },
+    {
+      "attribution": "Public redacted excerpt of original research file; source retained unchanged in private archive.",
+      "bytes": 12022,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/protocol-public-excerpt.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "d15611f483738f96a026ab03ddbd7eff7bd08253cbdbe16777b10624821b0611"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 5234,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/report.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "original",
+      "sha256": "03bb3cea10b14ef7466a61ed79090ebeeb1ac5c9e74702b56208027be2160bc0"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 3006,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/results.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "6cd2a6cd18207019b187b65d7be1575d7a51383e1fc33e9cd48cf529b2eeb96e"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 13734,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/run_p6_r1.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "68a437eef4f4c3e9a00baac3fa01a9b58de91cdd07ad9176a5535a393c5029eb"
+    }
+  ],
+  "finding": "The original October 1 report records survival of this one sensitivity check for both fixed C28 readings. Its saved post-run verification reconciles the ledgers with the result.",
+  "gardens": [],
+  "id": "dial-p6-r1-context",
+  "limitations": [
+    "No sign meaning, sound, reading direction or historical copying process is established.",
+    "This does not resolve the separate P-5 original-generator or P-26 provenance gaps.",
+    "The historical runtime is recorded; it has not been recreated or tested for this assembly.",
+    "Preserved archive: P6_R1_EXECUTION_2026-10-01.zip. The attached files are inspection selections; they do not replace its complete runtime directory. No public archive URL or permission is implied. Full figures, historical versions and omitted dependencies remain in that archive.",
+    "S01–S45 identities and Pen/Pencil alternatives remain as recorded. Display orientation is not proven reading direction; no decoding or acceptance of Visual Families follows.",
+    "Public source selections omit specified private identifiers or provenance-sensitive inputs; private originals and source hashes remain preserved."
+  ],
+  "method": "Use the original masked corpus, frozen P6-R1 protocol and preserved executor; read the saved results and two compressed draw ledgers. This assembly performs no sampling or scientific replay.",
+  "open_questions": [
+    "Whether the result survives other dependence models remains a separate research question, not a prerequisite to presenting this completed run."
+  ],
+  "provenance": {
+    "authors": [
+      "The Bridges Group — Phaistos Dial",
+      "Original research contributors as credited in the retained experiment record"
+    ],
+    "change_note": "Version 2 is a public selected-file edition of previously checked v1. Scientific findings unchanged; private source references redacted; the original review/archive remains in private custody.",
+    "origin": "Original P6_R1_EXECUTION_2026-10-01.zip; SHA-256 5d5630db17791b1cc5c1fa65ab061038910e4d77452583a75a043a8c945d4b2f. Original reports and receipts retain their own authorship and verification scope."
+  },
+  "publication": {
+    "attribution": "The Bridges Group — Phaistos Dial; original research contributors as credited in retained records.",
+    "intent": "request-review",
+    "license": "All rights reserved. No new open-source license granted.",
+    "rights": "Owner-requested public reading and downloading of the selected exhibit only; preserves private originals; not an open permission for derivative commercial redistribution."
+  },
+  "question": "Does the recorded structural overlap result survive the predeclared extension of protected repeated passages by one adjacent cell?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Dial P6-R1 — one-cell context sensitivity",
+  "version": 2
+}

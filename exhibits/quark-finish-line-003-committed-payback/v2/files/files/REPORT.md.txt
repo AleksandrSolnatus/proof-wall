@@ -1,0 +1,48 @@
+# QUARK-FINISH-LINE-003 — The committed payback
+
+**Date:** 2026-10-30 (Arizona). **Status:** exploratory toy mathematics, not Q002-S9. No change to canonical Quark, historical hard grammar, prior seam reports, or ownership.
+
+## Question and continuity
+
+Read the saved Quark seam charter, SEAM-001, SEAM-002, FINISH-LINE trail charter, FINISH-LINE-001 and FINISH-LINE-002 reports. The previous local predictive gate sometimes enables a cancellation but permits infinite detours. **Question:** If the seam crossing and its immediately created cancellation are one indivisible *two-move commitment*, do all schedules finish, and is the worst-case total work better than the hollow seam?
+
+Frozen-before-run protocol: `FROZEN_PROTOCOL.md`, SHA-256 `a834aa3b80cd27f1f931876ff760bbe7d9e8f5377ea3b1b03de087d7d0fffa8e`.
+
+## Model
+
+Oriented ternary ring of n>=3 cells, distinguished seam `(n-1,0)`. All hollow-seam actions remain available: neutral `10→01`, `12→21` on unmarked edges, strict `02/20→11` everywhere. In addition, at the seam allow a neutral crossing **only** if cell n-2 contains the opposite deviation. The crossing is immediately followed by a strict cancellation at `(n-2,n-1)`, atomically as a macro. This macro costs **two** ordinary rewrites, not one. No competing action can interleave. The mechanism uses a ternary lookahead at n-2 and exclusive reservation of two neighboring edges. Those are new control assumptions; they are not counted as free physical implementation. Hard legality is unchanged.
+
+## All-size mathematical result
+
+Define `W(x)=Σ_i i(x_i−1)^2` with seam at the wrap edge. Every hollow action strictly decreases W. A committed crossing increases W by n−1, but the forced cancellation decreases it by 2n−3, so **the completed macro decreases W by n−2**, positive for every n>=3. Thus all *completed* actions strictly decrease nonnegative integer W. No infinite branch of complete actions exists. Any terminal occupancy is balanced, because all hollow actions remain available and hollow terminal states are balanced. Balance, once reached, is preserved because no allowed move creates a missing zero or two; the new macro requires both types and cannot execute from a balanced state. Hence every maximal execution **finds, stays, and finishes**.
+
+This argument assumes the macro is indivisible and cannot be interrupted after the first rewrite. A scheduler refusing to execute enabled actions forever is excluded. For n>=4, each macro costs 2 and reduces W by n−2>=2, so **total atomic rewrites <= W(initial) <= n(n−1)/2**. For n=3, macro costs 2 but lowers W only 1, and exhaustive worst is 4 versus hollow's 3. The local coordination/read/locking overhead is additional, unquantified work; the n>=4 inequality is a move-count bound, not an overall resource bound.
+
+## Exhaustive evidence, all starts n=3..8
+
+`experiment.py` checked all 9,828 initial occupancies and their transitions. A separately written arithmetic donor/receiver generator matched every action list, including macros. Conservation, capacity, W descent, terminal balance and balance retention were asserted for every transition. Weighted shortest and longest routes to terminal were computed by memoized dynamic programming; weights are 1 per ordinary move and 2 per macro. There were 31,340 selected actions in total, of which 728 were macros. This is same-session checking, not external review.
+
+| n | starts | hollow max best | macro max best | hollow max worst | macro max worst | states with shorter possible best | states with longer worst |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 3 | 27 | 2 | 2 | 3 | 4 | 0 | 6 |
+| 4 | 81 | 4 | 4 | 6 | 6 | 0 | 8 |
+| 5 | 243 | 6 | 6 | 10 | 10 | 10 | 44 |
+| 6 | 729 | 9 | 9 | 15 | 15 | 26 | 70 |
+| 7 | 2,187 | 12 | 12 | 21 | 21 | 148 | 310 |
+| 8 | 6,561 | 16 | 16 | 28 | 28 | 402 | 532 |
+
+Across n=3..8, 586 states admit a shorter **possible** finish, but 970 have a longer worst-case finish, and **zero** have a better guaranteed worst-case finish. In fact this last statement follows for *all* n: every hollow action is still allowed, so every hollow execution is also an execution of the new system. Merely adding a beneficial macro cannot improve adversarial worst-case cost.
+
+Concrete best route at n=5: `22001 → 21101` (ordinary one move), then the committed pair `21101 → 11102 → 11111` (two atomic moves). Total **3**, versus hollow's best **4** from the same start. `11102` is the mandatory intermediate state, not an independent scheduler choice. The new worst from that state is not better than hollow's; the shortcut is optional.
+
+## Costs and boundaries
+
+- Same fixed marked edge and common orientation as hollow.
+- Additional radius-two local lookahead (one ternary cell) and two-edge atomic reservation/commitment; no persistent bit or global balance oracle. Hardware/synchronization costs unmeasured.
+- Multiple choices remain. An adversarial scheduler can always avoid the macro, so worst-case improvement is impossible in this *additive-action* family.
+- First arrival and staying balanced are guaranteed; terminal quiescence is guaranteed; worst-case terminal move cost finite. No physical-water, distributed asynchronous, general-graph, P-versus-NP, or exponential-speedup result.
+- No DOT-HANDOFF or ownership transfer.
+
+## One next doorway
+
+**Replace, don't merely add:** Is there a *strictly local priority rule* that disables some slower hollow actions when a committed payback is available, improves the worst-case total atomic move count on at least one state **without worsening the global worst case**, and still guarantees terminal rest? Include priority/locking overhead in the ledger. This changes selection, not hard permission, and requires a separately frozen experiment.

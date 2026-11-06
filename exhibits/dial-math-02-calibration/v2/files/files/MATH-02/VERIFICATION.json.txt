@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "frozen_files_verified": 7,
+  "source_files_verified": 16,
+  "control_cells_verified": 180,
+  "scored_empirical_folds_replayed": 7,
+  "same_operator_not_independent_audit": true,
+  "checks": [
+    "original manifest and both original scores replayed during execution",
+    "frozen protocol, code and input hashes",
+    "source hashes and math/language extraction offsets",
+    "bijective maps",
+    "whole-source holdout",
+    "dependency-component purge",
+    "all eligible fold losses replayed",
+    "independent unigram formula",
+    "ineligible registry was not scored",
+    "symbol relabel invariance during execution"
+  ]
+}

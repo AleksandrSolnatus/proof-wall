@@ -1,0 +1,31 @@
+{
+  "status": "IMPLEMENTATION_FROZEN_BEFORE_RANDOM_DRAWS",
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "implementation": "CPython",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "files": {
+    "implementation/run_p6_r1.py": "68a437eef4f4c3e9a00baac3fa01a9b58de91cdd07ad9176a5535a393c5029eb",
+    "reference/P6_R1_FROZEN_Robustness_Protocol_2026-09-29.md": "9edbcc7330a402526f27db1b4085ddfa7aca97748dcc97a47e5b74104cbfb29e",
+    "reference/NULL_PROTOCOL_FROZEN.md": "dc121a0a48989e6efe1426da32ae6c650314014dd673579c95cd96aa04ee4976",
+    "reference/P6_NULL_RESULTS.json": "0b04ee52f1471adc2503c3951fe01e711b216cb690449806c2268d5c105aa843",
+    "reference/P6_Null_Lab_Packet_2026-09-29.zip": "7e02d0a7a83e1fb7119bf4faba9a57f74bc2b498bd4c8b9ceeb37401dcce1cbd",
+    "source/original/corpus_masked.json": "18ee5ac70b21696e7ed60616e3a265eaf0261fdd49779464e254a7e916f74a24"
+  },
+  "scientific_parameters": {
+    "fixed_pen_blocks": [
+      "C13-C17",
+      "C19-C23"
+    ],
+    "c28_readings": [
+      "S07",
+      "S25"
+    ],
+    "seeds": {
+      "S07": 2026092901,
+      "S25": 2026092902
+    },
+    "accepted_draws_per_reading": 200000,
+    "statistic": "T = |B intersect I|, unique unordered pooled boundary types vs within-cell types",
+    "decision": "weakened if either add-one p >= 0.05"
+  }
+}

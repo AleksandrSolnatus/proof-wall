@@ -1,0 +1,89 @@
+from itertools import product
+from functools import lru_cache
+import json
+RULES={(1,0):(0,1),(1,2):(2,1),(0,2):(1,1),(2,0):(1,1)}
+
+def W(s):return sum(i for i,v in enumerate(s) if v!=1)
+def balanced(s):return not (0 in s and 2 in s)
+def step(s,i):
+ n=len(s);j=(i+1)%n; pair=(s[i],s[j]);out=RULES.get(pair)
+ if out is None:return None
+ a=list(s);a[i],a[j]=out;return tuple(a)
+def actions(s,macro=False):
+ n=len(s);result=[]
+ for i in range(n):
+  if i==n-1 and (s[i],s[0]) not in ((0,2),(2,0)):continue
+  t=step(s,i)
+  if t is not None:result.append((t,1,'ordinary',i))
+ if macro:
+  p=(s[-1],s[0]); q=s[-2]
+  if (p==(1,0) and q==2) or (p==(1,2) and q==0):
+   intermediate=step(s,n-1)
+   end=step(intermediate,n-2)
+   assert end is not None and intermediate[n-2] in (0,2) and intermediate[n-1] in (0,2)
+   assert (intermediate[n-2],intermediate[n-1]) in ((0,2),(2,0))
+   result.append((end,2,'macro',n-1))
+ return result
+
+def independent(s,macro=False):
+ n=len(s);out=[]
+ for i in range(n):
+  j=(i+1)%n;a,b=s[i],s[j]
+  if (a,b) not in ((1,0),(1,2),(0,2),(2,0)):continue
+  if i==n-1 and a-b not in (2,-2):continue
+  t=list(s)
+  if (a,b)==(1,0):t[i]-=1;t[j]+=1
+  elif (a,b)==(1,2):t[i]+=1;t[j]-=1
+  elif (a,b)==(0,2):t[i]+=1;t[j]-=1
+  else:t[i]-=1;t[j]+=1
+  out.append((tuple(t),1,'ordinary',i))
+ if macro:
+  a,b=s[-1],s[0];q=s[-2]
+  if (a,b,q) in ((1,0,2),(1,2,0)):
+   t=list(s)
+   if (a,b)==(1,0):t[-1]-=1;t[0]+=1
+   else:t[-1]+=1;t[0]-=1
+   if t[-2]>t[-1]:t[-2]-=1;t[-1]+=1
+   else:t[-2]+=1;t[-1]-=1
+   out.append((tuple(t),2,'macro',n-1))
+ return out
+
+def metrics(n):
+ states=list(product(range(3),repeat=n))
+ @lru_cache(None)
+ def calc(s,mode):
+  aa=actions(s,mode==1)
+  if not aa:return (0,0)
+  mn=min(cost+calc(t,mode)[0] for t,cost,_,_ in aa)
+  mx=max(cost+calc(t,mode)[1] for t,cost,_,_ in aa)
+  return (mn,mx)
+ count_better_best=count_worse_worst=count_equal_worst=count_better_worst=0
+ max_best_h=max_worst_h=max_best_m=max_worst_m=0
+ max_macro=0;total_trans=0;choice_starts=0
+ examples=[]
+ for s in states:
+  ah=actions(s,False);am=actions(s,True)
+  assert sorted(am)==sorted(independent(s,True)),(s,am,independent(s,True))
+  assert sorted(ah)==sorted(independent(s,False))
+  if len(am)>1:choice_starts+=1
+  for t,c,kind,_ in am:
+   total_trans+=1
+   assert sum(t)==sum(s) and all(0<=v<=2 for v in t)
+   assert W(t)<W(s),(s,t,c,kind)
+   assert not balanced(s) or balanced(t)
+  if not am:assert balanced(s)
+  max_macro+=sum(k=='macro' for _,_,k,_ in am)
+  hb,hw=calc(s,0);mb,mw=calc(s,1)
+  count_better_best+=mb<hb
+  count_worse_worst+=mw>hw
+  count_equal_worst+=mw==hw
+  count_better_worst+=mw<hw
+  max_best_h=max(max_best_h,hb);max_worst_h=max(max_worst_h,hw)
+  max_best_m=max(max_best_m,mb);max_worst_m=max(max_worst_m,mw)
+  if mb<hb and len(examples)<5:examples.append({'start':''.join(map(str,s)),'hollow_best':hb,'macro_best':mb,'hollow_worst':hw,'macro_worst':mw})
+ return dict(n=n,states=len(states),transitions=total_trans,macro_choices=max_macro,choice_starts=choice_starts,hollow_max_best=max_best_h,hollow_max_worst=max_worst_h,macro_max_best=max_best_m,macro_max_worst=max_worst_m,better_best=count_better_best,worse_worst=count_worse_worst,equal_worst=count_equal_worst,better_worst=count_better_worst,examples=examples)
+
+if __name__=='__main__':
+ results=[metrics(n) for n in range(3,9)]
+ print(json.dumps(results,indent=2))
+ with open('/mnt/data/quark_finishline_003/RESULTS.json','w') as f:json.dump(results,f,indent=2)

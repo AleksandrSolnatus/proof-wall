@@ -1,0 +1,271 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "Pinned local implementations and a narrow one-step/fixed-source transfer contract. Disposable approval simulations are not real publication approvals or live service tests.",
+  "date": "2026-11-05",
+  "downloads": [
+    {
+      "bytes": 2299,
+      "original_path": "article.md",
+      "sha256": "f5261534c19316f44df46acbd2eef466424db8fda7bfbf044e79a97aa0cfa1ff",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 2455,
+      "original_path": "files/adapter.mjs",
+      "sha256": "7509689dcda0c59e4bb0acaa50c929d359e089fab7a101b40c7de31cac5dde51",
+      "url": "files/files/adapter.mjs.txt"
+    },
+    {
+      "bytes": 362,
+      "original_path": "files/capsule.json",
+      "sha256": "39b636f6dfe81ffb06e39daa7e29b51e7a3660d2ba86762bbbc18f6e04bb2861",
+      "url": "files/files/capsule.json.txt"
+    },
+    {
+      "bytes": 15994,
+      "original_path": "files/final-summary.json",
+      "sha256": "2ab9305d39a442edb9eda68852f7da116c19e9882d3469baa3891964512d1349",
+      "url": "files/files/final-summary.json.txt"
+    },
+    {
+      "bytes": 7211,
+      "original_path": "files/original-checksums.json",
+      "sha256": "4fec969248030b50b07473cd0de428df50d39024375f58ff7f5427523ca0427b",
+      "url": "files/files/original-checksums.json.txt"
+    },
+    {
+      "bytes": 2128,
+      "original_path": "files/original-readme.md",
+      "sha256": "261a64695d9bd8b5c0edd9eb43ba348cee60d5ec61185d64ff6f8ed28d3b7845",
+      "url": "files/files/original-readme.md.txt"
+    },
+    {
+      "bytes": 14324,
+      "original_path": "files/report-public-excerpt.md",
+      "sha256": "d2ad4520343697cd479ddd0e5e4642199f852793d7b6a4be3e9011011534f73d",
+      "url": "files/files/report-public-excerpt.md.txt"
+    },
+    {
+      "bytes": 14858,
+      "original_path": "files/run.py",
+      "sha256": "b80d14cb21ed218b6a33a0fd1332b23cbce130ef766bbf22429f00224962c7d8",
+      "url": "files/files/run.py.txt"
+    },
+    {
+      "bytes": 964,
+      "original_path": "files/source-binding.json",
+      "sha256": "88e8bd4a2b03b56a1fddfef4b1fae860ff02cdc7369a7fe5bff779b4f4ecba1f",
+      "url": "files/files/source-binding.json.txt"
+    },
+    {
+      "bytes": 38,
+      "original_path": "files/source.cnf.txt",
+      "sha256": "85a2cca6886038925af2543594d7db3836b88c5d489de8b2e020fd9711f3adeb",
+      "url": "files/files/source.cnf.txt.txt"
+    },
+    {
+      "bytes": 44,
+      "original_path": "files/target.cnf.txt",
+      "sha256": "ac311804420c03b8830a1fc20863a1994992def6b29a634b4eaa00cf51ef8080",
+      "url": "files/files/target.cnf.txt.txt"
+    },
+    {
+      "bytes": 395,
+      "original_path": "files/translated-proposal.json",
+      "sha256": "f14cddfa9f3463688f693eb99957ffc0d308190f5529bab4d84a24d8c32f6dbe",
+      "url": "files/files/translated-proposal.json.txt"
+    },
+    {
+      "bytes": 6181,
+      "original_path": "files/valid-checks.json",
+      "sha256": "b1146603e91c3a47dae3613570a40e9974ea8cfc49ae0ff089b3c37c0f0c317f",
+      "url": "files/files/valid-checks.json.txt"
+    },
+    {
+      "bytes": 1018,
+      "original_path": "files/verify_snapshot.py",
+      "sha256": "55495f869625fcfc009e1688cdfcd018d4b4e0b038ce224cc58164a548e59370",
+      "url": "files/files/verify_snapshot.py.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "The Bridges Group — MATH / Relation Transfer; prepared from completed research records.",
+      "bytes": 2299,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "article",
+      "sha256": "f5261534c19316f44df46acbd2eef466424db8fda7bfbf044e79a97aa0cfa1ff"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Relation Transfer; original authors/contributors as credited in retained source.",
+      "bytes": 2455,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/javascript",
+      "path": "files/adapter.mjs",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "7509689dcda0c59e4bb0acaa50c929d359e089fab7a101b40c7de31cac5dde51"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Relation Transfer; original authors/contributors as credited in retained source.",
+      "bytes": 362,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/capsule.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "proof",
+      "sha256": "39b636f6dfe81ffb06e39daa7e29b51e7a3660d2ba86762bbbc18f6e04bb2861"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Relation Transfer; original authors/contributors as credited in retained source.",
+      "bytes": 15994,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/final-summary.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "2ab9305d39a442edb9eda68852f7da116c19e9882d3469baa3891964512d1349"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Relation Transfer; original authors/contributors as credited in retained source.",
+      "bytes": 7211,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/original-checksums.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "4fec969248030b50b07473cd0de428df50d39024375f58ff7f5427523ca0427b"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Relation Transfer; original authors/contributors as credited in retained source.",
+      "bytes": 2128,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/original-readme.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "original",
+      "sha256": "261a64695d9bd8b5c0edd9eb43ba348cee60d5ec61185d64ff6f8ed28d3b7845"
+    },
+    {
+      "attribution": "Public redacted excerpt of original research file; source retained unchanged in private archive.",
+      "bytes": 14324,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/report-public-excerpt.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "d2ad4520343697cd479ddd0e5e4642199f852793d7b6a4be3e9011011534f73d"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Relation Transfer; original authors/contributors as credited in retained source.",
+      "bytes": 14858,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/run.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "b80d14cb21ed218b6a33a0fd1332b23cbce130ef766bbf22429f00224962c7d8"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Relation Transfer; original authors/contributors as credited in retained source.",
+      "bytes": 964,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/source-binding.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "88e8bd4a2b03b56a1fddfef4b1fae860ff02cdc7369a7fe5bff779b4f4ecba1f"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Relation Transfer; original authors/contributors as credited in retained source.",
+      "bytes": 38,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/source.cnf.txt",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "85a2cca6886038925af2543594d7db3836b88c5d489de8b2e020fd9711f3adeb"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Relation Transfer; original authors/contributors as credited in retained source.",
+      "bytes": 44,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/target.cnf.txt",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "ac311804420c03b8830a1fc20863a1994992def6b29a634b4eaa00cf51ef8080"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Relation Transfer; original authors/contributors as credited in retained source.",
+      "bytes": 395,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/translated-proposal.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "f14cddfa9f3463688f693eb99957ffc0d308190f5529bab4d84a24d8c32f6dbe"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Relation Transfer; original authors/contributors as credited in retained source.",
+      "bytes": 6181,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/valid-checks.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "b1146603e91c3a47dae3613570a40e9974ea8cfc49ae0ff089b3c37c0f0c317f"
+    },
+    {
+      "attribution": "The Bridges Group — MATH / Relation Transfer; original authors/contributors as credited in retained source.",
+      "bytes": 1018,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/verify_snapshot.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "55495f869625fcfc009e1688cdfcd018d4b4e0b038ce224cc58164a548e59370"
+    }
+  ],
+  "finding": "Actual Rulebench proof capsules passed an independently implemented Lotus checker through a fixed-source adapter and preserved source binding.",
+  "gardens": [],
+  "id": "relation-transfer-001",
+  "limitations": [
+    "Local, fixed-source one-step transfer; type-validation gaps retained. No live transport/deployment or real approval tested.",
+    "Node.js 22.13+ and Python 3; no third-party package installation or network is required by the archived recipe. This is a focused source snapshot, not full repository suites.",
+    "Upstream private-source snapshots, both recorded runs and rejection cases remain in the original ZIP. Final run-002 is selected for direct browsing; run-001 is not silently pooled with it. Source validation gaps remain disclosed.",
+    "This assembly inherits the recorded scientific checks and does not establish deployment behavior or public permission.",
+    "Preserved archive: RELATION-TRANSFER-001-REPRODUCIBLE-PACKET.zip. The attached files are inspection selections; they do not replace its complete runtime directory. No public archive URL or permission is implied. Full figures, historical versions and omitted dependencies remain in that archive.",
+    "Public source selections omit specified private identifiers or provenance-sensitive inputs; private originals and source hashes remain preserved."
+  ],
+  "method": "A fixed-source one-step adapter translates actual generated capsules. The archived local run retains independently implemented checks, source/target fixtures, binding records, model-set comparison and adversarial controls.",
+  "open_questions": [
+    "Further generalization remains a separate research question; it is not a prerequisite for presenting the recorded bounded outcome."
+  ],
+  "package_sha256": "a452a3fbdf9761054c5357cbbcd6a0dd4778606d9c9e53689c852d47bf2ea534",
+  "provenance": {
+    "authors": [
+      "The Bridges Group — MATH / Relation Transfer",
+      "Original research contributors as credited in the retained experiment record"
+    ],
+    "change_note": "Version 2 is a public selected-file edition of previously checked v1. Scientific findings unchanged; private source references redacted; the original review/archive remains in private custody.",
+    "origin": "Unchanged original archive RELATION-TRANSFER-001-REPRODUCIBLE-PACKET.zip; SHA-256 ce512347d4d72f4dcad4d52663cdc1478903ce129ccb2b9ae46801d89c247332. Original source authorship and verification scope remain in the report."
+  },
+  "publication": {
+    "attribution": "The Bridges Group — MATH / Relation Transfer; original research contributors as credited in retained records.",
+    "intent": "request-review",
+    "license": "All rights reserved. No new open-source license granted.",
+    "rights": "Owner-requested public reading and downloading of the selected exhibit only; preserves private originals; not an open permission for derivative commercial redistribution."
+  },
+  "question": "Can a real Rulebench proof capsule cross into Lotus while preserving its conclusion, target solutions and original source binding?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Relation Transfer 001: a checked relation crosses tools",
+  "version": 2
+}

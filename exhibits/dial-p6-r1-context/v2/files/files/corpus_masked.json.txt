@@ -1,0 +1,621 @@
+{
+  "title": "Phaistos Dial blind mask packet",
+  "rules": [
+    "Use only this packet; no prior context, outside material, downstream reports, one-change analyses, or semantic guesses.",
+    "Pencil.C24 final sign is deliberately [MASK].",
+    "[UNKNOWN] is a pre-existing unresolved source position, not the test mask.",
+    "S01-S45 are neutral sign IDs.",
+    "Cell boundaries and face labels are evidence; within-cell order is source transcription order and does not establish reading direction.",
+    "Do not assume any previously discovered relationship involving the masked sign."
+  ],
+  "cells": [
+    {
+      "face": "Pen",
+      "cell": "C01",
+      "signs": [
+        "S02",
+        "S12",
+        "S13",
+        "S01",
+        "S18"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C02",
+      "signs": [
+        "S24",
+        "S40",
+        "S12"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C03",
+      "signs": [
+        "S29",
+        "S45",
+        "S07"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C04",
+      "signs": [
+        "S29",
+        "S29",
+        "S34"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C05",
+      "signs": [
+        "S02",
+        "S12",
+        "S04",
+        "S40",
+        "S33"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C06",
+      "signs": [
+        "S27",
+        "S45",
+        "S07",
+        "S12"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C07",
+      "signs": [
+        "S27",
+        "S44",
+        "S08"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C08",
+      "signs": [
+        "S02",
+        "S12",
+        "S06",
+        "S18",
+        "[UNKNOWN]"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C09",
+      "signs": [
+        "S31",
+        "S26",
+        "S35"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C10",
+      "signs": [
+        "S02",
+        "S12",
+        "S41",
+        "S19",
+        "S35"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C11",
+      "signs": [
+        "S01",
+        "S41",
+        "S40",
+        "S07"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C12",
+      "signs": [
+        "S02",
+        "S12",
+        "S32",
+        "S23",
+        "S38"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C13",
+      "signs": [
+        "S39",
+        "S11"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C14",
+      "signs": [
+        "S02",
+        "S27",
+        "S25",
+        "S10",
+        "S23",
+        "S18"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C15",
+      "signs": [
+        "S28",
+        "S01"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C16",
+      "signs": [
+        "S02",
+        "S12",
+        "S31",
+        "S26"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C17",
+      "signs": [
+        "S02",
+        "S12",
+        "S27",
+        "S27",
+        "S35",
+        "S37",
+        "S21"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C18",
+      "signs": [
+        "S33",
+        "S23"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C19",
+      "signs": [
+        "S02",
+        "S12",
+        "S31",
+        "S26"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C20",
+      "signs": [
+        "S02",
+        "S27",
+        "S25",
+        "S10",
+        "S23",
+        "S18"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C21",
+      "signs": [
+        "S28",
+        "S01"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C22",
+      "signs": [
+        "S02",
+        "S12",
+        "S31",
+        "S26"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C23",
+      "signs": [
+        "S02",
+        "S12",
+        "S27",
+        "S14",
+        "S32",
+        "S18",
+        "S27"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C24",
+      "signs": [
+        "S06",
+        "S18",
+        "S17",
+        "S19"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C25",
+      "signs": [
+        "S31",
+        "S26",
+        "S12"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C26",
+      "signs": [
+        "S02",
+        "S12",
+        "S13",
+        "S01"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C27",
+      "signs": [
+        "S23",
+        "S19",
+        "S35"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C28",
+      "signs": [
+        "S10",
+        "S03",
+        "S38"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C29",
+      "signs": [
+        "S02",
+        "S12",
+        "S27",
+        "S27",
+        "S35",
+        "S37",
+        "S21"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C30",
+      "signs": [
+        "S13",
+        "S01"
+      ]
+    },
+    {
+      "face": "Pen",
+      "cell": "C31",
+      "signs": [
+        "S10",
+        "S03",
+        "S38"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C01",
+      "signs": [
+        "S02",
+        "S12",
+        "S22",
+        "S40",
+        "S07"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C02",
+      "signs": [
+        "S27",
+        "S45",
+        "S07",
+        "S35"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C03",
+      "signs": [
+        "S02",
+        "S37",
+        "S23",
+        "S05"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C04",
+      "signs": [
+        "S22",
+        "S25",
+        "S27"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C05",
+      "signs": [
+        "S33",
+        "S24",
+        "S20",
+        "S12"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C06",
+      "signs": [
+        "S16",
+        "S23",
+        "S18",
+        "S43"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C07",
+      "signs": [
+        "S13",
+        "S01",
+        "S39",
+        "S33"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C08",
+      "signs": [
+        "S15",
+        "S07",
+        "S13",
+        "S01",
+        "S18"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C09",
+      "signs": [
+        "S22",
+        "S37",
+        "S42",
+        "S25"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C10",
+      "signs": [
+        "S07",
+        "S24",
+        "S40",
+        "S35"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C11",
+      "signs": [
+        "S02",
+        "S26",
+        "S36",
+        "S40"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C12",
+      "signs": [
+        "S27",
+        "S25",
+        "S38",
+        "S01"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C13",
+      "signs": [
+        "S29",
+        "S24",
+        "S24",
+        "S20",
+        "S35"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C14",
+      "signs": [
+        "S16",
+        "S14",
+        "S18"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C15",
+      "signs": [
+        "S29",
+        "S33",
+        "S01"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C16",
+      "signs": [
+        "S06",
+        "S35",
+        "S32",
+        "S39",
+        "S33"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C17",
+      "signs": [
+        "S02",
+        "S09",
+        "S27",
+        "S01"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C18",
+      "signs": [
+        "S29",
+        "S36",
+        "S07",
+        "S08"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C19",
+      "signs": [
+        "S29",
+        "S08",
+        "S13"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C20",
+      "signs": [
+        "S29",
+        "S45",
+        "S07"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C21",
+      "signs": [
+        "S22",
+        "S29",
+        "S36",
+        "S07",
+        "S08"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C22",
+      "signs": [
+        "S27",
+        "S34",
+        "S23",
+        "S25"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C23",
+      "signs": [
+        "S07",
+        "S18",
+        "S35"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C24",
+      "signs": [
+        "S07",
+        "S45",
+        "[MASK]"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C25",
+      "signs": [
+        "S07",
+        "S23",
+        "S18",
+        "S24"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C26",
+      "signs": [
+        "S22",
+        "S29",
+        "S36",
+        "S07",
+        "S08"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C27",
+      "signs": [
+        "S09",
+        "S30",
+        "S39",
+        "S18",
+        "S07"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C28",
+      "signs": [
+        "S02",
+        "S06",
+        "S35",
+        "S23",
+        "S07"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C29",
+      "signs": [
+        "S29",
+        "S34",
+        "S23",
+        "S25"
+      ]
+    },
+    {
+      "face": "Pencil",
+      "cell": "C30",
+      "signs": [
+        "S45",
+        "S07"
+      ]
+    }
+  ]
+}

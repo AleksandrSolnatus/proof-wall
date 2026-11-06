@@ -1,0 +1,32 @@
+/** Private bounded adapter; no network, persistence, approval, or implicit source substitution. */
+import {parseDimacs,reuseRelation} from './upstream/rulebench/lib/rulebench/relation-capsule.mjs';
+const equal=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+const need=(b,m)=>{if(!b)throw new TypeError(m);};
+export function translate(capsule,target,mapping,fixture){
+  // Do not let JS join/coercion or Python bool/int equality silently repair proof literals.
+  need(Array.isArray(capsule.steps)&&capsule.steps.length===1,'Adapter supports exactly one proof step');
+  for(const row of [capsule.conclusion,capsule.steps[0].result])
+    need(Array.isArray(row)&&row.every(Number.isSafeInteger),'Adapter requires integer proof literals');
+  const source=parseDimacs(capsule.source),t=parseDimacs(target);
+  need(source.n===fixture.source_variables&&equal(source.clauses,fixture.source_clauses),
+    'Capsule source must equal the ordered Lotus fixture; no source substitution');
+  need(equal(capsule.conclusion.map(Math.abs).sort((a,b)=>a-b),[...fixture.scope].sort((a,b)=>a-b)),
+    'Conclusion scope must equal Lotus scope');
+  need(t.n>=source.n&&t.n<=8&&t.clauses.length>=source.clauses.length+1&&t.clauses.length<=20,
+    'Target outside shared Lotus bounds');
+  need(new Set(t.clauses.map(JSON.stringify)).size===t.clauses.length,'Lotus requires distinct target clauses');
+  // This authentic Rulebench call replays the proof, checks source hash and embedding,
+  // and supplies a claimed count. Lotus must independently recheck all logical claims.
+  const reuse=reuseRelation(target,capsule,mapping);
+  need(reuse.status==='REUSABLE','Rulebench refused applicability: '+reuse.reason);
+  const s=capsule.steps[0];
+  const proposal={parents:[s.left,s.right],pivot:s.pivot,lemma:[...capsule.conclusion],
+    mapping:Array.from({length:source.n},(_,i)=>mapping[String(i+1)]),
+    target_variables:t.n,target_clauses:t.clauses,mapped_lemma:reuse.mappedLemma,
+    target_model_count:reuse.independentlyEnumerated.baseModels};
+  return {proposal,reuse,translationWork:{sourceClausesCompared:source.clauses.length,
+    sourceLiteralEntriesCompared:source.clauses.flat().length,proofStepsCopied:1,
+    mappingEntriesCopied:source.n,targetClausesParsed:t.clauses.length,
+    targetLiteralEntriesParsed:t.clauses.flat().length,
+    note:'Structural counters exclude parser, normalization, set, hash and serialization internals; Rulebench work is separate.'}};
+}

@@ -1,0 +1,194 @@
+#!/usr/bin/env python3
+"""Offline transfer audit. All custody and approval experiments use disposable databases."""
+import argparse,copy,hashlib,itertools,json,os,platform,shutil,statistics,subprocess,sys,tempfile,time
+from pathlib import Path
+ROOT=Path(__file__).resolve().parent
+sys.path.insert(0,str(ROOT/'upstream/lotus-garden'))
+from lotus import flowers,checkers
+from lotus.store import Store,canonical,digest
+
+def dump(path,obj):
+    path.write_text(json.dumps(obj,indent=2,ensure_ascii=False,allow_nan=False)+'\n')
+def sha(b):return hashlib.sha256(b).hexdigest()
+def need(b,msg):
+    if not b:raise ValueError(msg)
+def exact(a,b):return canonical(a)==canonical(b)
+def norm(row):return sorted(set(row),key=lambda x:(abs(x),x))
+def parse_cnf(s):
+    lines=[l.split() for l in s.splitlines() if l.strip() and not l.lstrip().startswith('c')]
+    need(lines[0][:2]==['p','cnf'],'header')
+    n,m=map(int,lines[0][2:]);clauses=[];row=[]
+    for t in itertools.chain.from_iterable(lines[1:]):
+        v=int(t)
+        if v==0:clauses.append(norm(row));row=[]
+        else:need(0<abs(v)<=n,'literal bound');row.append(v)
+    need(not row and len(clauses)==m,'clause count')
+    return n,clauses
+def assignments(n,clauses):
+    # Independent truth-table oracle; saves the actual satisfying assignments.
+    return [''.join(map(str,bits)) for bits in itertools.product((0,1),repeat=n)
+            if all(any((bits[abs(l)-1]==1) if l>0 else (bits[abs(l)-1]==0) for l in row) for row in clauses)]
+def bind_check(directory,binding,problem):
+    capbytes=(directory/binding['capsule_file']).read_bytes()
+    propbytes=(directory/binding['proposal_file']).read_bytes()
+    need(sha(capbytes)==binding['capsule_bytes_sha256'],'capsule bytes digest')
+    need(sha(propbytes)==binding['proposal_bytes_sha256'],'proposal bytes digest')
+    need(sha((directory/'lotus-problem.json').read_bytes())==binding['lotus_problem_bytes_sha256'],'fixture bytes digest')
+    c=json.loads(capbytes);p=json.loads(propbytes);target=(directory/'target.cnf').read_text()
+    need(sha(c['source'].encode())==c['sourceSha256']==binding['original_source_sha256'],'source digest')
+    need(sha(target.encode())==binding['original_target_sha256'],'target digest')
+    n,src=parse_cnf(c['source']);tn,tc=parse_cnf(target);f=problem['fixture']
+    need(n==f['source_variables'] and exact(src,f['source_clauses']),'ordered source binding')
+    need(c['schema']=='rulebench-relation-capsule-1' and len(c['steps'])==1,'capsule shape')
+    s=c['steps'][0];left,right,pivot=s['left'],s['right'],s['pivot']
+    need(all(type(x) is int for x in [left,right,pivot]),'proof integer types')
+    need(0<=left<len(src) and 0<=right<len(src) and left!=right,'parents')
+    need((pivot in src[left] and -pivot in src[right]) or (-pivot in src[left] and pivot in src[right]),'pivot')
+    derived=norm([x for r in (src[left],src[right]) for x in r if abs(x)!=pivot])
+    need(exact(derived,s['result']) and exact(derived,c['conclusion']),'resolution replay')
+    mapping=binding['mapping'];mv=[mapping[str(i)] for i in range(1,n+1)]
+    need(all(type(x) is int and 0<abs(x)<=tn for x in mv) and len(set(map(abs,mv)))==n,'mapping')
+    remap=lambda row:norm([(1 if l>0 else -1)*mv[abs(l)-1] for l in row])
+    expected={'parents':[left,right],'pivot':pivot,'lemma':derived,'mapping':mv,'target_variables':tn,
+              'target_clauses':tc,'mapped_lemma':remap(derived),'target_model_count':p['target_model_count']}
+    need(exact(p,expected),'translated fields are not an exact correspondence')
+    need(all(remap(r) in tc for r in src),'missing mapped original premise')
+    return {'exact_source_and_field_binding':True,'independent_resolution_replayed':True}
+
+def main():
+    parser=argparse.ArgumentParser();parser.add_argument('--out',default='results/current');args=parser.parse_args()
+    os.chdir(ROOT);out=Path(args.out);out.mkdir(parents=True,exist_ok=True)
+    problem=flowers.get_problem('relation-pollen');dump(out/'lotus-problem.json',problem)
+    process=subprocess.run(['node','generate.mjs',str(out)],capture_output=True,text=True)
+    (out/'generator.log').write_text(process.stdout+process.stderr);need(process.returncode==0,process.stderr)
+    generated=json.loads((out/'generated.json').read_text());valid=[]
+    for g in generated['good']:
+        p=g['proposal'];before=copy.deepcopy(p);t=time.perf_counter_ns();result=checkers.check('relation-pollen',p);ns=time.perf_counter_ns()-t
+        need(result['valid'],str(result));need(exact(before,p),'Lotus mutated input')
+        base=assignments(p['target_variables'],p['target_clauses'])
+        added=assignments(p['target_variables'],p['target_clauses']+[p['mapped_lemma']])
+        sn,sc=parse_cnf(g['capsule']['source'])
+        need(assignments(sn,sc)==assignments(sn,sc+[g['capsule']['conclusion']]),'source implication')
+        need(base==added and len(base)==p['target_model_count'],'actual target model sets')
+        valid.append({'name':g['name'],'lotus':result,'lotusNs':ns,'target_models':base,'same_actual_model_set':True})
+    bindings=[]
+    for i in range(2):
+        b=json.loads((out/f'valid-{i}-binding.json').read_text())
+        bindings.append(bind_check(out,b,problem))
+    binding_rejections=[]
+    with tempfile.TemporaryDirectory(prefix='private-transfer-binding-') as tmp:
+        d=Path(tmp)
+        for name in ('proposal-unrehashed','wrong-lemma-rehashed','boolean-lemma-rehashed','float-lemma-rehashed','source-digest-corrupt','source-substitution-rehashed'):
+            for p in out.iterdir():
+                if p.is_file():shutil.copyfile(p,d/p.name)
+            b=json.loads((d/'valid-1-binding.json').read_text())
+            p=json.loads((d/b['proposal_file']).read_text());c=json.loads((d/b['capsule_file']).read_text())
+            if name in ('proposal-unrehashed','wrong-lemma-rehashed'):p['lemma']=[-1,-3]
+            elif name=='boolean-lemma-rehashed':p['lemma']=[True,3]
+            elif name=='float-lemma-rehashed':p['lemma']=[1.0,3.0]
+            elif name=='source-digest-corrupt':c['sourceSha256']='0'*64
+            else:
+                c['source']=c['source'].replace('-1 2 0','-1 -2 0')
+                c['sourceSha256']=sha(c['source'].encode());b['original_source_sha256']=c['sourceSha256']
+            dump(d/b['proposal_file'],p);dump(d/b['capsule_file'],c)
+            if name!='proposal-unrehashed':
+                b['proposal_bytes_sha256']=sha((d/b['proposal_file']).read_bytes())
+                b['capsule_bytes_sha256']=sha((d/b['capsule_file']).read_bytes())
+            try:bind_check(d,b,problem);raise AssertionError('Unsafe binding accepted: '+name)
+            except ValueError as exc:binding_rejections.append({'name':name,'rejected':str(exc)})
+    dump(out/'valid-checks.json',valid)
+    p0=copy.deepcopy(generated['good'][0]['proposal']);p1=copy.deepcopy(generated['good'][1]['proposal'])
+    cases=[]
+    def add(name,key,value,base=None):
+        p=copy.deepcopy(p0 if base is None else base);p[key]=value;cases.append((name,p))
+    for name,key,value in [
+        ('self-parent','parents',[0,0]),('forward-parent','parents',[0,4]),
+        ('wrong-parents','parents',[0,1]),('boolean-parent','parents',[False,3]),
+        ('wrong-pivot','pivot',1),('boolean-pivot','pivot',True),
+        ('opposite-lemma','lemma',[1,3]),('wrong-scope','lemma',[-1,-2]),
+        ('wrong-map','mapping',[4,2,3]),('wrong-sign','mapping',[-4,2,1]),
+        ('map-collision','mapping',[4,2,-2]),('map-missing','mapping',[4,2]),
+        ('boolean-map','mapping',[True,2,1]),('map-out-of-range','mapping',[6,2,1]),
+        ('opposite-mapped-lemma','mapped_lemma',[1,4]),('dishonest-count','target_model_count',5),
+        ('boolean-count','target_model_count',True),('oversized-target','target_variables',9),
+        ('approval-field-injection','approved',True),('string-lemma','lemma',['-1','-3'])]:add(name,key,value)
+    for index in (0,1,2,3):
+        p=copy.deepcopy(p0);p['target_clauses'][index]=[3,4];cases.append((f'missing-target-premise-{index}',p))
+    add('missing-target-clause','target_clauses',p0['target_clauses'][:4])
+    add('duplicate-target-clause','target_clauses',p0['target_clauses']+[p0['target_clauses'][-1]])
+    wrong=copy.deepcopy(p0);wrong['target_clauses'][-1]=[3,-3];cases.append(('tautological-clause',wrong))
+    rejected=[];schema_gaps=[];custody=[];tamper=[]
+    with tempfile.TemporaryDirectory(prefix='private-relation-audit-') as tmp:
+        store=Store(Path(tmp)/'custody.sqlite3')
+        for g in generated['good']:
+            packet=store.submit('relation-pollen',g['proposal'],client=g['name'],simulated=True)
+            need(packet['moderation']=='pending' and packet['check']['valid'],'valid pending gate')
+            custody.append(packet)
+        for name,p in cases:
+            r=checkers.check('relation-pollen',p);need(not r['valid'],'Unexpected mathematical/shape acceptance: '+name)
+            packet=store.submit('relation-pollen',p,client=name,simulated=True)
+            try:store.moderate(packet['id'],'approved');raise AssertionError('Invalid approval: '+name)
+            except ValueError as exc:reason=str(exc)
+            need(store.get(packet['id'])['moderation']=='pending','failed approval changed state')
+            rejected.append({'name':name,'proposal':p,'check':r,'approval_denied':reason})
+        need(store.list_approved()==[],'no approved contributions expected')
+        # Adversarial database changes are only in this temporary DB. Rehashing data
+        # distinguishes a real proof check from checksum-only acceptance.
+        for kind in ('stale-check-and-rehashed-bad-proposal','forged-valid-check-and-rehashed-bad-proposal','tampered-problem-hash'):
+            packet=store.submit('relation-pollen',p0,client=kind,simulated=True)
+            with store.connect() as con:
+                body=json.loads(con.execute('SELECT body FROM packets WHERE id=?',(packet['id'],)).fetchone()[0])
+                if kind=='tampered-problem-hash':body['problem_sha256']='0'*64
+                else:
+                    body['proposal']['target_model_count']=5
+                    if kind.startswith('forged'):body['check']={'valid':True,'evidence':{'fake':'accepted'}}
+                con.execute('UPDATE packets SET body=?,content_sha256=? WHERE id=?',(canonical(body),digest(body),packet['id']))
+            need(store.get(packet['id'])['moderation']=='pending','rehash get should preserve pending')
+            try:store.moderate(packet['id'],'approved');raise AssertionError('Tampered approval')
+            except ValueError as exc:tamper.append({'case':kind,'checksum_agrees':True,'approval_denied':str(exc)})
+        packet=store.submit('relation-pollen',p0,client='unrehashed',simulated=True)
+        with store.connect() as con:
+            body=json.loads(con.execute('SELECT body FROM packets WHERE id=?',(packet['id'],)).fetchone()[0]);body['proposal']['pivot']=1
+            con.execute('UPDATE packets SET body=? WHERE id=?',(canonical(body),packet['id']))
+        try:store.moderate(packet['id'],'approved');raise AssertionError('Bad checksum approval')
+        except ValueError as exc:tamper.append({'case':'unrehashed-storage-tamper','checksum_agrees':False,'approval_denied':str(exc)})
+        # Positive control: explicit approval only for a valid simulation, in a separate DB.
+        control=Store(Path(tmp)/'approval-control.sqlite3');a=control.submit('relation-pollen',p0,simulated=True)
+        a=control.moderate(a['id'],'approved');b=Store(control.path).list_approved()[0]
+        need(b['id']==a['id'] and checkers.check('relation-pollen',b['proposal'])['valid'],'second local client replay')
+        # Strict JSON-schema holes: Python numeric equality admits booleans/floats in theorem arrays.
+        gap_inputs=[('boolean-source-lemma','lemma',[True,3],p1),
+                    ('boolean-mapped-lemma','mapped_lemma',[True,4],p1),
+                    ('float-source-lemma','lemma',[-1.0,-3.0],p0),
+                    ('float-mapped-lemma','mapped_lemma',[-1.0,-4.0],p0)]
+        gaps=Store(Path(tmp)/'schema-gap-control.sqlite3')
+        for name,key,value,base in gap_inputs:
+            p=copy.deepcopy(base);p[key]=value;r=checkers.check('relation-pollen',p)
+            packet=gaps.submit('relation-pollen',p,client=name,simulated=True)
+            approved=False;error=None
+            try:approved=gaps.moderate(packet['id'],'approved')['moderation']=='approved'
+            except ValueError as exc:error=str(exc)
+            schema_gaps.append({'name':name,'proposal':p,'checker_valid':r['valid'],'simulated_approval':approved,'error':error,
+              'interpretation':'Typed representation hole; normalized intended Boolean theorem remains true. Not a demonstrated false theorem.'})
+    naive=[{'name':x['name'],'lotus_on_unsafe_projection':checkers.check('relation-pollen',x['proposal'])} for x in generated['naiveControls']]
+    durations=[]
+    for i in range(220):
+        t=time.perf_counter_ns();checkers.check('relation-pollen',p0);elapsed=time.perf_counter_ns()-t
+        if i>=20:durations.append(elapsed)
+    durations.sort()
+    summary={'schema':'relation-transfer-001-audit','python':platform.python_version(),
+      'node':subprocess.check_output(['node','--version'],text=True).strip(),
+      'valid_transfers':valid,'independent_bindings':bindings,'binding_adversaries':binding_rejections,'adapter_adversaries_rejected':len(generated['cases']),
+      'lotus_invalid_proposals_rejected':len(rejected),'failed_approval_attempts_blocked':len(rejected)+len(tamper),
+      'custody_valid_remained_pending':len(custody),'tamper_controls':tamper,'schema_gaps':schema_gaps,
+      'unsafe_projection_controls':naive,'local_approval_control':'valid simulation approved and replayed in separate temporary DB; all DBs deleted',
+      'lotus_benchmark':{'iterations':200,'warmups':20,'median_ns':statistics.median(durations),'p95_ns':durations[189],
+        'includes':'checkers.check, fixture retrieval, proof/mapping checking, two model enumerations; excludes process startup and SQLite'},
+      'limits':['Local cross-language handoff, not cross-host transport or outside-agent participation',
+        'Fixed source fixture and one-step shared subset only','All mapping information supplied; no recognition experiment',
+        'No repository or live service writes; no real submission approved','Snapshot relevant suites, not complete repository suites']}
+    dump(out/'custody-valid-pending-packets.json',custody);dump(out/'lotus-adversaries.json',rejected);dump(out/'summary.json',summary)
+    print(json.dumps({'valid_transfers':len(valid),'adapter_rejections':len(generated['cases']),
+      'lotus_rejections':len(rejected),'approval_blocks':len(rejected)+len(tamper),'observed_schema_gaps':len(schema_gaps)}))
+
+if __name__=='__main__':main()

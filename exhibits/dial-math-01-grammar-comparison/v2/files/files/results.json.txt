@@ -1,0 +1,2010 @@
+{
+  "metadata": {
+    "caveat": "This is a retrospective computational holdout; not an independent blind experiment.",
+    "excluded": [
+      "Pen.C08"
+    ],
+    "family_count": 38,
+    "family_group_sizes": [
+      12,
+      6,
+      3,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "fold_membership": {
+      "Pen.C01": 0,
+      "Pen.C02": 2,
+      "Pen.C03": 1,
+      "Pen.C04": 3,
+      "Pen.C05": 4,
+      "Pen.C06": 1,
+      "Pen.C07": 1,
+      "Pen.C09": 2,
+      "Pen.C10": 1,
+      "Pen.C11": 4,
+      "Pen.C12": 2,
+      "Pen.C13": 4,
+      "Pen.C14": 0,
+      "Pen.C15": 0,
+      "Pen.C16": 0,
+      "Pen.C17": 2,
+      "Pen.C18": 4,
+      "Pen.C19": 0,
+      "Pen.C20": 0,
+      "Pen.C21": 0,
+      "Pen.C22": 0,
+      "Pen.C23": 4,
+      "Pen.C24": 1,
+      "Pen.C25": 2,
+      "Pen.C26": 0,
+      "Pen.C27": 2,
+      "Pen.C28": 3,
+      "Pen.C29": 2,
+      "Pen.C30": 0,
+      "Pen.C31": 3,
+      "Pencil.C01": 3,
+      "Pencil.C02": 1,
+      "Pencil.C03": 4,
+      "Pencil.C04": 3,
+      "Pencil.C05": 2,
+      "Pencil.C06": 3,
+      "Pencil.C07": 0,
+      "Pencil.C08": 0,
+      "Pencil.C09": 1,
+      "Pencil.C10": 4,
+      "Pencil.C11": 2,
+      "Pencil.C12": 3,
+      "Pencil.C13": 4,
+      "Pencil.C14": 4,
+      "Pencil.C15": 1,
+      "Pencil.C16": 1,
+      "Pencil.C17": 1,
+      "Pencil.C18": 3,
+      "Pencil.C19": 2,
+      "Pencil.C20": 1,
+      "Pencil.C21": 3,
+      "Pencil.C22": 4,
+      "Pencil.C23": 3,
+      "Pencil.C24": 1,
+      "Pencil.C25": 4,
+      "Pencil.C26": 3,
+      "Pencil.C27": 2,
+      "Pencil.C28": 3,
+      "Pencil.C29": 4,
+      "Pencil.C30": 1
+    },
+    "fold_token_sizes": [
+      48,
+      47,
+      47,
+      47,
+      48
+    ],
+    "folds": 5,
+    "models": [
+      "F_unigram",
+      "A_infix",
+      "B_prefix-procedure",
+      "C_center-relation",
+      "D_language-bigram",
+      "E_record-fields",
+      "W_face-continuity"
+    ],
+    "restored_pencil_c24": [
+      "S07",
+      "S45",
+      "S07"
+    ],
+    "role_prior_concentration": 20.0,
+    "seed": 20261014,
+    "shuffle_replicates_each": 399,
+    "source_sha256": "18ee5ac70b21696e7ed60616e3a265eaf0261fdd49779464e254a7e916f74a24",
+    "variants": [
+      "Pencil.C28=S07",
+      "Pencil.C28=S25"
+    ]
+  },
+  "variants": {
+    "S07": {
+      "comparison": {
+        "A_advantage_vs_D_bits_per_token": -0.537316510659644,
+        "A_minus_D_bits_per_token": 0.537316510659644,
+        "best_math_bits_per_token": 5.566820697893895,
+        "best_math_model": "B_prefix-procedure",
+        "best_nonmath_bits_per_token": 5.2948569460593475,
+        "best_nonmath_model": "D_language-bigram",
+        "face_continuity_advantage_bits_per_boundary_start": -0.26749546946837643,
+        "math_advantage_bits_per_token": -0.2719637518345479
+      },
+      "motifs2": [
+        {
+          "cell_locations": [
+            "Pen.C01",
+            "Pen.C05",
+            "Pen.C10",
+            "Pen.C12",
+            "Pen.C16",
+            "Pen.C17",
+            "Pen.C19",
+            "Pen.C22",
+            "Pen.C23",
+            "Pen.C26",
+            "Pen.C29",
+            "Pencil.C01"
+          ],
+          "distinct_cells": 12,
+          "motif": "S02 S12",
+          "occurrences": 12
+        },
+        {
+          "cell_locations": [
+            "Pen.C03",
+            "Pen.C06",
+            "Pencil.C02",
+            "Pencil.C20",
+            "Pencil.C24",
+            "Pencil.C30"
+          ],
+          "distinct_cells": 6,
+          "motif": "S45 S07",
+          "occurrences": 6
+        },
+        {
+          "cell_locations": [
+            "Pen.C01",
+            "Pen.C26",
+            "Pen.C30",
+            "Pencil.C07",
+            "Pencil.C08"
+          ],
+          "distinct_cells": 5,
+          "motif": "S13 S01",
+          "occurrences": 5
+        },
+        {
+          "cell_locations": [
+            "Pen.C09",
+            "Pen.C16",
+            "Pen.C19",
+            "Pen.C22",
+            "Pen.C25"
+          ],
+          "distinct_cells": 5,
+          "motif": "S31 S26",
+          "occurrences": 5
+        },
+        {
+          "cell_locations": [
+            "Pen.C14",
+            "Pen.C20",
+            "Pencil.C06",
+            "Pencil.C25"
+          ],
+          "distinct_cells": 4,
+          "motif": "S23 S18",
+          "occurrences": 4
+        },
+        {
+          "cell_locations": [
+            "Pencil.C18",
+            "Pencil.C21",
+            "Pencil.C26"
+          ],
+          "distinct_cells": 3,
+          "motif": "S07 S08",
+          "occurrences": 3
+        },
+        {
+          "cell_locations": [
+            "Pen.C17",
+            "Pen.C23",
+            "Pen.C29"
+          ],
+          "distinct_cells": 3,
+          "motif": "S12 S27",
+          "occurrences": 3
+        },
+        {
+          "cell_locations": [
+            "Pen.C16",
+            "Pen.C19",
+            "Pen.C22"
+          ],
+          "distinct_cells": 3,
+          "motif": "S12 S31",
+          "occurrences": 3
+        },
+        {
+          "cell_locations": [
+            "Pen.C14",
+            "Pen.C20",
+            "Pencil.C12"
+          ],
+          "distinct_cells": 3,
+          "motif": "S27 S25",
+          "occurrences": 3
+        },
+        {
+          "cell_locations": [
+            "Pencil.C18",
+            "Pencil.C21",
+            "Pencil.C26"
+          ],
+          "distinct_cells": 3,
+          "motif": "S29 S36",
+          "occurrences": 3
+        },
+        {
+          "cell_locations": [
+            "Pencil.C18",
+            "Pencil.C21",
+            "Pencil.C26"
+          ],
+          "distinct_cells": 3,
+          "motif": "S36 S07",
+          "occurrences": 3
+        },
+        {
+          "cell_locations": [
+            "Pen.C01",
+            "Pencil.C08"
+          ],
+          "distinct_cells": 2,
+          "motif": "S01 S18",
+          "occurrences": 2
+        }
+      ],
+      "motifs3": [
+        {
+          "cell_locations": [
+            "Pen.C17",
+            "Pen.C23",
+            "Pen.C29"
+          ],
+          "distinct_cells": 3,
+          "motif": "S02 S12 S27",
+          "occurrences": 3
+        },
+        {
+          "cell_locations": [
+            "Pen.C16",
+            "Pen.C19",
+            "Pen.C22"
+          ],
+          "distinct_cells": 3,
+          "motif": "S02 S12 S31",
+          "occurrences": 3
+        },
+        {
+          "cell_locations": [
+            "Pen.C16",
+            "Pen.C19",
+            "Pen.C22"
+          ],
+          "distinct_cells": 3,
+          "motif": "S12 S31 S26",
+          "occurrences": 3
+        },
+        {
+          "cell_locations": [
+            "Pencil.C18",
+            "Pencil.C21",
+            "Pencil.C26"
+          ],
+          "distinct_cells": 3,
+          "motif": "S29 S36 S07",
+          "occurrences": 3
+        },
+        {
+          "cell_locations": [
+            "Pencil.C18",
+            "Pencil.C21",
+            "Pencil.C26"
+          ],
+          "distinct_cells": 3,
+          "motif": "S36 S07 S08",
+          "occurrences": 3
+        },
+        {
+          "cell_locations": [
+            "Pen.C01",
+            "Pen.C26"
+          ],
+          "distinct_cells": 2,
+          "motif": "S02 S12 S13",
+          "occurrences": 2
+        },
+        {
+          "cell_locations": [
+            "Pen.C14",
+            "Pen.C20"
+          ],
+          "distinct_cells": 2,
+          "motif": "S02 S27 S25",
+          "occurrences": 2
+        },
+        {
+          "cell_locations": [
+            "Pen.C28",
+            "Pen.C31"
+          ],
+          "distinct_cells": 2,
+          "motif": "S10 S03 S38",
+          "occurrences": 2
+        },
+        {
+          "cell_locations": [
+            "Pen.C14",
+            "Pen.C20"
+          ],
+          "distinct_cells": 2,
+          "motif": "S10 S23 S18",
+          "occurrences": 2
+        },
+        {
+          "cell_locations": [
+            "Pen.C01",
+            "Pen.C26"
+          ],
+          "distinct_cells": 2,
+          "motif": "S12 S13 S01",
+          "occurrences": 2
+        },
+        {
+          "cell_locations": [
+            "Pen.C17",
+            "Pen.C29"
+          ],
+          "distinct_cells": 2,
+          "motif": "S12 S27 S27",
+          "occurrences": 2
+        },
+        {
+          "cell_locations": [
+            "Pen.C01",
+            "Pencil.C08"
+          ],
+          "distinct_cells": 2,
+          "motif": "S13 S01 S18",
+          "occurrences": 2
+        }
+      ],
+      "nulls": {
+        "interior": {
+          "A_advantage_vs_D_bits_per_token": {
+            "max": -0.18730093550542204,
+            "mean": -0.3483376824068185,
+            "min": -0.5391390004939849,
+            "p_upper": 0.9975
+          },
+          "face_continuity_advantage_bits_per_boundary_start": {
+            "max": -0.26749546946837643,
+            "mean": -0.26749546946837643,
+            "min": -0.26749546946837643,
+            "p_upper": 1.0
+          },
+          "math_advantage_bits_per_token": {
+            "max": 0.05286313650647845,
+            "mean": -0.06944630933210144,
+            "min": -0.19911514598811664,
+            "p_upper": 1.0
+          }
+        },
+        "whole-order": {
+          "A_advantage_vs_D_bits_per_token": {
+            "max": -0.5349226201261414,
+            "mean": -0.6911105840708233,
+            "min": -0.7977329299711373,
+            "p_upper": 0.005
+          },
+          "face_continuity_advantage_bits_per_boundary_start": {
+            "max": -0.14351522175592724,
+            "mean": -0.5017917977833211,
+            "min": -0.7735738404433015,
+            "p_upper": 0.0275
+          },
+          "math_advantage_bits_per_token": {
+            "max": -0.326492674078116,
+            "mean": -0.4355548109355974,
+            "min": -0.5534943175617784,
+            "p_upper": 0.0025
+          }
+        },
+        "within": {
+          "A_advantage_vs_D_bits_per_token": {
+            "max": 0.00395053115166899,
+            "mean": -0.27493758741050484,
+            "min": -0.554261137307928,
+            "p_upper": 0.9975
+          },
+          "face_continuity_advantage_bits_per_boundary_start": {
+            "max": 1.137675281458824,
+            "mean": 0.4697253393363908,
+            "min": -0.008197508558517974,
+            "p_upper": 1.0
+          },
+          "math_advantage_bits_per_token": {
+            "max": 0.16791434484639733,
+            "mean": 0.004892627274511984,
+            "min": -0.15973839582732374,
+            "p_upper": 1.0
+          }
+        }
+      },
+      "observed": {
+        "bits_per_token": {
+          "A_infix": 5.832173456718992,
+          "B_prefix-procedure": 5.566820697893895,
+          "C_center-relation": 5.965323016877417,
+          "D_language-bigram": 5.2948569460593475,
+          "E_record-fields": 5.801393755738162,
+          "F_unigram": 5.547135108260038,
+          "W_face-continuity": 5.359191299475796
+        },
+        "cell_loss_bits": {
+          "Pen.C01": {
+            "A_infix": 24.030678674119983,
+            "B_prefix-procedure": 25.273475544766615,
+            "C_center-relation": 26.378728209019613,
+            "D_language-bigram": 22.44564235517764,
+            "E_record-fields": 29.301279607001835,
+            "F_unigram": 25.913667255713737,
+            "W_face-continuity": 22.44564235517764
+          },
+          "Pen.C02": {
+            "A_infix": 18.88549118631746,
+            "B_prefix-procedure": 17.248386029302615,
+            "C_center-relation": 17.927786371994213,
+            "D_language-bigram": 15.964116060473778,
+            "E_record-fields": 17.127183354624915,
+            "F_unigram": 15.461789667411807,
+            "W_face-continuity": 14.440554104416766
+          },
+          "Pen.C03": {
+            "A_infix": 19.522432583944642,
+            "B_prefix-procedure": 17.05613829491065,
+            "C_center-relation": 18.61463278090225,
+            "D_language-bigram": 16.95453922338092,
+            "E_record-fields": 18.51800084591484,
+            "F_unigram": 17.58293229576784,
+            "W_face-continuity": 18.205862646688015
+          },
+          "Pen.C04": {
+            "A_infix": 20.72637824030465,
+            "B_prefix-procedure": 14.025090127525235,
+            "C_center-relation": 20.838541522183313,
+            "D_language-bigram": 13.167403529917486,
+            "E_record-fields": 19.079194371829146,
+            "F_unigram": 16.471149561905644,
+            "W_face-continuity": 14.973358909384277
+          },
+          "Pen.C05": {
+            "A_infix": 27.922319182001274,
+            "B_prefix-procedure": 28.240790642658567,
+            "C_center-relation": 29.26775699234033,
+            "D_language-bigram": 24.586772408620206,
+            "E_record-fields": 26.99011607232764,
+            "F_unigram": 27.833112036585383,
+            "W_face-continuity": 26.31102089447161
+          },
+          "Pen.C06": {
+            "A_infix": 21.98985447532069,
+            "B_prefix-procedure": 22.39000613670982,
+            "C_center-relation": 22.086586158435345,
+            "D_language-bigram": 22.223483574464947,
+            "E_record-fields": 24.162118235399777,
+            "F_unigram": 21.02017121685866,
+            "W_face-continuity": 22.05957285226637
+          },
+          "Pen.C07": {
+            "A_infix": 20.781375893139334,
+            "B_prefix-procedure": 19.4917934321733,
+            "C_center-relation": 20.06369157031225,
+            "D_language-bigram": 19.270823085906052,
+            "E_record-fields": 20.000033840010488,
+            "F_unigram": 18.500470135575867,
+            "W_face-continuity": 19.17402655956601
+          },
+          "Pen.C09": {
+            "A_infix": 14.94999969811554,
+            "B_prefix-procedure": 18.458953015242272,
+            "C_center-relation": 17.891699747478917,
+            "D_language-bigram": 15.323283555637644,
+            "E_record-fields": 19.71602586283735,
+            "F_unigram": 16.672356653351464,
+            "W_face-continuity": 15.323283555637644
+          },
+          "Pen.C10": {
+            "A_infix": 26.135490452590652,
+            "B_prefix-procedure": 27.732208759601015,
+            "C_center-relation": 27.491304885958712,
+            "D_language-bigram": 22.01390841018061,
+            "E_record-fields": 22.027227752017186,
+            "F_unigram": 26.49683219794664,
+            "W_face-continuity": 23.252861763590605
+          },
+          "Pen.C11": {
+            "A_infix": 28.28399026198714,
+            "B_prefix-procedure": 22.92475900289838,
+            "C_center-relation": 19.305619638340897,
+            "D_language-bigram": 22.583886678463834,
+            "E_record-fields": 21.33162348361052,
+            "F_unigram": 21.159224256535403,
+            "W_face-continuity": 21.019985793270507
+          },
+          "Pen.C12": {
+            "A_infix": 21.74650239691043,
+            "B_prefix-procedure": 22.69069251701819,
+            "C_center-relation": 23.664815630879765,
+            "D_language-bigram": 21.90993905905147,
+            "E_record-fields": 19.844053782686558,
+            "F_unigram": 25.029086206830435,
+            "W_face-continuity": 23.938228978466885
+          },
+          "Pen.C13": {
+            "A_infix": 16.839867257726418,
+            "B_prefix-procedure": 16.40720753054527,
+            "C_center-relation": 17.408488218637263,
+            "D_language-bigram": 16.608841391714922,
+            "E_record-fields": 18.17274227690825,
+            "F_unigram": 14.641672784182296,
+            "W_face-continuity": 14.913695973243344
+          },
+          "Pen.C14": {
+            "A_infix": 34.15364147843546,
+            "B_prefix-procedure": 30.061042831455485,
+            "C_center-relation": 27.539263692611705,
+            "D_language-bigram": 25.96760877814769,
+            "E_record-fields": 29.989228807045983,
+            "F_unigram": 29.132455837922453,
+            "W_face-continuity": 27.676538291527283
+          },
+          "Pen.C15": {
+            "A_infix": 16.77936804094346,
+            "B_prefix-procedure": 16.044637451160565,
+            "C_center-relation": 15.675114611134088,
+            "D_language-bigram": 16.044637451160565,
+            "E_record-fields": 14.801183414296286,
+            "F_unigram": 14.279102704797587,
+            "W_face-continuity": 14.349492032688985
+          },
+          "Pen.C16": {
+            "A_infix": 17.483109327338667,
+            "B_prefix-procedure": 19.342781823793658,
+            "C_center-relation": 24.79784513615831,
+            "D_language-bigram": 14.504576959310302,
+            "E_record-fields": 22.88004311363632,
+            "F_unigram": 20.721648483420807,
+            "W_face-continuity": 16.415140333859544
+          },
+          "Pen.C17": {
+            "A_infix": 36.66767128637514,
+            "B_prefix-procedure": 33.56264476917595,
+            "C_center-relation": 43.38997534976791,
+            "D_language-bigram": 33.25398395191437,
+            "E_record-fields": 36.113879488106534,
+            "F_unigram": 36.59299219665921,
+            "W_face-continuity": 33.79595895854154
+          },
+          "Pen.C18": {
+            "A_infix": 10.526051482023835,
+            "B_prefix-procedure": 10.801670498618712,
+            "C_center-relation": 10.4176814355991,
+            "D_language-bigram": 10.737540161198996,
+            "E_record-fields": 12.36557138381204,
+            "F_unigram": 10.578662986656497,
+            "W_face-continuity": 10.78655583829783
+          },
+          "Pen.C19": {
+            "A_infix": 17.483109327338667,
+            "B_prefix-procedure": 19.342781823793658,
+            "C_center-relation": 24.79784513615831,
+            "D_language-bigram": 14.504576959310302,
+            "E_record-fields": 22.88004311363632,
+            "F_unigram": 20.721648483420807,
+            "W_face-continuity": 16.213506472689893
+          },
+          "Pen.C20": {
+            "A_infix": 34.15364147843546,
+            "B_prefix-procedure": 30.061042831455485,
+            "C_center-relation": 27.539263692611705,
+            "D_language-bigram": 25.96760877814769,
+            "E_record-fields": 29.989228807045983,
+            "F_unigram": 29.132455837922453,
+            "W_face-continuity": 27.676538291527283
+          },
+          "Pen.C21": {
+            "A_infix": 16.77936804094346,
+            "B_prefix-procedure": 16.044637451160565,
+            "C_center-relation": 15.675114611134088,
+            "D_language-bigram": 16.044637451160565,
+            "E_record-fields": 14.801183414296286,
+            "F_unigram": 14.279102704797587,
+            "W_face-continuity": 14.349492032688985
+          },
+          "Pen.C22": {
+            "A_infix": 17.483109327338667,
+            "B_prefix-procedure": 19.342781823793658,
+            "C_center-relation": 24.79784513615831,
+            "D_language-bigram": 14.504576959310302,
+            "E_record-fields": 22.88004311363632,
+            "F_unigram": 20.721648483420807,
+            "W_face-continuity": 16.415140333859544
+          },
+          "Pen.C23": {
+            "A_infix": 34.49897062952982,
+            "B_prefix-procedure": 32.5744092720795,
+            "C_center-relation": 39.274948167775776,
+            "D_language-bigram": 31.782600934057953,
+            "E_record-fields": 35.5462194314601,
+            "F_unigram": 35.562316350638056,
+            "W_face-continuity": 32.40280796079971
+          },
+          "Pen.C24": {
+            "A_infix": 31.811536983477595,
+            "B_prefix-procedure": 29.107194795449598,
+            "C_center-relation": 34.164082618511344,
+            "D_language-bigram": 29.499512218228357,
+            "E_record-fields": 33.32425726820349,
+            "F_unigram": 27.363033699879185,
+            "W_face-continuity": 27.825740450549343
+          },
+          "Pen.C25": {
+            "A_infix": 17.201538465111504,
+            "B_prefix-procedure": 17.97352618807203,
+            "C_center-relation": 17.832198735730255,
+            "D_language-bigram": 14.8378567284674,
+            "E_record-fields": 21.236987363629652,
+            "F_unigram": 16.186929826181224,
+            "W_face-continuity": 13.051260366576596
+          },
+          "Pen.C26": {
+            "A_infix": 18.910567202544875,
+            "B_prefix-procedure": 19.98072433814001,
+            "C_center-relation": 22.026580428023493,
+            "D_language-bigram": 17.55762976977481,
+            "E_record-fields": 20.245449845190564,
+            "F_unigram": 21.096043998202305,
+            "W_face-continuity": 19.46819314432405
+          },
+          "Pen.C27": {
+            "A_infix": 14.700793782253148,
+            "B_prefix-procedure": 17.503807251026533,
+            "C_center-relation": 17.13161586128086,
+            "D_language-bigram": 16.786604911681756,
+            "E_record-fields": 16.36856267584285,
+            "F_unigram": 15.717210889135725,
+            "W_face-continuity": 15.378520173044679
+          },
+          "Pen.C28": {
+            "A_infix": 26.961331436479544,
+            "B_prefix-procedure": 24.052601243829653,
+            "C_center-relation": 23.82556720491462,
+            "D_language-bigram": 24.190104767579587,
+            "E_record-fields": 25.314147568004035,
+            "F_unigram": 22.287066497466675,
+            "W_face-continuity": 22.74649811610397
+          },
+          "Pen.C29": {
+            "A_infix": 36.66767128637514,
+            "B_prefix-procedure": 33.56264476917595,
+            "C_center-relation": 43.38997534976791,
+            "D_language-bigram": 33.25398395191437,
+            "E_record-fields": 36.113879488106534,
+            "F_unigram": 36.59299219665921,
+            "W_face-continuity": 34.96034577644242
+          },
+          "Pen.C30": {
+            "A_infix": 12.18541675699505,
+            "B_prefix-procedure": 14.459674950439409,
+            "C_center-relation": 14.090152110412934,
+            "D_language-bigram": 14.459674950439409,
+            "E_record-fields": 13.216220913575132,
+            "F_unigram": 12.694140204076431,
+            "W_face-continuity": 12.76452953196783
+          },
+          "Pen.C31": {
+            "A_infix": 26.961331436479544,
+            "B_prefix-procedure": 24.052601243829653,
+            "C_center-relation": 23.82556720491462,
+            "D_language-bigram": 24.190104767579587,
+            "E_record-fields": 25.314147568004035,
+            "F_unigram": 22.287066497466675,
+            "W_face-continuity": 22.687604427050402
+          },
+          "Pencil.C01": {
+            "A_infix": 20.992902027933223,
+            "B_prefix-procedure": 25.21017689534505,
+            "C_center-relation": 24.603090820842496,
+            "D_language-bigram": 20.06852448314561,
+            "E_record-fields": 22.706441277543277,
+            "F_unigram": 23.969754416246815,
+            "W_face-continuity": 20.06852448314561
+          },
+          "Pencil.C02": {
+            "A_infix": 24.88221375213272,
+            "B_prefix-procedure": 23.160524290587055,
+            "C_center-relation": 22.62960047715853,
+            "D_language-bigram": 22.99400172834218,
+            "E_record-fields": 23.751949775642668,
+            "F_unigram": 21.79068937073589,
+            "W_face-continuity": 22.961335539421857
+          },
+          "Pencil.C03": {
+            "A_infix": 24.087814057936967,
+            "B_prefix-procedure": 21.987285632075448,
+            "C_center-relation": 25.53973024551211,
+            "D_language-bigram": 23.09931638252381,
+            "E_record-fields": 21.951335593019564,
+            "F_unigram": 23.436064461894226,
+            "W_face-continuity": 24.274799692299332
+          },
+          "Pencil.C04": {
+            "A_infix": 15.28942001353936,
+            "B_prefix-procedure": 13.99673196200362,
+            "C_center-relation": 15.627432384324655,
+            "D_language-bigram": 15.353152728091608,
+            "E_record-fields": 16.30215163922217,
+            "F_unigram": 16.39467547155327,
+            "W_face-continuity": 16.602568323194603
+          },
+          "Pencil.C05": {
+            "A_infix": 23.13188477029562,
+            "B_prefix-procedure": 22.764608289299773,
+            "C_center-relation": 22.01410467130361,
+            "D_language-bigram": 19.948016676970592,
+            "E_record-fields": 22.272427625421503,
+            "F_unigram": 22.31863958052073,
+            "W_face-continuity": 19.78360527975714
+          },
+          "Pencil.C06": {
+            "A_infix": 27.321963060697385,
+            "B_prefix-procedure": 22.924564207967713,
+            "C_center-relation": 28.251504449932206,
+            "D_language-bigram": 22.291133668920736,
+            "E_record-fields": 24.78774793885257,
+            "F_unigram": 24.844458596491926,
+            "W_face-continuity": 23.74218312519338
+          },
+          "Pencil.C07": {
+            "A_infix": 24.01540914472707,
+            "B_prefix-procedure": 25.641916115984404,
+            "C_center-relation": 26.89341726224621,
+            "D_language-bigram": 24.366624091242166,
+            "E_record-fields": 27.311159768735575,
+            "F_unigram": 23.87638136962143,
+            "W_face-continuity": 22.601089344879192
+          },
+          "Pencil.C08": {
+            "A_infix": 32.86370961092257,
+            "B_prefix-procedure": 31.597042897245775,
+            "C_center-relation": 33.75071631110936,
+            "D_language-bigram": 32.20348512537738,
+            "E_record-fields": 37.58058900460173,
+            "F_unigram": 29.831508150882794,
+            "W_face-continuity": 30.57545390276434
+          },
+          "Pencil.C09": {
+            "A_infix": 25.67397723383685,
+            "B_prefix-procedure": 24.33406237390772,
+            "C_center-relation": 28.950367226028234,
+            "D_language-bigram": 24.44143550356713,
+            "E_record-fields": 25.36175466363122,
+            "F_unigram": 25.24755648245925,
+            "W_face-continuity": 25.913858610632342
+          },
+          "Pencil.C10": {
+            "A_infix": 23.43037667972087,
+            "B_prefix-procedure": 20.800340983522787,
+            "C_center-relation": 19.358199365231986,
+            "D_language-bigram": 19.84336411474262,
+            "E_record-fields": 19.934734558827564,
+            "F_unigram": 20.56664857170437,
+            "W_face-continuity": 19.31937435123922
+          },
+          "Pencil.C11": {
+            "A_infix": 19.18154845619168,
+            "B_prefix-procedure": 19.38499542459669,
+            "C_center-relation": 25.218600958333553,
+            "D_language-bigram": 20.543467066419737,
+            "E_record-fields": 22.996445154344123,
+            "F_unigram": 21.28266028341516,
+            "W_face-continuity": 21.71979260073023
+          },
+          "Pencil.C12": {
+            "A_infix": 18.821821839782405,
+            "B_prefix-procedure": 20.791753415981,
+            "C_center-relation": 19.64705257979394,
+            "D_language-bigram": 18.980284467367138,
+            "E_record-fields": 22.1301659254003,
+            "F_unigram": 20.733677079799573,
+            "W_face-continuity": 19.267217140898296
+          },
+          "Pencil.C13": {
+            "A_infix": 30.753938927748074,
+            "B_prefix-procedure": 30.612385832877095,
+            "C_center-relation": 28.300384142521825,
+            "D_language-bigram": 25.594982227396954,
+            "E_record-fields": 26.48522991587382,
+            "F_unigram": 28.897895548216695,
+            "W_face-continuity": 26.069467094688285
+          },
+          "Pencil.C14": {
+            "A_infix": 22.94199695766506,
+            "B_prefix-procedure": 18.49478159216655,
+            "C_center-relation": 22.194179806375992,
+            "D_language-bigram": 19.328051508415477,
+            "E_record-fields": 20.942154043780416,
+            "F_unigram": 20.501116217388354,
+            "W_face-continuity": 20.773139406449403
+          },
+          "Pencil.C15": {
+            "A_infix": 16.69681875737353,
+            "B_prefix-procedure": 15.105891330107745,
+            "C_center-relation": 14.137747585724778,
+            "D_language-bigram": 14.19775218830197,
+            "E_record-fields": 15.134296553440791,
+            "F_unigram": 14.688641736938955,
+            "W_face-continuity": 15.513205949028782
+          },
+          "Pencil.C16": {
+            "A_infix": 34.9815735786608,
+            "B_prefix-procedure": 31.429122890336956,
+            "C_center-relation": 29.81587876278128,
+            "D_language-bigram": 29.121420227042996,
+            "E_record-fields": 29.947010435977916,
+            "F_unigram": 29.684961794766544,
+            "W_face-continuity": 27.699187226359946
+          },
+          "Pencil.C17": {
+            "A_infix": 19.873531138446005,
+            "B_prefix-procedure": 19.319481335531158,
+            "C_center-relation": 20.316449258391845,
+            "D_language-bigram": 19.224392563880233,
+            "E_record-fields": 18.964876712731794,
+            "F_unigram": 19.524430034520048,
+            "W_face-continuity": 21.049258497098005
+          },
+          "Pencil.C18": {
+            "A_infix": 23.802812366700532,
+            "B_prefix-procedure": 19.60242570097701,
+            "C_center-relation": 24.18165923890185,
+            "D_language-bigram": 21.833050339257923,
+            "E_record-fields": 20.558009560914748,
+            "F_unigram": 22.67408962057592,
+            "W_face-continuity": 23.76453660080857
+          },
+          "Pencil.C19": {
+            "A_infix": 14.683597259519328,
+            "B_prefix-procedure": 14.046989671921821,
+            "C_center-relation": 17.35751829002401,
+            "D_language-bigram": 14.528891571362813,
+            "E_record-fields": 18.215952259702707,
+            "F_unigram": 15.172283050216823,
+            "W_face-continuity": 15.827634878829375
+          },
+          "Pencil.C20": {
+            "A_infix": 19.522432583944642,
+            "B_prefix-procedure": 17.05613829491065,
+            "C_center-relation": 18.61463278090225,
+            "D_language-bigram": 16.95453922338092,
+            "E_record-fields": 18.51800084591484,
+            "F_unigram": 17.58293229576784,
+            "W_face-continuity": 18.06835912293808
+          },
+          "Pencil.C21": {
+            "A_infix": 32.29348775289693,
+            "B_prefix-procedure": 29.377566000455435,
+            "C_center-relation": 31.33098733573705,
+            "D_language-bigram": 29.46883245806709,
+            "E_record-fields": 30.634364271109902,
+            "F_unigram": 29.820446150879828,
+            "W_face-continuity": 30.85575157692002
+          },
+          "Pencil.C22": {
+            "A_infix": 23.265759567012772,
+            "B_prefix-procedure": 21.492141765965314,
+            "C_center-relation": 24.321367098805094,
+            "D_language-bigram": 22.153432172023308,
+            "E_record-fields": 23.16602961580819,
+            "F_unigram": 21.509365385205527,
+            "W_face-continuity": 22.657648747708706
+          },
+          "Pencil.C23": {
+            "A_infix": 11.963192403412487,
+            "B_prefix-procedure": 11.796836523157374,
+            "C_center-relation": 12.819173770117967,
+            "D_language-bigram": 13.633507627246477,
+            "E_record-fields": 11.869116718123141,
+            "F_unigram": 13.054245876413294,
+            "W_face-continuity": 12.945770158509166
+          },
+          "Pencil.C24": {
+            "A_infix": 19.043710131504454,
+            "B_prefix-procedure": 17.946618034350813,
+            "C_center-relation": 17.983277374696645,
+            "D_language-bigram": 17.408723787286434,
+            "E_record-fields": 19.02465282971449,
+            "F_unigram": 17.146833180961167,
+            "W_face-continuity": 17.781426449406922
+          },
+          "Pencil.C25": {
+            "A_infix": 19.589081658272363,
+            "B_prefix-procedure": 19.980973118122087,
+            "C_center-relation": 20.275101469308044,
+            "D_language-bigram": 19.242433392989554,
+            "E_record-fields": 21.349416957024477,
+            "F_unigram": 19.83402844781413,
+            "W_face-continuity": 18.981478035319945
+          },
+          "Pencil.C26": {
+            "A_infix": 32.29348775289693,
+            "B_prefix-procedure": 29.377566000455435,
+            "C_center-relation": 31.33098733573705,
+            "D_language-bigram": 29.46883245806709,
+            "E_record-fields": 30.634364271109902,
+            "F_unigram": 29.820446150879828,
+            "W_face-continuity": 30.718248053170086
+          },
+          "Pencil.C27": {
+            "A_infix": 33.99392383057905,
+            "B_prefix-procedure": 31.52927365451364,
+            "C_center-relation": 34.866309233726284,
+            "D_language-bigram": 32.12322493846205,
+            "E_record-fields": 32.95862695381748,
+            "F_unigram": 29.742677292622833,
+            "W_face-continuity": 30.40701790446264
+          },
+          "Pencil.C28": {
+            "A_infix": 24.192713388574287,
+            "B_prefix-procedure": 25.19203803662402,
+            "C_center-relation": 23.44147715028154,
+            "D_language-bigram": 22.007030523657548,
+            "E_record-fields": 22.84206869508316,
+            "F_unigram": 23.150561724217606,
+            "W_face-continuity": 23.160479888855264
+          },
+          "Pencil.C29": {
+            "A_infix": 23.678322884514074,
+            "B_prefix-procedure": 19.88832953849872,
+            "C_center-relation": 24.650940654303316,
+            "D_language-bigram": 18.635495988579386,
+            "E_record-fields": 22.753297530850823,
+            "F_unigram": 21.90529406153667,
+            "W_face-continuity": 18.99450363845078
+          },
+          "Pencil.C30": {
+            "A_infix": 15.73907958406732,
+            "B_prefix-procedure": 14.683237201563525,
+            "C_center-relation": 14.22937875064606,
+            "D_language-bigram": 14.683237201563525,
+            "E_record-fields": 14.19607275102748,
+            "F_unigram": 12.939076105993117,
+            "W_face-continuity": 13.009465433884515
+          }
+        },
+        "edge_bits_per_target": {
+          "D_language-bigram": 4.960891497428663,
+          "W_face-continuity": 5.228386966897039
+        },
+        "edge_n": 57,
+        "fold_bits_per_token": {
+          "0": {
+            "A_infix": 5.548356841876739,
+            "B_prefix-procedure": 5.566511247566445,
+            "C_center-relation": 5.915872632016213,
+            "D_language-bigram": 4.970234992261642,
+            "E_record-fields": 5.955742769222881,
+            "F_unigram": 5.466662573212485,
+            "W_face-continuity": 5.019807418082387
+          },
+          "1": {
+            "A_infix": 6.311787811668921,
+            "B_prefix-procedure": 5.932179088726383,
+            "C_center-relation": 6.1510134091585,
+            "D_language-bigram": 5.723144019904816,
+            "E_record-fields": 6.019792606587808,
+            "F_unigram": 5.735501288258958,
+            "W_face-continuity": 5.798173640455975
+          },
+          "2": {
+            "A_infix": 5.357672817405192,
+            "B_prefix-procedure": 5.292053650624371,
+            "C_center-relation": 5.97201277021888,
+            "D_language-bigram": 5.073901456858637,
+            "E_record-fields": 5.594979234236599,
+            "F_unigram": 5.335523783893713,
+            "W_face-continuity": 5.077153246317146
+          },
+          "3": {
+            "A_infix": 5.991932802546752,
+            "B_prefix-procedure": 5.540424496981941,
+            "C_center-relation": 5.9515540637804545,
+            "D_language-bigram": 5.418126847210592,
+            "E_record-fields": 5.79089191074886,
+            "F_unigram": 5.649098673274403,
+            "W_face-continuity": 5.5645264000688
+          },
+          "4": {
+            "A_infix": 5.954551865544556,
+            "B_prefix-procedure": 5.504272404375592,
+            "C_center-relation": 5.839883275723996,
+            "D_language-bigram": 5.295764945015146,
+            "E_record-fields": 5.645593142985489,
+            "F_unigram": 5.550529189757451,
+            "W_face-continuity": 5.3438432797133055
+          }
+        },
+        "n_tokens": 237
+      }
+    },
+    "S25": {
+      "comparison": {
+        "A_advantage_vs_D_bits_per_token": -0.554117399453105,
+        "A_minus_D_bits_per_token": 0.554117399453105,
+        "best_math_bits_per_token": 5.55104672848584,
+        "best_math_model": "B_prefix-procedure",
+        "best_nonmath_bits_per_token": 5.279583425865349,
+        "best_nonmath_model": "D_language-bigram",
+        "face_continuity_advantage_bits_per_boundary_start": -0.2845245723405343,
+        "math_advantage_bits_per_token": -0.2714633026204911
+      },
+      "motifs2": [
+        {
+          "cell_locations": [
+            "Pen.C01",
+            "Pen.C05",
+            "Pen.C10",
+            "Pen.C12",
+            "Pen.C16",
+            "Pen.C17",
+            "Pen.C19",
+            "Pen.C22",
+            "Pen.C23",
+            "Pen.C26",
+            "Pen.C29",
+            "Pencil.C01"
+          ],
+          "distinct_cells": 12,
+          "motif": "S02 S12",
+          "occurrences": 12
+        },
+        {
+          "cell_locations": [
+            "Pen.C03",
+            "Pen.C06",
+            "Pencil.C02",
+            "Pencil.C20",
+            "Pencil.C24",
+            "Pencil.C30"
+          ],
+          "distinct_cells": 6,
+          "motif": "S45 S07",
+          "occurrences": 6
+        },
+        {
+          "cell_locations": [
+            "Pen.C01",
+            "Pen.C26",
+            "Pen.C30",
+            "Pencil.C07",
+            "Pencil.C08"
+          ],
+          "distinct_cells": 5,
+          "motif": "S13 S01",
+          "occurrences": 5
+        },
+        {
+          "cell_locations": [
+            "Pen.C09",
+            "Pen.C16",
+            "Pen.C19",
+            "Pen.C22",
+            "Pen.C25"
+          ],
+          "distinct_cells": 5,
+          "motif": "S31 S26",
+          "occurrences": 5
+        },
+        {
+          "cell_locations": [
+            "Pen.C14",
+            "Pen.C20",
+            "Pencil.C06",
+            "Pencil.C25"
+          ],
+          "distinct_cells": 4,
+          "motif": "S23 S18",
+          "occurrences": 4
+        },
+        {
+          "cell_locations": [
+            "Pencil.C18",
+            "Pencil.C21",
+            "Pencil.C26"
+          ],
+          "distinct_cells": 3,
+          "motif": "S07 S08",
+          "occurrences": 3
+        },
+        {
+          "cell_locations": [
+            "Pen.C17",
+            "Pen.C23",
+            "Pen.C29"
+          ],
+          "distinct_cells": 3,
+          "motif": "S12 S27",
+          "occurrences": 3
+        },
+        {
+          "cell_locations": [
+            "Pen.C16",
+            "Pen.C19",
+            "Pen.C22"
+          ],
+          "distinct_cells": 3,
+          "motif": "S12 S31",
+          "occurrences": 3
+        },
+        {
+          "cell_locations": [
+            "Pencil.C22",
+            "Pencil.C28",
+            "Pencil.C29"
+          ],
+          "distinct_cells": 3,
+          "motif": "S23 S25",
+          "occurrences": 3
+        },
+        {
+          "cell_locations": [
+            "Pen.C14",
+            "Pen.C20",
+            "Pencil.C12"
+          ],
+          "distinct_cells": 3,
+          "motif": "S27 S25",
+          "occurrences": 3
+        },
+        {
+          "cell_locations": [
+            "Pencil.C18",
+            "Pencil.C21",
+            "Pencil.C26"
+          ],
+          "distinct_cells": 3,
+          "motif": "S29 S36",
+          "occurrences": 3
+        },
+        {
+          "cell_locations": [
+            "Pencil.C18",
+            "Pencil.C21",
+            "Pencil.C26"
+          ],
+          "distinct_cells": 3,
+          "motif": "S36 S07",
+          "occurrences": 3
+        }
+      ],
+      "motifs3": [
+        {
+          "cell_locations": [
+            "Pen.C17",
+            "Pen.C23",
+            "Pen.C29"
+          ],
+          "distinct_cells": 3,
+          "motif": "S02 S12 S27",
+          "occurrences": 3
+        },
+        {
+          "cell_locations": [
+            "Pen.C16",
+            "Pen.C19",
+            "Pen.C22"
+          ],
+          "distinct_cells": 3,
+          "motif": "S02 S12 S31",
+          "occurrences": 3
+        },
+        {
+          "cell_locations": [
+            "Pen.C16",
+            "Pen.C19",
+            "Pen.C22"
+          ],
+          "distinct_cells": 3,
+          "motif": "S12 S31 S26",
+          "occurrences": 3
+        },
+        {
+          "cell_locations": [
+            "Pencil.C18",
+            "Pencil.C21",
+            "Pencil.C26"
+          ],
+          "distinct_cells": 3,
+          "motif": "S29 S36 S07",
+          "occurrences": 3
+        },
+        {
+          "cell_locations": [
+            "Pencil.C18",
+            "Pencil.C21",
+            "Pencil.C26"
+          ],
+          "distinct_cells": 3,
+          "motif": "S36 S07 S08",
+          "occurrences": 3
+        },
+        {
+          "cell_locations": [
+            "Pen.C01",
+            "Pen.C26"
+          ],
+          "distinct_cells": 2,
+          "motif": "S02 S12 S13",
+          "occurrences": 2
+        },
+        {
+          "cell_locations": [
+            "Pen.C14",
+            "Pen.C20"
+          ],
+          "distinct_cells": 2,
+          "motif": "S02 S27 S25",
+          "occurrences": 2
+        },
+        {
+          "cell_locations": [
+            "Pen.C28",
+            "Pen.C31"
+          ],
+          "distinct_cells": 2,
+          "motif": "S10 S03 S38",
+          "occurrences": 2
+        },
+        {
+          "cell_locations": [
+            "Pen.C14",
+            "Pen.C20"
+          ],
+          "distinct_cells": 2,
+          "motif": "S10 S23 S18",
+          "occurrences": 2
+        },
+        {
+          "cell_locations": [
+            "Pen.C01",
+            "Pen.C26"
+          ],
+          "distinct_cells": 2,
+          "motif": "S12 S13 S01",
+          "occurrences": 2
+        },
+        {
+          "cell_locations": [
+            "Pen.C17",
+            "Pen.C29"
+          ],
+          "distinct_cells": 2,
+          "motif": "S12 S27 S27",
+          "occurrences": 2
+        },
+        {
+          "cell_locations": [
+            "Pen.C01",
+            "Pencil.C08"
+          ],
+          "distinct_cells": 2,
+          "motif": "S13 S01 S18",
+          "occurrences": 2
+        }
+      ],
+      "nulls": {
+        "interior": {
+          "A_advantage_vs_D_bits_per_token": {
+            "max": -0.1837072919415732,
+            "mean": -0.36012866075357763,
+            "min": -0.5866343091996544,
+            "p_upper": 0.9975
+          },
+          "face_continuity_advantage_bits_per_boundary_start": {
+            "max": -0.2845245723405343,
+            "mean": -0.2845245723405343,
+            "min": -0.2845245723405343,
+            "p_upper": 1.0
+          },
+          "math_advantage_bits_per_token": {
+            "max": 0.07370701182821016,
+            "mean": -0.052176917101342805,
+            "min": -0.19046379868541852,
+            "p_upper": 1.0
+          }
+        },
+        "whole-order": {
+          "A_advantage_vs_D_bits_per_token": {
+            "max": -0.5080250986489956,
+            "mean": -0.7034158253781392,
+            "min": -0.817557648333203,
+            "p_upper": 0.0075
+          },
+          "face_continuity_advantage_bits_per_boundary_start": {
+            "max": -0.18212492603153763,
+            "mean": -0.49387314712208885,
+            "min": -0.8210688513784561,
+            "p_upper": 0.055
+          },
+          "math_advantage_bits_per_token": {
+            "max": -0.3063522677472985,
+            "mean": -0.440508228546899,
+            "min": -0.5520626598592768,
+            "p_upper": 0.0025
+          }
+        },
+        "within": {
+          "A_advantage_vs_D_bits_per_token": {
+            "max": -0.06827402865590759,
+            "mean": -0.27339949463768787,
+            "min": -0.5152458840236411,
+            "p_upper": 1.0
+          },
+          "face_continuity_advantage_bits_per_boundary_start": {
+            "max": 1.0835517603827682,
+            "mean": 0.4945145469285129,
+            "min": 0.04269772931200766,
+            "p_upper": 1.0
+          },
+          "math_advantage_bits_per_token": {
+            "max": 0.18998734902843406,
+            "mean": 0.0031633942917667873,
+            "min": -0.14843998088565336,
+            "p_upper": 1.0
+          }
+        }
+      },
+      "observed": {
+        "bits_per_token": {
+          "A_infix": 5.833700825318454,
+          "B_prefix-procedure": 5.55104672848584,
+          "C_center-relation": 5.97021778867418,
+          "D_language-bigram": 5.279583425865349,
+          "E_record-fields": 5.804915328749332,
+          "F_unigram": 5.553004630494442,
+          "W_face-continuity": 5.3480133863016865
+        },
+        "cell_loss_bits": {
+          "Pen.C01": {
+            "A_infix": 24.030678674119983,
+            "B_prefix-procedure": 25.273475544766615,
+            "C_center-relation": 26.378728209019613,
+            "D_language-bigram": 22.44564235517764,
+            "E_record-fields": 29.301279607001835,
+            "F_unigram": 25.913667255713737,
+            "W_face-continuity": 22.44564235517764
+          },
+          "Pen.C02": {
+            "A_infix": 18.88549118631746,
+            "B_prefix-procedure": 17.248386029302615,
+            "C_center-relation": 17.927786371994213,
+            "D_language-bigram": 15.964116060473778,
+            "E_record-fields": 17.127183354624915,
+            "F_unigram": 15.461789667411807,
+            "W_face-continuity": 14.440554104416766
+          },
+          "Pen.C03": {
+            "A_infix": 19.732279751961975,
+            "B_prefix-procedure": 17.12286440871146,
+            "C_center-relation": 18.751574507510785,
+            "D_language-bigram": 17.085783756659172,
+            "E_record-fields": 18.867746884941965,
+            "F_unigram": 17.714176829046092,
+            "W_face-continuity": 18.337107179966267
+          },
+          "Pen.C04": {
+            "A_infix": 20.72637824030465,
+            "B_prefix-procedure": 14.025090127525235,
+            "C_center-relation": 20.838541522183313,
+            "D_language-bigram": 13.167403529917486,
+            "E_record-fields": 19.079194371829146,
+            "F_unigram": 16.471149561905644,
+            "W_face-continuity": 14.973358909384277
+          },
+          "Pen.C05": {
+            "A_infix": 27.922319182001274,
+            "B_prefix-procedure": 28.240790642658567,
+            "C_center-relation": 29.26775699234033,
+            "D_language-bigram": 24.586772408620206,
+            "E_record-fields": 26.99011607232764,
+            "F_unigram": 27.833112036585383,
+            "W_face-continuity": 26.31102089447161
+          },
+          "Pen.C06": {
+            "A_infix": 22.199701643338024,
+            "B_prefix-procedure": 22.521250669988074,
+            "C_center-relation": 22.22352788504388,
+            "D_language-bigram": 22.3547281077432,
+            "E_record-fields": 24.189085283000043,
+            "F_unigram": 21.151415750136913,
+            "W_face-continuity": 22.190817385544623
+          },
+          "Pen.C07": {
+            "A_infix": 20.781375893139334,
+            "B_prefix-procedure": 19.4917934321733,
+            "C_center-relation": 20.06369157031225,
+            "D_language-bigram": 19.270823085906052,
+            "E_record-fields": 20.000033840010488,
+            "F_unigram": 18.500470135575867,
+            "W_face-continuity": 19.17402655956601
+          },
+          "Pen.C09": {
+            "A_infix": 14.94999969811554,
+            "B_prefix-procedure": 18.458953015242272,
+            "C_center-relation": 17.891699747478917,
+            "D_language-bigram": 15.323283555637644,
+            "E_record-fields": 19.71602586283735,
+            "F_unigram": 16.672356653351464,
+            "W_face-continuity": 15.323283555637644
+          },
+          "Pen.C10": {
+            "A_infix": 26.135490452590652,
+            "B_prefix-procedure": 27.732208759601015,
+            "C_center-relation": 27.491304885958712,
+            "D_language-bigram": 22.01390841018061,
+            "E_record-fields": 22.027227752017186,
+            "F_unigram": 26.49683219794664,
+            "W_face-continuity": 23.252861763590605
+          },
+          "Pen.C11": {
+            "A_infix": 28.309168824983136,
+            "B_prefix-procedure": 23.020974318157684,
+            "C_center-relation": 19.404859435139155,
+            "D_language-bigram": 22.64030423037142,
+            "E_record-fields": 21.53136507423326,
+            "F_unigram": 21.255439571794707,
+            "W_face-continuity": 21.076403345178093
+          },
+          "Pen.C12": {
+            "A_infix": 21.74650239691043,
+            "B_prefix-procedure": 22.69069251701819,
+            "C_center-relation": 23.664815630879765,
+            "D_language-bigram": 21.90993905905147,
+            "E_record-fields": 19.844053782686558,
+            "F_unigram": 25.029086206830435,
+            "W_face-continuity": 23.879335289413316
+          },
+          "Pen.C13": {
+            "A_infix": 16.839867257726418,
+            "B_prefix-procedure": 16.40720753054527,
+            "C_center-relation": 17.408488218637263,
+            "D_language-bigram": 16.608841391714922,
+            "E_record-fields": 18.17274227690825,
+            "F_unigram": 14.641672784182296,
+            "W_face-continuity": 14.913695973243344
+          },
+          "Pen.C14": {
+            "A_infix": 32.51925942367003,
+            "B_prefix-procedure": 28.426660776690053,
+            "C_center-relation": 27.48611974513618,
+            "D_language-bigram": 25.88054193718555,
+            "E_record-fields": 29.936084859570453,
+            "F_unigram": 28.89144773841866,
+            "W_face-continuity": 27.58947145056514
+          },
+          "Pen.C15": {
+            "A_infix": 16.77936804094346,
+            "B_prefix-procedure": 16.044637451160565,
+            "C_center-relation": 15.675114611134088,
+            "D_language-bigram": 16.044637451160565,
+            "E_record-fields": 14.801183414296286,
+            "F_unigram": 14.279102704797587,
+            "W_face-continuity": 14.349492032688985
+          },
+          "Pen.C16": {
+            "A_infix": 17.483109327338667,
+            "B_prefix-procedure": 19.342781823793658,
+            "C_center-relation": 24.79784513615831,
+            "D_language-bigram": 14.504576959310302,
+            "E_record-fields": 22.88004311363632,
+            "F_unigram": 20.721648483420807,
+            "W_face-continuity": 16.415140333859544
+          },
+          "Pen.C17": {
+            "A_infix": 36.66767128637514,
+            "B_prefix-procedure": 33.56264476917595,
+            "C_center-relation": 43.38997534976791,
+            "D_language-bigram": 33.25398395191437,
+            "E_record-fields": 36.113879488106534,
+            "F_unigram": 36.59299219665921,
+            "W_face-continuity": 33.79595895854154
+          },
+          "Pen.C18": {
+            "A_infix": 10.526051482023835,
+            "B_prefix-procedure": 10.801670498618712,
+            "C_center-relation": 10.4176814355991,
+            "D_language-bigram": 10.737540161198996,
+            "E_record-fields": 12.36557138381204,
+            "F_unigram": 10.578662986656497,
+            "W_face-continuity": 10.78655583829783
+          },
+          "Pen.C19": {
+            "A_infix": 17.483109327338667,
+            "B_prefix-procedure": 19.342781823793658,
+            "C_center-relation": 24.79784513615831,
+            "D_language-bigram": 14.504576959310302,
+            "E_record-fields": 22.88004311363632,
+            "F_unigram": 20.721648483420807,
+            "W_face-continuity": 16.213506472689893
+          },
+          "Pen.C20": {
+            "A_infix": 32.51925942367003,
+            "B_prefix-procedure": 28.426660776690053,
+            "C_center-relation": 27.48611974513618,
+            "D_language-bigram": 25.88054193718555,
+            "E_record-fields": 29.936084859570453,
+            "F_unigram": 28.89144773841866,
+            "W_face-continuity": 27.58947145056514
+          },
+          "Pen.C21": {
+            "A_infix": 16.77936804094346,
+            "B_prefix-procedure": 16.044637451160565,
+            "C_center-relation": 15.675114611134088,
+            "D_language-bigram": 16.044637451160565,
+            "E_record-fields": 14.801183414296286,
+            "F_unigram": 14.279102704797587,
+            "W_face-continuity": 14.349492032688985
+          },
+          "Pen.C22": {
+            "A_infix": 17.483109327338667,
+            "B_prefix-procedure": 19.342781823793658,
+            "C_center-relation": 24.79784513615831,
+            "D_language-bigram": 14.504576959310302,
+            "E_record-fields": 22.88004311363632,
+            "F_unigram": 20.721648483420807,
+            "W_face-continuity": 16.415140333859544
+          },
+          "Pen.C23": {
+            "A_infix": 34.49897062952982,
+            "B_prefix-procedure": 32.5744092720795,
+            "C_center-relation": 39.274948167775776,
+            "D_language-bigram": 31.782600934057953,
+            "E_record-fields": 35.5462194314601,
+            "F_unigram": 35.562316350638056,
+            "W_face-continuity": 32.40280796079971
+          },
+          "Pen.C24": {
+            "A_infix": 31.811536983477595,
+            "B_prefix-procedure": 29.107194795449598,
+            "C_center-relation": 34.164082618511344,
+            "D_language-bigram": 29.499512218228357,
+            "E_record-fields": 33.32425726820349,
+            "F_unigram": 27.363033699879185,
+            "W_face-continuity": 27.825740450549343
+          },
+          "Pen.C25": {
+            "A_infix": 17.201538465111504,
+            "B_prefix-procedure": 17.97352618807203,
+            "C_center-relation": 17.832198735730255,
+            "D_language-bigram": 14.8378567284674,
+            "E_record-fields": 21.236987363629652,
+            "F_unigram": 16.186929826181224,
+            "W_face-continuity": 13.051260366576596
+          },
+          "Pen.C26": {
+            "A_infix": 18.910567202544875,
+            "B_prefix-procedure": 19.98072433814001,
+            "C_center-relation": 22.026580428023493,
+            "D_language-bigram": 17.55762976977481,
+            "E_record-fields": 20.245449845190564,
+            "F_unigram": 21.096043998202305,
+            "W_face-continuity": 19.46819314432405
+          },
+          "Pen.C27": {
+            "A_infix": 14.700793782253148,
+            "B_prefix-procedure": 17.503807251026533,
+            "C_center-relation": 17.13161586128086,
+            "D_language-bigram": 16.786604911681756,
+            "E_record-fields": 16.36856267584285,
+            "F_unigram": 15.717210889135725,
+            "W_face-continuity": 15.378520173044679
+          },
+          "Pen.C28": {
+            "A_infix": 26.961331436479544,
+            "B_prefix-procedure": 24.052601243829653,
+            "C_center-relation": 23.82556720491462,
+            "D_language-bigram": 24.190104767579587,
+            "E_record-fields": 25.314147568004035,
+            "F_unigram": 22.287066497466675,
+            "W_face-continuity": 22.74649811610397
+          },
+          "Pen.C29": {
+            "A_infix": 36.66767128637514,
+            "B_prefix-procedure": 33.56264476917595,
+            "C_center-relation": 43.38997534976791,
+            "D_language-bigram": 33.25398395191437,
+            "E_record-fields": 36.113879488106534,
+            "F_unigram": 36.59299219665921,
+            "W_face-continuity": 34.96034577644242
+          },
+          "Pen.C30": {
+            "A_infix": 12.18541675699505,
+            "B_prefix-procedure": 14.459674950439409,
+            "C_center-relation": 14.090152110412934,
+            "D_language-bigram": 14.459674950439409,
+            "E_record-fields": 13.216220913575132,
+            "F_unigram": 12.694140204076431,
+            "W_face-continuity": 12.76452953196783
+          },
+          "Pen.C31": {
+            "A_infix": 26.961331436479544,
+            "B_prefix-procedure": 24.052601243829653,
+            "C_center-relation": 23.82556720491462,
+            "D_language-bigram": 24.190104767579587,
+            "E_record-fields": 25.314147568004035,
+            "F_unigram": 22.287066497466675,
+            "W_face-continuity": 22.687604427050402
+          },
+          "Pencil.C01": {
+            "A_infix": 20.992902027933223,
+            "B_prefix-procedure": 25.21017689534505,
+            "C_center-relation": 24.603090820842496,
+            "D_language-bigram": 20.06852448314561,
+            "E_record-fields": 22.706441277543277,
+            "F_unigram": 23.969754416246815,
+            "W_face-continuity": 20.06852448314561
+          },
+          "Pencil.C02": {
+            "A_infix": 25.092060920150054,
+            "B_prefix-procedure": 23.291768823865304,
+            "C_center-relation": 22.766542203767063,
+            "D_language-bigram": 23.125246261620433,
+            "E_record-fields": 23.778916823242934,
+            "F_unigram": 21.921933904014143,
+            "W_face-continuity": 23.028449735280393
+          },
+          "Pencil.C03": {
+            "A_infix": 24.087814057936967,
+            "B_prefix-procedure": 21.987285632075448,
+            "C_center-relation": 25.53973024551211,
+            "D_language-bigram": 23.09931638252381,
+            "E_record-fields": 21.951335593019564,
+            "F_unigram": 23.436064461894226,
+            "W_face-continuity": 24.274799692299332
+          },
+          "Pencil.C04": {
+            "A_infix": 15.28942001353936,
+            "B_prefix-procedure": 13.99673196200362,
+            "C_center-relation": 15.627432384324655,
+            "D_language-bigram": 15.353152728091608,
+            "E_record-fields": 16.30215163922217,
+            "F_unigram": 16.39467547155327,
+            "W_face-continuity": 16.602568323194603
+          },
+          "Pencil.C05": {
+            "A_infix": 23.13188477029562,
+            "B_prefix-procedure": 22.764608289299773,
+            "C_center-relation": 22.01410467130361,
+            "D_language-bigram": 19.948016676970592,
+            "E_record-fields": 22.272427625421503,
+            "F_unigram": 22.31863958052073,
+            "W_face-continuity": 19.78360527975714
+          },
+          "Pencil.C06": {
+            "A_infix": 27.321963060697385,
+            "B_prefix-procedure": 22.924564207967713,
+            "C_center-relation": 28.251504449932206,
+            "D_language-bigram": 22.291133668920736,
+            "E_record-fields": 24.78774793885257,
+            "F_unigram": 24.844458596491926,
+            "W_face-continuity": 23.74218312519338
+          },
+          "Pencil.C07": {
+            "A_infix": 24.01540914472707,
+            "B_prefix-procedure": 25.641916115984404,
+            "C_center-relation": 26.89341726224621,
+            "D_language-bigram": 24.366624091242166,
+            "E_record-fields": 27.311159768735575,
+            "F_unigram": 23.87638136962143,
+            "W_face-continuity": 22.601089344879192
+          },
+          "Pencil.C08": {
+            "A_infix": 32.88803894028431,
+            "B_prefix-procedure": 31.681931794832284,
+            "C_center-relation": 33.837950635570714,
+            "D_language-bigram": 32.28837402296389,
+            "E_record-fields": 37.60123615544449,
+            "F_unigram": 29.91639704846931,
+            "W_face-continuity": 30.66034280035085
+          },
+          "Pencil.C09": {
+            "A_infix": 25.64483088817733,
+            "B_prefix-procedure": 24.25218536685331,
+            "C_center-relation": 28.445575073991062,
+            "D_language-bigram": 24.234984626099706,
+            "E_record-fields": 24.85696251159405,
+            "F_unigram": 25.041105604991824,
+            "W_face-continuity": 25.707407733164917
+          },
+          "Pencil.C10": {
+            "A_infix": 23.562963782443294,
+            "B_prefix-procedure": 20.840252105212713,
+            "C_center-relation": 19.457439162030244,
+            "D_language-bigram": 19.883275236432546,
+            "E_record-fields": 19.974645680517487,
+            "F_unigram": 20.662863886963677,
+            "W_face-continuity": 19.415589666498526
+          },
+          "Pencil.C11": {
+            "A_infix": 19.18154845619168,
+            "B_prefix-procedure": 19.38499542459669,
+            "C_center-relation": 25.218600958333553,
+            "D_language-bigram": 20.543467066419737,
+            "E_record-fields": 22.996445154344123,
+            "F_unigram": 21.28266028341516,
+            "W_face-continuity": 21.71979260073023
+          },
+          "Pencil.C12": {
+            "A_infix": 18.821821839782405,
+            "B_prefix-procedure": 20.791753415981,
+            "C_center-relation": 19.64705257979394,
+            "D_language-bigram": 18.980284467367138,
+            "E_record-fields": 22.1301659254003,
+            "F_unigram": 20.733677079799573,
+            "W_face-continuity": 19.267217140898296
+          },
+          "Pencil.C13": {
+            "A_infix": 30.753938927748074,
+            "B_prefix-procedure": 30.612385832877095,
+            "C_center-relation": 28.300384142521825,
+            "D_language-bigram": 25.594982227396954,
+            "E_record-fields": 26.48522991587382,
+            "F_unigram": 28.897895548216695,
+            "W_face-continuity": 26.069467094688285
+          },
+          "Pencil.C14": {
+            "A_infix": 22.94199695766506,
+            "B_prefix-procedure": 18.49478159216655,
+            "C_center-relation": 22.194179806375992,
+            "D_language-bigram": 19.328051508415477,
+            "E_record-fields": 20.942154043780416,
+            "F_unigram": 20.501116217388354,
+            "W_face-continuity": 20.773139406449403
+          },
+          "Pencil.C15": {
+            "A_infix": 16.69681875737353,
+            "B_prefix-procedure": 15.105891330107745,
+            "C_center-relation": 14.137747585724778,
+            "D_language-bigram": 14.19775218830197,
+            "E_record-fields": 15.134296553440791,
+            "F_unigram": 14.688641736938955,
+            "W_face-continuity": 15.513205949028782
+          },
+          "Pencil.C16": {
+            "A_infix": 34.9815735786608,
+            "B_prefix-procedure": 31.429122890336956,
+            "C_center-relation": 29.81587876278128,
+            "D_language-bigram": 29.121420227042996,
+            "E_record-fields": 29.947010435977916,
+            "F_unigram": 29.684961794766544,
+            "W_face-continuity": 27.699187226359946
+          },
+          "Pencil.C17": {
+            "A_infix": 19.873531138446005,
+            "B_prefix-procedure": 19.319481335531158,
+            "C_center-relation": 20.316449258391845,
+            "D_language-bigram": 19.224392563880233,
+            "E_record-fields": 18.964876712731794,
+            "F_unigram": 19.524430034520048,
+            "W_face-continuity": 21.049258497098005
+          },
+          "Pencil.C18": {
+            "A_infix": 23.802812366700532,
+            "B_prefix-procedure": 19.60242570097701,
+            "C_center-relation": 24.18165923890185,
+            "D_language-bigram": 21.833050339257923,
+            "E_record-fields": 20.558009560914748,
+            "F_unigram": 22.67408962057592,
+            "W_face-continuity": 23.76453660080857
+          },
+          "Pencil.C19": {
+            "A_infix": 14.683597259519328,
+            "B_prefix-procedure": 14.046989671921821,
+            "C_center-relation": 17.35751829002401,
+            "D_language-bigram": 14.528891571362813,
+            "E_record-fields": 18.215952259702707,
+            "F_unigram": 15.172283050216823,
+            "W_face-continuity": 15.827634878829375
+          },
+          "Pencil.C20": {
+            "A_infix": 19.732279751961975,
+            "B_prefix-procedure": 17.12286440871146,
+            "C_center-relation": 18.751574507510785,
+            "D_language-bigram": 17.085783756659172,
+            "E_record-fields": 18.867746884941965,
+            "F_unigram": 17.714176829046092,
+            "W_face-continuity": 18.199603656216333
+          },
+          "Pencil.C21": {
+            "A_infix": 32.29348775289693,
+            "B_prefix-procedure": 29.377566000455435,
+            "C_center-relation": 31.33098733573705,
+            "D_language-bigram": 29.46883245806709,
+            "E_record-fields": 30.634364271109902,
+            "F_unigram": 29.820446150879828,
+            "W_face-continuity": 30.85575157692002
+          },
+          "Pencil.C22": {
+            "A_infix": 23.227514914234067,
+            "B_prefix-procedure": 21.405074925003174,
+            "C_center-relation": 23.538906355898334,
+            "D_language-bigram": 20.51905011725788,
+            "E_record-fields": 22.383568872901428,
+            "F_unigram": 21.268357285701732,
+            "W_face-continuity": 21.023266692943277
+          },
+          "Pencil.C23": {
+            "A_infix": 11.963192403412487,
+            "B_prefix-procedure": 11.796836523157374,
+            "C_center-relation": 12.819173770117967,
+            "D_language-bigram": 13.633507627246477,
+            "E_record-fields": 11.869116718123141,
+            "F_unigram": 13.054245876413294,
+            "W_face-continuity": 12.945770158509166
+          },
+          "Pencil.C24": {
+            "A_infix": 19.46340446753912,
+            "B_prefix-procedure": 18.111512957070982,
+            "C_center-relation": 18.257160827913708,
+            "D_language-bigram": 17.573618710006603,
+            "E_record-fields": 19.40804925818353,
+            "F_unigram": 17.40932224751767,
+            "W_face-continuity": 18.043915515963427
+          },
+          "Pencil.C25": {
+            "A_infix": 19.721668760994792,
+            "B_prefix-procedure": 20.02088423981201,
+            "C_center-relation": 20.374341266106303,
+            "D_language-bigram": 19.282344514679476,
+            "E_record-fields": 21.389328078714403,
+            "F_unigram": 19.930243763073435,
+            "W_face-continuity": 19.07769335057925
+          },
+          "Pencil.C26": {
+            "A_infix": 32.29348775289693,
+            "B_prefix-procedure": 29.377566000455435,
+            "C_center-relation": 31.33098733573705,
+            "D_language-bigram": 29.46883245806709,
+            "E_record-fields": 30.634364271109902,
+            "F_unigram": 29.820446150879828,
+            "W_face-continuity": 30.718248053170086
+          },
+          "Pencil.C27": {
+            "A_infix": 34.11448845976956,
+            "B_prefix-procedure": 31.614162552100154,
+            "C_center-relation": 34.953544538497816,
+            "D_language-bigram": 32.20811383604856,
+            "E_record-fields": 33.1537979064189,
+            "F_unigram": 29.827566190209346,
+            "W_face-continuity": 30.491906802049154
+          },
+          "Pencil.C28": {
+            "A_infix": 26.207802724697228,
+            "B_prefix-procedure": 24.0944272399976,
+            "C_center-relation": 25.3467584930284,
+            "D_language-bigram": 20.90941972703113,
+            "E_record-fields": 23.870732453335304,
+            "F_unigram": 24.334986295355034,
+            "W_face-continuity": 22.062869092228844
+          },
+          "Pencil.C29": {
+            "A_infix": 23.64007823173537,
+            "B_prefix-procedure": 19.647321438994926,
+            "C_center-relation": 23.868479911396555,
+            "D_language-bigram": 17.001113933813958,
+            "E_record-fields": 21.970836787944062,
+            "F_unigram": 21.664285962032874,
+            "W_face-continuity": 18.176487747037925
+          },
+          "Pencil.C30": {
+            "A_infix": 15.766046631667589,
+            "B_prefix-procedure": 14.814481734841777,
+            "C_center-relation": 14.366320477254591,
+            "D_language-bigram": 14.814481734841777,
+            "E_record-fields": 14.545818790054604,
+            "F_unigram": 13.070320639271369,
+            "W_face-continuity": 13.207824163021304
+          }
+        },
+        "edge_bits_per_target": {
+          "D_language-bigram": 4.962882245372903,
+          "W_face-continuity": 5.247406817713437
+        },
+        "edge_n": 57,
+        "fold_bits_per_token": {
+          "0": {
+            "A_infix": 5.480764450623216,
+            "B_prefix-procedure": 5.500180513984271,
+            "C_center-relation": 5.915475682631009,
+            "D_language-bigram": 4.968375725921272,
+            "E_record-fields": 5.953958587053958,
+            "F_unigram": 5.458389087766213,
+            "W_face-continuity": 5.017948151742017
+          },
+          "1": {
+            "A_infix": 6.338530443797529,
+            "B_prefix-procedure": 5.945162147090259,
+            "C_center-relation": 6.160668726907917,
+            "D_language-bigram": 5.7362220350461754,
+            "E_record-fields": 6.0406814680498035,
+            "F_unigram": 5.7506557745457725,
+            "W_face-continuity": 5.813391613092552
+          },
+          "2": {
+            "A_infix": 5.360238022281587,
+            "B_prefix-procedure": 5.293859797381531,
+            "C_center-relation": 5.973868840533168,
+            "D_language-bigram": 5.075707603615798,
+            "E_record-fields": 5.599131807696204,
+            "F_unigram": 5.337329930650873,
+            "W_face-continuity": 5.077706335860401
+          },
+          "3": {
+            "A_infix": 6.034807043740858,
+            "B_prefix-procedure": 5.517071075777124,
+            "C_center-relation": 5.992091964689963,
+            "D_language-bigram": 5.394773426005775,
+            "E_record-fields": 5.812778373690395,
+            "F_unigram": 5.674299196064561,
+            "W_face-continuity": 5.541172978863982
+          },
+          "4": {
+            "A_infix": 5.959007354354628,
+            "B_prefix-procedure": 5.501104958920867,
+            "C_center-relation": 5.81348323206944,
+            "D_language-bigram": 5.230504021801742,
+            "E_record-fields": 5.618814858572761,
+            "F_unigram": 5.5465006428151655,
+            "W_face-continuity": 5.297935992968471
+          }
+        },
+        "n_tokens": 237
+      }
+    }
+  }
+}

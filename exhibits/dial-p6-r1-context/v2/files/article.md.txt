@@ -1,0 +1,27 @@
+# Dial P6-R1 — one-cell context sensitivity
+
+## Original question
+
+Does the recorded structural overlap result survive the predeclared extension of protected repeated passages by one adjacent cell?
+
+## Method and recorded result
+
+Use the original masked corpus, frozen P6-R1 protocol and preserved executor; read the saved results and two compressed draw ledgers. This assembly performs no sampling or scientific replay.
+
+The original October 1 report records survival of this one sensitivity check for both fixed C28 readings. Its saved post-run verification reconciles the ledgers with the result.
+
+## Scope and limits
+
+The exact exposed structural-sensitivity experiment recorded on October 1, 2026. Not independent blind replication or decipherment.
+
+- No sign meaning, sound, reading direction or historical copying process is established.
+- This does not resolve the separate P-5 original-generator or P-26 provenance gaps.
+- The historical runtime is recorded; it has not been recreated or tested for this assembly.
+- Preserved archive: P6_R1_EXECUTION_2026-10-01.zip. The attached files are inspection selections; they do not replace its complete runtime directory. No public archive URL or permission is implied. Full figures, historical versions and omitted dependencies remain in that archive.
+- S01–S45 identities and Pen/Pencil alternatives remain as recorded. Display orientation is not proven reading direction; no decoding or acceptance of Visual Families follows.
+
+## Evidence available for inspection
+
+The files below preserve the selected original bytes. Existing scientific checks remain completed; this gathering adds no experiment. Source code, data and receipts are presented with the scope stated in their original records. Any original reproduction instructions describe the original archive layout, not this smaller inspection packet.
+
+Publication review covers these exact selected bytes. Full archives and any figures remain preserved separately; their public release is a separate decision.

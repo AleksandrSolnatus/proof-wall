@@ -1,0 +1,27 @@
+# Shape Tools 009: when repeated pair probing stops learning
+
+## Original question
+
+Does repeatedly learning from all single- and pair-assumption probes always resolve the tested local-rule failures?
+
+## Method and recorded result
+
+The original experiment extends a prior probing implementation, preserves its fixed-point counterexample and controls, and retains trace replay, truth-table checking, mutation failures and work counters.
+
+For the tested odd K4 parity contradiction, pair/single-assumption probing reaches a fixed point without discovering the needed refutation.
+
+## Scope and limits
+
+A limitation of the specified finite probing procedure, alongside its successful cases. It is not a lower bound for every SAT solver.
+
+- Lower bound for this specified probing procedure, not for every solver. A failed assumption alone is not a proof that the unconditioned formula is UNSAT.
+- Python source, prior implementation and baseline are included. Use the archived report for the original command and accounting; no command was executed during assembly.
+- All seven original members are directly attached. Result counters retain overlapping/related controls and do not imply independent sampled hard instances or a timing result.
+- This assembly inherits the recorded scientific checks and does not establish deployment behavior or public permission.
+- Preserved archive: SHAPE-TOOLS-009-2026-11-05.zip. The attached files are inspection selections; they do not replace its complete runtime directory. No public archive URL or permission is implied. Full figures, historical versions and omitted dependencies remain in that archive.
+
+## Evidence available for inspection
+
+The files below preserve the selected original bytes. Existing scientific checks remain completed; this gathering adds no experiment. Source code, data and receipts are presented with the scope stated in their original records. Any original reproduction instructions describe the original archive layout, not this smaller inspection packet.
+
+Publication review covers these exact selected bytes. Full archives and any figures remain preserved separately; their public release is a separate decision.

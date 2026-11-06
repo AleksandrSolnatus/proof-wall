@@ -1,0 +1,265 @@
+{
+  "plan_sha256": "103df258d15b1475ac05ab921446a99829938713821acd6200a230618ff2ca55",
+  "comparison_pairs": [
+    {
+      "comparison": "fixed_A_0.0125__minus__fixed_A_0.00625",
+      "group": "fixed_dt",
+      "left": "fixed_A_0.0125",
+      "right": "fixed_A_0.00625"
+    },
+    {
+      "comparison": "fixed_A_0.0125__minus__fixed_A_0.003125",
+      "group": "fixed_dt",
+      "left": "fixed_A_0.0125",
+      "right": "fixed_A_0.003125"
+    },
+    {
+      "comparison": "fixed_A_0.00625__minus__fixed_A_0.003125",
+      "group": "fixed_dt",
+      "left": "fixed_A_0.00625",
+      "right": "fixed_A_0.003125"
+    },
+    {
+      "comparison": "fixed_C_0.0125__minus__fixed_C_0.00625",
+      "group": "fixed_dt",
+      "left": "fixed_C_0.0125",
+      "right": "fixed_C_0.00625"
+    },
+    {
+      "comparison": "fixed_C_0.0125__minus__fixed_C_0.003125",
+      "group": "fixed_dt",
+      "left": "fixed_C_0.0125",
+      "right": "fixed_C_0.003125"
+    },
+    {
+      "comparison": "fixed_C_0.00625__minus__fixed_C_0.003125",
+      "group": "fixed_dt",
+      "left": "fixed_C_0.00625",
+      "right": "fixed_C_0.003125"
+    },
+    {
+      "comparison": "fixed_C_0.003125__minus__fixed_A_0.003125",
+      "group": "fixed_law",
+      "left": "fixed_C_0.003125",
+      "right": "fixed_A_0.003125"
+    },
+    {
+      "comparison": "fixed_C_0.00625__minus__fixed_A_0.00625",
+      "group": "fixed_law",
+      "left": "fixed_C_0.00625",
+      "right": "fixed_A_0.00625"
+    },
+    {
+      "comparison": "fixed_C_0.0125__minus__fixed_A_0.0125",
+      "group": "fixed_law",
+      "left": "fixed_C_0.0125",
+      "right": "fixed_A_0.0125"
+    },
+    {
+      "comparison": "dt2_A_0.003125__minus__fixed_A_0.003125",
+      "group": "scaled_vs_fixed",
+      "left": "dt2_A_0.003125",
+      "right": "fixed_A_0.003125"
+    },
+    {
+      "comparison": "dt2_A_0.0125__minus__fixed_A_0.0125",
+      "group": "scaled_vs_fixed",
+      "left": "dt2_A_0.0125",
+      "right": "fixed_A_0.0125"
+    },
+    {
+      "comparison": "dt2_C_0.003125__minus__fixed_C_0.003125",
+      "group": "scaled_vs_fixed",
+      "left": "dt2_C_0.003125",
+      "right": "fixed_C_0.003125"
+    },
+    {
+      "comparison": "dt2_C_0.0125__minus__fixed_C_0.0125",
+      "group": "scaled_vs_fixed",
+      "left": "dt2_C_0.0125",
+      "right": "fixed_C_0.0125"
+    },
+    {
+      "comparison": "dt2_C_0.003125__minus__dt2_A_0.003125",
+      "group": "scaled_law",
+      "left": "dt2_C_0.003125",
+      "right": "dt2_A_0.003125"
+    },
+    {
+      "comparison": "dt2_C_0.0125__minus__dt2_A_0.0125",
+      "group": "scaled_law",
+      "left": "dt2_C_0.0125",
+      "right": "dt2_A_0.0125"
+    },
+    {
+      "comparison": "dt2_A_0.0125__minus__fixed_A_0.00625",
+      "group": "scaled_dt_shared_base",
+      "left": "dt2_A_0.0125",
+      "right": "fixed_A_0.00625"
+    },
+    {
+      "comparison": "dt2_A_0.0125__minus__dt2_A_0.003125",
+      "group": "scaled_dt_shared_base",
+      "left": "dt2_A_0.0125",
+      "right": "dt2_A_0.003125"
+    },
+    {
+      "comparison": "fixed_A_0.00625__minus__dt2_A_0.003125",
+      "group": "scaled_dt_shared_base",
+      "left": "fixed_A_0.00625",
+      "right": "dt2_A_0.003125"
+    },
+    {
+      "comparison": "dt2_C_0.0125__minus__fixed_C_0.00625",
+      "group": "scaled_dt_shared_base",
+      "left": "dt2_C_0.0125",
+      "right": "fixed_C_0.00625"
+    },
+    {
+      "comparison": "dt2_C_0.0125__minus__dt2_C_0.003125",
+      "group": "scaled_dt_shared_base",
+      "left": "dt2_C_0.0125",
+      "right": "dt2_C_0.003125"
+    },
+    {
+      "comparison": "fixed_C_0.00625__minus__dt2_C_0.003125",
+      "group": "scaled_dt_shared_base",
+      "left": "fixed_C_0.00625",
+      "right": "dt2_C_0.003125"
+    }
+  ],
+  "endpoint_keys": [
+    "t",
+    "count",
+    "representedMass",
+    "nominalArea",
+    "meanSpeed",
+    "rmsSpeed",
+    "maxSpeed",
+    "kineticEnergyProxy",
+    "potentialEnergyProxy",
+    "maxHeight",
+    "meanSurfaceHeight",
+    "surfaceVariance",
+    "surfaceStd",
+    "occupiedSurfaceVariance",
+    "occupiedBinCount",
+    "occupiedWidth",
+    "leftRightMassAsymmetry",
+    "comX",
+    "comY",
+    "comVx",
+    "comVy",
+    "momentumX",
+    "momentumY",
+    "maxAdjacentOccupiedSlope",
+    "surfaceProfile",
+    "coordinationHistogram",
+    "meanCoordination",
+    "overlapPairs",
+    "overlapMean",
+    "overlapRms",
+    "overlapMax",
+    "overlapMaxFractionOfSpacing",
+    "residualUncappedEndpointDemand",
+    "residualNetRepulsionDemand",
+    "minimumNeighborDistance",
+    "degenerateSkippedPairs",
+    "floorConnectedCount",
+    "minimumY",
+    "intervalActivity"
+  ],
+  "interval_keys": [
+    "dKEExternal",
+    "dKEPredictCap",
+    "dKEReconstruction",
+    "dKEFloorVelocityRule",
+    "dKEViscosity",
+    "dKEPostCap",
+    "pairCorrections",
+    "cohesionPairs",
+    "repulsionEvaluations",
+    "shellEvaluations",
+    "positiveAttractionEvaluations",
+    "relationBranchTransitions",
+    "repulsionToShellTransitions",
+    "shellToRepulsionTransitions",
+    "repulsionDemand",
+    "repulsionApplied",
+    "attractionRawRequest",
+    "cohesionApplied",
+    "attractionCapEvents",
+    "maxAttractionRawRequest",
+    "netPairCorrection",
+    "boundaryProjectionDistance",
+    "maxUncappedPairRequest",
+    "reconstructionDeltaVSum",
+    "reconstructionDeltaVRms",
+    "reconstructionDeltaVMax",
+    "reconstructionSamples",
+    "floorClampEvents",
+    "wallClampEvents",
+    "floorContactParticleSteps",
+    "speedCapPredictEvents",
+    "speedCapPostEvents",
+    "correctionCapEvents"
+  ],
+  "endpoint_primary": [
+    "overlapMaxFractionOfSpacing",
+    "overlapRms",
+    "minimumNeighborDistance",
+    "residualUncappedEndpointDemand",
+    "residualNetRepulsionDemand",
+    "rmsSpeed",
+    "maxSpeed",
+    "kineticEnergyProxy"
+  ],
+  "interval_primary": [
+    "dKEExternal",
+    "dKEPredictCap",
+    "dKEReconstruction",
+    "dKEFloorVelocityRule",
+    "dKEViscosity",
+    "dKEPostCap",
+    "pairCorrections",
+    "cohesionPairs",
+    "repulsionEvaluations",
+    "shellEvaluations",
+    "positiveAttractionEvaluations",
+    "relationBranchTransitions",
+    "repulsionToShellTransitions",
+    "shellToRepulsionTransitions",
+    "repulsionDemand",
+    "repulsionApplied",
+    "attractionRawRequest",
+    "cohesionApplied",
+    "attractionCapEvents",
+    "maxAttractionRawRequest",
+    "netPairCorrection",
+    "boundaryProjectionDistance",
+    "maxUncappedPairRequest",
+    "reconstructionDeltaVSum",
+    "reconstructionDeltaVRms",
+    "reconstructionDeltaVMax",
+    "reconstructionSamples",
+    "floorClampEvents",
+    "wallClampEvents",
+    "floorContactParticleSteps",
+    "speedCapPredictEvents",
+    "speedCapPostEvents",
+    "correctionCapEvents"
+  ],
+  "threshold": "abs(l-r)>max(1e-8,0.10*max(abs(l),abs(r)))",
+  "persistence": 2,
+  "exact_implementation": "endpoint_denom and interval_denom in analyze.py; all normalization denominators are exported rowwise",
+  "normalization_notes": {
+    "counts": "particle-step/pass opportunities except caps use corresponding evaluations; transitions use all pair branch evaluations",
+    "displacement_sums": "per corresponding pair evaluation and spacing, or particle-pass and spacing",
+    "stage_energy": "0.5*M*speedCap^2 per interval; raw per-second rates also emitted",
+    "raw_residual": "preserved alongside coefficient-corrected normalization; not work",
+    "maxima": "never sum",
+    "RMS": "weighted squares using reconstructionSamples"
+  },
+  "context": "two rows before through two after first and sustained onset; event windows likewise",
+  "plots": "none"
+}

@@ -1,0 +1,100 @@
+# PHAISTOS DIAL — MATH-01 REPORT
+
+**Execution date:** 2026-10-14 (America/Phoenix)  
+**Experiment type:** Retrospective computational comparison; a proposed mathematical-expression hypothesis, not a decipherment.  
+**Decision: NOT SUPPORTED — for the specified restricted mathematical grammar models.** The broader possibility of unknown mathematical notation remains unresolved.
+
+## 1. Research question and scope
+
+Could the Phaistos Disc contain a mathematical expression, multiple expressions, logical/relational statements, or ordered procedures? We asked whether three *explicitly limited* mathematics-inspired structural grammars predict withheld signs better than frequency, language-like and record-like alternatives. No sign received a number, arithmetic meaning, pictorial meaning, sound, or translation.
+
+**Important distinction:** This experiment tests restricted *structural surrogates* of mathematical grammar; it does not test all possible mathematical writing systems. The winning language-like model does not establish that the Disc is language.
+
+## 2. Authorized evidence and integrity
+
+- Input: immutable `inputs/corpus_masked.json`, raw SHA-256 `18ee5ac70b21696e7ed60616e3a265eaf0261fdd49779464e254a7e916f74a24` (verified before analysis).
+- 60 eligible cells, 237 sign occurrences: Pen 118, Pencil 119; all S01–S45 occur.
+- Pen.C08 excluded completely; **no** Pen.C07|C09 artificial boundary created. 57 valid face-internal consecutive cell boundaries remain (28 Pen, 29 Pencil).
+- Pencil.C24 restored to S07 S45 S07 using the previously accepted blind reveal, explicitly documented as an analytic view over a still-unchanged input file.
+- Pencil.C28 final S07 and final S25 evaluated separately with fixed settings. None was chosen according to outcome.
+- Archival within-cell order was used as written. This is **not** a determination of ancient reading direction; no faces were joined into one sequence.
+- The pre-existing corpus source had already been examined in prior Dial work. Our 5-fold held-out computation is **not an independent, truly prospective blind test**.
+
+## 3. Models and predictive evaluation
+
+Each of 45 signs is treated as a categorical outcome. After excluding an entire dependency family from model fitting, the model is scored on negative log2 probability of each held-out sign **conditional on its already-visible context** (head/previous sign if required). Scores are in **bits per sign, smaller is better**, averaged over 237 eligible occurrences.
+
+All models share training-only global sign probabilities with Jeffreys 0.5 pseudocounts, and specialized predictive distributions are shrunk toward those frequencies with a fixed 20-equivalent-observation prior. This regularizes costly conditional models without tuning hyperparameters to the result. Exact-copy/substring/edit-distance≤1 whole-cell dependencies are connected into a conservative graph (union under the two C28 variants); the known multi-cell Pen C14–C16 / C20–C22 duplicate is linked. **38 dependency families**, largest 12 cells, were distributed across 5 folds of 48/47/47/47/48 signs.
+
+Mathematics-inspired models: **A** alternate value/operator slots anchored to the first archived slot; **B** a prefix procedural instruction at the head with later arguments conditioned on the head; **C** a central relation sign with other signs in operand-like slots. Alternatives: **D** language-like within-cell bigram transitions; **E** nonmathematical first/middle/last record fields; **F** sign-frequency-only null. **W** adds a cross-cell bigram distribution to D for actual consecutive physical cells of the same face; no across-face edge is supplied. These are hand-specified restricted hypotheses, not historically authenticated Phaistos grammars.
+
+## 4. Results — grouped held-out predictive scores
+
+| Model | C28=S07 | C28=S25 |
+|---|---:|---:|
+| F: simple global sign-frequency control | 5.547 | 5.553 |
+| A: alternation / restricted infix | 5.832 | 5.834 |
+| B: prefix procedure, head-conditioned | 5.567 | 5.551 |
+| C: central relation and operands | 5.965 | 5.970 |
+| D: language-like Markov transitions | 5.295 | 5.280 |
+| E: nonmathematical record fields | 5.801 | 5.805 |
+| W: face continuity with across-cell transitions | 5.359 | 5.348 |
+
+
+**Primary outcome:** In both C28 readings, **D (within-cell bigram) is best**. Best mathematical surrogate is B, and its disadvantage against D is **0.272 bits/sign** for S07 and **0.271 bits/sign** for S25. Model A loses to D by 0.537 / 0.554. Model C is still worse. Model B does not reliably beat even F's unigram baseline: 0.020 bits/sign worse on S07, only 0.002 bits/sign better on S25.
+
+S07 per-fold scores (the nonmathematical D model beats each tested mathematical A/B/C model in all five folds):
+
+| Fold | A infix | B prefix | C relation | D language-like | E record |
+|---|---:|---:|---:|---:|---:|
+| 0 | 5.548 | 5.567 | 5.916 | 4.970 | 5.956 |
+| 1 | 6.312 | 5.932 | 6.151 | 5.723 | 6.020 |
+| 2 | 5.358 | 5.292 | 5.972 | 5.074 | 5.595 |
+| 3 | 5.992 | 5.540 | 5.952 | 5.418 | 5.791 |
+| 4 | 5.955 | 5.504 | 5.840 | 5.296 | 5.646 |
+
+
+Across-cell continuity is not supported by the narrow W test: at the **57 real boundary starts** D's no-boundary-context predictor scores 4.961/4.963 bits/target while W scores 5.228/5.247. W is therefore **worse by 0.267/0.285 bits per boundary start**, respectively. This does not exclude whole-face statements of a different form, and tells us nothing about a nonexistent observed between-face transition.
+
+## 5. Phase 1: tendencies without meanings
+
+- **S02** is the first sign in **18 of 18 eligible occurrences**. This is a strong *descriptive* start-position concentration, not identification of its function.
+- Repeated bigram examples: `S02 S12` occurs 12 times in 12 cells; `S45 S07` occurs 6 times in 6 cells. Exact copies and related cells mean these are **not independent confirmations**.
+- Repeated trigrams include `S02 S12 S27` and `S12 S31 S26`, three occurrences apiece, some in near-duplicate or identical passages.
+- Other position-concentrated signs (see CSV) include S22 near starts and S08 near ends, but small sample sizes and dependence make role assignments highly uncertain.
+- All 45 CSV mathematical-role entries are **not identified**. A positional skew does not license renaming a sign '+' or '='.
+
+Selected observed positional tendencies (S07 reading):
+
+| Sign | Count | First | Middle | Last | Observation |
+|---|---:|---:|---:|---:|---|
+| S02 | 18 | 18 | 0 | 0 | start concentration |
+| S08 | 5 | 0 | 1 | 4 | end concentration |
+| S12 | 16 | 0 | 12 | 4 | internal concentration |
+| S22 | 5 | 4 | 1 | 0 | start concentration |
+| S23 | 11 | 1 | 9 | 1 | internal concentration |
+| S24 | 6 | 1 | 4 | 1 | internal concentration |
+| S29 | 11 | 8 | 3 | 0 | start concentration |
+| S40 | 6 | 0 | 5 | 1 | internal concentration |
+| S45 | 6 | 1 | 5 | 0 | internal concentration |
+
+
+## 6. Phase 3: one face, many statements, both faces, procedure
+
+The tested W model asks whether a sign at the next physically consecutive cell start becomes easier to predict using the prior cell's last sign than using an ordinary cell-start distribution. Here it does **not**. This is a limited negative predictive test for a particular notion of cross-cell continuity; it cannot choose between **one statement per face** and **multiple statements per face**. B tests a constrained procedural-head syntax, which also does not outperform D. No validated between-face reading connection exists in the evidence, so a whole-two-face mathematical expression is **not testable by this corpus alone** without an added unsupported premise.
+
+## 7. Phase 4: blind challenge and what was actually withheld
+
+Five dependency-group folds kept complete related cells out of model fitting. We then predicted each held-out sign's identity **given the other contextual signs available in that held-out cell**. This is a legitimate held-out conditional-scoring exercise, but it is not a prospective independent blind challenge: the corpus was previously exposed, grammar families were conceived with project knowledge, and no new undisclosed material was introduced. Therefore **no true blind decipherment or mathematical-content claim** can follow.
+
+## 8. Phase 5: inference levels and decision
+
+1. **Structural regularities**: yes (e.g., repeated contexts and sign-position associations).
+2. **Specifically mathematical grammar**: **not supported** by these A/B/C predictive comparisons; the best alternative D predicts better in both C28 versions and all five folds.
+3. **Mathematical content**: not established, and indeed not addressed semantically by any sign-to-value mapping.
+
+**Decision: NOT SUPPORTED (the specified mathematical grammar family)**. This is *not* proof that mathematics is absent. Unknown grammars, undocumented direction, tiny dependent corpus, lack of external calibration, and missing genuine prospective blind data limit the inference. A broader claim that the Disc communicates mathematics remains **unresolved**.
+
+## 9. Reproducibility
+
+The frozen code and pre-run plan, raw verified input, dependency-fold allocation, 399-draw-per-null variant summaries, role CSV, checksum manifest and replay checks live in the accompanying reproducibility package. Re-running the code with Python 3's standard library and the exact preserved corpus reproduces the quantitative tables. The verifier replays computations using the **same implementation** and is **not an independent auditor**.

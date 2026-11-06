@@ -1,0 +1,27 @@
+# Rocky × Rulebench PR8: unsupported input is not a bad schedule
+
+## Original question
+
+Does the pinned external-schedule checker accept the complete original Rocky requirements, and is the recovered schedule feasible under those original requirements?
+
+## Method and recorded result
+
+The actual preserved PR8 command records an unsupported parser outcome with zero solver calls. A separate interval audit checks the unchanged original schedule against its original fixed-route model.
+
+The actual PR8 command stopped at original-input parsing as unsupported, while a separate original-model audit found the recovered 2304 schedule feasible.
+
+## Scope and limits
+
+Compatibility and feasibility of one recovered schedule at the recorded source revision. Not optimization, current best-known performance, or an optimality proof.
+
+- No semantic feasibility pass from PR8, no new optimization and no claimed six-to-five conversion.
+- Node and Python; the original recipe and relevant pinned checker source are in the archive. Do not replace the original prompt with an instance-only rewrite.
+- The archive keeps original prompt/CSV bytes, the checker implementation, source-identity records and the unsupported result. A retrieval table that displays an index column is not the original CSV.
+- This assembly inherits the recorded scientific checks and does not establish deployment behavior or public permission.
+- Preserved archive: ROCKY-002-PR8-REAL-INPUT-VERIFICATION.zip. The attached files are inspection selections; they do not replace its complete runtime directory. No public archive URL or permission is implied. Full figures, historical versions and omitted dependencies remain in that archive.
+
+## Evidence available for inspection
+
+The files below preserve the selected original bytes. Existing scientific checks remain completed; this gathering adds no experiment. Source code, data and receipts are presented with the scope stated in their original records. Any original reproduction instructions describe the original archive layout, not this smaller inspection packet.
+
+Publication review covers these exact selected bytes. Full archives and any figures remain preserved separately; their public release is a separate decision.

@@ -1,0 +1,28 @@
+# Dial MATH-01: a restricted grammar hypothesis did not outperform the comparator
+
+## Original question
+
+Do three specified mathematics-inspired structural grammars predict held-out signs better than the stated alternatives?
+
+## Method and recorded result
+
+The archived retrospective comparison preserves the exact masked corpus, grouped folds, frozen plan, original scorer, result vectors and same-implementation verification. Both fixed C28 branches remain separate.
+
+Within-cell bigram model D outperformed the three specified mathematics-inspired models in both C28 branches.
+
+## Scope and limits
+
+A completed restricted-model comparison on an already exposed corpus. Its scores are not a validated mathematical-content detector; later MATH-02 calibration is a separate record.
+
+- No decipherment or proof that mathematics is absent. Corpus already exposed; held-out scoring was not a genuinely prospective blind trial. Verification is not an independent audit.
+- Python standard library according to the original manifest. Preserve the MATH-01 directory layout; the standalone direct copies are for inspection, not a replacement runnable tree.
+- This upgrades the earlier report-only entry. The archive report must exactly match the earlier selected report; no replacement report or new scoring is permitted here. Old next-step text is historical and does not reopen closed MATH-01.
+- This assembly inherits the recorded scientific checks and does not establish deployment behavior or public permission.
+- Preserved archive: PHAISTOS-DIAL-MATH-01-EVIDENCE-2026-10-14.zip. The attached files are inspection selections; they do not replace its complete runtime directory. No public archive URL or permission is implied. Full figures, historical versions and omitted dependencies remain in that archive.
+- S01–S45 identities and Pen/Pencil alternatives remain as recorded. Display orientation is not proven reading direction; no decoding or acceptance of Visual Families follows.
+
+## Evidence available for inspection
+
+The files below preserve the selected original bytes. Existing scientific checks remain completed; this gathering adds no experiment. Source code, data and receipts are presented with the scope stated in their original records. Any original reproduction instructions describe the original archive layout, not this smaller inspection packet.
+
+Publication review covers these exact selected bytes. Full archives and any figures remain preserved separately; their public release is a separate decision.

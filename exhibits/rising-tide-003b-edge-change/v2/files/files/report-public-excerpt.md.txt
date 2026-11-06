@@ -1,0 +1,169 @@
+# Rising Tide 003B — which knowledge survives an edge change?
+
+**November 4, 2026 · MATH / Bridges**
+
+**Result:** Exact retained structure can survive changes to the graph and reduce the declared work of subsequent queries. The benefit depends on how far the change propagates and whether later questions use the maintained capabilities. A single edit can affect quadratically many stored entries; maintaining unused powers can cost far more than fresh solving.
+
+This is a new executable follow-up to the supplied Rising Tide 003 contribution. It also corrects the strict-expansion example and reproduces the original graph experiment using an independent implementation. No claim of a new general algorithm, autonomous algorithm invention, or a result about P versus NP is made.
+
+## 1. What the original example establishes
+
+The construction P_0=A and P_(j+1)=P_j ⊙ P_j is exact. By induction P_j=A^(2^j), with Boolean matrix multiplication. Associativity permits powers selected by the bits of n to be composed. This is standard repeated squaring [R1].
+
+The saved handoff, version 2, supplies the five-vertex graph and fourteen query lengths. This follow-up rebuilt them and independently checked all 128 matrices for n=0,...,127 using stepwise vertex-set reachability. All agreed. The original executable was not recovered or run; these are reproduction results from the supplied specifications, not an audit of that executable.
+
+| Full-matrix operation convention | Repeated multiplication | Fresh binary exponentiation, each query | Retain powers, including acquisition |
+|---|---:|---:|---:|
+| Original identity accumulator; eight stored powers | 469 | 83 | 42 |
+| Skip identity products; build only seven needed powers | 455 | 69 | 27 |
+
+The original 42 consists of seven squarings plus 35 query multiplications. P_7=A^128 is unused by this particular stream, whose maximum length is 127. Six squarings suffice. With an accumulator initialized to the first selected power, a positive-length query uses popcount(n)-1 additional products. Thus the second row has 48 fresh squarings plus 21 combining products, versus six retained squarings plus the same 21 combining products.
+
+**The advantage survives the stronger specified comparator:** 69 → 27 full matrix multiplications. It is amortized reuse across fourteen queries on one graph, not evidence of beating every fresh algorithm. Retrieval, answer checking, and storage are not included in this small replication table.
+
+With H=floor(log2(max n_t)) for positive query lengths, and the same combining convention on both sides, retained powers beat this fresh binary method in multiplication count precisely when
+
+\[
+\sum_t \lfloor\log_2 n_t\rfloor > H.
+\]
+
+Zero-length queries contribute no squarings. Add recognition, checking, memory, and maintenance for a service-cost comparison. Unlike a claim against the best possible algorithm, this comparison names both executable strategies.
+
+## 2. Correct the strict-expansion witness
+
+At the previous stage, P_h is already obtainable as P_(h-1) ⊙ P_(h-1). Consequently, adding P_h does **not** make length 2^h newly feasible under a budget allowing one arbitrary matrix multiplication. Prohibiting “preprocessing” during a query does not remove this valid query computation. Restricting the product to multiplication with identity changes the operation model.
+
+Here is a valid finite repair. Require an answer to be a **full matrix obtained from stored matrices and the identity by at most one product**. Let K_h contain I,P_0,...,P_h; retrieval is free in this particular cost model. Use a directed cycle on 257 vertices, and h=0,...,6. All exponents used below are at most 128, so different exponents produce different cyclic-shift matrices.
+
+Before adding P_h, any such expression has exponent at most 2^h. After adding it, P_h ⊙ P_h yields A^(2^(h+1)). That matrix was previously unavailable. Old expressions remain available. This proves six successive strict expansions in this explicitly restricted matrix-expression model. The executable checks the feasible exponent sets and noncoincidence of cycle powers.
+
+This does not prove a lower bound for the original single-pair yes/no question: a cycle admits direct modular-arithmetic answers. Nor does a multiplication-only frontier establish monotonicity for the original c(K,F), which charges selection and verification. Optional methods and bounded overhead alone do not preserve every old query exactly at budget B; a new positive dispatch cost can push a boundary case over B. One must specify a policy with unchanged old costs, or prove a sufficient uniform margin.
+
+## 3. Retain enough evidence to repair a capability
+
+For each P_j, retain the ordinary **integer** midpoint-support matrix
+
+\[
+S_j[i,k]=\sum_v P_j[i,v]P_j[v,k],\qquad
+P_{j+1}[i,k]=[S_j[i,k]>0].
+\]
+
+S_j counts possible intermediate vertices, not all underlying walks. Its entries lie between zero and q. Counts are essential for deletion: losing one midpoint must not erase a Boolean entry if another midpoint still supports it.
+
+Suppose one Boolean cell of a layer matrix M changes by d in {-1,+1} at (a,b). Over the integers,
+
+\[
+(M+dE_{ab})^2-M^2=dE_{ab}M+dME_{ab}+d^2E_{ab}^2.
+\]
+
+An exact update is:
+
+1. Update row a of the support matrix using row b of the **old** M.
+2. Set M[a,b] to its new bit.
+3. Update column b of the support matrix using column a of the **new** M.
+
+The new-matrix column includes the final cross term automatically, including when a=b. Apply multiple changed cells sequentially, threshold only after the batch, and pass the resulting net Boolean changes to the next layer. If no Boolean entries change, higher matrices and their support counts remain valid, so propagation stops. The lower support counts still must be updated because they may matter to a later deletion.
+
+**Correctness proof:** each cell update preserves S=M² by the displayed identity. After the batch, thresholding yields exactly the Boolean square of the new M. Induction over the layers establishes every repaired P_j=A'^(2^j). Recomputing a layer densely preserves the same invariant.
+
+The implementation repairs sparsely when 8d_j ≤ q², where d_j is the number of changed input cells at level j. Otherwise it rebuilds that square. It pays a full q² scan to identify changed output coordinates, in addition to O(q d_j) scalar update work. This avoids assuming free recognition of affected outputs.
+
+For bounded-word counts, one sparse level takes O(q²+q d_j) work, while rebuilding it takes O(q³). These bounds describe this implementation, not optimal dynamic matrix multiplication. With H squaring levels, the retained state occupies O(H q² log q) bits including counts, and initial construction takes O(H q³) word operations. Integer bit-cost analysis adds the appropriate log q factors. For the small tested graphs all counts fit in a machine word.
+
+This supplies the constructive arrow under a stated condition: previously retained structure makes the next structure cheaper **when the changes at the relevant layers remain sufficiently small**. It does not solve discovery of useful parent relationships.
+
+## 4. Comparison design and costs
+
+The graph is held as versioned state. Each update supplies a known parent and one edge toggle. Recognizing an arbitrary new graph, searching for its parent, or comparing a full incoming adjacency matrix is outside this interface; those costs would have to be added for a different service.
+
+The three methods are:
+
+- **Rebuild:** after each edit, reconstruct all powers through P_7 before serving that version's batch.
+- **Fresh binary:** for each individual query, reconstruct only the needed powers using binary exponentiation.
+- **Repair:** pay for the initial support-count library, then maintain it through edits.
+
+All three answer the actual single-pair question. They use a row of the first selected power and vector–matrix products for later selected powers, instead of constructing the complete A^n. Single-power queries read the requested matrix entry directly. Thus the follow-up does not hide an avoidable full-matrix query cost in the fresh comparator.
+
+The ledger charges acquisition, initial graph validation, edit validation, method selection, query bit work, lookup, arithmetic, output changes, and a stateless independent checker for **every answer**. The checker reads the current raw graph and advances reachable-vertex sets step by step, establishing both yes and no answers. Each method pays the same verification cost on the same questions.
+
+Numbers are declared work-event totals. A Boolean term, accumulator update, cell write, lookup, and set operation each have the stated unit charge. They are not measured CPU instructions, seconds, energy, or a bit-complexity claim. Python allocation, garbage collection, and cache effects are excluded. Correctness audits of the experiment and algorithm-development effort are reported separately from online operation costs. No complete research-lifecycle speedup is asserted.
+
+The workload and sparse/dense threshold were fixed before the pilot. The pilot and subsequent bookkeeping changes are preserved in development/ and described in PROTOCOL.md. Final results below come only from results.json and its recorded source hash.
+
+| Workload | Queries | Rebuild | Fresh binary | Repair |
+|---|---:|---:|---:|---:|
+| Local cycle edge | 117 | 4,874,577 | 33,619,281 | 1,254,457 |
+| Redundant dense edge | 117 | 22,244,344 | 50,989,048 | 18,533,912 |
+| Bridge with widespread effects | 117 | 6,114,709 | 40,562,353 | 5,102,781 |
+| Seeded sparse changes | 169 | 3,884,019 | 21,488,307 | 1,700,046 |
+| Only length-one queries | 9 | 5,049,025 | 13,489 | 4,037,097 |
+
+All totals include initial work and per-answer checking. These are small, selected workloads, not estimates of performance on arbitrary graphs.
+
+| Workload | Same verification cost charged to each method | Repair / rebuild total |
+|---|---:|---:|
+| Local cycle edge | 157,236 | 0.257 |
+| Redundant dense edge | 17,527,003 | 0.833 |
+| Bridge with widespread effects | 499,066 | 0.835 |
+| Seeded sparse changes | 885,670 | 0.438 |
+| Only length-one queries | 11,074 | 0.800 |
+
+Repair wins on the four multi-query workloads. In the short-query control, it costs **299.3 times** fresh binary solving. Maintaining knowledge is not automatically useful.
+
+## 5. The one-edge counterexample
+
+Take r left leaves, vertices u and v, and r right leaves. Every vertex has a self-loop. Add all left-leaf → u edges and all v → right-leaf edges. Toggle only u → v. For r=16 this graph has q=34 vertices.
+
+At length two, the toggle changes 2r+1=33 entries. At every length at least three it changes exactly
+
+\[
+(r+1)^2=289
+\]
+
+entries: all pairs from the left leaves plus u to v plus the right leaves. Therefore P_2,...,P_7 each change in 289 places. The fixed repair rule rebuilds five of the seven squared layers. One changed edge need not mean one small repair.
+
+This is a quadratic number of changed entries, giving an Ω(q²) changed-cell requirement **if the Boolean matrices are stored and updated explicitly cell by cell**. It does not establish Ω(q³) arithmetic work or force every representation to rebuild. Bit packing changes the write-unit bound. A symbolic rectangle can describe all 289 changed entries compactly. Indeed, discovering and recognizing such rectangles is a plausible next capability; the failure of sparse-cell repair identifies an opportunity rather than proving no better repair exists.
+
+## 6. Verification and limits
+
+- Original reproduction: **128 / 128 exact matrix comparisons passed**.
+- Corrected restricted frontier: **6 strict transitions checked**.
+- Exhaustive repair: **4,608 / 4,608 edge-toggle cases passed**, covering all 512 three-vertex directed graphs.
+- Exhaustive invariant checks: **373,248 Boolean and support-count entries agreed**.
+- Dynamic workloads: **529 query instances, 1,587 independent method-answer checks, all passed**.
+- Dynamic research audit: **700,920 Boolean and support-count entries agreed**.
+- **3 deliberately wrong answers were rejected**.
+
+The exhaustive tests force sparse updating, so dense fallback cannot conceal a sparse-update defect. They cover self-loop changes, insertions, deletions, and graphs with alternative supports. During the dynamic workloads, an additional research-only audit reconstructs every retained power by stepwise reachability and checks every support entry independently. This is separate from the charged online per-answer checker; its audit entry count is not an operation count or runtime.
+
+Four caveats matter for interpretation:
+
+1. A known edge change is easier to recognize than a hidden useful relationship between two arbitrary problems.
+2. Retaining support counts costs more memory and initial work than storing Boolean answers alone.
+3. Our conservative checker can dominate total cost; it is not the cheapest possible verifier. This makes the verification contract visible rather than free.
+4. The eager library has a configured horizon of 255. The length-one negative control deliberately does not use that horizon. A demand-driven or workload-adaptive policy should avoid its large loss; this experiment does not yet implement that policy.
+
+The old graph and a toggled version recur in several fixtures. No method caches full answers or earlier graph versions, and the query endpoints vary with version. A historical version cache would be another legitimate comparator. The random fixture also contains a longer sequence of distinct evolving graphs; raw versions are preserved so recurrence can be inspected rather than assumed absent.
+
+## 7. What survives and what to test next
+
+The evidence supports a precise claim: **retained intermediate structure can reduce the cost of constructing valid structure for a changed problem, and the gain can survive explicit recognition, routing, and answer-checking charges under a specified interface.** It also provides a clear failure case: costly unused maintenance.
+
+The construction uses known operations and acquires instance-specific reusable objects. Calling the resulting map v ↦ vP_j a new operation is legitimate at the library interface, provided its implementation cost remains charged. This does not show an autonomous system inventing a previously unknown algorithm, or an unbounded primitive becoming free.
+
+The most informative next experiment is to let the system choose among retaining nothing, repairing individual cells, and retaining a compact rectangular change. Charge the recognition attempt even when it fails. Compare against a demand-driven cache and an exact version cache, and test on unseen graph families. This would ask whether a failure can lead to a newly checked, selectable capability without assuming the choice is free.
+
+## Reproduce and inspect
+
+Run `python3 experiment.py` with Python 3.10 or later. Only the standard library is needed. The script regenerates results.json, including raw graph versions, every query and answer, complete cost ledgers, edit traces, and the SHA-256 of the executed source. Different Python versions may change the recorded version field; no wall-clock claims are made.
+
+Files: experiment.py, results.json, PROTOCOL.md, this report, and preserved pilot code/results. SHA256SUMS.txt records the final packet's files. The original input files remain unchanged.
+
+## Sources and attribution
+
+- **Input:** user-supplied Rising Tide 003 contribution and [HANDOFF.md, version 2]([private-library-source]]&account_id=personal), read in full. Its graph, lengths, and count conventions are reproduced here.
+- **Prior correction:** the current [MATH thread synthesis]([private-library-source]]&account_id=personal), specifically its strict-expansion correction and source reference, was consulted. This follow-up does not claim to have first noticed that error or to be blind to the existing synthesis.
+- **R1:** Carl Burch, Carnegie Mellon course review, [Repeated-squaring algorithm](https://www.cs.cmu.edu/~cburch/211-fa97/review/q-graph/a-sqr1.html). Supports the standard logarithmic matrix-power construction and fresh comparator.
+- **R2:** Camil Demetrescu and Giuseppe F. Italiano, [Maintaining Dynamic Matrices for Fully Dynamic Transitive Closure](https://arxiv.org/abs/cs/0104001), 2001. Establishes relevant prior work on reevaluating matrix expressions under graph changes. Its unrestricted transitive-closure problem is not the exact-length problem tested here; its asymptotic bounds are not claimed for this implementation.
+
+The support-count identity and the bridge example are proved above. Their implementation here is an independently written elementary construction; no novelty priority is claimed.

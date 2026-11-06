@@ -1,0 +1,143 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "Compatibility and feasibility of one recovered schedule at the recorded source revision. Not optimization, current best-known performance, or an optimality proof.",
+  "date": "2026-11-04",
+  "downloads": [
+    {
+      "bytes": 2241,
+      "original_path": "article.md",
+      "sha256": "214ccca266dde6f80a7f8573edd371dc5f0e1c508c38536ff228a6cb4db839f4",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 1410,
+      "original_path": "files/REPRODUCE.sh.txt",
+      "sha256": "e63b95230ec844dd5dc5a3c6e03c080d9964b33df29d3bce209437f535fc80b1",
+      "url": "files/files/REPRODUCE.sh.txt.txt"
+    },
+    {
+      "bytes": 7390,
+      "original_path": "files/audit_real_inputs.py",
+      "sha256": "188aa84ab33a0ec45c5dd981cc26dc036c3c95c37777b74345a5906ab2b5547f",
+      "url": "files/files/audit_real_inputs.py.txt"
+    },
+    {
+      "bytes": 2989,
+      "original_path": "files/original-checksums.txt",
+      "sha256": "25ba595c38d1b41abee75e010c14713f984af9152f4a1c4ec7c0668d75fe6766",
+      "url": "files/files/original-checksums.txt.txt"
+    },
+    {
+      "bytes": 693,
+      "original_path": "files/original-command-result.json",
+      "sha256": "08e60e70544d57aa14c7173de0c692201fe136ba0c00713c1369fa60103e167b",
+      "url": "files/files/original-command-result.json.txt"
+    },
+    {
+      "bytes": 9669,
+      "original_path": "files/report-public-excerpt.md",
+      "sha256": "35348b1872642c05f531440ba3c830078342a3576346c4027e62133b35b663e3",
+      "url": "files/files/report-public-excerpt.md.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "The Bridges Group — Rocky / Rulebench; prepared from completed research records.",
+      "bytes": 2241,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "article",
+      "sha256": "214ccca266dde6f80a7f8573edd371dc5f0e1c508c38536ff228a6cb4db839f4"
+    },
+    {
+      "attribution": "The Bridges Group — Rocky / Rulebench; original authors/contributors as credited in retained source.",
+      "bytes": 1410,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/REPRODUCE.sh.txt",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "e63b95230ec844dd5dc5a3c6e03c080d9964b33df29d3bce209437f535fc80b1"
+    },
+    {
+      "attribution": "The Bridges Group — Rocky / Rulebench; original authors/contributors as credited in retained source.",
+      "bytes": 7390,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/audit_real_inputs.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "188aa84ab33a0ec45c5dd981cc26dc036c3c95c37777b74345a5906ab2b5547f"
+    },
+    {
+      "attribution": "The Bridges Group — Rocky / Rulebench; original authors/contributors as credited in retained source.",
+      "bytes": 2989,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/original-checksums.txt",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "25ba595c38d1b41abee75e010c14713f984af9152f4a1c4ec7c0668d75fe6766"
+    },
+    {
+      "attribution": "The Bridges Group — Rocky / Rulebench; original authors/contributors as credited in retained source.",
+      "bytes": 693,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/original-command-result.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "08e60e70544d57aa14c7173de0c692201fe136ba0c00713c1369fa60103e167b"
+    },
+    {
+      "attribution": "Public redacted excerpt of original research file; source retained unchanged in private archive.",
+      "bytes": 9669,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/report-public-excerpt.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "35348b1872642c05f531440ba3c830078342a3576346c4027e62133b35b663e3"
+    }
+  ],
+  "finding": "The actual PR8 command stopped at original-input parsing as unsupported, while a separate original-model audit found the recovered 2304 schedule feasible.",
+  "gardens": [],
+  "id": "rocky-rulebench-pr8-compatibility",
+  "limitations": [
+    "No semantic feasibility pass from PR8, no new optimization and no claimed six-to-five conversion.",
+    "Node and Python; the original recipe and relevant pinned checker source are in the archive. Do not replace the original prompt with an instance-only rewrite.",
+    "The archive keeps original prompt/CSV bytes, the checker implementation, source-identity records and the unsupported result. A retrieval table that displays an index column is not the original CSV.",
+    "This assembly inherits the recorded scientific checks and does not establish deployment behavior or public permission.",
+    "Preserved archive: ROCKY-002-PR8-REAL-INPUT-VERIFICATION.zip. The attached files are inspection selections; they do not replace its complete runtime directory. No public archive URL or permission is implied. Full figures, historical versions and omitted dependencies remain in that archive.",
+    "Public source selections omit specified private identifiers or provenance-sensitive inputs; private originals and source hashes remain preserved."
+  ],
+  "method": "The actual preserved PR8 command records an unsupported parser outcome with zero solver calls. A separate interval audit checks the unchanged original schedule against its original fixed-route model.",
+  "open_questions": [
+    "Further generalization remains a separate research question; it is not a prerequisite for presenting the recorded bounded outcome."
+  ],
+  "package_sha256": "64361af459e03834d634aaa50024521256183ea8567632caa91886d8d19b637e",
+  "provenance": {
+    "authors": [
+      "The Bridges Group — Rocky / Rulebench",
+      "Original research contributors as credited in the retained experiment record"
+    ],
+    "change_note": "Version 2 is a public selected-file edition of previously checked v1. Scientific findings unchanged; private source references redacted; rights-unclear raw benchmark inputs omitted; the original review/archive remains in private custody.",
+    "origin": "Unchanged original archive ROCKY-002-PR8-REAL-INPUT-VERIFICATION.zip; SHA-256 26834261265d0f7029bcc55d33ce49b778c86d510de8810223a511a2e3988686. Original source authorship and verification scope remain in the report."
+  },
+  "publication": {
+    "attribution": "The Bridges Group — Rocky / Rulebench; original research contributors as credited in retained records.",
+    "intent": "request-review",
+    "license": "All rights reserved. No new open-source license granted.",
+    "rights": "Owner-requested public reading and downloading of the selected exhibit only; preserves private originals; not an open permission for derivative commercial redistribution."
+  },
+  "question": "Does the pinned external-schedule checker accept the complete original Rocky requirements, and is the recovered schedule feasible under those original requirements?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Rocky × Rulebench PR8: unsupported input is not a bad schedule",
+  "version": 2
+}

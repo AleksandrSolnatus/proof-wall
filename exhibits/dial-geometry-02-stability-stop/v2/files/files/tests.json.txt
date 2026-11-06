@@ -1,0 +1,18 @@
+{
+  "synthetic": {
+    "filled_disk_thins": true,
+    "line_two_endpoints": true,
+    "ring_topology": true,
+    "analytic_rotation_invariance": true,
+    "four_point_shell_and_equispaced": true,
+    "asymmetric_scores_lower": true
+  },
+  "toy_sampler": {
+    "labeled_admissible": 6,
+    "visible": 3,
+    "multiplicity": 2,
+    "proposal_probability": "1/9 each labeled pair; conditional probability1/6; visible weight2/6",
+    "separation_rejection_pass": true,
+    "sampler_uniformity": "Independent uniform integer-index selection gives uniform product-support proposals. Reject pair distances<.015. Every admissible labeled configuration has the same proposal probability, so accepted draws have uniform labeled measure."
+  }
+}

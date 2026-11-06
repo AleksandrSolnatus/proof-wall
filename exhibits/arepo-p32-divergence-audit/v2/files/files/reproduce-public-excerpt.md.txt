@@ -1,0 +1,37 @@
+# Reproduce P32 analysis only
+
+Requires Python 3 standard library, authorized access to the private Arepo repository or the exact original Library ZIPs, and disk space for the original archives/extractions and derived tables. Do not compile or run archived C++/Python/JS solvers, historical run scripts, or replay commands. This recipe reads preserved outputs only.
+
+Work in a new scratch directory with these siblings:
+
+```
+p32-reproduction/
+  completed/       # this result folder, copied from Library
+  custody/         # two exact original ZIPs
+  originals/       # new extraction, initially absent
+  inputs/research/rain/energy-ledger-audit-2026-10-02/  # optional prior audit regression input
+```
+
+The original Library IDs are P29 `[private-library-ref]` and P30 `[private-library-ref]`. The supported private Git transport is immutable commit `1b183b96661159081d69816286a772c13424e9dc`, path `research/rain/original-archives-p29-p30/`. Fetch it through an existing authorized remote or a new isolated repository. Export its original ZIP blobs using `git show COMMIT:PATH > custody/FILENAME`; no checkout or branch publication is required. Expected outer identities are in `REQUIRED_ARCHIVES.json`. Never regenerate an equivalent-looking archive.
+
+The prior narrower audit is immutable commit `72109425e20e95137f36b450ba71909913c88714`, path `research/rain/energy-ledger-audit-2026-10-02/`. Export that directory into the optional input location above to reproduce the ten-case stage-window regression check too. Do not run its analyzer/verifier or modify it. Without this directory, new scientific tables are identical, but the optional prior-regression section of ANALYSIS_VALIDATION.json is empty and must not be reported as checked.
+
+From the scratch root:
+
+```sh
+cd completed
+sha256sum -c MANIFEST.sha256
+cd ..
+python3 completed/verify_custody.py custody completed/REQUIRED_ARCHIVES.json --extract-dir originals --receipt completed/CUSTODY_VERIFICATION.json
+python3 completed/analyze.py originals completed
+python3 completed/test_analysis.py
+python3 completed/independent_verify.py --originals originals --custody custody
+```
+
+The custody script refuses to overwrite an extraction. If the originals directory already exists, omit `--extract-dir` to recheck archives, then run the independent verifier to check extracted bytes against every archived member. Never delete original evidence to make a failed gate disappear. The historical P28 manifest inside P29 is provenance, not the current P29 input manifest.
+
+`ANALYSIS_PLAN.md` hash must remain `103df258d15b1475ac05ab921446a99829938713821acd6200a230618ff2ca55`; `SCHEMA_IMPLEMENTATION.json` must remain `779d2273f5def750e22cad49d51df3c2c45e49457ab80a4661c6346c8f0869ee`. Do not use `--freeze-schema` in reproduction: it was a one-time preparation action before comparisons. All rows join by elapsed quarter-second times, not solver step index. There are ten unique cases and 21 pairings, with two shared baseline cases and six exact P29 controls used only as identity checks.
+
+The analyzer overwrites **derived result files in the copied completed folder** and never writes originals. A scratch copy is essential. Compare emitted table hashes with the delivered manifest. The independent verifier imports no analyzer or solver and recomputes observations, thresholds/onsets, ties, contexts and Decimal window totals. `test_analysis.py` imports only this new analysis module for adversarial fixtures. Run without Python optimization so assertions remain enabled.
+
+No plots or additional observations are required. Fresh runs should not interpret field differences as physical acceptance, or close any tracker automatically. The original run's two failed input lookup/transport phases are preserved in the readiness receipt and IMPLEMENTATION_LOG; final verification distinguishes them from a successful analysis run.

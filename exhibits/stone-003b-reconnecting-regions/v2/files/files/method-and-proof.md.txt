@@ -1,0 +1,68 @@
+# Stone 003B — Method, invariant, and conditional cost bound
+
+This is a mathematical justification of the method, not a machine-checked proof of the Python implementation and not a general SAT runtime bound.
+
+## Exact regional summaries
+
+Let the finite Boolean variable set be partitioned into disjoint regions X_1,...,X_r. Assign each clause wholly contained in one region to its internal formula F_i. Put every remaining cross-region clause into H. An empty clause can be treated as the constant-false global factor.
+
+Let S_i be precisely the variables in X_i appearing in H, and U_i = X_i \ S_i. The S_i are pairwise disjoint because the X_i are. Define
+
+    W_i(s_i) = sum_{u_i in {0,1}^{U_i}} [F_i(s_i,u_i)].
+
+Then
+
+    #F = sum_{s in {0,1}^{union S_i}} [H(s)] product_i W_i(s_i).
+
+Proof: Expand the original model count as a sum over all full assignments. Every full assignment has a unique decomposition (s,u_1,...,u_r). H depends only on s. For each fixed s the internal variable sets U_i are disjoint and all remaining clauses are confined to their respective region. Distributing the finite products over these finite sums yields the stated identity. Each full satisfying assignment is counted once.
+
+For existence alone, replace the sums and products by Boolean OR and AND and record whether W_i is nonzero. This experiment deliberately retains integer counts for a stronger correctness check. Counting cost is not a SAT-decision lower bound.
+
+## Elimination invariant
+
+During the global calculation, the product of the current factors represents the original product with exactly the already-eliminated variables summed out. To eliminate variable v, multiply all factors mentioning v and sum the product over v. Factors not mentioning v can be taken outside that sum. Repeating this operation leaves a scalar equal to #F.
+
+A cached elimination output is valid if its key names the same eliminated variable and the same immutable input factors. It then denotes the exact same finite sum of products, regardless of unrelated changes elsewhere. The implementation uses per-instance unique factor identities; factors are never mutated after creation. A changed source clause or changed boundary generates a new local factor identity.
+
+The order can change between queries without invalidating a cache entry whose exact input key recurs. The output is a function of those inputs, not an assertion that some broader region stayed unaffected. On the other hand, changing a dependency may invalidate many downstream combinations; there is no general local-update bound.
+
+## New clauses and boundary promotion
+
+A new internal clause changes its region's F_i and therefore that region's table. A new cross-region clause contributes a new factor to H. If it touches a previously hidden variable, that variable enters S_i. The old table may have summed out information now needed by the new question. The implementation must recompute from F_i with the enlarged boundary; it cannot infer the richer table from old counts alone.
+
+Example: x=y and x≠y both have one internal completion of y for each exposed x. Their exposed tables are identical. Add constraints requiring x=true and y=true: the former has one model and the latter zero. Hence keeping only the marginalized table cannot answer arbitrary later questions about y. Source retention or an equivalently informative refinement mechanism is required.
+
+## Conditional cost bound
+
+Let b be the maximum region size in a given workload. Let w+1 be the maximum union of scopes of factors combined when eliminating one variable, under the actual computed order. Let C denote the number of clauses and N the number of variables.
+
+Local construction in this prototype enumerates 2^{|X_i|} candidate assignments, checks local clauses, and projects satisfying candidates onto S_i. A simple bound is
+
+    O(sum_i 2^{|X_i|} (number of local clauses_i + |S_i|)
+      + preprocessing literal occurrences).
+
+Cross-clause factors require work exponential in their literal-variable scope; here clauses have at most three distinct variables in the tested suites. The budget explicitly rejects larger-than-allowed clause factors.
+
+For an elimination step with union U and bucket B, dense evaluation loops through 2^{|U|} assignments, projecting each assignment into each factor's scope. A bound on its bit-projection work is
+
+    O(2^{|U|} sum_{f in B} |scope(f)|),
+
+plus integer arithmetic and output-table storage of 2^{|U|-1} cells. Counts have at most N+1 bits, so arithmetic must also be charged; the implementation records the largest observed integer bit length and real elapsed time rather than asserting unit-cost arithmetic.
+
+The implemented greedy min-fill order finder is polynomial in N (a conservative O(N^4) bound for its naive candidate/pair rescans), with additional input-scope scanning. Finding an optimal order is not implemented or assumed. Measured planning costs are included, and planning is repeated even when table values are reused.
+
+If b and the produced w are O(log N), with polynomially many clauses and queries, these table sizes and the described overhead remain polynomial. If they are fixed constants, table expansion is bounded per local operation. Neither hypothesis is guaranteed for arbitrary CNF inputs or arbitrary future clauses.
+
+The partition is supplied by the experiment generator. No cost for discovering a good partition has been demonstrated. An algorithm claiming the bound in general would need to find and maintain adequate partitions/orders or use a different representation with its own checked bound.
+
+## Counterexample for this representation, not for all algorithms
+
+For m equality-pair regions, forbid every pair of representatives from both being true. Every region has a one-variable boundary, but the global primal graph is a clique. Any elimination order initially combines m variables. With dense tables and no symbolic simplification, the assignment-row total is
+
+    2^m + 2^{m-1} + ... + 2 = 2^{m+1} - 2.
+
+Yet the relation simply says “at most one representative is true”; it has m+1 satisfying full assignments. The measured ordered decision diagram is compact. Thus small regional boundaries and even an easy overall relation do not guarantee that this dense-table strategy is efficient. This does not rule out other strategies.
+
+## What has not been established
+
+No general P versus NP conclusion; no polynomial bound for arbitrary CNFs; no monotonic “every next solve is faster” result; no guarantee that caches stay small forever; no novel discovery claim for variable elimination or knowledge compilation; no measurements of the actual cloud model's internal compute or Library service latency; no production solver claim.

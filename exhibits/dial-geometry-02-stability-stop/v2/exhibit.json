@@ -1,0 +1,288 @@
+{
+  "article": "article.md",
+  "artifact_type": "failed-attempt",
+  "claim_scope": "Completed failure of one mechanical representation, not a conclusion against underlying geometric organization or an archaeological interpretation.",
+  "date": "2026-10-06",
+  "downloads": [
+    {
+      "bytes": 2496,
+      "original_path": "article.md",
+      "sha256": "3cf016d3df74bdbfc587ba4b4af4e0574c28cbd1c2d078618e8b76ddbaaad43f",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 7547,
+      "original_path": "files/geometry.py",
+      "sha256": "bb8081fc97041d428bf79d23a6219c22cec5664ec687114467b0afd2e809caf9",
+      "url": "files/files/geometry.py.txt"
+    },
+    {
+      "bytes": 1220,
+      "original_path": "files/landmark-dictionary.md",
+      "sha256": "056a37c3d995bc1d3ea0d066a290aa2e08e090e26a5baf9d88c8511905513ae4",
+      "url": "files/files/landmark-dictionary.md.txt"
+    },
+    {
+      "bytes": 6219,
+      "original_path": "files/null-summary.csv",
+      "sha256": "714a0dadd16fe304da6ad2869d3e9cefad02fb4541122336c2ce84cef0ad2ea1",
+      "url": "files/files/null-summary.csv.txt"
+    },
+    {
+      "bytes": 14208,
+      "original_path": "files/original-manifest.sha256.txt",
+      "sha256": "03643b693bf6805ef9c3e6344db2b73d4427bffeaef27b7017e3102d18074606",
+      "url": "files/files/original-manifest.sha256.txt.txt"
+    },
+    {
+      "bytes": 4997,
+      "original_path": "files/original-readme.md",
+      "sha256": "da73558681588bf58b826443378ef2ed1312367c0817f959bffce1c8e5e42e28",
+      "url": "files/files/original-readme.md.txt"
+    },
+    {
+      "bytes": 14338,
+      "original_path": "files/primary-results.csv",
+      "sha256": "739b0f5601193144423c286ab9eed5d3376edb6c1e8023bbe60922fb54a09e3c",
+      "url": "files/files/primary-results.csv.txt"
+    },
+    {
+      "bytes": 9007,
+      "original_path": "files/protocol-public-excerpt.md",
+      "sha256": "15636d2154f5ea7494eb83a4ce5331c5236313dab3da0719fe6cfd8953ec97c1",
+      "url": "files/files/protocol-public-excerpt.md.txt"
+    },
+    {
+      "bytes": 718,
+      "original_path": "files/reproduce.md",
+      "sha256": "126469e6ca47d82245bcd80b5408857a971907c9eb13fddbcb0cdad01b307ede",
+      "url": "files/files/reproduce.md.txt"
+    },
+    {
+      "bytes": 10167,
+      "original_path": "files/run.py",
+      "sha256": "639ee8eaef1bd826a7fe8f3d9c4412140a5ed000d29a7caf364aaaecc7ecaa13",
+      "url": "files/files/run.py.txt"
+    },
+    {
+      "bytes": 8934,
+      "original_path": "files/stability.csv",
+      "sha256": "8b4deaf1c93848e1ee3f1dad61626a7bf9076ac2d702d1e9c3c30e3eebeb98c0",
+      "url": "files/files/stability.csv.txt"
+    },
+    {
+      "bytes": 200,
+      "original_path": "files/system-gate.json",
+      "sha256": "1c39f6beb3185cb4aa5984aaa3c60e7f27913996b4ffb0647abeb2e7d89fc762",
+      "url": "files/files/system-gate.json.txt"
+    },
+    {
+      "bytes": 733,
+      "original_path": "files/tests.json",
+      "sha256": "fe3fd99ab3b12505eb6dc16151b9eeb5a646b18259a6511a3346c2b8e6b64ae1",
+      "url": "files/files/tests.json.txt"
+    },
+    {
+      "bytes": 6196,
+      "original_path": "files/verification.json",
+      "sha256": "dc34c666545aea6a5deb947605fa5f4853e6fac3d12756d5435f7419a38521f5",
+      "url": "files/files/verification.json.txt"
+    },
+    {
+      "bytes": 2623,
+      "original_path": "files/verify.py",
+      "sha256": "6d8aaad3ad640b41957b2133aadbca356f6d60d0595adfaa6867bd2220d3bc54",
+      "url": "files/files/verify.py.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; prepared from completed research records.",
+      "bytes": 2496,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "article",
+      "sha256": "3cf016d3df74bdbfc587ba4b4af4e0574c28cbd1c2d078618e8b76ddbaaad43f"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 7547,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/geometry.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "bb8081fc97041d428bf79d23a6219c22cec5664ec687114467b0afd2e809caf9"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 1220,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/landmark-dictionary.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "original",
+      "sha256": "056a37c3d995bc1d3ea0d066a290aa2e08e090e26a5baf9d88c8511905513ae4"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 6219,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/csv",
+      "path": "files/null-summary.csv",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "714a0dadd16fe304da6ad2869d3e9cefad02fb4541122336c2ce84cef0ad2ea1"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 14208,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/original-manifest.sha256.txt",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "03643b693bf6805ef9c3e6344db2b73d4427bffeaef27b7017e3102d18074606"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 4997,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/original-readme.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "original",
+      "sha256": "da73558681588bf58b826443378ef2ed1312367c0817f959bffce1c8e5e42e28"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 14338,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/csv",
+      "path": "files/primary-results.csv",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "739b0f5601193144423c286ab9eed5d3376edb6c1e8023bbe60922fb54a09e3c"
+    },
+    {
+      "attribution": "Public redacted excerpt of original research file; source retained unchanged in private archive.",
+      "bytes": 9007,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/protocol-public-excerpt.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "15636d2154f5ea7494eb83a4ce5331c5236313dab3da0719fe6cfd8953ec97c1"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 718,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "files/reproduce.md",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "original",
+      "sha256": "126469e6ca47d82245bcd80b5408857a971907c9eb13fddbcb0cdad01b307ede"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 10167,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/run.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "639ee8eaef1bd826a7fe8f3d9c4412140a5ed000d29a7caf364aaaecc7ecaa13"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 8934,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/csv",
+      "path": "files/stability.csv",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "8b4deaf1c93848e1ee3f1dad61626a7bf9076ac2d702d1e9c3c30e3eebeb98c0"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 200,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/system-gate.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "data",
+      "sha256": "1c39f6beb3185cb4aa5984aaa3c60e7f27913996b4ffb0647abeb2e7d89fc762"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 733,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/tests.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "fe3fd99ab3b12505eb6dc16151b9eeb5a646b18259a6511a3346c2b8e6b64ae1"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 6196,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/verification.json",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "receipt",
+      "sha256": "dc34c666545aea6a5deb947605fa5f4853e6fac3d12756d5435f7419a38521f5"
+    },
+    {
+      "attribution": "The Bridges Group — Phaistos Dial; original authors/contributors as credited in retained source.",
+      "bytes": 2623,
+      "license": "All rights reserved. No new open-source license granted.",
+      "media_type": "text/plain",
+      "path": "files/verify.py",
+      "rights": "Owner-authorized public reading and download of this selected research file or excerpt; private sources remain private.",
+      "role": "code",
+      "sha256": "6d8aaad3ad640b41957b2133aadbca356f6d60d0595adfaa6867bd2220d3bc54"
+    }
+  ],
+  "finding": "All 45 signs were audited; zero qualified for the frozen landmark representation and no substantive null draws followed.",
+  "gardens": [],
+  "id": "dial-geometry-02-stability-stop",
+  "limitations": [
+    "Standardized drawings are not ancient impression measurements; the result does not refute shell/angle organization itself.",
+    "The original recipe requires Python with numpy/scipy/Pillow/matplotlib and Inkscape. It specifies how to extract the included reference ZIP and restore the expected source layout. No dependencies were installed or environment recreated here.",
+    "The full 167-member archive includes all standardized source SVGs, reference ZIP, per-sign data and diagnostic PNGs. The 2 MB self-contained illustrated report opens only on selection. Same-executor separate-code checks are not an independent human review.",
+    "This assembly inherits the recorded scientific checks and does not establish deployment behavior or public permission.",
+    "Preserved archive: Phaistos_Geometry_02_Execution_2026-10-06.zip. The attached files are inspection selections; they do not replace its complete runtime directory. No public archive URL or permission is implied. Full figures, historical versions and omitted dependencies remain in that archive.",
+    "S01–S45 identities and Pen/Pencil alternatives remain as recorded. Display orientation is not proven reading direction; no decoding or acceptance of Visual Families follows.",
+    "Public source selections omit specified private identifiers or provenance-sensitive inputs; private originals and source hashes remain preserved."
+  ],
+  "method": "The preserved execution measures all 45 standardized drawings under the frozen representation checks. Its gate fails before inferential sampling; code, landmark records, diagnostics and saved checks are retained.",
+  "open_questions": [
+    "Further generalization remains a separate research question; it is not a prerequisite for presenting the recorded bounded outcome."
+  ],
+  "package_sha256": "008e656dd55f596d39d9f5350e01b02346d4608a5045491063e35304135e9620",
+  "provenance": {
+    "authors": [
+      "The Bridges Group — Phaistos Dial",
+      "Original research contributors as credited in the retained experiment record"
+    ],
+    "change_note": "Version 2 is a public selected-file edition of previously checked v1. Scientific findings unchanged; private source references redacted; the original review/archive remains in private custody.",
+    "origin": "Unchanged original archive Phaistos_Geometry_02_Execution_2026-10-06.zip; SHA-256 7771322a94f701e93a4340f0be4f51f1b04c4124a93fc851b19e41d6450cd836. Original source authorship and verification scope remain in the report."
+  },
+  "publication": {
+    "attribution": "The Bridges Group — Phaistos Dial; original research contributors as credited in retained records.",
+    "intent": "request-review",
+    "license": "All rights reserved. No new open-source license granted.",
+    "rights": "Owner-requested public reading and downloading of the selected exhibit only; preserves private originals; not an open permission for derivative commercial redistribution."
+  },
+  "question": "Are the declared landmark measurements stable enough to support the proposed radial-shell and angle tests?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Dial Geometry 02: an unstable representation stopped inference",
+  "version": 2
+}

@@ -1,0 +1,242 @@
+[
+  {
+    "n": 3,
+    "states": 27,
+    "transitions": 32,
+    "macro_choices": 2,
+    "choice_starts": 12,
+    "hollow_max_best": 2,
+    "hollow_max_worst": 3,
+    "macro_max_best": 2,
+    "macro_max_worst": 4,
+    "better_best": 0,
+    "worse_worst": 6,
+    "equal_worst": 21,
+    "better_worst": 0,
+    "examples": []
+  },
+  {
+    "n": 4,
+    "states": 81,
+    "transitions": 132,
+    "macro_choices": 6,
+    "choice_starts": 50,
+    "hollow_max_best": 4,
+    "hollow_max_worst": 6,
+    "macro_max_best": 4,
+    "macro_max_worst": 6,
+    "better_best": 0,
+    "worse_worst": 8,
+    "equal_worst": 73,
+    "better_worst": 0,
+    "examples": []
+  },
+  {
+    "n": 5,
+    "states": 243,
+    "transitions": 504,
+    "macro_choices": 18,
+    "choice_starts": 184,
+    "hollow_max_best": 6,
+    "hollow_max_worst": 10,
+    "macro_max_best": 6,
+    "macro_max_worst": 10,
+    "better_best": 10,
+    "worse_worst": 44,
+    "equal_worst": 199,
+    "better_worst": 0,
+    "examples": [
+      {
+        "start": "00221",
+        "hollow_best": 4,
+        "macro_best": 3,
+        "hollow_worst": 4,
+        "macro_worst": 5
+      },
+      {
+        "start": "01121",
+        "hollow_best": 3,
+        "macro_best": 2,
+        "hollow_worst": 3,
+        "macro_worst": 3
+      },
+      {
+        "start": "01221",
+        "hollow_best": 5,
+        "macro_best": 4,
+        "hollow_worst": 5,
+        "macro_worst": 5
+      },
+      {
+        "start": "02121",
+        "hollow_best": 4,
+        "macro_best": 3,
+        "hollow_worst": 4,
+        "macro_worst": 4
+      },
+      {
+        "start": "02221",
+        "hollow_best": 5,
+        "macro_best": 4,
+        "hollow_worst": 5,
+        "macro_worst": 5
+      }
+    ]
+  },
+  {
+    "n": 6,
+    "states": 729,
+    "transitions": 1836,
+    "macro_choices": 54,
+    "choice_starts": 626,
+    "hollow_max_best": 9,
+    "hollow_max_worst": 15,
+    "macro_max_best": 9,
+    "macro_max_worst": 15,
+    "better_best": 26,
+    "worse_worst": 70,
+    "equal_worst": 659,
+    "better_worst": 0,
+    "examples": [
+      {
+        "start": "001221",
+        "hollow_best": 6,
+        "macro_best": 4,
+        "hollow_worst": 6,
+        "macro_worst": 6
+      },
+      {
+        "start": "002121",
+        "hollow_best": 5,
+        "macro_best": 3,
+        "hollow_worst": 5,
+        "macro_worst": 5
+      },
+      {
+        "start": "002221",
+        "hollow_best": 8,
+        "macro_best": 6,
+        "hollow_worst": 8,
+        "macro_worst": 8
+      },
+      {
+        "start": "010221",
+        "hollow_best": 5,
+        "macro_best": 3,
+        "hollow_worst": 7,
+        "macro_worst": 7
+      },
+      {
+        "start": "011121",
+        "hollow_best": 4,
+        "macro_best": 2,
+        "hollow_worst": 4,
+        "macro_worst": 4
+      }
+    ]
+  },
+  {
+    "n": 7,
+    "states": 2187,
+    "transitions": 6480,
+    "macro_choices": 162,
+    "choice_starts": 2020,
+    "hollow_max_best": 12,
+    "hollow_max_worst": 21,
+    "macro_max_best": 12,
+    "macro_max_worst": 21,
+    "better_best": 148,
+    "worse_worst": 310,
+    "equal_worst": 1877,
+    "better_worst": 0,
+    "examples": [
+      {
+        "start": "0001221",
+        "hollow_best": 6,
+        "macro_best": 5,
+        "hollow_worst": 6,
+        "macro_worst": 7
+      },
+      {
+        "start": "0001222",
+        "hollow_best": 7,
+        "macro_best": 6,
+        "hollow_worst": 12,
+        "macro_worst": 13
+      },
+      {
+        "start": "0002121",
+        "hollow_best": 5,
+        "macro_best": 4,
+        "hollow_worst": 5,
+        "macro_worst": 6
+      },
+      {
+        "start": "0002122",
+        "hollow_best": 6,
+        "macro_best": 5,
+        "hollow_worst": 11,
+        "macro_worst": 12
+      },
+      {
+        "start": "0002221",
+        "hollow_best": 9,
+        "macro_best": 6,
+        "hollow_worst": 9,
+        "macro_worst": 10
+      }
+    ]
+  },
+  {
+    "n": 8,
+    "states": 6561,
+    "transitions": 22356,
+    "macro_choices": 486,
+    "choice_starts": 6306,
+    "hollow_max_best": 16,
+    "hollow_max_worst": 28,
+    "macro_max_best": 16,
+    "macro_max_worst": 28,
+    "better_best": 402,
+    "worse_worst": 532,
+    "equal_worst": 6029,
+    "better_worst": 0,
+    "examples": [
+      {
+        "start": "00002221",
+        "hollow_best": 9,
+        "macro_best": 7,
+        "hollow_worst": 9,
+        "macro_worst": 11
+      },
+      {
+        "start": "00002222",
+        "hollow_best": 10,
+        "macro_best": 8,
+        "hollow_worst": 16,
+        "macro_worst": 16
+      },
+      {
+        "start": "00011221",
+        "hollow_best": 8,
+        "macro_best": 6,
+        "hollow_worst": 8,
+        "macro_worst": 8
+      },
+      {
+        "start": "00011222",
+        "hollow_best": 9,
+        "macro_best": 7,
+        "hollow_worst": 15,
+        "macro_worst": 15
+      },
+      {
+        "start": "00012121",
+        "hollow_best": 7,
+        "macro_best": 5,
+        "hollow_worst": 7,
+        "macro_worst": 7
+      }
+    ]
+  }
+]

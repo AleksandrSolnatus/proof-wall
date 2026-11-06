@@ -1,0 +1,144 @@
+"""Two stored SAT shapes; standard library only. Run: python3 experiment.py."""
+import itertools as it
+import json
+import time
+import statistics
+from collections import defaultdict, Counter
+from pathlib import Path
+
+def order(c): return (len(c), tuple(sorted(c)))
+def clauses(n):
+    return [frozenset(s*v for s,v in zip(signs,vs))
+            for k in (2,3) for vs in it.combinations(range(1,n+1),k)
+            for signs in it.product((-1,1),repeat=k)]
+
+def naive_step(board, counts):
+    out=[]
+    for a,b in it.combinations(sorted(board,key=order),2):
+        counts['pair_checks']+=1
+        common=a&b
+        if len(a)==len(b) and len(a) in (2,3) and len(common)==len(a)-1:
+            u=next(iter(a-common)); v=next(iter(b-common))
+            if u==-v: out.append((common,a,b,'cancellation'))
+        if sorted((len(a),len(b)))==[2,3]:
+            for pivot in a:
+                if -pivot in b:
+                    r=(a-{pivot})|(b-{-pivot})
+                    if len(r)==2 and not any(-x in r for x in r):
+                        out.append((r,a,b,'relay'))
+    return out
+
+def indexed_step(board, counts):
+    # Build a remainder index and an ordered-two-literal ternary index.
+    rem=defaultdict(dict); triples=defaultdict(list)
+    for c in sorted(board,key=order):
+        if len(c) in (2,3):
+            for pivot in sorted(c):
+                rem[c-{pivot}][pivot]=c
+                counts['index_inserts']+=1
+        if len(c)==3:
+            for u,v in it.permutations(sorted(c),2):
+                triples[u,v].append(c)
+                counts['index_inserts']+=1
+    out=[]
+    for r, ps in rem.items():
+        for p in sorted(ps):
+            if p>0:
+                counts['lookups']+=1
+                if -p in ps:
+                    counts['matched_pairs']+=1
+                    out.append((r,ps[p],ps[-p],'cancellation'))
+    for b in sorted(board,key=order):
+        if len(b)==2:
+            for p,q in it.permutations(sorted(b),2):
+                counts['lookups']+=1
+                for t in triples.get((-p,q),()):
+                    counts['matched_pairs']+=1
+                    out.append((t-{-p},b,t,'relay'))
+    return out
+
+def run(formula, indexed=True):
+    board=set(formula); cert=[]; counts=Counter(); rounds=0
+    while True:
+        offers=(indexed_step if indexed else naive_step)(board,counts)
+        pending={}
+        for r,a,b,tool in offers:
+            if r not in board: pending.setdefault(r,(r,a,b,tool))
+        if not pending: break
+        rounds+=1
+        cert.extend(pending.values()); board.update(pending)
+    return board,cert,counts,rounds
+
+def mask(c,n):
+    return sum(1<<a for a in range(1<<n)
+               if any(bool(a & (1<<(abs(x)-1)))==(x>0) for x in c))
+
+def audit(formula,board,cert,n):
+    # Semantic checker does not call either matching implementation.
+    full=(1<<(1<<n))-1; before=full; after=full
+    for c in formula: before &= mask(c,n)
+    for c in board: after &= mask(c,n)
+    assert before==after
+    known=set(formula)
+    for r,a,b,tool in cert:
+        assert a in known and b in known
+        assert (mask(a,n)&mask(b,n)) & (full^mask(r,n)) == 0
+        known.add(r)
+    assert known==board
+    return before.bit_count()
+
+def F(*cs): return tuple(frozenset(c) for c in cs)
+
+def suite():
+    base=clauses(3)
+    for size in range(5):
+        for cs in it.combinations(base,size): yield 'exhaustive3',cs,3
+    toys={
+      'cancellation_feeds_relay': F((1,2,3),(1,2,-3),(-1,2,4)),
+      'relay_leaves_seed': F((1,2),(-1,2,3),(-2,3,4)),
+      'unit_cancellation': F((1,2),(1,-2)),
+      'counting_stall': F(*list(it.combinations(range(1,5),2)),
+                          *[tuple(-x for x in t) for t in it.combinations(range(1,5),3)]),
+    }
+    for name,cs in toys.items():
+        # All 24 renamings and all 16 independent sign flips, including unused variables.
+        for perm in it.permutations(range(1,5)):
+            for signs in it.product((-1,1),repeat=4):
+                mapped=tuple(frozenset((1 if x>0 else -1)*signs[abs(x)-1]*perm[abs(x)-1]
+                                      for x in c) for c in cs)
+                yield name,mapped,4
+
+def main():
+    cases=list(suite()); groups=defaultdict(Counter); records=[]
+    for name,cs,n in cases:
+        b,cert,idx,depth=run(cs,True); ref,_,scan,d2=run(cs,False)
+        assert b==ref and depth==d2
+        models=audit(cs,b,cert,n)
+        g=groups[name]; g['cases']+=1; g['learned_clauses']+=len(b-set(cs))
+        g['certificates_checked']+=len(cert); g['truth_table_rows']+=1<<n
+        g['unsatisfiable']+=models==0; g['no_new_clause']+=len(b)==len(set(cs))
+        for k,v in idx.items(): g[k]+=v
+        for k,v in scan.items(): g[k]+=v
+        records.append(dict(family=name,clauses=[sorted(c) for c in cs],models=models,
+                            depth=depth,learned=[sorted(c) for c in sorted(b-set(cs),key=order)],
+                            indexed=dict(idx),scan=dict(scan)))
+    # Entire closure construction is timed, including rebuilding indexes and certificates.
+    # Alternate method order; no correctness auditing or JSON writing inside timings.
+    timings={'indexed':[],'scan':[]}
+    for repeat in range(5):
+        for indexed in ([True,False] if repeat%2==0 else [False,True]):
+            start=time.perf_counter()
+            for _,cs,_ in cases: run(cs,indexed)
+            timings['indexed' if indexed else 'scan'].append(time.perf_counter()-start)
+    damaged=[(frozenset((3,)),frozenset((1,2)),frozenset((1,-2)))]
+    rejected=sum(bool(mask(a,3)&mask(b,3)&(((1<<8)-1)^mask(r,3))) for r,a,b in damaged)
+    assert rejected==1
+    result=dict(cases=len(cases),groups=dict(groups),timings_seconds=timings,
+                medians_seconds={k:statistics.median(v) for k,v in timings.items()},
+                damaged_certificate_rejected=rejected,checks='PASS',random_seed=None)
+    here=Path(__file__).parent
+    (here/'results.json').write_text(json.dumps(result,indent=2))
+    (here/'cases.json').write_text(json.dumps(records,separators=(',',':')))
+    print(json.dumps(result,indent=2))
+
+if __name__=='__main__': main()

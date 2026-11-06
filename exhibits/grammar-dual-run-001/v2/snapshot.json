@@ -1,0 +1,81 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 2031,
+      "sha256": "09f18671affeccc0bc80a68340baf482eebd1ced158066a5361a67d30a0b2041"
+    },
+    "exhibit.json": {
+      "bytes": 12851,
+      "sha256": "4776097650ba2346f4964f7a9688c8ce4215a247bd50c72578e1a267d22d33cf"
+    },
+    "files/DUAL-RUN-REPORT.md": {
+      "bytes": 9220,
+      "sha256": "1a9df78e5eafbb5edc818b3c28618e53cca183e8ab3cb7eb846419e0b96bd1ec"
+    },
+    "files/MATH-ROOT-FIRST-GRAMMAR-SEED.md": {
+      "bytes": 2927,
+      "sha256": "b932d952e9a335af3ffbffe4698c2a774bdb46b89931df4d9e0f146f171ab00f"
+    },
+    "files/README.md": {
+      "bytes": 4752,
+      "sha256": "ef175962428657e42bb1c2ef44daa903f6adb9ff1855a5334be60e5478e9fe58"
+    },
+    "files/SHA256SUMS.txt": {
+      "bytes": 1455,
+      "sha256": "7b759d269157945b0dd69993d8e0760b6ee92e76be3c5717dfd748160ec5d9a7"
+    },
+    "files/fixed-grammar/GRAMMAR-001-REPORT.md": {
+      "bytes": 3460,
+      "sha256": "ea20178050e2ee17af9ecf47361c4e085a5f77a31c27ee471d7bab01c8bc5686"
+    },
+    "files/fixed-grammar/baseline-recorded.json": {
+      "bytes": 14812,
+      "sha256": "d37b96802b615c5835ad20af5e4d880d1f84c275b282910c29dfc6c7d50f8a09"
+    },
+    "files/fixed-grammar/grammar001.py": {
+      "bytes": 9072,
+      "sha256": "3545fe97fa979122d134a209b556e25a85c985694455274fdff6ba14f9c0d75b"
+    },
+    "files/fixed-grammar/results.json": {
+      "bytes": 14812,
+      "sha256": "d37b96802b615c5835ad20af5e4d880d1f84c275b282910c29dfc6c7d50f8a09"
+    },
+    "files/root-first/benchmark.json": {
+      "bytes": 33930,
+      "sha256": "d4b2c83d67ddbce1031df8d2424c952f64acb38b799018c2de22ef19cf8b1903"
+    },
+    "files/root-first/benchmark.py": {
+      "bytes": 2749,
+      "sha256": "fd44e0a6f8de0f925f82d78deac869cab3cd0b91a85a43aba96bfbef10518b98"
+    },
+    "files/root-first/console.txt": {
+      "bytes": 4809,
+      "sha256": "97e1bf5ae0dea1144446d3c6e7ebb4df7777769858b50f7b42dfea90024e3faf"
+    },
+    "files/root-first/results.json": {
+      "bytes": 286130,
+      "sha256": "474880b8be0ad7227695c3269e8fc7e1c2c21b31e8858b6718c7ef7a8dbf219d"
+    },
+    "files/root-first/reuse-results.json": {
+      "bytes": 51013,
+      "sha256": "eacbfdb7c2e81063fbba17ef3d0b86e72bcec2b70edd7bbd464cb33b7f6983d8"
+    },
+    "files/root-first/reuse_extension.py": {
+      "bytes": 7278,
+      "sha256": "89ef2c9c74135a742fc2ec1fa5b090e2d9e04de40cbb9d53a7a9e66aec0651a1"
+    },
+    "files/root-first/root_grammar001.py": {
+      "bytes": 18057,
+      "sha256": "0a3cf33500291e8ecc7ff6b4758627239548cab6935b440d254c0eb3ca64a021"
+    },
+    "files/run-log.txt": {
+      "bytes": 6078,
+      "sha256": "59eb6f61f88620927799760a7a92d9def4ee1f25bae5d8c9f5db161a29e23034"
+    },
+    "files/run_all.py": {
+      "bytes": 908,
+      "sha256": "a671c0e5602e80e03c3d0fe9c556e90f1c8f530ad81d1b16ee0d832c5121d0cd"
+    }
+  },
+  "package_sha256": "ea54ed1fbfcc0f68f9f5b191794a548972c767700a91c1af63914a9f0f8de40c"
+}

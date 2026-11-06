@@ -1,0 +1,28 @@
+# Dial MATH-02: calibration failed its detection gate
+
+## Original question
+
+Does the preserved MATH-01 scorer distinguish known mathematical content from the declared control families?
+
+## Method and recorded result
+
+The original frozen calibration held out source documents, preserved the scorer and recorded eligibility gates, synthetic implementation controls, result vectors and a corrected verifier. The original source archive has now been connected to its existing report.
+
+Only 2/5 known-math sources exceeded the frozen detection threshold. Only 2/5 language sources were eligible, and the registry controls were ineligible. Calibration remained incomplete and the detection criterion failed.
+
+## Scope and limits
+
+A restricted modern-notation pilot; the scorer was not validated as a detector of mathematical content. No inference that mathematics is absent from the Dial.
+
+- The two eligible language controls are not a 0/5 false-positive result; registry specificity was never measured.
+- Synthetic controls check the implementation and do not rescue weak real-source detection.
+- The CRLF source-offset verifier correction preserved scores and frozen experiment files; same operator/code lineage is not an independent audit.
+- Third-party source texts and offsets remain in the preserved archive. Raw-source republication needs its own notice/rights decision; this smaller selection is not a self-contained calibration bundle.
+- Preserved archive: PHAISTOS-MATH-02-EVIDENCE.zip. The attached files are inspection selections; they do not replace its complete runtime directory. No public archive URL or permission is implied. Full figures, historical versions and omitted dependencies remain in that archive.
+- S01–S45 identities and Pen/Pencil alternatives remain as recorded. Display orientation is not proven reading direction; no decoding or acceptance of Visual Families follows.
+
+## Evidence available for inspection
+
+The files below preserve the selected original bytes. Existing scientific checks remain completed; this gathering adds no experiment. Source code, data and receipts are presented with the scope stated in their original records. Any original reproduction instructions describe the original archive layout, not this smaller inspection packet.
+
+Publication review covers these exact selected bytes. Full archives and any figures remain preserved separately; their public release is a separate decision.

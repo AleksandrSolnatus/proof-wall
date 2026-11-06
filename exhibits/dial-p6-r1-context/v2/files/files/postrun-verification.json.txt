@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "checks": {
+    "preflight_pass": true,
+    "implementation_unchanged_after_run": true,
+    "p6_r1_protocol_unchanged_after_run": true,
+    "source_unchanged_after_run": true,
+    "S07_raw_rows_200000": true,
+    "S07_distribution_reconciles": true,
+    "S07_K_reconciles": true,
+    "S07_raw_sha_reconciles": true,
+    "S25_raw_rows_200000": true,
+    "S25_distribution_reconciles": true,
+    "S25_K_reconciles": true,
+    "S25_raw_sha_reconciles": true,
+    "all_postrun_checks_pass": true
+  },
+  "raw_receipts": {
+    "S07": {
+      "rows": 200000,
+      "sha256": "f44d96f26013053811aa1b662a6d7f8e01d17aef05d8f51dcac5070319de67fa",
+      "distribution_matches_results": true,
+      "K_recomputed": 7318,
+      "K_matches_results": true,
+      "raw_sha_matches_results": true
+    },
+    "S25": {
+      "rows": 200000,
+      "sha256": "26166eb792d0c8645917f6665576e4f88fff1227d179f0da88535c7190612565",
+      "distribution_matches_results": true,
+      "K_recomputed": 6695,
+      "K_matches_results": true,
+      "raw_sha_matches_results": true
+    }
+  }
+}

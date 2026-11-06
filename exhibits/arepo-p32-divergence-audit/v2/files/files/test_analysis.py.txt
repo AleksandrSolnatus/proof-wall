@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+"""Adversarial fixtures for evidence interpretation; no historical solver imports."""
+import copy,hashlib,json,pathlib,sys
+sys.dont_write_bytecode=True
+import analyze
+R=pathlib.Path(__file__).resolve().parent
+data=json.loads((R.parent/'originals/p30/Rain_DT_Control_003/results/fixed_C_0.0125.metrics.json').read_text())
+checks=[]
+for name in ['gap','mass','nonfinite','closure','cumulative_reconstruction_counter','incorrect_dt_exposure','speed_cap_exceeds_opportunities']:
+    d=copy.deepcopy(data);s=d['samples'][2]
+    if name=='gap':s['t']+=.125
+    elif name=='mass':s['representedMass']-=1
+    elif name=='nonfinite':s['overlapMax']=float('nan')
+    elif name=='closure':s['intervalActivity']['dKEExternal']+=1
+    elif name=='cumulative_reconstruction_counter':s['intervalActivity']['reconstructionSamples']+=d['samples'][1]['intervalActivity']['reconstructionSamples']
+    elif name=='incorrect_dt_exposure':d['parameters']['dt']/=2
+    else:s['intervalActivity']['speedCapPredictEvents']=s['count']*round(.25/d['parameters']['dt'])+1
+    try:analyze.validate_metrics(d)
+    except AssertionError:checks.append(name)
+    else:raise AssertionError('Accepted invalid fixture '+name)
+assert not analyze.qualifies(1,1.1) and analyze.qualifies(1,1.12)
+assert not analyze.qualifies(None,1) and not analyze.qualifies(0,1e-8)
+assert analyze.firsts([{'qualifies':x} for x in [True,False,True,True]])==(0,2)
+assert analyze.firsts([{'qualifies':False}]*3)==(None,None)
+assert analyze.divide(1,0) is None
+# Hash mismatch refuses altered bytes; immutable byte gate in run() uses this exact predicate.
+raw=(R.parent/'originals/p30/Rain_DT_Control_003/results/fixed_C_0.0125.metrics.json').read_bytes()
+assert analyze.sha(raw)!=analyze.sha(raw+b' ')
+ps=analyze.pairs();assert len(ps)==21 and len(set(x['comparison'] for x in ps))==21
+caseids={c for p in ps for c in [p['left'],p['right']]};assert len(caseids)==10
+assert {'fixed_A_0.00625','fixed_C_0.00625'}<=caseids and not any(c.startswith('dt2_') and c.endswith('_0.00625') for c in caseids)
+missing=caseids-{'fixed_A_0.00625'};assert any(p['left'] not in missing or p['right'] not in missing for p in ps)
+result=dict(status='PASS',invalid_data_rejected=checks,threshold_and_null_boundaries=True,first_vs_sustained_and_absent=True,byte_change_detection=True,twenty_one_pairs_ten_unique_shared_baseline_cases=True,missing_baseline_detected=True,scientific_execution=False)
+(R/'TEST_RESULTS.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))

@@ -1,0 +1,96 @@
+# THE CENTER — SHAPE-TOOLS-009
+
+November 5, 2026. Question: can two-variable probes, with retained binary conclusions and repeated passes, expose the six-variable contradiction from SHAPE-TOOLS-008?
+
+**Answer: no for this example and this probe engine.** All 60 signed pair assignments stall without conflict. Adding the 12 single-variable tests also learns nothing, so repeating the sweep cannot help. This is proved structurally below and checked exhaustively. Three-variable probing crosses a local threshold, but does not establish general completeness or an efficient SAT solver.
+
+## Continuity and exact procedure
+
+Recovered SHAPE-TOOLS-008, Library ID [private-library-ref]. prior008.py is its unchanged experiment, supplying the propagation engine, independent trace replayer and formula generators. baseline.py is included because prior008 imports it. The old main routines are not invoked.
+
+An assumption set A assigns one or two distinct variables. Run ordinary unit propagation on the current formula plus the assumption unit clauses. If this reaches a false clause, retain the disjunction of the negations of all assumptions: a unit for a singleton assumption, or a binary for a pair. If there is no conflict, retain no conclusion from that probe. In particular this procedure does not extract all conditional relationships implied by successful propagation.
+
+Each round first checks the current formula without assumptions. If no conflict occurs, it tests **every** signed singleton and pair against that same frozen snapshot: 2n+4*C(n,2) tests. After all probes finish, add all new certified conclusions simultaneously and run unassumed propagation. Stop on a conflict (UNSAT), or when no new conclusion is added (UNKNOWN). Otherwise repeat using the augmented formula. No branch nesting or full assignment search is performed by this engine; truth tables are a separate validation oracle.
+
+This extends 008 in two controlled ways needed for the focal question: assumption size reaches two, and short conclusions feed later sweeps. The six-variable instance learns nothing even in its first sweep, so the repeat policy cannot affect its result.
+
+Unlike 008's assumption dictionary, this implementation represents assumptions as appended unit clauses so the inherited replayer can check their use explicitly. Those unit-clause scans and assignments are counted. Cross-run operation counts therefore must not be treated as a like-for-like runtime comparison.
+
+## Soundness and termination
+
+Every propagation step has a source-clause reason. A failed assumption set A proves that no model of the current formula satisfies all members of A; hence the current formula entails OR_{l in A}(NOT l). Adding that clause preserves exactly the same models. Round-by-round induction transfers this guarantee back to the original source formula, provided each earlier learned clause was checked before it became a premise.
+
+There are at most 2n distinct units and 4*C(n,2) distinct non-tautological binaries over these variables. Every productive nonterminal round adds at least one new member of this finite set; duplicate conclusions are not re-added. Thus repetition terminates. This is a bound on an incomplete inference closure, not a completeness argument. Replaying a failed probe verifies its claimed conclusion; it does not prove that no stronger conclusion could have been discovered by another method.
+
+## Six-variable instance and why pairs fail
+
+Let the variables be the six edges of K4, the complete graph on four vertices. At each vertex v, constrain the XOR of its three incident edge variables to equal charge q_v. Encode each equation by the four ternary clauses excluding the wrong-parity assignments. The result has six variables and sixteen clauses of exactly width three.
+
+With charges (1,0,0,0), XORing the four equations produces 0=1: each edge appears twice, but the charges have odd total. This proves unsatisfiability independently of the probing algorithm. Even-total charges are satisfiable; exhaustive truth tables found eight models for each even setting.
+
+Every pair of distinct edges is either disjoint or adjacent:
+
+* **Disjoint pair:** every vertex has one assigned edge and two unassigned edges. Each local parity equation reduces to a binary parity relation. There is no unit clause or immediately false clause, so propagation stops.
+* **Adjacent pair:** at their common vertex, the two assigned values force the third incident edge. No conflict occurs there because that third value is still free. The three edges incident to that vertex are now assigned consistently. Each other vertex has one assigned edge and two unassigned edges, leaving a triangle of binary parity relations with no unit clause. Propagation stops again.
+
+These arguments hold for every sign choice and every charge vector. Consequently there are **zero failed pair probes**, even for odd charges. Singles also cannot start on this strictly ternary input, as established in 008. No clause is learned, so the state is a fixed point: more passes of these exact rules change nothing.
+
+This conclusion concerns unit propagation under at most two assumptions. It does not say the residual binary parity problem is difficult for stronger tools. In fact the unresolved relationship between its binary constraints is the useful next target.
+
+## Executed experiments
+
+Python 3.12.14, standard library, no seeds or sampling. All inputs are regenerated by experiment.py.
+
+| Suite | Entries | Variables | Initial clauses | Truly UNSAT | Detected |
+|---|---:|---:|---:|---:|---:|
+| Every subset of the earlier counting contradiction | 1,024 | 4 | 0–10 | 1 | 1 |
+| Every subset of eight ternary sign patterns | 256 | 3 | 0–8 | 1 | 1 |
+| All sign flips of counting contradiction | 16 | 4 | 10 | 16 | 16 |
+| All K4 charge vectors | 16 | 6 | 16 | 8 | 0 |
+| Delete each clause from one odd K4 instance | 16 | 6 | 15 | 0 | 0 |
+
+There are **1,328 entries**, including overlaps between suites. The 16 deletion controls establish that the displayed odd K4 contradiction is minimal under single-clause deletion: removing any clause makes it satisfiable. This is not a claim that it is the globally smallest counterexample to pair probing.
+
+The full eight-clause formula on three variables, missed by singleton probes in 008, is now detected. Round one learns all twelve binary clauses; round two learns six units; final propagation detects a conflict. This is a positive control showing retained conclusions actually feed subsequent computation. On the counting contradiction, one round adds four units and eighteen new binaries; some other failed probes reproduce binaries already present.
+
+Across all entries: **2,355 probe rounds, 69,094 probes, 13,976 failed probes, and 3,836 added clauses**. Full truth-table comparison at the original and each post-round snapshot covered **55,640 snapshot-assignment rows**. Every addition preserved the exact model set; every UNSAT result was independently confirmed. UNKNOWN was not interpreted as satisfiable.
+
+The inherited separate replayer checked all propagation traces, including non-conflict saturation, reason indices and final conflicts. Probe traces contained **197,075 steps**, including the appended assumption units; this is not a count of discoveries or of deductions without assumptions. The replay cost was **1,412,829 literal visits**. Three damaged certificates were rejected: wrong conclusion sign, missing assumption, and a negative clause index. Four selected cases were rerun for retained full traces, outside the suite totals.
+
+Trace checking and truth-table evaluation are separate code from discovery, not separate researchers. A probe's reason indices refer to its fixed round snapshot plus the explicitly recorded assumption units. New clauses enter only after the whole round's checks finish. No future-round premise is available during replay.
+
+## Costs, including unsuccessful work
+
+| Selected instance | Probe rounds | Probes | New clauses by round | Propagation calls | Clause visits | Literal visits |
+|---|---:|---:|---|---:|---:|---:|
+| Counting contradiction | 1 | 32 | 22 | 34 | 697 | 1,534 |
+| Eight ternaries on three variables | 2 | 36 | 12, 6 | 40 | 900 | 2,284 |
+| K4 odd charges | 1 | 72 | 0 | 74 | 3,464 | 9,672 |
+| K4 even charges | 1 | 72 | 0 | 74 | 3,464 | 9,672 |
+
+The 72 K4 probes comprise 12 singles and 60 pairs, plus two unassumed calls. Of the 60 pairs, 48 are signed adjacent pairs and force one additional edge; 12 are signed disjoint pairs and force none. Assumption-unit assignments are counted separately from these explanatory counts. Both satisfiable and unsatisfiable K4 examples produce exactly the same discovery counters, while their model sets differ.
+
+Whole-suite discovery totals: **73,804 propagation calls, 1,522,318 clause visits and 3,239,426 literal visits**. Input-literal counts and assumption construction counts are separately retained in results.json. Scans include satisfied clauses and assumptions. No wall-clock speedup or memory result is claimed. Allocation, copying, deduplication and sorting costs are not represented as interchangeable with literal visits; correctness checks and truth-table costs are reported separately. The scanning algorithm is intentionally simple and does not claim an optimized implementation.
+
+## Bounded threshold diagnostic
+
+After the pair fixed point, test exactly all 160 signed triples on the **unchanged original** odd K4 formula and its even-charge control. This is a diagnostic of the next local threshold, not a new triple-closure solver.
+
+* Odd charges: 144 failed probes, 16 nonfailed; 6,120 clause visits and 16,824 literal visits.
+* Even charges: 16 failed probes, 144 nonfailed; 8,800 clause visits and 23,664 literal visits.
+
+Each failed triple's clause was checked by trace replay and model-set comparison. These 320 probes and their checking costs are additional to the main-suite totals. A failed probe on a satisfiable formula merely excludes that particular triple assignment; it does not establish UNSAT.
+
+There are four star-shaped edge triples. Four assignments per star already violate that vertex's original parity equation: these explain the 16 failures in the even control and 16 of the odd failures. The remaining edge triples are four triangles and twelve paths. In the odd case, each of their eight assignments lets propagation expose the global inconsistency, giving another 128 failures. The consistent star assignments leave the unassigned triangle without unit clauses, so they still stall. This explains the observed 144/160 split without claiming that all unsatisfiable instances admit a three-variable witness.
+
+## Limits and next question
+
+The toy preserves exact Boolean semantics, source clauses, sound assumption discharge and reusable short conclusions. It omits complete SAT search and stronger reasoning inside each probe. The structural failure proof is specific to this family and this propagation rule. The finite experiments establish correctness on the stated inputs, not general completeness or asymptotic solver performance.
+
+A P=NP proof would still require a complete procedure and a polynomial bound on all work; a P!=NP proof would need to rule out every polynomial-time procedure. The finite short-clause universe only bounds this incomplete helper. Neither major conclusion follows. The argument uses the elementary soundness of assumption discharge already documented in 008; no new literature or novelty claim is needed.
+
+**Single next question:** Can a checked binary implication-cycle detector recognize the contradiction left by two assumptions, avoiding the third-variable probes?
+
+## Reproduce
+
+Run `python3 experiment.py` in this directory. It regenerates all five suites, runs size-1/2 probing to a fixed point, checks every trace and every snapshot model set, reruns four selected cases, executes the 320 triple diagnostics, and rejects the three corrupted proofs. results.json includes per-entry counts and complete selected/triple traces. run.log records the execution. SHA256SUMS.txt identifies all delivered files.

@@ -1,0 +1,1426 @@
+{
+  "method": "Python process_time_ns per repeated solve; median of 9 batches; all per-case construction and source costs included in each respective solver; each positive witness checked against original CNF. The exhaustive scientific oracle is excluded.",
+  "caveats": [
+    "microbenchmark, one host, run order randomized by batch",
+    "solver branch-order changes and Python representation differences can affect timings",
+    "no complexity/scaling conclusion, no statistical inference on new instances"
+  ],
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "python": "3.13.5",
+  "repetitions_per_batch": 30,
+  "batches": 9,
+  "groups": {
+    "original": {
+      "fixed_hybrid": {
+        "median_us": 10.059,
+        "range_us": [
+          8.933,
+          12.029
+        ]
+      },
+      "root_hybrid": {
+        "median_us": 23.045,
+        "range_us": [
+          21.229,
+          28.146
+        ]
+      },
+      "sham_hybrid": {
+        "median_us": 26.039,
+        "range_us": [
+          24.793,
+          28.591
+        ]
+      },
+      "first_solution_search": {
+        "median_us": 8.072,
+        "range_us": [
+          7.897,
+          8.845
+        ]
+      }
+    },
+    "constructed": {
+      "fixed_hybrid": {
+        "median_us": 22.844,
+        "range_us": [
+          22.006,
+          25.447
+        ]
+      },
+      "root_hybrid": {
+        "median_us": 42.823,
+        "range_us": [
+          41.671,
+          54.315
+        ]
+      },
+      "sham_hybrid": {
+        "median_us": 55.006,
+        "range_us": [
+          52.7,
+          58.079
+        ]
+      },
+      "first_solution_search": {
+        "median_us": 16.629,
+        "range_us": [
+          16.374,
+          17.163
+        ]
+      }
+    },
+    "heldout_parity": {
+      "fixed_hybrid": {
+        "median_us": 31.753,
+        "range_us": [
+          30.661,
+          33.146
+        ]
+      },
+      "root_hybrid": {
+        "median_us": 65.747,
+        "range_us": [
+          63.136,
+          77.137
+        ]
+      },
+      "sham_hybrid": {
+        "median_us": 95.703,
+        "range_us": [
+          89.302,
+          98.5
+        ]
+      },
+      "first_solution_search": {
+        "median_us": 128.786,
+        "range_us": [
+          127.427,
+          133.03
+        ]
+      }
+    },
+    "heldout_no_motif": {
+      "fixed_hybrid": {
+        "median_us": 119.307,
+        "range_us": [
+          117.553,
+          124.36
+        ]
+      },
+      "root_hybrid": {
+        "median_us": 187.799,
+        "range_us": [
+          183.94,
+          396.639
+        ]
+      },
+      "sham_hybrid": {
+        "median_us": 186.959,
+        "range_us": [
+          182.015,
+          195.061
+        ]
+      },
+      "first_solution_search": {
+        "median_us": 163.054,
+        "range_us": [
+          161.313,
+          166.463
+        ]
+      }
+    },
+    "negative": {
+      "fixed_hybrid": {
+        "median_us": 10.415,
+        "range_us": [
+          9.829,
+          14.669
+        ]
+      },
+      "root_hybrid": {
+        "median_us": 23.481,
+        "range_us": [
+          22.034,
+          30.617
+        ]
+      },
+      "sham_hybrid": {
+        "median_us": 21.766,
+        "range_us": [
+          21.241,
+          31.163
+        ]
+      },
+      "first_solution_search": {
+        "median_us": 7.511,
+        "range_us": [
+          6.782,
+          8.567
+        ]
+      }
+    }
+  },
+  "raw_batches": [
+    {
+      "batch": 0,
+      "arm": "root_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 23.625046666666666
+    },
+    {
+      "batch": 0,
+      "arm": "root_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 41.8084
+    },
+    {
+      "batch": 0,
+      "arm": "root_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 64.88568055555555
+    },
+    {
+      "batch": 0,
+      "arm": "root_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 396.6394666666667
+    },
+    {
+      "batch": 0,
+      "arm": "root_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 29.418066666666668
+    },
+    {
+      "batch": 0,
+      "arm": "fixed_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 10.03932
+    },
+    {
+      "batch": 0,
+      "arm": "fixed_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 25.446946666666665
+    },
+    {
+      "batch": 0,
+      "arm": "fixed_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 32.57791666666667
+    },
+    {
+      "batch": 0,
+      "arm": "fixed_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 121.06191666666666
+    },
+    {
+      "batch": 0,
+      "arm": "fixed_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 13.955733333333333
+    },
+    {
+      "batch": 0,
+      "arm": "sham_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 24.98593333333333
+    },
+    {
+      "batch": 0,
+      "arm": "sham_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 55.8934
+    },
+    {
+      "batch": 0,
+      "arm": "sham_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 91.14901666666667
+    },
+    {
+      "batch": 0,
+      "arm": "sham_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 191.3316
+    },
+    {
+      "batch": 0,
+      "arm": "sham_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 21.7657
+    },
+    {
+      "batch": 0,
+      "arm": "first_solution_search",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 8.160393333333333
+    },
+    {
+      "batch": 0,
+      "arm": "first_solution_search",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 16.628846666666668
+    },
+    {
+      "batch": 0,
+      "arm": "first_solution_search",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 128.13131388888888
+    },
+    {
+      "batch": 0,
+      "arm": "first_solution_search",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 162.96673333333334
+    },
+    {
+      "batch": 0,
+      "arm": "first_solution_search",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 7.5482
+    },
+    {
+      "batch": 1,
+      "arm": "root_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 22.398086666666668
+    },
+    {
+      "batch": 1,
+      "arm": "root_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 42.30921333333333
+    },
+    {
+      "batch": 1,
+      "arm": "root_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 65.20735277777777
+    },
+    {
+      "batch": 1,
+      "arm": "root_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 189.52253333333334
+    },
+    {
+      "batch": 1,
+      "arm": "root_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 25.7062
+    },
+    {
+      "batch": 1,
+      "arm": "sham_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 27.91388
+    },
+    {
+      "batch": 1,
+      "arm": "sham_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 55.282493333333335
+    },
+    {
+      "batch": 1,
+      "arm": "sham_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 98.50024722222223
+    },
+    {
+      "batch": 1,
+      "arm": "sham_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 186.95930833333333
+    },
+    {
+      "batch": 1,
+      "arm": "sham_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 21.656166666666667
+    },
+    {
+      "batch": 1,
+      "arm": "first_solution_search",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 7.8974
+    },
+    {
+      "batch": 1,
+      "arm": "first_solution_search",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 17.163173333333333
+    },
+    {
+      "batch": 1,
+      "arm": "first_solution_search",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 129.4938361111111
+    },
+    {
+      "batch": 1,
+      "arm": "first_solution_search",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 161.51908333333333
+    },
+    {
+      "batch": 1,
+      "arm": "first_solution_search",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 6.7821
+    },
+    {
+      "batch": 1,
+      "arm": "fixed_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 11.823373333333333
+    },
+    {
+      "batch": 1,
+      "arm": "fixed_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 22.95732
+    },
+    {
+      "batch": 1,
+      "arm": "fixed_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 33.146344444444445
+    },
+    {
+      "batch": 1,
+      "arm": "fixed_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 119.00235416666666
+    },
+    {
+      "batch": 1,
+      "arm": "fixed_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 14.3954
+    },
+    {
+      "batch": 2,
+      "arm": "first_solution_search",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 7.948746666666667
+    },
+    {
+      "batch": 2,
+      "arm": "first_solution_search",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 16.38902
+    },
+    {
+      "batch": 2,
+      "arm": "first_solution_search",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 129.9669
+    },
+    {
+      "batch": 2,
+      "arm": "first_solution_search",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 166.380475
+    },
+    {
+      "batch": 2,
+      "arm": "first_solution_search",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 7.0915333333333335
+    },
+    {
+      "batch": 2,
+      "arm": "root_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 24.43504666666667
+    },
+    {
+      "batch": 2,
+      "arm": "root_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 44.862273333333334
+    },
+    {
+      "batch": 2,
+      "arm": "root_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 77.13724722222223
+    },
+    {
+      "batch": 2,
+      "arm": "root_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 193.05227916666666
+    },
+    {
+      "batch": 2,
+      "arm": "root_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 22.315833333333334
+    },
+    {
+      "batch": 2,
+      "arm": "sham_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 26.03936
+    },
+    {
+      "batch": 2,
+      "arm": "sham_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 53.030413333333335
+    },
+    {
+      "batch": 2,
+      "arm": "sham_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 89.3021611111111
+    },
+    {
+      "batch": 2,
+      "arm": "sham_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 190.95607916666665
+    },
+    {
+      "batch": 2,
+      "arm": "sham_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 21.444533333333332
+    },
+    {
+      "batch": 2,
+      "arm": "fixed_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 10.661246666666667
+    },
+    {
+      "batch": 2,
+      "arm": "fixed_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 23.400046666666668
+    },
+    {
+      "batch": 2,
+      "arm": "fixed_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 30.66087222222222
+    },
+    {
+      "batch": 2,
+      "arm": "fixed_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 118.48132916666667
+    },
+    {
+      "batch": 2,
+      "arm": "fixed_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 10.319333333333333
+    },
+    {
+      "batch": 3,
+      "arm": "fixed_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 8.933413333333334
+    },
+    {
+      "batch": 3,
+      "arm": "fixed_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 22.843546666666665
+    },
+    {
+      "batch": 3,
+      "arm": "fixed_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 33.05506944444444
+    },
+    {
+      "batch": 3,
+      "arm": "fixed_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 121.398875
+    },
+    {
+      "batch": 3,
+      "arm": "fixed_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 10.4145
+    },
+    {
+      "batch": 3,
+      "arm": "root_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 22.24906
+    },
+    {
+      "batch": 3,
+      "arm": "root_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 48.963766666666665
+    },
+    {
+      "batch": 3,
+      "arm": "root_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 70.10382222222222
+    },
+    {
+      "batch": 3,
+      "arm": "root_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 191.95594166666666
+    },
+    {
+      "batch": 3,
+      "arm": "root_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 30.6172
+    },
+    {
+      "batch": 3,
+      "arm": "first_solution_search",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 8.845013333333334
+    },
+    {
+      "batch": 3,
+      "arm": "first_solution_search",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 16.656553333333335
+    },
+    {
+      "batch": 3,
+      "arm": "first_solution_search",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 130.29895
+    },
+    {
+      "batch": 3,
+      "arm": "first_solution_search",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 163.053575
+    },
+    {
+      "batch": 3,
+      "arm": "first_solution_search",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 7.162
+    },
+    {
+      "batch": 3,
+      "arm": "sham_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 25.67342
+    },
+    {
+      "batch": 3,
+      "arm": "sham_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 56.049166666666665
+    },
+    {
+      "batch": 3,
+      "arm": "sham_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 95.70256111111111
+    },
+    {
+      "batch": 3,
+      "arm": "sham_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 188.79925
+    },
+    {
+      "batch": 3,
+      "arm": "sham_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 22.914733333333334
+    },
+    {
+      "batch": 4,
+      "arm": "first_solution_search",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 8.124946666666666
+    },
+    {
+      "batch": 4,
+      "arm": "first_solution_search",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 16.780266666666666
+    },
+    {
+      "batch": 4,
+      "arm": "first_solution_search",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 133.03015
+    },
+    {
+      "batch": 4,
+      "arm": "first_solution_search",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 163.87612916666666
+    },
+    {
+      "batch": 4,
+      "arm": "first_solution_search",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 8.567066666666667
+    },
+    {
+      "batch": 4,
+      "arm": "root_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 23.179786666666665
+    },
+    {
+      "batch": 4,
+      "arm": "root_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 54.31458666666666
+    },
+    {
+      "batch": 4,
+      "arm": "root_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 67.7923611111111
+    },
+    {
+      "batch": 4,
+      "arm": "root_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 187.79855833333335
+    },
+    {
+      "batch": 4,
+      "arm": "root_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 22.242733333333334
+    },
+    {
+      "batch": 4,
+      "arm": "sham_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 24.90054
+    },
+    {
+      "batch": 4,
+      "arm": "sham_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 58.079253333333334
+    },
+    {
+      "batch": 4,
+      "arm": "sham_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 93.02828333333333
+    },
+    {
+      "batch": 4,
+      "arm": "sham_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 186.50296666666668
+    },
+    {
+      "batch": 4,
+      "arm": "sham_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 22.4834
+    },
+    {
+      "batch": 4,
+      "arm": "fixed_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 9.84456
+    },
+    {
+      "batch": 4,
+      "arm": "fixed_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 22.006033333333335
+    },
+    {
+      "batch": 4,
+      "arm": "fixed_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 31.75324722222222
+    },
+    {
+      "batch": 4,
+      "arm": "fixed_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 119.18900833333333
+    },
+    {
+      "batch": 4,
+      "arm": "fixed_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 9.828633333333334
+    },
+    {
+      "batch": 5,
+      "arm": "sham_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 26.49658
+    },
+    {
+      "batch": 5,
+      "arm": "sham_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 55.00554666666667
+    },
+    {
+      "batch": 5,
+      "arm": "sham_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 93.20844166666667
+    },
+    {
+      "batch": 5,
+      "arm": "sham_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 184.96442916666666
+    },
+    {
+      "batch": 5,
+      "arm": "sham_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 21.2409
+    },
+    {
+      "batch": 5,
+      "arm": "fixed_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 10.05922
+    },
+    {
+      "batch": 5,
+      "arm": "fixed_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 22.780053333333335
+    },
+    {
+      "batch": 5,
+      "arm": "fixed_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 30.851016666666666
+    },
+    {
+      "batch": 5,
+      "arm": "fixed_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 117.5531625
+    },
+    {
+      "batch": 5,
+      "arm": "fixed_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 14.6688
+    },
+    {
+      "batch": 5,
+      "arm": "root_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 21.228613333333332
+    },
+    {
+      "batch": 5,
+      "arm": "root_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 42.82330666666667
+    },
+    {
+      "batch": 5,
+      "arm": "root_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 67.39699444444445
+    },
+    {
+      "batch": 5,
+      "arm": "root_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 184.45979583333335
+    },
+    {
+      "batch": 5,
+      "arm": "root_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 22.033733333333334
+    },
+    {
+      "batch": 5,
+      "arm": "first_solution_search",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 8.063053333333333
+    },
+    {
+      "batch": 5,
+      "arm": "first_solution_search",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 16.37394
+    },
+    {
+      "batch": 5,
+      "arm": "first_solution_search",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 127.4266
+    },
+    {
+      "batch": 5,
+      "arm": "first_solution_search",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 166.46285
+    },
+    {
+      "batch": 5,
+      "arm": "first_solution_search",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 7.191033333333333
+    },
+    {
+      "batch": 6,
+      "arm": "first_solution_search",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 8.072126666666666
+    },
+    {
+      "batch": 6,
+      "arm": "first_solution_search",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 16.79262
+    },
+    {
+      "batch": 6,
+      "arm": "first_solution_search",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 128.78611944444444
+    },
+    {
+      "batch": 6,
+      "arm": "first_solution_search",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 162.27454583333332
+    },
+    {
+      "batch": 6,
+      "arm": "first_solution_search",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 7.514166666666667
+    },
+    {
+      "batch": 6,
+      "arm": "fixed_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 12.028606666666667
+    },
+    {
+      "batch": 6,
+      "arm": "fixed_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 23.09012
+    },
+    {
+      "batch": 6,
+      "arm": "fixed_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 31.263405555555554
+    },
+    {
+      "batch": 6,
+      "arm": "fixed_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 119.30655833333333
+    },
+    {
+      "batch": 6,
+      "arm": "fixed_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 10.279933333333334
+    },
+    {
+      "batch": 6,
+      "arm": "root_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 23.044513333333335
+    },
+    {
+      "batch": 6,
+      "arm": "root_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 41.671
+    },
+    {
+      "batch": 6,
+      "arm": "root_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 63.136275
+    },
+    {
+      "batch": 6,
+      "arm": "root_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 185.7452125
+    },
+    {
+      "batch": 6,
+      "arm": "root_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 23.4809
+    },
+    {
+      "batch": 6,
+      "arm": "sham_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 24.79324666666667
+    },
+    {
+      "batch": 6,
+      "arm": "sham_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 52.70038666666667
+    },
+    {
+      "batch": 6,
+      "arm": "sham_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 96.1868638888889
+    },
+    {
+      "batch": 6,
+      "arm": "sham_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 184.74047083333335
+    },
+    {
+      "batch": 6,
+      "arm": "sham_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 23.171433333333333
+    },
+    {
+      "batch": 7,
+      "arm": "first_solution_search",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 7.953353333333333
+    },
+    {
+      "batch": 7,
+      "arm": "first_solution_search",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 16.455926666666667
+    },
+    {
+      "batch": 7,
+      "arm": "first_solution_search",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 128.24300555555556
+    },
+    {
+      "batch": 7,
+      "arm": "first_solution_search",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 161.31269583333332
+    },
+    {
+      "batch": 7,
+      "arm": "first_solution_search",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 7.511166666666667
+    },
+    {
+      "batch": 7,
+      "arm": "sham_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 26.47902
+    },
+    {
+      "batch": 7,
+      "arm": "sham_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 53.31283333333333
+    },
+    {
+      "batch": 7,
+      "arm": "sham_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 95.72245277777778
+    },
+    {
+      "batch": 7,
+      "arm": "sham_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 195.06135
+    },
+    {
+      "batch": 7,
+      "arm": "sham_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 31.1633
+    },
+    {
+      "batch": 7,
+      "arm": "root_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 28.145893333333333
+    },
+    {
+      "batch": 7,
+      "arm": "root_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 42.93293333333333
+    },
+    {
+      "batch": 7,
+      "arm": "root_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 65.74740555555556
+    },
+    {
+      "batch": 7,
+      "arm": "root_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 184.59838333333335
+    },
+    {
+      "batch": 7,
+      "arm": "root_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 30.319066666666668
+    },
+    {
+      "batch": 7,
+      "arm": "fixed_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 8.9493
+    },
+    {
+      "batch": 7,
+      "arm": "fixed_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 22.809833333333334
+    },
+    {
+      "batch": 7,
+      "arm": "fixed_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 32.01583055555555
+    },
+    {
+      "batch": 7,
+      "arm": "fixed_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 124.36015416666666
+    },
+    {
+      "batch": 7,
+      "arm": "fixed_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 11.0778
+    },
+    {
+      "batch": 8,
+      "arm": "root_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 21.5302
+    },
+    {
+      "batch": 8,
+      "arm": "root_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 42.73144
+    },
+    {
+      "batch": 8,
+      "arm": "root_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 64.94129166666667
+    },
+    {
+      "batch": 8,
+      "arm": "root_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 183.94019583333332
+    },
+    {
+      "batch": 8,
+      "arm": "root_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 22.4046
+    },
+    {
+      "batch": 8,
+      "arm": "fixed_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 10.76834
+    },
+    {
+      "batch": 8,
+      "arm": "fixed_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 22.62302
+    },
+    {
+      "batch": 8,
+      "arm": "fixed_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 31.142505555555555
+    },
+    {
+      "batch": 8,
+      "arm": "fixed_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 122.229775
+    },
+    {
+      "batch": 8,
+      "arm": "fixed_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 9.915733333333334
+    },
+    {
+      "batch": 8,
+      "arm": "sham_hybrid",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 28.59062
+    },
+    {
+      "batch": 8,
+      "arm": "sham_hybrid",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 53.33946666666667
+    },
+    {
+      "batch": 8,
+      "arm": "sham_hybrid",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 95.84858611111112
+    },
+    {
+      "batch": 8,
+      "arm": "sham_hybrid",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 182.01454166666667
+    },
+    {
+      "batch": 8,
+      "arm": "sham_hybrid",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 21.269966666666665
+    },
+    {
+      "batch": 8,
+      "arm": "first_solution_search",
+      "group": "original",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 8.248126666666666
+    },
+    {
+      "batch": 8,
+      "arm": "first_solution_search",
+      "group": "constructed",
+      "samples": 150,
+      "avg_cpu_microseconds_per_solve": 16.3768
+    },
+    {
+      "batch": 8,
+      "arm": "first_solution_search",
+      "group": "heldout_parity",
+      "samples": 360,
+      "avg_cpu_microseconds_per_solve": 128.68443888888888
+    },
+    {
+      "batch": 8,
+      "arm": "first_solution_search",
+      "group": "heldout_no_motif",
+      "samples": 240,
+      "avg_cpu_microseconds_per_solve": 164.591775
+    },
+    {
+      "batch": 8,
+      "arm": "first_solution_search",
+      "group": "negative",
+      "samples": 30,
+      "avg_cpu_microseconds_per_solve": 7.980833333333333
+    }
+  ]
+}

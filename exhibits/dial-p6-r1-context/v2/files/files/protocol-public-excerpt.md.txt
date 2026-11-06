@@ -1,0 +1,93 @@
+# P6-R1 — One-cell context around exact repeated passages
+
+**Status:** FROZEN v1.0, 2026-09-29 (America/Phoenix). Design only; not executed.  
+**Protocol identifier:** P6-R1 is a document identifier, not a newly created Linear issue.  
+**Question:** Does the low boundary/internal partnership overlap survive when dependence is allowed to extend one neighboring cell beyond each end of an exact repeated passage?
+
+## 1. Baseline, exposure, and the single change
+
+The completed baseline is the [P-6 execution receipt](https://linear.app/are-potatoes/issue/P-6/null-lab-prepare-one-adversarial-check-of-boundaryinternal-overlap), comment `73b60a69-6a38-4ede-ab33-161a7c008aaa`, dated September 29, 2026. The observed primary statistic was 6 for both Pencil C28 readings. Its reported add-one lower-tail probabilities were **0.04805 for S07** and **0.04449 for S25** (rounded). The pre-frozen weakening rule was probability >= 0.05 for either reading. P-6 narrowly did not meet that rule. Those results and their interpretation remain unchanged.
+
+The current Linear status field still says Backlog. This protocol relies on the execution receipt and saved outputs as evidence of completion; it does not alter the issue, baseline protocol, or baseline results. Searches of the project and of robustness/sensitivity issue titles/descriptions found no separate relevant follow-up.
+
+**This follow-up is fully exposed to P-6 and the earlier Numbers result. It is neither blind nor an independent replication.** The designer read the receipt, saved report, frozen protocol, implementation, results, and source transcription. No new dependence map, shuffle, tail probability, or alternative-reference outcome was computed during design.
+
+**Only changed dependence assumption:** P-6 treated dependence as ending at the exact repeated passage's boundaries. P6-R1 permits that dependence to extend **one immediately adjacent physical cell on each side**. Radius one is the smallest nonzero symmetric cell context. Symmetry avoids selecting a favored end or asserting a reading direction. Exact equality identifies a repeated core; it does not establish that the immediately neighboring cells are independent of that core.
+
+This is one fixed sensitivity reference, not a claim that the neighbors are historical copies. A one-sign near-copy rule was considered in the design discussion but was not frozen, enumerated by code, or simulated. The chosen rule uses the already identified repeated cores and requires no selection of a sign, similarity family, substitution, or favorable outcome. No outcome under P6-R1 is predicted: larger locked blocks need not move the tail in a particular direction.
+
+## 2. Fixed inputs and custody
+
+Use the same original masked source and the same transformations as P-6:
+
+- `corpus_masked.json`, 9,159 bytes, Library ID `[private-library-ref]`, file ID `[private-file-ref]`.
+- Source SHA-256, recorded in both P-5 and P-6: `18ee5ac70b21696e7ed60616e3a265eaf0261fdd49779464e254a7e916f74a24`.
+- Exclude Pen C08; keep its address as a hole. Never create C07|C09, a face bridge, or a terminal wrap.
+- Restore Pencil C24 to `S07 S45 S07`.
+- Retain every eligible physical cell occurrence, its face, its sign order, and duplicate occurrences. Do not reconcile the transcription against another source.
+- Use Pencil C28 final S07 as the inherited primary reading and final S25 as the required sensitivity reading. These are two fixed input versions, not a stochastic mixture.
+
+Baseline packet: `P6_Null_Lab_Packet_2026-09-29.zip`, Library ID `[private-library-ref]`, file ID `[private-file-ref]`, version 1. Its members include `NULL_PROTOCOL_FROZEN.md`, `run_p6_null.py`, and `P6_NULL_RESULTS.json`. The baseline protocol SHA-256 is `dc121a0a48989e6efe1426da32ae6c650314014dd673579c95cd96aa04ee4976`.
+
+The packet does **not** embed `corpus_masked.json`; retrieve the separately identified source when execution is authorized. Verify its raw-byte hash before preprocessing. Do not substitute a reconstructed serialization. P-5's missing original Numbers generator remains an unresolved historical reproducibility limitation; P6-R1 does not close it.
+
+## 3. Exact block rule
+
+Start from P-6's two established maximal exact repeated cores. Add the immediately preceding and following eligible consecutive-address cell in the same face, stopping at a face end or hole. If contexts overlap, their union would be locked, without duplicating a physical cell. Mere adjacency would not cause merging. On this frozen corpus the two specified contexts are separate:
+
+| Face | P-6 core | P6-R1 locked block |
+|---|---|---|
+| Pen | C14–C16 | **C13–C17** |
+| Pen | C20–C22 | **C19–C23** |
+
+All other eligible cells, including every Pencil cell, remain singleton units. Each five-cell block is a distinct physical occurrence; the two blocks are not collapsed into one copy or required to move together.
+
+Relative to P-6, the newly protected physical boundaries are exactly **Pen C13|C14, C16|C17, C19|C20, and C22|C23**. This guarantees a genuinely changed randomization constraint; it is not an extra run of P-6. The same blocks apply to both C28 readings. No new pattern search or discretionary block selection is permitted.
+
+## 4. Reference distribution: preserved and randomized
+
+Retain P-6's sampler: uniformly shuffle distinct block/singleton occurrence labels independently within each face, expand in fixed internal order into the face's eligible address slots, and reject a Pen order if a multi-cell block would straddle the C08 hole. Sample with replacement from the accepted orders. Pen cells may move between the two sides of the hole if an entire unit fits; do not add segment-specific stratification.
+
+Keep P-6's unit ordering convention for reproducibility: locked blocks in ascending original address order, followed by remaining singleton cells in ascending address order. Process Pen then Pencil. Use Python `random.Random`, the inherited seeds **2026092901 (S07)** and **2026092902 (S25)**, and **200,000 accepted pooled arrangements per reading**. Each draw contains one independently shuffled accepted arrangement of each face. Rejected Pen orders consume RNG draws but do not count toward the accepted total. Record the runtime and implementation hash before execution. Reusing the baseline seeds does not make old and new draws paired.
+
+**Preserves exactly:** all eligible physical cells and their multiplicities; each cell's full sign sequence, length, orientation and endpoints; face membership, cell totals and sign inventories; the complete within-cell adjacency multiset and its type set; the original exact cores and all cell-to-cell adjacencies inside the two five-cell blocks; fixed address slots and the C08 hole; and the same valid-boundary topology (28 Pen and 29 Pencil boundaries).
+
+**Does not preserve:** the original placement or order of units, individual cell lengths or signs at a particular address, the positions of repeated cores along their face, or any between-unit boundary partnership not forced by the retained units and slot constraints. Such partnerships may recur by chance. Physical gaps between the two copies are randomized. Within-block order is never reversed. The model does not purport to preserve every possible near-copy, sign-level, or long-range dependence.
+
+## 5. Primary statistic and multiplicity
+
+For each reading separately, let I be the set of unordered sign pairs occurring at consecutive positions **within** eligible cells. For any observed or randomized arrangement A, let B(A) be the set of unordered endpoint pairs at valid physical cell boundaries, pooled across both faces. Represent an unordered pair by sorting its two Sxx identifiers, retaining self-pairs.
+
+The sole primary statistic remains:
+
+**T(A) = |B(A) intersect I|.**
+
+Pool the sets before taking their intersection; do not sum face-specific overlap counts. Repeated contacts of the same unordered type count once. Nevertheless, every duplicate physical cell and every block occurrence retains its full representation in the reference. Recompute I separately from each fixed C28 input; never reuse one reading's internal set for the other.
+
+The archived observed value is T = 6 for both readings. A future implementation must verify this from the input and halt on disagreement rather than hard-code it. The added locked boundaries remain in T; removing them or changing to an unlocked-only statistic would be a second study.
+
+There is one reference and one pooled primary statistic. No pair-specific, face-specific, directed, S07-specific, or alternative-length test is part of the decision. For C28, require survival under **both** readings; never select the smaller probability, average the probabilities, or count the readings as independent replications. The governing sensitivity summary is their maximum. No multiple-testing correction changes the inherited 0.05 robustness gate: this is a conjunctive survival requirement over fixed input alternatives, not two opportunities to claim success. No familywise significance claim across the prior exploratory work is authorized, and P-6 and P6-R1 probabilities must not be combined.
+
+## 6. Frozen weakening rule and reporting
+
+For reading r, after N = 200,000 accepted draws, count K_r = number with T_sim <= T_observed, including ties. Report both the raw fraction K_r/N and the add-one estimate:
+
+**p_r = (K_r + 1) / (N + 1).**
+
+Use the unrounded add-one estimate for the decision, exactly as in the baseline implementation.
+
+- **Observation weakened under this follow-up:** p_S07 >= 0.05 **or** p_S25 >= 0.05. Identify the reading(s) responsible. This means the low overlap fails the inherited extremeness criterion under the added dependence protection, not that a historical explanation is proven or the observation is false.
+- **Survives this particular sensitivity check:** both probabilities < 0.05. This does not establish independence, broad significance, language, separator function, or decipherment, and does not strengthen P-6 retroactively.
+- Report both outcomes even if the first reading already crosses the threshold. No optional stopping, extra seeds, extra draws to settle a borderline result, radius tuning, alternative block sets, or null replacement after inspecting results.
+
+Report the two rows beside the archived P-6 rows, clearly labeled as a new exposed sensitivity study. Each new row must include observed T, N, K, raw tail, add-one probability, reference mean, the 2.5th and 97.5th percentiles using P-6's sorted-draw nearest-index rule, and a 95% Wilson interval for the binomial raw-tail Monte Carlo uncertainty. That interval describes simulation uncertainty only, not reference-model validity. If an interval spans 0.05, flag the threshold decision as numerically borderline while retaining the fixed point-estimate rule and draw budget.
+
+## 7. Freeze and execution boundary
+
+This document freezes the reference, input identities, block membership, statistic, seeds, draw budget, two-reading rule, and reporting choices **before any new inferential computation**. Saving and hashing this text are custody operations, not execution of the study.
+
+**No test is authorized or executed by this design task.** After separate authorization, create a new implementation/output location. Before simulations, verify source and baseline protocol hashes, expected preprocessing, block membership, valid boundaries, observed T, and fixed preservation invariants. Hash the implementation and save its manifest before drawing. Do not rerun P-6 as part of this task or overwrite its files.
+
+If source identity, block construction, preservation checks, or observed-statistic checks fail, stop and report the specific discrepancy. Any substantive protocol revision requires a new version and renewed pre-computation freeze; it must not silently replace this one. If reference variation is unexpectedly constrained, report that limitation rather than choosing another null.
+
+**New result: not computed.**

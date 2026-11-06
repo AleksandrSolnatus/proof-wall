@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+set -eu
+cd -- "$(dirname -- "$0")"
+# The audit reads the preserved historical receipt; it never runs a solver.
+python3 audit_real_inputs.py
+# Verify the PR snapshot against the immutable Git object identities recorded at retrieval.
+python3 - <<'PY'
+import hashlib,json
+from pathlib import Path
+root=Path('pr8-source')
+manifest=json.loads(Path('evidence/source-integrity.json').read_text())
+for item in manifest['files']:
+    data=(root/item['path']).read_bytes()
+    assert len(data)==item['bytes'],item['path']
+    assert hashlib.sha256(data).hexdigest()==item['sha256'],item['path']
+    assert hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()==item['git_blob_sha'],item['path']
+print('PR source snapshot verified:',manifest['commit'])
+PY
+# mktemp prevents overwriting the preserved receipt, even on repeated runs.
+run_dir="$(mktemp -d "$PWD/receipts/rerun.XXXXXXXX")"
+cd pr8-source
+set +e
+node scripts/check-schedule-file.mjs \
+  ../originals/Rocky_Scheduling_002_Prompt.txt \
+  ../originals/MATH/TOOLS/RULEBENCH_SCHEDULING_003/Rocky-002-Checked-2304.csv \
+  --makespan 2304 \
+  --receipt "$run_dir/pr8-original-requirements.json"
+check_status=$?
+set -e
+printf 'Checker exit status: %s\nReceipt: %s\n' "$check_status" "$run_dir/pr8-original-requirements.json"
+# Exit 2 with unsupported original prose is the observed result, not a feasible pass.
+exit "$check_status"

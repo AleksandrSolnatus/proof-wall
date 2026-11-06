@@ -1,0 +1,51 @@
+#!/usr/bin/env python3
+"""Verify original ZIP bytes and all members; extract only after verification. No solver import."""
+import argparse, hashlib, json, pathlib, stat, zipfile
+
+def sha(b): return hashlib.sha256(b).hexdigest()
+def safe(name):
+    p=pathlib.PurePosixPath(name)
+    assert not p.is_absolute() and '..' not in p.parts and '\\' not in name
+    return p
+def verify(archive_dir, mapping, extract_dir=None):
+    receipts=[]
+    for item in json.loads(pathlib.Path(mapping).read_text()):
+        path=pathlib.Path(archive_dir)/item['archive_name']; data=path.read_bytes()
+        assert len(data)==item['size_bytes'] and sha(data)==item['sha256'], path
+        blob=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+        assert blob=={'p29':'e2cbbff6b86ff26647738af7102257704a240bab','p30':'b73d1e3b0a68bb8ecf17ce206f6a8babf6789764'}[item['label']]
+        with zipfile.ZipFile(path) as z:
+            infos=z.infolist(); names=[x.filename for x in infos]
+            assert len(names)==len(set(names))
+            for info in infos:
+                safe(info.filename); assert not stat.S_ISLNK(info.external_attr>>16)
+            assert z.testzip() is None
+            members={m['path']:m for m in item['members']}
+            assert set(n for n in names if not n.endswith('/'))==set(members)
+            for name,m in members.items():
+                b=z.read(name); assert len(b)==m['size_bytes'] and sha(b)==m['sha256'],name
+            root='Rain_AC_Sensitivity_002' if item['label']=='p29' else 'Rain_DT_Control_003'
+            manifests=[root+'/MANIFEST.sha256']
+            if item['label']=='p29': manifests+=[root+'/inputs/MANIFEST.sha256']
+            else: manifests+=[root+'/PROTOCOL.sha256']
+            checked={}
+            for mpath in manifests:
+                count=0
+                for line in z.read(mpath).decode().splitlines():
+                    if not line.strip():continue
+                    h,n=line.split(None,1); n=n.lstrip('*');safe(n)
+                    member=str(pathlib.PurePosixPath(mpath).parent/safe(n))
+                    assert sha(z.read(member))==h,member;count+=1
+                checked[mpath]=count
+            if extract_dir:
+                dest=pathlib.Path(extract_dir)/item['label']
+                assert not dest.exists(), 'Refuse to overwrite original extraction'
+                dest.mkdir(parents=True)
+                z.extractall(dest)
+                for f in dest.rglob('*'):
+                    if f.is_file():f.chmod(0o444)
+        receipts.append(dict(label=item['label'],file=path.name,bytes=len(data),sha256=sha(data),git_blob=blob,crc='PASS',members=len(members),member_hashes='PASS',manifests=checked))
+    return dict(status='PASS',archive_commit='1b183b96661159081d69816286a772c13424e9dc',archives=receipts,historical_P28_manifest='Preserved provenance only; not interpreted as current P29 package manifest',simulation=False)
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('archive_dir');p.add_argument('mapping');p.add_argument('--extract-dir');p.add_argument('--receipt',required=True);a=p.parse_args()
+    r=verify(a.archive_dir,a.mapping,a.extract_dir);pathlib.Path(a.receipt).write_text(json.dumps(r,indent=2)+'\n');print(json.dumps(r,indent=2))

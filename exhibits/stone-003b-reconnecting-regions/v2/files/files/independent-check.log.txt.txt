@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "snapshots": 703,
+  "interface_exact_snapshots": 702,
+  "interface_budget_stops": 1,
+  "exact_method_comparisons": 2414,
+  "oracle_counts": {
+    "checked-equality-bijection+independent-graph-recurrence": 137,
+    "checked-equality-bijection+truth-table": 103,
+    "full-original-truth-table": 463
+  },
+  "scalar_truth_table_crosschecks": 147,
+  "corruption_tests_rejected": 4,
+  "truth_mask_setup_seconds": {
+    "16": 0.002626793000104044,
+    "8": 5.467999926622724e-06,
+    "12": 3.6045999991074495e-05,
+    "18": 0.013228824999941935,
+    "20": 0.057250566999982766,
+    "3": 5.5729999530740315e-06,
+    "6": 3.420999973968719e-06,
+    "9": 6.97500001933804e-06
+  },
+  "total_seconds": 0.2044682239999247
+}

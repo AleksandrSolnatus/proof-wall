@@ -1,0 +1,61 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 2439,
+      "sha256": "4116f241abb4cbee1c0c064fa0fa8e1770f6eea118f7de5525f7e0d8aa251fe0"
+    },
+    "exhibit.json": {
+      "bytes": 10608,
+      "sha256": "92b2c928db6b05d8a5901844800e50850897bc27b03ee8856bc64864318cefaf"
+    },
+    "files/MATH-02/EXTRACTION-NOTES.txt": {
+      "bytes": 659,
+      "sha256": "6c09f4db7dfa5dc3f8c256fbf38c4eea6d0566c7943ff3c5c1c8e08759dbef10"
+    },
+    "files/MATH-02/PRE-SCORE-FREEZE.json": {
+      "bytes": 736,
+      "sha256": "c3995e9d38c08edc4116314172911d846211f0ceb437fd21544754dadc57190b"
+    },
+    "files/MATH-02/PROTOCOL-FROZEN.md": {
+      "bytes": 5413,
+      "sha256": "f0439afaafd7f65701bf7f30e52a0d13b9590ee816dd00dfaf6a52e402d7bccf"
+    },
+    "files/MATH-02/REPORT.md": {
+      "bytes": 10277,
+      "sha256": "a7a3e4cc196ce59feabf80c8fdc46a341f9e0124301dc48ee5758b7330d326f5"
+    },
+    "files/MATH-02/RESULTS.json": {
+      "bytes": 54854,
+      "sha256": "c162e7a460b1a0e416bdf6a077d1f2c809c8591d410c2a7d61d0cef7b10e5119"
+    },
+    "files/MATH-02/SOURCE-MANIFEST.json": {
+      "bytes": 3506,
+      "sha256": "17939f4276995fbf3b7d4a13073a99eea6171d6b8d7c97f9dc59d8aa9452d753"
+    },
+    "files/MATH-02/VERIFICATION.json": {
+      "bytes": 654,
+      "sha256": "5e8d40f15965a353d4d8a5eec66ca3fcc5c9cd07e074d05a060717723b6faf11"
+    },
+    "files/MATH-02/controls.json": {
+      "bytes": 72823,
+      "sha256": "79b1b225f57a26e9487d9074b6d641bc62a430e892f81eb07ea147758db1ba1d"
+    },
+    "files/MATH-02/extract.py": {
+      "bytes": 3655,
+      "sha256": "e1bf448dd06ea27fa0f65989f42df051dc0102a9673a74dbb8af7e73c81e9f6b"
+    },
+    "files/MATH-02/original_math01.py": {
+      "bytes": 14301,
+      "sha256": "ab3743a646d7adce20738c1e3f9f3b8e3f2fb08f93e59995eca066b9a241e043"
+    },
+    "files/MATH-02/run.py": {
+      "bytes": 6301,
+      "sha256": "9e9671a3fdc927fc360b8d2f48d049867f63bd04b0b6f81a41911723e6247ab2"
+    },
+    "files/MATH-02/verify.py": {
+      "bytes": 2801,
+      "sha256": "54c7f732b96ee35350c0291c948e7a504f76037e079d589316b08081530d6d40"
+    }
+  },
+  "package_sha256": "70b93d93bad260ccf4823fc1818f77ea37d96211134c243be11b4b0166828236"
+}

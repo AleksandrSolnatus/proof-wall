@@ -1,0 +1,274 @@
+#!/usr/bin/env python3
+"""Exact two-tier CNF model counter; Python stdlib, bounded dense tables.
+
+Fixed, disjoint regions preserve their original clauses. A boundary variable is
+one mentioned by a cross-region clause. Local tables count internal completions.
+Global sum-product elimination combines these tables and cross-clause indicators.
+Cached elimination outputs are keyed by the variable and immutable input IDs.
+No time limit or table-budget result is ever reported as UNSAT.
+"""
+from __future__ import annotations
+from dataclasses import dataclass
+from itertools import combinations
+from time import perf_counter
+from typing import Iterable
+
+
+@dataclass(frozen=True)
+class Factor:
+    ident: int
+    scope: tuple[int, ...]
+    values: tuple[int, ...]
+
+
+class TableBudgetExceeded(RuntimeError):
+    def __init__(self, scope: tuple[int, ...], cap: int):
+        self.scope, self.required_rows, self.cap = scope, 1 << len(scope), cap
+        super().__init__(f"{self.required_rows} bucket rows exceeds limit {cap}")
+
+
+class InterfaceCounter:
+    def __init__(self, n: int, regions: list[list[int]], *, cache: bool = True,
+                 max_bucket_rows: int = 262144):
+        flat = [v for block in regions for v in block]
+        if sorted(flat) != list(range(n)) or any(not b for b in regions):
+            raise ValueError("Regions must be nonempty and partition 0..n-1 exactly")
+        self.n = n
+        self.regions = tuple(tuple(sorted(b)) for b in regions)
+        self.owner = {v: i for i, b in enumerate(self.regions) for v in b}
+        self.locals: list[list[tuple[int, ...]]] = [[] for _ in regions]
+        self.boundaries: list[set[int]] = [set() for _ in regions]
+        self.source: list[tuple[int, ...]] = []
+        self.cross: list[Factor] = []
+        self.local_cache: dict[tuple, Factor] = {}
+        self.elim_cache: dict[tuple, Factor] = {}
+        self.next_ident = 0
+        self.cache = cache
+        self.max_bucket_rows = max_bucket_rows
+        self.stored_cells = 0
+        self.peak_table_slots = 0
+        self.total_routing_literal_reads = 0
+        self.total_cross_rows = 0
+        self.total_local_candidates = 0
+        self.total_bucket_rows = 0
+
+    def _new(self, scope: tuple[int, ...], values: Iterable[int]) -> Factor:
+        vals = tuple(values)
+        if len(vals) != (1 << len(scope)):
+            raise ValueError("Bad dense factor size")
+        self.next_ident += 1
+        self.stored_cells += len(vals)
+        self.peak_table_slots = max(self.peak_table_slots, self.stored_cells)
+        return Factor(self.next_ident, scope, vals)
+
+    def add(self, clause: Iterable[int]) -> dict:
+        start = perf_counter()
+        cl = tuple(clause)
+        if any(type(lit) is not int or lit == 0 or abs(lit) > self.n for lit in cl):
+            raise ValueError("A literal must be a nonzero integer within 1..n")
+        self.total_routing_literal_reads += len(cl)
+        owners = {self.owner[abs(lit)-1] for lit in cl}
+        promoted: list[int] = []
+        new_cross_rows = 0
+        if len(owners) == 1:
+            self.locals[next(iter(owners))].append(cl)
+        else:
+            # Empty clauses are global constant-false factors.
+            scope = tuple(sorted({abs(lit)-1 for lit in cl}))
+            if (1 << len(scope)) > self.max_bucket_rows:
+                raise TableBudgetExceeded(scope, self.max_bucket_rows)
+            for v in scope:
+                b = self.boundaries[self.owner[v]]
+                if v not in b:
+                    b.add(v)
+                    promoted.append(v)
+            pos = {v: i for i, v in enumerate(scope)}
+            positive = sum(1 << pos[v] for v in scope if v+1 in cl)
+            negative = sum(1 << pos[v] for v in scope if -(v+1) in cl)
+            vals = tuple(int(bool((mask & positive) or ((~mask) & negative)))
+                         for mask in range(1 << len(scope)))
+            self.cross.append(self._new(scope, vals))
+            new_cross_rows = len(vals)
+            self.total_cross_rows += new_cross_rows
+        self.source.append(cl)
+        return {"add_seconds": perf_counter()-start,
+                "routing_literal_reads": len(cl), "new_cross_table_rows": new_cross_rows,
+                "promoted_variables": promoted}
+
+    def _local_factor(self, block: int, stats: dict) -> Factor:
+        variables = self.regions[block]
+        scope = tuple(sorted(self.boundaries[block]))
+        clauses = tuple(self.locals[block])
+        key = (block, scope, clauses)
+        stats["local_cache_lookups"] += 1
+        if self.cache and key in self.local_cache:
+            stats["local_cache_hits"] += 1
+            return self.local_cache[key]
+        if (1 << len(variables)) > self.max_bucket_rows:
+            raise TableBudgetExceeded(variables, self.max_bucket_rows)
+        positions = {v: j for j, v in enumerate(variables)}
+        masks = []
+        for cl in clauses:
+            p = q = 0
+            for lit in cl:
+                bit = 1 << positions[abs(lit)-1]
+                if lit > 0:
+                    p |= bit
+                else:
+                    q |= bit
+            masks.append((p, q))
+        table = [0] * (1 << len(scope))
+        self.peak_table_slots = max(self.peak_table_slots, self.stored_cells+2*len(table))
+        projection = [positions[v] for v in scope]
+        for mask in range(1 << len(variables)):
+            stats["local_candidates"] += 1
+            ok = True
+            for p, q in masks:
+                stats["local_clause_evaluations"] += 1
+                if not ((mask & p) or ((~mask) & q)):
+                    ok = False
+                    break
+            if ok:
+                idx = sum(((mask >> j) & 1) << k for k, j in enumerate(projection))
+                stats["local_projection_bit_steps"] += len(projection)
+                table[idx] += 1
+        factor = self._new(scope, table)
+        if self.cache:
+            self.local_cache[key] = factor
+        return factor
+
+    @staticmethod
+    def _plan(factors: list[Factor], stats: dict) -> list[int]:
+        graph: dict[int, set[int]] = {}
+        for f in factors:
+            for v in f.scope:
+                graph.setdefault(v, set())
+            for a, b in combinations(f.scope, 2):
+                stats["plan_graph_pair_visits"] += 1
+                graph[a].add(b)
+                graph[b].add(a)
+        order = []
+        while graph:
+            best_key = None
+            best_v = None
+            for v in sorted(graph):
+                missing = 0
+                for a, b in combinations(sorted(graph[v]), 2):
+                    stats["plan_fill_pair_tests"] += 1
+                    missing += b not in graph[a]
+                score = (missing, len(graph[v]), v)
+                stats["plan_candidate_visits"] += 1
+                if best_key is None or score < best_key:
+                    best_key, best_v = score, v
+            neighbors = sorted(graph[best_v])
+            stats["induced_width"] = max(stats["induced_width"], len(neighbors))
+            for a, b in combinations(neighbors, 2):
+                graph[a].add(b)
+                graph[b].add(a)
+                stats["plan_fill_edge_attempts"] += 1
+            for v in neighbors:
+                graph[v].remove(best_v)
+            del graph[best_v]
+            order.append(best_v)
+        return order
+
+    def _eliminate(self, var: int, factors: list[Factor], stats: dict) -> Factor:
+        factors = sorted(factors, key=lambda f: f.ident)
+        key = (var, tuple(f.ident for f in factors))
+        scope = tuple(sorted({v for f in factors for v in f.scope}))
+        rows = 1 << len(scope)
+        stats["max_bucket_variables"] = max(stats["max_bucket_variables"], len(scope))
+        stats["max_bucket_rows"] = max(stats["max_bucket_rows"], rows)
+        stats["elimination_cache_lookups"] += 1
+        stats["elimination_key_factor_ids"] += len(factors)
+        if self.cache and key in self.elim_cache:
+            stats["elimination_cache_hits"] += 1
+            stats["bucket_rows_reused"] += rows
+            return self.elim_cache[key]
+        if rows > self.max_bucket_rows:
+            raise TableBudgetExceeded(scope, self.max_bucket_rows)
+        out_scope = tuple(v for v in scope if v != var)
+        out = [0] * (rows // 2)
+        self.peak_table_slots = max(self.peak_table_slots, self.stored_cells+2*len(out))
+        position = {v: i for i, v in enumerate(scope)}
+        plans = [(f.values, [position[v] for v in f.scope]) for f in factors]
+        j = position[var]
+        lower_mask = (1 << j) - 1
+        stats["bucket_rows_computed"] += rows
+        stats["factor_table_lookups"] += rows*len(factors)
+        stats["projection_bit_steps"] += rows*sum(len(p) for _, p in plans)
+        stats["integer_multiplies"] += rows*len(factors)
+        stats["integer_additions"] += rows
+        for mask in range(rows):
+            product = 1
+            for values, p in plans:
+                idx = 0
+                for k, bit in enumerate(p):
+                    idx |= ((mask >> bit) & 1) << k
+                product *= values[idx]
+                stats["max_integer_bits"] = max(stats["max_integer_bits"], product.bit_length())
+            out_idx = (mask & lower_mask) | ((mask >> (j+1)) << j)
+            out[out_idx] += product
+        factor = self._new(out_scope, out)
+        if self.cache:
+            self.elim_cache[key] = factor
+        return factor
+
+    def query(self) -> dict:
+        start = perf_counter()
+        stats = dict.fromkeys([
+            "local_cache_lookups", "local_cache_hits", "local_candidates",
+            "local_clause_evaluations", "local_projection_bit_steps", "plan_graph_pair_visits",
+            "plan_fill_pair_tests", "plan_candidate_visits", "plan_fill_edge_attempts",
+            "induced_width", "max_bucket_variables", "max_bucket_rows",
+            "elimination_cache_lookups", "elimination_key_factor_ids", "elimination_cache_hits",
+            "bucket_rows_reused", "bucket_rows_computed", "factor_table_lookups",
+            "projection_bit_steps", "integer_multiplies", "integer_additions",
+            "max_integer_bits", "factor_membership_tests"], 0)
+        stats.update({"status": "EXACT", "count": None, "summary_seconds": 0.,
+                      "plan_seconds": 0., "eliminate_seconds": 0.})
+        phase = "summary_seconds"
+        phase_start = start
+        try:
+            factors = [self._local_factor(i, stats) for i in range(len(self.regions))] + self.cross[:]
+            stats["summary_seconds"] = perf_counter()-phase_start
+            phase = "plan_seconds"
+            phase_start = perf_counter()
+            order = self._plan(factors, stats)
+            stats["plan_seconds"] = perf_counter()-phase_start
+            phase = "eliminate_seconds"
+            phase_start = perf_counter()
+            for var in order:
+                bucket, keep = [], []
+                for f in factors:
+                    stats["factor_membership_tests"] += 1
+                    (bucket if var in f.scope else keep).append(f)
+                out = self._eliminate(var, bucket, stats)
+                factors = keep + [out]
+            count = 1
+            for f in factors:
+                assert not f.scope
+                count *= f.values[0]
+                stats["integer_multiplies"] += 1
+                stats["max_integer_bits"] = max(stats["max_integer_bits"], count.bit_length())
+            stats["count"] = count
+            stats["eliminate_seconds"] = perf_counter()-phase_start
+        except TableBudgetExceeded as exc:
+            stats[phase] = perf_counter()-phase_start
+            stats.update({"status": "BUDGET_EXCEEDED", "count": None,
+                          "required_bucket_rows": exc.required_rows,
+                          "budget_scope": list(exc.scope), "row_budget": exc.cap})
+        stats["query_seconds"] = perf_counter()-start
+        stats["stored_table_cells"] = self.stored_cells
+        stats["peak_table_slots"] = self.peak_table_slots
+        stats["cached_elimination_tables"] = len(self.elim_cache)
+        stats["cached_local_tables"] = len(self.local_cache)
+        stats["boundary_variables"] = sum(len(b) for b in self.boundaries)
+        stats["max_region_boundary"] = max(map(len, self.boundaries), default=0)
+        stats["source_clause_count"] = len(self.source)
+        stats["source_literal_count"] = sum(map(len, self.source))
+        self.total_local_candidates += stats["local_candidates"]
+        self.total_bucket_rows += stats["bucket_rows_computed"]
+        stats["cumulative_local_candidates"] = self.total_local_candidates
+        stats["cumulative_bucket_rows"] = self.total_bucket_rows
+        return stats

@@ -1,0 +1,98 @@
+{
+  "wentworth.tex": {
+    "url": "https://www.gutenberg.org/files/36670/36670-t/36670-t.tex",
+    "sha256": "f4651a16b31f21c864f6a27b7c49d725a940641ebec98dac0449d6bc16d386da",
+    "bytes": 415621,
+    "used": true
+  },
+  "couturat.tex": {
+    "url": "https://www.gutenberg.org/files/10836/10836-t/10836-t.tex",
+    "sha256": "3de58db3c0d6f19b62437583080207055d61d37f5013f3259ae625a5ec5e9636",
+    "bytes": 229348,
+    "used": true
+  },
+  "thompson.tex": {
+    "url": "https://www.gutenberg.org/files/33283/33283-t/33283-t.tex",
+    "sha256": "fb6a9195621aeba3302d2359af4ff7cd74b285d9fb57c16431c21c0b85ed5776",
+    "bytes": 404500,
+    "used": true
+  },
+  "whitehead.tex": {
+    "url": "https://www.gutenberg.org/files/41568/41568-t/41568-t.tex",
+    "sha256": "ce48a31667a5c481ac3493562a1ece06d1b5f6791ddaa4dbfefd9c069d9a0116",
+    "bytes": 413786,
+    "used": true
+  },
+  "demorgan_calculus.tex": {
+    "url": "https://www.gutenberg.org/files/39041/39041-t/39041-t.tex",
+    "sha256": "d5a316973a380667b8bfaaff8941091ff3c7cfe4cc4ab7fcd2228728e768d77a",
+    "bytes": 364976,
+    "used": true
+  },
+  "austen.txt": {
+    "url": "https://www.gutenberg.org/cache/epub/1342/pg1342.txt",
+    "sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+    "bytes": 772386,
+    "used": true
+  },
+  "doyle.txt": {
+    "url": "https://www.gutenberg.org/cache/epub/1661/pg1661.txt",
+    "sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "bytes": 607606,
+    "used": true
+  },
+  "shelley.txt": {
+    "url": "https://www.gutenberg.org/cache/epub/84/pg84.txt",
+    "sha256": "7810cd483cffcf2cc8a1d8f0d5807931e69d4f48cd14149b8c76f88af82fead3",
+    "bytes": 448885,
+    "used": true
+  },
+  "twain.txt": {
+    "url": "https://www.gutenberg.org/cache/epub/74/pg74.txt",
+    "sha256": "74d77384b123a6360db9ab58463cff8b38df8525fbdc6000c81ee388e1f3cf10",
+    "bytes": 434357,
+    "used": true
+  },
+  "methods.csv": {
+    "url": "https://www.iana.org/assignments/http-methods/methods.csv",
+    "sha256": "4614642d572a630c355f182126bd92dd5a43d398b3dc64cad9ce88826613823a",
+    "bytes": 1920,
+    "used": true
+  },
+  "protocols.csv": {
+    "url": "https://www.iana.org/assignments/protocol-numbers/protocol-numbers-1.csv",
+    "sha256": "ba37fe0a4e01e45fe172f212ade37b908f4d56bbab0be9a97423bcfb9b8271a9",
+    "bytes": 9347,
+    "used": true
+  },
+  "services.csv": {
+    "url": "https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.csv",
+    "sha256": "b6afeefdc6b2c616f9a515d57819a558ebe33250b59b2700b3afc4a4ba1923f2",
+    "bytes": 1158271,
+    "used": true
+  },
+  "languages.txt": {
+    "url": "https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry",
+    "sha256": "755fad43283be7b41ebe3c89ad054b6eaf928f404f9c0edb74799e0eab74beb1",
+    "bytes": 731819,
+    "used": true
+  },
+  "alice.raw": {
+    "url": "https://www.gutenberg.org/cache/epub/11/pg11.txt",
+    "sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
+    "bytes": 174311,
+    "used": true
+  },
+  "iana.raw": {
+    "url": "https://data.iana.org/time-zones/tzdb-2024a/iso3166.tab",
+    "sha256": "a01a5d158f31d46ad8e6f8cc2a06c641810682a9397d460320f68d5421b65e71",
+    "bytes": 4791,
+    "used": true
+  },
+  "demorgan.raw": {
+    "url": "https://www.gutenberg.org/cache/epub/68662/pg68662-images.html",
+    "sha256": "6fc89d6d77f4f2a158dd5476f41b34cad4bbd0fa09218d6b06bca5aec6891a84",
+    "bytes": 860837,
+    "used": false
+  }
+}

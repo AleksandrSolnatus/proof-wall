@@ -1,0 +1,14 @@
+{
+  "research_date": "2026-11-04",
+  "receipt_created_utc": "2026-11-05T05:50:52.092642+00:00",
+  "parent_zip_sha256": "e3ddf0cbf3d08de2f3b34bcd622ac549123753af03525e3f73e9497d447c274d",
+  "count_check_status": "PASS",
+  "snapshot_count": 703,
+  "final_benchmark_cases": [
+    "chain-64-regions",
+    "grid-5x5",
+    "original-16-variable-bridges",
+    "random-cross-16-31013"
+  ],
+  "meaning": "local run receipt and integrity metadata, not a signature or formal proof"
+}
