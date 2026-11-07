@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "id": "rising-tide-006-r02-witness",
+  "version": 1,
+  "title": "A witness, then a check",
+  "artifact_type": "experiment",
+  "status": "verified-finite-result",
+  "question": "Can task-specific workers and separate system monitoring reduce total computational cost while keeping verification reliable, and does the preserved R02 witness satisfy its original instance?",
+  "method": "The existing independent receipt reports direct evaluation of the preserved assignment against each original clause; no new solver run is claimed.",
+  "finding": "The preserved receipt reports 819 of 819 clauses satisfied and 192 of 192 bits matching the native model.",
+  "claim_scope": "One preserved 192-variable, 819-clause R02 instance and its assignment; no general complexity or efficiency result.",
+  "limitations": [
+    "No measured self-monitoring savings, benchmark comparison, or total cost ledger.",
+    "R01 is not assessed by this R02 packet; R03–R06 remain unresolved in the referenced record. Later Drago verification is separately reported, not rerun here.",
+    "The four-file selection is not self-contained: the checker requires source-provenance.json and five separately preserved source files. The clause audit and original inputs remain private."
+  ],
+  "open_questions": [
+    "Would staged inspection and verification reduce total charged work compared with continuous self-monitoring on matched workloads?"
+  ],
+  "date": "2026-11-07",
+  "provenance": {
+    "authors": [
+      "Amar / research direction",
+      "Rocky / historical solve",
+      "AI-assisted independent checking and editorial preparation"
+    ],
+    "origin": "Rising Tide 006 — The Blind Reservoir: the originating Chat reports project generation and all six recorded hashes matching, based on its inspection of the original packets; Root did not repeat this comparison.",
+    "change_note": "Separate four-file selection excluding private source inputs and clause audit; public receipt omits private archive identifiers."
+  },
+  "article": "article.md",
+  "files": [
+    {
+      "path": "article.md",
+      "role": "article",
+      "media_type": "text/markdown",
+      "bytes": 4996,
+      "sha256": "a2e7a71aa95c0b8713573188f1b8cfedbbc7e58eca7381eecefe5bf2c2be2ee4",
+      "attribution": "AI-assisted explanation and Root editorial preparation; research direction Amar / The Bridges Group.",
+      "rights": "Owner-authorized public reading and download of this selected file; original inputs and clause audit remain private.",
+      "license": "No new license selected."
+    },
+    {
+      "path": "files/README.md",
+      "role": "original",
+      "media_type": "text/markdown",
+      "bytes": 975,
+      "sha256": "48ceef7ba7e04ad378f4a2cd550416235b3c705cc2bb570927477a82fe4be6cc",
+      "attribution": "AI-assisted independent witness-checking package and provenance record, November 7, 2026.",
+      "rights": "Owner-authorized public reading and download of this selected file; original inputs and clause audit remain private.",
+      "license": "No new license selected."
+    },
+    {
+      "path": "files/check_r02.py",
+      "role": "code",
+      "media_type": "text/plain",
+      "bytes": 5380,
+      "sha256": "25757efd3dd93ce42327ff9760a96b3be7c510e1cccf104c2aee5177b60ceb94",
+      "attribution": "AI-assisted independent witness-checking package and provenance record, November 7, 2026.",
+      "rights": "Owner-authorized public reading and download of this selected file; original inputs and clause audit remain private.",
+      "license": "No new license selected."
+    },
+    {
+      "path": "files/receipt.json",
+      "role": "receipt",
+      "media_type": "application/json",
+      "bytes": 1599,
+      "sha256": "994a0058b49313f80b893d7e2578ca633747199712cf52eeef5b79aa5956adbc",
+      "attribution": "AI-assisted independent witness-checking package and provenance record, November 7, 2026.",
+      "rights": "Owner-authorized public reading and download of this selected file; original inputs and clause audit remain private.",
+      "license": "No new license selected."
+    }
+  ],
+  "relations": [],
+  "gardens": [],
+  "publication": {
+    "intent": "request-review",
+    "rights": "Owner authorized publication of this four-file selection for public reading and downloading; original inputs and clause audit remain private.",
+    "license": "No new license selected.",
+    "attribution": "Amar / The Bridges Group; Rocky historical solve; AI-assisted independent checking and editorial preparation."
+  },
+  "sample": false
+}

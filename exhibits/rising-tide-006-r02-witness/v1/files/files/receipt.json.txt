@@ -1,0 +1,32 @@
+{
+  "result": "VERIFIED_SAT_WITNESS",
+  "variables": 192,
+  "clauses_checked": 819,
+  "clauses_satisfied": 819,
+  "clauses_unsatisfied": 0,
+  "assignment_bits": 192,
+  "variable_order": "bit at zero-based position i-1 represents DIMACS variable i; 1=true, 0=false",
+  "ordering_evidence": "preserved solve_forward.py emits signs for v in range(1,f.nv+1)",
+  "native_model_entries": 192,
+  "native_model_unique_variables": 192,
+  "native_model_in_ascending_variable_order": true,
+  "assignment_model_agreements": 192,
+  "assignment_model_disagreements": 0,
+  "clauses_by_true_literal_count": {
+    "1": 393,
+    "2": 321,
+    "3": 105
+  },
+  "manifest_sha256_matches": true,
+  "all_source_git_blob_hashes_match": true,
+  "source_sha256": {
+    "ROCKY/instances/R02.cnf": "55626c0cd3bad1e3d63c06059c3aa05667c422727c8f8545732aa63b3a3c5776",
+    "ROCKY/raw/R02-result.txt": "c2014223a8256a26073d15165e076052e80866909ec38398682aed9bbd884ddf",
+    "ROCKY/raw/R02-solver.json": "0f18e7f48c4a526a2578f3b02f964f58b227ae3705b832ce8ed0621a2b824f48",
+    "ROCKY/INSTANCE_MANIFEST.json": "27811a615120dbcfa37bdbfdfd72ea3468b1a63373d902e2ab2a40c23b8ba53b",
+    "solve_forward.py": "c569a30b2613c3c5e7f775b20dbf13024ee140fd40332a569f0811c9a23777ce"
+  },
+  "checker_sha256": "25757efd3dd93ce42327ff9760a96b3be7c510e1cccf104c2aee5177b60ceb94",
+  "scope": "Witness evaluation only; no solving, timing benchmark, R01 proof, R03-R06 classification, repository write, or merge.",
+  "public_copy_note": "Repository and commit identifiers omitted from this public copy; the original receipt remains in private custody."
+}

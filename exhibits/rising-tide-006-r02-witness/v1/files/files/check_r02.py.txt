@@ -1,0 +1,93 @@
+"""Standard-library witness checker. No SAT solver or search; source files read only."""
+import hashlib
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent
+SRC = ROOT / 'source'
+
+def require(condition, message):
+    if not condition:
+        raise ValueError(message)
+
+def main():
+    provenance = json.loads((ROOT / 'source-provenance.json').read_text())
+    hashes = {}
+    for name, metadata in provenance['files'].items():
+        data = (SRC / name).read_bytes()
+        git_sha = hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+        require(git_sha == metadata['sha'], 'Git blob mismatch: ' + name)
+        hashes[name] = hashlib.sha256(data).hexdigest()
+
+    clauses, pending, lines = [], [], []
+    header = None
+    for line_number, line in enumerate((SRC / 'ROCKY/instances/R02.cnf').read_text().splitlines(), 1):
+        fields = line.split()
+        if not fields or fields[0] == 'c':
+            continue
+        if fields[0] == 'p':
+            require(header is None and len(fields) == 4 and fields[1] == 'cnf', 'Invalid DIMACS header')
+            header = tuple(map(int, fields[2:]))
+            continue
+        require(header is not None, 'Clause before header')
+        for token in fields:
+            lit = int(token)
+            if lit == 0:
+                clauses.append(pending)
+                lines.append(line_number)
+                pending = []
+            else:
+                require(1 <= abs(lit) <= header[0], f'Out of range literal at line {line_number}')
+                pending.append(lit)
+    require(not pending, 'Unterminated final clause')
+    require(header == (192, 819) and len(clauses) == 819, 'Dimension mismatch')
+    require(all(len(c) == 3 for c in clauses), 'Non-3-SAT clause')
+    manifest = next(x for x in json.loads((SRC / 'ROCKY/INSTANCE_MANIFEST.json').read_text()) if x['case'] == 'R02')
+    require((manifest['variables'], manifest['clauses']) == header, 'Manifest dimension mismatch')
+    require(hashes['ROCKY/instances/R02.cnf'] == manifest['sha256'], 'Manifest SHA-256 mismatch')
+
+    result_lines = (SRC / 'ROCKY/raw/R02-result.txt').read_text().splitlines()
+    assignments = [s.removeprefix('ASSIGNMENT: ') for s in result_lines if s.startswith('ASSIGNMENT: ')]
+    require(len(assignments) == 1, 'Expected exactly one assignment')
+    bits = assignments[0]
+    require(len(bits) == 192 and set(bits) <= {'0', '1'}, 'Invalid 192-bit assignment')
+    # Original producer explicitly maps bit i-1 to DIMACS variable i.
+    producer = (SRC / 'solve_forward.py').read_text()
+    require("range(1,f.nv+1)" in producer and "'1' if signs.get(v,False) else '0'" in producer, 'Producer ordering evidence absent')
+    native = json.loads((SRC / 'ROCKY/raw/R02-solver.json').read_text())
+    model = native['solver_model']
+    require(native['case'] == 'R02' and native['solver_return'] is True, 'Native result metadata mismatch')
+    require(len(model) == 192 and all(type(v) is int and 1 <= abs(v) <= 192 for v in model), 'Invalid native model')
+    require(len({abs(v) for v in model}) == 192, 'Native model duplicates/missing variables')
+    signs = {abs(v): v > 0 for v in model}
+    for i, bit in enumerate(bits, 1):
+        require((bit == '1') == signs[i], f'First assignment/model discrepancy at variable {i}')
+
+    histogram = {1: 0, 2: 0, 3: 0}
+    witnesses = []
+    for idx, clause in enumerate(clauses, 1):
+        truths = [(bits[abs(v)-1] == '1') == (v > 0) for v in clause]
+        native_truths = [signs[abs(v)] == (v > 0) for v in clause]
+        require(any(truths), f'First false clause {idx}, source line {lines[idx-1]}: {clause}; bits={[bits[abs(v)-1] for v in clause]}')
+        require(any(native_truths), f'First false native-model clause {idx}: {clause}')
+        histogram[sum(truths)] += 1
+        witnesses.append({'clause': idx, 'source_line': lines[idx-1], 'literals': clause, 'literal_truth_values': truths, 'first_true_literal': clause[truths.index(True)]})
+    receipt = {
+        'result': 'VERIFIED_SAT_WITNESS', 'repository': provenance['repository'], 'source_commit': provenance['commit'],
+        'variables': 192, 'clauses_checked': len(clauses), 'clauses_satisfied': 819, 'clauses_unsatisfied': 0,
+        'assignment_bits': len(bits), 'variable_order': 'bit at zero-based position i-1 represents DIMACS variable i; 1=true, 0=false',
+        'ordering_evidence': 'preserved solve_forward.py emits signs for v in range(1,f.nv+1)',
+        'native_model_entries': len(model), 'native_model_unique_variables': len(signs),
+        'native_model_in_ascending_variable_order': [abs(v) for v in model] == list(range(1,193)),
+        'assignment_model_agreements': 192, 'assignment_model_disagreements': 0,
+        'clauses_by_true_literal_count': histogram, 'manifest_sha256_matches': True,
+        'all_source_git_blob_hashes_match': True, 'source_sha256': hashes,
+        'checker_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        'scope': 'Witness evaluation only; no solving, timing benchmark, R01 proof, R03-R06 classification, repository write, or merge.',
+    }
+    (ROOT / 'receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')
+    (ROOT / 'clause-audit.json').write_text(json.dumps(witnesses, indent=2) + '\n')
+    print(json.dumps(receipt, indent=2))
+
+if __name__ == '__main__':
+    main()

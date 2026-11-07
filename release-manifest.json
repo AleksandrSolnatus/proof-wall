@@ -1,5 +1,5 @@
 {
-  "exhibits": 29,
+  "exhibits": 30,
   "files": {
     ".nojekyll": {
       "bytes": 0,
@@ -1145,6 +1145,38 @@
       "bytes": 7267,
       "sha256": "8a60c4b130e136192877482d5d7aba7f4b294bec844d052ca20b0ad3d6b6472a"
     },
+    "exhibits/rising-tide-006-r02-witness/v1/exhibit.json": {
+      "bytes": 5480,
+      "sha256": "ea136d78707b1d698abbeabab8f570967a31f7d7fd497147198ef8d4b829c9cc"
+    },
+    "exhibits/rising-tide-006-r02-witness/v1/files/article.md.txt": {
+      "bytes": 4996,
+      "sha256": "a2e7a71aa95c0b8713573188f1b8cfedbbc7e58eca7381eecefe5bf2c2be2ee4"
+    },
+    "exhibits/rising-tide-006-r02-witness/v1/files/files/README.md.txt": {
+      "bytes": 975,
+      "sha256": "48ceef7ba7e04ad378f4a2cd550416235b3c705cc2bb570927477a82fe4be6cc"
+    },
+    "exhibits/rising-tide-006-r02-witness/v1/files/files/check_r02.py.txt": {
+      "bytes": 5380,
+      "sha256": "25757efd3dd93ce42327ff9760a96b3be7c510e1cccf104c2aee5177b60ceb94"
+    },
+    "exhibits/rising-tide-006-r02-witness/v1/files/files/receipt.json.txt": {
+      "bytes": 1599,
+      "sha256": "994a0058b49313f80b893d7e2578ca633747199712cf52eeef5b79aa5956adbc"
+    },
+    "exhibits/rising-tide-006-r02-witness/v1/index.html": {
+      "bytes": 12286,
+      "sha256": "e0d71d0a470e97b02928763c24559eef03bbdfc11c0280fe30af0f6515a7330b"
+    },
+    "exhibits/rising-tide-006-r02-witness/v1/snapshot.json": {
+      "bytes": 785,
+      "sha256": "67285c435610466ea631bc0e5b15ac986f4ff102b58428b9ac297c17c005a664"
+    },
+    "exhibits/rising-tide-006-r02-witness/v1/submitted-manifest.json": {
+      "bytes": 4566,
+      "sha256": "68c364b11944a1daf57b6e9ccbb984d9ac4c4762b0c90ca2a359024d5bfdc753"
+    },
     "exhibits/rocky-decomposition-reuse/v2/exhibit.json": {
       "bytes": 5902,
       "sha256": "201efc9d92b01f10067ec6799eaaa7788fadec91c7917ef345c2afdc6abf3c86"
@@ -1442,12 +1474,12 @@
       "sha256": "d1cf42ce64b01824f3c20d2eb7df88c95f8ffcbcc840f64a6c772c74989d4a8a"
     },
     "index.html": {
-      "bytes": 18990,
-      "sha256": "c3620d198796a88f6adfa5e47f7004aaa0d7a26dfe12b78663879e0000ceed17"
+      "bytes": 19575,
+      "sha256": "881db80d56f02a539be5a6738846e11aba6faa4a94405109c87f20828e3aa55b"
     },
     "index.json": {
-      "bytes": 23924,
-      "sha256": "8617c7569ec938091ae628890a8911191a198a97b119e677af900d4dfa2ab59a"
+      "bytes": 24736,
+      "sha256": "ace8152bc9b653a81eb7289b9ecd3ada831e14679ccc1c480e3d72733e9fbaae"
     },
     "llms.txt": {
       "bytes": 489,
@@ -1463,7 +1495,7 @@
     }
   },
   "manifest_note": "This manifest excludes itself. Hashes establish bytes, not truth or permission.",
-  "mode": "release-candidate",
-  "published": false,
+  "mode": "public-release",
+  "published": true,
   "schema_version": 1
 }

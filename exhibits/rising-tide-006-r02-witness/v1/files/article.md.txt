@@ -1,0 +1,64 @@
+# A witness, then a check
+
+## The question behind the work
+
+Can task-specific workers and separate system monitoring reduce total computational
+cost while keeping verification reliable?
+
+This is a research direction, not a result established by this example. The wider
+Rising Tide effort asks whether accumulated checked knowledge can reduce later work
+after acquisition, recognition, failed attempts, retrieval, checking, maintenance,
+storage, startup and communication are charged. Here, the narrower concern is the
+cost of self-monitoring: moving checking elsewhere must not make its cost disappear.
+
+## What happened
+
+Rocky's Rising Tide 006 handoff preserved six original 3-SAT instances and raw solver
+results. The R02 instance declares 192 variables and 819 clauses. Its solver output
+includes a 192-bit assignment and a native signed model. A limited initial trial
+checked only the first 20 clauses. That was insufficient to establish satisfiability.
+
+A subsequent independent, dependency-free Python checker read the preserved files,
+validated their identities and dimensions, checked variable ordering, and evaluated
+every clause directly. It did not invoke a SAT solver or search for another answer.
+
+## What the evidence establishes
+
+**The preserved R02 assignment satisfies all 819 original clauses.** There are zero
+false clauses. All 192 bits agree with the native model, which contains each variable
+1–192 exactly once. The first bit means variable 1, and the last means variable 192;
+`1` means true. The preserved producer explicitly emits variables in that order.
+
+Of the clauses, 393 have one true literal, 321 have two, and 105 have three. The CNF
+SHA-256 matches the original manifest:
+
+`55626c0cd3bad1e3d63c06059c3aa05667c422727c8f8545732aa63b3a3c5776`
+
+The preserved receipt reports that all five retrieved source files matched their recorded Git blob hashes. Their repository identifiers remain private.
+
+This is a finite SAT certificate: for each clause, the audit records its literals,
+their truth values, and a true literal. Every clause is therefore true under the
+same complete assignment; their conjunction is true, so this instance is satisfiable.
+It proves this witness works without repeating the original search.
+
+## What remains open
+
+This is one successful separation of candidate production and independent checking.
+It does not compare self-monitoring against system monitoring, quantify savings,
+benchmark agent arrangements, or establish a general efficiency theorem. No matched end-to-end timing comparison or complete cost ledger is established; timing records are partial. A 500,000-conflict budget
+is a search limit, not a measurement of the total work performed.
+
+The original R01 UNSAT claim remains unproved by this packet. The R03–R06 unresolved
+results do not establish impossibility. A later Drago verification is reported separately in the provenance supplement; it was not rerun for this exhibit. Original solver outputs remain unchanged.
+
+## Inspect the record
+
+The selected files include the checker and its saved receipt. The four-file selection is not a self-contained reproduction bundle: the checker also requires source-provenance.json and five preserved source files, including solve_forward.py. The required files are source-provenance.json, source/ROCKY/INSTANCE_MANIFEST.json, source/ROCKY/instances/R02.cnf, source/ROCKY/raw/R02-result.txt, source/ROCKY/raw/R02-solver.json, and source/solve_forward.py. They are not included in this selection. The checker reads solve_forward.py as ordering evidence and never executes it. Original source URLs may be inaccessible; no access or redistribution license is implied by a link.
+
+The historical solve used Python-SAT and CaDiCaL, established external software. The independent witness checker uses Python's standard library and does not run a SAT solver. The clause-by-clause audit and original inputs remain private and are not included in this selection.
+
+## Provenance
+
+This experiment and its solution and verification artifacts were developed within the Bridges/MATH project with AI assistance, using established mathematical methods. The originating Chat reports, from its inspection of the original packets, that all six instances were project-generated for Rising Tide 006 — The Blind Reservoir and that all six recorded hashes match. Root did not repeat that inspection or comparison. The recorded R02 check establishes that the supplied assignment satisfies the supplied formula. It does not establish a general speed advantage or a result about P versus NP.
+
+Research direction: Amar / The Bridges Group. Historical solve: Rocky. Independent witness evaluation and editorial preparation: AI-assisted. A later Drago verification is recorded in the provenance supplement; this exhibit does not represent a new verification. A separate R01 UNSAT certificate is reported in that supplement but is not assessed by this R02 packet; R03–R06 remain unresolved in that record.

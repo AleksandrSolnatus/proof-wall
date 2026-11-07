@@ -437,6 +437,20 @@
       "title": "Reuse pays rent; changed weights invalidate an answer index",
       "url": "exhibits/math-lesson-rent/v2/index.html",
       "version": 2
+    },
+    {
+      "claim_scope": "One preserved 192-variable, 819-clause R02 instance and its assignment; no general complexity or efficiency result.",
+      "gardens": [],
+      "id": "rising-tide-006-r02-witness",
+      "metadata": "exhibits/rising-tide-006-r02-witness/v1/exhibit.json",
+      "package_sha256": "5316379af94ce66d9231b5470d44f8885d4ebec0977bffc2b9266775a41e691c",
+      "question": "Can task-specific workers and separate system monitoring reduce total computational cost while keeping verification reliable, and does the preserved R02 witness satisfy its original instance?",
+      "relations": [],
+      "sample": false,
+      "status": "verified-finite-result",
+      "title": "A witness, then a check",
+      "url": "exhibits/rising-tide-006-r02-witness/v1/index.html",
+      "version": 1
     }
   ],
   "gardens": "gardens.json",
