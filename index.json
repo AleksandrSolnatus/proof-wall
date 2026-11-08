@@ -451,6 +451,48 @@
       "title": "A witness, then a check",
       "url": "exhibits/rising-tide-006-r02-witness/v1/index.html",
       "version": 1
+    },
+    {
+      "claim_scope": "Finite generated affine matrix workloads and declared equal-weight event-accounting model; not a general P-vs-NP claim, wall-clock speedup proof, or autonomous discovery of a new operation.",
+      "gardens": [],
+      "id": "lotus-recognition-002-cost-of-finding",
+      "metadata": "exhibits/lotus-recognition-002-cost-of-finding/v3/exhibit.json",
+      "package_sha256": "814806657be0aa37063762e595dea964ee5c60ceb93f03fd002989622f68ac97",
+      "question": "Can a learner infer the elementary row-edit relationship to a stored Boolean matrix—and does that recognition repay its own work, compared to fresh solving and exact caching?",
+      "relations": [],
+      "sample": false,
+      "status": "verified-finite-result",
+      "title": "Lotus Recognition 002 — when finding the shortcut costs more",
+      "url": "exhibits/lotus-recognition-002-cost-of-finding/v3/index.html",
+      "version": 3
+    },
+    {
+      "claim_scope": "Finite simulated weighted graphs with known geometry and unit work-event accounting. Exact statements are about the specified model, not physical four-dimensional space or traffic engineering.",
+      "gardens": [],
+      "id": "rising-tide-005-hidden-passage",
+      "metadata": "exhibits/rising-tide-005-hidden-passage/v3/exhibit.json",
+      "package_sha256": "2a9a96d995abbac65edc2978d3afe1f8fdd49978adc0ef74a9881e9aa1d6fa80",
+      "question": "In a declared finite four-coordinate routing world, how do obstacle placement, access, adjacency, observation and retained search affect exact routes and repeated work?",
+      "relations": [],
+      "sample": false,
+      "status": "verified-finite-result",
+      "title": "The Hidden Passage — routes, adjacency, and work that survives",
+      "url": "exhibits/rising-tide-005-hidden-passage/v3/index.html",
+      "version": 3
+    },
+    {
+      "claim_scope": "Conditional mathematical exactness for disjoint private interfaces and finite evaluated affine test workloads. The elapsed-time ratio is a single instrumented run, not a general solver speed claim.",
+      "gardens": [],
+      "id": "stone-005-exact-relation-reuse",
+      "metadata": "exhibits/stone-005-exact-relation-reuse/v3/exhibit.json",
+      "package_sha256": "9554f43e31064a6fa4e42de23b32938a36a897fd470d62e8be3ce06e9f49810a",
+      "question": "When can a checked, cached component relation be reused across genuinely different CNF inputs, with discovery, verification, recognition and global composition still charged?",
+      "relations": [],
+      "sample": false,
+      "status": "verified-finite-result",
+      "title": "Stone 005 — learn the relation, not the answer",
+      "url": "exhibits/stone-005-exact-relation-reuse/v3/index.html",
+      "version": 3
     }
   ],
   "gardens": "gardens.json",

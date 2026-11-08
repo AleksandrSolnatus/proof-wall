@@ -1,0 +1,44 @@
+{
+  "proof_check": "PASS",
+  "finite_barrier_cases": 16,
+  "independent_small_oracle_checks": 96,
+  "adjacency_cases": 60,
+  "normal_work_queries": 560,
+  "memory_results": [
+    [
+      "focused",
+      925866,
+      9123,
+      0.990147
+    ],
+    [
+      "one-shot",
+      421871,
+      421961,
+      -0.000213
+    ],
+    [
+      "mixed-worlds",
+      1019512,
+      44441,
+      0.95641
+    ],
+    [
+      "three-destinations",
+      671775,
+      26079,
+      0.961179
+    ]
+  ],
+  "planar_vs_raised": [
+    16,
+    8
+  ],
+  "retrieval_invalid_without_world_version": {
+    "unversioned_stale_value": 10,
+    "correct_after_wall_change": 16,
+    "change_requires_revalidation": true,
+    "interpretation": "Retaining a correct old answer without its world signature becomes unsound after a structural edit."
+  },
+  "elapsed_seconds_noncanonical": 3.9778
+}

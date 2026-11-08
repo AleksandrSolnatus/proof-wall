@@ -1,0 +1,16 @@
+"""Verify bytes and the pinned baseline; this is not a mathematical proof."""
+import hashlib,json,pathlib
+root=pathlib.Path(__file__).resolve().parent
+manifest=json.loads((root/'MANIFEST.json').read_text())
+for name,expected in manifest['files'].items():
+    got=hashlib.sha256((root/name).read_bytes()).hexdigest()
+    if got!=expected:raise ValueError('SHA-256 mismatch: '+name)
+source=json.loads((root/'BASELINE_SOURCE.json').read_text())
+for item in source['files']:
+    data=(root/'baseline'/item['path']).read_bytes()
+    sha=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+    if sha!=item['git_blob_sha']:raise ValueError('Baseline Git blob mismatch: '+item['path'])
+for location in ('results/runs/summary.json','results/strict-runs/summary.json'):
+    for name,expected in json.loads((root/location).read_text())['sources'].items():
+        if hashlib.sha256((root/name).read_bytes()).hexdigest()!=expected:raise ValueError('Run source mismatch: '+name)
+print(json.dumps({'passed':True,'manifest_files':len(manifest['files']),'baseline_git_blobs':len(source['files']),'run_sources_bound':True}))

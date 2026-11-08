@@ -1,0 +1,246 @@
+# Stone 005 — Learn the relation, not just the answer
+
+**Independent contribution, 4 November 2026.**
+
+**Status:** an elementary exact-composition theorem, an explicit amortized accounting theorem for a restricted solver, executed experiments with independently checked answers, and preserved failures. Not a proof of P=NP or P≠NP. No claim of novelty over the knowledge-compilation or constraint-satisfaction literature.
+
+The constructive implementation and its first stream experiment were completed before consulting public literature for context. No other thread's new answer was read. Earlier material already visible in this conversation was available as context. No claimed historical "magic experiment" was used as evidence.
+
+## 1. Best formulation
+
+The useful retained object is a **checked, reusable relation**, not a previous SAT/UNSAT answer.
+
+For a component H with visible variables B and private variables Y, define
+
+\[
+E_H(b)=\exists y\;H(b,y),\qquad
+N_H(b)=\neg E_H(b)=\forall y\;\neg H(b,y).
+\]
+
+E says which visible settings have a valid completion; N says which have none. These are two views of the same exact relation, not two independent sources of information. One may store whichever representation is convenient, provided the required queries remain exact.
+
+The quantifier is essential. N_H is **not** the statement that some completion fails. For H(b,y)=(b↔y), every b has a successful completion and a failing completion. A failed completion cannot justify rejecting that b.
+
+For a sequence of problems, let S_T be the distinct exact component keys encountered through problem T. The concrete retained-rule engine obeys the accounting bound
+
+\[
+\boxed{
+W(T)\le
+\sum_{\tau\in S_T}(D_\tau+V_\tau+I_\tau)
++
+\sum_{t=1}^{T}(P_t+R_t+G_t+C_t+M_t).
+}
+\]
+
+D is local discovery; V is independent checking of the discovered relation; I is its insertion/storage work. P is parsing and discovering a candidate decomposition; R is exact recognition of component keys; G is assembling and solving the new global problem; C is answer checking and witness lifting; M is other knowledge maintenance. Constants and ordinary implementation overhead can be absorbed into these charges.
+
+The first sum counts **distinct learned structures**, not all their later appearances. The second sum does not disappear. The system must still read the new problem, recognize where rules apply, combine them, and check its answer. K starts empty; the first training/compilation expense is included.
+
+This bound is a property of the specified algorithm with a growing exact-key cache. It is not a promise that arbitrary streams have few new structures or tractable composition.
+
+## 2. Exact-composition theorem
+
+Suppose a source formula can be written
+
+\[
+F(B,Y_1,\ldots,Y_m)=G(B)\land\bigwedge_{j=1}^m H_j(B_j,Y_j),
+\]
+
+where B_j is a subset of B, the Y_j are pairwise disjoint, and no Y_j appears outside its own H_j. Let
+
+\[
+R_j(B_j)\equiv\exists Y_j\;H_j(B_j,Y_j).
+\]
+
+Then, pointwise on B,
+
+\[
+\exists Y_1\cdots Y_m\;F
+\equiv G(B)\land\bigwedge_j R_j(B_j).
+\]
+
+### Proof
+
+A satisfying completion of F supplies a completion of every H_j and satisfies G, proving the forward direction.
+
+Conversely, fix B satisfying G and every R_j. By each R_j, choose a private completion Y_j of H_j. Because the private variable sets are disjoint and nothing else refers to them, all these choices can be combined into one assignment satisfying F. This proves the reverse direction.
+
+This is exact projection, not merely equisatisfiable simplification. It retains the answer for every boundary assignment.
+
+### Why a saved witness is safe here
+
+For each admitted boundary assignment, the implementation retains one witness for the private variables. This is enough for lifting because all other constraints are restricted to B. It does not assert that the hidden variables are forced. If a new constraint inspects a private variable, the applicability condition has changed; the decomposition and summary must be reconsidered.
+
+This differs from using one selected witness to answer arbitrary future questions about hidden variables, which is unsound.
+
+## 3. A constructive closed family
+
+Suppose G and each R_j are affine Boolean relations: systems of equations over GF(2). Substituting each local boundary into those equations produces one global linear system. Gaussian elimination decides it. A boundary solution lifts through the saved witnesses to a full source assignment. An inconsistent system supplies an XOR combination of implied equations giving 0=1.
+
+The components may be connected through B in arbitrary patterns. This argument needs no tree or logarithmic-width assumption on their global interaction graph. The restrictions are instead exact private interfaces and a common algebra whose constraints remain tractable when combined.
+
+For a newly encountered component with w variables, b boundary variables, and source size s, this implementation enumerates its 2^w assignments. Its affine-fitting routine also considers up to 2^b masks and 2^b boundary settings. A conservative discovery/checking bound is
+
+\[
+O(s2^w+b4^b),
+\]
+
+up to representation and integer-index costs. Thus discovery is not assumed cheap when modules grow. With bounded modules it is bounded per new key; the retained engine avoids paying it again for exact matches.
+
+For global systems with N boundary variables and E equations, ordinary bit-level elimination is polynomial in N+E. The executable also tracks the operand widths of its Python-integer XOR operations; it does not pretend that arbitrary-length integers have unit cost.
+
+## 4. What was built
+
+The solver receives only the original CNF and its variable count. It does not receive the answer, module labels, local parity equations, or a supplied decomposition.
+
+It counts variable occurrences, proposes frequently occurring variables as the visible boundary, removes them from the variable-interaction graph, and finds the remaining connected components. Every source clause is retained and assigned to a private component or to a boundary-only factor. An oversized component is refused rather than silently simplified.
+
+For each candidate component, the engine normalizes its clauses using sorted numeric local variable order. Its cache key contains the complete normalized source, total local variable count, and boundary count. This is an exact syntax key, not a semantic-equivalence or graph-isomorphism oracle.
+
+On a cache miss it discovers the exact projected relation by local enumeration, saves a witness for every feasible boundary setting, and fits affine equations. A separate tuple-based evaluator recomputes the full local projection and checks both its permitted and forbidden settings, the saved witnesses, and the affine representation. Non-affine results are refused as UNKNOWN.
+
+On a hit, it instantiates the certified rule at the new source variables. It then solves the new global linear system. SAT answers are checked against every original source clause. UNSAT answers are checked through an explicit contradictory XOR of source-implied equations.
+
+## 5. The workload and why these are new problems
+
+The main workload has 64 separately generated formulas, each with 414 variables, 1,365 clauses of width at most three, and 4,030 literal occurrences. All 64 source hashes and all 64 sorted outer-interaction hashes are distinct. This is not a replay of one formula or merely a shuffle of its clauses.
+
+Each formula contains 65 components. Each component has three boundary variables, six private variables, and 21 clauses. There are eight source templates: two parity choices and four distinct hidden seed restrictions. The templates are embedded in new global interaction patterns.
+
+For one template, call the ports a,b,c, the seed bits u,v, and the other hidden variables h0,h1,h2,h3. Its constraints are
+
+\[
+h_0=a\oplus b,\quad
+h_1=h_0\oplus u,\quad
+h_2=c\oplus v,\quad
+h_3=h_1\oplus h_2,\quad
+h_3\oplus u\oplus v=p,
+\]
+
+plus one two-literal seed clause excluding exactly one choice of (u,v). Each parity equation is encoded by four ternary CNF clauses. Eliminating the private variables yields exactly
+
+\[
+a\oplus b\oplus c=p.
+\]
+
+Every boundary setting satisfying that equation has three seed completions; every boundary setting violating it has none. The learning routine is not given this derivation. It rediscovers and independently checks the relation from the clauses.
+
+The occurrence-frequency heuristic succeeds on this intentionally constructed family: a port contributes four literal occurrences per incident component and appears in at least three components, while each private variable has at most nine occurrences. The threshold 10 therefore finds the intended boundary. This is an explained property of the generator, not a general boundary-discovery theorem.
+
+The generator makes 32 SAT instances and 32 UNSAT instances. It starts from a full-rank consistent boundary system, then adds a new row that either agrees with or contradicts its unique boundary solution. Those labels are used only by the test harness. They are not passed to the solver or the standalone verifier.
+
+## 6. Measured results
+
+| Quantity, through 64 problems | Forget between problems | Retain checked rules |
+|---|---:|---:|
+| Locally learned source templates | 512 | 8 |
+| Local discovery assignments | 262,144 | 4,096 |
+| Independent local-check assignments | 262,144 | 4,096 |
+| Source literal occurrences read | 257,920 | 257,920 |
+| Global equation row XORs | 23,556 | 23,556 |
+| Correct checked whole answers | 64 | 64 |
+| Instrumented end-to-end seconds | 4.355985 | 0.500504 |
+
+Local discovery and local certificate checking each decreased by a factor of 64. The measured end-to-end ratio was 8.70, not 64: recurring input processing and global solving still cost work. The retained cache serialized to 2,601 bytes. Both versions start empty and first encounter all eight templates during the first problem.
+
+
+The forgetful baseline is deliberately strong enough to cache repeated components *within* each problem. It discards that cache only when moving to the next problem. The retained version uses exactly the same algorithm and workload but carries that cache forward.
+
+Thus the comparison isolates cross-problem retention. It is not a comparison against a state-of-the-art SAT solver or a specialized direct XOR recognizer. The test class is algebraically tractable; these results do not show that arbitrary 414-variable SAT formulas are easy.
+
+The time measurements include parsing, structural extraction, normalization and matching, local discovery, independent local checking, global solving, witness reconstruction, answer checking, and cache operations. Input generation is measured separately because it is common to both solvers. Profiling/cache-serialization overhead is included in the end-to-end times. A cold pass followed by a warm pass is not a robust timing benchmark; exact work-event counts are the stronger evidence.
+
+A standalone audit is an additional research-validation step, not silently included in those solver timings. Its code and receipt are supplied separately. Memory figures refer only to serialized reusable knowledge, not the interpreter's total or peak resident memory.
+
+## 7. Independent verification and controls
+
+`verify_bundle.py` does not import or execute the solver. It reads the supplied source formulas and explicit answer certificates from `verification_bundle.json`.
+
+For SAT, it checks the complete assignment against the original CNF. For UNSAT, it independently exhausts the local source rules, verifies that each instantiated premise clause occurs in the original CNF, and checks that the selected consequences XOR to 0=1. Its correctness does not rely on the solver's boundary detector, Gaussian implementation, or learned table.
+
+The standalone audit verified all 64 answers: 32 SAT and 32 UNSAT. It checked eight local implication rules over 4,096 assignments. A flipped SAT witness, an empty contradiction certificate, and a wrong local parity equation were all rejected.
+
+Additional tests:
+
+- All 256 Boolean relations on three variables were tested for affine recognition. Exactly 52 were admitted and 204 refused, agreeing with an independent ternary-XOR closure test.
+- On 400 small random original CNFs, 315 were decided and agreed with a separate exhaustive truth-table oracle: 131 SAT and 184 UNSAT. The other 85 returned UNKNOWN. None was counted as solved.
+- On 512 small random linear systems, decisions and model/contradiction certificates agreed with an independent exhaustive oracle.
+- Two forged exact-projection summaries were rejected by the local checker.
+
+These are finite checks, not a proof that the implementation is bug-free or that the claimed bounds extend beyond their hypotheses. The mathematical exactness argument is given separately above.
+
+## 8. Strongest attempted refutations
+
+### A. Rename the private variables
+
+I reran a separate eight-problem stress stream with the six private variable names randomly permuted inside each component. Mathematical relations and satisfiability are unaffected. The exact-syntax recognizer, however, sees mostly unfamiliar keys.
+
+The forgetful version made 518 local discoveries; the retained version still made 504. The retained cache grew to 504 entries and 163,924 serialized bytes, compared with eight entries and 2,601 bytes in the main experiment.
+
+This defeats any claim that the current implementation learns a representation-invariant rule. The mathematical composition theorem survives, but cheap recognition is a substantial missing algorithmic ingredient. Canonicalizing permutations cannot be assumed free.
+
+### B. Cheap local descriptions need not compose cheaply
+
+A three-literal OR clause has a tiny exact relation: seven allowed assignments and one forbidden assignment. Yet allowing all signed three-literal clauses and taking their conjunction gives arbitrary 3-SAT.
+
+Therefore, knowing every small component perfectly does not alone give an efficient solver for every combination. The successful experiment depends on affine closure. It cannot replace the global solving term G_t with zero.
+
+The implemented affine recognizer correctly refuses an OR relation. This does not mean that OR alone is hard; it means it lies outside this engine's chosen algebra.
+
+### C. A boundary heuristic can fail on an easy formula
+
+A 12-variable implication chain has an obvious all-true satisfying assignment. All its variables have low occurrence, so this heuristic proposes one 12-variable private component. The nine-variable cap rejects it as UNKNOWN.
+
+A new hidden-to-hidden clause linking two formerly separate modules likewise produces an over-cap component (18 total local variables in this test) and is refused. The old decomposition is not reused unsafely.
+
+### D. Preserved failed expectation: an easy update becomes unsupported
+
+The first live-update check expected UNSAT after adding two unit clauses forcing a hidden seed pair excluded by the original seed OR clause. The solver instead returned UNKNOWN.
+
+The two updated variables cross the occurrence threshold and become visible. The seed OR is then a boundary-only, non-affine factor. The engine refuses it before using the two units to simplify it. A narrower fixed-interface recompilation correctly finds an empty relation, but the full boundary-selection pipeline does not preserve that easy route.
+
+This failed expectation is retained in `FAILED_ATTEMPT_LIVE_UPDATE.txt`. No incorrect SAT/UNSAT answer was accepted, but completeness even for this easy update was not achieved. A possible repair would propagate checked units before proposing interfaces; it is not implemented here.
+
+### E. Learning and checking can dominate
+
+One-time learning can remain exponential in growing component size. A stream can continually introduce new types. Cache keys can proliferate. Stored negative information is not automatically cheap: proving that a boundary has no completion can be the hard part. All these costs remain visible in the accounting equation.
+
+## 9. What survives and what this says about P versus NP
+
+What survives is precise: a certified exact relation can replace repeated local reasoning across genuinely new global instances. The engine learns a component's externally observable behavior, not the answer to one whole instance. The improvement is demonstrated against an otherwise identical forgetful baseline, with the first discovery and its checking charged.
+
+The exact-composition theorem holds for any relations under its private-interface condition. The efficient global solution is conditional on the summaries and boundary constraints belonging to an efficiently composable family; the implementation uses affine relations.
+
+This does not establish P=NP. Bounded affine modules already give a polynomially solvable class. The experiment establishes a reusable-work mechanism and an observed reduction, not a new general complexity classification.
+
+A uniform bound polynomial in the total input length for **every** finite stream, including T=1 and every cost of creating initial knowledge, would yield a polynomial-time single-instance SAT algorithm. That stronger statement is not proved here. A large initial cost amortized over a long stream is a different guarantee and should be studied on its own terms.
+
+The relevant public foundations are established: Schaefer's classification includes polynomial-time solvability of affine Boolean constraint systems [1]; knowledge compilation explicitly studies expensive preprocessing amortized across later queries and the joint importance of representation size, supported queries, and transformations [2,3]. This packet makes no claim to have invented either idea.
+
+## 10. One thing to carry forward
+
+**Retain a checked rule about what a component permits and excludes, together with the conditions under which that rule may be reused.**
+
+Concrete next action: replace numeric-order matching with a checked rename-invariant structural signature, then rerun the existing eight-instance renaming stress. Charge all signature/canonicalization and proof-transport work. Count success only if end-to-end work improves over the forgetful baseline while all standalone certificates still verify. Merely reducing the number of cache entries is insufficient.
+
+## Reproduction
+
+Use Python 3.10 or newer, standard library only, from this directory:
+
+```sh
+python verify_bundle.py
+python experiment.py --output rerun --instances 64 --rename-instances 8
+python adversarial_checks.py
+```
+
+The saved bundle can be verified without rerunning the solver. To audit a newly generated bundle, copy `verify_bundle.py` into that output directory and run it there. Hash receipts are in `SHA256SUMS.txt`. The original first-run measurements are preserved as `results_initial.json`; final measurements include explicit certificate emission and are in `results.json`.
+
+## References and evidence boundaries
+
+[1] Thomas J. Schaefer, *The Complexity of Satisfiability Problems*, STOC 1978, pp. 216–226. DOI: 10.1145/800133.804350. Primary paper: https://www.khoury.northeastern.edu/home/lieber/courses/csg260/f06/materials/papers/max-sat/p216-schaefer.pdf . Theorem 2.1 and affine definitions establish the relevant tractable case. Parsed text was available; web PDF screenshots returned HTTP 403. No figure or table was used as evidence.
+
+[2] Adnan Darwiche and Pierre Marquis, *A Perspective on Knowledge Compilation*, IJCAI 2001, pp. 175–181. Official proceedings and full text: https://ijcai.org/proceedings/2001/24 . Introduction describes amortizing offline computation over later queries.
+
+[3] Adnan Darwiche and Pierre Marquis, *A Knowledge Compilation Map*, JAIR 17 (2002), pp. 229–264. Author paper record: https://arxiv.org/abs/1106.1819 . Relevant distinction: succinctness, tractable queries, and tractable transformations must be assessed together.
+
+These references contextualize the construction. They are not evidence for this packet's measured speed or checker outcomes; the supplied code, inputs, and receipts are that evidence.

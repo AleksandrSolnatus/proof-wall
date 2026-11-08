@@ -1,0 +1,141 @@
+import * as base from './baseline/research/rising-tide-001/space/demo.mjs';
+export const categories = [...base.CATEGORIES, 'storage'];
+export const meter = () => Object.fromEntries(categories.map(k => [k, 0]));
+export const total = m => categories.reduce((s,k) => s + m[k], 0);
+export const add = (m,k,n=1) => {m[k] += n;};
+export const copy = A => A.map(r=>[...r]);
+export const key = A => `${A.length}:` + A.flat().join('');
+const freezeMatrix = A => Object.freeze(A.map(r=>Object.freeze([...r])));
+function matrixKey(A,m) {
+  base.validate(A); add(m,'recognition',2*A.length**2+1);
+  return key(A); // read/validate each bit + append each bit + dimension
+}
+function queryKey(ak,b,h,d,m) {
+  add(m,'recognition',ak.length+2*(b.length+h.length+1));
+  return ak+'|'+b.join('')+'|'+h.join('')+'|'+d;
+}
+export function findEdit(A,next,m,budget=Infinity) {
+  // Only raw matrices. No edit trace, parent ID or uncharged content hash.
+  let used=0;
+  const pay = (n=1) => {
+    if (used+n>budget) {add(m,'recognition',budget-used);used=budget;return false;}
+    used+=n;add(m,'recognition',n);return true;
+  };
+  const stop=()=>({kind:'budget',used});
+  if(!pay()) return stop();
+  if(A.length!==next.length) return {kind:'miss',used};
+  const n=A.length;let changed=-1;
+  for(let r=0;r<n;r++) {
+    for(let c=0;c<n;c++) {
+      if(!pay(3)) return stop(); // two reads and comparison
+      if(A[r][c]!==next[r][c]) {
+        if(changed!==-1) return {kind:'miss',used};
+        changed=r;break;
+      }
+    }
+  }
+  if(changed===-1) return {kind:'same',used};
+  const delta=[];
+  for(let c=0;c<n;c++) {if(!pay(3))return stop();delta.push(A[changed][c]^next[changed][c]);}
+  for(let j=0;j<n;j++) if(j!==changed) {
+    let match=true;
+    for(let c=0;c<n;c++) {
+      if(!pay(3))return stop();
+      if(delta[c]!==A[j][c]) {match=false;break;}
+    }
+    if(match)return {kind:'edit',i:changed,j,used};
+  }
+  return {kind:'miss',used};
+}
+export class Learner {
+  constructor(policy,capacity) {
+    if(!['fresh','exact','transfer_scan','transfer_budget'].includes(policy))throw Error('policy');
+    this.policy=policy;this.capacity=capacity;this.m=meter();
+    this.archive=[];this.byMatrix=new Map();this.answers=new Map();
+    this.cells=0;this.peakCells=0;this.cellQueries=0;this.nextId=0;
+    this.stats={queries:0,queryHits:0,matrixHits:0,bootstraps:0,transfers:0,
+      candidates:0,failedCandidates:0,failedSearchUnits:0,searchUnits:0,budgetStops:0,evictions:0};
+    this.events=[];
+  }
+  reserve(cells) {this.cells+=cells;this.peakCells=Math.max(this.peakCells,this.cells);}
+  drop(cells) {add(this.m,'maintenance',cells);this.cells-=cells;}
+  retain(A,B,ak,source) {
+    const n=A.length,cells=2*n*n+ak.length+5;
+    const r={id:this.nextId++,A:freezeMatrix(A),B:freezeMatrix(B),ak,cells,source};
+    add(this.m,'storage',cells);add(this.m,'maintenance',2);
+    this.archive.push(r);this.byMatrix.set(ak,r);this.reserve(cells);
+    if(this.archive.length>this.capacity) {
+      const old=this.archive.shift();this.byMatrix.delete(old.ak);
+      add(this.m,'maintenance',this.archive.length+2);this.drop(old.cells);this.stats.evictions++;
+    }
+    return r;
+  }
+  retainAnswer(qk,certificate) {
+    const cells=qk.length+certificate.witness.length+3;
+    const cert=Object.freeze({answer:certificate.answer,witness:Object.freeze([...certificate.witness])});
+    this.answers.set(qk,{cert,cells});add(this.m,'storage',cells);add(this.m,'maintenance');this.reserve(cells);
+    if(this.answers.size>128) {
+      const oldest=this.answers.keys().next().value,old=this.answers.get(oldest);
+      this.answers.delete(oldest);add(this.m,'maintenance',3);this.drop(old.cells);
+    }
+  }
+  solve(A,b,h,d) {
+    const n=A.length,m=this.m,before=total(m),eventsBefore=this.events.length;
+    this.stats.queries++;let certificate,route='fresh',record=null;
+    if(this.policy==='fresh') certificate=base.fresh(A,b,h,d,m);
+    else {
+      const ak=matrixKey(A,m),qk=queryKey(ak,b,h,d,m);
+      add(m,'recognition');const cached=this.answers.get(qk);
+      if(cached) {
+        this.stats.queryHits++;route='answer-hit';
+        certificate={answer:cached.cert.answer,witness:[...cached.cert.witness]};
+        add(m,'solving',n+1);
+      } else {
+        add(m,'recognition');record=this.byMatrix.get(ak);
+        if(record) {this.stats.matrixHits++;route='matrix-hit';}
+        else {
+          let B=null,source={kind:'bootstrap'};
+          if(this.policy.startsWith('transfer')) {
+            let remaining=this.policy==='transfer_budget'?4*n*n:Infinity;
+            const searchStart=m.recognition;
+            for(let z=this.archive.length-1;z>=0;z--) {
+              if(remaining<1) {this.stats.budgetStops++;break;}
+              add(m,'recognition');remaining--;this.stats.candidates++;
+              const candidate=this.archive[z],r=findEdit(candidate.A,A,m,remaining);remaining-=r.used;
+              if(r.kind==='edit') {
+                // The indices are inferred above, never received from the caller.
+                const rm=base.meter();B=base.repair(candidate.A,candidate.B,A,r.i,r.j,rm);
+                rm.maintenance-=n*n+2; // replace old retention allowance by retain()
+                for(const k of base.CATEGORIES)m[k]+=rm[k];
+                source={kind:'repair',parentId:candidate.id,parentKey:candidate.ak,i:r.i,j:r.j};
+                this.events.push({query:this.stats.queries,childKey:ak,...source});
+                this.stats.transfers++;route='transfer';break;
+              }
+              this.stats.failedCandidates++;this.stats.failedSearchUnits+=r.used+1;
+              if(r.kind==='budget'){this.stats.budgetStops++;break;}
+            }
+            // Includes the baseline's second exact applicability sweep on success.
+            this.stats.searchUnits+=m.recognition-searchStart;
+          }
+          if(B===null) {
+            B=base.inverse(A,m);
+            if(B===null)throw Error('UNSUPPORTED: singular matrix');
+            add(m,'checking',2*n*n); // baseline inverse validator's input sweeps
+            if(!base.verifyInverse(A,B,m))throw Error('bootstrap verification');
+            this.stats.bootstraps++;route='bootstrap';
+          }
+          record=this.retain(A,B,ak,source);
+        }
+        certificate=base.warm(A,record.B,b,h,d,m);
+        this.retainAnswer(qk,certificate);
+      }
+    }
+    if(!base.verify(A,b,h,d,certificate,m))throw Error('raw certificate rejected');
+    add(m,'maintenance',n+1); // answer output, all routes
+    this.cellQueries+=this.cells;
+    return {certificate,route,delta:total(m)-before,total:total(m),ledger:{...m},
+      cells:this.cells,eventCount:this.events.length-eventsBefore};
+  }
+  summary() {return {policy:this.policy,total:total(this.m),ledger:this.m,stats:this.stats,
+    currentCells:this.cells,peakCells:this.peakCells,cellQueries:this.cellQueries};}
+}

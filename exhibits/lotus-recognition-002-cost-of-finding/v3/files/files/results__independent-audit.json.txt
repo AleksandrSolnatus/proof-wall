@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "sequences": 540,
+  "answers": 860328,
+  "damaged_rejected": 860328,
+  "inverses": 86994,
+  "edges": 8979,
+  "ledger_rows": 860328
+}

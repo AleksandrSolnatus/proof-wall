@@ -1,0 +1,91 @@
+#!/usr/bin/env python3
+"""Further checks. Standard library only. Run beside experiment.py.
+Exhaustive small Boolean relations; independent whole-CNF small oracle;
+independent small linear-system oracle; end-to-end source-update invalidation.
+"""
+import itertools, json, random
+from pathlib import Path
+from experiment import Ledger, Unsupported, Summary, learn, solve, make_instance, gaussian, certify, template
+
+
+def brute_cnf(cnf, n):
+    for vals in itertools.product((False, True), repeat=n):
+        if all(any(vals[abs(l)-1] == (l>0) for l in clause) for clause in cnf):
+            return True
+    return False
+
+
+def relation_cnf(allowed, n):
+    return tuple(tuple(-(i+1) if (a>>i)&1 else i+1 for i in range(n))
+                 for a in range(1<<n) if a not in allowed)
+
+
+def main():
+    affine=nonaffine=0
+    for truth in range(256):
+        allowed={a for a in range(8) if (truth>>a)&1}
+        cnf=relation_cnf(allowed,3)
+        # An affine set is empty or closed under a XOR b XOR c.
+        expect=(not allowed) or all((a^b^c) in allowed for a in allowed for b in allowed for c in allowed)
+        try:
+            s=learn(cnf,3,3,Ledger())
+            assert set(s.positive)==allowed and expect
+            affine+=1
+        except Unsupported:
+            assert not expect
+            nonaffine+=1
+    rng=random.Random(65005)
+    accepted=unknown=0; sat=unsat=0
+    for i in range(400):
+        n=rng.randrange(1,8)
+        cnf=[]
+        for _ in range(rng.randrange(0,26)):
+            variables=rng.sample(range(1,n+1),rng.randrange(1,min(n,3)+1))
+            cnf.append(tuple(v if rng.randrange(2) else -v for v in variables))
+        expected=brute_cnf(cnf,n)
+        try:
+            status,_=solve(tuple(cnf),n,{},Ledger())
+            assert (status=='SAT')==expected
+            accepted+=1
+            sat+=status=='SAT'; unsat+=status=='UNSAT'
+        except Unsupported: unknown+=1
+    systems=0
+    for n in range(1,9):
+        for _ in range(64):
+            equations=[(rng.randrange(1<<n),rng.randrange(2)) for _ in range(rng.randrange(0,2*n+3))]
+            oracle=[]
+            for values in itertools.product((False,True),repeat=n):
+                if all(sum(values[j] for j in range(n) if (m>>j)&1)%2==b for m,b in equations):
+                    oracle.append(values)
+            status,certificate=gaussian(equations,Ledger())
+            assert (status=='SAT')==bool(oracle)
+            if status=='SAT':
+                vals=tuple(bool((certificate>>j)&1) for j in range(n))
+                assert vals in oracle
+            else:
+                mask=rhs=0
+                for i,(m,b) in enumerate(equations):
+                    if (certificate>>i)&1: mask^=m; rhs^=b
+                assert mask==0 and rhs==1
+            systems+=1
+    source=make_instance(0); cache={}; log=Ledger()
+    status,_=solve(source['cnf'],source['nvars'],cache,log)
+    assert status=='SAT'; before=len(cache)
+    changed=source['cnf']+((-29,),(-30,))
+    try:
+        status,_=solve(changed,source['nvars'],cache,log)
+        reason=None
+        assert status=='UNSAT'
+    except Unsupported as error:
+        status='UNKNOWN'
+        reason=str(error)
+    result=dict(all_three_bit_relations=256,affine_accepted=affine,nonaffine_refused=nonaffine,
+                whole_cnf_tests=400,whole_cnf_accepted=accepted,whole_cnf_unknown=unknown,
+                whole_cnf_sat=sat,whole_cnf_unsat=unsat,whole_cnf_wrong_answers=0,
+                independent_linear_system_checks=systems,linear_wrong_answers=0,
+                live_hidden_update=dict(before='SAT',after=status,actual_updated_status='UNSAT',
+                    reason=reason,new_cache_entries=len(cache)-before))
+    Path(__file__).with_name('adversarial_results.json').write_text(json.dumps(result,indent=2)+'\n')
+    print(json.dumps(result,indent=2))
+
+if __name__=='__main__': main()

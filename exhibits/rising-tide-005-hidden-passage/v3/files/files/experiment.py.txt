@@ -1,0 +1,553 @@
+#!/usr/bin/env python3
+"""Rising Tide 005: finite, reproducible 4D routing and inherited-search experiment.
+
+Uses only the Python standard library. `python3 experiment.py` writes its outputs in
+this directory. No claims about a physical fourth dimension are made.
+"""
+from __future__ import annotations
+
+import csv
+import hashlib
+import heapq
+import json
+import math
+import random
+import time
+from collections import defaultdict
+from dataclasses import asdict, dataclass
+from pathlib import Path
+from typing import Iterable, NamedTuple
+
+ROOT = Path(__file__).resolve().parent
+INF = float('inf')
+Point = tuple[int, int, int, int]
+
+
+@dataclass(frozen=True)
+class World:
+    dims: tuple[int, int, int, int] = (9, 9, 3, 4)
+    wall_layers: tuple[int, ...] = (0,)
+    wall_x: int = 4
+    wall_y_low: int = 1
+    wall_y_high: int = 7
+    w_cost: int = 1
+    name: str = 'ground-wall'
+
+    def __post_init__(self):
+        assert all(n > 0 for n in self.dims)
+        assert self.w_cost >= 1
+        assert 0 <= self.wall_x < self.dims[0]
+        assert 0 <= self.wall_y_low <= self.wall_y_high < self.dims[1]
+        assert all(0 <= w < self.dims[3] for w in self.wall_layers)
+
+    def valid(self, p: Point) -> bool:
+        x, y, z, w = p
+        return (0 <= x < self.dims[0] and 0 <= y < self.dims[1]
+                and 0 <= z < self.dims[2] and 0 <= w < self.dims[3]
+                and not (x == self.wall_x and self.wall_y_low <= y <= self.wall_y_high and w in self.wall_layers))
+
+    def neighbors(self, p: Point) -> Iterable[tuple[Point, int]]:
+        for i in range(4):
+            for sign in (-1, 1):
+                q = list(p)
+                q[i] += sign
+                q = tuple(q)
+                if self.valid(q):
+                    yield q, self.w_cost if i == 3 else 1
+
+    def signature(self):
+        return (self.dims, self.wall_layers, self.wall_x, self.wall_y_low,
+                self.wall_y_high, self.w_cost)
+
+    def vertices(self):
+        a, b, c, d = self.dims
+        return [(x,y,z,w) for x in range(a) for y in range(b) for z in range(c)
+                for w in range(d) if self.valid((x,y,z,w))]
+
+
+@dataclass
+class Tally:
+    queries: int = 0
+    lookup: int = 0
+    settled: int = 0
+    edge_checks: int = 0
+    heap_pushes: int = 0
+    heap_pops: int = 0
+    stale_pops: int = 0
+    improved_distances: int = 0
+
+    def __sub__(self, other):
+        return {f: getattr(self,f)-getattr(other,f) for f in self.__dataclass_fields__}
+
+    def work_events(self):
+        # Counts operations as equal events only for transparent accounting;
+        # not a claim that each event costs equal wall time or energy.
+        return self.lookup + self.settled + self.edge_checks + self.heap_pushes + self.heap_pops
+
+
+class ExactReverseFrontier:
+    """Retain the ongoing exact Dijkstra state; continuing it *is* incorporation.
+
+    Static, undirected, nonnegative-weight graph. No separate proof/learning pass.
+    Different graph signatures MUST have different instances.
+    """
+    def __init__(self, world: World, goal: Point):
+        assert world.valid(goal)
+        self.world, self.goal = world, goal
+        self.heap = [(0,goal)]
+        self.tentative = {goal:0}
+        self.final = {}
+        self.next_to_goal = {}
+        self.tally = Tally(heap_pushes=1)
+
+    def query(self, source: Point):
+        self.tally.queries += 1
+        self.tally.lookup += 1
+        if not self.world.valid(source):
+            return None
+        if source in self.final:
+            return self.final[source]
+        while self.heap:
+            d,u = heapq.heappop(self.heap)
+            self.tally.heap_pops += 1
+            if u in self.final or d != self.tentative.get(u):
+                self.tally.stale_pops += 1
+                continue
+            self.final[u] = d
+            self.tally.settled += 1
+            # Expand even when query completes; this keeps a valid frontier
+            # for the next problem. Fresh control performs the same expansion.
+            for v,weight in self.world.neighbors(u):
+                self.tally.edge_checks += 1
+                nd = d+weight
+                if nd < self.tentative.get(v, INF):
+                    self.tentative[v] = nd
+                    self.next_to_goal[v] = u
+                    self.tally.improved_distances += 1
+                    heapq.heappush(self.heap,(nd,v))
+                    self.tally.heap_pushes += 1
+            if u == source:
+                return d
+        return None
+
+    def route(self, source: Point):
+        if source not in self.final:
+            raise ValueError('First call query(source)')
+        result = [source]
+        u = source
+        while u != self.goal:
+            u = self.next_to_goal[u]
+            result.append(u)
+            assert len(result) <= math.prod(self.world.dims)
+        return result
+
+
+class FrontierPool:
+    def __init__(self):
+        self.stores = {}
+        self.lookups = 0
+
+    def query(self, world: World, goal: Point, source: Point):
+        self.lookups += 1
+        key = (world.signature(), goal)
+        if key not in self.stores:
+            self.stores[key] = ExactReverseFrontier(world, goal)
+        return self.stores[key].query(source)
+
+    def total_tally(self):
+        t = Tally()
+        for store in self.stores.values():
+            for field in t.__dataclass_fields__:
+                setattr(t,field,getattr(t,field)+getattr(store.tally,field))
+        return t
+
+    def retained(self):
+        return {'frontiers':len(self.stores),
+                'settled_nodes':sum(len(s.final) for s in self.stores.values()),
+                'tentative_nodes':sum(len(s.tentative) for s in self.stores.values()),
+                'queued_heap_entries':sum(len(s.heap) for s in self.stores.values())}
+
+
+def independent_forward_dijkstra(world: World, source: Point, goal: Point):
+    """Independent forward implementation, not sharing caches or predecessor."""
+    assert world.valid(source) and world.valid(goal)
+    distance={source:0}; queue=[(0,source)]
+    while queue:
+        dist, node = heapq.heappop(queue)
+        if dist != distance[node]:
+            continue
+        if node == goal:
+            return dist
+        for nxt, step in world.neighbors(node):
+            candidate = dist + step
+            if candidate < distance.get(nxt, INF):
+                distance[nxt] = candidate
+                heapq.heappush(queue,(candidate,nxt))
+    return None
+
+
+def independent_bellman_ford(world: World, source: Point, goal: Point):
+    """Slow oracle for small worlds; minimizes all directed edges repeatedly."""
+    vertices = world.vertices()
+    cost = {v:INF for v in vertices}
+    cost[source]=0
+    edges=[(u,v,w) for u in vertices for v,w in world.neighbors(u)]
+    for _ in range(len(vertices)-1):
+        changed=False
+        for u,v,w in edges:
+            candidate=cost[u]+w
+            if candidate < cost[v]:
+                cost[v]=candidate
+                changed=True
+        if not changed:break
+    return None if cost[goal]==INF else cost[goal]
+
+
+def route_weight(world:World,path:list[Point]):
+    return sum(next(w for n,w in world.neighbors(u) if n==v)
+               for u,v in zip(path,path[1:]))
+
+
+def wall_theory(d:int,c:int,levels:int=4):
+    # Endpoints (0,4,1,0) and (8,4,1,0); 4 steps to clear wall in y.
+    return 8 + min(8, 2*(d+1)*c if d+1 < levels else INF)
+
+
+def rank_q(a: list[list[int]]) -> int:
+    from fractions import Fraction
+    A=[[Fraction(v) for v in row] for row in a]
+    if not A:return 0
+    r=0
+    for col in range(len(A[0])):
+        pivot = next((i for i in range(r,len(A)) if A[i][col]),None)
+        if pivot is None:continue
+        A[r],A[pivot]=A[pivot],A[r]
+        k=A[r][col];A[r]=[v/k for v in A[r]]
+        for i in range(len(A)):
+            if i!=r:
+                k=A[i][col]
+                if k:A[i]=[a-k*b for a,b in zip(A[i],A[r])]
+        r+=1
+        if r==len(A):break
+    return r
+
+
+def gram_from_squared_distances(points:list[tuple[int,...]]):
+    # Origin first. Ambient coordinates are never used to construct the matrix
+    # except through pairwise distances. This recovers affine rank.
+    ds=lambda a,b:sum((x-y)**2 for x,y in zip(a,b))
+    return [[(ds(points[0],points[i])+ds(points[0],points[j])-
+              ds(points[i],points[j]))//2 for j in range(1,len(points))]
+            for i in range(1,len(points))]
+
+
+def dimensional_control():
+    points=[(0,0,0,0),(1,0,0,0),(0,1,0,0),(0,0,1,0),(0,0,0,1)]
+    exact=gram_from_squared_distances(points)
+    projection=gram_from_squared_distances([p[:3] for p in points])
+    assert rank_q(exact)==4 and rank_q(projection)==3
+    randomer=random.Random(55005)
+    observations=[]
+    for _ in range(400):
+        x,y,z,w=(randomer.uniform(-3,3) for i in range(4))
+        noise_x=randomer.uniform(-.05,.05)
+        noise_view=randomer.uniform(-.05,.05)
+        p0=x+noise_x
+        p1=x+.5*w+noise_view
+        recovered=(p1-p0)/.5
+        observations.append(abs(w-recovered))
+    return {'five_point_metric_gram_rank_4d':rank_q(exact),
+            'same_points_xyz_projection_rank':rank_q(projection),
+            'known_second_view_tilt':0.5,'observation_noise_each_view_bound':0.05,
+            'max_observed_w_error':max(observations),
+            'analytic_w_error_bound':0.2,
+            'tested_points':len(observations),
+            'interpretation':'Metric rank detects minimum Euclidean dimension under Euclidean distance assumptions; it cannot identify a physical W axis. Two-view recovery requires calibrated known observation maps.'}
+
+
+def barrier_tests():
+    rows=[]
+    source=(0,4,1,0); goal=(8,4,1,0)
+    for d in range(4):
+        for c in (1,2,3,4):
+            world=World(wall_layers=tuple(range(d+1)),w_cost=c,name=f'wall-depth-{d}-wcost-{c}')
+            fresh=independent_forward_dijkstra(world,source,goal)
+            frontier=ExactReverseFrontier(world,goal)
+            cached=frontier.query(source)
+            theoretical=wall_theory(d,c)
+            assert cached==fresh==theoretical
+            path=frontier.route(source)
+            assert route_weight(world,path)==fresh
+            projected_conflict_points=sum((x==4 and 1<=y<=7 and w>0)
+                                          for x,y,z,w in path)
+            rows.append({'wall_max_w':d,'w_step_cost':c,
+                         'theorem_cost':theoretical,'computed_cost':fresh,
+                         'path_xyz_occupied_at_other_w':projected_conflict_points,
+                         'steps_in_w':sum(u[3]!=v[3] for u,v in zip(path,path[1:])),
+                         'route':path})
+    planar=World(dims=(9,9,3,1),wall_layers=(0,),name='only-xyz')
+    raised=World(wall_layers=(3,),name='raised-wall')
+    raised_cost=independent_forward_dijkstra(raised,source,goal)
+    planar_cost=independent_forward_dijkstra(planar,source,goal)
+    assert planar_cost==16 and raised_cost==8
+    # Model entrance interface: nearest available outside cell of wall.
+    visit_source=(0,4,1,0)
+    ground_entrance=(3,4,1,0)
+    raised_entrance=(4,4,1,2)
+    ground_access=independent_forward_dijkstra(planar,visit_source,ground_entrance)+1
+    elevated_access=independent_forward_dijkstra(raised,visit_source,raised_entrance)+1
+    assert ground_access==4 and elevated_access==7
+    return {'matrix':rows, 'planar_cost':planar_cost,'raised_cost':raised_cost,
+            'ground_destination_cost':ground_access,'raised_destination_cost':elevated_access,
+            'access_penalty':elevated_access-ground_access,
+            'traffic_savings_per_through_trip':planar_cost-raised_cost,
+            'traffic_savings_with_w_detour':10-raised_cost,
+            'traffic_vs_destination_cases':[
+                {'through':n,'direct_visits':m,
+                 'ground_only_cost':n*planar_cost+m*ground_access,
+                 'raised_cost':n*raised_cost+m*elevated_access,
+                 'net_saving':n*(planar_cost-raised_cost)-m*(elevated_access-ground_access)}
+                for n,m in ((1,1),(1,3),(2,4),(5,2),(10,10),(30,2))]}
+
+
+def all_forward_distances(world:World,source:Point):
+    """Ordinary shortest-path computation; its distances are reusable byproducts."""
+    dist={source:0};queue=[(0,source)]
+    while queue:
+        d,u=heapq.heappop(queue)
+        if d!=dist[u]:continue
+        for v,c in world.neighbors(u):
+            if d+c<dist.get(v,INF):
+                dist[v]=d+c
+                heapq.heappush(queue,(d+c,v))
+    return dist
+
+
+def exposure_masks_on_shortest_paths(world:World,source:Point,goal:Point,resources, radius:int,
+                                     precomputed_distances=None):
+    """Exact sets of exposures across ALL shortest routes via shortest-path DAG.
+
+    A distance map already earned by ordinary search can be inherited instead
+    of running a dedicated fresh search for every hypothetical radius.
+    """
+    if not world.valid(source) or not world.valid(goal):return None
+    dist=(all_forward_distances(world,source) if precomputed_distances is None
+          else precomputed_distances)
+    if goal not in dist:return None
+    def near_mask(node):
+        return sum(1<<i for i,resource in enumerate(resources)
+                   if sum(abs(a-b) for a,b in zip(node,resource))<=radius)
+    masks={source:{near_mask(source)}}
+    for u in sorted(dist,key=lambda v:(dist[v],v)):
+        if u not in masks:continue
+        for v,c in world.neighbors(u):
+            if dist.get(v,INF)==dist[u]+c:
+                dest=masks.setdefault(v,set())
+                bit=near_mask(v)
+                dest.update(mask|bit for mask in masks[u])
+    final=masks[goal]
+    return {'distance':dist[goal],
+            'min_distinct_exposures':min(m.bit_count() for m in final),
+            'max_distinct_exposures':max(m.bit_count() for m in final),
+            'all_distinct_counts':sorted({m.bit_count() for m in final}),
+            'distinct_exposure_masks':len(final)}
+
+
+def adjacency_tests():
+    source,goal=(0,4,1,0),(8,4,1,0)
+    worlds=[World(dims=(9,9,3,1),wall_layers=(0,),name='ground-3d'),
+            World(wall_layers=(0,),name='ground-4d'),
+            World(wall_layers=(3,),name='elevated-4d')]
+    rows=[]
+    retained_distances={w.name:all_forward_distances(w,source) for w in worlds}
+    for resource_w in (0,1,2,3):
+        resources=[(x,4,1,resource_w) for x in (2,4,6)]
+        for radius in (0,1,2,3,4):
+            for world in worlds:
+                result=exposure_masks_on_shortest_paths(
+                    world,source,goal,resources,radius,retained_distances[world.name])
+                rows.append({'world':world.name,'resource_w':resource_w,'radius':radius,**result})
+    return rows
+
+
+def independent_shortest_path_adjacency_oracle():
+    """Enumerate *every* shortest route on a tiny 4D grid and compare masks."""
+    tiny=World(dims=(3,3,1,2),wall_layers=(),wall_x=1,
+               wall_y_low=2,wall_y_high=2,name='tiny-adjacency')
+    source=(0,0,0,0)
+    goal=(2,2,0,1)
+    resources=((1,0,0,0),(1,1,0,1),(2,1,0,0))
+    for radius in (0,1,2):
+        exact=exposure_masks_on_shortest_paths(tiny,source,goal,resources,radius)
+        shortest=independent_forward_dijkstra(tiny,source,goal)
+        masks=set()
+        total=0
+        def enumerate_routes(node,steps,seen):
+            nonlocal total
+            seen=seen|sum(1<<i for i,resource in enumerate(resources)
+                          if sum(abs(a-b) for a,b in zip(node,resource))<=radius)
+            if node==goal:
+                if steps==shortest:
+                    masks.add(seen)
+                    total+=1
+                return
+            if steps>=shortest:return
+            for nxt,c in tiny.neighbors(node):
+                if steps+c<=shortest:
+                    enumerate_routes(nxt,steps+c,seen)
+        enumerate_routes(source,0,0)
+        assert total==30,(total,radius)
+        assert exact['distance']==shortest==5
+        assert exact['distinct_exposure_masks']==len(masks)
+        assert exact['min_distinct_exposures']==min(m.bit_count() for m in masks)
+        assert exact['max_distinct_exposures']==max(m.bit_count() for m in masks)
+    return {'radius_cases':3,'exhaustively_enumerated_geodesics_per_case':30}
+
+
+def randomized_oracle_tests():
+    rng=random.Random(10555005)
+    checks=0
+    for layers in ((0,),(1,),(0,1),()):
+        for cost in (1,2):
+            small=World(dims=(5,5,2,2),wall_layers=layers,
+                        wall_x=2,wall_y_low=1,wall_y_high=3,w_cost=cost,
+                        name='small-oracle')
+            vertices=small.vertices()
+            for _ in range(12):
+                s,t=rng.sample(vertices,2)
+                oracle=independent_bellman_ford(small,s,t)
+                fresh=independent_forward_dijkstra(small,s,t)
+                continuation=ExactReverseFrontier(small,t)
+                reuse=continuation.query(s)
+                assert oracle==fresh==reuse,(layers,cost,s,t,oracle,fresh,reuse)
+                if reuse is not None:
+                    assert route_weight(small,continuation.route(s))==reuse
+                checks+=1
+    return checks
+
+
+def compute_workloads():
+    rng=random.Random(502005)
+    worlds={
+        'low-wall':World(wall_layers=(0,),name='low-wall'),
+        'two-w':World(wall_layers=(0,1),name='two-w'),
+        'three-w':World(wall_layers=(0,1,2),name='three-w'),
+        'full-w':World(wall_layers=(0,1,2,3),name='full-w'),
+        'elevated':World(wall_layers=(3,),name='elevated'),
+        'xyz-only':World(dims=(9,9,3,1),wall_layers=(0,),name='xyz-only'),
+    }
+    goal=(8,4,1,0)
+    left=[s for s in worlds['low-wall'].vertices() if s[0]<=3]
+    all_valid=worlds['low-wall'].vertices()
+    q_focus=[('low-wall',p,goal) for p in rng.sample(left,140)]
+    unique_goals=rng.sample(all_valid,90)
+    q_one_shot=[('low-wall',rng.choice(all_valid),g) for g in unique_goals]
+    q_mixed=[]
+    for i in range(180):
+        wn=list(worlds)[i%len(worlds)]
+        valid=[s for s in worlds[wn].vertices() if s[0]<=3]
+        q_mixed.append((wn,rng.choice(valid),goal))
+    q_directed=[]
+    targets=((8,4,1,0),(7,3,1,0),(6,6,2,0))
+    for i in range(150):
+        q_directed.append(('elevated',rng.choice(worlds['elevated'].vertices()),targets[i%3]))
+    all_logs=[]
+    summary=[]
+    for label,query_list in [('focused',q_focus),('one-shot',q_one_shot),('mixed-worlds',q_mixed),('three-destinations',q_directed)]:
+        pool=FrontierPool()
+        baseline=Tally()
+        for j,(wn,src,dst) in enumerate(query_list):
+            world=worlds[wn]
+            assert world.valid(src) and world.valid(dst)
+            # Fresh reverse search every time; exactly same search direction.
+            control=ExactReverseFrontier(world,dst)
+            baseline_value=control.query(src)
+            for f in baseline.__dataclass_fields__:
+                setattr(baseline,f,getattr(baseline,f)+getattr(control.tally,f))
+            reuse_value=pool.query(world,dst,src)
+            assert baseline_value==reuse_value,(label,wn,j,src,dst)
+            # Independent forward oracle on an occasional deterministic subset.
+            if j%19==0:
+                assert reuse_value==independent_forward_dijkstra(world,src,dst)
+            all_logs.append({'workload':label,'query_index':j,'world':wn,'source':list(src),
+                             'goal':list(dst),'distance':reuse_value,
+                             'fresh_work_cumulative':baseline.work_events(),
+                             'retained_work_cumulative':pool.total_tally().work_events(),
+                             'frontiers':len(pool.stores)})
+        reuse_tally=pool.total_tally()
+        fresh_event=baseline.work_events()
+        reuse_event=reuse_tally.work_events()+pool.lookups # external pool dispatch cost
+        summary.append({'workload':label,'queries':len(query_list),
+                        'distinct_sources':len({(wn,src) for wn,src,dst in query_list}),
+                        'distinct_goals':len({(wn,dst) for wn,src,dst in query_list}),
+                        'fresh_tally':asdict(baseline),'retained_tally':asdict(reuse_tally),
+                        'fresh_work_events':fresh_event,'retained_work_events':reuse_event,
+                        'relative_work_reduction':round((fresh_event-reuse_event)/fresh_event,6),
+                        'memory':pool.retained()})
+    # Stale-cache counterexample: same XYZ/goal but different wall W extent.
+    previous=worlds['low-wall']
+    modified=worlds['full-w']
+    src=(0,4,1,0)
+    stale=ExactReverseFrontier(previous,goal).query(src)
+    fresh=independent_forward_dijkstra(modified,src,goal)
+    assert stale==10 and fresh==16
+    return summary,all_logs,{'unversioned_stale_value':stale,
+                             'correct_after_wall_change':fresh,
+                             'change_requires_revalidation':True,
+                             'interpretation':'Retaining a correct old answer without its world signature becomes unsound after a structural edit.'}
+
+
+def write_csv(path,rows):
+    if not rows:return
+    with path.open('w',encoding='utf-8',newline='') as f:
+        writer=csv.DictWriter(f,fieldnames=list(rows[0]))
+        writer.writeheader()
+        for row in rows:
+            writer.writerow({k:json.dumps(v,separators=(',',':')) if isinstance(v,(dict,list,tuple)) else v
+                             for k,v in row.items()})
+
+
+def main():
+    start=time.perf_counter()
+    barriers=barrier_tests()
+    randomized_checks=randomized_oracle_tests()
+    adjacency_oracle=independent_shortest_path_adjacency_oracle()
+    dimensional=dimensional_control()
+    adjacency=adjacency_tests()
+    workloads,logs,stale=compute_workloads()
+    result={
+        'experiment':'RISING-TIDE-005',
+        'status':'finite reproducible computation, not physical inference',
+        'seed':{'oracle':10555005,'memory':502005,'observability':55005},
+        'geometry':{'spatial_coordinates':['x','y','z','w'],'grid':[9,9,3,4],
+                    'obstacle':'x=4, y=1..7, all z, selected w layers',
+                    'movement':'6 or 8 orthogonal neighbor moves; x/y/z step cost 1, w step cost chosen integer'},
+        'barriers':barriers,'observability':dimensional,'adjacency':adjacency,
+        'memory_workloads':workloads,'dynamic_change':stale,
+        'independent_small_world_checks':randomized_checks,
+        'independent_adjacency_path_checks':adjacency_oracle,
+        'adjacency_distance_maps_built':3,
+        'adjacency_conditions_using_maps':len(adjacency),
+        'raw_memory_queries':len(logs),
+    }
+    (ROOT/'results.json').write_text(json.dumps(result,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+    write_csv(ROOT/'wall_sweep.csv',barriers['matrix'])
+    write_csv(ROOT/'adjacency_sweep.csv',adjacency)
+    write_csv(ROOT/'query_ledger.csv',logs)
+    # Independent audit of emitted JSON and CSV sample counts.
+    loaded=json.loads((ROOT/'results.json').read_text(encoding='utf-8'))
+    assert len(loaded['barriers']['matrix'])==16
+    assert len(loaded['adjacency'])==60
+    assert sum(row['queries'] for row in loaded['memory_workloads'])==len(logs)
+    print(json.dumps({
+        'proof_check':'PASS', 'finite_barrier_cases':len(barriers['matrix']),
+        'independent_small_oracle_checks':randomized_checks,
+        'adjacency_cases':len(adjacency),'normal_work_queries':len(logs),
+        'memory_results':[(v['workload'],v['fresh_work_events'],v['retained_work_events'],v['relative_work_reduction']) for v in workloads],
+        'planar_vs_raised':(barriers['planar_cost'],barriers['raised_cost']),
+        'retrieval_invalid_without_world_version':stale,
+        'elapsed_seconds_noncanonical':round(time.perf_counter()-start,4)},indent=2))
+
+
+if __name__=='__main__':
+    main()

@@ -1,0 +1,72 @@
+import {key,copy} from './learner.mjs';
+export function rng(seed) {let s=seed>>>0;return n=>{s=(Math.imul(s,1664525)+1013904223)>>>0;return Math.floor(s/4294967296*n);};}
+export const identity=n=>Array.from({length:n},(_,i)=>Array.from({length:n},(_,j)=>Number(i===j)));
+export function edit(A,i,j){const out=copy(A);for(let c=0;c<A.length;c++)out[i][c]^=A[j][c];return out;}
+export function drawEdit(A,r){const i=r(A.length);let j=r(A.length-1);if(j>=i)j++;return {A:edit(A,i,j),i,j};}
+export function randomMatrix(n,r){let A=identity(n);for(let i=0;i<12*n;i++)A=drawEdit(A,r).A;return A;}
+function nonElementary(A,r){
+  const n=A.length,i=r(n);let j=r(n-1);if(j>=i)j++;
+  let k=r(n-2);for(const excluded of [i,j].sort((a,b)=>a-b))if(k>=excluded)k++;
+  // Sum of two distinct other basis rows is nonzero and not any basis row.
+  return {A:edit(edit(A,i,j),i,k),i,j,k};
+}
+export function makeSequence(config) {
+  const {n,seed,capacity:K,q,kind,frequency=0}=config,r=rng(seed);
+  const matrices=[],meta=[],seen=new Set();
+  const put=(A,info)=>{if(seen.has(key(A)))return false;seen.add(key(A));matrices.push(A);meta.push(info);return true;};
+  const unrelated=()=>{let A;do{A=randomMatrix(n,r);}while(!put(A,{kind:'unrelated'}));};
+  for(let z=0;z<K;z++)unrelated();
+  for(let z=0;z<32;z++) {
+    if(kind==='repeat') {matrices.push(copy(matrices[z%K]));meta.push({kind:'repeat',parent:z%K});continue;}
+    const related=kind==='chain'||(kind==='mixture' && z%4<frequency*4);
+    if(related) {
+      for(;;) {
+        const parent=kind==='chain'?matrices.length-1:matrices.length-1-r(Math.min(K,matrices.length));
+        const e=drawEdit(matrices[parent],r);
+        if(put(e.A,{kind:'elementary',parent,i:e.i,j:e.j}))break;
+      }
+    } else if(kind==='decoy'||kind==='two-row') {
+      for(;;) {
+        const parent=matrices.length-1,e=nonElementary(matrices[parent],r);
+        if(kind==='two-row') {
+          // Change a second row as well; do not hand this composition to learners.
+          const f=edit(e.A,e.j,e.i);
+          if(put(f,{kind:'two-row',parent}))break;
+        } else if(put(e.A,{kind:'one-row-decoy',parent,i:e.i,j:e.j,k:e.k}))break;
+      }
+    } else unrelated();
+  }
+  const problems=[],unique=new Set(),firstQueries=[];
+  for(let v=0;v<matrices.length;v++)for(let j=0;j<q;j++) {
+    if(kind==='repeat'&&v>=K) {
+      problems.push(structuredClone(firstQueries[(v-K)%K*q+j]));continue;
+    }
+    let b,h,d,k;
+    do {b=Array.from({length:n},()=>r(2));h=Array.from({length:n},()=>r(2));d=r(2);k=key(matrices[v])+b.join('')+h.join('')+d;}while(unique.has(k));
+    unique.add(k);const p={A:copy(matrices[v]),b,h,d};problems.push(p);if(v<K)firstQueries.push(p);
+  }
+  return {config,problems,metadata:meta};
+}
+// Separate curve: a valid parent is oldest; other records are close-looking
+// one-row decoys. Test one new child after paying for the whole archive.
+export function makeDeepSequence(config) {
+  const {n,seed,capacity:K,q}=config,r=rng(seed),root=randomMatrix(n,r);
+  const matrices=[root],seen=new Set([key(root)]),metadata=[{kind:'root'}];
+  while(matrices.length<K) {
+    const e=nonElementary(root,r);
+    if(!seen.has(key(e.A))){seen.add(key(e.A));matrices.push(e.A);metadata.push({kind:'decoy',i:e.i});}
+  }
+  let child;do{child=drawEdit(root,r);}while(seen.has(key(child.A)));
+  matrices.push(child.A);metadata.push({kind:'elementary',parent:0,i:child.i,j:child.j});
+  const problems=[];
+  for(const A of matrices)for(let j=0;j<q;j++)problems.push({A:copy(A),b:Array.from({length:n},()=>r(2)),h:Array.from({length:n},()=>r(2)),d:r(2)});
+  return {config,problems,metadata};
+}
+export function configurations() {
+  const out=[];
+  for(const n of [8,16])for(const seed of [41,137,2027])for(const capacity of [4,16,64])for(const q of [1,4,16]) {
+    for(const frequency of [0,.25,.5,.75,1])out.push({n,seed,capacity,q,kind:'mixture',frequency});
+    for(const kind of ['chain','decoy','two-row','repeat','deep'])out.push({n,seed,capacity,q,kind});
+  }
+  return out;
+}

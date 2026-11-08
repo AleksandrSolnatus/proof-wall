@@ -1,0 +1,39 @@
+# Lotus Recognition 002 — when finding the shortcut costs more
+
+**Question.** Can a learner infer the elementary row-edit relationship to a stored Boolean matrix—and does that recognition repay its own work, compared to fresh solving and exact caching?
+
+**A result worth looking at.** Knowing a shortcut is not enough: finding it, checking it, maintaining it, and recognizing when not to use it are part of the work.
+
+## What was done
+
+Pinned baseline inverse-update algorithm, four compared policies, exact candidate row comparison, paid recognition/repair/checking/storage ledgers, finite workload sweeps, and separate certificate audits.
+
+## What the record supports
+
+In a specified 16-dimensional immediate related chain, paid transfer costs 2,159,593 units versus 2,906,281 fresh and 2,545,438 exact; on a strict 64-parent search, search alone costs 23,126 versus 6,643 for an entire fresh checked query. Recorded audit checks 904,176 raw certificates across the four policies.
+
+The original evidence reports: 540 main plus 54 strict controls; 904,176 checked answers across four policies; a selected related chain wins 25.7% against fresh while strict old-parent search costs 3.48 times a complete fresh checked query.
+
+## Why this belongs on a wall of proofs and experiments
+
+This is a bounded, source-traceable result. The claimed exactness or conditional proof is identified separately from finite execution and measurement. The accompanying materials preserve enough mathematics, code, receipts, and negative controls to inspect where the result holds and where it does not.
+
+## Where it stops
+
+- The repair identity was previously known; the learner recognizes only a supported one-row edit.
+- The 594 grid scenarios include repeated arrivals and generator-designed relationships, not random real-world workloads.
+- Charged units use equal-weight operation accounting; they are not wall-clock or energy measurements.
+- The selected code and records are for inspection: dependencies and raw receipt trees needed to run all scripts remain in the private complete archive and are not included here.
+- A growing archive may cost more to scan than simply solving; false near-matches exacerbate the loss.
+- The compressed 41 MB archive includes historical code and large run data; public candidate is deliberately selective.
+
+## Still open
+
+- Can a charged structural index reduce search without hiding its construction or maintenance costs?
+- Does the improvement survive held-out relations, stronger solvers, and machine-level performance accounting?
+
+## Provenance and access
+
+Owner-directed MATH/Lotus study. The supplied report identifies a pinned Lotus baseline and records an additional recognition experiment and independent audit; exact individual worker credit not inferred.
+
+Full unmodified original source archive is retained in the **private** Drago handoff. The selected files here are a **candidate public excerpt**, not a declaration of public distribution approval. Third-party references and code notices require exact-file review. No new open-source license is declared. Scientific results are reported from the preserved packet; unchanged originals were verified byte-for-byte, while the report and protocol are labeled public-facing derivatives; no historical experiment was rerun.

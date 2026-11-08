@@ -1,0 +1,96 @@
+# MATH / Rising Tide 005 — The Hidden Passage
+
+**Completed November 7, 2026 — substantive finite experiment**
+
+## Why
+
+We wanted to work *on* a real mathematical system rather than stop repeatedly to measure whether our thinking improves. A fixed resource may obstruct through-movement, while helping nearby work even when no one enters it. An extra spatial degree of freedom may make movement easier without magically removing access costs. And ordinary work might naturally create computational structure useful for the next query. We can deliberately search for W and also allow W-like structure to be suggested by other work; neither approach alone is sufficient evidence of physical W.
+
+## The constructed world
+
+The exact world is a four-dimensional rectangular lattice with 9×9×3×4 possible spatial positions, edges along X, Y, Z, W, and finite barriers occupying chosen W layers. Unlike a 3D projection, the full geometry remembers which W-layer a path occupies. The shortest-path controls, path-adjacency analysis, and cache experiment all use this same formal model. There is **no time coordinate** in W.
+
+Independent shortest-route calculation, slow Bellman–Ford on smaller worlds, symbolic distance formulas, and calibrated distance-geometry checks provide distinct evidence. See `PROOF.md` for the exact statements and derivations.
+
+## Result 1 — when the extra coordinate helps
+
+For crossing `s=(0,4,1,0)` to `t=(8,4,1,0)` past the central wall:
+
+| Model | Shortest cost |
+|---|---:|
+| Pure XYZ, barrier throughout available W | 16 |
+| Ground wall, W=1 bypass allowed at unit cost | 10 |
+| Wall relocated exclusively to W=3; clear ground | 8 |
+
+All **16 combinations** of barrier W-depth 0–3 and W-step cost 1–4 matched the exact formula. A W bypass ceases to be useful if it is too expensive or the wall spans every W-layer. The extra coordinate alone does not guarantee a benefit.
+
+Direct access costs something different: with explicitly chosen entrance interfaces and a single service transition, ground access costs **4** units and elevated access **7**. If there are N through trips and M direct visits, total savings from relocating the building versus an XYZ-only ground model are `8N−3M`. When N=1,M=3, relocation makes total travel **one unit worse**. The benefit depends on who needs passage and who needs the actual destination.
+
+These are path lengths added over independent travelers. There is no congestion capacity, queue, transport energy, construction, maintenance, or road safety model.
+
+## Result 2 — a shorter path can erase adjacency
+
+Three hypothetical resource centers were placed at `(2,4,1,3)`, `(4,4,1,3)`, and `(6,4,1,3)`. A path gets an exposure to a resource if any of its positions is within a radius measured by four-dimensional Manhattan distance. Resource centers describe nearby fixed structures even when those center vertices are not traversable; exposure does not require entering them. Exposure is an **assumption for this model**, not an empirical claim that physical proximity transfers knowledge.
+
+For radius **2**:
+
+| World | Travel cost | Distinct exposures along equally short routes |
+|---|---:|---:|
+| Ground wall, strictly XYZ travel | 16 | 0 |
+| Ground wall, W bypass permitted | 10 | **1–3** |
+| Lifted wall, straight ground route | **8** | **0** |
+
+The detour moves the traveler closer to the resources. The faster straight route is too far from them. At radius **3**, both four-dimensional worlds pass near all three resources. There is no unconditional best placement: geometry, proximity range, access price, and agent goals interact.
+
+The implementation preserves **every** shortest-path exposure mask through a shortest-path DAG, avoiding the mistake of claiming an arbitrary tie-broken path describes all optimal routes. The result was independently checked by enumerating **all 30 shortest paths** between two small-world endpoints at each of three radii.
+
+A small Rising Tide appeared during this productive calculation: the distance map created while solving the route problem can be reused when we change the proposed adjacency radius or resource positions. **Three retained distance maps support all 60 adjacency cases** instead of rerunning the full search for each case. There was no separate learning phase. This is exact reuse of normal computation, not a claim of a new universally efficient learner.
+
+## Result 3 — W visibility is conditional on what you observe
+
+XYZ projection `P(x,y,z,w)=(x,y,z)` hides W exactly. Two distinct W locations can have the same observed XYZ address. A valid bypass in 4D may appear to pass through a forbidden 3D location. This falsifies the *specified strict 3D route model* when compared with generated 4D path observations; it cannot, by itself, identify W as the unique explanation. Hidden passageways, hidden states, changing barriers, or a different model could produce similar appearances.
+
+As an independent control, five landmarks with true Euclidean 4D pairwise distances give a centered Gram matrix of rank **4**. Strict XYZ projected distances give rank **3**. A second **calibrated** view `x'=x+0.5w` allows `w=2(x'−x)`; if each x observation has absolute noise ≤0.05, the analytic error bound is 0.20. In **400 generated noisy samples**, the maximum observed W error was **0.1833**, within that bound. This reuses the established rank/observability principles of earlier W work rather than asserting a novel discovery.
+
+## Result 4 — working can be its own incorporation
+
+The ordinary job was to answer shortest-route queries. The retained algorithm simply continues a reverse shortest-path search from where the previous query left it. It reuses previously settled vertices and the unfinished frontier, with no separate pass scanning for discoveries.
+
+For comparison, a fresh reverse search answered the very same queries in the same direction each time. We counted each vertex settlement, outgoing-edge check, heap push/pop, and lookup as one illustrative work event. These events have unequal hardware costs, and the ledger is **not a timing or energy measurement**.
+
+| Workload | Route queries | Fresh events | Retained events | Reduction |
+|---|---:|---:|---:|---:|
+| Single recurring destination, distinct sources | 140 | 925,866 | 9,123 | **99.0%** |
+| One-off destinations | 90 | 421,871 | 421,961 | **−0.021%** |
+| Six revisited world versions | 180 | 1,019,512 | 44,441 | **95.6%** |
+| Three recurring destinations | 150 | 671,775 | 26,079 | **96.1%** |
+
+The middle case is a deliberate failure: the retaining solver left **90** frontiers containing **43,882** settled nodes and **8,009** pending heap entries, without gaining useful cross-query reuse. A stored operation is not free to carry.
+
+Worse, if the wall is extended through every W-layer, the old 10-cost answer becomes incorrect; the new correct cost is **16**. Our memory is therefore keyed by the entire relevant geometry and weights, as well as the destination. If those conditions change, an inherited result must be repaired or discarded.
+
+**Central observation:** the retained solver gets large finite savings on some sequences simply by preserving work it already did, while another sequence shows no benefit. This is an established form of incremental search; the experiment demonstrates it in our constructed 4D/adjacency problem, not general learning from arbitrary tasks.
+
+## Quality and limits
+
+- **16/16** barrier costs matched a symbolic closed form and two shortest-path implementations, with path weights checked explicitly.
+- **96/96** small-world source-target queries matched independently implemented Bellman–Ford, forward shortest-path, and retained reverse search.
+- **90** exhaustively enumerated small-world geodesics (30 for each of three radii) confirmed adjacency mask extremes and counts.
+- **560/560** streamed route answers matched fresh reverse-search controls, with periodic independent forward-search checks.
+- Four numerical output files were regenerated in a second run and remained **byte-identical**; elapsed runtime is intentionally excluded from canonical data.
+
+These checks show correctness within the specified worlds. They do not prove physical W, empirically beneficial adjacency, real-world traffic capacity improvement, universal memory advantage, arbitrary constraint-rule synthesis, or P versus NP.
+
+## Questions left by doing the work
+
+**Does adjacency have an informational analogue?** A small, cheap summary may change future choices without forcing the worker to retrieve a whole proof. We have modeled the distinction but not shown such transfer between unrelated agents.
+
+**When do we actually need W?** An exact metric rank can certify at least four Euclidean degrees under metric assumptions, whereas uncalibrated XYZ observations cannot. Real inference must separately establish what was observed and what merely explains it.
+
+**Can inherited computation create new operations instead of just retaining distances?** The exact shortest-path DAG mask calculation shows a useful derived operation that can exploit previously computed distance maps. It remains an engineered application of known mathematics, not automatic general abstraction discovery.
+
+**What counts as productive measurement?** The ledger's counters were collected as the search did real work, then analyzed afterward. The audit did not dictate each search's objective. Instrumentation still has cost, but it did not become the primary activity.
+
+> **Remove invariants as barriers to variation.**
+
+Our strongest result is not that lifting obstacles or saving searches always wins. It is that **the interface between stable structure and changing work determines when movement, adjacency, and inherited calculation can coexist**. The most useful questions often come from the places where those goals conflict.

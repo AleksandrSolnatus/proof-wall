@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "pairs": 28261,
+  "recognizedEdges": 1020,
+  "nonEdges": 27241,
+  "budgetChecks": 141305,
+  "callerIsolation": true,
+  "retainedInverseChecks": true,
+  "exactHit": true
+}

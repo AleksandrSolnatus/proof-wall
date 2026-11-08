@@ -1,0 +1,20 @@
+{
+  "all_three_bit_relations": 256,
+  "affine_accepted": 52,
+  "nonaffine_refused": 204,
+  "whole_cnf_tests": 400,
+  "whole_cnf_accepted": 315,
+  "whole_cnf_unknown": 85,
+  "whole_cnf_sat": 131,
+  "whole_cnf_unsat": 184,
+  "whole_cnf_wrong_answers": 0,
+  "independent_linear_system_checks": 512,
+  "linear_wrong_answers": 0,
+  "live_hidden_update": {
+    "before": "SAT",
+    "after": "UNKNOWN",
+    "actual_updated_status": "UNSAT",
+    "reason": "exact projected relation is non-affine",
+    "new_cache_entries": 1
+  }
+}

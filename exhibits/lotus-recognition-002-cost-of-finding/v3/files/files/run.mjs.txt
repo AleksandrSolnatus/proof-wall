@@ -1,0 +1,46 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {gzipSync} from 'node:zlib';
+import {performance} from 'node:perf_hooks';
+import {fileURLToPath} from 'node:url';
+import {Learner} from './learner.mjs';
+import {configurations,makeSequence,makeDeepSequence} from './fixtures.mjs';
+const root=path.dirname(fileURLToPath(import.meta.url));
+const dest=path.resolve(process.argv[2]??path.join(root,'results','runs'));
+fs.mkdirSync(dest,{recursive:true});
+const hash=v=>crypto.createHash('sha256').update(v).digest('hex');
+const sourceFiles=['learner.mjs','fixtures.mjs','run.mjs','test_recognizer.mjs','audit.py','PROTOCOL.md'];
+const sources=Object.fromEntries(sourceFiles.map(p=>[p,hash(fs.readFileSync(path.join(root,p)))]));
+const policies=['fresh','exact','transfer_scan','transfer_budget'],summaries=[];
+const start=performance.now();let checked=0;
+for(const [index,config] of configurations().entries()) {
+  const seq=config.kind==='deep'?makeDeepSequence(config):makeSequence(config);
+  const inputHash=hash(JSON.stringify(seq.problems)),methods={};
+  // Nothing but these four values enters solve(). The sidecar is never passed.
+  for(const policy of policies) {
+    const learner=new Learner(policy,config.capacity),trace=[],inventory=[];let serviceMs=0;
+    for(const p of seq.problems) {
+      const id=learner.nextId,t=performance.now();
+      const out=learner.solve(p.A,p.b,p.h,p.d);serviceMs+=performance.now()-t;
+      trace.push(out);checked++;
+      if(learner.nextId>id) {
+        const record=learner.archive.at(-1);
+        inventory.push({id:record.id,A:record.A,B:record.B,source:record.source});
+      }
+    }
+    if(hash(JSON.stringify(seq.problems))!==inputHash)throw Error('input mutated');
+    methods[policy]={summary:learner.summary(),trace,inventory,events:learner.events};
+    // Timing is deliberately outside the deterministic receipt.
+    summaries.push({index,config,inputHash,...learner.summary(),serviceMs});
+  }
+  const receipt={schema:'lotus-recognition-002/v1',config,inputHash,problems:seq.problems,
+    generatorSidecar:seq.metadata,methods};
+  fs.writeFileSync(path.join(dest,`${String(index).padStart(3,'0')}.json.gz`),gzipSync(JSON.stringify(receipt)));
+  if(index%50===0)process.stderr.write(`Completed ${index+1}/${configurations().length} sequences\n`);
+}
+const result={schema:'lotus-recognition-002-summary/v1',sources,policies,
+  sequences:configurations().length,serviceAnswers:checked,elapsedSeconds:(performance.now()-start)/1000,
+  runtime:process.version,rows:summaries};
+fs.writeFileSync(path.join(dest,'summary.json'),JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify({sequences:result.sequences,serviceAnswers:checked,elapsedSeconds:result.elapsedSeconds}));

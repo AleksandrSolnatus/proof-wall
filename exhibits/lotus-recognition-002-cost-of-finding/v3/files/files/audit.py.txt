@@ -1,0 +1,75 @@
+"""Independent raw-input auditor; stdlib only, no learner implementation imports."""
+import gzip, hashlib, json, pathlib, sys
+
+def require(ok, message):
+    if not ok:
+        raise ValueError(message)
+
+def pack(bits):
+    require(all(type(x) is int and x in (0, 1) for x in bits), 'non-Boolean')
+    return sum(x << i for i, x in enumerate(bits))
+
+def matrix_key(A):
+    return str(len(A)) + ':' + ''.join(str(x) for row in A for x in row)
+
+def check_inverse(A, B):
+    n=len(A)
+    require(len(B)==n and all(len(r)==n for r in B), 'shape')
+    rows=list(map(pack,A)); cols=[pack([B[k][j] for k in range(n)]) for j in range(n)]
+    return all(((a&b).bit_count()&1)==int(i==j) for i,a in enumerate(rows) for j,b in enumerate(cols))
+
+def check_certificate(p, cert):
+    A,b,h,d=(p[k] for k in ('A','b','h','d'))
+    v=cert['witness']; n=len(A)
+    require(len(v)==n and cert['answer'] in ('SAT','UNSAT'), 'certificate shape')
+    vp=pack(v)
+    if cert['answer']=='SAT':
+        return all(((pack(r)&vp).bit_count()&1)==bi for r,bi in zip(A,b)) and ((pack(h)&vp).bit_count()&1)==d
+    return all(((pack([A[i][j] for i in range(n)])&vp).bit_count()&1)==h[j] for j in range(n)) and ((pack(b)&vp).bit_count()&1)!=d
+
+def audit(directory):
+    counts=dict(sequences=0,answers=0,damaged_rejected=0,inverses=0,edges=0,ledger_rows=0)
+    for f in sorted(pathlib.Path(directory).glob('*.json.gz')):
+        data=json.loads(gzip.decompress(f.read_bytes()));counts['sequences']+=1
+        compact=json.dumps(data['problems'],separators=(',',':'))
+        require(hashlib.sha256(compact.encode()).hexdigest()==data['inputHash'], 'input hash')
+        answers=[]
+        for name,method in data['methods'].items():
+            records={}; transcript=[];prev_total=0;prev_ledger={};occupancy=0
+            for record in method['inventory']:
+                A,B=record['A'],record['B'];require(check_inverse(A,B), 'invalid inverse');counts['inverses']+=1
+                source=record['source']
+                if source['kind']=='repair':
+                    parent=records[source['parentId']];i,j=source['i'],source['j'];n=len(A)
+                    require(i!=j and 0<=i<n and 0<=j<n,'indices')
+                    require(matrix_key(parent['A'])==source['parentKey'],'parent binding')
+                    expected=[r[:] for r in parent['A']]
+                    expected[i]=[x^y for x,y in zip(expected[i],expected[j])]
+                    require(A==expected, 'false discovered relation')
+                    expected_B=[r[:] for r in parent['B']]
+                    for r in range(n):expected_B[r][j]^=parent['B'][r][i]
+                    require(B==expected_B, 'inverse update mismatch');counts['edges']+=1
+                records[record['id']]=record
+            require(len(method['trace'])==len(data['problems']),'trace size')
+            for p,row in zip(data['problems'],method['trace']):
+                cert=row['certificate'];require(check_certificate(p,cert),'invalid raw certificate');counts['answers']+=1
+                bad=dict(cert,witness=cert['witness'][:]);bad['witness'][0]^=1
+                require(not check_certificate(p,bad),'damaged certificate accepted');counts['damaged_rejected']+=1
+                require(sum(row['ledger'].values())==row['total'],'ledger total')
+                require(row['total']-prev_total==row['delta'],'delta')
+                require(all(v>=prev_ledger.get(k,0) for k,v in row['ledger'].items()),'nonmonotone ledger')
+                require(all(type(v) is int and v>=0 for v in row['ledger'].values()),'ledger type')
+                occupancy+=row['cells'];prev_total=row['total'];prev_ledger=row['ledger'];counts['ledger_rows']+=1
+                transcript.append(cert['answer'])
+            summary=method['summary']
+            require(prev_total==summary['total'] and prev_ledger==summary['ledger'],'summary')
+            require(occupancy==summary['cellQueries'],'storage occupancy')
+            require(summary['stats']['failedSearchUnits']<=summary['stats']['searchUnits'],'failure subset')
+            require(summary['stats']['searchUnits']<=summary['ledger']['recognition'],'search subset')
+            require(len(method['events'])==summary['stats']['transfers'],'transfer count')
+            answers.append(transcript)
+        require(all(a==answers[0] for a in answers),'method disagreement')
+    return dict(passed=True,**counts)
+
+if __name__=='__main__':
+    print(json.dumps(audit(sys.argv[1]),indent=2))

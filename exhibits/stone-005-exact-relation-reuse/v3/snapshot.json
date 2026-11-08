@@ -1,0 +1,61 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 3323,
+      "sha256": "f5d82d9f65f3a1dbb0b40b2495a7cb13db43afe732f3a3184bb74336f085b21f"
+    },
+    "exhibit.json": {
+      "bytes": 11381,
+      "sha256": "96957479ab6ae7d09831fea9d0f223484c5aa07ab50d8a2f39e35b6f7d990738"
+    },
+    "files/FAILED_ATTEMPT_LIVE_UPDATE.txt": {
+      "bytes": 1152,
+      "sha256": "68496fc8fe2e448a6b84f4a053856f399eb2863744563f880b83c5bff794c886"
+    },
+    "files/REPORT.md": {
+      "bytes": 20155,
+      "sha256": "4dec6c23bcfc6de60bf788d83e88a38b117b9fca2345fa9532b01b18de480754"
+    },
+    "files/SHA256SUMS.txt": {
+      "bytes": 1209,
+      "sha256": "79c1e12afb1aa82be26aed40b37b4c7fdc3834ae1d7e3937382f346b57406544"
+    },
+    "files/adversarial_checks.py": {
+      "bytes": 3875,
+      "sha256": "fcbfc56640fbe6579f17c4645dfc28e077756cb3e032f4eb62a201a70dcadb5d"
+    },
+    "files/adversarial_results.json": {
+      "bytes": 523,
+      "sha256": "45b7a519e414bf2e9a64a6b587f0519eebe19ab6b7cf0eda505d48b69e8340bb"
+    },
+    "files/experiment.py": {
+      "bytes": 21649,
+      "sha256": "f368361ef5e5ae6ca4026ba721defb92c2befa1be96ad0fe0b35dd8b9e5f099a"
+    },
+    "files/independent_verification.json": {
+      "bytes": 311,
+      "sha256": "5f728292b460f086a6b86bb9571449eb3a13fc4adb588752d0efc07b75c22f24"
+    },
+    "files/results.json": {
+      "bytes": 647803,
+      "sha256": "e7830829578f1ba8bf140de411988f3be983f98ceafa83cbe37a29c3d8ce8fc2"
+    },
+    "files/results_initial.json": {
+      "bytes": 68849,
+      "sha256": "479f773cb91f5dfbd2bc722744ad4d628221c33ecf6e34c292d41da072c26240"
+    },
+    "files/verification_bundle.json": {
+      "bytes": 1300066,
+      "sha256": "025c1b8643ff20b615dcede934f55a60775fb53c32d5a66183b1f94a0ec89f14"
+    },
+    "files/verify_bundle.py": {
+      "bytes": 4804,
+      "sha256": "4cccfdb62d3e174a692837488672b6cfe8dc6c73aed0381c4b7d56afbac6fbed"
+    },
+    "files/workload_manifest.json": {
+      "bytes": 15545,
+      "sha256": "b247a7f135c60f6fc7f2c46f7923ba06917f9a22d578a3dceed9140829b41ec1"
+    }
+  },
+  "package_sha256": "9554f43e31064a6fa4e42de23b32938a36a897fd470d62e8be3ce06e9f49810a"
+}

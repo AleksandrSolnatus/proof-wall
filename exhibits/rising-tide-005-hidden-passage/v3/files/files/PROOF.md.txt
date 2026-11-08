@@ -1,0 +1,62 @@
+# Rising Tide 005 — finite proof obligations and proofs
+
+**The Hidden Passage:** separation, observability, adjacency, and inherited computation.
+**Scope:** Exact claims about finite weighted graphs and calibrated observation maps. Not a proof that the physical world has four spatial dimensions, not a general speedup theorem, not a traffic-engineering study.
+
+## Definition — the inhabited four-dimensional graph
+
+A vertex is an integer spatial coordinate `(x,y,z,w)` satisfying `0≤x,y≤8`, `0≤z≤2`, `0≤w≤3`. Adjacent vertices differ by ±1 in exactly one coordinate. XYZ steps cost 1; W steps cost `c∈{1,2,3,4}`. Wall `B_d` removes vertices with `x=4`, `1≤y≤7`, every z, `0≤w≤d`. Start `s=(0,4,1,0)`, destination `t=(8,4,1,0)`. The W coordinate is mathematically independent of XYZ; elapsed time is not W.
+
+## Theorem 1 — exact weighted obstacle crossing
+
+For `0≤d≤2`, the shortest route has cost
+
+`D(d,c) = 8 + min(8, 2c(d+1))`.
+
+For `d=3`, `D(3,c)=16`.
+
+**Proof.** Any path from x=0 to x=8 performs at least eight net x-movements, costing at least 8. It visits some vertex in the separating slice x=4. Every such unblocked vertex must either have y∈{0,8}, or (if d<3) have w≥d+1. The first option, given y=4 at both ends, requires at least eight y-movements (four outward, four back). The second, given w=0 at both ends, requires at least 2(d+1) W-movements, costing at least 2c(d+1). Other movements only increase cost. Either lower bound is attained by explicitly crossing at y=0 and returning, or lifting to W-layer d+1, crossing in x, and descending. At d=3, there is no available W-layer beyond the wall. QED.
+
+**Finite certificate.** All 16 `(d,c)` pairs (four depths × four W movement costs) agree among the formula, an independently written forward solver, and a resumable reverse solver. Witness paths were checked step by step. The formula does not apply to arbitrarily shaped barriers, time-varying obstacles, or diagonal movement.
+
+## Corollary 1 — moving a fixed structure has an access price
+
+Replace `B_0` with a wall only at `w=3`. The straight ground route costs 8, compared with 16 when ground travel is strictly XYZ, or 10 when W can already bypass `B_0` at unit cost. A *separate service interface* is specified for destination visits: ground entrance at `(3,4,1,0)` reached in 3 steps plus one service-transition step, total 4; raised entrance at `(4,4,1,2)` reached in 6 steps plus one service-transition step, total 7.
+
+With N independent through travelers and M visitors, the lifted world's travel savings versus an XYZ-only ground world are exactly `S_XYZ=8N−3M`. Versus a ground-wall 4D world already allowing a unit-cost W detour, savings are `S_4D=2N−3M`. Counterexample: N=1,M=3 yields S_XYZ=-1; elevation loses even though transit is faster. No queues, capacity, physical construction costs, or interpersonal collision are modeled.
+
+## Theorem 2 — strict XYZ projection cannot identify W
+
+Let `P(x,y,z,w)=(x,y,z)`. For permitted u≠v, points `(x,y,z,u)` and `(x,y,z,v)` have identical images, so P is not injective and W cannot be recovered from P alone. In the world `d=0,c=1`, a valid 10-cost 4D path projects through an XYZ address that is blocked at W=0. This is not a collision in the 4D model. The rigid XYZ-only model requires 16. The discrepancy shows that *this stipulated XYZ model* cannot explain the generated path; it does not uniquely imply physical W. A tunnel, alternate state, different motion laws, or dynamic obstacles could also explain discrepancies.
+
+## Theorem 3 — when four metric degrees are recoverable
+
+Take five points o=0, e_x, e_y, e_z, e_w in Euclidean R⁴. From their *true squared pairwise distances* construct the centered Gram matrix `G_ij=(||p_i−o||²+||p_j−o||²−||p_i−p_j||²)/2`. For these points G=I₄ (rank 4). No points in Euclidean R³ can have precisely these distances. Under strict XYZ projection, e_w coincides with o, and the resulting Gram rank is 3.
+
+A known calibrated second view `P_(1/2)(x,y,z,w)=(x+(1/2)w,y,z)` permits `w=2(x'−x)`. With absolute observation error ≤ε on both x values, reconstruction error is ≤4ε. A seeded 400-sample test with ε=.05 never exceeded .20. These rank and recovery statements are conditional on **true metric data and a known observation map**, not evidence of a physical fourth axis from uncalibrated observation.
+
+## Theorem 4 — exact adjacency exposure from a shortest-path DAG
+
+Fix a weighted graph with strictly positive edge costs, start s, and exact shortest distance d(v). Orient each edge u→v when `d(u)+cost(u,v)=d(v)`; strictly increasing distances make the oriented subgraph acyclic. A resource i is *near* position p when its 4D Manhattan distance from p is ≤r; a path's exposure mask is the bitwise union of all resource-nearness masks at visited vertices.
+
+**Claim:** Propagating the set of masks along this DAG in increasing distance order produces exactly the masks achievable by shortest paths to each vertex.
+
+**Proof:** At s the only mask is the local resource-nearness mask. Every shortest path to v has a predecessor u with `d(u)<d(v)` and an edge u→v in the DAG. By induction the masks at u represent exactly all shortest prefixes; OR-ing with the local mask at v yields every valid shortest-path mask at v, and every yielded mask corresponds to an actual shortest path. QED.
+
+For k=3 resources at most 2³=8 masks can occur per vertex. With variable k this is potentially exponential; no polynomial bound for arbitrary numbers of resources is asserted. Independent enumeration of all 30 shortest paths on a tiny 4D graph, at each of three radii, agreed with the derived minimum, maximum, and distinct masks.
+
+**Counterexample to travel-only optimization:** Put three resource centers at x=2,4,6, y=4,z=1,w=3. At radius 2, shortest paths crossing a ground wall through W can touch 1–3 distinct resource neighborhoods, while the strictly shorter lifted-wall ground path touches 0. At radius 3 both touch all 3. Nearness is a chosen signal model, not measured knowledge transfer.
+
+## Theorem 5 — ongoing shortest-path work is an exact inherited operation
+
+For each immutable graph signature and destination t, retain the priority queue, tentative distances, settled distances, and predecessors of a reverse Dijkstra run. A new source query either returns its already-settled distance or *continues the same exact search* until the source is settled.
+
+**Correctness:** At every extraction of the minimum tentative distance, the usual nonnegative-weight Dijkstra invariant makes that settlement exact. Pausing after expansion of a queried vertex does not invalidate the unsettled frontier or tentative values. Resuming therefore produces exactly the same distances as an uninterrupted run. Reverse traversal is valid here because the weighted graph is undirected.
+
+**Amortized bound:** For a fixed immutable graph and target, each vertex is settled at most once, and each directed edge is scanned at most once. There are O(V+E) heap operations. Across Q source queries, total time is `O((V+E)log(V+E)+Q)` and retained storage `O(V+E)`, rather than repeated independent searches. This is an established incremental-search principle, not a novel general-purpose learning theorem.
+
+**Failure to inherit safely:** A wall expansion can change the correct route cost from 10 to 16. A cached answer with no world signature is then invalid. On 90 one-shot destinations, there is no useful shared frontier; keeping 90 frontiers costs extra memory and small dispatch overhead. Incorporation is not universally beneficial.
+
+## Scope of proof
+
+We do **not** prove a physical fourth spatial dimension, unique W recovery from XYZ data, better real-world traffic, unconditional value of elevated structures, automatic general SAT rule discovery, universal acceleration, or P versus NP. We prove finite mathematical properties of the declared worlds and retain auditable counterexamples.

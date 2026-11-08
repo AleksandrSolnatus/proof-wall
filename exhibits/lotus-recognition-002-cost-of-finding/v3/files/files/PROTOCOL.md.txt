@@ -1,0 +1,85 @@
+Publication-preparation copy: private source identifiers have been replaced with a private-custody reference. The unmodified original is preserved separately.
+
+# Recognition without supplied edits — protocol v1
+
+Frozen before the experiment runs. Continuation of a pinned Lotus baseline. Original source identifiers are retained in private custody. Historical source files were copied unchanged for the experiment.
+
+## Contract
+
+Online input is ONLY `(A,b,h,d)`, with invertible Boolean A, dimension 8 or 16.
+No parent ID, row indices, seed, workload label, future query count or generator
+state reaches a learner. Generator metadata is retained separately for audit.
+All methods see byte-identical ordered queries. All start empty. Warmup counts.
+The elementary-row inverse-update theorem is programmed in advance; discovering
+its applicability is tested, not invention of a new mathematical theorem.
+
+## Frozen policies
+
+- `fresh`: unchanged baseline fresh elimination per query, raw certificate check.
+- `exact`: exact full-query certificate cache and exact-matrix inverse cache;
+  a matrix miss constructs and fully verifies an inverse. No relationship search.
+- `transfer_scan`: same caches as exact; on a matrix miss scan retained matrices
+  newest-first, infer a unique changed row, XOR old/new row, and search old rows
+  for the donor. If proved applicable, call baseline checked repair with the
+  DISCOVERED indices. Otherwise construct and fully verify an inverse.
+- `transfer_budget`: same, but at most 4*n*n recognition units per new-matrix
+  relationship search. An interrupted candidate is a paid failure; fall back.
+
+Matrix FIFO capacity K in {4,16,64}; full-query FIFO capacity 128 in all retaining
+policies. No free pretraining, provenance lookup, or unbounded background search.
+Use seeds {41,137,2027}, n in {8,16}, queries per new matrix Q in {1,4,16}.
+Each main sequence has K initial unrelated matrices and 32 later versions.
+Vary related-arrival frequency among 0, 1/4, 1/2, 3/4, 1 (periodic schedule,
+no random per-condition variation). Related versions choose an archived parent
+uniformly; metadata never goes to learners. Each matrix's Q queries are unique.
+
+Additional sequences: exact full-query repeats, elementary edit chains, recent
+non-elementary one-row decoys, two-row edits, and deep-parent searches in an
+archive filled with decoys. A one-row decoy preserves n-1 raw rows but its delta
+is not an old row; it cannot use the supported elementary law. Two-row edits
+can require composition, which the recognizer does not search. Include a
+recency-friendly case, an old-parent case, and archive-size/search-cost curves.
+
+## Accounting
+
+Extend baseline categories with `storage`. Use baseline kernels and their scalar
+units unchanged. Additional costs: key bit read/validation and key construction;
+dictionary probe; raw row comparisons, delta XORs and failed donor tests;
+cache insertion, persistent scalar copies, FIFO shifts and evictions; output.
+Search attempts, failure units and verification units are reported explicitly;
+failure units are a SUBSET of recognition, not a second addition to total.
+Baseline repair's n*n+2 retention allowance is replaced by the explicit new
+archive write charge, avoiding double charging that allowance. Working inverse
+copy cost remains. The independent raw certificate checker always runs, even
+on exact-answer hits. A bootstrap inverse gets a full A*B=I check; repaired
+inverses inherit validity through the proven, fully checked transformation.
+
+Storage is charged when scalar cells are written and removed; retained and peak
+logical scalar cells, plus cell-query occupancy integrals, are reported. Logical
+cells are bits or fixed-sized indices/references under this bounded model, NOT
+actual heap bytes. Space-time integral is also used for rent sensitivity at
+0, 0.01, 0.1 and 1 extra work units per retained cell per query.
+
+All services pay for recognition/discovery/solve/check/store/maintain as
+specified. Equal-weight primitives are a declared model, not CPU equivalence.
+Expected O(1) dictionary probes assume a conventional hash table; key processing
+is separately charged. JS loop, allocator, string, hash-table collision, GC,
+OS and serialization costs are not assigned scalar units. Service-only elapsed
+time is recorded as secondary evidence, excluding fixture generation/audit.
+Fixture generation, test harness and independent replay are research overhead,
+reported separately from service work. No machine-memory claim is made.
+
+## Verification and interpretation
+
+Rerun baseline exhaustive checks. Exhaustively test the new recognizer on all
+ordered invertible matrix pairs of dimension <=3 against enumeration of every
+elementary edit, including damage controls and search-budget boundaries.
+Independently audit every produced certificate on the raw problem, reconstruct
+every retained inverse against A, and verify every discovered edge. Preserve
+raw sequences, full per-query service ledgers, discoveries, source hashes and
+reproduction commands. A second run must reproduce deterministic receipts
+excluding elapsed time. Report gains AND losses against fresh AND exact.
+
+Success means a paid, source-bound restricted gain with parent/edit metadata
+hidden. It is not a general SAT result, universal improvement, automatic choice
+of a new vocabulary, or a proof about P versus NP. No merge or publication.

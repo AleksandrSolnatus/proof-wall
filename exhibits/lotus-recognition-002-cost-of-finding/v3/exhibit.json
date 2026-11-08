@@ -1,0 +1,381 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "Finite generated affine matrix workloads and declared equal-weight event-accounting model; not a general P-vs-NP claim, wall-clock speedup proof, or autonomous discovery of a new operation.",
+  "date": "2026-11-05",
+  "downloads": [
+    {
+      "bytes": 3312,
+      "original_path": "article.md",
+      "sha256": "46bbf2bcdfaec7c02027d362cc3d878f97abb58a9a9ddb5350fbc023cbfc6f52",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 2628,
+      "original_path": "files/README.md",
+      "sha256": "e738d8c2306317c3785f69aa6bb16246cc972129925d54ef3c3dccc1edffbbbb",
+      "url": "files/files/README.md.txt"
+    },
+    {
+      "bytes": 5401,
+      "original_path": "files/PROTOCOL.md",
+      "sha256": "30cc149f38778b8659cf662f0ee7fdcdf95f2ebe9f7e9f3e5ff46e6f6b7688aa",
+      "url": "files/files/PROTOCOL.md.txt"
+    },
+    {
+      "bytes": 1048,
+      "original_path": "files/AMENDMENT-001.md",
+      "sha256": "1244a42361fd07bc839c36c8ab09c6aa0e47dafeef0d45c610e1d5bf504fc5be",
+      "url": "files/files/AMENDMENT-001.md.txt"
+    },
+    {
+      "bytes": 14764,
+      "original_path": "files/LOTUS-RECOGNITION-002-REPORT.md",
+      "sha256": "284d58fa69a1acd593c8a9b9a53ff1dc8f858ed61a31625597fe2e6e131e41b5",
+      "url": "files/files/LOTUS-RECOGNITION-002-REPORT.md.txt"
+    },
+    {
+      "bytes": 6857,
+      "original_path": "files/learner.mjs",
+      "sha256": "6e2f1b81fba5c565218bf315cec5fbce90dbbd82a2e9166cbaea677f0a3a2057",
+      "url": "files/files/learner.mjs.txt"
+    },
+    {
+      "bytes": 4008,
+      "original_path": "files/fixtures.mjs",
+      "sha256": "8a873a1b9db992ab618742751182a9d2a943eab8639d96fb241d6992e675220e",
+      "url": "files/files/fixtures.mjs.txt"
+    },
+    {
+      "bytes": 2775,
+      "original_path": "files/run.mjs",
+      "sha256": "e7e4d07a975d980a3cc5407afd030be68c3ee8672088d617165b2e6693755ca3",
+      "url": "files/files/run.mjs.txt"
+    },
+    {
+      "bytes": 2840,
+      "original_path": "files/run_strict.mjs",
+      "sha256": "ceccae54ce9594169e09cd79bac727e8e8308c1e91bac79c7b56790749b39daf",
+      "url": "files/files/run_strict.mjs.txt"
+    },
+    {
+      "bytes": 1083,
+      "original_path": "files/replay_saved.mjs",
+      "sha256": "45d97e476892ee915b2ef73fa87111e9d087982468a2203e0e9dfa04a0301d54",
+      "url": "files/files/replay_saved.mjs.txt"
+    },
+    {
+      "bytes": 2434,
+      "original_path": "files/test_recognizer.mjs",
+      "sha256": "76e0e1d36f7b1feebbe5e09c02c17aeb8a303a0e0459e60bd20abee21532c1d0",
+      "url": "files/files/test_recognizer.mjs.txt"
+    },
+    {
+      "bytes": 4469,
+      "original_path": "files/audit.py",
+      "sha256": "27a0458abefdaf8d449a9f0305dc84d5392924275f31a097f4adc669773b08b8",
+      "url": "files/files/audit.py.txt"
+    },
+    {
+      "bytes": 4643,
+      "original_path": "files/analyze.py",
+      "sha256": "392f75d19abc3e8c1d12b3612dba2e4aeccee79441560ab7937a667118687437",
+      "url": "files/files/analyze.py.txt"
+    },
+    {
+      "bytes": 1127,
+      "original_path": "files/verify_packet.py",
+      "sha256": "97a223edc006bbaabfeb85bb5bd55c28fe82538d57974449abe565f1436e26ca",
+      "url": "files/files/verify_packet.py.txt"
+    },
+    {
+      "bytes": 27305,
+      "original_path": "files/results__analysis.json",
+      "sha256": "e5a900968051482798ae866fb55ef14194bda19a8c0824c62fefe1275045b7f8",
+      "url": "files/files/results__analysis.json.txt"
+    },
+    {
+      "bytes": 348765,
+      "original_path": "files/results__comparisons.csv",
+      "sha256": "fe56ddc2f29e01d683d71ceff76f299964f8e98af4bbf061a28a1cf61f4506f1",
+      "url": "files/files/results__comparisons.csv.txt"
+    },
+    {
+      "bytes": 155,
+      "original_path": "files/results__independent-audit.json",
+      "sha256": "2c455954c1306d988ce29dd828d32583794672098fcd6961f4b7e0850cbd3d06",
+      "url": "files/files/results__independent-audit.json.txt"
+    },
+    {
+      "bytes": 193,
+      "original_path": "files/results__recognizer-tests.json",
+      "sha256": "bbb509494817627bc820e937dff4bf866b07e954aeedda71c464eb3432a62300",
+      "url": "files/files/results__recognizer-tests.json.txt"
+    },
+    {
+      "bytes": 148,
+      "original_path": "files/results__strict-independent-audit.json",
+      "sha256": "b7862f6430cf050c03504dce2a4396ca075eaaccfc94bea01039cc728c0f6df6",
+      "url": "files/files/results__strict-independent-audit.json.txt"
+    },
+    {
+      "bytes": 172,
+      "original_path": "files/results__reproducibility.json",
+      "sha256": "b3e5aad2bcd168c71e95cebfdd01bf4ad9d0e9962e80ebeb73c775471fe072ce",
+      "url": "files/files/results__reproducibility.json.txt"
+    },
+    {
+      "bytes": 72,
+      "original_path": "files/results__run-receipt.json",
+      "sha256": "528495cc9199620f9fc3d9337a6d7a092d9472b4875fca03e4b094aca26a4dd8",
+      "url": "files/files/results__run-receipt.json.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 3312,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "article",
+      "sha256": "46bbf2bcdfaec7c02027d362cc3d878f97abb58a9a9ddb5350fbc023cbfc6f52"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 2628,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "files/README.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "original",
+      "sha256": "e738d8c2306317c3785f69aa6bb16246cc972129925d54ef3c3dccc1edffbbbb"
+    },
+    {
+      "attribution": "Publication-preparation derivative of original research record; original preserved privately.",
+      "bytes": 5401,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "files/PROTOCOL.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "30cc149f38778b8659cf662f0ee7fdcdf95f2ebe9f7e9f3e5ff46e6f6b7688aa"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 1048,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "files/AMENDMENT-001.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "original",
+      "sha256": "1244a42361fd07bc839c36c8ab09c6aa0e47dafeef0d45c610e1d5bf504fc5be"
+    },
+    {
+      "attribution": "Publication-preparation derivative of original research record; original preserved privately.",
+      "bytes": 14764,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "files/LOTUS-RECOGNITION-002-REPORT.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "284d58fa69a1acd593c8a9b9a53ff1dc8f858ed61a31625597fe2e6e131e41b5"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 6857,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/javascript",
+      "path": "files/learner.mjs",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "6e2f1b81fba5c565218bf315cec5fbce90dbbd82a2e9166cbaea677f0a3a2057"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 4008,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/javascript",
+      "path": "files/fixtures.mjs",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "8a873a1b9db992ab618742751182a9d2a943eab8639d96fb241d6992e675220e"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 2775,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/javascript",
+      "path": "files/run.mjs",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "e7e4d07a975d980a3cc5407afd030be68c3ee8672088d617165b2e6693755ca3"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 2840,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/javascript",
+      "path": "files/run_strict.mjs",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "ceccae54ce9594169e09cd79bac727e8e8308c1e91bac79c7b56790749b39daf"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 1083,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/javascript",
+      "path": "files/replay_saved.mjs",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "45d97e476892ee915b2ef73fa87111e9d087982468a2203e0e9dfa04a0301d54"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 2434,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/javascript",
+      "path": "files/test_recognizer.mjs",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "76e0e1d36f7b1feebbe5e09c02c17aeb8a303a0e0459e60bd20abee21532c1d0"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 4469,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/audit.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "27a0458abefdaf8d449a9f0305dc84d5392924275f31a097f4adc669773b08b8"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 4643,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/analyze.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "392f75d19abc3e8c1d12b3612dba2e4aeccee79441560ab7937a667118687437"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 1127,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/verify_packet.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "97a223edc006bbaabfeb85bb5bd55c28fe82538d57974449abe565f1436e26ca"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 27305,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/results__analysis.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "e5a900968051482798ae866fb55ef14194bda19a8c0824c62fefe1275045b7f8"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 348765,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/csv",
+      "path": "files/results__comparisons.csv",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "fe56ddc2f29e01d683d71ceff76f299964f8e98af4bbf061a28a1cf61f4506f1"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 155,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/results__independent-audit.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "receipt",
+      "sha256": "2c455954c1306d988ce29dd828d32583794672098fcd6961f4b7e0850cbd3d06"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 193,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/results__recognizer-tests.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "bbb509494817627bc820e937dff4bf866b07e954aeedda71c464eb3432a62300"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 148,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/results__strict-independent-audit.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "receipt",
+      "sha256": "b7862f6430cf050c03504dce2a4396ca075eaaccfc94bea01039cc728c0f6df6"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 172,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/results__reproducibility.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "b3e5aad2bcd168c71e95cebfdd01bf4ad9d0e9962e80ebeb73c775471fe072ce"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 72,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/results__run-receipt.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "receipt",
+      "sha256": "528495cc9199620f9fc3d9337a6d7a092d9472b4875fca03e4b094aca26a4dd8"
+    }
+  ],
+  "finding": "In a specified 16-dimensional immediate related chain, paid transfer costs 2,159,593 units versus 2,906,281 fresh and 2,545,438 exact; on a strict 64-parent search, search alone costs 23,126 versus 6,643 for an entire fresh checked query. Recorded audit checks 904,176 raw certificates across the four policies.",
+  "gardens": [],
+  "id": "lotus-recognition-002-cost-of-finding",
+  "limitations": [
+    "The repair identity was previously known; the learner recognizes only a supported one-row edit.",
+    "The 594 grid scenarios include repeated arrivals and generator-designed relationships, not random real-world workloads.",
+    "A growing archive may cost more to scan than simply solving; false near-matches exacerbate the loss.",
+    "The compressed 41 MB archive includes historical code and large run data; public candidate is deliberately selective."
+  ],
+  "method": "Pinned baseline inverse-update algorithm, four compared policies, exact candidate row comparison, paid recognition/repair/checking/storage ledgers, finite workload sweeps, and separate certificate audits.",
+  "open_questions": [
+    "Can a charged structural index reduce search without hiding its construction or maintenance costs?",
+    "Does the improvement survive held-out relations, stronger solvers, and machine-level performance accounting?"
+  ],
+  "package_sha256": "814806657be0aa37063762e595dea964ee5c60ceb93f03fd002989622f68ac97",
+  "provenance": {
+    "authors": [
+      "Bridges Group — owner-directed, AI-assisted research"
+    ],
+    "change_note": "First curated Proof Wall candidate. No modification to original scientific evidence or source archive. Preparation v2: removed private source links and identifiers from the public-facing report and article; disclosed incomplete executable dependencies and the operation-cost model. Full originals preserved privately. The derivative protocol also replaces private baseline identifiers with a private-custody reference. Derivative report and protocol are labeled in-file. Release v3 records owner approval of the prepared v2 selection ; article and underlying evidence files remain unchanged. The article retains its earlier preparation-stage wording; the owner subsequently approved this release and publication review has been completed.",
+    "origin": "This project-specific recognition experiment builds on preserved earlier owner-directed baseline; the new learner experiment is separate from that historical baseline."
+  },
+  "publication": {
+    "attribution": "Bridges Group, owner-directed and AI-assisted. Exact contribution detail is in the private provenance record.",
+    "intent": "request-review",
+    "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner."
+  },
+  "question": "Can a learner infer the elementary row-edit relationship to a stored Boolean matrix—and does that recognition repay its own work, compared to fresh solving and exact caching?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Lotus Recognition 002 — when finding the shortcut costs more",
+  "version": 3
+}

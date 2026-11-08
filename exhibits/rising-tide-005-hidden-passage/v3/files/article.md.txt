@@ -1,0 +1,37 @@
+# The Hidden Passage — routes, adjacency, and work that survives
+
+**Question.** In a declared finite four-coordinate routing world, how do obstacle placement, access, adjacency, observation and retained search affect exact routes and repeated work?
+
+**A result worth looking at.** The fastest route is not always the route that comes nearest the things you value; accumulated search can be resumed, but only in the world where it was computed.
+
+## What was done
+
+Closed-form route bounds, independent finite shortest-path oracles, shortest-path DAG mask propagation, and resumable reverse Dijkstra, with full world-signature keys.
+
+## What the record supports
+
+For the defined wall D(d,c)=8+min(8,2c(d+1)) for d<=2; D(3,c)=16. The recorded checks cover 16 wall-cost pairs, 96 smaller-world route questions and 560 streamed route answers. Retained reverse search cuts declared work events sharply on repeated-destination workloads but increases them slightly for one-off destinations.
+
+The original evidence reports: 16 barrier cases; 96 small graph route oracles; 560 streamed route answers; retained 9,123 vs fresh 925,866 declared events for 140 focused queries; retaining lost 90 events for 90 one-off queries.
+
+## Why this belongs on a wall of proofs and experiments
+
+This is a bounded, source-traceable result. The claimed exactness or conditional proof is identified separately from finite execution and measurement. The accompanying materials preserve enough mathematics, code, receipts, and negative controls to inspect where the result holds and where it does not.
+
+## Where it stops
+
+- W is a spatial coordinate of a stipulated mathematical model, not time or observed physics.
+- Access-cost and adjacency signals are stipulated; no queue capacity, energy, collision, or construction costs.
+- Work events are declared counters, not seconds, energy or real traffic delay.
+- Reuse fails on one-off destination queries and is unsound if the world signature is dropped after an edit.
+
+## Still open
+
+- Can a genuine, measured information-transfer benefit be connected to the proposed adjacency model?
+- When does retaining and indexing existing route work outperform other demand-driven caches under measured machine costs?
+
+## Provenance and access
+
+Owner-directed Bridges/MATH experiment, prepared as a finite computational study on 2026-11-07. Source report says it builds on Traffic Puddle, adjacency notes, W-pressure work and Rising Tide 003B; prior results were not rerun.
+
+Full unmodified original source archive is retained in the **private** Drago handoff. The selected files here are a **candidate public excerpt**, not a declaration of public distribution approval. Third-party references and code notices require exact-file review. No new open-source license is declared. Scientific results are reported from the preserved packet; this preparation verified byte identity but did not rerun the whole original experiment.

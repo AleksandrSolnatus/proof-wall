@@ -1,0 +1,39 @@
+# Stone 005 — learn the relation, not the answer
+
+**Question.** When can a checked, cached component relation be reused across genuinely different CNF inputs, with discovery, verification, recognition and global composition still charged?
+
+**A result worth looking at.** A retained answer is less useful than a retained, independently checked description of what a component permits—and the condition under which that description remains valid.
+
+## What was done
+
+Exact existential projection theorem for disjoint private-variable interfaces; restricted affine-relation compilation, exact syntax cache, original-CNF certificate checking and independently executed verifier.
+
+## What the record supports
+
+Exact component projection composes correctly under the declared variable-separation assumptions. In the constructed 64-problem stream, local compilations fell from 512 to 8, one for each of eight templates, independently checked answers remained 64/64 and instrumented elapsed time was 4.355985 versus 0.500504 seconds in a single profiled cold/warm comparison, not a robust benchmark. Renaming, unsupported updates and non-affine factors provide preserved failures.
+
+The original evidence reports: 64/64 independently checked SAT/UNSAT answers (32 each); eight retained templates versus 512 repeated discoveries; renaming counterexample 504 new entries; UNKNOWN update retained.
+
+## Why this belongs on a wall of proofs and experiments
+
+This is a bounded, source-traceable result. The claimed exactness or conditional proof is identified separately from finite execution and measurement. The accompanying materials preserve enough mathematics, code, receipts, and negative controls to inspect where the result holds and where it does not.
+
+## Where it stops
+
+- Exact syntax matching does not recognize variable renamings efficiently; stress stream grows to 504 new cache entries.
+- Efficient global solving requires an efficiently composable family (affine here); arbitrary 3-SAT does not inherit this property.
+- Learning and verification can be exponential in unbounded component size.
+- An easy live update returned UNKNOWN; this is preserved, not hidden.
+
+## Still open
+
+- Can a checked rename-invariant signature lower total end-to-end cost on held-out sequences?
+- Can exact reusable interfaces be discovered under new cross-component constraints without expensive regeneration?
+
+## Provenance and access
+
+Owner-directed Bridges/MATH research. Report describes an independent AI-assisted contribution created 2026-11-04; exact worker identity not established in this assembled handoff.
+
+Full unmodified original source archive is retained in the **private** Drago handoff. The selected files here are a **candidate public excerpt**, not a declaration of public distribution approval. Third-party references and code notices require exact-file review. No new open-source license is declared. Scientific results are reported from the preserved packet; this preparation verified byte identity but did not rerun the whole original experiment.
+
+The included SHA256SUMS.txt is the original full-archive checksum list. This candidate omits DISTRIBUTION_RECEIPT.json, HANDOFF.md and environment.json, so the full list cannot be checked against this selection alone. The complete archive remains in private custody.

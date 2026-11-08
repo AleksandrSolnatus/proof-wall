@@ -1,0 +1,20 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {gunzipSync} from 'node:zlib';
+import {Learner} from './learner.mjs';
+const dir=process.argv[2];let sequences=0,answers=0;
+for(const file of fs.readdirSync(dir).filter(f=>f.endsWith('.json.gz')).sort()) {
+  const receipt=JSON.parse(gunzipSync(fs.readFileSync(path.join(dir,file))));
+  for(const [policy,expected] of Object.entries(receipt.methods)) {
+    const learner=new Learner(policy,receipt.config.capacity),inventory=[],trace=[];
+    for(const p of receipt.problems) {
+      const id=learner.nextId;
+      trace.push(learner.solve(p.A,p.b,p.h,p.d));answers++;
+      if(learner.nextId>id){const r=learner.archive.at(-1);inventory.push({id:r.id,A:r.A,B:r.B,source:r.source});}
+    }
+    assert.deepEqual({summary:learner.summary(),trace,inventory,events:learner.events},expected);
+  }
+  sequences++;
+}
+console.log(JSON.stringify({passed:true,sequences,answers,scope:'All policy state, ledgers and certificates replayed from saved raw inputs; generator not rerun.'},null,2));

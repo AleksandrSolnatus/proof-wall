@@ -1,0 +1,252 @@
+Publication-preparation copy: private source identifiers have been replaced with a private-custody reference. The unmodified original is preserved separately.
+
+# Lotus Recognition 002 — Can the learner find the shortcut?
+
+**Yes, within the tested elementary-row family.** Given only a new raw Boolean
+problem, the learner found a useful earlier matrix and inferred the row-edit
+indices itself. That sometimes reduced total charged work against both fresh
+elimination and exact caching. It also produced reproducible losses: an archive
+search could cost more than solving the new problem from scratch, even when the
+learner ultimately found a correct reusable relationship.
+
+This is automatic recognition of a programmed mathematical operation's
+applicability. The learner did **not** invent the inverse-update theorem, learn
+its own recognition algorithm, or discover a general computational language.
+
+## Baseline and preservation
+
+Source: a pinned Lotus baseline and an associated private research request. The original source identifiers and links are preserved in the private custody record.
+
+The baseline solver, test file and mathematical documentation were copied without
+changes and their Git blob hashes checked. Its exhaustive suite passed again:
+175 invertible matrices; 21,704 Boolean queries; 21,704 rejected damaged
+certificates; 1,020 repairs; 12 malformed cases and a forged edit rejected.
+These are the baseline's counts, separate from the new experiment below.
+
+No GitHub content was changed, no branch or PR was created, and nothing was
+merged or deployed. The earlier full affine replay gap remains unresolved; these new tests do not replace that historical experiment.
+
+## What the learner receives and discovers
+
+Each online call is exactly `solve(A,b,h,d)`. It receives no generating parent,
+edit indices, seed, family label, future query count, or generator sidecar.
+All methods receive the same ordered raw problems and start with empty memory.
+
+On a new matrix, the transfer policy searches retained matrices newest first.
+For each candidate P, it compares raw entries to locate changed rows. If exactly
+one row i differs, it computes `delta = A[i] XOR P[i]` and searches P's other rows
+for a matching donor j. A match proposes `A = E P`, where
+`E = I + e_i e_j^T`. The unchanged baseline repair then independently scans
+every matrix entry to verify that discovered edit before updating the inverse.
+
+For i != j, `E^2 = I`, hence `A^-1 = P^-1 E`. The stored inverse changes column j
+by XORing column i. An initially retained inverse is fully verified by checking
+`P P^-1 = I`; later inverses inherit validity through checked transformations.
+Every returned SAT or UNSAT certificate is independently checked against raw
+`A,b,h,d`, including cache hits. The offline audit additionally recomputes every
+retained inverse identity, so it does not rely on the transfer chain.
+
+This recognizer is complete for one elementary row addition between two valid
+matrices when allowed to finish its search. It deliberately does not search
+arbitrary changes of basis or compositions of multiple edits. Near-matches
+outside its supported family trigger fallback, not a false mathematical answer.
+
+## Compared policies and workload
+
+| Policy | On an exact matrix miss |
+|---|---|
+| Fresh | Baseline Gaussian elimination for each query; no retained knowledge |
+| Exact | Construct and verify an inverse; retain it for exact matrix reuse |
+| Transfer scan | Search all retained candidates; repair on a verified match; otherwise construct and verify an inverse |
+| Transfer budget | Same, with at most `4*n*n` recognition units before fallback |
+
+All retaining policies also have the same 128-entry exact full-query certificate
+cache. Matrix FIFO capacity K is 4, 16 or 64. This gives exact caching both
+answer reuse and inverse reuse; it is not limited to repeated final answers.
+
+The frozen main grid uses dimensions 8 and 16, seeds 41/137/2027, and 1/4/16
+queries per new matrix. Every main sequence includes K paid initial matrices
+and 32 subsequent versions. Related-arrival fractions are 0, 1/4, 1/2, 3/4, 1.
+Additional workloads include immediate edit chains, exact repeats, two-row edits,
+and one-row decoys whose difference is the sum of two old rows rather than one.
+The latter retain n-1 identical rows while defeating the supported shortcut.
+
+There are **540 main sequences plus 54 strict old-parent controls**, totaling
+**226,044 query arrivals across each of four policies: 904,176 returned answers**.
+Arrivals include intentional repeated queries; this is not a claim of 904,176
+distinct mathematical questions. The grid is a finite designed sweep, not a
+sample establishing performance on an unknown real-world distribution.
+
+The strict controls were added under `AMENDMENT-001.md` after observing that
+some nominal decoys in the original old-parent workload were valid alternative
+parents. All original receipts remain. The additional generator excludes those
+alternatives; independent enumeration confirmed exactly one supported parent
+for each of the 54 final targets. No learner or budget was tuned after results.
+
+## Paid work, including failures and storage
+
+Totals include recognition and key construction, exact lookup, every attempted
+candidate/donor search, discovery, solving, verification, storage writes,
+evictions, FIFO maintenance, inverse copies and answer output. Warmup is included.
+Failed-search work is recorded separately as a **subset of recognition**, not
+added twice. The baseline repair's old retention allowance is replaced by the
+new explicit archive-write charge; its working-copy charge remains.
+
+The units are declared equal-weight scalar/record operations. Dictionary probes
+use an expected constant-time hash-table model; key processing is charged.
+JavaScript control, allocation, GC, string/hash collision implementation costs,
+OS activity, serialization, fixture generation and the separate research audit
+are not scalar service charges. Thus these totals are not literal instruction
+counts or proven wall-clock speedups. Service-only elapsed time is retained as
+secondary evidence; it is not a controlled performance benchmark.
+
+Storage write and removal costs enter the main total. Retained/peak logical
+cells and cell-query occupancy integrals are recorded separately. These are not
+heap bytes and exclude temporary workspace. Additional recurring storage rent
+is explored below rather than silently assumed to be free under every model.
+
+## Concrete wins and losses
+
+All rows below use n=16 and seed=41. Values are total charged work for the entire
+sequence, including its initial archive construction. Lower is better.
+
+| Sequence | K | Queries per matrix | Fresh | Exact | Transfer scan | Transfer budget |
+|---|---:|---:|---:|---:|---:|---:|
+| Immediate related chain | 4 | 16 | 2,906,281 | 2,545,438 | **2,159,593** | **2,159,593** |
+| Unrelated arrivals | 64 | 1 | **485,953** | 1,727,358 | 1,784,605 | 1,784,605 |
+| Misleading one-row similarities | 64 | 1 | **509,794** | 1,741,608 | 1,886,764 | 1,802,636 |
+| Exact repeated queries | 4 | 4 | 732,807 | **332,100** | 332,214 | 332,214 |
+
+In the chain, the learner inferred all 32 edits, performed four paid bootstrap
+discoveries, and used no exact-answer hits. Transfer saved **25.7% versus fresh**
+and **15.2% versus exact caching**. Its full ledger is:
+
+| Category | Charged units |
+|---|---:|
+| Recognition, including successful and failed searches | 694,277 |
+| Discovery | 19,132 |
+| Solving | 517,632 |
+| Checking | 534,080 |
+| Maintenance | 185,672 |
+| Storage writes | 208,800 |
+| **Total** | **2,159,593** |
+
+The unrelated case made 4,064 failed candidate attempts, costing 57,247 units.
+However, **most of its loss against fresh came from acquiring and storing
+verified inverses**, not search. The decoy case also made 4,064 failed attempts,
+but they cost 145,156 units because superficial similarity delayed rejection.
+The bounded search reduced that failed work to 61,028 units, yet still lost to
+fresh. Exact repeats favored exact caching; transfer added unnecessary search.
+
+For n=16, K=4 and 16 queries per matrix, the aggregate over all three seeds was:
+
+| Related fraction after warmup | Fresh | Exact | Transfer scan |
+|---:|---:|---:|---:|
+| 0% | 8,850,504 | **7,691,522** | 7,697,060 |
+| 25% | 8,777,268 | 7,681,108 | **7,399,136** |
+| 50% | 8,823,041 | 7,696,685 | **7,130,554** |
+| 75% | 8,927,222 | 7,714,528 | **6,862,232** |
+| 100% | 8,757,060 | 7,654,451 | **6,516,758** |
+
+At 0%, inverse reuse within each matrix accounts for the advantage over fresh;
+there is no relationship-transfer gain. Fractions are part of the fixture,
+not information given to the learner. Exact inputs differ between fractions,
+so this table is a workload sweep rather than a controlled causal estimate of
+changing only related frequency. Within every row, all policies see identical
+inputs. Across the full 594-case grid, transfer scan beat fresh in 123 cases and
+exact caching in 279. Gains are not automatic even on elementary edit chains:
+only 12 of the 54 chain configurations beat fresh, although all 54 beat exact.
+
+## When finding the shortcut costs more than solving
+
+The strict old-parent controls put the only applicable matrix at the oldest end
+of the archive. These rows use n=16, seed=41, and one query per matrix. The final
+target matrix is fixed across K; right-hand-side/query vectors vary with the
+fixture. Comparisons within each row use exactly the same raw query.
+
+| Retained matrices | Search alone on final query | Entire fresh query, including check | Entire transfer query | Entire exact-cache miss |
+|---:|---:|---:|---:|---:|
+| 4 | 1,775 | 6,643 | 7,757 | 18,998 |
+| 16 | 5,459 | 3,793 | 10,685 | 18,242 |
+| 64 | **23,126** | **6,643** | **29,168** | 19,058 |
+
+At K=64, search alone cost **3.48 times** a complete fresh solve and certificate
+check. Transfer still found the correct relationship, but it was too expensive
+to be useful. The whole paid sequence cost 2,124,238 for transfer versus 350,558
+for fresh and 1,159,669 for exact caching. This is not an uncharged warm-start
+comparison. The per-target row only isolates why search failed economically.
+
+The budgeted learner stopped before finding the old parent and paid for a new
+inverse. Its final query cost 20,082. This reduced the unlimited-search loss,
+but did not beat fresh. A fixed budget protects one expense; it neither chooses
+the best fallback nor guarantees that a useful parent is found.
+
+For an archive of K matrices, this recognizer's worst-case candidate search is
+O(K*n^2); the useful inverse repair is O(n^2). Fresh Gaussian work is O(n^3).
+These orders explain a possible crossing, but the observed threshold depends
+on similarity, candidate order, verification, storage and reuse. We do not
+infer a universal threshold K from this small-dimensional experiment.
+
+Against exact inverse caching, transfer wins on a miss precisely when its paid
+search plus checked repair costs less than inverse discovery plus full inverse
+verification, since both routes then store the same inverse and service the
+same queries. Against fresh, the entire acquisition/search/storage history must
+also be recovered through subsequent cheaper answers.
+
+## Storage sensitivity
+
+The favorable chain accumulated 22,311,808 cell-query occupancy units and peaked
+at 44,072 retained logical cells, including transient insertion before FIFO
+eviction. Its main total already charges writes/removals. Adding a storage rent
+of 0.01 work units per retained cell per query raises transfer to 2,382,711.08,
+still below fresh at 2,906,281. At rent 0.1, it rises to 4,390,773.8 and loses.
+The crossover for that example is approximately **0.03347 units/cell/query**.
+This is sensitivity to an explicit hypothetical price, not a measured hardware
+cost. Exact and transfer have identical retained occupancy in this example.
+
+## Verification and reproducibility
+
+- Exhaustive recognizer test: **28,261** ordered invertible-matrix pairs through
+  dimension 3; all **1,020** elementary relationships recognized, no false matches;
+  **141,305** budget-boundary checks passed.
+- Independent Python audit: **904,176** raw certificates accepted; one damaged
+  version of each rejected; **91,692** retained inverse identities checked;
+  **9,033** discovered relationship/update edges checked. Counts span all four
+  policies and both suites. Ledger sums, monotonicity and storage occupancy
+  sums were checked; this is not a formal proof of instrumentation completeness.
+- Main suite: regenerated from seeds in a second run; all **540 compressed
+  receipts were byte-identical**, and summaries matched after excluding timing.
+- Strict extension: all **54** unique-parent claims independently enumerated;
+  all policy states, ledgers and certificates reproduced from saved raw inputs.
+  Its expensive fixture generator was not rerun for that replay.
+- Source-bound manifests, per-query ledgers, full certificates, raw problems,
+  failed-search counts, timing and logical-space measurements are included.
+
+See `README.md` for reproduction commands, `PROTOCOL.md` for the frozen design,
+and `results/comparisons.csv` for every configuration rather than selected wins.
+
+## What this adds to the learning-across-time question
+
+The supplied relationship has been removed from the learner interface. In this
+bounded class, accumulated knowledge can help with a genuinely new matrix
+because the learner finds and verifies its connection to an earlier discovery.
+The generator's nominated parent is not privileged: it can find a different
+valid parent. Recognition itself is now a measured part of the result.
+
+The main obstacle exposed is economic selection and retrieval, not correctness
+of the known repair identity. A larger archive can supply more opportunities
+while making them more expensive to find. Sparse use can fail to repay even
+the initial cost of retaining a verified representation.
+
+The next focused experiment would let completed work build a charged structural
+index or retain verified compositions of useful edits, then test whether that
+new operation reduces future recognition work on held-out structures. Index
+construction, collisions, false candidates, deletions and proof dependencies
+must remain paid. This experiment did not implement that next step.
+
+All inputs belong to an already polynomial-time affine family. The update law,
+recognizer, retention capacities and fallback strategy are human-designed.
+Faster fresh algorithms, packed-bit arithmetic, stronger exact caching policies,
+other update laws and adaptive acquisition could change these comparisons.
+No universal computational advantage, general SAT progress theorem, P=NP or
+P!=NP conclusion follows.

@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "id": "stone-005-exact-relation-reuse",
+  "version": 3,
+  "title": "Stone 005 — learn the relation, not the answer",
+  "artifact_type": "proof",
+  "status": "verified-finite-result",
+  "question": "When can a checked, cached component relation be reused across genuinely different CNF inputs, with discovery, verification, recognition and global composition still charged?",
+  "method": "Exact existential projection theorem for disjoint private-variable interfaces; restricted affine-relation compilation, exact syntax cache, original-CNF certificate checking and independently executed verifier.",
+  "finding": "Exact component projection composes correctly under the declared variable-separation assumptions. In the constructed 64-problem stream, repeated local discovery fell from 512 to 8 templates, independently checked answers remained 64/64 and instrumented elapsed time was 4.355985 versus 0.500504 seconds. Renaming, unsupported updates and non-affine factors provide preserved failures.",
+  "claim_scope": "Conditional mathematical exactness for disjoint private interfaces and finite evaluated affine test workloads. The elapsed-time ratio is a single instrumented run, not a general solver speed claim.",
+  "limitations": [
+    "Exact syntax matching does not recognize variable renamings efficiently; stress stream grows to 504 new cache entries.",
+    "Efficient global solving requires an efficiently composable family (affine here); arbitrary 3-SAT does not inherit this property.",
+    "Learning and verification can be exponential in unbounded component size.",
+    "An easy live update returned UNKNOWN; this is preserved, not hidden."
+  ],
+  "open_questions": [
+    "Can a checked rename-invariant signature lower total end-to-end cost on held-out sequences?",
+    "Can exact reusable interfaces be discovered under new cross-component constraints without expensive regeneration?"
+  ],
+  "date": "2026-11-04",
+  "provenance": {
+    "authors": [
+      "Bridges Group — owner-directed, AI-assisted research"
+    ],
+    "origin": "The implementation and finite study were created for the owner-directed project; mathematical techniques themselves are not claimed as inventions of this project.",
+    "change_note": "First curated Proof Wall candidate. No modification to original scientific evidence or source archive. Preparation v2: included original final and initial result files, removed private-directed handoff and clarified benchmark scope; original archive unchanged. Article identifies the original checksum list as full-archive scope and names omitted private files. Release v3 records owner approval of the prepared v2 selection ; article and underlying evidence files remain unchanged. The article retains its earlier preparation-stage wording; the owner subsequently approved this release and publication review has been completed."
+  },
+  "article": "article.md",
+  "files": [
+    {
+      "path": "article.md",
+      "role": "article",
+      "media_type": "text/markdown",
+      "bytes": 3323,
+      "sha256": "f5d82d9f65f3a1dbb0b40b2495a7cb13db43afe732f3a3184bb74336f085b21f",
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/REPORT.md",
+      "role": "original",
+      "media_type": "text/markdown",
+      "bytes": 20155,
+      "sha256": "4dec6c23bcfc6de60bf788d83e88a38b117b9fca2345fa9532b01b18de480754",
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/FAILED_ATTEMPT_LIVE_UPDATE.txt",
+      "role": "original",
+      "media_type": "text/plain",
+      "bytes": 1152,
+      "sha256": "68496fc8fe2e448a6b84f4a053856f399eb2863744563f880b83c5bff794c886",
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/experiment.py",
+      "role": "code",
+      "media_type": "text/x-python",
+      "bytes": 21649,
+      "sha256": "f368361ef5e5ae6ca4026ba721defb92c2befa1be96ad0fe0b35dd8b9e5f099a",
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/verify_bundle.py",
+      "role": "code",
+      "media_type": "text/x-python",
+      "bytes": 4804,
+      "sha256": "4cccfdb62d3e174a692837488672b6cfe8dc6c73aed0381c4b7d56afbac6fbed",
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/adversarial_checks.py",
+      "role": "code",
+      "media_type": "text/x-python",
+      "bytes": 3875,
+      "sha256": "fcbfc56640fbe6579f17c4645dfc28e077756cb3e032f4eb62a201a70dcadb5d",
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/adversarial_results.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 523,
+      "sha256": "45b7a519e414bf2e9a64a6b587f0519eebe19ab6b7cf0eda505d48b69e8340bb",
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/independent_verification.json",
+      "role": "receipt",
+      "media_type": "application/json",
+      "bytes": 311,
+      "sha256": "5f728292b460f086a6b86bb9571449eb3a13fc4adb588752d0efc07b75c22f24",
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/verification_bundle.json",
+      "role": "receipt",
+      "media_type": "application/json",
+      "bytes": 1300066,
+      "sha256": "025c1b8643ff20b615dcede934f55a60775fb53c32d5a66183b1f94a0ec89f14",
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/workload_manifest.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 15545,
+      "sha256": "b247a7f135c60f6fc7f2c46f7923ba06917f9a22d578a3dceed9140829b41ec1",
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/SHA256SUMS.txt",
+      "role": "receipt",
+      "media_type": "text/plain",
+      "bytes": 1209,
+      "sha256": "79c1e12afb1aa82be26aed40b37b4c7fdc3834ae1d7e3937382f346b57406544",
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/results.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 647803,
+      "sha256": "e7830829578f1ba8bf140de411988f3be983f98ceafa83cbe37a29c3d8ce8fc2",
+      "attribution": "Original STONE 005 experiment record",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/results_initial.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 68849,
+      "sha256": "479f773cb91f5dfbd2bc722744ad4d628221c33ecf6e34c292d41da072c26240",
+      "attribution": "Original STONE 005 experiment record",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    }
+  ],
+  "relations": [],
+  "gardens": [],
+  "publication": {
+    "intent": "request-review",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+    "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+    "attribution": "Bridges Group, owner-directed and AI-assisted. Exact contribution detail is in the private provenance record."
+  },
+  "sample": false
+}

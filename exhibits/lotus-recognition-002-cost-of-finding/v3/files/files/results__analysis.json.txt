@@ -1,0 +1,1055 @@
+{
+  "sequences": 594,
+  "service_answers": 904176,
+  "selected": [
+    {
+      "config": {
+        "n": 16,
+        "seed": 41,
+        "capacity": 4,
+        "q": 16,
+        "kind": "chain"
+      },
+      "totals": {
+        "fresh": 2906281,
+        "exact": 2545438,
+        "transfer_scan": 2159593,
+        "transfer_budget": 2159593
+      },
+      "details": {
+        "fresh": {
+          "index": 295,
+          "config": {
+            "n": 16,
+            "seed": 41,
+            "capacity": 4,
+            "q": 16,
+            "kind": "chain"
+          },
+          "inputHash": "22d7915172eb21492578aa381b258c91c9e6e6b1529065e3505f047e173572e3",
+          "policy": "fresh",
+          "total": 2906281,
+          "ledger": {
+            "recognition": 166464,
+            "discovery": 0,
+            "solving": 2231785,
+            "checking": 498240,
+            "maintenance": 9792,
+            "storage": 0
+          },
+          "stats": {
+            "queries": 576,
+            "queryHits": 0,
+            "matrixHits": 0,
+            "bootstraps": 0,
+            "transfers": 0,
+            "candidates": 0,
+            "failedCandidates": 0,
+            "failedSearchUnits": 0,
+            "searchUnits": 0,
+            "budgetStops": 0,
+            "evictions": 0
+          },
+          "currentCells": 0,
+          "peakCells": 0,
+          "cellQueries": 0,
+          "serviceMs": 161.81514499998593
+        },
+        "exact": {
+          "index": 295,
+          "config": {
+            "n": 16,
+            "seed": 41,
+            "capacity": 4,
+            "q": 16,
+            "kind": "chain"
+          },
+          "inputHash": "22d7915172eb21492578aa381b258c91c9e6e6b1529065e3505f047e173572e3",
+          "policy": "exact",
+          "total": 2545438,
+          "ledger": {
+            "recognition": 650304,
+            "discovery": 170422,
+            "solving": 517632,
+            "checking": 820800,
+            "maintenance": 177480,
+            "storage": 208800
+          },
+          "stats": {
+            "queries": 576,
+            "queryHits": 0,
+            "matrixHits": 540,
+            "bootstraps": 36,
+            "transfers": 0,
+            "candidates": 0,
+            "failedCandidates": 0,
+            "failedSearchUnits": 0,
+            "searchUnits": 0,
+            "budgetStops": 0,
+            "evictions": 32
+          },
+          "currentCells": 43296,
+          "peakCells": 44072,
+          "cellQueries": 22311808,
+          "serviceMs": 131.2177189998838
+        },
+        "transfer_scan": {
+          "index": 295,
+          "config": {
+            "n": 16,
+            "seed": 41,
+            "capacity": 4,
+            "q": 16,
+            "kind": "chain"
+          },
+          "inputHash": "22d7915172eb21492578aa381b258c91c9e6e6b1529065e3505f047e173572e3",
+          "policy": "transfer_scan",
+          "total": 2159593,
+          "ledger": {
+            "recognition": 694277,
+            "discovery": 19132,
+            "solving": 517632,
+            "checking": 534080,
+            "maintenance": 185672,
+            "storage": 208800
+          },
+          "stats": {
+            "queries": 576,
+            "queryHits": 0,
+            "matrixHits": 540,
+            "bootstraps": 4,
+            "transfers": 32,
+            "candidates": 38,
+            "failedCandidates": 6,
+            "failedSearchUnits": 114,
+            "searchUnits": 43973,
+            "budgetStops": 0,
+            "evictions": 32
+          },
+          "currentCells": 43296,
+          "peakCells": 44072,
+          "cellQueries": 22311808,
+          "serviceMs": 94.12760599995818
+        },
+        "transfer_budget": {
+          "index": 295,
+          "config": {
+            "n": 16,
+            "seed": 41,
+            "capacity": 4,
+            "q": 16,
+            "kind": "chain"
+          },
+          "inputHash": "22d7915172eb21492578aa381b258c91c9e6e6b1529065e3505f047e173572e3",
+          "policy": "transfer_budget",
+          "total": 2159593,
+          "ledger": {
+            "recognition": 694277,
+            "discovery": 19132,
+            "solving": 517632,
+            "checking": 534080,
+            "maintenance": 185672,
+            "storage": 208800
+          },
+          "stats": {
+            "queries": 576,
+            "queryHits": 0,
+            "matrixHits": 540,
+            "bootstraps": 4,
+            "transfers": 32,
+            "candidates": 38,
+            "failedCandidates": 6,
+            "failedSearchUnits": 114,
+            "searchUnits": 43973,
+            "budgetStops": 0,
+            "evictions": 32
+          },
+          "currentCells": 43296,
+          "peakCells": 44072,
+          "cellQueries": 22311808,
+          "serviceMs": 100.95983600014006
+        }
+      }
+    },
+    {
+      "config": {
+        "n": 16,
+        "seed": 41,
+        "capacity": 64,
+        "q": 1,
+        "kind": "mixture",
+        "frequency": 0
+      },
+      "totals": {
+        "fresh": 485953,
+        "exact": 1727358,
+        "transfer_scan": 1784605,
+        "transfer_budget": 1784605
+      },
+      "details": {
+        "fresh": {
+          "index": 330,
+          "config": {
+            "n": 16,
+            "seed": 41,
+            "capacity": 64,
+            "q": 1,
+            "kind": "mixture",
+            "frequency": 0
+          },
+          "inputHash": "8f4cc4456db6e701d8967fcc14979cf881ba007f0d86daec17d249d02f1d2c16",
+          "policy": "fresh",
+          "total": 485953,
+          "ledger": {
+            "recognition": 27744,
+            "discovery": 0,
+            "solving": 373537,
+            "checking": 83040,
+            "maintenance": 1632,
+            "storage": 0
+          },
+          "stats": {
+            "queries": 96,
+            "queryHits": 0,
+            "matrixHits": 0,
+            "bootstraps": 0,
+            "transfers": 0,
+            "candidates": 0,
+            "failedCandidates": 0,
+            "failedSearchUnits": 0,
+            "searchUnits": 0,
+            "budgetStops": 0,
+            "evictions": 0
+          },
+          "currentCells": 0,
+          "peakCells": 0,
+          "cellQueries": 0,
+          "serviceMs": 15.819171000010101
+        },
+        "exact": {
+          "index": 330,
+          "config": {
+            "n": 16,
+            "seed": 41,
+            "capacity": 64,
+            "q": 1,
+            "kind": "mixture",
+            "frequency": 0
+          },
+          "inputHash": "8f4cc4456db6e701d8967fcc14979cf881ba007f0d86daec17d249d02f1d2c16",
+          "policy": "exact",
+          "total": 1727358,
+          "ledger": {
+            "recognition": 108384,
+            "discovery": 454718,
+            "solving": 87552,
+            "checking": 943200,
+            "maintenance": 28864,
+            "storage": 104640
+          },
+          "stats": {
+            "queries": 96,
+            "queryHits": 0,
+            "matrixHits": 0,
+            "bootstraps": 96,
+            "transfers": 0,
+            "candidates": 0,
+            "failedCandidates": 0,
+            "failedSearchUnits": 0,
+            "searchUnits": 0,
+            "budgetStops": 0,
+            "evictions": 32
+          },
+          "currentCells": 79808,
+          "peakCells": 80270,
+          "cellQueries": 4665312,
+          "serviceMs": 50.33341200007999
+        },
+        "transfer_scan": {
+          "index": 330,
+          "config": {
+            "n": 16,
+            "seed": 41,
+            "capacity": 64,
+            "q": 1,
+            "kind": "mixture",
+            "frequency": 0
+          },
+          "inputHash": "8f4cc4456db6e701d8967fcc14979cf881ba007f0d86daec17d249d02f1d2c16",
+          "policy": "transfer_scan",
+          "total": 1784605,
+          "ledger": {
+            "recognition": 165631,
+            "discovery": 454718,
+            "solving": 87552,
+            "checking": 943200,
+            "maintenance": 28864,
+            "storage": 104640
+          },
+          "stats": {
+            "queries": 96,
+            "queryHits": 0,
+            "matrixHits": 0,
+            "bootstraps": 96,
+            "transfers": 0,
+            "candidates": 4064,
+            "failedCandidates": 4064,
+            "failedSearchUnits": 57247,
+            "searchUnits": 57247,
+            "budgetStops": 0,
+            "evictions": 32
+          },
+          "currentCells": 79808,
+          "peakCells": 80270,
+          "cellQueries": 4665312,
+          "serviceMs": 51.476961999993364
+        },
+        "transfer_budget": {
+          "index": 330,
+          "config": {
+            "n": 16,
+            "seed": 41,
+            "capacity": 64,
+            "q": 1,
+            "kind": "mixture",
+            "frequency": 0
+          },
+          "inputHash": "8f4cc4456db6e701d8967fcc14979cf881ba007f0d86daec17d249d02f1d2c16",
+          "policy": "transfer_budget",
+          "total": 1784605,
+          "ledger": {
+            "recognition": 165631,
+            "discovery": 454718,
+            "solving": 87552,
+            "checking": 943200,
+            "maintenance": 28864,
+            "storage": 104640
+          },
+          "stats": {
+            "queries": 96,
+            "queryHits": 0,
+            "matrixHits": 0,
+            "bootstraps": 96,
+            "transfers": 0,
+            "candidates": 4064,
+            "failedCandidates": 4064,
+            "failedSearchUnits": 57247,
+            "searchUnits": 57247,
+            "budgetStops": 0,
+            "evictions": 32
+          },
+          "currentCells": 79808,
+          "peakCells": 80270,
+          "cellQueries": 4665312,
+          "serviceMs": 89.94240899999568
+        }
+      }
+    },
+    {
+      "config": {
+        "n": 16,
+        "seed": 41,
+        "capacity": 64,
+        "q": 1,
+        "kind": "decoy"
+      },
+      "totals": {
+        "fresh": 509794,
+        "exact": 1741608,
+        "transfer_scan": 1886764,
+        "transfer_budget": 1802636
+      },
+      "details": {
+        "fresh": {
+          "index": 336,
+          "config": {
+            "n": 16,
+            "seed": 41,
+            "capacity": 64,
+            "q": 1,
+            "kind": "decoy"
+          },
+          "inputHash": "0d12e224f7cf716626e10cfe02bd12dab03129ec858d65aacd3643004ef26f7e",
+          "policy": "fresh",
+          "total": 509794,
+          "ledger": {
+            "recognition": 27744,
+            "discovery": 0,
+            "solving": 397378,
+            "checking": 83040,
+            "maintenance": 1632,
+            "storage": 0
+          },
+          "stats": {
+            "queries": 96,
+            "queryHits": 0,
+            "matrixHits": 0,
+            "bootstraps": 0,
+            "transfers": 0,
+            "candidates": 0,
+            "failedCandidates": 0,
+            "failedSearchUnits": 0,
+            "searchUnits": 0,
+            "budgetStops": 0,
+            "evictions": 0
+          },
+          "currentCells": 0,
+          "peakCells": 0,
+          "cellQueries": 0,
+          "serviceMs": 24.457093000019086
+        },
+        "exact": {
+          "index": 336,
+          "config": {
+            "n": 16,
+            "seed": 41,
+            "capacity": 64,
+            "q": 1,
+            "kind": "decoy"
+          },
+          "inputHash": "0d12e224f7cf716626e10cfe02bd12dab03129ec858d65aacd3643004ef26f7e",
+          "policy": "exact",
+          "total": 1741608,
+          "ledger": {
+            "recognition": 108384,
+            "discovery": 464360,
+            "solving": 92160,
+            "checking": 943200,
+            "maintenance": 28864,
+            "storage": 104640
+          },
+          "stats": {
+            "queries": 96,
+            "queryHits": 0,
+            "matrixHits": 0,
+            "bootstraps": 96,
+            "transfers": 0,
+            "candidates": 0,
+            "failedCandidates": 0,
+            "failedSearchUnits": 0,
+            "searchUnits": 0,
+            "budgetStops": 0,
+            "evictions": 32
+          },
+          "currentCells": 79808,
+          "peakCells": 80270,
+          "cellQueries": 4665312,
+          "serviceMs": 71.40058000000136
+        },
+        "transfer_scan": {
+          "index": 336,
+          "config": {
+            "n": 16,
+            "seed": 41,
+            "capacity": 64,
+            "q": 1,
+            "kind": "decoy"
+          },
+          "inputHash": "0d12e224f7cf716626e10cfe02bd12dab03129ec858d65aacd3643004ef26f7e",
+          "policy": "transfer_scan",
+          "total": 1886764,
+          "ledger": {
+            "recognition": 253540,
+            "discovery": 464360,
+            "solving": 92160,
+            "checking": 943200,
+            "maintenance": 28864,
+            "storage": 104640
+          },
+          "stats": {
+            "queries": 96,
+            "queryHits": 0,
+            "matrixHits": 0,
+            "bootstraps": 96,
+            "transfers": 0,
+            "candidates": 4064,
+            "failedCandidates": 4064,
+            "failedSearchUnits": 145156,
+            "searchUnits": 145156,
+            "budgetStops": 0,
+            "evictions": 32
+          },
+          "currentCells": 79808,
+          "peakCells": 80270,
+          "cellQueries": 4665312,
+          "serviceMs": 61.21782700001495
+        },
+        "transfer_budget": {
+          "index": 336,
+          "config": {
+            "n": 16,
+            "seed": 41,
+            "capacity": 64,
+            "q": 1,
+            "kind": "decoy"
+          },
+          "inputHash": "0d12e224f7cf716626e10cfe02bd12dab03129ec858d65aacd3643004ef26f7e",
+          "policy": "transfer_budget",
+          "total": 1802636,
+          "ledger": {
+            "recognition": 169412,
+            "discovery": 464360,
+            "solving": 92160,
+            "checking": 943200,
+            "maintenance": 28864,
+            "storage": 104640
+          },
+          "stats": {
+            "queries": 96,
+            "queryHits": 0,
+            "matrixHits": 0,
+            "bootstraps": 96,
+            "transfers": 0,
+            "candidates": 2107,
+            "failedCandidates": 2107,
+            "failedSearchUnits": 61028,
+            "searchUnits": 61028,
+            "budgetStops": 32,
+            "evictions": 32
+          },
+          "currentCells": 79808,
+          "peakCells": 80270,
+          "cellQueries": 4665312,
+          "serviceMs": 53.30841199997667
+        }
+      }
+    },
+    {
+      "config": {
+        "n": 16,
+        "seed": 41,
+        "capacity": 4,
+        "q": 4,
+        "kind": "repeat"
+      },
+      "totals": {
+        "fresh": 732807,
+        "exact": 332100,
+        "transfer_scan": 332214,
+        "transfer_budget": 332214
+      },
+      "details": {
+        "fresh": {
+          "index": 288,
+          "config": {
+            "n": 16,
+            "seed": 41,
+            "capacity": 4,
+            "q": 4,
+            "kind": "repeat"
+          },
+          "inputHash": "8bec042bec689fc46c4886377fbf3873389eb23a41f5e33b51bd3fedbf752c27",
+          "policy": "fresh",
+          "total": 732807,
+          "ledger": {
+            "recognition": 41616,
+            "discovery": 0,
+            "solving": 564183,
+            "checking": 124560,
+            "maintenance": 2448,
+            "storage": 0
+          },
+          "stats": {
+            "queries": 144,
+            "queryHits": 0,
+            "matrixHits": 0,
+            "bootstraps": 0,
+            "transfers": 0,
+            "candidates": 0,
+            "failedCandidates": 0,
+            "failedSearchUnits": 0,
+            "searchUnits": 0,
+            "budgetStops": 0,
+            "evictions": 0
+          },
+          "currentCells": 0,
+          "peakCells": 0,
+          "cellQueries": 0,
+          "serviceMs": 34.07086599995819
+        },
+        "exact": {
+          "index": 288,
+          "config": {
+            "n": 16,
+            "seed": 41,
+            "capacity": 4,
+            "q": 4,
+            "kind": "repeat"
+          },
+          "inputHash": "8bec042bec689fc46c4886377fbf3873389eb23a41f5e33b51bd3fedbf752c27",
+          "policy": "exact",
+          "total": 332100,
+          "ledger": {
+            "recognition": 125456,
+            "discovery": 18620,
+            "solving": 17024,
+            "checking": 160400,
+            "maintenance": 2472,
+            "storage": 8128
+          },
+          "stats": {
+            "queries": 144,
+            "queryHits": 128,
+            "matrixHits": 12,
+            "bootstraps": 4,
+            "transfers": 0,
+            "candidates": 0,
+            "failedCandidates": 0,
+            "failedSearchUnits": 0,
+            "searchUnits": 0,
+            "budgetStops": 0,
+            "evictions": 0
+          },
+          "currentCells": 8128,
+          "peakCells": 8128,
+          "cellQueries": 1114128,
+          "serviceMs": 18.93493099999614
+        },
+        "transfer_scan": {
+          "index": 288,
+          "config": {
+            "n": 16,
+            "seed": 41,
+            "capacity": 4,
+            "q": 4,
+            "kind": "repeat"
+          },
+          "inputHash": "8bec042bec689fc46c4886377fbf3873389eb23a41f5e33b51bd3fedbf752c27",
+          "policy": "transfer_scan",
+          "total": 332214,
+          "ledger": {
+            "recognition": 125570,
+            "discovery": 18620,
+            "solving": 17024,
+            "checking": 160400,
+            "maintenance": 2472,
+            "storage": 8128
+          },
+          "stats": {
+            "queries": 144,
+            "queryHits": 128,
+            "matrixHits": 12,
+            "bootstraps": 4,
+            "transfers": 0,
+            "candidates": 6,
+            "failedCandidates": 6,
+            "failedSearchUnits": 114,
+            "searchUnits": 114,
+            "budgetStops": 0,
+            "evictions": 0
+          },
+          "currentCells": 8128,
+          "peakCells": 8128,
+          "cellQueries": 1114128,
+          "serviceMs": 227.4413829999903
+        },
+        "transfer_budget": {
+          "index": 288,
+          "config": {
+            "n": 16,
+            "seed": 41,
+            "capacity": 4,
+            "q": 4,
+            "kind": "repeat"
+          },
+          "inputHash": "8bec042bec689fc46c4886377fbf3873389eb23a41f5e33b51bd3fedbf752c27",
+          "policy": "transfer_budget",
+          "total": 332214,
+          "ledger": {
+            "recognition": 125570,
+            "discovery": 18620,
+            "solving": 17024,
+            "checking": 160400,
+            "maintenance": 2472,
+            "storage": 8128
+          },
+          "stats": {
+            "queries": 144,
+            "queryHits": 128,
+            "matrixHits": 12,
+            "bootstraps": 4,
+            "transfers": 0,
+            "candidates": 6,
+            "failedCandidates": 6,
+            "failedSearchUnits": 114,
+            "searchUnits": 114,
+            "budgetStops": 0,
+            "evictions": 0
+          },
+          "currentCells": 8128,
+          "peakCells": 8128,
+          "cellQueries": 1114128,
+          "serviceMs": 39.40935199998785
+        }
+      }
+    }
+  ],
+  "regimes": [
+    {
+      "kind": "chain",
+      "sequences": 54,
+      "scan_beats_fresh": 12,
+      "scan_beats_exact": 54,
+      "totals": {
+        "fresh": 68442213,
+        "exact": 78271071,
+        "transfer_scan": 67237548,
+        "transfer_budget": 67374507
+      }
+    },
+    {
+      "kind": "mixture",
+      "sequences": 270,
+      "scan_beats_fresh": 51,
+      "scan_beats_exact": 189,
+      "totals": {
+        "fresh": 344428545,
+        "exact": 391875090,
+        "transfer_scan": 368375505,
+        "transfer_budget": 384554004
+      }
+    },
+    {
+      "kind": "decoy",
+      "sequences": 54,
+      "scan_beats_fresh": 9,
+      "scan_beats_exact": 0,
+      "totals": {
+        "fresh": 68727602,
+        "exact": 78345009,
+        "transfer_scan": 82153593,
+        "transfer_budget": 79859226
+      }
+    },
+    {
+      "kind": "two-row",
+      "sequences": 54,
+      "scan_beats_fresh": 9,
+      "scan_beats_exact": 0,
+      "totals": {
+        "fresh": 68754159,
+        "exact": 78341301,
+        "transfer_scan": 80685405,
+        "transfer_budget": 79773339
+      }
+    },
+    {
+      "kind": "repeat",
+      "sequences": 54,
+      "scan_beats_fresh": 30,
+      "scan_beats_exact": 0,
+      "totals": {
+        "fresh": 68778682,
+        "exact": 57542427,
+        "transfer_scan": 58079970,
+        "transfer_budget": 57952116
+      }
+    },
+    {
+      "kind": "deep",
+      "sequences": 54,
+      "scan_beats_fresh": 6,
+      "scan_beats_exact": 18,
+      "totals": {
+        "fresh": 33385668,
+        "exact": 37253441,
+        "transfer_scan": 49389914,
+        "transfer_budget": 38211023
+      }
+    },
+    {
+      "kind": "strict_deep",
+      "sequences": 54,
+      "scan_beats_fresh": 6,
+      "scan_beats_exact": 18,
+      "totals": {
+        "fresh": 33446294,
+        "exact": 37262733,
+        "transfer_scan": 49239159,
+        "transfer_budget": 38225553
+      }
+    }
+  ],
+  "frequency": [
+    {
+      "frequency": 0,
+      "totals": {
+        "fresh": 8850504,
+        "exact": 7691522,
+        "transfer_scan": 7697060,
+        "transfer_budget": 7697060
+      },
+      "scan_to_fresh_ratios": [
+        0.864374220027541,
+        0.8729498078030069,
+        0.8717682780999799
+      ],
+      "scan_to_exact_ratios": [
+        1.0006986461055831,
+        1.0007486522305145,
+        1.0007128548236834
+      ]
+    },
+    {
+      "frequency": 0.25,
+      "totals": {
+        "fresh": 8777268,
+        "exact": 7681108,
+        "transfer_scan": 7399136,
+        "transfer_budget": 7399136
+      },
+      "scan_to_fresh_ratios": [
+        0.8379946263444733,
+        0.8510707608927953,
+        0.8400452178142385
+      ],
+      "scan_to_exact_ratios": [
+        0.9631755245441949,
+        0.9634575114245436,
+        0.9632381973754458
+      ]
+    },
+    {
+      "frequency": 0.5,
+      "totals": {
+        "fresh": 8823041,
+        "exact": 7696685,
+        "transfer_scan": 7130554,
+        "transfer_budget": 7217191
+      },
+      "scan_to_fresh_ratios": [
+        0.8004076461894594,
+        0.8190991426573306,
+        0.8052857786898989
+      ],
+      "scan_to_exact_ratios": [
+        0.9264126793932627,
+        0.9270500524156132,
+        0.9258740011457203
+      ]
+    },
+    {
+      "frequency": 0.75,
+      "totals": {
+        "fresh": 8927222,
+        "exact": 7714528,
+        "transfer_scan": 6862232,
+        "transfer_budget": 7151321
+      },
+      "scan_to_fresh_ratios": [
+        0.7590428080214776,
+        0.7801268896063157,
+        0.7672010953224678
+      ],
+      "scan_to_exact_ratios": [
+        0.8883058319413738,
+        0.8906464143997174,
+        0.8896144784708883
+      ]
+    },
+    {
+      "frequency": 1,
+      "totals": {
+        "fresh": 8757060,
+        "exact": 7654451,
+        "transfer_scan": 6516758,
+        "transfer_budget": 7174394
+      },
+      "scan_to_fresh_ratios": [
+        0.7351272484915424,
+        0.7481621983333414,
+        0.7494163795707418
+      ],
+      "scan_to_exact_ratios": [
+        0.8504132218480154,
+        0.8530445685662106,
+        0.8506489859606637
+      ]
+    }
+  ],
+  "strict_depth": [
+    {
+      "n": 8,
+      "K": 4,
+      "final_query": {
+        "fresh": 1193,
+        "exact": 3268,
+        "transfer_scan": 2006,
+        "transfer_budget": 3524
+      },
+      "search_only": 404,
+      "full_sequence": {
+        "fresh": 5516,
+        "exact": 15499,
+        "transfer_scan": 15242,
+        "transfer_budget": 16491
+      },
+      "budget_route": "bootstrap"
+    },
+    {
+      "n": 8,
+      "K": 16,
+      "final_query": {
+        "fresh": 724,
+        "exact": 3088,
+        "transfer_scan": 2999,
+        "transfer_budget": 3344
+      },
+      "search_only": 1577,
+      "full_sequence": {
+        "fresh": 14360,
+        "exact": 50259,
+        "transfer_scan": 67018,
+        "transfer_budget": 54323
+      },
+      "budget_route": "bootstrap"
+    },
+    {
+      "n": 8,
+      "K": 64,
+      "final_query": {
+        "fresh": 1193,
+        "exact": 3328,
+        "transfer_scan": 7292,
+        "transfer_budget": 3584
+      },
+      "search_only": 5630,
+      "full_sequence": {
+        "fresh": 59696,
+        "exact": 193484,
+        "transfer_scan": 444114,
+        "transfer_budget": 209836
+      },
+      "budget_route": "bootstrap"
+    },
+    {
+      "n": 16,
+      "K": 4,
+      "final_query": {
+        "fresh": 6643,
+        "exact": 18998,
+        "transfer_scan": 7757,
+        "transfer_budget": 20022
+      },
+      "search_only": 1775,
+      "full_sequence": {
+        "fresh": 21468,
+        "exact": 88143,
+        "transfer_scan": 80853,
+        "transfer_budget": 92102
+      },
+      "budget_route": "bootstrap"
+    },
+    {
+      "n": 16,
+      "K": 16,
+      "final_query": {
+        "fresh": 3793,
+        "exact": 18242,
+        "transfer_scan": 10685,
+        "transfer_budget": 19266
+      },
+      "search_only": 5459,
+      "full_sequence": {
+        "fresh": 85780,
+        "exact": 301264,
+        "transfer_scan": 359434,
+        "transfer_budget": 317511
+      },
+      "budget_route": "bootstrap"
+    },
+    {
+      "n": 16,
+      "K": 64,
+      "final_query": {
+        "fresh": 6643,
+        "exact": 19058,
+        "transfer_scan": 29168,
+        "transfer_budget": 20082
+      },
+      "search_only": 23126,
+      "full_sequence": {
+        "fresh": 350558,
+        "exact": 1159669,
+        "transfer_scan": 2124238,
+        "transfer_budget": 1225068
+      },
+      "budget_route": "bootstrap"
+    }
+  ],
+  "rent_sensitivity": [
+    {
+      "config": {
+        "n": 16,
+        "seed": 41,
+        "capacity": 4,
+        "q": 16,
+        "kind": "chain"
+      },
+      "break_even_rent": 0.033466046319509384,
+      "totals": {
+        "0": {
+          "fresh": 2906281,
+          "exact": 2545438,
+          "transfer_scan": 2159593,
+          "transfer_budget": 2159593
+        },
+        "0.01": {
+          "fresh": 2906281.0,
+          "exact": 2768556.08,
+          "transfer_scan": 2382711.08,
+          "transfer_budget": 2382711.08
+        },
+        "0.1": {
+          "fresh": 2906281.0,
+          "exact": 4776618.800000001,
+          "transfer_scan": 4390773.800000001,
+          "transfer_budget": 4390773.800000001
+        },
+        "1": {
+          "fresh": 2906281,
+          "exact": 24857246,
+          "transfer_scan": 24471401,
+          "transfer_budget": 24471401
+        }
+      }
+    },
+    {
+      "config": {
+        "n": 16,
+        "seed": 41,
+        "capacity": 64,
+        "q": 1,
+        "kind": "decoy"
+      },
+      "break_even_rent": -0.2951506780253925,
+      "totals": {
+        "0": {
+          "fresh": 509794,
+          "exact": 1741608,
+          "transfer_scan": 1886764,
+          "transfer_budget": 1802636
+        },
+        "0.01": {
+          "fresh": 509794.0,
+          "exact": 1788261.12,
+          "transfer_scan": 1933417.12,
+          "transfer_budget": 1849289.12
+        },
+        "0.1": {
+          "fresh": 509794.0,
+          "exact": 2208139.2,
+          "transfer_scan": 2353295.2,
+          "transfer_budget": 2269167.2
+        },
+        "1": {
+          "fresh": 509794,
+          "exact": 6406920,
+          "transfer_scan": 6552076,
+          "transfer_budget": 6467948
+        }
+      }
+    }
+  ],
+  "strict_unique_parent_checks": 54
+}

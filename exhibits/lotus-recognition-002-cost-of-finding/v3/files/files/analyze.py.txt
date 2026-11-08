@@ -1,0 +1,74 @@
+"""Emit exact comparison tables; no scientific claims inferred from timing."""
+import csv,gzip,json,pathlib,statistics,sys
+root=pathlib.Path(__file__).resolve().parent
+sources=[root/'results/runs',root/'results/strict-runs']
+policies=['fresh','exact','transfer_scan','transfer_budget']
+groups=[];flat=[]
+for directory in sources:
+    summary=json.loads((directory/'summary.json').read_text())
+    grouped={}
+    for row in summary['rows']:
+        grouped.setdefault(row['index'],{})[row['policy']]=row
+        flat.append(dict(suite=directory.name,index=row['index'],**row['config'],policy=row['policy'],total=row['total'],
+                         **row['ledger'],**row['stats'],peak_cells=row['peakCells'],cell_queries=row['cellQueries'],service_ms=row['serviceMs']))
+    for i,g in grouped.items():
+        g['receipt']=str(directory/f'{i:03}.json.gz');groups.append(g)
+
+def choose(**config):
+    return [g for g in groups if all(g['fresh']['config'].get(k)==v for k,v in config.items())]
+def totals(gs):return {p:sum(g[p]['total'] for g in gs) for p in policies}
+def selected(**config):
+    gs=choose(seed=41,**config);assert len(gs)==1
+    g=gs[0];return dict(config=g['fresh']['config'],totals=totals(gs),details={p:g[p] for p in policies})
+
+out=dict(sequences=len(groups),service_answers=sum(r['queries'] for r in flat),
+         selected=[selected(n=16,capacity=4,q=16,kind='chain'),selected(n=16,capacity=64,q=1,kind='mixture',frequency=0),
+                   selected(n=16,capacity=64,q=1,kind='decoy'),selected(n=16,capacity=4,q=4,kind='repeat')],
+         regimes=[],frequency=[],strict_depth=[],rent_sensitivity=[])
+for kind in ['chain','mixture','decoy','two-row','repeat','deep','strict_deep']:
+    gs=choose(kind=kind)
+    out['regimes'].append(dict(kind=kind,sequences=len(gs),scan_beats_fresh=sum(g['transfer_scan']['total']<g['fresh']['total'] for g in gs),
+      scan_beats_exact=sum(g['transfer_scan']['total']<g['exact']['total'] for g in gs),totals=totals(gs)))
+for frequency in [0,.25,.5,.75,1]:
+    gs=choose(n=16,capacity=4,q=16,kind='mixture',frequency=frequency)
+    out['frequency'].append(dict(frequency=frequency,totals=totals(gs),
+      scan_to_fresh_ratios=[g['transfer_scan']['total']/g['fresh']['total'] for g in gs],
+      scan_to_exact_ratios=[g['transfer_scan']['total']/g['exact']['total'] for g in gs]))
+for n in [8,16]:
+ for K in [4,16,64]:
+    g=choose(n=n,capacity=K,q=1,kind='strict_deep',seed=41)[0]
+    r=json.loads(gzip.decompress(pathlib.Path(g['receipt']).read_bytes()));methods=r['methods'];last={p:methods[p]['trace'][-1] for p in policies}
+    # Exact and transfer share all key/input charges. Remove repair's n*n*2 sweep.
+    def rec_delta(p):
+        tr=methods[p]['trace'];return tr[-1]['ledger']['recognition']-tr[-2]['ledger']['recognition']
+    search_only=rec_delta('transfer_scan')-rec_delta('exact')-2*n*n
+    event=methods['transfer_scan']['events'][-1]
+    assert event['query']==K+1 and event['parentId']==0
+    out['strict_depth'].append(dict(n=n,K=K,final_query={p:last[p]['delta'] for p in policies},search_only=search_only,
+      full_sequence=totals([g]),budget_route=last['transfer_budget']['route']))
+for g in [choose(n=16,capacity=4,q=16,kind='chain',seed=41)[0],choose(n=16,capacity=64,q=1,kind='decoy',seed=41)[0]]:
+    fresh=g['fresh']['total'];t=g['transfer_scan'];threshold=(fresh-t['total'])/t['cellQueries']
+    out['rent_sensitivity'].append(dict(config=g['fresh']['config'],break_even_rent=threshold,
+      totals={str(rent):{p:g[p]['total']+rent*g[p]['cellQueries'] for p in policies} for rent in [0,.01,.1,1]}))
+
+# Independently confirm strict target has exactly one supported retained parent.
+strict_targets=0
+for g in choose(kind='strict_deep'):
+    r=json.loads(gzip.decompress(pathlib.Path(g['receipt']).read_bytes()));q=r['config']['q'];K=r['config']['capacity']
+    target=r['problems'][K*q]['A'];parents=[]
+    for z in range(K):
+        A=r['problems'][z*q]['A'];n=len(A)
+        for i in range(n):
+            for j in range(n):
+                if i==j:continue
+                C=[row[:] for row in A];C[i]=[a^b for a,b in zip(A[i],A[j])]
+                if C==target:parents.append((z,i,j))
+    assert parents==[(0,0,1)],parents
+    strict_targets+=1
+out['strict_unique_parent_checks']=strict_targets
+
+(root/'results/analysis.json').write_text(json.dumps(out,indent=2)+'\n')
+fields=list(dict.fromkeys(k for r in flat for k in r))
+with (root/'results/comparisons.csv').open('w') as f:
+    writer=csv.DictWriter(f,fieldnames=fields);writer.writeheader();writer.writerows(flat)
+print(json.dumps({k:v for k,v in out.items() if k!='selected'},indent=2))

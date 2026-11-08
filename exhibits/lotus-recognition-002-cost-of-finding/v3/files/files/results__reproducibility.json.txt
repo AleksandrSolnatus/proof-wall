@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "identical_compressed_receipts": 540,
+  "deterministic_summaries_identical": true,
+  "excluded_fields": [
+    "elapsedSeconds",
+    "serviceMs"
+  ]
+}

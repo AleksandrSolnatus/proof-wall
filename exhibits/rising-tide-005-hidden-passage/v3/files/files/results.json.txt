@@ -1,0 +1,2589 @@
+{
+  "adjacency": [
+    {
+      "all_distinct_counts": [
+        0,
+        1,
+        2
+      ],
+      "distance": 16,
+      "distinct_exposure_masks": 4,
+      "max_distinct_exposures": 2,
+      "min_distinct_exposures": 0,
+      "radius": 0,
+      "resource_w": 0,
+      "world": "ground-3d"
+    },
+    {
+      "all_distinct_counts": [
+        0,
+        1,
+        2
+      ],
+      "distance": 10,
+      "distinct_exposure_masks": 4,
+      "max_distinct_exposures": 2,
+      "min_distinct_exposures": 0,
+      "radius": 0,
+      "resource_w": 0,
+      "world": "ground-4d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 8,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 0,
+      "resource_w": 0,
+      "world": "elevated-4d"
+    },
+    {
+      "all_distinct_counts": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "distance": 16,
+      "distinct_exposure_masks": 7,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 0,
+      "radius": 1,
+      "resource_w": 0,
+      "world": "ground-3d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 10,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 1,
+      "resource_w": 0,
+      "world": "ground-4d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 8,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 1,
+      "resource_w": 0,
+      "world": "elevated-4d"
+    },
+    {
+      "all_distinct_counts": [
+        2,
+        3
+      ],
+      "distance": 16,
+      "distinct_exposure_masks": 2,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 2,
+      "radius": 2,
+      "resource_w": 0,
+      "world": "ground-3d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 10,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 2,
+      "resource_w": 0,
+      "world": "ground-4d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 8,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 2,
+      "resource_w": 0,
+      "world": "elevated-4d"
+    },
+    {
+      "all_distinct_counts": [
+        2,
+        3
+      ],
+      "distance": 16,
+      "distinct_exposure_masks": 2,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 2,
+      "radius": 3,
+      "resource_w": 0,
+      "world": "ground-3d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 10,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 3,
+      "resource_w": 0,
+      "world": "ground-4d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 8,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 3,
+      "resource_w": 0,
+      "world": "elevated-4d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 16,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 4,
+      "resource_w": 0,
+      "world": "ground-3d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 10,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 4,
+      "resource_w": 0,
+      "world": "ground-4d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 8,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 4,
+      "resource_w": 0,
+      "world": "elevated-4d"
+    },
+    {
+      "all_distinct_counts": [
+        0
+      ],
+      "distance": 16,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 0,
+      "min_distinct_exposures": 0,
+      "radius": 0,
+      "resource_w": 1,
+      "world": "ground-3d"
+    },
+    {
+      "all_distinct_counts": [
+        1,
+        2,
+        3
+      ],
+      "distance": 10,
+      "distinct_exposure_masks": 4,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 1,
+      "radius": 0,
+      "resource_w": 1,
+      "world": "ground-4d"
+    },
+    {
+      "all_distinct_counts": [
+        0
+      ],
+      "distance": 8,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 0,
+      "min_distinct_exposures": 0,
+      "radius": 0,
+      "resource_w": 1,
+      "world": "elevated-4d"
+    },
+    {
+      "all_distinct_counts": [
+        0,
+        1,
+        2
+      ],
+      "distance": 16,
+      "distinct_exposure_masks": 4,
+      "max_distinct_exposures": 2,
+      "min_distinct_exposures": 0,
+      "radius": 1,
+      "resource_w": 1,
+      "world": "ground-3d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 10,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 1,
+      "resource_w": 1,
+      "world": "ground-4d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 8,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 1,
+      "resource_w": 1,
+      "world": "elevated-4d"
+    },
+    {
+      "all_distinct_counts": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "distance": 16,
+      "distinct_exposure_masks": 7,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 0,
+      "radius": 2,
+      "resource_w": 1,
+      "world": "ground-3d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 10,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 2,
+      "resource_w": 1,
+      "world": "ground-4d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 8,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 2,
+      "resource_w": 1,
+      "world": "elevated-4d"
+    },
+    {
+      "all_distinct_counts": [
+        2,
+        3
+      ],
+      "distance": 16,
+      "distinct_exposure_masks": 2,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 2,
+      "radius": 3,
+      "resource_w": 1,
+      "world": "ground-3d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 10,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 3,
+      "resource_w": 1,
+      "world": "ground-4d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 8,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 3,
+      "resource_w": 1,
+      "world": "elevated-4d"
+    },
+    {
+      "all_distinct_counts": [
+        2,
+        3
+      ],
+      "distance": 16,
+      "distinct_exposure_masks": 2,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 2,
+      "radius": 4,
+      "resource_w": 1,
+      "world": "ground-3d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 10,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 4,
+      "resource_w": 1,
+      "world": "ground-4d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 8,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 4,
+      "resource_w": 1,
+      "world": "elevated-4d"
+    },
+    {
+      "all_distinct_counts": [
+        0
+      ],
+      "distance": 16,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 0,
+      "min_distinct_exposures": 0,
+      "radius": 0,
+      "resource_w": 2,
+      "world": "ground-3d"
+    },
+    {
+      "all_distinct_counts": [
+        0
+      ],
+      "distance": 10,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 0,
+      "min_distinct_exposures": 0,
+      "radius": 0,
+      "resource_w": 2,
+      "world": "ground-4d"
+    },
+    {
+      "all_distinct_counts": [
+        0
+      ],
+      "distance": 8,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 0,
+      "min_distinct_exposures": 0,
+      "radius": 0,
+      "resource_w": 2,
+      "world": "elevated-4d"
+    },
+    {
+      "all_distinct_counts": [
+        0
+      ],
+      "distance": 16,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 0,
+      "min_distinct_exposures": 0,
+      "radius": 1,
+      "resource_w": 2,
+      "world": "ground-3d"
+    },
+    {
+      "all_distinct_counts": [
+        1,
+        2,
+        3
+      ],
+      "distance": 10,
+      "distinct_exposure_masks": 4,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 1,
+      "radius": 1,
+      "resource_w": 2,
+      "world": "ground-4d"
+    },
+    {
+      "all_distinct_counts": [
+        0
+      ],
+      "distance": 8,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 0,
+      "min_distinct_exposures": 0,
+      "radius": 1,
+      "resource_w": 2,
+      "world": "elevated-4d"
+    },
+    {
+      "all_distinct_counts": [
+        0,
+        1,
+        2
+      ],
+      "distance": 16,
+      "distinct_exposure_masks": 4,
+      "max_distinct_exposures": 2,
+      "min_distinct_exposures": 0,
+      "radius": 2,
+      "resource_w": 2,
+      "world": "ground-3d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 10,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 2,
+      "resource_w": 2,
+      "world": "ground-4d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 8,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 2,
+      "resource_w": 2,
+      "world": "elevated-4d"
+    },
+    {
+      "all_distinct_counts": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "distance": 16,
+      "distinct_exposure_masks": 7,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 0,
+      "radius": 3,
+      "resource_w": 2,
+      "world": "ground-3d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 10,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 3,
+      "resource_w": 2,
+      "world": "ground-4d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 8,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 3,
+      "resource_w": 2,
+      "world": "elevated-4d"
+    },
+    {
+      "all_distinct_counts": [
+        2,
+        3
+      ],
+      "distance": 16,
+      "distinct_exposure_masks": 2,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 2,
+      "radius": 4,
+      "resource_w": 2,
+      "world": "ground-3d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 10,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 4,
+      "resource_w": 2,
+      "world": "ground-4d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 8,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 4,
+      "resource_w": 2,
+      "world": "elevated-4d"
+    },
+    {
+      "all_distinct_counts": [
+        0
+      ],
+      "distance": 16,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 0,
+      "min_distinct_exposures": 0,
+      "radius": 0,
+      "resource_w": 3,
+      "world": "ground-3d"
+    },
+    {
+      "all_distinct_counts": [
+        0
+      ],
+      "distance": 10,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 0,
+      "min_distinct_exposures": 0,
+      "radius": 0,
+      "resource_w": 3,
+      "world": "ground-4d"
+    },
+    {
+      "all_distinct_counts": [
+        0
+      ],
+      "distance": 8,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 0,
+      "min_distinct_exposures": 0,
+      "radius": 0,
+      "resource_w": 3,
+      "world": "elevated-4d"
+    },
+    {
+      "all_distinct_counts": [
+        0
+      ],
+      "distance": 16,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 0,
+      "min_distinct_exposures": 0,
+      "radius": 1,
+      "resource_w": 3,
+      "world": "ground-3d"
+    },
+    {
+      "all_distinct_counts": [
+        0
+      ],
+      "distance": 10,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 0,
+      "min_distinct_exposures": 0,
+      "radius": 1,
+      "resource_w": 3,
+      "world": "ground-4d"
+    },
+    {
+      "all_distinct_counts": [
+        0
+      ],
+      "distance": 8,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 0,
+      "min_distinct_exposures": 0,
+      "radius": 1,
+      "resource_w": 3,
+      "world": "elevated-4d"
+    },
+    {
+      "all_distinct_counts": [
+        0
+      ],
+      "distance": 16,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 0,
+      "min_distinct_exposures": 0,
+      "radius": 2,
+      "resource_w": 3,
+      "world": "ground-3d"
+    },
+    {
+      "all_distinct_counts": [
+        1,
+        2,
+        3
+      ],
+      "distance": 10,
+      "distinct_exposure_masks": 4,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 1,
+      "radius": 2,
+      "resource_w": 3,
+      "world": "ground-4d"
+    },
+    {
+      "all_distinct_counts": [
+        0
+      ],
+      "distance": 8,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 0,
+      "min_distinct_exposures": 0,
+      "radius": 2,
+      "resource_w": 3,
+      "world": "elevated-4d"
+    },
+    {
+      "all_distinct_counts": [
+        0,
+        1,
+        2
+      ],
+      "distance": 16,
+      "distinct_exposure_masks": 4,
+      "max_distinct_exposures": 2,
+      "min_distinct_exposures": 0,
+      "radius": 3,
+      "resource_w": 3,
+      "world": "ground-3d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 10,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 3,
+      "resource_w": 3,
+      "world": "ground-4d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 8,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 3,
+      "resource_w": 3,
+      "world": "elevated-4d"
+    },
+    {
+      "all_distinct_counts": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "distance": 16,
+      "distinct_exposure_masks": 7,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 0,
+      "radius": 4,
+      "resource_w": 3,
+      "world": "ground-3d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 10,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 4,
+      "resource_w": 3,
+      "world": "ground-4d"
+    },
+    {
+      "all_distinct_counts": [
+        3
+      ],
+      "distance": 8,
+      "distinct_exposure_masks": 1,
+      "max_distinct_exposures": 3,
+      "min_distinct_exposures": 3,
+      "radius": 4,
+      "resource_w": 3,
+      "world": "elevated-4d"
+    }
+  ],
+  "adjacency_conditions_using_maps": 60,
+  "adjacency_distance_maps_built": 3,
+  "barriers": {
+    "access_penalty": 3,
+    "ground_destination_cost": 4,
+    "matrix": [
+      {
+        "computed_cost": 10,
+        "path_xyz_occupied_at_other_w": 1,
+        "route": [
+          [
+            0,
+            4,
+            1,
+            0
+          ],
+          [
+            0,
+            4,
+            1,
+            1
+          ],
+          [
+            1,
+            4,
+            1,
+            1
+          ],
+          [
+            2,
+            4,
+            1,
+            1
+          ],
+          [
+            3,
+            4,
+            1,
+            1
+          ],
+          [
+            4,
+            4,
+            1,
+            1
+          ],
+          [
+            5,
+            4,
+            1,
+            1
+          ],
+          [
+            5,
+            4,
+            1,
+            0
+          ],
+          [
+            6,
+            4,
+            1,
+            0
+          ],
+          [
+            7,
+            4,
+            1,
+            0
+          ],
+          [
+            8,
+            4,
+            1,
+            0
+          ]
+        ],
+        "steps_in_w": 2,
+        "theorem_cost": 10,
+        "w_step_cost": 1,
+        "wall_max_w": 0
+      },
+      {
+        "computed_cost": 12,
+        "path_xyz_occupied_at_other_w": 1,
+        "route": [
+          [
+            0,
+            4,
+            1,
+            0
+          ],
+          [
+            0,
+            4,
+            1,
+            1
+          ],
+          [
+            1,
+            4,
+            1,
+            1
+          ],
+          [
+            2,
+            4,
+            1,
+            1
+          ],
+          [
+            3,
+            4,
+            1,
+            1
+          ],
+          [
+            4,
+            4,
+            1,
+            1
+          ],
+          [
+            5,
+            4,
+            1,
+            1
+          ],
+          [
+            5,
+            4,
+            1,
+            0
+          ],
+          [
+            6,
+            4,
+            1,
+            0
+          ],
+          [
+            7,
+            4,
+            1,
+            0
+          ],
+          [
+            8,
+            4,
+            1,
+            0
+          ]
+        ],
+        "steps_in_w": 2,
+        "theorem_cost": 12,
+        "w_step_cost": 2,
+        "wall_max_w": 0
+      },
+      {
+        "computed_cost": 14,
+        "path_xyz_occupied_at_other_w": 1,
+        "route": [
+          [
+            0,
+            4,
+            1,
+            0
+          ],
+          [
+            0,
+            4,
+            1,
+            1
+          ],
+          [
+            1,
+            4,
+            1,
+            1
+          ],
+          [
+            2,
+            4,
+            1,
+            1
+          ],
+          [
+            3,
+            4,
+            1,
+            1
+          ],
+          [
+            4,
+            4,
+            1,
+            1
+          ],
+          [
+            5,
+            4,
+            1,
+            1
+          ],
+          [
+            5,
+            4,
+            1,
+            0
+          ],
+          [
+            6,
+            4,
+            1,
+            0
+          ],
+          [
+            7,
+            4,
+            1,
+            0
+          ],
+          [
+            8,
+            4,
+            1,
+            0
+          ]
+        ],
+        "steps_in_w": 2,
+        "theorem_cost": 14,
+        "w_step_cost": 3,
+        "wall_max_w": 0
+      },
+      {
+        "computed_cost": 16,
+        "path_xyz_occupied_at_other_w": 1,
+        "route": [
+          [
+            0,
+            4,
+            1,
+            0
+          ],
+          [
+            0,
+            4,
+            1,
+            1
+          ],
+          [
+            1,
+            4,
+            1,
+            1
+          ],
+          [
+            2,
+            4,
+            1,
+            1
+          ],
+          [
+            3,
+            4,
+            1,
+            1
+          ],
+          [
+            4,
+            4,
+            1,
+            1
+          ],
+          [
+            5,
+            4,
+            1,
+            1
+          ],
+          [
+            5,
+            4,
+            1,
+            0
+          ],
+          [
+            6,
+            4,
+            1,
+            0
+          ],
+          [
+            7,
+            4,
+            1,
+            0
+          ],
+          [
+            8,
+            4,
+            1,
+            0
+          ]
+        ],
+        "steps_in_w": 2,
+        "theorem_cost": 16,
+        "w_step_cost": 4,
+        "wall_max_w": 0
+      },
+      {
+        "computed_cost": 12,
+        "path_xyz_occupied_at_other_w": 1,
+        "route": [
+          [
+            0,
+            4,
+            1,
+            0
+          ],
+          [
+            0,
+            4,
+            1,
+            1
+          ],
+          [
+            0,
+            4,
+            1,
+            2
+          ],
+          [
+            1,
+            4,
+            1,
+            2
+          ],
+          [
+            2,
+            4,
+            1,
+            2
+          ],
+          [
+            3,
+            4,
+            1,
+            2
+          ],
+          [
+            4,
+            4,
+            1,
+            2
+          ],
+          [
+            5,
+            4,
+            1,
+            2
+          ],
+          [
+            5,
+            4,
+            1,
+            1
+          ],
+          [
+            5,
+            4,
+            1,
+            0
+          ],
+          [
+            6,
+            4,
+            1,
+            0
+          ],
+          [
+            7,
+            4,
+            1,
+            0
+          ],
+          [
+            8,
+            4,
+            1,
+            0
+          ]
+        ],
+        "steps_in_w": 4,
+        "theorem_cost": 12,
+        "w_step_cost": 1,
+        "wall_max_w": 1
+      },
+      {
+        "computed_cost": 16,
+        "path_xyz_occupied_at_other_w": 1,
+        "route": [
+          [
+            0,
+            4,
+            1,
+            0
+          ],
+          [
+            0,
+            4,
+            1,
+            1
+          ],
+          [
+            0,
+            4,
+            1,
+            2
+          ],
+          [
+            1,
+            4,
+            1,
+            2
+          ],
+          [
+            2,
+            4,
+            1,
+            2
+          ],
+          [
+            3,
+            4,
+            1,
+            2
+          ],
+          [
+            4,
+            4,
+            1,
+            2
+          ],
+          [
+            5,
+            4,
+            1,
+            2
+          ],
+          [
+            5,
+            4,
+            1,
+            1
+          ],
+          [
+            5,
+            4,
+            1,
+            0
+          ],
+          [
+            6,
+            4,
+            1,
+            0
+          ],
+          [
+            7,
+            4,
+            1,
+            0
+          ],
+          [
+            8,
+            4,
+            1,
+            0
+          ]
+        ],
+        "steps_in_w": 4,
+        "theorem_cost": 16,
+        "w_step_cost": 2,
+        "wall_max_w": 1
+      },
+      {
+        "computed_cost": 16,
+        "path_xyz_occupied_at_other_w": 0,
+        "route": [
+          [
+            0,
+            4,
+            1,
+            0
+          ],
+          [
+            0,
+            3,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            1,
+            0
+          ],
+          [
+            2,
+            0,
+            1,
+            0
+          ],
+          [
+            3,
+            0,
+            1,
+            0
+          ],
+          [
+            4,
+            0,
+            1,
+            0
+          ],
+          [
+            5,
+            0,
+            1,
+            0
+          ],
+          [
+            5,
+            1,
+            1,
+            0
+          ],
+          [
+            5,
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            3,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            1,
+            0
+          ],
+          [
+            6,
+            4,
+            1,
+            0
+          ],
+          [
+            7,
+            4,
+            1,
+            0
+          ],
+          [
+            8,
+            4,
+            1,
+            0
+          ]
+        ],
+        "steps_in_w": 0,
+        "theorem_cost": 16,
+        "w_step_cost": 3,
+        "wall_max_w": 1
+      },
+      {
+        "computed_cost": 16,
+        "path_xyz_occupied_at_other_w": 0,
+        "route": [
+          [
+            0,
+            4,
+            1,
+            0
+          ],
+          [
+            0,
+            3,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            1,
+            0
+          ],
+          [
+            2,
+            0,
+            1,
+            0
+          ],
+          [
+            3,
+            0,
+            1,
+            0
+          ],
+          [
+            4,
+            0,
+            1,
+            0
+          ],
+          [
+            5,
+            0,
+            1,
+            0
+          ],
+          [
+            5,
+            1,
+            1,
+            0
+          ],
+          [
+            5,
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            3,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            1,
+            0
+          ],
+          [
+            6,
+            4,
+            1,
+            0
+          ],
+          [
+            7,
+            4,
+            1,
+            0
+          ],
+          [
+            8,
+            4,
+            1,
+            0
+          ]
+        ],
+        "steps_in_w": 0,
+        "theorem_cost": 16,
+        "w_step_cost": 4,
+        "wall_max_w": 1
+      },
+      {
+        "computed_cost": 14,
+        "path_xyz_occupied_at_other_w": 1,
+        "route": [
+          [
+            0,
+            4,
+            1,
+            0
+          ],
+          [
+            0,
+            4,
+            1,
+            1
+          ],
+          [
+            0,
+            4,
+            1,
+            2
+          ],
+          [
+            0,
+            4,
+            1,
+            3
+          ],
+          [
+            1,
+            4,
+            1,
+            3
+          ],
+          [
+            2,
+            4,
+            1,
+            3
+          ],
+          [
+            3,
+            4,
+            1,
+            3
+          ],
+          [
+            4,
+            4,
+            1,
+            3
+          ],
+          [
+            5,
+            4,
+            1,
+            3
+          ],
+          [
+            5,
+            4,
+            1,
+            2
+          ],
+          [
+            5,
+            4,
+            1,
+            1
+          ],
+          [
+            5,
+            4,
+            1,
+            0
+          ],
+          [
+            6,
+            4,
+            1,
+            0
+          ],
+          [
+            7,
+            4,
+            1,
+            0
+          ],
+          [
+            8,
+            4,
+            1,
+            0
+          ]
+        ],
+        "steps_in_w": 6,
+        "theorem_cost": 14,
+        "w_step_cost": 1,
+        "wall_max_w": 2
+      },
+      {
+        "computed_cost": 16,
+        "path_xyz_occupied_at_other_w": 0,
+        "route": [
+          [
+            0,
+            4,
+            1,
+            0
+          ],
+          [
+            0,
+            3,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            1,
+            0
+          ],
+          [
+            2,
+            0,
+            1,
+            0
+          ],
+          [
+            3,
+            0,
+            1,
+            0
+          ],
+          [
+            4,
+            0,
+            1,
+            0
+          ],
+          [
+            5,
+            0,
+            1,
+            0
+          ],
+          [
+            5,
+            1,
+            1,
+            0
+          ],
+          [
+            5,
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            3,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            1,
+            0
+          ],
+          [
+            6,
+            4,
+            1,
+            0
+          ],
+          [
+            7,
+            4,
+            1,
+            0
+          ],
+          [
+            8,
+            4,
+            1,
+            0
+          ]
+        ],
+        "steps_in_w": 0,
+        "theorem_cost": 16,
+        "w_step_cost": 2,
+        "wall_max_w": 2
+      },
+      {
+        "computed_cost": 16,
+        "path_xyz_occupied_at_other_w": 0,
+        "route": [
+          [
+            0,
+            4,
+            1,
+            0
+          ],
+          [
+            0,
+            3,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            1,
+            0
+          ],
+          [
+            2,
+            0,
+            1,
+            0
+          ],
+          [
+            3,
+            0,
+            1,
+            0
+          ],
+          [
+            4,
+            0,
+            1,
+            0
+          ],
+          [
+            5,
+            0,
+            1,
+            0
+          ],
+          [
+            5,
+            1,
+            1,
+            0
+          ],
+          [
+            5,
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            3,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            1,
+            0
+          ],
+          [
+            6,
+            4,
+            1,
+            0
+          ],
+          [
+            7,
+            4,
+            1,
+            0
+          ],
+          [
+            8,
+            4,
+            1,
+            0
+          ]
+        ],
+        "steps_in_w": 0,
+        "theorem_cost": 16,
+        "w_step_cost": 3,
+        "wall_max_w": 2
+      },
+      {
+        "computed_cost": 16,
+        "path_xyz_occupied_at_other_w": 0,
+        "route": [
+          [
+            0,
+            4,
+            1,
+            0
+          ],
+          [
+            0,
+            3,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            1,
+            0
+          ],
+          [
+            2,
+            0,
+            1,
+            0
+          ],
+          [
+            3,
+            0,
+            1,
+            0
+          ],
+          [
+            4,
+            0,
+            1,
+            0
+          ],
+          [
+            5,
+            0,
+            1,
+            0
+          ],
+          [
+            5,
+            1,
+            1,
+            0
+          ],
+          [
+            5,
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            3,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            1,
+            0
+          ],
+          [
+            6,
+            4,
+            1,
+            0
+          ],
+          [
+            7,
+            4,
+            1,
+            0
+          ],
+          [
+            8,
+            4,
+            1,
+            0
+          ]
+        ],
+        "steps_in_w": 0,
+        "theorem_cost": 16,
+        "w_step_cost": 4,
+        "wall_max_w": 2
+      },
+      {
+        "computed_cost": 16,
+        "path_xyz_occupied_at_other_w": 0,
+        "route": [
+          [
+            0,
+            4,
+            1,
+            0
+          ],
+          [
+            0,
+            3,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            1,
+            0
+          ],
+          [
+            2,
+            0,
+            1,
+            0
+          ],
+          [
+            3,
+            0,
+            1,
+            0
+          ],
+          [
+            4,
+            0,
+            1,
+            0
+          ],
+          [
+            5,
+            0,
+            1,
+            0
+          ],
+          [
+            5,
+            1,
+            1,
+            0
+          ],
+          [
+            5,
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            3,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            1,
+            0
+          ],
+          [
+            6,
+            4,
+            1,
+            0
+          ],
+          [
+            7,
+            4,
+            1,
+            0
+          ],
+          [
+            8,
+            4,
+            1,
+            0
+          ]
+        ],
+        "steps_in_w": 0,
+        "theorem_cost": 16,
+        "w_step_cost": 1,
+        "wall_max_w": 3
+      },
+      {
+        "computed_cost": 16,
+        "path_xyz_occupied_at_other_w": 0,
+        "route": [
+          [
+            0,
+            4,
+            1,
+            0
+          ],
+          [
+            0,
+            3,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            1,
+            0
+          ],
+          [
+            2,
+            0,
+            1,
+            0
+          ],
+          [
+            3,
+            0,
+            1,
+            0
+          ],
+          [
+            4,
+            0,
+            1,
+            0
+          ],
+          [
+            5,
+            0,
+            1,
+            0
+          ],
+          [
+            5,
+            1,
+            1,
+            0
+          ],
+          [
+            5,
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            3,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            1,
+            0
+          ],
+          [
+            6,
+            4,
+            1,
+            0
+          ],
+          [
+            7,
+            4,
+            1,
+            0
+          ],
+          [
+            8,
+            4,
+            1,
+            0
+          ]
+        ],
+        "steps_in_w": 0,
+        "theorem_cost": 16,
+        "w_step_cost": 2,
+        "wall_max_w": 3
+      },
+      {
+        "computed_cost": 16,
+        "path_xyz_occupied_at_other_w": 0,
+        "route": [
+          [
+            0,
+            4,
+            1,
+            0
+          ],
+          [
+            0,
+            3,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            1,
+            0
+          ],
+          [
+            2,
+            0,
+            1,
+            0
+          ],
+          [
+            3,
+            0,
+            1,
+            0
+          ],
+          [
+            4,
+            0,
+            1,
+            0
+          ],
+          [
+            5,
+            0,
+            1,
+            0
+          ],
+          [
+            5,
+            1,
+            1,
+            0
+          ],
+          [
+            5,
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            3,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            1,
+            0
+          ],
+          [
+            6,
+            4,
+            1,
+            0
+          ],
+          [
+            7,
+            4,
+            1,
+            0
+          ],
+          [
+            8,
+            4,
+            1,
+            0
+          ]
+        ],
+        "steps_in_w": 0,
+        "theorem_cost": 16,
+        "w_step_cost": 3,
+        "wall_max_w": 3
+      },
+      {
+        "computed_cost": 16,
+        "path_xyz_occupied_at_other_w": 0,
+        "route": [
+          [
+            0,
+            4,
+            1,
+            0
+          ],
+          [
+            0,
+            3,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            1,
+            0
+          ],
+          [
+            2,
+            0,
+            1,
+            0
+          ],
+          [
+            3,
+            0,
+            1,
+            0
+          ],
+          [
+            4,
+            0,
+            1,
+            0
+          ],
+          [
+            5,
+            0,
+            1,
+            0
+          ],
+          [
+            5,
+            1,
+            1,
+            0
+          ],
+          [
+            5,
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            3,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            1,
+            0
+          ],
+          [
+            6,
+            4,
+            1,
+            0
+          ],
+          [
+            7,
+            4,
+            1,
+            0
+          ],
+          [
+            8,
+            4,
+            1,
+            0
+          ]
+        ],
+        "steps_in_w": 0,
+        "theorem_cost": 16,
+        "w_step_cost": 4,
+        "wall_max_w": 3
+      }
+    ],
+    "planar_cost": 16,
+    "raised_cost": 8,
+    "raised_destination_cost": 7,
+    "traffic_savings_per_through_trip": 8,
+    "traffic_savings_with_w_detour": 2,
+    "traffic_vs_destination_cases": [
+      {
+        "direct_visits": 1,
+        "ground_only_cost": 20,
+        "net_saving": 5,
+        "raised_cost": 15,
+        "through": 1
+      },
+      {
+        "direct_visits": 3,
+        "ground_only_cost": 28,
+        "net_saving": -1,
+        "raised_cost": 29,
+        "through": 1
+      },
+      {
+        "direct_visits": 4,
+        "ground_only_cost": 48,
+        "net_saving": 4,
+        "raised_cost": 44,
+        "through": 2
+      },
+      {
+        "direct_visits": 2,
+        "ground_only_cost": 88,
+        "net_saving": 34,
+        "raised_cost": 54,
+        "through": 5
+      },
+      {
+        "direct_visits": 10,
+        "ground_only_cost": 200,
+        "net_saving": 50,
+        "raised_cost": 150,
+        "through": 10
+      },
+      {
+        "direct_visits": 2,
+        "ground_only_cost": 488,
+        "net_saving": 234,
+        "raised_cost": 254,
+        "through": 30
+      }
+    ]
+  },
+  "dynamic_change": {
+    "change_requires_revalidation": true,
+    "correct_after_wall_change": 16,
+    "interpretation": "Retaining a correct old answer without its world signature becomes unsound after a structural edit.",
+    "unversioned_stale_value": 10
+  },
+  "experiment": "RISING-TIDE-005",
+  "geometry": {
+    "grid": [
+      9,
+      9,
+      3,
+      4
+    ],
+    "movement": "6 or 8 orthogonal neighbor moves; x/y/z step cost 1, w step cost chosen integer",
+    "obstacle": "x=4, y=1..7, all z, selected w layers",
+    "spatial_coordinates": [
+      "x",
+      "y",
+      "z",
+      "w"
+    ]
+  },
+  "independent_adjacency_path_checks": {
+    "exhaustively_enumerated_geodesics_per_case": 30,
+    "radius_cases": 3
+  },
+  "independent_small_world_checks": 96,
+  "memory_workloads": [
+    {
+      "distinct_goals": 1,
+      "distinct_sources": 140,
+      "fresh_tally": {
+        "edge_checks": 622730,
+        "heap_pops": 96893,
+        "heap_pushes": 109210,
+        "improved_distances": 109070,
+        "lookup": 140,
+        "queries": 140,
+        "settled": 96893,
+        "stale_pops": 0
+      },
+      "fresh_work_events": 925866,
+      "memory": {
+        "frontiers": 1,
+        "queued_heap_entries": 3,
+        "settled_nodes": 948,
+        "tentative_nodes": 951
+      },
+      "queries": 140,
+      "relative_work_reduction": 0.990147,
+      "retained_tally": {
+        "edge_checks": 5996,
+        "heap_pops": 948,
+        "heap_pushes": 951,
+        "improved_distances": 950,
+        "lookup": 140,
+        "queries": 140,
+        "settled": 948,
+        "stale_pops": 0
+      },
+      "retained_work_events": 9123,
+      "workload": "focused"
+    },
+    {
+      "distinct_goals": 90,
+      "distinct_sources": 88,
+      "fresh_tally": {
+        "edge_checks": 282126,
+        "heap_pops": 43882,
+        "heap_pushes": 51891,
+        "improved_distances": 51801,
+        "lookup": 90,
+        "queries": 90,
+        "settled": 43882,
+        "stale_pops": 0
+      },
+      "fresh_work_events": 421871,
+      "memory": {
+        "frontiers": 90,
+        "queued_heap_entries": 8009,
+        "settled_nodes": 43882,
+        "tentative_nodes": 51891
+      },
+      "queries": 90,
+      "relative_work_reduction": -0.000213,
+      "retained_tally": {
+        "edge_checks": 282126,
+        "heap_pops": 43882,
+        "heap_pushes": 51891,
+        "improved_distances": 51801,
+        "lookup": 90,
+        "queries": 90,
+        "settled": 43882,
+        "stale_pops": 0
+      },
+      "retained_work_events": 421961,
+      "workload": "one-shot"
+    },
+    {
+      "distinct_goals": 6,
+      "distinct_sources": 169,
+      "fresh_tally": {
+        "edge_checks": 679403,
+        "heap_pops": 109144,
+        "heap_pushes": 121641,
+        "improved_distances": 121461,
+        "lookup": 180,
+        "queries": 180,
+        "settled": 109144,
+        "stale_pops": 0
+      },
+      "fresh_work_events": 1019512,
+      "memory": {
+        "frontiers": 6,
+        "queued_heap_entries": 46,
+        "settled_nodes": 4797,
+        "tentative_nodes": 4843
+      },
+      "queries": 180,
+      "relative_work_reduction": 0.95641,
+      "retained_tally": {
+        "edge_checks": 29644,
+        "heap_pops": 4797,
+        "heap_pushes": 4843,
+        "improved_distances": 4837,
+        "lookup": 180,
+        "queries": 180,
+        "settled": 4797,
+        "stale_pops": 0
+      },
+      "retained_work_events": 44441,
+      "workload": "mixed-worlds"
+    },
+    {
+      "distinct_goals": 3,
+      "distinct_sources": 144,
+      "fresh_tally": {
+        "edge_checks": 448801,
+        "heap_pops": 69397,
+        "heap_pushes": 84030,
+        "improved_distances": 83880,
+        "lookup": 150,
+        "queries": 150,
+        "settled": 69397,
+        "stale_pops": 0
+      },
+      "fresh_work_events": 671775,
+      "memory": {
+        "frontiers": 3,
+        "queued_heap_entries": 65,
+        "settled_nodes": 2749,
+        "tentative_nodes": 2814
+      },
+      "queries": 150,
+      "relative_work_reduction": 0.961179,
+      "retained_tally": {
+        "edge_checks": 17467,
+        "heap_pops": 2749,
+        "heap_pushes": 2814,
+        "improved_distances": 2811,
+        "lookup": 150,
+        "queries": 150,
+        "settled": 2749,
+        "stale_pops": 0
+      },
+      "retained_work_events": 26079,
+      "workload": "three-destinations"
+    }
+  ],
+  "observability": {
+    "analytic_w_error_bound": 0.2,
+    "five_point_metric_gram_rank_4d": 4,
+    "interpretation": "Metric rank detects minimum Euclidean dimension under Euclidean distance assumptions; it cannot identify a physical W axis. Two-view recovery requires calibrated known observation maps.",
+    "known_second_view_tilt": 0.5,
+    "max_observed_w_error": 0.183256378043275,
+    "observation_noise_each_view_bound": 0.05,
+    "same_points_xyz_projection_rank": 3,
+    "tested_points": 400
+  },
+  "raw_memory_queries": 560,
+  "seed": {
+    "memory": 502005,
+    "observability": 55005,
+    "oracle": 10555005
+  },
+  "status": "finite reproducible computation, not physical inference"
+}

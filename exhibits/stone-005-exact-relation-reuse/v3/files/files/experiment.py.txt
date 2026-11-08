@@ -1,0 +1,412 @@
+#!/usr/bin/env python3
+"""Stone 005. Standard library only; python experiment.py --output .
+CNF-only solver: automatic structural boundaries, exact local projection learning,
+independent local certificates, cross-instance reuse, Gaussian solving, full model
+checks or contradiction receipts. Not a general SAT solver. Unsupported -> UNKNOWN.
+"""
+from __future__ import annotations
+import argparse, hashlib, itertools, json, random, time
+from collections import Counter, defaultdict
+from dataclasses import dataclass
+from pathlib import Path
+
+SEED = 20261104
+
+def encoded(x):
+    return json.dumps(x, sort_keys=True, separators=(',', ':')).encode()
+
+def digest(x):
+    return hashlib.sha256(encoded(x)).hexdigest()
+
+class Unsupported(Exception):
+    pass
+
+class Ledger:
+    def __init__(self):
+        self.c = Counter()
+        self.s = defaultdict(float)
+        self.rules = {}
+        self.last_certificate = None
+    def tick(self, k, n=1):
+        self.c[k] += n
+
+@dataclass(frozen=True)
+class Summary:
+    n: int
+    b: int
+    positive: tuple
+    witnesses: tuple
+    equations: tuple
+    def serial(self):
+        return dict(n=self.n, b=self.b, positive=self.positive,
+                    witnesses=self.witnesses, equations=self.equations)
+
+def parity(x):
+    return x.bit_count() & 1
+
+def xor3(a, b, c, rhs):
+    return [tuple(-v if bit else v for v, bit in zip((a,b,c), bits))
+            for bits in itertools.product((0,1), repeat=3)
+            if (bits[0] ^ bits[1] ^ bits[2]) != rhs]
+
+def template(rhs, mode):
+    # Ports 1,2,3. Private 4,5,6,7,8,9. 8 and 9 are private seed bits.
+    # 4=a+b; 5=4+8; 6=c+9; 7=5+6; 7+8+9=rhs over GF(2).
+    clauses=[]
+    for row in ((4,1,2,0),(5,4,8,0),(6,3,9,0),(7,5,6,0),(7,8,9,rhs)):
+        clauses.extend(xor3(*row))
+    clauses.append((8 if not mode&1 else -8, 9 if not mode&2 else -9))
+    return tuple(clauses)
+
+def rank(rows):
+    basis={}
+    for row in rows:
+        while row:
+            p=row.bit_length()-1
+            if p in basis: row ^= basis[p]
+            else:
+                basis[p]=row
+                break
+    return len(basis)
+
+def make_instance(index, nb=24, modules=64, rename=False):
+    rng=random.Random(SEED+100003*index)
+    planted=[rng.randrange(2) for _ in range(nb)]
+    planted[0], planted[1]=0,1
+    while True:
+        triples=[]
+        # Ensures every outer variable occurs in at least 3 modules.
+        for _ in range(3):
+            order=list(range(nb)); rng.shuffle(order)
+            triples.extend(tuple(sorted(order[i:i+3])) for i in range(0,nb,3))
+        if len(set(triples))!=len(triples): continue
+        while len(triples)<modules:
+            triple=tuple(sorted(rng.sample(range(nb),3)))
+            if triple not in triples: triples.append(triple)
+        if rank(sum(1<<v for v in t) for t in triples)!=nb: continue
+        labels=[(sum(planted[v] for v in t)%2,i%4) for i,t in enumerate(triples)]
+        if len(set(labels))==8: break
+    while True:
+        extra=tuple(sorted(rng.sample(range(nb),3)))
+        if extra not in triples: break
+    triples.append(extra)
+    labels.append(((sum(planted[v] for v in extra)%2) ^ (index%2), modules%4))
+    clauses=[]
+    for m,(ports,(rhs,mode)) in enumerate(zip(triples,labels)):
+        private=list(range(nb+6*m+1,nb+6*m+7))
+        if rename: rng.shuffle(private)
+        mapping=[v+1 for v in ports]+private
+        for clause in template(rhs,mode):
+            clauses.append(tuple(mapping[abs(l)-1]*(1 if l>0 else -1) for l in clause))
+    rng.shuffle(clauses)  # No module labels or ordering are given to the solver.
+    nv=nb+6*len(triples)
+    return dict(index=index,nvars=nv,cnf=tuple(clauses),
+                expected='UNSAT' if index%2 else 'SAT',sha256=digest((nv,clauses)),
+                outer_graph_sha256=digest(sorted(triples)))
+
+def extract(cnf,nvars,log,threshold=10,cap=9):
+    """Propose high-occurrence boundary; verify exact private decomposition.
+    Numeric local ordering is NOT graph-isomorphism canonicalization.
+    """
+    start=time.perf_counter(); occurrences=Counter(); used=set()
+    for clause in cnf:
+        log.tick('input_clause_reads')
+        if not clause: raise Unsupported('empty clause outside prototype path')
+        for lit in clause:
+            log.tick('input_literal_reads')
+            if not isinstance(lit,int) or not lit or abs(lit)>nvars:
+                raise ValueError('invalid literal')
+            occurrences[abs(lit)]+=1; used.add(abs(lit))
+    boundary={v for v in used if occurrences[v]>=threshold}
+    hidden=used-boundary; adjacency={v:set() for v in hidden}
+    for clause in cnf:
+        local=sorted({abs(l) for l in clause if abs(l) in hidden})
+        log.tick('graph_literal_visits',len(clause))
+        for a,b in itertools.combinations(local,2):
+            log.tick('graph_pair_visits'); adjacency[a].add(b); adjacency[b].add(a)
+    components=[]; component_of={}
+    for v in sorted(hidden):
+        if v in component_of: continue
+        cid=len(components); component=set(); todo=[v]; component_of[v]=cid
+        while todo:
+            u=todo.pop(); component.add(u)
+            for w in adjacency[u]:
+                log.tick('graph_edge_visits')
+                if w not in component_of: component_of[w]=cid; todo.append(w)
+        components.append(component)
+    grouped=[[] for _ in components]
+    for clause in cnf:
+        cids={component_of[abs(l)] for l in clause if abs(l) in hidden}
+        log.tick('clause_partition_literal_visits',len(clause))
+        if len(cids)>1: raise AssertionError('private components not disjoint')
+        if cids: grouped[next(iter(cids))].append(clause)
+        else: grouped.append([clause])
+    result=[]
+    for clauses in grouped:
+        variables={abs(l) for c in clauses for l in c}
+        log.tick('block_variable_literal_visits',sum(map(len,clauses)))
+        ports=tuple(sorted(variables&boundary)); interior=tuple(sorted(variables-boundary))
+        mapping=ports+interior
+        if len(mapping)>cap: raise Unsupported(f'proposed block has {len(mapping)} variables; cap={cap}')
+        inverse={v:i+1 for i,v in enumerate(mapping)}; normalized=[]
+        for c in clauses:
+            log.tick('normalization_literal_visits',len(c))
+            normalized.append(tuple(sorted(inverse[abs(l)]*(1 if l>0 else -1) for l in c)))
+        normalized.sort(); log.tick('normalization_sort_items',len(normalized))
+        result.append((mapping,len(ports),tuple(normalized)))
+    log.s['interface_discovery_and_normalization']+=time.perf_counter()-start
+    return result
+
+def eval_discovery(cnf,bits,log):
+    for clause in cnf:
+        okay=False
+        for lit in clause:
+            log.tick('discovery_literal_tests')
+            if ((bits>>(abs(lit)-1))&1)==(1 if lit>0 else 0): okay=True; break
+        if not okay: return False
+    return True
+
+def certify(cnf,candidate,log):
+    """Independent tuples/direct-clauses checker; no discovery evaluator calls.
+    Recomputes positive AND negative membership, checks lifts and affine equality.
+    """
+    n,b=candidate.n,candidate.b; actual=set()
+    for values in itertools.product((False,True),repeat=n):
+        log.tick('certificate_assignments'); clauses=[]
+        for clause in cnf:
+            terms=[]
+            for lit in clause:
+                log.tick('certificate_literal_tests')
+                terms.append(values[lit-1] if lit>0 else not values[-lit-1])
+            clauses.append(any(terms))
+        if all(clauses): actual.add(sum(int(values[i])<<i for i in range(b)))
+    if actual!=set(candidate.positive): raise AssertionError('incorrect exact projection')
+    if len(candidate.witnesses)!=1<<b: raise AssertionError('lift table length')
+    for beta,w in enumerate(candidate.witnesses):
+        if beta not in actual:
+            if w is not None: raise AssertionError('spurious lift')
+            continue
+        if w is None or (w&((1<<b)-1))!=beta: raise AssertionError('missing/bad lift')
+        vals=[bool((w>>i)&1) for i in range(n)]
+        for clause in cnf:
+            log.tick('certificate_witness_literal_tests',len(clause))
+            if not any(vals[abs(l)-1]==(l>0) for l in clause): raise AssertionError('invalid lift')
+    for beta in range(1<<b):
+        good=True
+        for mask,rhs in candidate.equations:
+            log.tick('certificate_affine_tests')
+            p=sum((beta>>i)&1 for i in range(b) if (mask>>i)&1)%2
+            good=good and p==rhs
+        if good!=(beta in actual): raise AssertionError('inexact affine equations')
+
+def learn(cnf,n,b,log):
+    start=time.perf_counter(); witnesses=[None]*(1<<b)
+    for bits in range(1<<n):
+        log.tick('discovery_assignments')
+        if eval_discovery(cnf,bits,log):
+            beta=bits&((1<<b)-1)
+            if witnesses[beta] is None: witnesses[beta]=bits
+    positive=tuple(i for i,w in enumerate(witnesses) if w is not None); equations=[]
+    if not positive: equations=[(0,1)]
+    else:
+        for mask in range(1,1<<b):
+            values=set()
+            for beta in positive:
+                log.tick('affine_discovery_tests'); values.add(parity(mask&beta))
+            if len(values)==1: equations.append((mask,next(iter(values))))
+    for beta in range(1<<b):
+        good=True
+        for mask,rhs in equations:
+            log.tick('affine_discovery_tests'); good=good and parity(mask&beta)==rhs
+        if good!=(beta in positive):
+            log.s['local_discovery']+=time.perf_counter()-start
+            raise Unsupported('exact projected relation is non-affine')
+    answer=Summary(n,b,positive,tuple(witnesses),tuple(equations))
+    log.tick('learned_templates'); log.s['local_discovery']+=time.perf_counter()-start
+    start=time.perf_counter(); certify(cnf,answer,log)
+    log.s['local_certificate_checking']+=time.perf_counter()-start
+    return answer
+
+def gaussian(equations,log):
+    basis={}
+    for i,(row,rhs) in enumerate(equations):
+        provenance=1<<i; log.tick('linear_rows_processed')
+        while row:
+            pivot=row.bit_length()-1
+            if pivot not in basis: basis[pivot]=(row,rhs,provenance); break
+            other,bit,proof=basis[pivot]; log.tick('linear_row_xors')
+            log.tick('linear_xor_bit_upper_work',max(row.bit_length(),other.bit_length())+
+                     max(provenance.bit_length(),proof.bit_length())+1)
+            row^=other; rhs^=bit; provenance^=proof
+        else:
+            if rhs: return 'UNSAT',provenance
+    assignment=0
+    for pivot in sorted(basis):
+        row,rhs,_=basis[pivot]; log.tick('linear_back_substitution_rows')
+        log.tick('linear_back_substitution_bit_upper_work',row.bit_length())
+        bit=rhs ^ parity((row&~(1<<pivot))&assignment)
+        if bit: assignment|=1<<pivot
+    return 'SAT',assignment
+
+def check_answer(cnf,nvars,equations,blocks,status,certificate,log):
+    start=time.perf_counter()
+    if status=='SAT':
+        values=[False]*(nvars+1)
+        for v in range(1,nvars+1):
+            values[v]=bool((certificate>>(v-1))&1); log.tick('witness_initialization_variables')
+        for mapping,summary,normalized in blocks:
+            beta=sum(int(values[mapping[i]])<<i for i in range(summary.b))
+            lift=summary.witnesses[beta]
+            if lift is None: raise AssertionError('no local lift')
+            for i in range(summary.b,summary.n):
+                log.tick('witness_lift_variables'); values[mapping[i]]=bool((lift>>i)&1)
+        # Check every original clause, not merely compressed equations.
+        for clause in cnf:
+            log.tick('answer_check_clauses'); log.tick('answer_check_literals',len(clause))
+            terms=[values[abs(l)]==(l>0) for l in clause]
+            if not any(terms): raise AssertionError('model violates original source')
+        receipt=digest(values)
+        log.last_certificate=dict(status='SAT',assignment=''.join('1' if v else '0' for v in values[1:]))
+    else:
+        row=rhs=0; selected=[]
+        if certificate>>len(equations): raise AssertionError('invalid proof reference')
+        for i,(mask,bit) in enumerate(equations):
+            if (certificate>>i)&1:
+                row^=mask; rhs^=bit; selected.append(i)
+                log.tick('answer_check_contradiction_rows')
+                log.tick('answer_check_contradiction_bit_upper_work',max(1,mask.bit_length()))
+        if row!=0 or rhs!=1: raise AssertionError('invalid contradiction')
+        receipt=digest(selected)
+        proof_rows=[]; position=0
+        for mapping,summary,normalized in blocks:
+            for local_mask,local_rhs in summary.equations:
+                if (certificate>>position)&1:
+                    rule=dict(n=summary.n,b=summary.b,cnf=normalized,mask=local_mask,rhs=local_rhs)
+                    rule_id=digest(rule); log.rules[rule_id]=rule
+                    proof_rows.append(dict(rule_id=rule_id,variables=mapping))
+                position+=1
+        assert position==len(equations)
+        log.last_certificate=dict(status='UNSAT',rows=proof_rows)
+    log.s['answer_checking_and_lifting']+=time.perf_counter()-start
+    return receipt
+
+def cache_bytes(cache):
+    return len(encoded([dict(key=k,summary=s.serial()) for k,s in cache.items()]))
+
+def solve(cnf,nvars,cache,log):
+    blocks=extract(cnf,nvars,log); admitted=[]; equations=[]
+    for mapping,b,normalized in blocks:
+        key=(len(mapping),b,normalized); start=time.perf_counter()
+        log.tick('cache_lookups'); log.tick('cache_key_literal_volume',sum(map(len,normalized)))
+        summary=cache.get(key); log.s['knowledge_lookup_and_insertion']+=time.perf_counter()-start
+        if summary is None:
+            log.tick('cache_misses'); summary=learn(normalized,len(mapping),b,log)
+            start=time.perf_counter(); cache[key]=summary; log.tick('cache_insertions')
+            log.s['knowledge_lookup_and_insertion']+=time.perf_counter()-start
+        else: log.tick('cache_hits')
+        admitted.append((mapping,summary,normalized)); start=time.perf_counter()
+        for mask,rhs in summary.equations:
+            global_mask=0
+            for i in range(b):
+                log.tick('equation_assembly_port_tests')
+                if (mask>>i)&1: global_mask ^= 1<<(mapping[i]-1)
+            equations.append((global_mask,rhs))
+        log.s['equation_assembly']+=time.perf_counter()-start
+    start=time.perf_counter(); status,proof=gaussian(equations,log)
+    log.s['global_solving']+=time.perf_counter()-start
+    return status,check_answer(cnf,nvars,equations,admitted,status,proof,log)
+
+def run_stream(instances,retain):
+    log=Ledger(); cache={}; records=[]; peak_count=peak_bytes=0; start=time.perf_counter()
+    for instance in instances:
+        if not retain:
+            now=time.perf_counter(); log.tick('discarded_cache_entries',len(cache)); cache.clear()
+            log.s['knowledge_discard']+=time.perf_counter()-now
+        before=log.c['cache_misses']; now=time.perf_counter()
+        try: status,receipt=solve(instance['cnf'],instance['nvars'],cache,log); reason=None
+        except Unsupported as e: status,receipt,reason='UNKNOWN',None,str(e)
+        duration=time.perf_counter()-now
+        if status!=instance['expected']: raise AssertionError((instance['index'],status,instance['expected'],reason))
+        size=cache_bytes(cache); peak_count=max(peak_count,len(cache)); peak_bytes=max(peak_bytes,size)
+        records.append(dict(index=instance['index'],input_sha256=instance['sha256'],status=status,
+                            answer_receipt_sha256=receipt,new_templates=log.c['cache_misses']-before,
+                            cache_templates=len(cache),serialized_cache_bytes=size,solve_seconds=duration,certificate=log.last_certificate))
+    return dict(retain=retain,instances=len(instances),status_counts=dict(Counter(r['status'] for r in records)),
+                counts=dict(sorted(log.c.items())),phase_seconds=dict(sorted(log.s.items())),
+                end_to_end_seconds_including_profiling=time.perf_counter()-start,
+                peak_cache_templates=peak_count,peak_serialized_cache_bytes=peak_bytes,records=records,local_rules=log.rules)
+
+def break_tests():
+    results={}
+    try:
+        learn(((1,2,3),),3,3,Ledger()); raise AssertionError('OR wrongly admitted')
+    except Unsupported as e:
+        results['or_clause']=dict(status='UNKNOWN',reason=str(e),positive_assignments=7,negative_assignments=1)
+    try:
+        extract(tuple((-i,i+1) for i in range(1,12)),12,Ledger()); raise AssertionError('oversized module admitted')
+    except Unsupported as e:
+        results['low_occurrence_boundary_failure']=dict(status='UNKNOWN',reason=str(e),actual_status='SAT',witness='all true')
+    source=tuple(sorted(tuple(sorted(c)) for c in template(0,0)))
+    changed=tuple(sorted(source+((-8,),(-9,))))
+    old=learn(source,9,3,Ledger()); new=learn(changed,9,3,Ledger())
+    assert len(old.positive)==4 and len(new.positive)==0
+    results['hidden_update_invalidation']=dict(old_boundary_models=4,updated_boundary_models=0,
+        source_keys_differ=source!=changed,unsafe_reuse_would_accept=True,relearned_result='UNSAT')
+    rejected=0
+    for positives in (tuple(range(8)),()):
+        bad=Summary(old.n,old.b,positives,old.witnesses,old.equations)
+        try: certify(source,bad,Ledger())
+        except AssertionError: rejected+=1
+    assert rejected==2
+    results['tampered_projection_certificates_rejected']=rejected
+    instance=make_instance(0)
+    try:
+        extract(instance['cnf']+((25,31),),instance['nvars'],Ledger())
+        raise AssertionError('cross-hidden link went unnoticed')
+    except Unsupported as e: results['cross_hidden_link']=dict(status='UNKNOWN',reason=str(e))
+    return results
+
+def main():
+    p=argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--output',type=Path,default=Path('.'))
+    p.add_argument('--instances',type=int,default=64)
+    p.add_argument('--rename-instances',type=int,default=8)
+    args=p.parse_args()
+    if args.instances<2 or args.rename_instances<1: p.error('need >=2 instances and >=1 renaming instance')
+    args.output.mkdir(parents=True,exist_ok=True)
+    start=time.perf_counter(); instances=[make_instance(i) for i in range(args.instances)]
+    generation=time.perf_counter()-start
+    assert len({i['sha256'] for i in instances})==len(instances)
+    assert len({i['outer_graph_sha256'] for i in instances})==len(instances)
+    cold=run_stream(instances,False); warm=run_stream(instances,True)
+    assert [(r['status'],r['answer_receipt_sha256']) for r in cold['records']]==[(r['status'],r['answer_receipt_sha256']) for r in warm['records']]
+    assert warm['counts']['learned_templates']==8
+    assert cold['counts']['learned_templates']==8*len(instances)
+    renamed=[make_instance(1000+i,rename=True) for i in range(args.rename_instances)]
+    stress=dict(instances=len(renamed),cold=run_stream(renamed,False),warm=run_stream(renamed,True))
+    results=dict(seed=SEED,generation_seconds=generation,instances_unique=len(instances),outer_graphs_unique=len(instances),
+        variables_each=sorted({i['nvars'] for i in instances}),clauses_each=sorted({len(i['cnf']) for i in instances}),
+        literals_each=sorted({sum(map(len,i['cnf'])) for i in instances}),cold=cold,warm=warm,
+        renaming_stress=stress,break_tests=break_tests(),disclosure=dict(
+        solver_input='CNF and nvars only; no decomposition, template IDs, parity equations or planted answer',
+        baseline='same implementation; caches within each solve, discards across solves',
+        timing='one instrumented cold pass followed by one warm pass; not a robust benchmark',
+        charged='parsing, structure discovery, normalization/matching, local discovery, independent local certificates, global solving, lifting/checking, cache operations',
+        generation='reported separately; identical shared workload; not charged as inference',
+        memory='serialized reusable-cache bytes, not peak resident or total process memory',
+        counters='named events, not interchangeable bit-operation counts; XOR operand-width upper work also recorded',
+        limits='cap=9 variables per module; non-affine or oversized -> UNKNOWN, never UNSAT',
+        canonicalization='sorted numeric local ordering, NOT graph-isomorphism recognition',
+        comparison='no comparison with optimized SAT solvers or direct CNF-XOR recognizers'))
+    verification=dict(local_rules=warm['local_rules'],instances=[dict(nvars=i['nvars'],cnf=i['cnf'],sha256=i['sha256'],certificate=r['certificate']) for i,r in zip(instances,warm['records'])])
+    (args.output/'verification_bundle.json').write_bytes(encoded(verification)+b'\n')
+    (args.output/'results.json').write_text(json.dumps(results,indent=2)+'\n')
+    (args.output/'workload_manifest.json').write_text(json.dumps([{k:v for k,v in i.items() if k!='cnf'} for i in instances],indent=2)+'\n')
+    print(json.dumps(dict(instances=len(instances),status_counts=warm['status_counts'],
+        cold_learned=cold['counts']['learned_templates'],warm_learned=warm['counts']['learned_templates'],
+        cold_discovery_assignments=cold['counts']['discovery_assignments'],warm_discovery_assignments=warm['counts']['discovery_assignments'],
+        cold_seconds=cold['end_to_end_seconds_including_profiling'],warm_seconds=warm['end_to_end_seconds_including_profiling'],
+        warm_cache_bytes=warm['peak_serialized_cache_bytes'],renaming_cold_learned=stress['cold']['counts']['learned_templates'],
+        renaming_warm_learned=stress['warm']['counts']['learned_templates'],break_tests=results['break_tests']),indent=2))
+
+if __name__=='__main__': main()

@@ -1,0 +1,221 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "Finite simulated weighted graphs with known geometry and unit work-event accounting. Exact statements are about the specified model, not physical four-dimensional space or traffic engineering.",
+  "date": "2026-11-07",
+  "downloads": [
+    {
+      "bytes": 2941,
+      "original_path": "article.md",
+      "sha256": "420d7513f42f8b565a513c2c5c2f35bca3e382df1424cf94869e08d2d24b6936",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 1847,
+      "original_path": "files/README.md",
+      "sha256": "cec726c8ce2fb69d9773a76c525f93c2fc3d9da68e3e6ebcfd887531b3d4d497",
+      "url": "files/files/README.md.txt"
+    },
+    {
+      "bytes": 7988,
+      "original_path": "files/PROOF.md",
+      "sha256": "3d40fe88afcd63913aa1c7aaac3699eaeeed7afb63030a441bb85d19a7e429dd",
+      "url": "files/files/PROOF.md.txt"
+    },
+    {
+      "bytes": 9865,
+      "original_path": "files/REPORT.md",
+      "sha256": "61ffe05ba0ce66741abb1ff47f714fbbcdf33ba85697081c5edf7b0a6cc236ec",
+      "url": "files/files/REPORT.md.txt"
+    },
+    {
+      "bytes": 23729,
+      "original_path": "files/experiment.py",
+      "sha256": "c14728972455d0890e2db23322874ab044a9e3fc09d4dc695cfd53332be8a629",
+      "url": "files/files/experiment.py.txt"
+    },
+    {
+      "bytes": 861,
+      "original_path": "files/run_receipt.txt",
+      "sha256": "db48e2d84eff4ef30c34fddf8d6e6ef12477249e55eeaa62ea28fc3e9ed30b4c",
+      "url": "files/files/run_receipt.txt.txt"
+    },
+    {
+      "bytes": 45926,
+      "original_path": "files/results.json",
+      "sha256": "068d1d2e3e0bffc05cc94b5a123a816e7c15e3eb0329f29397fd9dd463763bfa",
+      "url": "files/files/results.json.txt"
+    },
+    {
+      "bytes": 2781,
+      "original_path": "files/wall_sweep.csv",
+      "sha256": "92784a3fb217da909052d2b6334a32f1a555d7860459cf2b8eb0057637f3c92d",
+      "url": "files/files/wall_sweep.csv.txt"
+    },
+    {
+      "bytes": 1924,
+      "original_path": "files/adjacency_sweep.csv",
+      "sha256": "8e56b85fe042aa40bbd90a63ca45f57f64fe77e1319be9d3050b409fcbbb7ae4",
+      "url": "files/files/adjacency_sweep.csv.txt"
+    },
+    {
+      "bytes": 37706,
+      "original_path": "files/query_ledger.csv",
+      "sha256": "09dc8b411e8c3a60ccc1c5df5d4b63c10d871e8b21c21bcb86e21aeb40841a94",
+      "url": "files/files/query_ledger.csv.txt"
+    },
+    {
+      "bytes": 718,
+      "original_path": "files/MANIFEST.sha256.txt",
+      "sha256": "763b612fcd0ab54746fc5b479a7f127aaab03a00d487c35968a9d75b06a4fb96",
+      "url": "files/files/MANIFEST.sha256.txt.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 2941,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "article",
+      "sha256": "420d7513f42f8b565a513c2c5c2f35bca3e382df1424cf94869e08d2d24b6936"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 1847,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "files/README.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "original",
+      "sha256": "cec726c8ce2fb69d9773a76c525f93c2fc3d9da68e3e6ebcfd887531b3d4d497"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 7988,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "files/PROOF.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "proof",
+      "sha256": "3d40fe88afcd63913aa1c7aaac3699eaeeed7afb63030a441bb85d19a7e429dd"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 9865,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "files/REPORT.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "original",
+      "sha256": "61ffe05ba0ce66741abb1ff47f714fbbcdf33ba85697081c5edf7b0a6cc236ec"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 23729,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/experiment.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "c14728972455d0890e2db23322874ab044a9e3fc09d4dc695cfd53332be8a629"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 861,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/plain",
+      "path": "files/run_receipt.txt",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "receipt",
+      "sha256": "db48e2d84eff4ef30c34fddf8d6e6ef12477249e55eeaa62ea28fc3e9ed30b4c"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 45926,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/results.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "068d1d2e3e0bffc05cc94b5a123a816e7c15e3eb0329f29397fd9dd463763bfa"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 2781,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/csv",
+      "path": "files/wall_sweep.csv",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "92784a3fb217da909052d2b6334a32f1a555d7860459cf2b8eb0057637f3c92d"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 1924,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/csv",
+      "path": "files/adjacency_sweep.csv",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "8e56b85fe042aa40bbd90a63ca45f57f64fe77e1319be9d3050b409fcbbb7ae4"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 37706,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/csv",
+      "path": "files/query_ledger.csv",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "09dc8b411e8c3a60ccc1c5df5d4b63c10d871e8b21c21bcb86e21aeb40841a94"
+    },
+    {
+      "attribution": "Bridges Group owner-directed research; source packet preserved. See provenance record for precursor and AI-assisted contribution descriptions.",
+      "bytes": 718,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/plain",
+      "path": "files/MANIFEST.sha256.txt",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "receipt",
+      "sha256": "763b612fcd0ab54746fc5b479a7f127aaab03a00d487c35968a9d75b06a4fb96"
+    }
+  ],
+  "finding": "For the defined wall D(d,c)=8+min(8,2c(d+1)) for d<=2; D(3,c)=16. The recorded checks cover 16 wall-cost pairs, 96 smaller-world route questions and 560 streamed route answers. Retained reverse search cuts declared work events sharply on repeated-destination workloads but increases them slightly for one-off destinations.",
+  "gardens": [],
+  "id": "rising-tide-005-hidden-passage",
+  "limitations": [
+    "W is a spatial coordinate of a stipulated mathematical model, not time or observed physics.",
+    "Access-cost and adjacency signals are stipulated; no queue capacity, energy, collision, or construction costs.",
+    "Work events are declared counters, not seconds, energy or real traffic delay.",
+    "Reuse fails on one-off destination queries and is unsound if the world signature is dropped after an edit."
+  ],
+  "method": "Closed-form route bounds, independent finite shortest-path oracles, shortest-path DAG mask propagation, and resumable reverse Dijkstra, with full world-signature keys.",
+  "open_questions": [
+    "Can a genuine, measured information-transfer benefit be connected to the proposed adjacency model?",
+    "When does retaining and indexing existing route work outperform other demand-driven caches under measured machine costs?"
+  ],
+  "package_sha256": "2a9a96d995abbac65edc2978d3afe1f8fdd49978adc0ef74a9881e9aa1d6fa80",
+  "provenance": {
+    "authors": [
+      "Bridges Group — owner-directed, AI-assisted research"
+    ],
+    "change_note": "First curated Proof Wall candidate. No modification to original scientific evidence or source archive. Preparation v2: original hash-manifest bytes kept under builder-supported .txt filename; original archive unchanged. Release v3 records owner approval of the prepared v2 selection ; article and underlying evidence files remain unchanged. The article retains its earlier preparation-stage wording; the owner subsequently approved this release and publication review has been completed.",
+    "origin": "Original experiment code and proof are original project work documented by this packet; historical precursor material is cited but not silently merged."
+  },
+  "publication": {
+    "attribution": "Bridges Group, owner-directed and AI-assisted. Exact contribution detail is in the private provenance record.",
+    "intent": "request-review",
+    "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner."
+  },
+  "question": "In a declared finite four-coordinate routing world, how do obstacle placement, access, adjacency, observation and retained search affect exact routes and repeated work?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "The Hidden Passage — routes, adjacency, and work that survives",
+  "version": 3
+}

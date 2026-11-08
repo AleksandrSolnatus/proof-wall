@@ -1,0 +1,9 @@
+Preserved failed expectation, 2026-11-04
+
+The first end-to-end hidden-update check expected the prototype to decide UNSAT after adding (-29) and (-30) to a SAT source. Instead solve() raised Unsupported: exact projected relation is non-affine.
+
+Cause: those two hidden variables now occur 10 times and are promoted to the proposed boundary. The unchanged hidden seed OR clause becomes boundary-only. The engine refuses that non-affine factor before it can combine it with the two units. It did NOT return a false SAT/UNSAT answer, but it failed to decide an easy unsatisfiable update.
+
+The narrower fixed-interface learner correctly recompiles the changed nine-variable module as FALSE. The live boundary heuristic and composition pipeline do not automatically achieve this. The updated check records UNKNOWN and the known actual UNSAT status; the failure has not been patched away.
+
+Potential repair, not implemented: sound checked unit propagation before proposing boundaries, or temporarily grouping boundary-only constraints with affected components. This is distinct from the primary next action: measured rename-invariant structural recognition.

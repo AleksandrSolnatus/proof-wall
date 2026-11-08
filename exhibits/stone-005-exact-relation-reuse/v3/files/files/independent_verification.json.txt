@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "cases_verified": 64,
+  "answer_counts": {
+    "SAT": 32,
+    "UNSAT": 32
+  },
+  "local_rules_verified": 8,
+  "local_assignments_checked": 4096,
+  "deliberately_corrupted_artifacts_rejected": 3,
+  "independence": "no imports from solver; original source clauses and proof bundle only"
+}

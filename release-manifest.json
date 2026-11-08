@@ -1,5 +1,5 @@
 {
-  "exhibits": 30,
+  "exhibits": 33,
   "files": {
     ".nojekyll": {
       "bytes": 0,
@@ -837,6 +837,106 @@
       "bytes": 4980,
       "sha256": "c82e1909bf08d342765e9478aa9d100045c813e7b104189279409ef4fdba197d"
     },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/exhibit.json": {
+      "bytes": 21317,
+      "sha256": "a6de751d08c3519a1c7246e35217ed3a180bbeb85c1a2909180b5e955bc45a15"
+    },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/files/article.md.txt": {
+      "bytes": 3312,
+      "sha256": "46bbf2bcdfaec7c02027d362cc3d878f97abb58a9a9ddb5350fbc023cbfc6f52"
+    },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/files/files/AMENDMENT-001.md.txt": {
+      "bytes": 1048,
+      "sha256": "1244a42361fd07bc839c36c8ab09c6aa0e47dafeef0d45c610e1d5bf504fc5be"
+    },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/files/files/LOTUS-RECOGNITION-002-REPORT.md.txt": {
+      "bytes": 14764,
+      "sha256": "284d58fa69a1acd593c8a9b9a53ff1dc8f858ed61a31625597fe2e6e131e41b5"
+    },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/files/files/PROTOCOL.md.txt": {
+      "bytes": 5401,
+      "sha256": "30cc149f38778b8659cf662f0ee7fdcdf95f2ebe9f7e9f3e5ff46e6f6b7688aa"
+    },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/files/files/README.md.txt": {
+      "bytes": 2628,
+      "sha256": "e738d8c2306317c3785f69aa6bb16246cc972129925d54ef3c3dccc1edffbbbb"
+    },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/files/files/analyze.py.txt": {
+      "bytes": 4643,
+      "sha256": "392f75d19abc3e8c1d12b3612dba2e4aeccee79441560ab7937a667118687437"
+    },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/files/files/audit.py.txt": {
+      "bytes": 4469,
+      "sha256": "27a0458abefdaf8d449a9f0305dc84d5392924275f31a097f4adc669773b08b8"
+    },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/files/files/fixtures.mjs.txt": {
+      "bytes": 4008,
+      "sha256": "8a873a1b9db992ab618742751182a9d2a943eab8639d96fb241d6992e675220e"
+    },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/files/files/learner.mjs.txt": {
+      "bytes": 6857,
+      "sha256": "6e2f1b81fba5c565218bf315cec5fbce90dbbd82a2e9166cbaea677f0a3a2057"
+    },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/files/files/replay_saved.mjs.txt": {
+      "bytes": 1083,
+      "sha256": "45d97e476892ee915b2ef73fa87111e9d087982468a2203e0e9dfa04a0301d54"
+    },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/files/files/results__analysis.json.txt": {
+      "bytes": 27305,
+      "sha256": "e5a900968051482798ae866fb55ef14194bda19a8c0824c62fefe1275045b7f8"
+    },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/files/files/results__comparisons.csv.txt": {
+      "bytes": 348765,
+      "sha256": "fe56ddc2f29e01d683d71ceff76f299964f8e98af4bbf061a28a1cf61f4506f1"
+    },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/files/files/results__independent-audit.json.txt": {
+      "bytes": 155,
+      "sha256": "2c455954c1306d988ce29dd828d32583794672098fcd6961f4b7e0850cbd3d06"
+    },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/files/files/results__recognizer-tests.json.txt": {
+      "bytes": 193,
+      "sha256": "bbb509494817627bc820e937dff4bf866b07e954aeedda71c464eb3432a62300"
+    },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/files/files/results__reproducibility.json.txt": {
+      "bytes": 172,
+      "sha256": "b3e5aad2bcd168c71e95cebfdd01bf4ad9d0e9962e80ebeb73c775471fe072ce"
+    },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/files/files/results__run-receipt.json.txt": {
+      "bytes": 72,
+      "sha256": "528495cc9199620f9fc3d9337a6d7a092d9472b4875fca03e4b094aca26a4dd8"
+    },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/files/files/results__strict-independent-audit.json.txt": {
+      "bytes": 148,
+      "sha256": "b7862f6430cf050c03504dce2a4396ca075eaaccfc94bea01039cc728c0f6df6"
+    },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/files/files/run.mjs.txt": {
+      "bytes": 2775,
+      "sha256": "e7e4d07a975d980a3cc5407afd030be68c3ee8672088d617165b2e6693755ca3"
+    },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/files/files/run_strict.mjs.txt": {
+      "bytes": 2840,
+      "sha256": "ceccae54ce9594169e09cd79bac727e8e8308c1e91bac79c7b56790749b39daf"
+    },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/files/files/test_recognizer.mjs.txt": {
+      "bytes": 2434,
+      "sha256": "76e0e1d36f7b1feebbe5e09c02c17aeb8a303a0e0459e60bd20abee21532c1d0"
+    },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/files/files/verify_packet.py.txt": {
+      "bytes": 1127,
+      "sha256": "97a223edc006bbaabfeb85bb5bd55c28fe82538d57974449abe565f1436e26ca"
+    },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/index.html": {
+      "bytes": 23526,
+      "sha256": "613a50cb737e262e2158c5591dfd6694954a4abf7813acc8d7a3a91830e4c45b"
+    },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/snapshot.json": {
+      "bytes": 3290,
+      "sha256": "062622d1610c1c5523d3f5f0df48d6e5d515f9b8ff3661bae8d5374aa9522520"
+    },
+    "exhibits/lotus-recognition-002-cost-of-finding/v3/submitted-manifest.json": {
+      "bytes": 16601,
+      "sha256": "f3175e0e70f32175489aa9cc62949d30496672e63f3f4d914ce0f30dbc87e93b"
+    },
     "exhibits/math-frontier-checker-counterexample/v2/exhibit.json": {
       "bytes": 4574,
       "sha256": "b96d68504fca7b9133550ceb4dd888d83e2332c8d21ed4a92416997c778980f3"
@@ -1145,6 +1245,66 @@
       "bytes": 7267,
       "sha256": "8a60c4b130e136192877482d5d7aba7f4b294bec844d052ca20b0ad3d6b6472a"
     },
+    "exhibits/rising-tide-005-hidden-passage/v3/exhibit.json": {
+      "bytes": 12403,
+      "sha256": "b7cc9c2118bc90337423141620e4261efd5c232e5095cbcd044ceace6c7abfe8"
+    },
+    "exhibits/rising-tide-005-hidden-passage/v3/files/article.md.txt": {
+      "bytes": 2941,
+      "sha256": "420d7513f42f8b565a513c2c5c2f35bca3e382df1424cf94869e08d2d24b6936"
+    },
+    "exhibits/rising-tide-005-hidden-passage/v3/files/files/MANIFEST.sha256.txt.txt": {
+      "bytes": 718,
+      "sha256": "763b612fcd0ab54746fc5b479a7f127aaab03a00d487c35968a9d75b06a4fb96"
+    },
+    "exhibits/rising-tide-005-hidden-passage/v3/files/files/PROOF.md.txt": {
+      "bytes": 7988,
+      "sha256": "3d40fe88afcd63913aa1c7aaac3699eaeeed7afb63030a441bb85d19a7e429dd"
+    },
+    "exhibits/rising-tide-005-hidden-passage/v3/files/files/README.md.txt": {
+      "bytes": 1847,
+      "sha256": "cec726c8ce2fb69d9773a76c525f93c2fc3d9da68e3e6ebcfd887531b3d4d497"
+    },
+    "exhibits/rising-tide-005-hidden-passage/v3/files/files/REPORT.md.txt": {
+      "bytes": 9865,
+      "sha256": "61ffe05ba0ce66741abb1ff47f714fbbcdf33ba85697081c5edf7b0a6cc236ec"
+    },
+    "exhibits/rising-tide-005-hidden-passage/v3/files/files/adjacency_sweep.csv.txt": {
+      "bytes": 1924,
+      "sha256": "8e56b85fe042aa40bbd90a63ca45f57f64fe77e1319be9d3050b409fcbbb7ae4"
+    },
+    "exhibits/rising-tide-005-hidden-passage/v3/files/files/experiment.py.txt": {
+      "bytes": 23729,
+      "sha256": "c14728972455d0890e2db23322874ab044a9e3fc09d4dc695cfd53332be8a629"
+    },
+    "exhibits/rising-tide-005-hidden-passage/v3/files/files/query_ledger.csv.txt": {
+      "bytes": 37706,
+      "sha256": "09dc8b411e8c3a60ccc1c5df5d4b63c10d871e8b21c21bcb86e21aeb40841a94"
+    },
+    "exhibits/rising-tide-005-hidden-passage/v3/files/files/results.json.txt": {
+      "bytes": 45926,
+      "sha256": "068d1d2e3e0bffc05cc94b5a123a816e7c15e3eb0329f29397fd9dd463763bfa"
+    },
+    "exhibits/rising-tide-005-hidden-passage/v3/files/files/run_receipt.txt.txt": {
+      "bytes": 861,
+      "sha256": "db48e2d84eff4ef30c34fddf8d6e6ef12477249e55eeaa62ea28fc3e9ed30b4c"
+    },
+    "exhibits/rising-tide-005-hidden-passage/v3/files/files/wall_sweep.csv.txt": {
+      "bytes": 2781,
+      "sha256": "92784a3fb217da909052d2b6334a32f1a555d7860459cf2b8eb0057637f3c92d"
+    },
+    "exhibits/rising-tide-005-hidden-passage/v3/index.html": {
+      "bytes": 16033,
+      "sha256": "223884e1e8f3f3b8263350f950e89dc98cddf1846133bbf93ea158969fd1d829"
+    },
+    "exhibits/rising-tide-005-hidden-passage/v3/snapshot.json": {
+      "bytes": 1778,
+      "sha256": "ad0bbab0c32a4f56cc21b118b01ba50b86055fc68dfd21abd7fba7771811bcef"
+    },
+    "exhibits/rising-tide-005-hidden-passage/v3/submitted-manifest.json": {
+      "bytes": 10004,
+      "sha256": "945af8719075c46a1759010535f1db54ca623b0d49283555b8fd741dceab4d70"
+    },
     "exhibits/rising-tide-006-r02-witness/v1/exhibit.json": {
       "bytes": 5480,
       "sha256": "ea136d78707b1d698abbeabab8f570967a31f7d7fd497147198ef8d4b829c9cc"
@@ -1409,6 +1569,74 @@
       "bytes": 11603,
       "sha256": "08cddc27516fc0aba23036876897146b31bedd69f36ba1d925756cd6b2cfd5fe"
     },
+    "exhibits/stone-005-exact-relation-reuse/v3/exhibit.json": {
+      "bytes": 14352,
+      "sha256": "b89858f99ec224be8af8c96c0d9ed5ed6bc273112e6708664175ef44da33562f"
+    },
+    "exhibits/stone-005-exact-relation-reuse/v3/files/article.md.txt": {
+      "bytes": 3323,
+      "sha256": "f5d82d9f65f3a1dbb0b40b2495a7cb13db43afe732f3a3184bb74336f085b21f"
+    },
+    "exhibits/stone-005-exact-relation-reuse/v3/files/files/FAILED_ATTEMPT_LIVE_UPDATE.txt.txt": {
+      "bytes": 1152,
+      "sha256": "68496fc8fe2e448a6b84f4a053856f399eb2863744563f880b83c5bff794c886"
+    },
+    "exhibits/stone-005-exact-relation-reuse/v3/files/files/REPORT.md.txt": {
+      "bytes": 20155,
+      "sha256": "4dec6c23bcfc6de60bf788d83e88a38b117b9fca2345fa9532b01b18de480754"
+    },
+    "exhibits/stone-005-exact-relation-reuse/v3/files/files/SHA256SUMS.txt.txt": {
+      "bytes": 1209,
+      "sha256": "79c1e12afb1aa82be26aed40b37b4c7fdc3834ae1d7e3937382f346b57406544"
+    },
+    "exhibits/stone-005-exact-relation-reuse/v3/files/files/adversarial_checks.py.txt": {
+      "bytes": 3875,
+      "sha256": "fcbfc56640fbe6579f17c4645dfc28e077756cb3e032f4eb62a201a70dcadb5d"
+    },
+    "exhibits/stone-005-exact-relation-reuse/v3/files/files/adversarial_results.json.txt": {
+      "bytes": 523,
+      "sha256": "45b7a519e414bf2e9a64a6b587f0519eebe19ab6b7cf0eda505d48b69e8340bb"
+    },
+    "exhibits/stone-005-exact-relation-reuse/v3/files/files/experiment.py.txt": {
+      "bytes": 21649,
+      "sha256": "f368361ef5e5ae6ca4026ba721defb92c2befa1be96ad0fe0b35dd8b9e5f099a"
+    },
+    "exhibits/stone-005-exact-relation-reuse/v3/files/files/independent_verification.json.txt": {
+      "bytes": 311,
+      "sha256": "5f728292b460f086a6b86bb9571449eb3a13fc4adb588752d0efc07b75c22f24"
+    },
+    "exhibits/stone-005-exact-relation-reuse/v3/files/files/results.json.txt": {
+      "bytes": 647803,
+      "sha256": "e7830829578f1ba8bf140de411988f3be983f98ceafa83cbe37a29c3d8ce8fc2"
+    },
+    "exhibits/stone-005-exact-relation-reuse/v3/files/files/results_initial.json.txt": {
+      "bytes": 68849,
+      "sha256": "479f773cb91f5dfbd2bc722744ad4d628221c33ecf6e34c292d41da072c26240"
+    },
+    "exhibits/stone-005-exact-relation-reuse/v3/files/files/verification_bundle.json.txt": {
+      "bytes": 1300066,
+      "sha256": "025c1b8643ff20b615dcede934f55a60775fb53c32d5a66183b1f94a0ec89f14"
+    },
+    "exhibits/stone-005-exact-relation-reuse/v3/files/files/verify_bundle.py.txt": {
+      "bytes": 4804,
+      "sha256": "4cccfdb62d3e174a692837488672b6cfe8dc6c73aed0381c4b7d56afbac6fbed"
+    },
+    "exhibits/stone-005-exact-relation-reuse/v3/files/files/workload_manifest.json.txt": {
+      "bytes": 15545,
+      "sha256": "b247a7f135c60f6fc7f2c46f7923ba06917f9a22d578a3dceed9140829b41ec1"
+    },
+    "exhibits/stone-005-exact-relation-reuse/v3/index.html": {
+      "bytes": 17962,
+      "sha256": "3791839d1b251338ff6ad153026f115813c1b1d2d7a8b798588c49e7751e2d15"
+    },
+    "exhibits/stone-005-exact-relation-reuse/v3/snapshot.json": {
+      "bytes": 2138,
+      "sha256": "0c1ee290980f56a3fa61f4725bfe2b10413e44381d9f39c3c9b8bd725e83d3ce"
+    },
+    "exhibits/stone-005-exact-relation-reuse/v3/submitted-manifest.json": {
+      "bytes": 11381,
+      "sha256": "96957479ab6ae7d09831fea9d0f223484c5aa07ab50d8a2f39e35b6f7d990738"
+    },
     "exhibits/website-storefront-accessible-illustration/v2/exhibit.json": {
       "bytes": 4996,
       "sha256": "06ddc2714749bd3e5e69090819a88b47b31b9ee872e6c417212b1075029ca0a2"
@@ -1474,12 +1702,12 @@
       "sha256": "d1cf42ce64b01824f3c20d2eb7df88c95f8ffcbcc840f64a6c772c74989d4a8a"
     },
     "index.html": {
-      "bytes": 19575,
-      "sha256": "881db80d56f02a539be5a6738846e11aba6faa4a94405109c87f20828e3aa55b"
+      "bytes": 21407,
+      "sha256": "53eb6d2def2aae85b30559af5865fdc108d23bbe3238e38aa0738be1c2284f49"
     },
     "index.json": {
-      "bytes": 24736,
-      "sha256": "ace8152bc9b653a81eb7289b9ecd3ada831e14679ccc1c480e3d72733e9fbaae"
+      "bytes": 27503,
+      "sha256": "740910ce42da0391719f9e4d4c84b7e2c3516f16b0fbc74e22931c0c3cbef504"
     },
     "llms.txt": {
       "bytes": 489,
@@ -1495,7 +1723,7 @@
     }
   },
   "manifest_note": "This manifest excludes itself. Hashes establish bytes, not truth or permission.",
-  "mode": "public-release",
-  "published": true,
+  "mode": "release-candidate",
+  "published": false,
   "schema_version": 1
 }

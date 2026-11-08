@@ -1,0 +1,99 @@
+#!/usr/bin/env python3
+"""Standalone answer checker. Does not import or run experiment.py.
+Checks SAT on original source clauses. Checks UNSAT via locally exhaustive
+implication proofs, source-clause membership, and a contradictory XOR of rows.
+A source subset suffices for UNSAT: each certified row is implied by that subset.
+No module-decomposition heuristic, Gaussian solver, or learned table is trusted.
+"""
+from __future__ import annotations
+import copy, hashlib, itertools, json
+from collections import Counter
+from pathlib import Path
+
+
+def encoded(obj):
+    return json.dumps(obj,sort_keys=True,separators=(',',':')).encode()
+
+
+def require(condition,message):
+    if not condition: raise ValueError(message)
+
+
+def check_rule(rule):
+    n,b=rule['n'],rule['b']; mask,rhs=rule['mask'],rule['rhs']
+    require(isinstance(n,int) and 0<=b<=n<=16,'invalid bounded rule width')
+    require(0<=mask<(1<<b) and rhs in (0,1),'invalid affine equation')
+    for clause in rule['cnf']:
+        require(all(isinstance(l,int) and 1<=abs(l)<=n for l in clause),'invalid local literal')
+    checked=0
+    for vals in itertools.product((0,1),repeat=n):
+        checked+=1
+        holds=all(any(vals[abs(l)-1]==int(l>0) for l in c) for c in rule['cnf'])
+        if holds:
+            value=sum(vals[i] for i in range(b) if (mask>>i)&1)%2
+            require(value==rhs,'local CNF does not imply claimed equation')
+    return checked
+
+
+def check_case(case,rules):
+    n=case['nvars']; cnf=case['cnf']; certificate=case['certificate']
+    require(hashlib.sha256(encoded((n,cnf))).hexdigest()==case['sha256'],'source digest mismatch')
+    for clause in cnf:
+        require(all(isinstance(l,int) and 1<=abs(l)<=n for l in clause),'invalid source literal')
+    if certificate['status']=='SAT':
+        assignment=certificate['assignment']
+        require(len(assignment)==n and set(assignment)<={'0','1'},'invalid total assignment')
+        values=[int(x) for x in assignment]
+        require(all(any(values[abs(l)-1]==int(l>0) for l in c) for c in cnf),'SAT witness violates source')
+        return 'SAT'
+    require(certificate['status']=='UNSAT','unknown claimed status')
+    source={tuple(sorted(c)) for c in cnf}
+    odd_variables=set(); parity_rhs=0
+    for row in certificate['rows']:
+        rule=rules[row['rule_id']]; mapping=row['variables']
+        require(len(mapping)==rule['n'] and len(set(mapping))==len(mapping),'invalid variable injection')
+        require(all(isinstance(v,int) and 1<=v<=n for v in mapping),'variable outside source')
+        for c in rule['cnf']:
+            instantiated=tuple(sorted(mapping[abs(l)-1]*(1 if l>0 else -1) for l in c))
+            require(instantiated in source,'rule premise absent from source')
+        for i in range(rule['b']):
+            if (rule['mask']>>i)&1:
+                v=mapping[i]
+                if v in odd_variables: odd_variables.remove(v)
+                else: odd_variables.add(v)
+        parity_rhs ^= rule['rhs']
+    require(not odd_variables and parity_rhs==1,'rows do not prove 0=1')
+    return 'UNSAT'
+
+
+def main():
+    root=Path(__file__).parent
+    bundle=json.loads((root/'verification_bundle.json').read_text())
+    assignments=0
+    for key,rule in bundle['local_rules'].items():
+        require(hashlib.sha256(encoded(rule)).hexdigest()==key,'rule digest mismatch')
+        assignments+=check_rule(rule)
+    counts=Counter(check_case(case,bundle['local_rules']) for case in bundle['instances'])
+    # Three intentionally damaged proof artifacts must be rejected.
+    sat_case=copy.deepcopy(next(c for c in bundle['instances'] if c['certificate']['status']=='SAT'))
+    witness=sat_case['certificate']['assignment']
+    sat_case['certificate']['assignment']=('0' if witness[0]=='1' else '1')+witness[1:]
+    unsat_case=copy.deepcopy(next(c for c in bundle['instances'] if c['certificate']['status']=='UNSAT'))
+    unsat_case['certificate']['rows']=[]
+    rejected=0
+    for case in (sat_case,unsat_case):
+        try: check_case(case,bundle['local_rules'])
+        except ValueError: rejected+=1
+    rule=copy.deepcopy(next(iter(bundle['local_rules'].values())))
+    rule['rhs'] ^= 1
+    try: check_rule(rule)
+    except ValueError: rejected+=1
+    require(rejected==3,'corruption negative control failed')
+    result=dict(status='PASS',cases_verified=sum(counts.values()),answer_counts=dict(counts),
+                local_rules_verified=len(bundle['local_rules']),local_assignments_checked=assignments,
+                deliberately_corrupted_artifacts_rejected=rejected,
+                independence='no imports from solver; original source clauses and proof bundle only')
+    (root/'independent_verification.json').write_text(json.dumps(result,indent=2)+'\n')
+    print(json.dumps(result,indent=2))
+
+if __name__=='__main__': main()

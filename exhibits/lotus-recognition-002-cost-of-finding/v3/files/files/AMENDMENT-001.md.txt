@@ -1,0 +1,16 @@
+# Additional strict old-parent control
+
+Added after the v1 run; original v1 sources and all 540 receipts are retained.
+Inspecting its `deep` fixtures revealed that some nominal decoys are themselves
+valid elementary parents of the target. This is a useful recognition outcome,
+but those cases cannot establish the cost of searching all the way to the
+oldest parent. They remain labeled `deep`, not silently replaced.
+
+Add 54 `strict_deep` cases, using the same n, seed, K and Q grid. Construct the
+target first, then enumerate potential one-row/two-donor decoys and exclude
+every one which supports ANY elementary edit to that target. This exclusion is
+generator-side ground truth only. Learners, budgets and cost rules are unchanged.
+The oldest record must be the only supported parent at the final arrival.
+Charge the entire warmup and also report final-arrival work separately. This is
+a diagnostic control selected to isolate search depth, not a held-out prediction
+or a reason to retune the learner. The original `deep` cases remain reported.
