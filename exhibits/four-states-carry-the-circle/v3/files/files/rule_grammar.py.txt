@@ -1,0 +1,42 @@
+#!/usr/bin/env python3
+"""Exact run-grammar of KNOWN local-window semantics, never a forecast of missing rules.
+
+Mask=8-bit local allowed truth table, and a run `(mask, length)` means the same
+transfer repeated for that many consecutive windows. Matrix powers calculate
+counts without explicitly multiplying each of the individual windows.
+A grammar assertion needs its own evidence; fitting six observed windows does
+not certify unseen ones.
+"""
+from itertools import groupby
+from shadow_model import DIM, RingShadow, identity, multiply, trace, transfer
+
+
+def matrix_power(A, k, counters):
+    if k<0:raise ValueError('negative powers unsupported')
+    ans=identity()
+    base=A
+    while k:
+        if k&1:ans=multiply(ans,base,counters)
+        k//=2
+        if k:base=multiply(base,base,counters)
+    return ans
+
+
+def runs(masks):
+    return [(m,len(list(group))) for m,group in groupby(masks)]
+
+
+def count_runs(rle):
+    counters={'matrix_multiplications':0,'scalar_mul_adds':0}
+    product=identity()
+    for mask,k in rle:
+        if not (0<=mask<256) or k<=0:raise ValueError('invalid local mask run')
+        product=multiply(product,matrix_power(transfer(mask),k,counters),counters)
+    return trace(product),counters
+
+
+def describe_mask(mask):
+    return {
+      'allowed': [f'{i&1}{(i>>1)&1}{(i>>2)&1}' for i in range(8) if mask&(1<<i)],
+      'forbidden':[f'{i&1}{(i>>1)&1}{(i>>2)&1}' for i in range(8) if not mask&(1<<i)],
+    }

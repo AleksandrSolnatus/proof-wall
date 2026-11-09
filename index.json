@@ -507,6 +507,27 @@
       "title": "Four States Carry the Circle",
       "url": "exhibits/four-states-carry-the-circle/v2/index.html",
       "version": 2
+    },
+    {
+      "claim_scope": "Exact representation for specified local consecutive triples and reported finite tests, not arbitrary nonlocal 3-SAT or P versus NP.",
+      "gardens": [],
+      "id": "four-states-carry-the-circle",
+      "metadata": "exhibits/four-states-carry-the-circle/v3/exhibit.json",
+      "package_sha256": "279c186dc475c06a838b81bed65b10825a50d7ed2943694c03592fa3aa558c36",
+      "question": "How can local rules on a Boolean ring be represented exactly and reused across changes?",
+      "relations": [
+        {
+          "id": "four-states-carry-the-circle",
+          "reason": "Corrects outdated publication status in the article introduction.",
+          "type": "supersedes",
+          "version": 2
+        }
+      ],
+      "sample": false,
+      "status": "verified-finite-result",
+      "title": "Four States Carry the Circle",
+      "url": "exhibits/four-states-carry-the-circle/v3/index.html",
+      "version": 3
     }
   ],
   "gardens": "gardens.json",

@@ -1,0 +1,222 @@
+#!/usr/bin/env python3
+"""SAT-WORLD-GAME-002: exact four-state shadow model of local 3-CNF on a cycle.
+
+Every three-consecutive-variable clause is represented by an 8-bit local table.
+The 4x4 transfer matrix for window i maps (x_i,x_i+1) to (x_i+1,x_i+2).
+The trace of the ordered product of all window matrices is the exact number of
+satisfying cyclic assignments. A segment tree retains partial products so one
+local rule change requires updating just one leaf and O(log n) ancestors.
+
+This program rejects out-of-family clauses rather than inventing an answer.
+An exact abstraction of known rules is NOT a claim to know missing rules.
+"""
+from __future__ import annotations
+from dataclasses import dataclass
+from typing import Sequence
+
+DIM = 4
+
+class UnsupportedConstraint(ValueError):
+    pass
+
+class StaleCache(RuntimeError):
+    pass
+
+
+def bit(num: int, i: int) -> int:
+    return (num >> i) & 1
+
+
+def literal_true(lit: int, assignment: int) -> bool:
+    return bit(assignment, abs(lit)-1) == (1 if lit > 0 else 0)
+
+
+def direct_valid(clauses: Sequence[Sequence[int]], assignment: int) -> bool:
+    return all(any(literal_true(lit, assignment) for lit in clause) for clause in clauses)
+
+
+def local_allowed(clauses: Sequence[Sequence[int]], i: int, n: int):
+    """Return 8-bit mask of allowed triples, keeping source clause list separate."""
+    if n < 4:
+        raise ValueError('cycle should have at least 4 positions')
+    expected = {(i+j)%n for j in range(3)}
+    for c in clauses:
+        if len(c) != 3 or len({abs(k) for k in c}) != 3:
+            raise UnsupportedConstraint(f'not three distinct literals: {c}')
+        if {abs(k)-1 for k in c} != expected:
+            raise UnsupportedConstraint(f'nonlocal clause {c} at window {i}; cannot retain 2-bit boundary')
+    allowed = 0
+    for pattern in range(8):
+        # pattern encodes a=x_i in low bit, then x_i+1, x_i+2.
+        truth = {((i+j)%n):bit(pattern,j) for j in range(3)}
+        sat = all(any(truth[abs(lit)-1] == (1 if lit>0 else 0) for lit in c) for c in clauses)
+        if sat: allowed |= (1<<pattern)
+    return allowed
+
+
+def transfer(mask: int):
+    rows=[[0]*DIM for _ in range(DIM)]
+    for a in range(2):
+        for b in range(2):
+            source=(a<<1)|b
+            for c in range(2):
+                target=(b<<1)|c
+                pattern=a | (b<<1) | (c<<2)
+                rows[source][target] = int(bool(mask & (1<<pattern)))
+    return rows
+
+
+def identity():
+    return [[int(i==j) for j in range(DIM)] for i in range(DIM)]
+
+
+def multiply(A, B, counters=None):
+    M=[[0]*DIM for _ in range(DIM)]
+    for i in range(DIM):
+        for j in range(DIM):
+            total=0
+            for k in range(DIM):
+                total+=A[i][k]*B[k][j]
+            M[i][j]=total
+    if counters is not None:
+        counters['scalar_mul_adds']+=DIM**3
+        counters['matrix_multiplications']+=1
+    return M
+
+
+def trace(M):
+    return sum(M[i][i] for i in range(DIM))
+
+
+class RingShadow:
+    def __init__(self, windows: Sequence[Sequence[Sequence[int]]]):
+        n=len(windows)
+        if n<4: raise ValueError('n >= 4 required')
+        self.n=n
+        self.version=0
+        self.last_change=None
+        self.source=[tuple(tuple(c) for c in cs) for cs in windows]
+        self.counters=dict(mask_clause_evals_upper_bound=0, mask_literals_upper_bound=0, mask_patterns_checked=0, scalar_mul_adds=0,matrix_multiplications=0)
+        self.masks=[]
+        for i in range(n):
+            self.masks.append(self._make_mask(i,self.source[i]))
+        self.size=1
+        while self.size<n:self.size*=2
+        self.tree=[identity() for _ in range(2*self.size)]
+        for i,mask in enumerate(self.masks):self.tree[self.size+i]=transfer(mask)
+        for k in range(self.size-1,0,-1):
+            self.tree[k]=multiply(self.tree[2*k],self.tree[2*k+1],self.counters)
+
+    def _make_mask(self,i,cs):
+        # Explicit upper bounds even when Boolean evaluation short-circuits.
+        self.counters['mask_clause_evals_upper_bound']+=8*len(cs)
+        self.counters['mask_literals_upper_bound']+=8*sum(len(c) for c in cs)
+        self.counters['mask_patterns_checked']+=8
+        return local_allowed(cs,i,self.n)
+
+    def count(self):return trace(self.tree[1])
+
+    def replace_window(self,i,new_clauses):
+        if not(0<=i<self.n):raise IndexError(i)
+        new_clauses=tuple(tuple(cl) for cl in new_clauses)
+        new_mask=self._make_mask(i,new_clauses) # validate before changing source
+        before=self.masks[i]
+        self.source[i]=new_clauses
+        self.masks[i]=new_mask
+        k=self.size+i
+        self.tree[k]=transfer(new_mask)
+        count=0
+        k//=2
+        while k:
+            self.tree[k]=multiply(self.tree[2*k],self.tree[2*k+1],self.counters)
+            count+=1;k//=2
+        self.version+=1
+        self.last_change={'version':self.version,'window':i}
+        return dict(window=i,old_mask=before,new_mask=new_mask,
+                    changed_patterns=(before ^ new_mask).bit_count(),
+                    updated_ancestors=count,exact_solution_count=self.count())
+
+    def current_clauses(self):return tuple(c for cs in self.source for c in cs)
+
+    def is_allowed_assignment(self,assignment):
+        return all(bool(self.masks[i] & (1 << (bit(assignment,i) | (bit(assignment,(i+1)%self.n)<<1) | (bit(assignment,(i+2)%self.n)<<2)))) for i in range(self.n))
+
+    def cached_assignment(self,assignment):return CachedMove(self, assignment)
+
+
+class CachedMove:
+    """Exact local-move checker; patch after rule changes by reinitializing."""
+    def __init__(self, shadow:RingShadow, assignment:int):
+        if assignment<0 or assignment >=1<<shadow.n:raise ValueError('invalid assignment')
+        self.shadow=shadow;self.assignment=assignment;self.version=shadow.version
+        self.ok=[self._ok(i) for i in range(shadow.n)]
+        self.failed=sum(not v for v in self.ok)
+        self.lookups=shadow.n
+
+    def _ok(self,i):
+        n=self.shadow.n;a=self.assignment
+        pat=bit(a,i)|(bit(a,(i+1)%n)<<1)|(bit(a,(i+2)%n)<<2)
+        return bool((self.shadow.masks[i]>>pat)&1)
+
+    def _require_fresh(self):
+        if self.version!=self.shadow.version:
+            raise StaleCache('cached assignment was checked against older local rules; refresh or rebuild')
+
+    def refresh_one_change(self):
+        """Recheck one cached local window after exactly one versioned rule edit.
+
+        Refuses to silently trust a stale result when multiple edits intervene.
+        """
+        ch=self.shadow.last_change
+        if not ch or self.version+1!=self.shadow.version or ch['version']!=self.shadow.version:
+            raise StaleCache('cannot incrementally refresh: rebuild cached assignment')
+        i=ch['window']
+        old=self.ok[i];new=self._ok(i);self.ok[i]=new
+        self.failed+=(not new)-(not old)
+        self.lookups+=1
+        self.version=self.shadow.version
+        return {'refreshed_window':i,'lookups':1,'valid':self.failed==0}
+
+    def is_valid(self):
+        self._require_fresh()
+        return self.failed==0
+
+    def flip(self,variable:int):
+        self._require_fresh()
+        n=self.shadow.n
+        if not(0<=variable<n):raise IndexError(variable)
+        self.assignment^=(1<<variable)
+        touched=sorted({(variable-j)%n for j in range(3)})
+        for i in touched:
+            was=self.ok[i];new=self._ok(i);self.ok[i]=new
+            self.failed+=(not new)-(not was)
+            self.lookups+=1
+        return dict(variable=variable,touched_windows=touched,lookups=len(touched),valid=self.failed==0,fail_count=self.failed)
+
+
+def make_original_windows(mode:str,n:int=16):
+    if n!=16:raise ValueError('original historical world is 16 positions')
+    if mode not in ('observed','forecast','world_A','world_B'):raise KeyError(mode)
+    windows=[]
+    for i in range(n):
+        if mode=='observed' and i>=6:
+            windows.append([]);continue
+        pos=tuple((i+j)%n+1 for j in range(3))
+        neg=tuple(-v for v in pos)
+        if (mode=='world_A' and i==11) or (mode=='world_B' and i>=6):
+            neg=(pos[0],-pos[1],pos[2])
+        windows.append([pos,neg])
+    return windows
+
+
+def direct_count(clauses,n):
+    count=0
+    for a in range(1<<n):
+        count+=direct_valid(clauses,a)
+    return count
+
+
+if __name__=='__main__':
+    for mode in ('observed','forecast','world_A','world_B'):
+        model=RingShadow(make_original_windows(mode))
+        print(mode, model.count(), model.counters)

@@ -1,0 +1,196 @@
+{
+  "article": "article.md",
+  "artifact_type": "proof",
+  "claim_scope": "Exact representation for specified local consecutive triples and reported finite tests, not arbitrary nonlocal 3-SAT or P versus NP.",
+  "date": "2026-11-09",
+  "downloads": [
+    {
+      "bytes": 3860,
+      "original_path": "article.md",
+      "sha256": "feca0e0dec5fd42088885f3a5fc397c0432ed73a6d152c138ddedd02ec1ebf83",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 7713,
+      "original_path": "files/report.md",
+      "sha256": "28e5c10264df2649836c96e226576ae6726f46ab547f091b801b3c7d1cb38b2e",
+      "url": "files/files/report.md.txt"
+    },
+    {
+      "bytes": 8479,
+      "original_path": "files/shadow_model.py",
+      "sha256": "1943e12c6c4814295d9ea23c84809e73be7cb615b17457f827cb7a44e3b4a7b1",
+      "url": "files/files/shadow_model.py.txt"
+    },
+    {
+      "bytes": 1443,
+      "original_path": "files/rule_grammar.py",
+      "sha256": "1621ec263215da12f9dcbb5926d4a8751cfe59e4f648b277e344b2c31578d19b",
+      "url": "files/files/rule_grammar.py.txt"
+    },
+    {
+      "bytes": 8877,
+      "original_path": "files/test_shadow.py",
+      "sha256": "f51918ba3b13c01fc4076e34df6e793b894253b079d44c295f0d00e034dd8287",
+      "url": "files/files/test_shadow.py.txt"
+    },
+    {
+      "bytes": 2469,
+      "original_path": "files/test_grammar.py",
+      "sha256": "aaa2e2083159d08faf6764379b2a15618c3b1d525224f480497a9ede64365c26",
+      "url": "files/files/test_grammar.py.txt"
+    },
+    {
+      "bytes": 6876,
+      "original_path": "files/results.json",
+      "sha256": "281f6d195fe4b8df5f815bffc5e0d8cc6cd26d20c33395d0fc5ebdab4669885f",
+      "url": "files/files/results.json.txt"
+    },
+    {
+      "bytes": 2719,
+      "original_path": "files/grammar_results.json",
+      "sha256": "d3998958ba3d24ff1472ee61efc40ac2e6b10770e113295ac0d96fefa43e38b8",
+      "url": "files/files/grammar_results.json.txt"
+    },
+    {
+      "bytes": 1129,
+      "original_path": "files/source-integrity.json",
+      "sha256": "72723d309c6dc077e215d145f97d38c07243ce61ac52c938cef397cabd781744",
+      "url": "files/files/source-integrity.json.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "Proof Wall editorial synthesis of original research",
+      "bytes": 3860,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "article",
+      "sha256": "feca0e0dec5fd42088885f3a5fc397c0432ed73a6d152c138ddedd02ec1ebf83"
+    },
+    {
+      "attribution": "Labeled derivative research report",
+      "bytes": 7713,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "files/report.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "28e5c10264df2649836c96e226576ae6726f46ab547f091b801b3c7d1cb38b2e"
+    },
+    {
+      "attribution": "Research source; received text restored and checked against supplied source digest",
+      "bytes": 8479,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/shadow_model.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "1943e12c6c4814295d9ea23c84809e73be7cb615b17457f827cb7a44e3b4a7b1"
+    },
+    {
+      "attribution": "Research source; received text restored and checked against supplied source digest",
+      "bytes": 1443,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/rule_grammar.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "1621ec263215da12f9dcbb5926d4a8751cfe59e4f648b277e344b2c31578d19b"
+    },
+    {
+      "attribution": "Research source; received text restored and checked against supplied source digest",
+      "bytes": 8877,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/test_shadow.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "f51918ba3b13c01fc4076e34df6e793b894253b079d44c295f0d00e034dd8287"
+    },
+    {
+      "attribution": "Research source; received text restored and checked against supplied source digest",
+      "bytes": 2469,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/test_grammar.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "aaa2e2083159d08faf6764379b2a15618c3b1d525224f480497a9ede64365c26"
+    },
+    {
+      "attribution": "Research source; received text restored and checked against supplied source digest",
+      "bytes": 6876,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/results.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "281f6d195fe4b8df5f815bffc5e0d8cc6cd26d20c33395d0fc5ebdab4669885f"
+    },
+    {
+      "attribution": "Research source; received text restored and checked against supplied source digest",
+      "bytes": 2719,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/grammar_results.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "d3998958ba3d24ff1472ee61efc40ac2e6b10770e113295ac0d96fefa43e38b8"
+    },
+    {
+      "attribution": "Proof Wall editorial preparation; source checksums from the supplied research handoff.",
+      "bytes": 1129,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/source-integrity.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "receipt",
+      "sha256": "72723d309c6dc077e215d145f97d38c07243ce61ac52c938cef397cabd781744"
+    }
+  ],
+  "finding": "For the specified local cyclic family, consistent closed boundary-state paths count satisfying assignments; recorded sixteen-position cases agree with direct enumeration.",
+  "gardens": [],
+  "id": "four-states-carry-the-circle",
+  "limitations": [
+    "Four states depend on the local consecutive-triple structure; nonlocal clauses were rejected as unsupported.",
+    "543 reported same-project tests are not independent peer review.",
+    "Matrix-operation counts exclude grammar authentication, large-integer cost and end-to-end benchmarks.",
+    "Source copies reconstructed from the private PR match its supplied checksums; original Library artifacts were not independently retrieved.",
+    "The selected test suite requires an earlier source-reference/results.json file not included in this exhibit; the 543 checks are historical reports."
+  ],
+  "method": "Four-state transfer matrices for known consecutive-triple rules, cyclic trace closure, retained segment products, recorded direct enumeration and local tests.",
+  "open_questions": [
+    "How does the required interface grow with increasingly distant constraints?"
+  ],
+  "package_sha256": "279c186dc475c06a838b81bed65b10825a50d7ed2943694c03592fa3aa558c36",
+  "provenance": {
+    "authors": [
+      "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation."
+    ],
+    "change_note": "Version 3 corrects the introductory publication status in the article. The mathematical content and supporting evidence are unchanged.",
+    "origin": "Research handoff with source manifest and recorded tests; source copies restored by a single trailing newline and checked against supplied digests. Original PR text and private custody retained."
+  },
+  "publication": {
+    "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+    "intent": "request-review",
+    "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner."
+  },
+  "question": "How can local rules on a Boolean ring be represented exactly and reused across changes?",
+  "relations": [
+    {
+      "id": "four-states-carry-the-circle",
+      "reason": "Corrects outdated publication status in the article introduction.",
+      "type": "supersedes",
+      "version": 2
+    }
+  ],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Four States Carry the Circle",
+  "version": 3
+}

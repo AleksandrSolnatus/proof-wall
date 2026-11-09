@@ -1,0 +1,179 @@
+#!/usr/bin/env python3
+"""Independently evaluate exact source clauses; no trust in transfer-matrix output."""
+import json,random,time,hashlib
+from pathlib import Path
+from shadow_model import RingShadow, make_original_windows, UnsupportedConstraint, StaleCache, direct_valid, bit
+
+BASE=Path(__file__).parent
+rng=random.Random(20261109)
+checks=0
+out={'id':'SAT-WORLD-GAME-002','date':'2026-11-09','type':'exact finite structural checking','status':'local automated cross-check','cases':{},'costs':{},'errors':[]}
+
+# Independent direct evaluation: literals, not shadow tables or matrix operations.
+def original_literal_check(clauses, assignment):
+    for clause in clauses:
+        if not any((((assignment >> (abs(lit)-1)) & 1)==int(lit>0)) for lit in clause):
+            return False
+    return True
+
+def brute_count(windows):
+    n=len(windows);clauses=[c for cs in windows for c in cs]
+    ans=0
+    for a in range(1<<n):
+        if original_literal_check(clauses,a):ans+=1
+    return ans
+
+# Replay exact four-world counts from previously retained results.
+original=json.loads((BASE/'source-reference/results.json').read_text())
+for mode in ('observed','forecast','world_A','world_B'):
+    windows=make_original_windows(mode)
+    shadow=RingShadow(windows)
+    target=original['cases'][mode]['solutions']
+    t=time.perf_counter()
+    count_ref=brute_count(windows)
+    t_ref=time.perf_counter()-t
+    assert target==count_ref==shadow.count(),(mode,target,count_ref,shadow.count());checks+=1
+    valid=0
+    for a in (0,1,65535,0xAAAA,0x5555):
+        assert shadow.is_allowed_assignment(a)==original_literal_check([c for cs in windows for c in cs],a)
+        checks+=1
+    cache=shadow.cached_assignment(rng.randrange(1<<16))
+    assert (cache.failed==0)==original_literal_check(shadow.current_clauses(),cache.assignment)
+    checks+=1
+    for j in range(64):
+        variable=rng.randrange(16)
+        ret=cache.flip(variable)
+        assert ret['lookups']==3
+        assert (cache.failed==0)==original_literal_check(shadow.current_clauses(),cache.assignment)
+        checks+=1
+    out['cases'][mode]={'variables':16,'clauses':sum(len(x) for x in windows),'exact_solutions':shadow.count(),
+        'enumeration_seconds_one_run':round(t_ref,6),'build_counters':shadow.counters,
+        'assignment_flip_lookups_per_move':3}
+
+# A rule change cannot silently invalidate a move cache. Exactly one changed
+# window may be incrementally refreshed in one lookup; missed versions fail shut.
+shadow=RingShadow(make_original_windows('forecast'))
+cache=shadow.cached_assignment(0x1234)
+shadow.replace_window(11,make_original_windows('world_A')[11])
+try:
+    cache.flip(5)
+    raise AssertionError('stale assignment cache was accepted')
+except StaleCache:checks+=1
+updated=cache.refresh_one_change()
+assert updated['lookups']==1
+assert cache.is_valid()==original_literal_check(shadow.current_clauses(),cache.assignment)
+checks+=2
+shadow.replace_window(6,make_original_windows('world_B')[6])
+shadow.replace_window(7,make_original_windows('world_B')[7])
+try:
+    cache.refresh_one_change()
+    raise AssertionError('cache skipped two changes')
+except StaleCache:checks+=1
+out['cases']['cache_version_guard']={'single_change_refresh_lookups':1,'stale_cache_rejected':True,'multiple_unseen_changes_rejected':True}
+
+# Apply the specific observed twist, then restore, keeping canonical source separate.
+shadow=RingShadow(make_original_windows('forecast'))
+base_counter=shadow.counters.copy()
+new_cs=make_original_windows('world_A')[11]
+u=shadow.replace_window(11,new_cs)
+assert shadow.count()==1902 and u['changed_patterns']==2 and u['updated_ancestors']==4
+assert brute_count(shadow.source)==1902
+checks+=4
+counts_after_one=dict(u)
+revert=shadow.replace_window(11,make_original_windows('forecast')[11])
+assert shadow.count()==2206 and revert['changed_patterns']==2
+checks+=2
+cost_after_one={k:shadow.counters[k]-base_counter[k] for k in shadow.counters}
+# This includes both update and revert. Record one update separately from the 2-step total.
+one_update_cost={k:v//2 for k,v in cost_after_one.items()}
+
+# Change 10 hidden windows, checking each intermediate result by independent full enumeration.
+shadow=RingShadow(make_original_windows('forecast'))
+patch_steps=[]
+for i in range(6,16):
+    changed=shadow.replace_window(i,make_original_windows('world_B')[i])
+    count_ref=brute_count(shadow.source)
+    assert changed['exact_solution_count']==count_ref
+    checks+=1
+    patch_steps.append({'window':i,'changed_patterns':changed['changed_patterns'],'solutions':count_ref})
+assert shadow.count()==1835;checks+=1
+out['costs']['single_twist_update']={'change':counts_after_one,'upper_bound_counters_per_update':one_update_cost,
+ 'four_state_matrix_product_from_scratch_scalar_terms':960,
+ 'matrix_terms_to_update_one_of_16_windows':256,
+ 'local_clause_evaluations_upper_bound_from_scratch':256,
+ 'local_clause_evaluations_upper_bound_single_window':16}
+out['cases']['ten_window_changes']={'steps':patch_steps,'final_count':shadow.count()}
+
+# Generate unfamiliar local 3-CNF problems and independently enumerate them.
+local_cases=0
+for n in (5,6,7,8,9,10):
+    for attempt in range(12):
+        windows=[]
+        for i in range(n):
+            window=[]
+            for _ in range(rng.randrange(0,6)):
+                pattern=rng.randrange(8)
+                clause=tuple(((i+j)%n+1)*(-1 if ((pattern>>j)&1) else 1) for j in range(3))
+                window.append(clause)
+            windows.append(window)
+        model=RingShadow(windows)
+        assert model.count()==brute_count(windows)
+        checks+=1;local_cases+=1
+out['cases']['random_local_tests']={'count':local_cases,'variable_sizes':[5,6,7,8,9,10]}
+
+# The model refuses nonlocal clauses; bypassing would lose a real constraint.
+unsafe=make_original_windows('forecast')
+unsafe[0].append((1,7,13))
+try:
+    RingShadow(unsafe)
+    raise AssertionError('nonlocal rule was silently accepted')
+except UnsupportedConstraint:
+    checks+=1
+out['cases']['nonlocal_clause']={'rule':[1,7,13],'result':'UNSUPPORTED, not UNSAT, not accepted','check_passed':True}
+
+# Test ring size scalability without enumerating the complete exponential space.
+def periodic_windows(n):
+    win=[]
+    for i in range(n):
+        triple=[((i+j)%n)+1 for j in range(3)]
+        win.append([tuple(triple),tuple(-z for z in triple)])
+    return win
+for n in (16,64,256,1024):
+    t=time.perf_counter()
+    model=RingShadow(periodic_windows(n))
+    initial_t=time.perf_counter()-t
+    count=model.count()
+    assert count >=0
+    before=model.counters.copy()
+    twisted=list(periodic_windows(n)[n//2])
+    triple=tuple(((n//2+j)%n)+1 for j in range(3))
+    twisted[1]=(triple[0],-triple[1],triple[2])
+    t=time.perf_counter()
+    edit=model.replace_window(n//2,twisted)
+    edit_t=time.perf_counter()-t
+    assert edit['changed_patterns']==2
+    checks+=2
+    out['cases']['size_'+str(n)]={'variables':n,'complete_assignments_digits':len(str(1<<n)),
+        'exact_solution_count_digits':len(str(count)),
+        'build_matrix_scalar_terms':before['scalar_mul_adds'],
+        'one_edit_matrix_scalar_terms':model.counters['scalar_mul_adds']-before['scalar_mul_adds'],
+        'one_edit_ancestor_products':edit['updated_ancestors'],
+        'elapsed_build_seconds_one_run':round(initial_t,6),'elapsed_edit_seconds_one_run':round(edit_t,6),
+        'note':'local structured family only; n>=64 not checked by exhaustive enumeration'}
+
+out['status']='PASS';out['checks_passed']=checks
+out['costs']['scope']='counts of operations in one Python implementation; not universal speedup or algorithm-independent complexity'
+out['limitations']=[
+ 'Source-preserving semantic abstraction for exact known local clauses; does not infer unseen world rules.',
+ 'Only triples on consecutive positions on a ring. Reject nonlocal clauses instead of inventing answers.',
+ 'The 4-state transfer products are exact arithmetic; large integer bit costs increase with n.',
+ 'A single fresh candidate is generally cheaper to check by direct clause evaluation than by first building this model.',
+ 'Building and updating the cached model have costs; tests use small finite cases plus structured extended sizes.',
+ 'The verification comparison is algorithmically independent direct enumeration but was prepared in the same session; no external peer review or general SAT result.'
+]
+(BASE/'results.json').write_text(json.dumps(out,indent=2)+'\n')
+print('RESULT',out['status'],checks,'checks')
+print('ORIGINAL',[(x,out['cases'][x]['exact_solutions']) for x in ('observed','forecast','world_A','world_B')])
+print('ONE-EDIT',out['costs']['single_twist_update'])
+print('TEN PATCHES',out['cases']['ten_window_changes'])
+print('SIZE',[(n,out['cases']['size_'+str(n)]['complete_assignments_digits'],out['cases']['size_'+str(n)]['one_edit_matrix_scalar_terms']) for n in (16,64,256,1024)])

@@ -1,5 +1,5 @@
 {
-  "exhibits": 34,
+  "exhibits": 35,
   "files": {
     ".nojekyll": {
       "bytes": 0,
@@ -696,6 +696,58 @@
     "exhibits/four-states-carry-the-circle/v2/submitted-manifest.json": {
       "bytes": 7845,
       "sha256": "07f1b368e5b7abf4a484f56ad05623f0edbb6b3fbc91018a05d924f4b1577c78"
+    },
+    "exhibits/four-states-carry-the-circle/v3/exhibit.json": {
+      "bytes": 9754,
+      "sha256": "fbbdcdde9782bb68b13df97d1270f9825375b10286169be0adf7a513c3ec266c"
+    },
+    "exhibits/four-states-carry-the-circle/v3/files/article.md.txt": {
+      "bytes": 3860,
+      "sha256": "feca0e0dec5fd42088885f3a5fc397c0432ed73a6d152c138ddedd02ec1ebf83"
+    },
+    "exhibits/four-states-carry-the-circle/v3/files/files/grammar_results.json.txt": {
+      "bytes": 2719,
+      "sha256": "d3998958ba3d24ff1472ee61efc40ac2e6b10770e113295ac0d96fefa43e38b8"
+    },
+    "exhibits/four-states-carry-the-circle/v3/files/files/report.md.txt": {
+      "bytes": 7713,
+      "sha256": "28e5c10264df2649836c96e226576ae6726f46ab547f091b801b3c7d1cb38b2e"
+    },
+    "exhibits/four-states-carry-the-circle/v3/files/files/results.json.txt": {
+      "bytes": 6876,
+      "sha256": "281f6d195fe4b8df5f815bffc5e0d8cc6cd26d20c33395d0fc5ebdab4669885f"
+    },
+    "exhibits/four-states-carry-the-circle/v3/files/files/rule_grammar.py.txt": {
+      "bytes": 1443,
+      "sha256": "1621ec263215da12f9dcbb5926d4a8751cfe59e4f648b277e344b2c31578d19b"
+    },
+    "exhibits/four-states-carry-the-circle/v3/files/files/shadow_model.py.txt": {
+      "bytes": 8479,
+      "sha256": "1943e12c6c4814295d9ea23c84809e73be7cb615b17457f827cb7a44e3b4a7b1"
+    },
+    "exhibits/four-states-carry-the-circle/v3/files/files/source-integrity.json.txt": {
+      "bytes": 1129,
+      "sha256": "72723d309c6dc077e215d145f97d38c07243ce61ac52c938cef397cabd781744"
+    },
+    "exhibits/four-states-carry-the-circle/v3/files/files/test_grammar.py.txt": {
+      "bytes": 2469,
+      "sha256": "aaa2e2083159d08faf6764379b2a15618c3b1d525224f480497a9ede64365c26"
+    },
+    "exhibits/four-states-carry-the-circle/v3/files/files/test_shadow.py.txt": {
+      "bytes": 8877,
+      "sha256": "f51918ba3b13c01fc4076e34df6e793b894253b079d44c295f0d00e034dd8287"
+    },
+    "exhibits/four-states-carry-the-circle/v3/index.html": {
+      "bytes": 14610,
+      "sha256": "3032f4906894f7106ada4510d4ca476dc8fa9fcdb9be86a2f6a7f540f96594ec"
+    },
+    "exhibits/four-states-carry-the-circle/v3/snapshot.json": {
+      "bytes": 1509,
+      "sha256": "b59060f93c2851027298a5aaa39d2442437d2f4529d9cdbf9686b62a79d8da6e"
+    },
+    "exhibits/four-states-carry-the-circle/v3/submitted-manifest.json": {
+      "bytes": 7748,
+      "sha256": "6c85b80b475ca49eeb64210f0d0646a0e4e1397fa2cb90ba109c384d94a23a29"
     },
     "exhibits/grammar-dual-run-001/v2/exhibit.json": {
       "bytes": 17062,
@@ -1754,12 +1806,12 @@
       "sha256": "d1cf42ce64b01824f3c20d2eb7df88c95f8ffcbcc840f64a6c772c74989d4a8a"
     },
     "index.html": {
-      "bytes": 21890,
-      "sha256": "939b72debc3672dd052217919f8b79e3f2492671153f3964b6e9d6121e2b8e91"
+      "bytes": 22373,
+      "sha256": "6a4795e3cc5208255f21295960d4f1527a740c45286265e0b707b13cecbf08a0"
     },
     "index.json": {
-      "bytes": 28236,
-      "sha256": "f399a53d4e98d37a98626451be2ac8c2b06aaca17468f1c1e7abeb6e6080f503"
+      "bytes": 29188,
+      "sha256": "9cf2684cbd02a2f0231533146e873773021dddb7c73ba27cc602452945f2d84f"
     },
     "llms.txt": {
       "bytes": 489,
