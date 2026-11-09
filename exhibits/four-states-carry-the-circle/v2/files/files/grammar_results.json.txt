@@ -1,0 +1,117 @@
+{
+  "id": "SAT-WORLD-GAME-002",
+  "type": "run-length grammar repeat checking",
+  "cases": {
+    "observed": {
+      "run_length_grammar": [
+        {
+          "allowed_mask": 126,
+          "times": 6
+        },
+        {
+          "allowed_mask": 255,
+          "times": 10
+        }
+      ],
+      "stored_run_count": 2,
+      "solutions": 17408,
+      "from_scratch_matrix_terms": 960,
+      "run_grammar_matrix_terms": 704,
+      "run_grammar_matrix_products": 11
+    },
+    "forecast": {
+      "run_length_grammar": [
+        {
+          "allowed_mask": 126,
+          "times": 16
+        }
+      ],
+      "stored_run_count": 1,
+      "solutions": 2206,
+      "from_scratch_matrix_terms": 960,
+      "run_grammar_matrix_terms": 384,
+      "run_grammar_matrix_products": 6
+    },
+    "world_A": {
+      "run_length_grammar": [
+        {
+          "allowed_mask": 126,
+          "times": 11
+        },
+        {
+          "allowed_mask": 250,
+          "times": 1
+        },
+        {
+          "allowed_mask": 126,
+          "times": 4
+        }
+      ],
+      "stored_run_count": 3,
+      "solutions": 1902,
+      "from_scratch_matrix_terms": 960,
+      "run_grammar_matrix_terms": 832,
+      "run_grammar_matrix_products": 13
+    },
+    "world_B": {
+      "run_length_grammar": [
+        {
+          "allowed_mask": 126,
+          "times": 6
+        },
+        {
+          "allowed_mask": 250,
+          "times": 10
+        }
+      ],
+      "stored_run_count": 2,
+      "solutions": 1835,
+      "from_scratch_matrix_terms": 960,
+      "run_grammar_matrix_terms": 704,
+      "run_grammar_matrix_products": 11
+    },
+    "repeat_16": {
+      "count_digits": 4,
+      "rule_grammar": {
+        "mask": 126,
+        "repeat": 16
+      },
+      "matrix_scalar_terms": 384,
+      "matrix_products": 6,
+      "no_unrolled_clauses_examined": true
+    },
+    "repeat_64": {
+      "count_digits": 14,
+      "rule_grammar": {
+        "mask": 126,
+        "repeat": 64
+      },
+      "matrix_scalar_terms": 512,
+      "matrix_products": 8,
+      "no_unrolled_clauses_examined": true
+    },
+    "repeat_256": {
+      "count_digits": 54,
+      "rule_grammar": {
+        "mask": 126,
+        "repeat": 256
+      },
+      "matrix_scalar_terms": 640,
+      "matrix_products": 10,
+      "no_unrolled_clauses_examined": true
+    },
+    "repeat_1024": {
+      "count_digits": 215,
+      "rule_grammar": {
+        "mask": 126,
+        "repeat": 1024
+      },
+      "matrix_scalar_terms": 768,
+      "matrix_products": 12,
+      "no_unrolled_clauses_examined": true
+    }
+  },
+  "tests_passed": 157,
+  "status": "PASS",
+  "scope": "exact local transfer functions; grammar equivalence to a hidden or external world NOT established"
+}

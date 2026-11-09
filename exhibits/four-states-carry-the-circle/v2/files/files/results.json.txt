@@ -1,0 +1,222 @@
+{
+  "id": "SAT-WORLD-GAME-002",
+  "date": "2026-11-09",
+  "type": "exact finite structural checking",
+  "status": "PASS",
+  "cases": {
+    "observed": {
+      "variables": 16,
+      "clauses": 12,
+      "exact_solutions": 17408,
+      "enumeration_seconds_one_run": 0.126229,
+      "build_counters": {
+        "mask_clause_evals_upper_bound": 96,
+        "mask_literals_upper_bound": 288,
+        "mask_patterns_checked": 128,
+        "scalar_mul_adds": 960,
+        "matrix_multiplications": 15
+      },
+      "assignment_flip_lookups_per_move": 3
+    },
+    "forecast": {
+      "variables": 16,
+      "clauses": 32,
+      "exact_solutions": 2206,
+      "enumeration_seconds_one_run": 0.17022,
+      "build_counters": {
+        "mask_clause_evals_upper_bound": 256,
+        "mask_literals_upper_bound": 768,
+        "mask_patterns_checked": 128,
+        "scalar_mul_adds": 960,
+        "matrix_multiplications": 15
+      },
+      "assignment_flip_lookups_per_move": 3
+    },
+    "world_A": {
+      "variables": 16,
+      "clauses": 32,
+      "exact_solutions": 1902,
+      "enumeration_seconds_one_run": 0.17242,
+      "build_counters": {
+        "mask_clause_evals_upper_bound": 256,
+        "mask_literals_upper_bound": 768,
+        "mask_patterns_checked": 128,
+        "scalar_mul_adds": 960,
+        "matrix_multiplications": 15
+      },
+      "assignment_flip_lookups_per_move": 3
+    },
+    "world_B": {
+      "variables": 16,
+      "clauses": 32,
+      "exact_solutions": 1835,
+      "enumeration_seconds_one_run": 0.171163,
+      "build_counters": {
+        "mask_clause_evals_upper_bound": 256,
+        "mask_literals_upper_bound": 768,
+        "mask_patterns_checked": 128,
+        "scalar_mul_adds": 960,
+        "matrix_multiplications": 15
+      },
+      "assignment_flip_lookups_per_move": 3
+    },
+    "cache_version_guard": {
+      "single_change_refresh_lookups": 1,
+      "stale_cache_rejected": true,
+      "multiple_unseen_changes_rejected": true
+    },
+    "ten_window_changes": {
+      "steps": [
+        {
+          "window": 6,
+          "changed_patterns": 2,
+          "solutions": 1902
+        },
+        {
+          "window": 7,
+          "changed_patterns": 2,
+          "solutions": 1714
+        },
+        {
+          "window": 8,
+          "changed_patterns": 2,
+          "solutions": 1787
+        },
+        {
+          "window": 9,
+          "changed_patterns": 2,
+          "solutions": 1877
+        },
+        {
+          "window": 10,
+          "changed_patterns": 2,
+          "solutions": 1841
+        },
+        {
+          "window": 11,
+          "changed_patterns": 2,
+          "solutions": 1810
+        },
+        {
+          "window": 12,
+          "changed_patterns": 2,
+          "solutions": 1824
+        },
+        {
+          "window": 13,
+          "changed_patterns": 2,
+          "solutions": 1828
+        },
+        {
+          "window": 14,
+          "changed_patterns": 2,
+          "solutions": 1827
+        },
+        {
+          "window": 15,
+          "changed_patterns": 2,
+          "solutions": 1835
+        }
+      ],
+      "final_count": 1835
+    },
+    "random_local_tests": {
+      "count": 72,
+      "variable_sizes": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    "nonlocal_clause": {
+      "rule": [
+        1,
+        7,
+        13
+      ],
+      "result": "UNSUPPORTED, not UNSAT, not accepted",
+      "check_passed": true
+    },
+    "size_16": {
+      "variables": 16,
+      "complete_assignments_digits": 5,
+      "exact_solution_count_digits": 4,
+      "build_matrix_scalar_terms": 960,
+      "one_edit_matrix_scalar_terms": 256,
+      "one_edit_ancestor_products": 4,
+      "elapsed_build_seconds_one_run": 0.000334,
+      "elapsed_edit_seconds_one_run": 3.9e-05,
+      "note": "local structured family only; n>=64 not checked by exhaustive enumeration"
+    },
+    "size_64": {
+      "variables": 64,
+      "complete_assignments_digits": 20,
+      "exact_solution_count_digits": 14,
+      "build_matrix_scalar_terms": 4032,
+      "one_edit_matrix_scalar_terms": 384,
+      "one_edit_ancestor_products": 6,
+      "elapsed_build_seconds_one_run": 0.00125,
+      "elapsed_edit_seconds_one_run": 4.6e-05,
+      "note": "local structured family only; n>=64 not checked by exhaustive enumeration"
+    },
+    "size_256": {
+      "variables": 256,
+      "complete_assignments_digits": 78,
+      "exact_solution_count_digits": 54,
+      "build_matrix_scalar_terms": 16320,
+      "one_edit_matrix_scalar_terms": 512,
+      "one_edit_ancestor_products": 8,
+      "elapsed_build_seconds_one_run": 0.005493,
+      "elapsed_edit_seconds_one_run": 7.2e-05,
+      "note": "local structured family only; n>=64 not checked by exhaustive enumeration"
+    },
+    "size_1024": {
+      "variables": 1024,
+      "complete_assignments_digits": 309,
+      "exact_solution_count_digits": 215,
+      "build_matrix_scalar_terms": 65472,
+      "one_edit_matrix_scalar_terms": 640,
+      "one_edit_ancestor_products": 10,
+      "elapsed_build_seconds_one_run": 0.129838,
+      "elapsed_edit_seconds_one_run": 0.000133,
+      "note": "local structured family only; n>=64 not checked by exhaustive enumeration"
+    }
+  },
+  "costs": {
+    "single_twist_update": {
+      "change": {
+        "window": 11,
+        "old_mask": 126,
+        "new_mask": 250,
+        "changed_patterns": 2,
+        "updated_ancestors": 4,
+        "exact_solution_count": 1902
+      },
+      "upper_bound_counters_per_update": {
+        "mask_clause_evals_upper_bound": 16,
+        "mask_literals_upper_bound": 48,
+        "mask_patterns_checked": 8,
+        "scalar_mul_adds": 256,
+        "matrix_multiplications": 4
+      },
+      "four_state_matrix_product_from_scratch_scalar_terms": 960,
+      "matrix_terms_to_update_one_of_16_windows": 256,
+      "local_clause_evaluations_upper_bound_from_scratch": 256,
+      "local_clause_evaluations_upper_bound_single_window": 16
+    },
+    "scope": "counts of operations in one Python implementation; not universal speedup or algorithm-independent complexity"
+  },
+  "errors": [],
+  "checks_passed": 386,
+  "limitations": [
+    "Source-preserving semantic abstraction for exact known local clauses; does not infer unseen world rules.",
+    "Only triples on consecutive positions on a ring. Reject nonlocal clauses instead of inventing answers.",
+    "The 4-state transfer products are exact arithmetic; large integer bit costs increase with n.",
+    "A single fresh candidate is generally cheaper to check by direct clause evaluation than by first building this model.",
+    "Building and updating the cached model have costs; tests use small finite cases plus structured extended sizes.",
+    "The verification comparison is algorithmically independent direct enumeration but was prepared in the same session; no external peer review or general SAT result."
+  ]
+}

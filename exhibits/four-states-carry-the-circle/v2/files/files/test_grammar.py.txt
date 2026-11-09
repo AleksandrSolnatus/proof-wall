@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+import json,random
+from pathlib import Path
+from shadow_model import RingShadow,make_original_windows,transfer,identity,multiply,trace
+from rule_grammar import runs,count_runs,matrix_power,describe_mask
+
+rng=random.Random(20261110)
+checks=0; result={'id':'SAT-WORLD-GAME-002','type':'run-length grammar repeat checking','cases':{},'tests_passed':0}
+for mode in ('observed','forecast','world_A','world_B'):
+    model=RingShadow(make_original_windows(mode))
+    rle=runs(model.masks)
+    count,cost=count_runs(rle)
+    assert count==model.count();checks+=1
+    result['cases'][mode]={'run_length_grammar':[{'allowed_mask':m,'times':k} for m,k in rle],
+      'stored_run_count':len(rle),'solutions':count,
+      'from_scratch_matrix_terms':model.counters['scalar_mul_adds'],
+      'run_grammar_matrix_terms':cost['scalar_mul_adds'],
+      'run_grammar_matrix_products':cost['matrix_multiplications']}
+for n in (16,64,256,1024):
+    m=126
+    rle=[(m,n)]
+    count,cost=count_runs(rle)
+    if n==16:
+        assert count==2206;checks+=1
+    result['cases']['repeat_'+str(n)]={'count_digits':len(str(count)),
+      'rule_grammar':{'mask':m,'repeat':n},'matrix_scalar_terms':cost['scalar_mul_adds'],
+      'matrix_products':cost['matrix_multiplications'],
+      'no_unrolled_clauses_examined':True}
+# Deliberately non-periodic run arrangements should still match exact matrix product.
+for t in range(150):
+    n=rng.randint(4,50)
+    masks=[rng.choice((126,250,255,0,1,253)) for _ in range(n)]
+    rle=runs(masks)
+    simple=identity()
+    for mask in masks:
+        simple=multiply(simple,transfer(mask))
+    compact,cost=count_runs(rle)
+    assert compact==trace(simple), (n,t)
+    checks+=1
+# Nonstrict rule masks do not prove input identity, only answer-preserving truth tables.
+assert describe_mask(126)['forbidden']==['000','111'];checks+=1
+assert describe_mask(250)['forbidden']==['000','010'];checks+=1
+result['tests_passed']=checks
+result['status']='PASS'
+result['scope']='exact local transfer functions; grammar equivalence to a hidden or external world NOT established'
+Path(__file__).with_name('grammar_results.json').write_text(json.dumps(result,indent=2)+'\n')
+print('PASS',checks,'checks, run grammar:',[(x,result['cases'][x]['run_grammar_matrix_terms']) for x in ('observed','forecast','world_A','world_B')]);print('1024 repeated clauses represented by 1 run, matrix scalar terms',result['cases']['repeat_1024']['matrix_scalar_terms'])

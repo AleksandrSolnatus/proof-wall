@@ -493,6 +493,20 @@
       "title": "Stone 005 — learn the relation, not the answer",
       "url": "exhibits/stone-005-exact-relation-reuse/v3/index.html",
       "version": 3
+    },
+    {
+      "claim_scope": "Exact representation for specified local consecutive triples and reported finite tests, not arbitrary nonlocal 3-SAT or P versus NP.",
+      "gardens": [],
+      "id": "four-states-carry-the-circle",
+      "metadata": "exhibits/four-states-carry-the-circle/v2/exhibit.json",
+      "package_sha256": "4dff68eb3817a3f60c26b1d4d69bca487066e7b2e2926214dfdd0bb071f81bb7",
+      "question": "How can local rules on a Boolean ring be represented exactly and reused across changes?",
+      "relations": [],
+      "sample": false,
+      "status": "verified-finite-result",
+      "title": "Four States Carry the Circle",
+      "url": "exhibits/four-states-carry-the-circle/v2/index.html",
+      "version": 2
     }
   ],
   "gardens": "gardens.json",

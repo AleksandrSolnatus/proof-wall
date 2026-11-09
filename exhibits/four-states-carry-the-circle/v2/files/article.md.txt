@@ -1,0 +1,51 @@
+# Four States Carry the Circle
+
+Proof Wall mathematical candidate · November 9, 2026 · Publication on hold
+
+## Make the game smaller without changing the rules
+
+We began with sixteen Boolean positions arranged around a ring. Each known rule sees only three consecutive positions: (a,b,c). Rather than expanding all 2^16 = 65,536 assignments each time, represent each local rule exactly as an eight-entry truth table.
+
+Neighboring windows share two variables. That makes a boundary of just four states possible: 00, 01, 10, 11. Each rule window is a 4×4 matrix T_i permitting a transition from (a,b) to (b,c) only if its truth table allows the triple.
+
+For this cyclic local family,
+
+#SAT(F) = trace(T_0 T_1 ... T_15).
+
+
+The trace closes the ring. Every complete satisfying assignment corresponds to one consistent closed sequence of boundary states, and vice versa.
+
+## What was actually counted
+
+- Six observed windows: 17,408
+- Sixteen repeated standard windows: 2,206
+- One changed window: 1,902
+- Ten changed windows: 1,835
+
+All four exact counts agreed with direct evaluation of the sixteen-variable Boolean assignments. The underlying standard window forbids 000 and 111; the modified window forbids 000 and 010. Two of eight local truth-table entries change, yet a single twist reduces the global solution count by 304.
+
+A cached segment tree updates only four ancestors after that local edit. The program counted 256 matrix scalar multiply-add terms for the update, versus 960 to construct the sixteen-matrix tree from scratch. These are precisely scoped operation counts, not a universal speed claim.
+
+## Let genuine repetition do work
+
+When the *actual specified input* repeats one local rule, a run-length grammar can represent repeat(rule, 1024). The recorded exponentiation-by-squaring implementation used 768 matrix scalar terms, versus 65,472 to build all 1,024 per-window matrices. This comparison excludes the cost of verifying that an arbitrary source really follows that grammar, and the cost of large-integer arithmetic.
+
+A cached move also needs only three window lookups after flipping one Boolean variable, provided the versioned rule cache is current. A stale cache is rejected rather than silently trusted.
+
+## An honest failure boundary
+
+We tried the nonlocal clause (x_1 OR x_7 OR x_13). The four-state model returned UNSUPPORTED, not SAT or UNSAT. Those distant dependencies can require a larger boundary or a different representation. Therefore none of the results transfers automatically to unrestricted 3-SAT.
+
+The preserved local record reports 543 passing checks across two Python test programs, including 72 randomized local examples and ten successive edits. They are same-project tests, not external peer verification. The selected code is provided for inspection; one test requires an earlier source-reference/results.json file that is not included in this selection.
+
+## What survives
+
+The payoff is an understandable representation of the exact supplied rules, one that can preserve unchanged computations across edits. It need not be faster for a single fresh witness check. Building the model and establishing the grammar are part of the work.
+
+Next question: How does the necessary boundary grow when we introduce increasingly distant connections?
+
+This is a bounded structural result for local cyclic 3-CNF—not an algorithm for general SAT and not a claim that P equals or differs from NP.
+
+## Source integrity
+
+The source files were restored from readable text copies in a private research handoff by adding one final newline to each; the restored files match the source checksums supplied with that handoff. The source manifest was not independently retrieved from its original Library location. The included report is a labeled derivative with its private custody reference removed; unchanged source copies remain in private custody.

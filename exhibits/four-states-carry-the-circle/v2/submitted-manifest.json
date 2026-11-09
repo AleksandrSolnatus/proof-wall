@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "id": "four-states-carry-the-circle",
+  "version": 2,
+  "title": "Four States Carry the Circle",
+  "artifact_type": "proof",
+  "status": "verified-finite-result",
+  "question": "How can local rules on a Boolean ring be represented exactly and reused across changes?",
+  "method": "Four-state transfer matrices for known consecutive-triple rules, cyclic trace closure, retained segment products, recorded direct enumeration and local tests.",
+  "finding": "For the specified local cyclic family, consistent closed boundary-state paths count satisfying assignments; recorded sixteen-position cases agree with direct enumeration.",
+  "claim_scope": "Exact representation for specified local consecutive triples and reported finite tests, not arbitrary nonlocal 3-SAT or P versus NP.",
+  "limitations": [
+    "Four states depend on the local consecutive-triple structure; nonlocal clauses were rejected as unsupported.",
+    "543 reported same-project tests are not independent peer review.",
+    "Matrix-operation counts exclude grammar authentication, large-integer cost and end-to-end benchmarks.",
+    "Source copies reconstructed from the private PR match its supplied checksums; original Library artifacts were not independently retrieved.",
+    "The selected test suite requires an earlier source-reference/results.json file not included in this exhibit; the 543 checks are historical reports."
+  ],
+  "open_questions": [
+    "How does the required interface grow with increasingly distant constraints?"
+  ],
+  "date": "2026-11-09",
+  "provenance": {
+    "authors": [
+      "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation."
+    ],
+    "origin": "Research handoff with source manifest and recorded tests; source copies restored by a single trailing newline and checked against supplied digests. Original PR text and private custody retained.",
+    "change_note": "Initial review candidate. Report is a labeled derivative removing private custody location; no experiment rerun. The report derivative corrects an unsupported suggestion that the repeated-input grammar was authenticated. Release v2 records owner approval and attribution; approved article and evidence remain unchanged. The article retains earlier preparation-stage wording; owner approval and publication review followed."
+  },
+  "article": "article.md",
+  "files": [
+    {
+      "path": "article.md",
+      "role": "article",
+      "media_type": "text/markdown",
+      "bytes": 3885,
+      "sha256": "43ec818bf8b4ce71f6971fcc4a1d4f92e10a0d989e623712d913bf6627a77f7b",
+      "attribution": "Proof Wall editorial synthesis of original research",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/report.md",
+      "role": "data",
+      "media_type": "text/markdown",
+      "bytes": 7713,
+      "sha256": "28e5c10264df2649836c96e226576ae6726f46ab547f091b801b3c7d1cb38b2e",
+      "attribution": "Labeled derivative research report",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/shadow_model.py",
+      "role": "code",
+      "media_type": "text/x-python",
+      "bytes": 8479,
+      "sha256": "1943e12c6c4814295d9ea23c84809e73be7cb615b17457f827cb7a44e3b4a7b1",
+      "attribution": "Research source; received text restored and checked against supplied source digest",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/rule_grammar.py",
+      "role": "code",
+      "media_type": "text/x-python",
+      "bytes": 1443,
+      "sha256": "1621ec263215da12f9dcbb5926d4a8751cfe59e4f648b277e344b2c31578d19b",
+      "attribution": "Research source; received text restored and checked against supplied source digest",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/test_shadow.py",
+      "role": "code",
+      "media_type": "text/x-python",
+      "bytes": 8877,
+      "sha256": "f51918ba3b13c01fc4076e34df6e793b894253b079d44c295f0d00e034dd8287",
+      "attribution": "Research source; received text restored and checked against supplied source digest",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/test_grammar.py",
+      "role": "code",
+      "media_type": "text/x-python",
+      "bytes": 2469,
+      "sha256": "aaa2e2083159d08faf6764379b2a15618c3b1d525224f480497a9ede64365c26",
+      "attribution": "Research source; received text restored and checked against supplied source digest",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/results.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 6876,
+      "sha256": "281f6d195fe4b8df5f815bffc5e0d8cc6cd26d20c33395d0fc5ebdab4669885f",
+      "attribution": "Research source; received text restored and checked against supplied source digest",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/grammar_results.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 2719,
+      "sha256": "d3998958ba3d24ff1472ee61efc40ac2e6b10770e113295ac0d96fefa43e38b8",
+      "attribution": "Research source; received text restored and checked against supplied source digest",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/source-integrity.json",
+      "role": "receipt",
+      "media_type": "application/json",
+      "bytes": 1129,
+      "sha256": "72723d309c6dc077e215d145f97d38c07243ce61ac52c938cef397cabd781744",
+      "attribution": "Proof Wall editorial preparation; source checksums from the supplied research handoff.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    }
+  ],
+  "relations": [],
+  "gardens": [],
+  "publication": {
+    "intent": "request-review",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+    "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+    "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation."
+  },
+  "sample": false
+}

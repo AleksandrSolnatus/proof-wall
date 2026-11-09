@@ -1,0 +1,81 @@
+Publication-preparation derivative: private source-custody reference generalized and an overstatement of grammar authentication corrected; unchanged received text and checksum-restored copies are preserved privately.
+
+# A Cheaper Version of the Game
+
+**SAT-WORLD-GAME-002 · 9 November 2026**
+
+## Question
+
+How can the *rules themselves* become a compact, understandable, cheaper-to-check version of the game, without confusing a model of known rules with a guess about a hidden world?
+
+## A small exact model
+
+For sixteen positions on a circle, retain all input clauses. Each local rule window examines `(a,b,c)=(x_i,x_(i+1),x_(i+2))` and can be replaced, **for satisfaction semantics**, by a table of eight yes/no outcomes. The original two-clause pattern excludes `000` and `111`. A one-window alteration replaces the excluded `111` with `010`; the two tables differ in only **2 of 8 cells**.
+
+Each adjacent window shares a pair `(b,c)` with the next. Use exactly four boundary states `00,01,10,11`. Define matrix `T_i[(a,b),(b,c)]` to be one when the triple satisfies all clauses at window `i`, and zero otherwise, with all other entries zero. Then:
+
+\[
+  \#\operatorname{SAT}(F)=\operatorname{trace}(T_0T_1\cdots T_{15}).
+\]
+
+**Why this is exact:** every term in the matrix product selects a sequence of compatible pair states; the trace forces the last pair to equal the first pair, closing the ring. Such a closed path corresponds one-to-one with an assignment of all sixteen variables satisfying every supplied local window. The product sums those paths. A four-state interface is sufficient because the input clauses span only three consecutive positions, not because SAT is generally four-state.
+
+## Check 1 — Does the smaller world preserve the actual game?
+
+| Supplied rules | Previously recorded count | Four-state shadow count | Independent direct enumeration |
+|---|---:|---:|---:|
+| Six visible windows (12 clauses) | 17,408 | 17,408 | 17,408 |
+| Sixteen repeated windows (32 clauses) | 2,206 | 2,206 | 2,206 |
+| World A, one local twist | 1,902 | 1,902 | 1,902 |
+| World B, ten local twists | 1,835 | 1,835 | 1,835 |
+
+The independent reference directly evaluates the literal clauses over all 65,536 assignments; it does not use the transfer matrices or cached truth masks. Seventy-two additional random local-CNF models with 5–10 variables were also cross-checked by direct enumeration. Tests were written and run in this project session; no outside peer verification is implied.
+
+## Check 2 — What changes when one rule changes?
+
+The original repeated local window excludes `000` and `111`, corresponding to a local mask of `126` when bit `a` is the low bit. The new window excludes `000` and `010`, mask `250`. Exactly two table cells change. Yet the global count goes from **2,206** to **1,902**, a decrease of **304**.
+
+When a single window changes, the already-built product tree updates only four parent nodes. This costs **256 scalar matrix multiplication-addition terms** rather than the **960** terms needed to construct the 16-matrix tree from scratch. Rebuilding all eight possibilities at all sixteen windows has up to **256 clause-evaluation slots**; rebuilding just the changed window has **16 slots**. Slot counts include evaluations that short-circuit execution may skip; scalar terms are the fixed triple-loop operations actually performed. These are **not** all the same unit and are never combined as one artificial speedup.
+
+A cached candidate assignment needs 16 window lookups initially. Flipping one Boolean variable changes only three local windows, so its status can be updated using three lookups. If a local rule changes after the cache was made, the cache refuses to answer until it is refreshed or rebuilt. Refreshing after **one** known rule edit requires one local lookup; skipping two edits is rejected.
+
+## Check 3 — What if the rules really repeat?
+
+If a known world is specified as `repeat(local_rule, n)`, we can calculate the transfer product using exponentiation by squaring: `T^n`. This does not require listing all `n` copies of the same rule.
+
+| Known source pattern | 16-window full tree: matrix scalar terms | Run-grammar: matrix scalar terms |
+|---|---:|---:|
+| Six visible standard windows, ten unconstrained | 960 | 704 |
+| Sixteen identical standard windows | 960 | 384 |
+| Eleven standard, one twist, four standard | 960 | 832 |
+| Six standard, ten twisted | 960 | 704 |
+
+For **1,024** identical windows, the full matrix tree takes **65,472** scalar terms while the explicitly specified repetition grammar takes **768**. `2^1024` has 309 decimal digits; the exact count for the specified repeated-rule family was computed without enumerating those assignments. This large-size computation was not independently brute-force checked; the method relies on the proven transfer identity and finite implementation checks.
+
+**The dangerous hidden cost:** If the input is actually 1,024 arbitrary clauses, discovering or proving that they all follow the short grammar may require examining the inputs. A grammar inferred from six visible windows is an unverified hypothesis about the remaining windows. The model does not quietly certify it.
+
+## Check 4 — What makes the model break?
+
+We deliberately supplied a clause involving three nonadjacent positions, `(x_1 ∨ x_7 ∨ x_13)`. The model returned **UNSUPPORTED**, not SAT or UNSAT. The two-bit boundary no longer necessarily carries enough information to enforce the distant relationship. A larger state boundary or a different decomposition would be needed, and the size of that interface must be measured rather than assumed small.
+
+## The practical answer to the user's question
+
+The game becomes easier to understand when we have a *faithful small vocabulary*:
+
+1. **Local table:** which of the eight three-bit arrangements a known rule allows.
+2. **Boundary:** what two adjacent pieces must agree on when they are joined.
+3. **Grammar:** which tables repeat, where they differ, and who checked that description.
+4. **Cached consequence:** the solution count or move status obtained by joining those pieces, with a versioned receipt.
+5. **Changed rule:** an explicit replacement, not merely an additional rule appended to a mistaken prediction.
+
+Checking one candidate by reading 32 clauses is already inexpensive, at most 96 literal checks. The purpose of the smaller model is **not** to improve that one-off check at all costs. It is to avoid recomputing large unchanged portions whenever we make a move, change a rule, or examine another view of the same known world.
+
+## Next structural experiment
+
+Find the exact *interface-growth threshold*. Add one increasingly distant clause to the same cyclic world, then construct a correct enlarged boundary representation, recording the smallest necessary boundary width, total preparation, update work and verification cost. **What makes the small understandable model cease to be small?**
+
+### Limits and provenance
+
+Original data basis: an earlier private research packet containing `experiment.py`, `independent_dp.py` and `results.json`. This new model leaves them unchanged. It reuses the specified four rule sets but implements a distinct matrix-transfer algorithm. All 543 local checks passed: 386 in `test_shadow.py` and 157 in `test_grammar.py`. Tests cover the original counts, random local instances, ten sequential changes, move-cache invalidation, and equivalence of compressed runs to full matrix products. No new site, public PR, solver schedule or external agent was used.
+
+No general complexity result, inference of missing rules, full external mathematical verification, or cheap unrestricted 3-SAT algorithm is claimed.
