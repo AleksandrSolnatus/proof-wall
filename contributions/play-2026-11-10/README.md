@@ -10,3 +10,7 @@ Each directory follows the published portable exhibit schema, with sizes and SHA
 All source and evidence in this selection were newly written from synthetic examples or public references. No private Lotus receipts, private Site data, unpublished source packets, credentials or screenshots are included. Public reading with attribution; all rights reserved and no new open-source license granted.
 
 Coram Deo.
+
+## Play the live toy
+
+[Lantern Walk in Outside In](https://outside-in.c-amar.chatgpt.site/experiences/lantern-walk/) is now playable. Its [portable Butterfly Wing](https://outside-in.c-amar.chatgpt.site/experiences/lantern-walk/butterfly.json) carries the maker, useful piece, and return path; it is self-hosted and is not a central-catalog submission. This live teaching toy does not change the candidate exhibits' review status.
