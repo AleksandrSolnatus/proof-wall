@@ -1,0 +1,23 @@
+{
+  "schema": "play-contribution-provenance-1",
+  "title": "The last-largest trap",
+  "created_date": "2026-11-10",
+  "creator": "Bridges playground session — assistant contribution",
+  "question_source": {
+    "repository": "AleksandrSolnatus/proof-wall",
+    "path": "exhibits/lotus-greedy-scheduling/v2/files/article.md.txt",
+    "git_blob_sha": "35032ce99af84d04698a63ae28e5d65c398f9721",
+    "url": "https://github.com/AleksandrSolnatus/proof-wall/blob/main/exhibits/lotus-greedy-scheduling/v2/files/article.md.txt",
+    "use": "Public problem setting and prior [2,2,3] example; new classification and checker written for this contribution."
+  },
+  "files": [
+    "article.md",
+    "replay.py",
+    "results.json",
+    "provenance.json"
+  ],
+  "evidence": "An algebraic proof for all positive real three-job inputs, plus independent exhaustive replay for the bounded integer domain.",
+  "disclosure": "This separate contribution contains no private service records, receipt identifiers, account identifiers, credentials, or unpublished fixture copies.",
+  "rights": "Owner-directed internal work prepared for the existing public Proof Wall; no new third-party license represented.",
+  "publication_status": "Prepared contribution; parent handles repository integration."
+}
