@@ -1,0 +1,66 @@
+# Stir the Pudding — A Complete Trail of Questions, Experiments, Corrections, and Costs
+
+## Where the trail began
+
+A creative challenge from JH invited the project to think about what it means to verify a claim. Its original screenshots have not been recovered, so this exhibit does not quote or reconstruct them. JH's originating challenge and the team's later mathematical work are distinct contributions.
+
+A separate question grew around the phrase “the proof is in the pudding”: what happens when Boolean clauses are stirred together by valid logical resolution? Can the process reveal something useful, and how much work does it create?
+
+## October 20: A mathematical question becomes a trail
+
+The first exploratory examples used standard Boolean resolution: combine two clauses with opposite polarities to derive a sound consequence. One illustrative three-variable case made a variable forced ON. The new ambition was more demanding: use a large, unfamiliar 3-SAT formula, choose the stirring method without knowing the hidden answer, and measure whether any newly exposed structure repaid the cost. Two recovered Trail 09 launch prompts document that invitation; those prompts are retained privately. They are not completed benchmark results.
+
+### Trail 10 — The First Domino (October 20)
+
+A newly frozen, reproducible 10-variable analogue with 32 original three-literal clauses, seed 0, and 23 satisfying assignments was subjected to Davis–Putnam variable elimination. It is not a recovery of the earlier discussed 14-variable formula, whose exact clauses were unavailable. The identical formula gave 10,758 proposed resolution pairs under busiest-first ordering, versus 14 under quietest-first ordering. The answer remained SAT under every tested order; 40 exact stagewise truth-table projection checks passed.
+
+The surprise was a correction. A first step created six new graph co-occurrence edges; later steps created zero further new edges, yet resolution attempts rose 40 → 144 → 1,170 → 6,624. The explosion was not explained by graph fill-in alone. Old variable connections were being recombined into wider, overlapping, polarity-rich clauses. One step's 6,624 attempts produced 3,541 tautologies, 3,002 duplicates and only 81 distinct new clauses. This is a concrete diagnosis of this algorithm and finite formula, not a complexity lower bound.
+
+### Trail 11 — Viscosity (October 20)
+
+The next question introduced 'viscosity' only as an analogy: remove redundant clauses by logically safe subsumption. On the same anchor input under busiest-first elimination, dry stirring needed 10,758 proposed pairs, triggered cleanup needed 462, and cleanup every turn needed 352. But the latter policy spent 3,746 subset checks. Reduced pair count did not automatically mean cheaper wall-clock runtime. Across 18 ten-variable cases, including the anchor and four UNSAT inputs, checks were performed stage by stage.
+
+### Trail 12 — The Pressure Gauge (October 20)
+
+Could the experiment detect impending explosion and turn on cleanup only when pressure rose? A fixed pressure-8 trigger was selected before a 30-instance fresh holdout. Under the stated equal-unit work proxy, the controller helped in some conditions, but constant cleanup beat pressure-8 in 24 of 30 busiest-first cases. On quietest-first cases the pressure trigger beat constant cleanup on all 30 under that proxy, yet a dry run had a lower proxy cost on 16. The warning could arrive late, producing extra scans. The case is interesting because it records a non-universal result instead of hiding it.
+
+### Trail 13 — State-changing viscosity (October 20)
+
+The system acquired multiple cleanup 'gears' chosen from local state rather than a fixed schedule. A new holdout contained 24 distinct eleven-variable puzzles, 14 SAT and 10 UNSAT, evaluated in 360 complete checked configurations across orders and policies. The guarded controller had the lowest aggregate proxy in each of three pivot orders, but individual-case wins were mixed and the margin over previous adaptive methods was small. A measured heuristic gain, not a generally optimal rule.
+
+## October 21: Trail 14 — A real but conditional bound
+
+Instead of asking only whether a trigger seems useful, the work found a checkable one-step certificate. For distinct, non-tautological retained clauses, if a variable appears positively in P clauses and negatively in N clauses, naive elimination proposes at most PN pairs while removing P+N containing clauses:
+
+C_next ≤ C - (P + N) + PN.
+
+Thus PN ≤ P+N certifies no one-step clause-count increase. If a supplied elimination route satisfies that at every step, retained clauses never exceed the initial count and the proposed pair count over n steps is at most n·m for starting m clauses. This does not establish that such a route always exists, can be cheaply found, or applies to arbitrary 3-SAT. The source also records bounded-width conditional reasoning and a seven-clause, uniquely satisfiable, three-variable counterexample with no safe initial pivot. Its 720 full runs over 48 frozen formulas include a separate 24-instance holdout. Quiet-first guarded baseline beat the proposed minimum-bound-first scheme in one comparison (88,116 vs 88,821 proxy units). The counterweight stays beside the bound.
+
+## November 8: Trail 15 — The whole problem as a variable
+
+The next user question was: What if we treat a subproblem as a variable-like object and collapse it away? The answer used a known exact mathematical idea: for a formula F(x,b) with private variables x and exposed boundary b, preserve its boundary response R_F(b) = ∃x F(x,b). That is a relation or factor, not literally one ordinary Boolean bit. If counting witnesses, preserve M_F(b) = # {x : F(x,b)} as well.
+
+For a deliberately easy eight-block chain (25 variables, 48 clauses), three orders completed with the same SAT answer: 24 pairs quietest-first; 32 private-first; 408 ports-first (width up to 10). Busiest-first stopped at its fixed budget after 83,350 completed pairs, with status LIMITED rather than a completed answer. A monolithic 8-wire boundary truth table had 65,536 rows, compared with 32 entries in eight separate 2×2 tables. That is a representation comparison, not a speedup claim. The original program performed 52 stagewise projection checks. A separate same-author semantic checker independently enumerated 42 small-chain cases and checked the saved stage-check total; it was not an external referee. A scalar 'this piece is SAT' fails to preserve compatibility across shared variables; unweighted existential information also loses #SAT multiplicity.
+
+## The branching lessons
+
+- Resolution preserves sound consequences, yet can generate a huge intermediate family of clauses.
+- Pivot ordering changes the work, while finding a good ordering has its own cost.
+- Subsumption can remove redundant clauses, but the cleanup scans also cost work.
+- Feedback can react too late; a fixed policy or even no cleanup can win on particular inputs.
+- A certified safe elimination step is useful when one exists; a formula need not have one.
+- A boundary relation can preserve compatibility, but large interfaces and witness counts still matter.
+
+## What this long experiment did not establish
+
+No P=NP or P≠NP result, no lower bound for general 3-SAT, no generally faster SAT solver, no literal fluid-dynamics theorem, no quantum speedup, and no proof that useful interfaces are always easy to discover. The experiments are evidence of what happened in specified finite constructions under specified algorithms and cost proxies. Many checks are local or same-author; those claims are kept explicit.
+
+## Why preserve the whole long series?
+
+The original challenge did not simply disappear when the project got technical. It kept asking what counts as verification, which transformations preserve the answer, which representations hide complexity, where cost moves, and what the system actually delivered. The failures did real work. The project learned not only to simplify a formula, but to account for the bill created by the simplification.
+
+## Sources and gaps
+
+The research reports, selected programs and recorded results are available with this exhibit. The source materials preserve finite tests and their original limitations; the reported checks have not been rerun merely to prepare this exhibit. Some scripts expect original companion files and are supplied for inspection rather than as a complete turnkey replay bundle.
+
+The source screenshots for JH's original challenge were not recovered. A short acknowledgment of the challenge is included above; private correspondence and attachments are not part of this exhibit. No general P-versus-NP result is claimed.

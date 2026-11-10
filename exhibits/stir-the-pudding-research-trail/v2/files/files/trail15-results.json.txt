@@ -1,0 +1,1105 @@
+{
+  "bundle_results": [
+    {
+      "boundary_variables": 2,
+      "factorized_local_table_rows": 4,
+      "satisfying_full_assignments": 4,
+      "true_boundary_rows": 2,
+      "truth_table_to_factored_row_ratio": 1.0,
+      "whole_macro_table_rows": 4,
+      "wires": 1
+    },
+    {
+      "boundary_variables": 4,
+      "factorized_local_table_rows": 8,
+      "satisfying_full_assignments": 16,
+      "true_boundary_rows": 4,
+      "truth_table_to_factored_row_ratio": 2.0,
+      "whole_macro_table_rows": 16,
+      "wires": 2
+    },
+    {
+      "boundary_variables": 6,
+      "factorized_local_table_rows": 12,
+      "satisfying_full_assignments": 64,
+      "true_boundary_rows": 8,
+      "truth_table_to_factored_row_ratio": 5.333333333333333,
+      "whole_macro_table_rows": 64,
+      "wires": 3
+    },
+    {
+      "boundary_variables": 8,
+      "factorized_local_table_rows": 16,
+      "satisfying_full_assignments": 256,
+      "true_boundary_rows": 16,
+      "truth_table_to_factored_row_ratio": 16.0,
+      "whole_macro_table_rows": 256,
+      "wires": 4
+    },
+    {
+      "boundary_variables": 10,
+      "factorized_local_table_rows": 20,
+      "satisfying_full_assignments": 1024,
+      "true_boundary_rows": 32,
+      "truth_table_to_factored_row_ratio": 51.2,
+      "whole_macro_table_rows": 1024,
+      "wires": 5
+    },
+    {
+      "boundary_variables": 12,
+      "factorized_local_table_rows": 24,
+      "satisfying_full_assignments": 4096,
+      "true_boundary_rows": 64,
+      "truth_table_to_factored_row_ratio": 170.66666666666666,
+      "whole_macro_table_rows": 4096,
+      "wires": 6
+    },
+    {
+      "boundary_variables": 14,
+      "factorized_local_table_rows": 28,
+      "satisfying_full_assignments": 16384,
+      "true_boundary_rows": 128,
+      "truth_table_to_factored_row_ratio": 585.1428571428571,
+      "whole_macro_table_rows": 16384,
+      "wires": 7
+    },
+    {
+      "boundary_variables": 16,
+      "factorized_local_table_rows": 32,
+      "satisfying_full_assignments": 65536,
+      "true_boundary_rows": 256,
+      "truth_table_to_factored_row_ratio": 2048.0,
+      "whole_macro_table_rows": 65536,
+      "wires": 8
+    }
+  ],
+  "chain_samples": 42,
+  "chain_small_checks": [
+    {
+      "boundary_composition_transitions_tested": 4,
+      "candidate_full_assignments": 16,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        1
+      ],
+      "full_assignments": 4,
+      "local_gate_candidate_assignments_tested": 16,
+      "n": 1,
+      "weighted_boundary": {
+        "(0, 1)": 2,
+        "(1, 0)": 2
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 4,
+      "candidate_full_assignments": 16,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        1
+      ],
+      "full_assignments": 4,
+      "local_gate_candidate_assignments_tested": 16,
+      "n": 1,
+      "weighted_boundary": {
+        "(0, 1)": 2,
+        "(1, 0)": 2
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 4,
+      "candidate_full_assignments": 16,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        0
+      ],
+      "full_assignments": 4,
+      "local_gate_candidate_assignments_tested": 16,
+      "n": 1,
+      "weighted_boundary": {
+        "(0, 0)": 2,
+        "(1, 1)": 2
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 4,
+      "candidate_full_assignments": 16,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        1
+      ],
+      "full_assignments": 4,
+      "local_gate_candidate_assignments_tested": 16,
+      "n": 1,
+      "weighted_boundary": {
+        "(0, 1)": 2,
+        "(1, 0)": 2
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 4,
+      "candidate_full_assignments": 16,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        1
+      ],
+      "full_assignments": 4,
+      "local_gate_candidate_assignments_tested": 16,
+      "n": 1,
+      "weighted_boundary": {
+        "(0, 1)": 2,
+        "(1, 0)": 2
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 4,
+      "candidate_full_assignments": 16,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        0
+      ],
+      "full_assignments": 4,
+      "local_gate_candidate_assignments_tested": 16,
+      "n": 1,
+      "weighted_boundary": {
+        "(0, 0)": 2,
+        "(1, 1)": 2
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 4,
+      "candidate_full_assignments": 16,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        1
+      ],
+      "full_assignments": 4,
+      "local_gate_candidate_assignments_tested": 16,
+      "n": 1,
+      "weighted_boundary": {
+        "(0, 1)": 2,
+        "(1, 0)": 2
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 4,
+      "candidate_full_assignments": 16,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        0
+      ],
+      "full_assignments": 4,
+      "local_gate_candidate_assignments_tested": 16,
+      "n": 1,
+      "weighted_boundary": {
+        "(0, 0)": 2,
+        "(1, 1)": 2
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 4,
+      "candidate_full_assignments": 16,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        1
+      ],
+      "full_assignments": 4,
+      "local_gate_candidate_assignments_tested": 16,
+      "n": 1,
+      "weighted_boundary": {
+        "(0, 1)": 2,
+        "(1, 0)": 2
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 4,
+      "candidate_full_assignments": 16,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        0
+      ],
+      "full_assignments": 4,
+      "local_gate_candidate_assignments_tested": 16,
+      "n": 1,
+      "weighted_boundary": {
+        "(0, 0)": 2,
+        "(1, 1)": 2
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 8,
+      "candidate_full_assignments": 128,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        0,
+        1
+      ],
+      "full_assignments": 8,
+      "local_gate_candidate_assignments_tested": 32,
+      "n": 2,
+      "weighted_boundary": {
+        "(0, 1)": 4,
+        "(1, 0)": 4
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 8,
+      "candidate_full_assignments": 128,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        1,
+        1
+      ],
+      "full_assignments": 8,
+      "local_gate_candidate_assignments_tested": 32,
+      "n": 2,
+      "weighted_boundary": {
+        "(0, 0)": 4,
+        "(1, 1)": 4
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 8,
+      "candidate_full_assignments": 128,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        1,
+        0
+      ],
+      "full_assignments": 8,
+      "local_gate_candidate_assignments_tested": 32,
+      "n": 2,
+      "weighted_boundary": {
+        "(0, 1)": 4,
+        "(1, 0)": 4
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 8,
+      "candidate_full_assignments": 128,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        1,
+        1
+      ],
+      "full_assignments": 8,
+      "local_gate_candidate_assignments_tested": 32,
+      "n": 2,
+      "weighted_boundary": {
+        "(0, 0)": 4,
+        "(1, 1)": 4
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 8,
+      "candidate_full_assignments": 128,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        1,
+        0
+      ],
+      "full_assignments": 8,
+      "local_gate_candidate_assignments_tested": 32,
+      "n": 2,
+      "weighted_boundary": {
+        "(0, 1)": 4,
+        "(1, 0)": 4
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 8,
+      "candidate_full_assignments": 128,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        1,
+        1
+      ],
+      "full_assignments": 8,
+      "local_gate_candidate_assignments_tested": 32,
+      "n": 2,
+      "weighted_boundary": {
+        "(0, 0)": 4,
+        "(1, 1)": 4
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 8,
+      "candidate_full_assignments": 128,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        0,
+        1
+      ],
+      "full_assignments": 8,
+      "local_gate_candidate_assignments_tested": 32,
+      "n": 2,
+      "weighted_boundary": {
+        "(0, 1)": 4,
+        "(1, 0)": 4
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 8,
+      "candidate_full_assignments": 128,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        1,
+        1
+      ],
+      "full_assignments": 8,
+      "local_gate_candidate_assignments_tested": 32,
+      "n": 2,
+      "weighted_boundary": {
+        "(0, 0)": 4,
+        "(1, 1)": 4
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 8,
+      "candidate_full_assignments": 128,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        0,
+        0
+      ],
+      "full_assignments": 8,
+      "local_gate_candidate_assignments_tested": 32,
+      "n": 2,
+      "weighted_boundary": {
+        "(0, 0)": 4,
+        "(1, 1)": 4
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 8,
+      "candidate_full_assignments": 128,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        1,
+        1
+      ],
+      "full_assignments": 8,
+      "local_gate_candidate_assignments_tested": 32,
+      "n": 2,
+      "weighted_boundary": {
+        "(0, 0)": 4,
+        "(1, 1)": 4
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 12,
+      "candidate_full_assignments": 1024,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        0,
+        1,
+        1
+      ],
+      "full_assignments": 16,
+      "local_gate_candidate_assignments_tested": 48,
+      "n": 3,
+      "weighted_boundary": {
+        "(0, 0)": 8,
+        "(1, 1)": 8
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 12,
+      "candidate_full_assignments": 1024,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        1,
+        0,
+        1
+      ],
+      "full_assignments": 16,
+      "local_gate_candidate_assignments_tested": 48,
+      "n": 3,
+      "weighted_boundary": {
+        "(0, 0)": 8,
+        "(1, 1)": 8
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 12,
+      "candidate_full_assignments": 1024,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        0,
+        0,
+        1
+      ],
+      "full_assignments": 16,
+      "local_gate_candidate_assignments_tested": 48,
+      "n": 3,
+      "weighted_boundary": {
+        "(0, 1)": 8,
+        "(1, 0)": 8
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 12,
+      "candidate_full_assignments": 1024,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        0,
+        1,
+        1
+      ],
+      "full_assignments": 16,
+      "local_gate_candidate_assignments_tested": 48,
+      "n": 3,
+      "weighted_boundary": {
+        "(0, 0)": 8,
+        "(1, 1)": 8
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 12,
+      "candidate_full_assignments": 1024,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        0,
+        0,
+        1
+      ],
+      "full_assignments": 16,
+      "local_gate_candidate_assignments_tested": 48,
+      "n": 3,
+      "weighted_boundary": {
+        "(0, 1)": 8,
+        "(1, 0)": 8
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 12,
+      "candidate_full_assignments": 1024,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        1,
+        0,
+        1
+      ],
+      "full_assignments": 16,
+      "local_gate_candidate_assignments_tested": 48,
+      "n": 3,
+      "weighted_boundary": {
+        "(0, 0)": 8,
+        "(1, 1)": 8
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 12,
+      "candidate_full_assignments": 1024,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        1,
+        0,
+        0
+      ],
+      "full_assignments": 16,
+      "local_gate_candidate_assignments_tested": 48,
+      "n": 3,
+      "weighted_boundary": {
+        "(0, 1)": 8,
+        "(1, 0)": 8
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 12,
+      "candidate_full_assignments": 1024,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        0,
+        1,
+        0
+      ],
+      "full_assignments": 16,
+      "local_gate_candidate_assignments_tested": 48,
+      "n": 3,
+      "weighted_boundary": {
+        "(0, 1)": 8,
+        "(1, 0)": 8
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 12,
+      "candidate_full_assignments": 1024,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        0,
+        1,
+        1
+      ],
+      "full_assignments": 16,
+      "local_gate_candidate_assignments_tested": 48,
+      "n": 3,
+      "weighted_boundary": {
+        "(0, 0)": 8,
+        "(1, 1)": 8
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 12,
+      "candidate_full_assignments": 1024,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        1,
+        0,
+        1
+      ],
+      "full_assignments": 16,
+      "local_gate_candidate_assignments_tested": 48,
+      "n": 3,
+      "weighted_boundary": {
+        "(0, 0)": 8,
+        "(1, 1)": 8
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 16,
+      "candidate_full_assignments": 8192,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "full_assignments": 32,
+      "local_gate_candidate_assignments_tested": 64,
+      "n": 4,
+      "weighted_boundary": {
+        "(0, 1)": 16,
+        "(1, 0)": 16
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 16,
+      "candidate_full_assignments": 8192,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "full_assignments": 32,
+      "local_gate_candidate_assignments_tested": 64,
+      "n": 4,
+      "weighted_boundary": {
+        "(0, 0)": 16,
+        "(1, 1)": 16
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 16,
+      "candidate_full_assignments": 8192,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "full_assignments": 32,
+      "local_gate_candidate_assignments_tested": 64,
+      "n": 4,
+      "weighted_boundary": {
+        "(0, 0)": 16,
+        "(1, 1)": 16
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 16,
+      "candidate_full_assignments": 8192,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "full_assignments": 32,
+      "local_gate_candidate_assignments_tested": 64,
+      "n": 4,
+      "weighted_boundary": {
+        "(0, 1)": 16,
+        "(1, 0)": 16
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 16,
+      "candidate_full_assignments": 8192,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "full_assignments": 32,
+      "local_gate_candidate_assignments_tested": 64,
+      "n": 4,
+      "weighted_boundary": {
+        "(0, 0)": 16,
+        "(1, 1)": 16
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 16,
+      "candidate_full_assignments": 8192,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "full_assignments": 32,
+      "local_gate_candidate_assignments_tested": 64,
+      "n": 4,
+      "weighted_boundary": {
+        "(0, 0)": 16,
+        "(1, 1)": 16
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 16,
+      "candidate_full_assignments": 8192,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "full_assignments": 32,
+      "local_gate_candidate_assignments_tested": 64,
+      "n": 4,
+      "weighted_boundary": {
+        "(0, 1)": 16,
+        "(1, 0)": 16
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 16,
+      "candidate_full_assignments": 8192,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "full_assignments": 32,
+      "local_gate_candidate_assignments_tested": 64,
+      "n": 4,
+      "weighted_boundary": {
+        "(0, 0)": 16,
+        "(1, 1)": 16
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 16,
+      "candidate_full_assignments": 8192,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "full_assignments": 32,
+      "local_gate_candidate_assignments_tested": 64,
+      "n": 4,
+      "weighted_boundary": {
+        "(0, 0)": 16,
+        "(1, 1)": 16
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 16,
+      "candidate_full_assignments": 8192,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "full_assignments": 32,
+      "local_gate_candidate_assignments_tested": 64,
+      "n": 4,
+      "weighted_boundary": {
+        "(0, 0)": 16,
+        "(1, 1)": 16
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 20,
+      "candidate_full_assignments": 65536,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "full_assignments": 64,
+      "local_gate_candidate_assignments_tested": 80,
+      "n": 5,
+      "weighted_boundary": {
+        "(0, 1)": 32,
+        "(1, 0)": 32
+      }
+    },
+    {
+      "boundary_composition_transitions_tested": 20,
+      "candidate_full_assignments": 65536,
+      "distinct_endpoint_pairs": 2,
+      "flips": [
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "full_assignments": 64,
+      "local_gate_candidate_assignments_tested": 80,
+      "n": 5,
+      "weighted_boundary": {
+        "(0, 0)": 32,
+        "(1, 1)": 32
+      }
+    }
+  ],
+  "contradictory_endpoint_checks": 5,
+  "exhaustive_elimination_stage_checks": {
+    "busiest": 13,
+    "internal_then_ports": 13,
+    "ports_then_internal": 13,
+    "quietest": 13
+  },
+  "id": "PUDDING-15-BOUNDARY-COLLAPSE-2026-11-08",
+  "local_negative": {
+    "(0, 0)": 0,
+    "(0, 1)": 2,
+    "(1, 0)": 2,
+    "(1, 1)": 0
+  },
+  "local_positive": {
+    "(0, 0)": 2,
+    "(0, 1)": 0,
+    "(1, 0)": 0,
+    "(1, 1)": 2
+  },
+  "method": "CNF gate truth tables, weighted relational composition, exhaustive CNF checks, resolution elimination",
+  "notes": [
+    "The full candidate assignment count is an enumeration space, not measured solver steps.",
+    "Resolution pair count, interface-table rows, gate evaluations and transition checks are separate cost units.",
+    "The hand-designed gates are intentionally easy; no unrestricted SAT speedup is shown.",
+    "Whole macro signatures are safe only when all shared boundary variables are represented.",
+    "For #SAT preserve internal multiplicity weights, not merely Boolean existence."
+  ],
+  "resolution_benchmark": [
+    {
+      "blocks": 2,
+      "max_clause_width": 3,
+      "mode": "internal_then_ports",
+      "peak_clauses": 12,
+      "proposed_pairs": 8,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 7
+    },
+    {
+      "blocks": 2,
+      "max_clause_width": 4,
+      "mode": "ports_then_internal",
+      "peak_clauses": 12,
+      "proposed_pairs": 18,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 7
+    },
+    {
+      "blocks": 2,
+      "max_clause_width": 3,
+      "mode": "quietest",
+      "peak_clauses": 12,
+      "proposed_pairs": 6,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 7
+    },
+    {
+      "blocks": 2,
+      "max_clause_width": 4,
+      "mode": "busiest",
+      "peak_clauses": 13,
+      "proposed_pairs": 78,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 7
+    },
+    {
+      "blocks": 3,
+      "max_clause_width": 3,
+      "mode": "internal_then_ports",
+      "peak_clauses": 18,
+      "proposed_pairs": 12,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 10
+    },
+    {
+      "blocks": 3,
+      "max_clause_width": 5,
+      "mode": "ports_then_internal",
+      "peak_clauses": 18,
+      "proposed_pairs": 41,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 10
+    },
+    {
+      "blocks": 3,
+      "max_clause_width": 3,
+      "mode": "quietest",
+      "peak_clauses": 18,
+      "proposed_pairs": 9,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 10
+    },
+    {
+      "blocks": 3,
+      "max_clause_width": 5,
+      "mode": "busiest",
+      "peak_clauses": 25,
+      "proposed_pairs": 210,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 10
+    },
+    {
+      "blocks": 4,
+      "max_clause_width": 3,
+      "mode": "internal_then_ports",
+      "peak_clauses": 24,
+      "proposed_pairs": 16,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 13
+    },
+    {
+      "blocks": 4,
+      "max_clause_width": 6,
+      "mode": "ports_then_internal",
+      "peak_clauses": 25,
+      "proposed_pairs": 78,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 13
+    },
+    {
+      "blocks": 4,
+      "max_clause_width": 3,
+      "mode": "quietest",
+      "peak_clauses": 24,
+      "proposed_pairs": 12,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 13
+    },
+    {
+      "blocks": 4,
+      "max_clause_width": 6,
+      "mode": "busiest",
+      "peak_clauses": 88,
+      "proposed_pairs": 2073,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 13
+    },
+    {
+      "blocks": 5,
+      "max_clause_width": 3,
+      "mode": "internal_then_ports",
+      "peak_clauses": 30,
+      "proposed_pairs": 20,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 16
+    },
+    {
+      "blocks": 5,
+      "max_clause_width": 7,
+      "mode": "ports_then_internal",
+      "peak_clauses": 39,
+      "proposed_pairs": 131,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 16
+    },
+    {
+      "blocks": 5,
+      "max_clause_width": 3,
+      "mode": "quietest",
+      "peak_clauses": 30,
+      "proposed_pairs": 15,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 16
+    },
+    {
+      "blocks": 5,
+      "max_clause_width": 8,
+      "mode": "busiest",
+      "peak_clauses": 220,
+      "proposed_pairs": 16120,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 16
+    },
+    {
+      "blocks": 6,
+      "max_clause_width": 3,
+      "mode": "internal_then_ports",
+      "peak_clauses": 36,
+      "proposed_pairs": 24,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 19
+    },
+    {
+      "blocks": 6,
+      "max_clause_width": 8,
+      "mode": "ports_then_internal",
+      "peak_clauses": 58,
+      "proposed_pairs": 202,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 19
+    },
+    {
+      "blocks": 6,
+      "max_clause_width": 3,
+      "mode": "quietest",
+      "peak_clauses": 36,
+      "proposed_pairs": 18,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 19
+    },
+    {
+      "blocked_next_pairs": 59292,
+      "blocked_next_variable": 19,
+      "blocks": 6,
+      "max_clause_width": 8,
+      "mode": "busiest",
+      "peak_clauses": 513,
+      "proposed_pairs_before_limit": 83350,
+      "status": "LIMITED",
+      "steps_completed": 11
+    },
+    {
+      "blocks": 7,
+      "max_clause_width": 3,
+      "mode": "internal_then_ports",
+      "peak_clauses": 42,
+      "proposed_pairs": 28,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 22
+    },
+    {
+      "blocks": 7,
+      "max_clause_width": 9,
+      "mode": "ports_then_internal",
+      "peak_clauses": 84,
+      "proposed_pairs": 293,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 22
+    },
+    {
+      "blocks": 7,
+      "max_clause_width": 3,
+      "mode": "quietest",
+      "peak_clauses": 42,
+      "proposed_pairs": 21,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 22
+    },
+    {
+      "blocked_next_pairs": 60025,
+      "blocked_next_variable": 7,
+      "blocks": 7,
+      "max_clause_width": 8,
+      "mode": "busiest",
+      "peak_clauses": 519,
+      "proposed_pairs_before_limit": 83350,
+      "status": "LIMITED",
+      "steps_completed": 11
+    },
+    {
+      "blocks": 8,
+      "max_clause_width": 3,
+      "mode": "internal_then_ports",
+      "peak_clauses": 48,
+      "proposed_pairs": 32,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 25
+    },
+    {
+      "blocks": 8,
+      "max_clause_width": 10,
+      "mode": "ports_then_internal",
+      "peak_clauses": 120,
+      "proposed_pairs": 408,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 25
+    },
+    {
+      "blocks": 8,
+      "max_clause_width": 3,
+      "mode": "quietest",
+      "peak_clauses": 48,
+      "proposed_pairs": 24,
+      "sat": true,
+      "status": "COMPLETED",
+      "steps_completed": 25
+    },
+    {
+      "blocked_next_pairs": 60025,
+      "blocked_next_variable": 7,
+      "blocks": 8,
+      "max_clause_width": 8,
+      "mode": "busiest",
+      "peak_clauses": 525,
+      "proposed_pairs_before_limit": 83350,
+      "status": "LIMITED",
+      "steps_completed": 11
+    }
+  ],
+  "scalar_counterexample": {
+    "A": "x",
+    "B": "not x",
+    "sat_A": true,
+    "sat_B": true,
+    "sat_conjunction": false,
+    "scalar_and_prediction": true
+  },
+  "seed": 20261108,
+  "status": "finite-checked-trail-not-complexity-proof",
+  "weighted_count_loss_example": {
+    "full_count_lost_by_unweighted_projection": true,
+    "one_block_satisfying_boundary_rows": 2,
+    "one_block_satisfying_full_assignments": 4
+  }
+}

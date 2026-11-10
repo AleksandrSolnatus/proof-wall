@@ -1,0 +1,106 @@
+Public-review derivative: an internal research location was generalized. Full original and its archives remain preserved privately; archive references below are historical and the ZIPs are not included in this selection.
+
+# Stir the Pudding — 15: The Problem as a Variable
+
+**Date:** 2026-11-08 (America/Phoenix)  
+**Home:** `private research archive`  
+**Predecessors:** `10_PUDDING_FIRST_DOMINO_2026-10-20.md` through `14_PUDDING_SAFE_TURN_2026-10-21.md`  
+**Related, kept separate:** `THIRD_LIGHT_009_2026-10-22/TRAIL_009.md`, `SAT-ECHO-SHELL-001`, `2SAT-MIRROR-BLOWUP-001`, `PERIOD-HUNT-002`.  
+**Status:** **executed finite trail with deterministic checks**; no claim about P versus NP, a novel algorithm, a quantum speedup, or the complexity of unrestricted SAT.
+
+## The question
+
+User: *“What if you treat the problem as a variable? not a problem? the problem is one thing that is being collapsed out. We are just further up the chain… we can make SAT 2 into SAT 3 and SAT 4 into more.”*
+
+Rather than eliminate individual variables and create wider clauses, can we replace an entire subproblem with one **interface response**, then compose these responses? What is preserved, and where does blowup move?
+
+## The precise construction
+
+For a block with private variables `x` and shared boundary variables `b`, use the Boolean relation
+
+\[R_F(b)=\exists_x F(x,b).\]
+
+This is a *single named mathematical object*, **not** necessarily a single ordinary Boolean variable. A scalar `SAT(F)` is insufficient when two blocks share variables. To preserve all satisfiability interactions with outside constraints depending only on `b`, retain the entire relation `R_F(b)` (or an equivalent exact representation). This is the established idea of existential projection / variable forgetting / relational composition.
+
+For exact counting, retain the weighted response
+
+\[M_F(b)=\#\{x:F(x,b)\}.\]
+
+Boolean existence only records `M_F(b)>0` and can lose the number of original witnesses.
+
+### A deliberate easy block
+
+The trial uses small CNF gate blocks with two visible ports `a,b` and two private variables `t,u`:
+
+- `u <-> (a AND t)`;
+- `b <-> ((a OR u) XOR flip)`, where `flip` is zero or one.
+
+Because `u` implies `a`, each block's boundary relation is exactly `b=a XOR flip`. For either allowed pair `(a,b)` there are **two** private extensions, corresponding to `t=0` and `t=1`; the `u` value is determined. The original encoding uses six clauses of length two or three per block. This purposefully hand-constructed family is easy for standard methods; it is a controlled measurement of representation and information loss, not a hard SAT benchmark.
+
+Build a chain of `n` such blocks, identifying the output port of block `i` with the input port of block `i+1`. Compare:
+
+1. **Exact boundary macro composition** using the 2×2 weighted truth table for each block, with endpoint ports retained.
+2. **CNF elimination** by Davis–Putnam resolution, with quietest-first, internal-then-ports, ports-then-internal, and busiest-first pivot policies.
+3. **Exhaustive whole-formula enumeration** on small instances, including the exact set and multiplicity of endpoint responses.
+4. **An intentionally bad one-scalar summary** that remembers only whether each block is individually satisfiable.
+5. **A deliberately wide interface** bundling `k` otherwise independent two-port blocks into one 2k-port macro, compared with keeping their separate factors.
+
+## Verified outcomes
+
+### 1. Different elimination orders, one unchanged SAT result
+
+All rows use the identical eight-block satisfiable formula (`n=8`, 25 variables, 48 clauses of width at most 3). Resolution-pair counts are **not** elapsed time or directly comparable primitive work to factor-table operations.
+
+| Policy | Proposed resolution pairs | Peak retained clauses | Largest clause width | State |
+|---|---:|---:|---:|---|
+| Quietest first | **24** | 48 | 3 | Completed |
+| Internal private variables first, then ports | **32** | 48 | 3 | Completed |
+| Ports first, then internal variables | **408** | 120 | **10** | Completed |
+| Busiest first | **83,350** completed | 525 | 8 | **LIMITED** before next 60,025 pairs; 100,000-pair budget |
+
+The attempted 60,025 pairs would take the cumulative count over the fixed 100,000 cap. The busiest-first result must **not** be treated as a complete solve or an UNSAT verdict. Others solved SAT. The known satisfiability is independently established by direct gate semantics and the chain relation. This shows that eliminating exposed variables first creates wider clauses and more work *for this resolution representation*; it does not show that every algorithm must do so.
+
+### 2. A whole object can hide a huge table
+
+For `k` independent wires, a **monolithic** truth table over `2k` visible Boolean ports has `2^(2k)=4^k` rows. Retaining `k` separate 2×2 response tables requires just `4k` entries. This is *storage in two specified representations*, not a general lower bound for the function, which is simple and factorizes here.
+
+| Independent wires | Boundary variables | Rows in whole truth table | Entries in separate tables | Satisfying boundary rows |
+|---|---:|---:|---:|---:|
+| 2 | 4 | 16 | 8 | 4 |
+| 4 | 8 | 256 | 16 | 16 |
+| 6 | 12 | 4,096 | 24 | 64 |
+| 8 | 16 | **65,536** | **32** | **256** |
+
+All 65,536 8-wire boundary tuples were enumerated in the toy. The **2048× row-count difference** is a representational comparison, not a measured speedup. The factorization is easy because the inputs were built as independent wires; discovering an optimal factorization in an arbitrary formula may itself be expensive.
+
+### 3. SAT information versus counting information
+
+One gate block has **2** satisfying boundary pairs but **4** complete satisfying assignments (two private completions per allowed pair). A pure existential summary preserves external SAT compatibility but not #SAT. Weighted messages recover the exact total of `2^(n+1)` full satisfying assignments for these chains. A mere scalar SAT flag can lose even satisfiability: `A(x)=x` and `B(x)=not x` are individually SAT, but `A(x) AND B(x)` is UNSAT.
+
+### 4. Checks performed
+
+- **42 small generated chain instances** (`n=1..5`, deterministic seed `20261108`), compared with exhaustive CNF enumeration for full endpoint-weight counts.
+- **52 stepwise projection checks** (13 elimination stages for each of four variable orders on an `n=4` instance), checking the exact surviving solution relation against projection of the original model set.
+- **5 contradictory endpoint checks** from a chain with opposite terminal pinning, with exhaustive CNF enumeration on the four smallest.
+- **8 sizes of deliberately bundled interfaces**, through 16 visible ports with all 65,536 boundary pairs checked.
+- All **28 resolution benchmarks** recorded, including limited cases; no budget exhaustion silently counted as success.
+- Separate `verify_boundary.py` reproduces the 42 small-chain outputs using a **different direct gate-semantic enumerator**, rather than calling the primary experiment code. Same-author local verification; no independent outside referee.
+
+## What this resolves and what remains unknown
+
+**Established in these finite cases:** It is sound to collapse a block while retaining its exact boundary response; insufficient summaries can lose shared-variable compatibility or witness multiplicity; a chosen elimination order can make 3-CNF develop width-10 clauses; an unnecessarily monolithic interface representation can expand exponentially, even for an easy relation.
+
+**Not established:** That all or most 3-SAT instances have small, efficiently discoverable interfaces; that the complete computation is polynomial time; that boundaried collapse is better than standard SAT solvers; that response tables remain small under arbitrary interactions; or that separate blocks can always be identified cheaply. For counting, extra state is required to preserve multiplicity.
+
+**Connection back to the First Domino:** Expansion can arise from **resolution recombination**, from **wider boundary interfaces**, or from **choosing a representation that fails to expose factorization**. Those are distinct causes, and the experiment distinguishes them. The best case shows why a *problem* can be treated as one factor without pretending it has become just one ordinary Boolean bit.
+
+## Next bend (not performed)
+
+Try randomly generated interacting blocks and crossing constraints, not specially designed gate chains. Require exact comparison with the same best baseline under a uniform cost model. Track interface size and **discovery/recognition cost**, not just table size. Preserve instances that **fail** to factor or force the interface to grow. Try retaining a factored representation when two originally separate blocks reconnect.
+
+## Source and lineage
+
+- Existing Pudding: `10_PUDDING_FIRST_DOMINO_2026-10-20.md`, `pudding_cascade_2026_10_20.py`, `14_PUDDING_SAFE_TURN_2026-10-21.md`.
+- Earlier related constraint information: `THIRD_LIGHT_009_2026-10-22/TRAIL_009.md` (already checked projection-equivalence over small interfaces), and separate Toy Bin experiments `SAT-ECHO-SHELL-001`, `2SAT-MIRROR-BLOWUP-001`, `PERIOD-HUNT-002`.
+- New local artifacts: `pudding_boundary_collapse.py`, `verify_boundary.py`, `results.json`, `PROVENANCE.md`, `MANIFEST.json`.
+- Earlier files **not changed or folded into this one**; new trail is appended as its own record. Sources use Python standard library only.

@@ -1,0 +1,31 @@
+"""Prospective v2 holdout: seeds 700-707, n=11, densities 36/46/56, 24 frozen puzzles."""
+from pudding_state_viscosity import gen,models,run,OUT
+import json
+from collections import Counter
+
+def main():
+    data=[]; cases=[]
+    for m in (36,46,56):
+        for seed in range(700,708):
+            n=11;F=gen(n,m,seed);nm=len(models(F,range(1,n+1)))
+            cases.append((n,m,seed,nm))
+            for order in ('max','min','asc'):
+                for mode in ('dry','always','pressure8','state','state_guarded'):
+                    result=run(F,n,order,mode,check=True)
+                    data.append(dict(n=n,m=m,seed=seed,full_models=nm,order=order,mode=mode,**result))
+    with (OUT/'pudding_state_holdout_results.json').open('w') as f:json.dump({'cases':cases,'records':data,'note':'predeclared n=11, 36/46/56 clauses, seeds 700..707; stagewise exact projection checks'},f,indent=2)
+    print('Holdout',len(cases),'puzzles',sum(c[3]==0 for c in cases),'UNSAT;',len(data),'complete checked runs')
+    for order in ('max','min','asc'):
+        r=[x for x in data if x['order']==order]
+        print('\n',order)
+        for mode in ('dry','always','pressure8','state','state_guarded'):
+            a=[x for x in r if x['mode']==mode]
+            print(mode,'pairs',sum(x['pairs'] for x in a),'subs',sum(x['sub_checks'] for x in a),'reads',sum(x['reads'] for x in a),'proxy',sum(x['proxy'] for x in a),'gears',dict(sum((Counter({int(k):v for k,v in x['gears'].items()}) for x in a),Counter())))
+        for base in ('dry','always','pressure8','state'):
+            v=[x for x in r if x['mode']=='state_guarded']
+            wins=sum(x['proxy']<next(y['proxy'] for y in r if (y['mode'],y['seed'],y['m'])==(base,x['seed'],x['m'])) for x in v)
+            print('guarded wins vs',base,wins,'of',len(v))
+    anchor=[x for x in data if (x['m'],x['seed'],x['order'])==(36,700,'max')]
+    for x in anchor:print('anchor',x['mode'],x['proxy'],[(a['x'],a['gear']) for a in x['history']])
+
+if __name__=='__main__':main()

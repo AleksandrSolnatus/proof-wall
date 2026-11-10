@@ -1,0 +1,84 @@
+"""Pudding viscosity feedback trail: preemptive pressure-triggered subsumption.
+Exact, fixed 3CNF generation follows earlier viscosity trail. No outside modules.
+"""
+import sys, json, time
+sys.path.insert(0,'/mnt/data')
+from pudding_viscosity_trail import gen, models, prune_subsumed, eliminate
+
+
+def pressure_stats(F, todo):
+    positive={x:0 for x in todo}; negative={x:0 for x in todo}
+    visits=0
+    for c in F:
+        for lit in c:
+            visits+=1
+            if abs(lit) not in positive: continue
+            if lit>0: positive[lit]+=1
+            else: negative[-lit]+=1
+    return {x:positive[x]*negative[x] for x in todo},visits
+
+
+def feedback(F,n,policy,trigger,check=True):
+    current=set(F); original=models(F,range(1,n+1)) if check else None
+    todo=set(range(1,n+1)); pairs=0; subschecks=0; removed=0; scan_lits=0
+    history=[]; peaks=len(current); cleans=0; useful_cleans=0
+    while todo:
+        pressure,visits=pressure_stats(current,todo);scan_lits+=visits
+        x= (max(todo,key=lambda x:(pressure[x],-x)) if policy=='max' else
+           min(todo,key=lambda x:(pressure[x],x)) if policy=='min' else min(todo))
+        score=pressure[x]; size=len(current)
+        # Pressure warning only, prior to eliminating x: we can still clean without sacrificing true constraints.
+        # Initial all-3-literal input has no subsumption (distinct clauses), so never clean it.
+        warn=len(history)>0 and score > trigger*size
+        if warn:
+            cleaned,rm,checks=prune_subsumed(current)
+            subschecks+=checks;removed+=rm;cleans+=1;useful_cleans+=(rm>0)
+            current=cleaned
+            pressure,visits=pressure_stats(current,todo);scan_lits+=visits
+            x=(max(todo,key=lambda x:(pressure[x],-x)) if policy=='max' else
+               min(todo,key=lambda x:(pressure[x],x)) if policy=='min' else min(todo))
+            score=pressure[x]
+        nextF,stat=eliminate(current,x)
+        assert stat['pairs']==score
+        pairs+=score
+        current=nextF;todo.remove(x);peaks=max(peaks,len(current))
+        history.append(dict(eliminated=x,warning=warn,pairings=score,clauses=len(current),saved_clauses=removed))
+        if check:
+            projected={frozenset(l for l in model if abs(l) in todo) for model in original}
+            actual=models(current,todo)
+            assert projected==actual, (policy,trigger,x)
+        if not current or frozenset() in current: break
+    status='UNSAT' if frozenset() in current else 'SAT'
+    assert status==('SAT' if original else 'UNSAT')
+    return {'trigger':trigger,'order':policy,'pairs':pairs,'subsumption_checks':subschecks,
+            'literal_reads_for_pressure':scan_lits,'removed':removed,'clean_passes':cleans,
+            'useful_clean_passes':useful_cleans,'peak_after_steps':peaks,
+            'proxy_pairs_plus_subset_checks':pairs+subschecks,'status':status,'history':history}
+
+
+def run():
+    data=[]
+    for m in [32,42,50]:
+        for seed in range(6):
+            F=gen(10,m,seed)
+            count=len(models(F,range(1,11)))
+            for pol in ['max','min','asc']:
+                for factor in [0.5,1,2,4,8,16]:
+                    result=feedback(F,10,pol,factor,True)
+                    data.append({'n':10,'m':m,'seed':seed,'satisfying_assignments':count,**result})
+    print('RESULTS',len(data), 'SAT cases',len(set((r['m'],r['seed']) for r in data if r['satisfying_assignments']>0)))
+    baseline=json.load(open('/mnt/data/pudding_viscosity_results.json'))['results']
+    for pol in ['max','min','asc']:
+        print('\n',pol)
+        for label in ['none','adaptive','always']:
+            group=[r for r in baseline if r['policy']==pol and r['viscosity']==label]
+            print(label,'pairs',sum(r['pairs'] for r in group),'subs',sum(r['subsumption_scans'] for r in group),'joint',sum(r['pairs']+r['subsumption_scans'] for r in group))
+        for factor in [0.5,1,2,4,8,16]:
+            group=[r for r in data if r['order']==pol and r['trigger']==factor]
+            print('trigger',factor,'pairs',sum(r['pairs'] for r in group),'subs',sum(r['subsumption_checks'] for r in group),'joint',sum(r['proxy_pairs_plus_subset_checks'] for r in group),'passes',sum(r['clean_passes'] for r in group),'useful',sum(r['useful_clean_passes'] for r in group),'reads',sum(r['literal_reads_for_pressure'] for r in group))
+    case=[r for r in data if (r['m'],r['seed'],r['order'])==(32,0,'max')]
+    print('\nanchor')
+    for r in case:print(r['trigger'],r['pairs'],r['subsumption_checks'],r['clean_passes'],r['useful_clean_passes'],r['history'][:5])
+    with open('/mnt/data/pudding_viscosity_feedback_results.json','w') as f:json.dump({'description':'Full frozen 18x3x6 pressure-trigger runs, exact stage checks','results':data},f,indent=2)
+
+if __name__=='__main__':run()

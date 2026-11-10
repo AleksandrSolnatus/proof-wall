@@ -1,0 +1,21 @@
+PUDDING-15 / 2026-11-08 / LOCAL CHECK RECEIPT
+
+Commands executed in the working container:
+
+  python3 pudding_boundary_collapse.py --output results.json
+  python3 pudding_boundary_collapse.py --check results.json
+  python3 verify_boundary.py results.json
+
+Observed output:
+  WROTE results.json
+  small chain cases 42
+  stage exact-projection checks {'internal_then_ports': 13, 'ports_then_internal': 13, 'quietest': 13, 'busiest': 13}
+  bundle 8 wires: 16 boundary variables, 65,536 whole table rows, 32 separate local table rows, 256 satisfying boundary rows
+  CHECKED: exact deterministic regeneration and all internal checks passed
+  PASS: 42 independently enumerated direct-gate small-chain cases; 8 boundary-table sizes; scalar counterexample and saved stage counts checked.
+
+Total 52 full stage-projection checks; 28 resolution benchmarks, including three budget-limited cases.
+
+Limits: local same-author scripts (not external peer verification),
+hand-constructed easy CNF (not arbitrary 3-SAT), proxy operation counts
+not equal to elapsed time. Validation cannot establish P=NP or P!=NP.

@@ -1,0 +1,110 @@
+"""Finite 3-CNF trail: viscosity changes with local state; only sound subsumption.
+Reuses generator, elimination, and truth-table projection functions from archive 11.
+"""
+import json, math
+from collections import Counter
+from pathlib import Path
+from pudding_viscosity_trail import gen, models, prune_subsumed, eliminate
+
+OUT=Path(__file__).parent
+
+def pressure(F,todo):
+    plus={x:0 for x in todo}; minus={x:0 for x in todo};reads=0
+    for clause in F:
+        for l in clause:
+            reads+=1
+            v=abs(l)
+            if v in plus:
+                if l>0:plus[v]+=1
+                else:minus[v]+=1
+    return {x:plus[x]*minus[x] for x in todo},reads
+
+def scoped_prune(F, x):
+    """Only compare clauses currently mentioning the next pivot. Safe but partial."""
+    focused={c for c in F if x in c or -x in c}
+    other=F-focused
+    kept,removed,checks=prune_subsumed(focused)
+    return other|kept,removed,checks
+
+def run(F,n,order,mode,check=True):
+    original=models(F,range(1,n+1)) if check else None
+    current=set(F);todo=set(range(1,n+1));hist=[]
+    total=Counter(); last_growth=1.0;gear_old=0
+    while todo:
+        pp,reads=pressure(current,todo);total['literal_reads']+=reads
+        x = (max(todo,key=lambda j:(pp[j],-j)) if order=='max' else min(todo,key=lambda j:(pp[j],j)) if order=='min' else min(todo))
+        p=pp[x];c0=len(current)
+        ratio=p/max(c0,1)
+        if mode=='dry':gear=0
+        elif mode=='always':gear=2 if hist else 0
+        elif mode=='pressure8':gear=2 if hist and p>8*c0 else 0
+        elif mode=='state_guarded':
+            # A locally gentle route receives less damping unless the pressure is truly high.
+            # This uses only current positive*negative counts, never SAT status or an oracle.
+            near_quietest = p <= min(pp.values()) + 1
+            if not hist:gear=0
+            elif near_quietest:
+                if ratio>=8 or (ratio>=5 and last_growth>1.5):gear=2
+                else:gear=0
+            elif ratio>=6 or (ratio>=3 and last_growth>1.25):gear=2
+            elif ratio>=2 or (ratio>=1 and last_growth>1.25):gear=1
+            else:gear=0
+        elif mode=='state':
+            if not hist: gear=0
+            elif ratio>=6 or (ratio>=3 and last_growth>1.25):gear=2
+            elif ratio>=2 or (ratio>=1 and last_growth>1.25):gear=1
+            else:gear=0
+        else:raise ValueError(mode)
+        if gear==2:
+            current,rm,checks=prune_subsumed(current)
+        elif gear==1:
+            current,rm,checks=scoped_prune(current,x)
+        else:rm=checks=0
+        if gear:total['cleanup_passes']+=1
+        total['removed']+=rm;total['subsumption_checks']+=checks
+        nxt,stat=eliminate(current,x)
+        total['pairs']+=stat['pairs'];total['taut']+=stat['tauts'];total['duplicates']+=stat['duplicates']
+        total['max_clauses']=max(total['max_clauses'],len(nxt),len(current))
+        last_growth=len(nxt)/max(len(current),1)
+        current=nxt; todo.remove(x)
+        hist.append(dict(x=x,pressure_before=p,ratio=round(ratio,3),growth=round(last_growth,3),gear=gear,removed=rm,checks=checks,pairs=stat['pairs'],after=len(current)))
+        if check:
+            projected={frozenset(l for l in m if abs(l) in todo) for m in original}
+            actual=models(current,todo)
+            assert projected==actual, (n,len(F),order,mode,x)
+        if not current or frozenset() in current:break
+    status='UNSAT' if frozenset() in current else 'SAT'
+    assert not check or status==('SAT' if original else 'UNSAT')
+    return dict(status=status, pairs=total['pairs'], sub_checks=total['subsumption_checks'],reads=total['literal_reads'],proxy=total['pairs']+total['subsumption_checks']+total['literal_reads'], removed=total['removed'],passes=total['cleanup_passes'],peak=total['max_clauses'],gears=dict(Counter(z['gear'] for z in hist)),history=hist)
+
+def main():
+    # Historical 18 training puzzles; fresh 30 = previous archive's holdout; new 18 extra seeds not used previously.
+    suites=[('old',10,m,s) for m in (32,42,50) for s in range(6)]
+    suites += [('previous_holdout',10,m,s) for m in (32,42,50) for s in range(100,110)]
+    suites += [('new',10,m,s) for m in (32,42,50) for s in range(300,306)]
+    records=[]
+    for group,n,m,seed in suites:
+        F=gen(n,m,seed);count=len(models(F,range(1,n+1)))
+        for order in ('max','min','asc'):
+            for mode in ('dry','always','pressure8','state'):
+                res=run(F,n,order,mode)
+                records.append(dict(group=group,n=n,m=m,seed=seed,models=count,order=order,mode=mode,**res))
+    with (OUT/'pudding_state_viscosity_results.json').open('w') as f:json.dump(dict(description='Exact 3-CNF projection-check comparisons after each elimination; no oracle used to select steps',cases=len(suites),records=records),f,indent=2)
+    for group in ('old','previous_holdout','new'):
+        print('\nGROUP',group,'cases',sum(g==group for g,*_ in suites))
+        for order in ('max','min','asc'):
+            group_r=[r for r in records if r['group']==group and r['order']==order]
+            print('ORDER',order)
+            for mode in ('dry','always','pressure8','state'):
+                a=[r for r in group_r if r['mode']==mode]
+                print(mode,'pairs',sum(r['pairs'] for r in a),'subset',sum(r['sub_checks'] for r in a),'reads',sum(r['reads'] for r in a),'proxy',sum(r['proxy'] for r in a),'passes',sum(r['passes'] for r in a),'removed',sum(r['removed'] for r in a),'gears',dict(sum((Counter({int(k):v for k,v in r['gears'].items()}) for r in a),Counter())))
+            state=[r for r in group_r if r['mode']=='state']
+            for base in ('dry','always','pressure8'):
+                wins=sum(r['proxy']<next(t['proxy'] for t in group_r if (t['m'],t['seed'],t['mode'])==(r['m'],r['seed'],base)) for r in state)
+                print('state wins over',base,wins,'of',len(state))
+    a=[r for r in records if (r['group'],r['m'],r['seed'],r['order'])==('old',32,0,'max')]
+    print('\nANCHOR:')
+    for r in a:print(r['mode'],'pairs',r['pairs'],'checks',r['sub_checks'],'reads',r['reads'],'proxy',r['proxy'],'gears',r['gears'],'trail',[(x['x'],x['gear'],x['pairs'],x['removed']) for x in r['history']])
+    print('All',len(records),'stagewise independent projection checks passed; UNSAT:',sum(not len(models(gen(n,m,seed),range(1,n+1))) for _,n,m,seed in suites),'of',len(suites))
+
+if __name__=='__main__':main()

@@ -1,0 +1,105 @@
+"""Viscosity trail: sound redundancy dissipation in SAT resolution.
+
+Frozen 3-SAT generators and classic DP elimination from pudding_cascade_2026_10_20.py.
+Viscosity modes act ONLY via logical subsumption; no constraints are changed.
+"""
+from itertools import combinations
+import random, json
+from collections import Counter
+
+def gen(n,m,seed):
+    rng=random.Random(seed); F=set()
+    while len(F)<m:
+        vs=rng.sample(range(1,n+1),3)
+        lits=[v if rng.randrange(2) else -v for v in vs]
+        F.add(frozenset(lits))
+    return F
+
+def models(F,variables):
+    variables=sorted(variables)
+    out=set()
+    for a in range(1<<len(variables)):
+        bits=frozenset((v if a&(1<<i) else -v) for i,v in enumerate(variables))
+        if all(c & bits for c in F): out.add(bits)
+    return out
+
+def prune_subsumed(F):
+    # If C ⊆ D, C∧D = C: deleting D retains *all* assignments exactly.
+    ordered=sorted(F,key=lambda c:(len(c),tuple(sorted(c))))
+    retained=[]; removes=0; scans=0
+    for clause in ordered:
+        subsumed=False
+        for c in retained:
+            scans+=1
+            if c.issubset(clause):
+                subsumed=True;break
+        if subsumed: removes+=1
+        else: retained.append(clause)
+    return set(retained),removes,scans
+
+def eliminate(F,x):
+    P=[c for c in F if x in c]; N=[c for c in F if -x in c]
+    R=F - set(P) - set(N)
+    adds=set(); tauts=duplicates=0
+    for p in P:
+        for q in N:
+            cl=(p-{x}) | (q-{-x})
+            if any(-l in cl for l in cl): tauts+=1
+            elif cl in adds or cl in R: duplicates+=1
+            else:adds.add(frozenset(cl))
+    return R|adds,dict(positive=len(P),negative=len(N),pairs=len(P)*len(N),tauts=tauts,duplicates=duplicates,new=len(adds),raw=len(R)+len(adds))
+
+def solve(F,n,policy,viscosity,check=False):
+    current=set(F); todo=list(range(1,n+1)); total_pairs=0;total_scan=0; total_removed=0;peak=len(F);history=[]
+    # If check, independently verify exact projection after each step.
+    original_models=models(F,range(1,n+1)) if check else None
+    while todo:
+        pressure={x:sum(x in c for c in current)*sum(-x in c for c in current) for x in todo}
+        if policy=='max': x=max(todo,key=lambda x:(pressure[x],-x))
+        elif policy=='min':x=min(todo,key=lambda x:(pressure[x],x))
+        elif policy=='asc':x=min(todo)
+        elif policy=='desc':x=max(todo)
+        else:raise ValueError(policy)
+        before=len(current)
+        after,stat=eliminate(current,x)
+        mode=viscosity
+        if mode=='always' or (mode=='adaptive' and len(after)>1.2*len(F)):
+            after,rm,scans=prune_subsumed(after)
+        else:rm=scans=0
+        current=after;todo.remove(x); total_pairs+=stat['pairs'];total_scan+=scans;total_removed+=rm
+        peak=max(peak,len(after))
+        history.append(dict(x=x,before=before,after=len(after),removed=rm,subsumption_scans=scans,**stat))
+        if check:
+            projected={frozenset(l for l in model if abs(l) in todo) for model in original_models}
+            actual=models(current,todo)
+            assert projected==actual, (n,policy,viscosity,x,len(projected),len(actual))
+        if not frozenset() in current and not todo:
+            assert not current or current=={frozenset()} # At end should be empty F or empty clause
+        if frozenset() in current:
+            break
+    return dict(n=n,m=len(F),status='UNSAT' if frozenset() in current else 'SAT',policy=policy,viscosity=viscosity,pairs=total_pairs,subsumption_scans=total_scan,subsumed=total_removed,peak=peak,history=history)
+
+def main():
+    cases=[(10,32,0),(10,42,1),(10,50,2)] + [(10,m,seed) for m in (32,42,50) for seed in range(6)]
+    cases=list(dict.fromkeys(cases))
+    records=[]
+    for n,m,seed in cases:
+        F=gen(n,m,seed)
+        # independent original assignment count
+        sats=len(models(F,range(1,n+1)))
+        for order in ('max','min','asc'):
+            for visc in ('none','adaptive','always'):
+                result=solve(F,n,order,visc,check=True)
+                assert (result['status']=='SAT')==(sats>0)
+                records.append(dict(seed=seed,satisfying=sats,**result))
+    anchor=[r for r in records if (r['n'],r['m'],r['seed'],r['policy'])==(10,32,0,'max')]
+    print('ANCHOR')
+    for r in anchor: print(r['viscosity'], 'pairs',r['pairs'],'peak',r['peak'],'subsumed',r['subsumed'],'subscans',r['subsumption_scans'],'order',[s['x'] for s in r['history']]);print('hist',[ (s['x'],s['pairs'],s['after'],s['removed']) for s in r['history'] ])
+    print('CASE SUMMARY')
+    for policy in ('max','min','asc'):
+        for visc in ('none','adaptive','always'):
+            grp=[r for r in records if r['policy']==policy and r['viscosity']==visc]
+            print(policy,visc,'cases',len(grp),'pairs median',sorted(r['pairs'] for r in grp)[len(grp)//2], 'pairs total',sum(r['pairs'] for r in grp),'peak median',sorted(r['peak'] for r in grp)[len(grp)//2], 'subsumption scans total',sum(r['subsumption_scans'] for r in grp), 'wins vs baseline',sum(r['pairs']<next(t['pairs'] for t in records if t['seed']==r['seed'] and t['m']==r['m'] and t['policy']==policy and t['viscosity']=='none') for r in grp))
+    print('UNSAT',len(set((r['seed'],r['m']) for r in records if r['satisfying']==0)))
+    with open('/mnt/data/pudding_viscosity_results.json','w') as f:json.dump({'generator':'Python Random(seed), n=10, exact three distinct literals, m=32/42/50','results':records},f,indent=2)
+if __name__=='__main__':main()

@@ -1,0 +1,42 @@
+GROUP previous cases 24 unsat 10
+ORDER max
+base proxy 443374 pairs 24772 checks 324744 reads 93858 turns 0 safe 45 thickgrowth 120 winsbase 0
+before_safe proxy 394078 pairs 22529 checks 283161 reads 88388 turns 16 safe 58 thickgrowth 101 winsbase 11
+after_safe proxy 412685 pairs 23267 checks 297440 reads 91978 turns 19 safe 62 thickgrowth 112 winsbase 16
+after_minrisk proxy 353732 pairs 30168 checks 225662 reads 97902 turns 75 safe 52 thickgrowth 75 winsbase 20
+minrisk_always proxy 102508 pairs 22698 checks 33598 reads 46212 turns 221 safe 60 thickgrowth 15 winsbase 24
+ORDER min
+base proxy 102656 pairs 22805 checks 33598 reads 46253 turns 0 safe 59 thickgrowth 15 winsbase 0
+before_safe proxy 102656 pairs 22805 checks 33598 reads 46253 turns 0 safe 59 thickgrowth 15 winsbase 0
+after_safe proxy 102656 pairs 22805 checks 33598 reads 46253 turns 0 safe 59 thickgrowth 15 winsbase 0
+after_minrisk proxy 102656 pairs 22805 checks 33598 reads 46253 turns 0 safe 59 thickgrowth 15 winsbase 0
+minrisk_always proxy 102508 pairs 22698 checks 33598 reads 46212 turns 5 safe 60 thickgrowth 15 winsbase 4
+ORDER asc
+base proxy 263409 pairs 19491 checks 169073 reads 74845 turns 0 safe 52 thickgrowth 68 winsbase 0
+before_safe proxy 251209 pairs 20144 checks 156026 reads 75039 turns 8 safe 53 thickgrowth 59 winsbase 7
+after_safe proxy 256766 pairs 20135 checks 161583 reads 75048 turns 8 safe 52 thickgrowth 62 winsbase 7
+after_minrisk proxy 241256 pairs 22553 checks 143510 reads 75193 turns 43 safe 51 thickgrowth 54 winsbase 22
+minrisk_always proxy 102508 pairs 22698 checks 33598 reads 46212 turns 182 safe 60 thickgrowth 15 winsbase 24
+
+GROUP new cases 24 unsat 6
+ORDER max
+base proxy 414148 pairs 22590 checks 303524 reads 88034 turns 0 safe 48 thickgrowth 119 winsbase 0
+before_safe proxy 355785 pairs 20853 checks 251736 reads 83196 turns 17 safe 67 thickgrowth 91 winsbase 15
+after_safe proxy 375768 pairs 21173 checks 268984 reads 85611 turns 20 safe 70 thickgrowth 102 winsbase 16
+after_minrisk proxy 317222 pairs 27901 checks 196680 reads 92641 turns 75 safe 61 thickgrowth 75 winsbase 23
+minrisk_always proxy 88821 pairs 17740 checks 29306 reads 41775 turns 218 safe 63 thickgrowth 15 winsbase 24
+ORDER min
+base proxy 88116 pairs 18861 checks 27553 reads 41702 turns 0 safe 62 thickgrowth 14 winsbase 0
+before_safe proxy 88116 pairs 18861 checks 27553 reads 41702 turns 0 safe 62 thickgrowth 14 winsbase 0
+after_safe proxy 88116 pairs 18861 checks 27553 reads 41702 turns 0 safe 62 thickgrowth 14 winsbase 0
+after_minrisk proxy 88817 pairs 17860 checks 29201 reads 41756 turns 1 safe 62 thickgrowth 15 winsbase 0
+minrisk_always proxy 88821 pairs 17740 checks 29306 reads 41775 turns 11 safe 63 thickgrowth 15 winsbase 5
+ORDER asc
+base proxy 322123 pairs 19922 checks 222608 reads 79593 turns 0 safe 46 thickgrowth 81 winsbase 0
+before_safe proxy 297423 pairs 19247 checks 201678 reads 76498 turns 6 safe 50 thickgrowth 72 winsbase 6
+after_safe proxy 314680 pairs 19835 checks 215059 reads 79786 turns 6 safe 51 thickgrowth 78 winsbase 6
+after_minrisk proxy 259694 pairs 25374 checks 153444 reads 80876 turns 42 safe 38 thickgrowth 49 winsbase 22
+minrisk_always proxy 88821 pairs 17740 checks 29306 reads 41775 turns 178 safe 63 thickgrowth 15 winsbase 24
+
+ALL stagewise truth table projection verified, runs: 720
+EXAMPLE 36 922 SAT 17 turns 2 trail [(11, 11, 0, 29, 59), (6, 1, 0, -1, 56), (6, 6, 1, 107, 94), (3, 3, 2, 47, 49), (8, 8, 2, 35, 35), (5, 5, 2, 19, 22), (9, 2, 0, -1, 15), (4, 4, 1, 5, 5), (7, 7, 0, -1, 3), (9, 9, 0, -1, 1), (10, 10, 0, -1, 0)]

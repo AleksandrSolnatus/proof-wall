@@ -1,0 +1,69 @@
+Public-review derivative: an internal research location was generalized. Full original and its archives remain preserved privately; archive references below are historical and the ZIPs are not included in this selection.
+
+# Stir the Pudding — Return to the First Domino
+
+**Date:** 2026-10-20  
+**Location:** `private research archive`  
+**Status:** finite, reproducible mathematical trail; independent truth-table projection checks passed.
+
+## Why return
+
+The earlier question was *not* “What is the cheapest possible score for choosing variable pairs?” It was: **Where does combinatorial blow-up begin, what is its first mathematical cause, and does that cause persist when the same formula is processed in another order?** This note returns there. Earlier spoken 14-variable results are not reproduced here because their exact frozen clause list is not currently available. This is a new reproducible analogue, not a claim to have recovered the older instance.
+
+## Frozen pudding
+
+- Ten Boolean switches `x1,…,x10` and 32 **distinct three-literal** clauses, with no duplicate variable within a clause and no tautological input clauses.
+- Generate them using Python `random.Random(0)`: repeatedly select three distinct variables from `1..10`, give each an independent random sign, and deduplicate until there are 32 clauses. The attached script prints all 32 exact clauses.
+- Exhaustive enumeration of all `2^10=1024` assignments finds **23 satisfying assignments**.
+- The stirring procedure receives only the formula; no satisfying assignment or oracle answer is used to choose eliminations.
+
+## What stirring means
+
+For variable `x`, partition active clauses into those containing `x` (P), those containing `¬x` (N), and those containing neither (R). For each pair `p∈P,q∈N`, form the resolvent `(p−{x}) ∪ (q−{¬x})`; discard tautologies and duplicate clauses. Replace the formula by R together with the unique valid resolvents. This is **Davis–Putnam variable elimination** (existential projection), preserving satisfiability. There is no subsumption simplification in this particular implementation.
+
+Compare four choices on exactly the same formula: the variable with most proposed pairs `|P||N|`, the variable with fewest, natural ascending numerical order, and reverse numerical order. Every run eliminates all ten variables and correctly determines SAT; no resource cap is hit for this ten-variable case.
+
+| Elimination choice | Proposed clause pairs overall | Peak retained clauses | SAT/UNSAT |
+|---|---:|---:|---|
+| Most pairs first | **10,758** | **224** | SAT |
+| Fewest pairs first | **14** | **29** | SAT |
+| x1 through x10 | **1,748** | **104** | SAT |
+| x10 through x1 | **310** | **46** | SAT |
+
+These are *counts of proposed resolution pairs*, not comparable total runtime/operations: choosing a variable also requires inspecting the active clauses. An assignment-recovery pass is not counted. A pure literal can be eliminated with zero pairs and this is correct for existential satisfiability projection.
+
+## Follow the first domino — most-pairs-first
+
+| Step | Eliminated | Positive × negative | Proposed pairs | New distinct non-tautological clauses | Retained clauses after step | Newly created variable-pair graph edges | Widest clause |
+|---|---|---|---:|---:|---:|---:|---:|
+| 1 | x2 | 5 × 8 | 40 | 37 | 56 | **6** | 4 |
+| 2 | x6 | 12 × 12 | 144 | 81 | 113 | **0** | 5 |
+| 3 | x4 | 39 × 30 | 1,170 | 180 | 224 | **0** | 7 |
+| 4 | x8 | 69 × 96 | **6,624** | 81 | 140 | **0** | 6 |
+
+One exact first-step resolvent comes from original clauses:
+
+- `(¬x1 ∨ x2 ∨ ¬x7)`
+- `(¬x2 ∨ x4 ∨ ¬x8)`
+
+Eliminate `x2`, yielding `(¬x1 ∨ ¬x7 ∨ x4 ∨ ¬x8)`. This creates a previously absent co-occurrence edge between `x4` and `x7` (among other fill-in edges caused by the whole first step).
+
+**Unexpected correction:** Although the first elimination makes six new variable-pair connections, *later steps create no new pair connections in the resulting primal graphs*, while proposed combinations increase 40 → 144 → 1,170 → 6,624. Thus **new graph edges alone cannot explain the later explosion**. Pre-existing connections are being recombined into more and wider clauses, with competing polarities causing quadratic pair counts. In step 4, 6,624 attempts yield 3,541 tautologies, 3,002 duplicates, and only 81 new clauses.
+
+## Independent checks
+
+A direct exhaustive oracle enumerates all 1,024 original assignments. After **every individual elimination** in each of the four orders, the set of satisfying assignments of the current formula was independently enumerated on its remaining variables and compared with the projection of all 23 original satisfying assignments. **All 40 stage checks passed.** This is stronger than checking only the final SAT/UNSAT label.
+
+## What this does and doesn't mean
+
+1. The initial graph *fill-in* is real: one elimination introduces new co-occurrences.
+2. The later combinatorial cascade can continue **without any further graph fill-in**; clause width, clause multiplicity, polarity balance, and redundancy matter independently.
+3. One identical satisfiable formula can cause a huge change in a particular algorithm's work depending solely on elimination order.
+4. This is **not** a lower bound on 3-SAT, not a literal infinity, and not evidence of a Navier–Stokes fluid singularity.
+5. The most useful new question is no longer just *which first edge causes everything?* It is **at what point does a sparse set of relations become a densely overlapping *family of clauses*, and how can that transition be characterized without replaying the whole explosion?**
+
+## Next trail, without leaving the original question
+
+Trace the early clause-support sets (which original clauses feed each new clause), identify the first time wider clauses recur on the same subset of variables, and compare that moment across elimination orders. Track actual graph-edge changes *and* retained clause multiplicity separately. If a purported single “first domino” does not exist, preserve that finding rather than manufacturing one.
+
+**Files:** `10_PUDDING_FIRST_DOMINO_2026-10-20.md` and `pudding_cascade_2026_10_20.py`. Earlier trail prompts and notes remain unchanged.

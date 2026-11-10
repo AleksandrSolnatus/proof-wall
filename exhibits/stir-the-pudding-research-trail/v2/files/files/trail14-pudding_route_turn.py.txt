@@ -1,0 +1,146 @@
+"""TRAIL 14: steer at a thickening section of an unchanged 3-SAT formula.
+Versioned from archived Trail 13; only sound resolution and subsumption.
+No oracle SAT data is consulted when choosing an elimination route.
+"""
+from collections import Counter
+from itertools import product
+from pudding_viscosity_trail import gen,models,prune_subsumed,eliminate
+from pudding_state_viscosity import scoped_prune
+import json
+from pathlib import Path
+
+HERE=Path(__file__).parent
+
+def stats(F,todo):
+    pos={x:0 for x in todo}; neg={x:0 for x in todo}; reads=0
+    for cl in F:
+        for lit in cl:
+            reads += 1
+            x=abs(lit)
+            if x in pos:
+                if lit>0:pos[x]+=1
+                else:neg[x]+=1
+    return {x:dict(pos=pos[x],neg=neg[x],pairs=pos[x]*neg[x],removal=pos[x]+neg[x],bound=pos[x]*neg[x]-pos[x]-neg[x]) for x in todo},reads
+
+def choice(s,todo,mode):
+    if mode=='max':return max(todo,key=lambda x:(s[x]['pairs'],-x))
+    if mode=='min':return min(todo,key=lambda x:(s[x]['pairs'],x))
+    if mode=='asc':return min(todo)
+    raise ValueError(mode)
+
+def choose_gear(s,x,current_size,history,last_growth):
+    ratio=s[x]['pairs']/max(current_size,1)
+    near_quietest=s[x]['pairs']<= min(v['pairs'] for v in s.values())+1
+    if not history:return 0
+    if near_quietest:
+        if ratio>=8 or (ratio>=5 and last_growth>1.5):return 2
+        return 0
+    if ratio>=6 or (ratio>=3 and last_growth>1.25):return 2
+    if ratio>=2 or (ratio>=1 and last_growth>1.25):return 1
+    return 0
+
+def run(F,n,order,mode,check=True):
+    original = models(F,range(1,n+1)) if check else None
+    todo=set(range(1,n+1)); current=set(F); hist=[]; total=Counter()
+    last_growth=1.0;last_gear=0
+    while todo:
+        s,reads=stats(current,todo);total['reads']+=reads
+        x0=choice(s,todo,order);x=x0
+        intended=choose_gear(s,x0,len(current),hist,last_growth)
+        # Switch only when strong congestion is present, never relying on an oracle.
+        # Pre-turn: if about to invoke full viscosity, replace a risky candidate
+        # with one whose number-of-clauses bound is nonpositive.
+        # Post-turn: if full viscosity was used but the last stir grew anyway,
+        # try certified safe alternatives at the next stir.
+        risk = (intended==2 and s[x0]['bound']>0) if mode=='before_safe' else (
+          last_gear==2 and last_growth>1.0 and s[x0]['bound']>0)
+        if mode=='base':risk=False
+        if mode=='minrisk_always':risk=True
+        switched=False; reason=None
+        if risk:
+            safe=[j for j in todo if s[j]['bound']<=0]
+            if mode in ('before_safe','after_safe'):
+                # Of safe alternatives, prefer the one with smallest upper bound;
+                # count is already derived from scans used for original pivot.
+                if safe:
+                    alt=min(safe,key=lambda j:(s[j]['bound'],s[j]['pairs'],j))
+                    if alt!=x0: x=alt;switched=True;reason='certified-safe-step'
+            elif mode=='minrisk_always':
+                alt=min(todo,key=lambda j:(s[j]['bound'],s[j]['pairs'],j))
+                if alt!=x0:x=alt;switched=True;reason='minimum-worst-case-increment'
+            elif mode=='after_minrisk':
+                alt=min(todo,key=lambda j:(s[j]['bound'],s[j]['pairs'],j))
+                if s[alt]['bound']<s[x0]['bound']:
+                    x=alt;switched=True;reason='reduced-worst-case-increment'
+        # Actual cleanup gear follows chosen variable, not original variable.
+        gear=choose_gear(s,x,len(current),hist,last_growth)
+        before=len(current)
+        safe_options=sum(z['bound']<=0 for z in s.values())
+        if gear==2:cleaned,removed,checks=prune_subsumed(current)
+        elif gear==1:cleaned,removed,checks=scoped_prune(current,x)
+        else:cleaned=current;removed=checks=0
+        total['checks']+=checks; total['removed']+=removed
+        total['passes']+=int(gear!=0)
+        # Exact present-state upper bound after cleanup (recompute if cleaned).
+        # Scans pay their own literal read charge.
+        if gear!=0:
+            s2,read2=stats(cleaned,todo);total['reads']+=read2
+        else:s2=s
+        neighbors={abs(l) for clause in cleaned if x in clause or -x in clause for l in clause if abs(l)!=x}
+        nxt,e=eliminate(cleaned,x)
+        pairs=e['pairs'];total['pairs']+=pairs
+        assert pairs==s2[x]['pairs']
+        assert len(nxt)-len(cleaned)<=s2[x]['bound']
+        if s2[x]['bound']<=0:total['safe_steps']+=1
+        if switched: total['turns']+=1
+        total['peak']=max(total['peak'],len(cleaned),len(nxt),len(F))
+        if gear==2 and len(nxt)>len(cleaned):total['thick_but_growth']+=1
+        last_growth=len(nxt)/max(len(cleaned),1)
+        last_gear=gear
+        hist.append(dict(pivot=x,planned=x0,switched=switched,reason=reason,gear=gear,
+                         before=before,cleaned=len(cleaned),after=len(nxt),neighbors=len(neighbors),safe_options=safe_options,original_bound=s[x0]['bound'],
+                         pressure=pairs,removed=removed,checks=checks,
+                         bound=s2[x]['bound'],growth=round(last_growth,3),
+                         safe=s2[x]['bound']<=0))
+        current=nxt;todo.remove(x)
+        if check:
+            target={frozenset(l for l in m if abs(l) in todo) for m in original}
+            actual=models(current,todo)
+            assert actual==target,(n,len(F),order,mode,x)
+        if frozenset() in current or not current:break
+    status='UNSAT' if frozenset() in current else 'SAT'
+    if check:assert status==('SAT' if original else 'UNSAT')
+    return dict(status=status,proxy=total['pairs']+total['checks']+total['reads'],
+        pairs=total['pairs'],checks=total['checks'],reads=total['reads'],turns=total['turns'],
+        passes=total['passes'],safe_steps=total['safe_steps'],
+        thick_but_growth=total['thick_but_growth'],peak=total['peak'],history=hist)
+
+def main():
+    # Archived data are reference/comparison; 900-series are newly selected holdout.
+    cases=[('previous',11,m,seed) for m in (36,46,56) for seed in range(700,708)]
+    cases += [('new',11,m,seed) for m in (36,46,56) for seed in range(920,928)]
+    modes=('base','before_safe','after_safe','after_minrisk','minrisk_always')
+    records=[]
+    for tag,n,m,seed in cases:
+        F=gen(n,m,seed)
+        nmodels=len(models(F,range(1,n+1)))
+        for order in ('max','min','asc'):
+            for mode in modes:
+                r=run(F,n,order,mode)
+                records.append(dict(group=tag,n=n,m=m,seed=seed,model_count=nmodels,order=order,mode=mode,**r))
+    out={'source':'Python Random(seed) distinct length-three clauses; independent truth-table projection','records':records}
+    (HERE/'route_turn_ledger.json').write_text(json.dumps(out,indent=2))
+    for tag in ('previous','new'):
+        print('GROUP',tag,'cases',sum(z[0]==tag for z in cases),'unsat',sum(len(models(gen(n,m,seed),range(1,n+1)))==0 for k,n,m,seed in cases if k==tag))
+        for order in ('max','min','asc'):
+            print('ORDER',order)
+            a=[r for r in records if r['group']==tag and r['order']==order]
+            for mode in modes:
+                sub=[r for r in a if r['mode']==mode]
+                print(mode,'proxy',sum(x['proxy'] for x in sub),'pairs',sum(x['pairs'] for x in sub),'checks',sum(x['checks'] for x in sub),'reads',sum(x['reads'] for x in sub),'turns',sum(x['turns'] for x in sub),'safe',sum(x['safe_steps'] for x in sub),'thickgrowth',sum(x['thick_but_growth'] for x in sub),'winsbase',sum(x['proxy']<next(y['proxy'] for y in a if (y['m'],y['seed'],y['mode'])==(x['m'],x['seed'],'base')) for x in sub))
+        print()
+    print('ALL stagewise truth table projection verified, runs:',len(records))
+    for r in records:
+        if r['group']=='new' and r['order']=='max' and r['mode']=='before_safe' and r['turns']>=2:
+            print('EXAMPLE',r['m'],r['seed'],'SAT',r['model_count'],'turns',r['turns'],'trail',[(h['planned'],h['pivot'],h['gear'],h['bound'],h['after']) for h in r['history']]); break
+if __name__=='__main__':main()

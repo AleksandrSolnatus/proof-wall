@@ -1,0 +1,75 @@
+Public-review derivative: an internal research location was generalized. Full original and its archives remain preserved privately; archive references below are historical and the ZIPs are not included in this selection.
+
+# Stir the Pudding — Viscosity That Changes with State
+
+**Date:** October 20, 2026 (Phoenix local time)  
+**Home:** `private research archive`  
+**Prior breadcrumbs:** `10_PUDDING_FIRST_DOMINO_2026-10-20.md`, `11_PUDDING_VISCOSITY_2026-10-20.md`, `12_PUDDING_PRESSURE_FEEDBACK_2026-10-20.md`  
+**Status:** Finite, reproducible trail, no universal algorithm/theorem or physical-fluid model.
+
+## The invitation
+
+“**Make it thicker or thinner depending on current state.**”
+
+Instead of a constant level of logical viscosity, make the solver observe the present formula and move its resistance **up or down**. Retain the original 3-SAT rules, and maintain exact existential projection during variable elimination. **Only sound subsumption** removes clauses: if `A ⊆ B`, then `(A ∧ B) ≡ A` and redundant `B` may be deleted. Not allowed: deleting nonredundant clauses or labeling a budget-limited run UNSAT.
+
+### Three gears
+
+- **Thin (0):** No subsumption pass; proceed directly to eliminating the chosen variable.
+- **Medium (1):** Subsumption only among clauses involving the *next variable*. Safe but incomplete cleanup; may not remove redundancies involving other clauses.
+- **Thick (2):** Subsumption across all active clauses.
+
+Every step uses the live positive/negative occurrence counts `P_x, N_x`; `p = P_x N_x` predicts resolution pair attempts; `r = p / max(1, active_clause_count)` indicates workload density; `g` is the clause-count growth multiplier from the immediately preceding step. The original input has uniformly width-three clauses, so viscosity begins thin.
+
+**First controller, defined before first 66-case run:**
+
+- Thick if `r >= 6`, or `r >= 3` and previous `g > 1.25`.
+- Medium if `r >= 2`, or `r >= 1` and previous `g > 1.25`.
+- Otherwise thin.
+
+Then we noticed that the quietest-variable route often paid for too much cleanup. A second, **guarded** controller was frozen before a new 24-puzzle holdout. It treats the chosen pivot as *already gentle* if its pair pressure is within one unit of the least-pressure available pivot. On those steps, it stays thin unless `r >= 8`, or `r >= 5` with previous `g > 1.5`; otherwise it uses the first controller. This is only a heuristic based on currently visible formula statistics; it never peeks at the satisfying assignments.
+
+## Earlier ten-variable puzzles: 66 cases
+
+The first controller was compared on 18 archived ten-variable, distinct-3-literal puzzles, 30 previously archived holdouts, and 18 fresh ten-variable puzzles (seeds 300–305 for 32/42/50 clauses). Across all 66 cases, each of three variable-selection policies (busy-first, quiet-first, index-order) was run with four modes (dry, always-thick, old pressure-8, state-dependent). **792 complete runs** passed independent Boolean truth-table checks of the exact projected satisfying-assignment set after every elimination; **19 of 66** source formulas were UNSAT.
+
+The controller saved total proxy work relative to constant thick in every policy on the newly generated 18 cases, but a simple pressure-8 trigger did better on many quietest-first cases. We therefore did **not** declare the first controller a universal winner, and used that shortcoming to define the guarded version before the next fresh holdout.
+
+## New holdout: 24 eleven-variable puzzles
+
+**Frozen source:** Python `Random(seed)` for seeds 700–707, with 36, 46, or 56 distinct original three-literal clauses each, exactly 11 variables. **Ten puzzles UNSAT, fourteen SAT.** Each of 24 puzzles ran under three variable orders and five cleanup policies: **360 complete checked runs**, with exact truth-table projection verified after every elimination. Full clauses can be regenerated from the archived code and seed; every run has recorded intermediate gear, pivot, local pressure, counts and stage results.
+
+The proxy below **adds three different kinds of work**, assigning one artificial unit to each proposed resolution pair, each subsumption subset check, and each inspected literal for the pressure gauge. It is **not elapsed time**, nor a uniform physical computation measure. It omits e.g. allocations, hashing, full literal construction costs, witness reconstruction, and Python overhead. All algorithms compared here used the same pre-elimination structure; therefore their totals differ modestly from earlier archived always-clean and pressure-8 numbers, which used different bookkeeping/timing.
+
+| Pivot choice | Dry | Always thick | Pressure-8 | First state controller | Guarded state controller |
+|---|---:|---:|---:|---:|---:|
+| Busiest first | 4,435,370 | 426,263 | 423,115 | **421,113** | **421,113** |
+| Quietest first | 154,506 | 189,325 | 103,499 | 103,636 | **100,424** |
+| Index order | 940,983 | 307,982 | 251,650 | 247,130 | **245,940** |
+
+**What the new data actually say:** On this 24-case holdout the guarded controller had the lowest aggregated proxy in all three pivot orders, though the advantage over the best prior adaptive trigger was **small**. Guarded vs pressure-8 per-instance wins were 10/24 (busy), 1/24 (quiet), and 17/24 (index); the aggregate advantage must not be mistaken for consistent case-by-case dominance. Quiet-first pressure-8 performed nearly identically, and some dry runs were preferable. The guarded controller is a modest empirical refinement of the heuristics tested here, not a proven optimal law.
+
+### Watch viscosity rise and fall within one puzzle
+
+On a new 11-variable, 36-clause puzzle (seed 700), the busiest-first guarded controller used these viscosity gears in order:
+
+`thin → medium → thick → thick → thick → medium → medium → medium → thin → thin → thin`
+
+The model's rules never changed. It **did** increase resistance when future pair pressure rose, and **released resistance** when the remaining formula was easier to stir. The counts for this single example: dry 34,968 proxy units; always-thick 10,308; pressure-8 9,249; guarded state 9,357. This is a particularly useful **counterexample** to claiming that adaptive is always cheapest: here pressure-8 was slightly better.
+
+## A mathematical boundary and the next fork
+
+The feedback loop can control *redundant clause accumulation* and sometimes reduce the quadratic cascade of resolution attempts. It cannot guarantee that all necessary intermediate clauses remain few. Exact nonredundant resolvents may still proliferate. In particular, `C_(t+1) <= C_t + P_t N_t` does **not** yield a global polynomial bound merely by setting a local viscosity gear.
+
+The live question remains tied to the **first domino**, not a detour to a pair score: **When viscosity rises to maximum and clauses still thicken, is there a provable structural condition under which we can safely change the elimination route rather than merely clean harder?** This is a potential invariant / safe-sequence question, not a P-versus-NP claim, and fluid viscosity is only an analogy.
+
+## Reproduce and custody
+
+Archive `13_PUDDING_STATE_VISCOSITY_EVIDENCE_2026-10-20.zip` contains `pudding_state_viscosity.py`, `pudding_state_holdout.py`, both JSON ledgers with all runs/step histories and console summaries, plus the original `pudding_viscosity_trail.py` generator/solver utility. Run from the zip directory with Python 3. No external packages or privileged hidden answer supplied to the elimination rules. Truth-table evaluations for each projected intermediate formula provide verification distinct from the elimination routine.
+
+**DOT-HANDOFF**
+
+- **Changed:** Added state-dependent thin/medium/thick redundancy cleanup with direction changes at each step; froze and assessed guarded variant on 24 additional 11-variable puzzles, 10 UNSAT; all 360 complete holdout runs stage-checked. Original trail files left unchanged.
+- **Artifacts:** This report, and accompanying evidence ZIP, under `private research archive`.
+- **Open:** Real cost comparisons; avoiding unnecessary subset scans; sound switching of elimination order when even thick viscosity cannot arrest *nonredundant* growth; no generic polynomial-time bound.
+- **Next action / owner:** Terra on next prompt; follow safe-route / state-feedback question with frozen formulas, honor the user's open trail style.

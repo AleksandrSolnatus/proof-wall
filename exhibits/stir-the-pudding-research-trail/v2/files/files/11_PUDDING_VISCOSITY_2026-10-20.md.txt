@@ -1,0 +1,84 @@
+Public-review derivative: an internal research location was generalized and an ambiguous word was removed from the 18-case description; the anchor is included. Full original and its archives remain preserved privately; archive references below are historical and the ZIPs are not included in this selection.
+
+# Stir the Pudding — Add Viscosity
+
+**Date:** October 20, 2026  
+**Trail:** `private research archive`  
+**Previous breadcrumb:** `10_PUDDING_FIRST_DOMINO_2026-10-20.md`  
+**Status:** reproducible finite toy result; no theorem about unrestricted SAT complexity or fluid mechanics
+
+## The invitation
+
+After tracing the SAT pudding's blow-up, the question was: **what if the mixture had viscosity?** Don't substitute a new problem, stop the calculation arbitrarily, or pretend to have solved Navier–Stokes. Try a mathematically lawful kind of friction that resists accumulation of redundant clauses while the logical answer stays unchanged. Follow where the approach helps and where paying for friction becomes expensive.
+
+## What counts as "viscosity" in this toy
+
+Use the same exact Davis–Putnam Boolean variable elimination as the prior First Domino trail. Every time a variable x is eliminated, combine each x-clause with each ¬x-clause, discard tautological and duplicate resolvents, then remove all clauses containing x. This projects the solution set onto the remaining variables.
+
+Viscous dissipation means **subsumption cleanup**, not destroying valid constraints: if clause C's literals are a subset of clause D's literals, then C is the stronger condition, and C ∧ D is logically equivalent to C. Thus the longer D is redundant and may safely be discarded. For example `(A ∨ B)` subsumes `(A ∨ B ∨ C)`. Unlike arbitrary forgetting or stopping a solver, this keeps every remaining-variable solution exactly intact.
+
+Three modes:
+
+- **Dry (none):** no subsumption cleanup.
+- **Triggered (adaptive):** clean only after a step leaves more than 1.2 × the original number of clauses.
+- **Viscous (always):** clean after every elimination step.
+
+These labels are an analogy, **not literal fluid viscosity**. No differential equation, physical energy, Reynolds number, or viscosity coefficient has been defined.
+
+## Back to the exact frozen First Domino pudding
+
+Ten variables, 32 unique three-literal clauses, generated using Python `random.Random(0)` with exactly the same generator as the earlier archived code. There are exactly **23 satisfying full assignments**.
+
+Here, the algorithm always selects the variable with the most currently available positive × negative clause pairs. The cleanup can change later selections by changing which redundant clauses remain.
+
+| Mode | Proposed resolution pairings | Peak stored clauses | Clauses safely removed by subsumption | Subsumption subset checks |
+|---|---:|---:|---:|---:|
+| Dry | **10,758** | 224 | 0 | 0 |
+| Triggered | **462** | 47 | 149 | 3,648 |
+| Viscous | **352** | 47 | 170 | 3,746 |
+
+The viscous run saves about **96.7%** of proposed resolution pairings relative to dry. Its friction costs 3,746 additional subset checks; those are *not free*, and pairings and subset checks are not uniform-cost machine operations.
+
+The first two dry stir steps propose 40 and 144 pairs, while dry steps three and four propose 1,170 and 6,624 pairs. With viscous cleanup, those same initial variables are eliminated in the same order (x2, x6, x4, x8), but their pairings are 40, 121, 84, and 48. The cascade is curtailed before the historic 6,624-pair surge even though **all 23 original satisfying assignments survive**.
+
+## Take it beyond the anchor
+
+18 independent frozen puzzles: ten variables, 32, 42, or 50 clauses, with seeds 0–5 per density. (The anchor is among these 18.) They contain **4 unsatisfiable** puzzles. All modes and all three elimination policies (busiest variable first, quietest variable first, natural index order) were independently checked by exhaustive enumeration on the **remaining variables after every elimination** against the existential projection of the full original satisfying set. All stage checks passed. The finding is about these finite samples, not all 3-SAT.
+
+| Variable order | Cleanup | Total proposed pairings across 18 | Total subset checks across 18 |
+|---|---|---:|---:|
+| Busiest-first | None | 1,035,825 | 0 |
+| Busiest-first | Triggered | 16,422 | 135,093 |
+| Busiest-first | Always | **12,473** | 138,718 |
+| Quietest-first | None | 33,881 | 0 |
+| Quietest-first | Triggered | 7,803 | 34,307 |
+| Quietest-first | Always | 3,716 | **66,034** |
+| Natural index | None | 146,728 | 0 |
+| Natural index | Triggered | 11,713 | 83,206 |
+| Natural index | Always | 6,548 | 96,565 |
+
+**The tradeoff matters:** Viscosity can dramatically reduce resolution pairings, especially in a bad busy-first ordering. But on already-good quiet-first cases, the naive extra subset scans can outweigh the saved pairing attempts if each is crudely charged one unit. It is *not* a free universal speed-up.
+
+## What the pudding taught us
+
+1. **Dissipation can be logical rather than lossy.** Safe deletion of a redundant clause makes a formula smaller without changing its truth conditions for the surviving variables.
+2. **The timing of dissipation matters.** If unused redundant clauses are allowed to accumulate, future variables can generate a quadratic number of pair attempts from them.
+3. **Less mixing is not automatically less total work.** Checking which clauses are redundant has a price.
+4. **The next question is feedback, not maximum friction:** Can a cheap early warning signal tell us when cleanup will pay for itself, before the dangerous surge arrives?
+5. **Do not confuse analogies:** these mathematical operations do not demonstrate any Navier–Stokes blow-up prevention. Fluid viscosity dissipates kinetic energy through spatial derivatives; subsumption removes Boolean redundancy under exact equivalence.
+
+## Reproduction and boundaries
+
+- `11_PUDDING_VISCOSITY_SOURCE_2026-10-20.md`: full executable Python source in a readable code block.
+- `11_PUDDING_VISCOSITY_EVIDENCE_2026-10-20.zip`: contains `pudding_viscosity_trail.py` (generator, elimination, cleanup modes, projection checks) and `pudding_viscosity_results.json` (every run, step, count, and seed).
+- Original First Domino report and script are unchanged.
+- Counts omit Python runtime, literal-level operations within each proposed resolution pair, assignment-recovery cost, and allocator/storage overhead. Subset checks and pair-generation attempts measure distinct operations.
+- The claimed identity of satisfying assignments rests on direct Boolean truth-table checks on all intermediate finite cases and on the general correctness of existential variable elimination plus subsumption.
+
+## DOT-HANDOFF
+
+**Changed:** Added viscosity as provably solution-preserving subsumption cleanup to our original reproducible SAT pudding. Found strong reductions in resolution pairings and explicit counterweight from pruning costs. 18 frozen ten-variable cases cross-checked, including 4 UNSAT.  
+**Artifacts:** `11_PUDDING_VISCOSITY_2026-10-20.md`, `11_PUDDING_VISCOSITY_SOURCE_2026-10-20.md`, and `11_PUDDING_VISCOSITY_EVIDENCE_2026-10-20.zip` in `private research archive`.  
+**Open:** Find an inexpensive on-demand dissipation trigger; separate clause-width/support growth from redundant multiplicity; compare actual full cost with efficient indexing.  
+**Next owner/action:** Terra, on user request: follow the viscosity-trigger feedback trail without discarding the earlier First Domino evidence.  
+**Guardrail:** Not a P-vs-NP proof or a result in fluid PDEs.

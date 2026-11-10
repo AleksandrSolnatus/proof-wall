@@ -1,0 +1,92 @@
+from itertools import combinations,product
+import random, time
+
+def canonical(xs):
+  z = frozenset(xs)
+  if any(-x in z for x in z): return None
+  return z
+
+def gen(n,m,seed):
+  rng=random.Random(seed); clauses=set()
+  while len(clauses)<m:
+    vs=rng.sample(range(1,n+1),3)
+    lits=[v if rng.randrange(2) else -v for v in vs]
+    clauses.add(frozenset(lits))
+  return clauses
+
+def sat_count(F,n):
+  valid=[]
+  for z in range(1<<n):
+    if all(any(bool(z & (1<<(abs(l)-1))) == (l>0) for l in cl) for cl in F): valid.append(z)
+  return valid
+
+def graph(F):
+  G=set()
+  for cl in F:
+    for a,b in combinations(sorted(set(map(abs,cl))),2): G.add((a,b))
+  return G
+
+def eliminate(F,x):
+  pos=[cl for cl in F if x in cl]
+  neg=[cl for cl in F if -x in cl]
+  rest=F-set(pos)-set(neg)
+  added=set(); taut=0; dupe=0
+  for p in pos:
+    for q in neg:
+      r=canonical((p-{x})|(q-{-x}))
+      if r is None: taut+=1
+      elif r in added or r in rest: dupe+=1
+      else: added.add(r)
+  after=rest|added
+  before_edges=graph(F); after_edges=graph(after)
+  # edges among OTHER variables that were not present before, and appear after
+  fill=sorted(after_edges-before_edges)
+  return after, {'x':x,'pairs':len(pos)*len(neg),'plus':len(pos),'minus':len(neg), 'taut':taut,'duplicate':dupe,'distinct_new':len(added),'remaining':len(after),'fill':fill,'max_width':max(map(len,after),default=0)}
+
+def go(F,n,mode,cap=35000):
+  cur=set(F); todo=set(range(1,n+1)); steps=[]; cost=0
+  while todo:
+    opts={x:sum(x in c for c in cur)*sum(-x in c for c in cur) for x in todo}
+    if mode=='maxpairs': x=max(todo,key=lambda x:(opts[x],-x))
+    if mode=='minpairs': x=min(todo,key=lambda x:(opts[x],x))
+    if mode=='natural': x=min(todo)
+    if mode=='reverse': x=max(todo)
+    nxt,row=eliminate(cur,x)
+    cost+=row['pairs'];steps.append(row)
+    cur=nxt;todo.remove(x)
+    if len(cur)>cap or cost>1000000:
+      return {'mode':mode,'status':'cap','steps':steps,'cost':cost,'remaining':len(cur)}
+    if frozenset() in cur: return {'mode':mode,'status':'UNSAT','steps':steps,'cost':cost,'remaining':len(cur)}
+  return {'mode':mode,'status':'SAT','steps':steps,'cost':cost,'remaining':len(cur)}
+
+if __name__ == "__main__":
+    n, m, seed = 10, 32, 0
+    F = gen(n, m, seed)
+    models = sat_count(F, n)
+    print("Reproducible 3-SAT formula:", n, "variables", m, "clauses", len(models), "models")
+    print("Clauses (signed integer literal convention):")
+    for c in sorted(F, key=lambda s: tuple(sorted(s))):
+        print("  ", sorted(c, key=lambda l: abs(l)))
+
+    def evaluate(c, bits):
+        return any(bool(bits & (1 << (abs(l)-1))) == (l > 0) for l in c)
+
+    for mode in ("maxpairs", "minpairs", "natural", "reverse"):
+        result = go(F, n, mode)
+        print("\nOrder:", mode, "status:", result["status"], "pairs:", result["cost"],
+              "peak clauses:", max(s["remaining"] for s in result["steps"]))
+        remaining_variables = set(range(1, n+1))
+        formula = set(F)
+        for row in result["steps"]:
+            formula, direct = eliminate(formula, row["x"])
+            assert direct == row
+            remaining_variables.remove(row["x"])
+            mask = sum(1 << (i-1) for i in remaining_variables)
+            projection = {bits & mask for bits in models}
+            current_models = {bits for bits in range(1 << n)
+                              if bits & ~mask == 0 and all(evaluate(c, bits) for c in formula)}
+            assert current_models == projection, (mode, row["x"])
+            print("  x=", row["x"], "pairs=", row["pairs"],
+                  "new=", row["distinct_new"], "fill=", len(row["fill"]),
+                  "retained=", row["remaining"], "width=", row["max_width"])
+        print("  All 10 existential-projection checks PASSED")

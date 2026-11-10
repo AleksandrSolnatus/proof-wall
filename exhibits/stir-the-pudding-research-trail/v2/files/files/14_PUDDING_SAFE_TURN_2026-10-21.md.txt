@@ -1,0 +1,89 @@
+Public-review derivative: an internal research location was generalized. Full original and its archives remain preserved privately; archive references below are historical and the ZIPs are not included in this selection.
+
+# Trail 14 — Turn the Spoon Where It Thickens
+
+**Date:** 2026-10-21 (America/Phoenix)  
+**Home:** `private research archive`  
+**Previous trail:** `13_PUDDING_STATE_VISCOSITY_2026-10-20.md`  
+**Motto:** **The proof is in the pudding** — do not mistake a plausible metaphor, heuristic, or favorable sample for a theorem. Preserve exact formulas and let the answers and costs be independently checked.
+
+## Returning to the first domino
+
+Can a 3-SAT elimination process **turn away from a local blow-up** when thick viscosity (sound redundancy deletion) is insufficient, without altering the original constraints? We used the earlier Davis–Putnam elimination and three gears of subsumption. Unlike a restart, a turn changes only **which remaining variable is eliminated next**, keeping every deduction so far. The answer set projected onto surviving variables must remain *exactly* the same.
+
+### An actual one-step no-thickening certificate
+
+At any current formula with `C` distinct clauses, suppose the next variable `x` occurs in `P` positive and `N` negative clauses. Eliminating `x` removes those `P+N` clauses and generates at most `P×N` distinct non-tautological resolvents (usually fewer). Therefore
+
+`C_next ≤ C − (P+N) + PN`.
+
+**If `PN ≤ P+N`, clause count cannot increase at this step.** This theorem needs no random assumption or viscosity. If a supplied elimination sequence meets the condition at *every* step, then clause count stays at most the initial `m` and the total number of proposed pairs is at most `n×m`. This is a **conditional polynomial bound for such a certified route**, including only the resolution pair count; identifying a suitable sequence for every possible formula is NOT established. The certificate can be checked step by step using the current clauses.
+
+A safe pivot is **not necessary for satisfiability or even easy solving**. Consider the seven 3-literal clauses that forbid every three-bit assignment except `111`. Exhaustive enumeration confirms `111` is the unique satisfying assignment. Each variable occurs in 4 positive and 3 negative clauses, giving `PN=12 > P+N=7`. **There is no safe first variable** by this particular sufficient test, yet the problem is tiny and solvable. `proof_checks.py` independently reproduces that counterexample.
+
+### Structural width: another conditional protection
+
+Let `k_t` be the number of other variables appearing together with the eliminated variable at step `t` (in the then-current clauses). Every new resolvent is a clause over those `k_t` neighbors. Each variable may appear positively, negatively, or not at all: there are at most `3^k_t` distinct non-tautological resolvents, including the possible empty clause. Thus for any **known** elimination order having `k_t ≤ k` at every step, total active clause storage is at most `m+n·3^k` under our duplicate-removing algorithm; a crude bound on resolution-pair attempts is `n(m+n·3^k)^2`. If `k` is constant, or O(log n), these expressions are polynomial in input size. This is a known type of bounded **elimination-width / treewidth** reasoning, not a newly proved complexity breakthrough. The difficulty is finding such a narrow order on arbitrary formulas; wide problems need not offer one.
+
+## Let the spoon turn, not the rules
+
+All methods use the *same* clauses and sound subsumption from Trail 13. For each variable we compute the worst-case immediate clause-growth bound `Δ_x = P_xN_x−(P_x+N_x)` from occurrence counts already scanned for the controller:
+
+- **Baseline:** existing guarded thin/medium/thick controller with fixed pivot policy: busiest first (`max`), quietest first (`min`), or numeric order (`asc`).
+- **Before-safe:** when full viscosity is about to be invoked and the chosen variable has `Δ>0`, turn to an available `Δ≤0` variable.
+- **After-safe:** when the previous fully viscous step still grew, turn to an available `Δ≤0` variable at the next step.
+- **After-minrisk:** after the previous fully viscous step still grew, choose the available pivot with the smallest `Δ` (even if none is certified safe).
+- **Minrisk-always:** always choose smallest `Δ` as a proactive comparison; **not** a localized rescue policy.
+
+A switch is made only if the alternative is more appropriate under its stated rule. The viscosity gear is then selected for the actual pivot, not the abandoned one. Subsumption and resolution preserve exact projection regardless of ordering. If no safe pivot exists, the safe-turn rules cannot manufacture one.
+
+## Finite evidence, including a separate holdout
+
+*Previous reference:* 24 formulas, `n=11`, `m` in `{36,46,56}`, seeds `700..707` (10 UNSAT).  
+*New holdout:* 24 distinct 3-CNF formulas, same dimensions, seeds `920..927`, **18 SAT and 6 UNSAT**. Source input generation uses Python's deterministic `Random(seed)`, samples 3 distinct variables per clause with random signs, and removes duplicates. No method receives true assignments to decide pivots. After **every elimination** we independently enumerate the remaining-variable solutions and compare them against the projection of *all* original full satisfying assignments. **All 720 runs passed** (48 formulas × 3 pivot-order configurations × 5 turning policies).
+
+### New 24-formula holdout only
+
+The numbers below are *proxy operations*, computed as `(proposed resolvent pairs) + (literal reads for pivot selection / after-cleanup recount) + (naive clause-subset checks for subsumption)`. They are NOT wall-clock times or uniform primitive machine instructions. The source logs each component separately and includes full step traces.
+
+| Starting direction | Guarded baseline | Before-safe | After-safe | After-minrisk | Minrisk-always |
+|:--|--:|--:|--:|--:|--:|
+| Busiest-first | 414,148 | **355,785** | 375,768 | 317,222 | 88,821 |
+| Quietest-first | **88,116** | 88,116 | 88,116 | 88,817 | 88,821 |
+| Numerical order | 322,123 | 297,423 | 314,680 | 259,694 | **88,821** |
+
+**Interpretation:** On the busiest-first holdout, before-safe switched on 17 steps total and improved 15/24 cases. After-minrisk switched 75 times and improved 23/24 cases. But on the quietest-first path, the original guarded baseline was **cheaper** than minimum-bound-first (88,116 versus 88,821). Much of the apparent benefit of turning reflects that the original busiest-first route was poor, not a universally superior new method. An always-minimum-bound route is largely a different way of avoiding that bad choice at the outset.
+
+The proactive rule, `minrisk-always`, used 88,821 proxy units on all three nominal starting-direction settings because it ignores the original direction, whereas min-pressure-first with guarded viscosity used 88,116. **There is no demonstrated universal advantage over the existing quietest-first method.** Additionally, the pressure/safety bound predicts worst-case clause *count*, not usefulness of new information or true implementation time.
+
+### A smaller visible geometry control
+
+Two constructed, guaranteed-satisfiable *overlapping-chain* 12-variable, 25-clause formulas are separately recorded (`width_examples.json`, seeds 2026 and 2027). Numerical elimination kept the neighborhood at **width 2** in both, with 16 and 27 proposed pairs. Busiest-first allowed width **5**, needing 128 and 79 pairs. These are deliberately structure-favorable controls, not random hard 3-SAT. The complete projected satisfying sets were checked stagewise, and width and pair counts derive from the exact surviving clauses at each step.
+
+## Where we stand
+
+1. The **one-step non-growth rule is proved**. A continuously safe route yields a global bound on this algorithm's pair attempts, conditional on such a route being provided or discovered.
+2. **Narrow elimination width gives another general conditional bound**, already related to known graph/constraint-solving theory. Small width is sufficient, not universal.
+3. In the finite puddings, turning locally can save work, especially from an initially bad direction. But it can also waste work, and sometimes no certified safe move exists.
+4. The critical unanswered question is whether a *cheap, adaptive* structural test can choose a narrow or safely bounded **whole route** without hidden search cost. We have not solved unrestricted 3-SAT or P versus NP; there is no connection to an actual Navier–Stokes singularity beyond metaphor.
+
+## Reproduce
+
+The accompanying `14_PUDDING_SAFE_TURN_EVIDENCE_2026-10-21.zip` includes:
+
+- `pudding_route_turn.py`: full route/controller, exact formula generation via the earlier archived generator, stagewise truth-table checks, raw counts and pivots.
+- `route_turn_ledger.json`: all 720 runs and individual steps.
+- `route_turn_runlog.txt`: human-readable aggregate comparisons.
+- `pudding_width_example.py`, `width_examples.json`: the two structured width controls and complete transcripts.
+- `proof_checks.py`: exhaustive verification of unique-SAT/no-safe-pivot three-variable counterexample.
+- `pudding_state_viscosity.py`, `pudding_viscosity_trail.py`: exact original modules imported from Trail 13, archived unchanged in this evidence packet.
+
+Run from the extracted folder with Python 3, first `python pudding_route_turn.py`, then `python pudding_width_example.py`, then `python proof_checks.py`. No external Python packages. The earlier archive's reports and original source files were not overwritten.
+
+## DOT-HANDOFF
+
+**Changed:** Moved from viscosity-only feedback to certified local non-growth and adaptive direction switching. Proved one-step and supplied-route bounds; recorded explicit no-safe-pivot SAT counterexample and bounded-width conditional reasoning; verified 720 stagewise runs over 48 frozen formulas, plus two chain controls.  
+**Artifacts:** This report and accompanying evidence ZIP, plus optional index proposal in `private research archive`.  
+**Open:** Find inexpensive route-level invariants, fair machine-level costs, and counterfamilies where all plausible local turns fail; recognize that global width certification and finding a good order are different tasks.  
+**Next owner:** Terra on next invitation.  
+**Guiding phrase:** **The proof is in the pudding.** Keep the input, the derivation, the counterexample, and the complete cost ledger together.

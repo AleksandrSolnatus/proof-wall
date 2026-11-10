@@ -1,0 +1,328 @@
+#!/usr/bin/env python3
+"""PUDDING-15: Boolean macro interfaces rather than SAT/UNSAT flags.
+
+Self-contained Python 3.10+ reference experiment. Run:
+    python3 pudding_boundary_collapse.py --output results.json
+    python3 pudding_boundary_collapse.py --check results.json
+
+The intentionally simple gate gadgets are *not* evidence of a general SAT speedup.
+They allow exhaustive, independent checking of the precise interface information.
+"""
+import argparse
+import json
+import random
+from itertools import product
+from pathlib import Path
+
+
+def standardize(clauses):
+    out = set()
+    for clause in clauses:
+        c = frozenset(clause)
+        if not any(-x in c for x in c):
+            out.add(c)
+    return frozenset(out)
+
+
+def block_clauses(a, b, t, u, flip=0):
+    """u <-> (a AND t); b <-> ((a OR u) XOR flip).
+    As u implies a, the boundary relation is simply b=a XOR flip.
+    There are exactly two internal extensions for every permitted boundary pair.
+    """
+    gate1 = [(-u, a), (-u, t), (u, -a, -t)]
+    if flip == 0:
+        gate2 = [(-a, b), (-u, b), (a, u, -b)]
+    else:
+        # b <-> NOT(a OR u)
+        gate2 = [(-b, -a), (-b, -u), (a, u, b)]
+    return standardize(gate1 + gate2)
+
+
+def eval_cnf(clauses, assignment):
+    return all(any(assignment[abs(l)] == (l > 0) for l in clause) for clause in clauses)
+
+
+def local_table(flip):
+    cls = block_clauses(1, 2, 3, 4, flip)
+    table = {(a, b): 0 for a,b in product((0,1), repeat=2)}
+    for a,b,t,u in product((0,1), repeat=4):
+        vals = {1:bool(a),2:bool(b),3:bool(t),4:bool(u)}
+        # Independent gate-semantics check, not reusing CNF evaluation
+        direct = (bool(u) == (bool(a) and bool(t))) and (bool(b) == (bool(a) != bool(flip)))
+        assert eval_cnf(cls, vals) == direct, ('gate encoding incorrect', flip, vals)
+        table[a,b] += int(eval_cnf(cls, vals))
+    assert all(table[a,b] == (2 if b == (a ^ flip) else 0) for a,b in table)
+    return table
+
+
+def chain_clauses(flips):
+    n = len(flips)
+    clauses = set()
+    for i, flip in enumerate(flips):
+        a = i+1
+        b = i+2
+        t = n+2+2*i
+        u = t+1
+        clauses.update(block_clauses(a,b,t,u,flip))
+    return frozenset(clauses), 3*n+1
+
+
+def weighted_boundary_dp(flips):
+    # Entries retain the initial boundary port and final port, and count internals.
+    dp = {(start,start): 1 for start in (0,1)}
+    transitions = 0
+    for flip in flips:
+        t = local_table(flip)
+        nxt = {}
+        for (start,a), ways in dp.items():
+            for b in (0,1):
+                transitions += 1
+                if t[a,b]:
+                    nxt[start,b] = nxt.get((start,b),0) + ways*t[a,b]
+        dp = nxt
+    return dp,transitions
+
+
+def brute_boundary(flips):
+    clauses,nvars = chain_clauses(flips)
+    n = len(flips)
+    out = {}
+    count = 0
+    for bits in product((False,True),repeat=nvars):
+        vals = {i+1:bits[i] for i in range(nvars)}
+        if eval_cnf(clauses,vals):
+            count+=1
+            k = (int(vals[1]),int(vals[n+1]))
+            out[k] = out.get(k,0)+1
+    return out,count
+
+
+def test_noninterchangeable():
+    # Both blocks are individually satisfiable, jointly inconsistent.
+    separate = [sum(1 for x in (0,1) if x==1)>0,
+                sum(1 for x in (0,1) if x==0)>0]
+    exact = [x for x in (0,1) if (x==1 and x==0)]
+    assert separate==[True,True] and exact==[]
+    return {'A':'x','B':'not x','sat_A':True,'sat_B':True,
+            'sat_conjunction':False,'scalar_and_prediction':True}
+
+
+def bundle_benchmark(k):
+    """One aggregate block: k independent 2-port blocks, 2k boundary bits.
+    Actually enumerates its 2^(2k) boundary rows and checks local tables.
+    """
+    t = local_table(0)
+    # a and b are k-bit strings, so entries of the combined boundary response.
+    positive=0
+    total_extensions=0
+    row_tests=0
+    for x in range(1<<k):
+        for y in range(1<<k):
+            row_tests+=1
+            weight=1
+            for j in range(k):
+                weight *= t[(x>>j)&1,(y>>j)&1]
+                if not weight:
+                    break
+            if weight:
+                positive+=1
+                total_extensions+=weight
+    assert positive == (1<<k)
+    assert total_extensions == (1<<(2*k))
+    return {'wires':k,'boundary_variables':2*k,'whole_macro_table_rows':row_tests,
+            'factorized_local_table_rows':4*k,'true_boundary_rows':positive,
+            'satisfying_full_assignments':total_extensions,
+            'truth_table_to_factored_row_ratio':row_tests/(4*k)}
+
+
+def clause_natural_key(c):
+    return tuple(sorted(c,key=lambda a:(abs(a),a<0)))
+
+
+def choose_dynamic_variable(clauses, remaining, mode):
+    cand=[]
+    for v in remaining:
+        p=sum(1 for c in clauses if v in c)
+        q=sum(1 for c in clauses if -v in c)
+        cand.append((p*q,p+q,v))
+    if mode=='quietest':
+        return min(cand)[2]
+    if mode=='busiest':
+        return max(cand,key=lambda x:(x[0],x[1],-x[2]))[2]
+    raise ValueError(mode)
+
+
+def dp_resolution(flips, mode, budget=100000):
+    clauses,nvars = chain_clauses(flips)
+    n = len(flips)
+    insides=[v for i in range(n) for v in (n+2+2*i, n+3+2*i)]
+    ports=list(range(1,n+2))
+    if mode=='internal_then_ports':
+        order=insides+ports
+    elif mode=='ports_then_internal':
+        order=ports+insides
+    elif mode in ('quietest','busiest'):
+        order=None
+    else:
+        raise ValueError(mode)
+    remaining=set(range(1,nvars+1))
+    peak=len(clauses)
+    max_clause_width=max(map(len,clauses),default=0)
+    pairs=0
+    trace=[]
+    for idx in range(nvars):
+        v=choose_dynamic_variable(clauses,remaining,mode) if order is None else order[idx]
+        pos=[c for c in clauses if v in c]
+        neg=[c for c in clauses if -v in c]
+        p=len(pos)*len(neg)
+        if pairs+p>budget:
+            return {'status':'LIMITED','mode':mode,'blocks':n,'proposed_pairs_before_limit':pairs,
+                    'blocked_next_variable':v,'blocked_next_pairs':p,'peak_clauses':peak,
+                    'max_clause_width':max_clause_width,'steps_completed':idx}
+        rest=set(clauses).difference(pos,neg)
+        made=set()
+        for a in pos:
+            for b in neg:
+                r=(a-{v}) | (b-{-v})
+                if not any(-lit in r for lit in r):
+                    made.add(frozenset(r))
+        clauses=frozenset(rest|made)
+        remaining.remove(v)
+        pairs += p
+        peak=max(peak,len(clauses))
+        max_clause_width=max(max_clause_width,max(map(len,clauses),default=0))
+        trace.append({'pivot':v,'pairs':p,'retained_clauses':len(clauses),'max_width':max(map(len,clauses),default=0)})
+    assert len(remaining)==0
+    # Empty clause signals unsat; otherwise resulting true.
+    assert clauses==frozenset() or clauses==frozenset((frozenset(),))
+    return {'status':'COMPLETED','mode':mode,'blocks':n,'proposed_pairs':pairs,
+            'peak_clauses':peak,'max_clause_width':max_clause_width,
+            'sat':not bool(clauses),'steps_completed':nvars,'trace':trace}
+
+
+def independent_projection_checks(flips, mode):
+    """For small instances, exhaustive compare each elimination stage
+    with existential projection of the independent ORIGINAL solution set.
+    """
+    orig,nvars=chain_clauses(flips)
+    solutions=[]
+    for bits in product((False,True), repeat=nvars):
+        d={i+1:bits[i] for i in range(nvars)}
+        if eval_cnf(orig,d):solutions.append(d)
+    clauses=orig
+    remaining=set(range(1,nvars+1))
+    n=len(flips)
+    inside=[v for i in range(n) for v in (n+2+2*i,n+3+2*i)]
+    ports=list(range(1,n+2))
+    order={'internal_then_ports':inside+ports,
+           'ports_then_internal':ports+inside}.get(mode)
+    checks=0
+    for idx in range(nvars):
+        v=choose_dynamic_variable(clauses,remaining,mode) if order is None else order[idx]
+        p=[c for c in clauses if v in c]
+        q=[c for c in clauses if -v in c]
+        rest=set(clauses).difference(p,q)
+        for pc in p:
+            for nc in q:
+                r=(pc-{v})|(nc-{-v})
+                if not any(-lit in r for lit in r): rest.add(frozenset(r))
+        clauses=frozenset(rest)
+        remaining.remove(v)
+        keys=sorted(remaining)
+        actual=set()
+        for bits in product((False,True),repeat=len(keys)):
+            vals=dict(zip(keys,bits))
+            if eval_cnf(clauses,vals): actual.add(bits)
+        expected={tuple(sol[k] for k in keys) for sol in solutions}
+        assert actual==expected,(flips,mode,idx,v,len(actual),len(expected))
+        checks+=1
+    return checks
+
+
+def run():
+    t0=local_table(0)
+    t1=local_table(1)
+    seed=20261108
+    rng=random.Random(seed)
+    samples=[]
+    # Each is an exact 3-CNF (clauses of size <=3) with n two-port gadgets.
+    for n in (1,2,3,4,5):
+        checks=10 if n<=4 else 2
+        for j in range(checks):
+            flips=[rng.randrange(2) for _ in range(n)]
+            weighted,trans=weighted_boundary_dp(flips)
+            brute,total=brute_boundary(flips)
+            assert weighted==brute,(n,flips,weighted,brute)
+            assert total==(1<<(n+1))
+            # Unweighted existential collapse preserves SAT and projected endpoint pairs.
+            assert (len(weighted)>0)==(total>0)
+            samples.append({'n':n,'flips':flips,'full_assignments':total,
+                            'distinct_endpoint_pairs':len(weighted),'weighted_boundary':{str(k):v for k,v in sorted(weighted.items())},
+                            'candidate_full_assignments':1<<(3*n+1),'local_gate_candidate_assignments_tested':16*n,
+                            'boundary_composition_transitions_tested':trans})
+    # Also make contradictory instances with opposite endpoint pinning.
+    unsat_check_count=0
+    for n in range(1,6):
+        flips=[rng.randrange(2) for _ in range(n)]
+        weighted,_=weighted_boundary_dp(flips)
+        parity=0
+        for x in flips: parity^=x
+        # Contradictory terminal conditions: p0=0, pn=not parity.
+        assert weighted.get((0,1^parity),0)==0
+        if n<=4:
+            brute,_=brute_boundary(flips)
+            assert brute.get((0,1^parity),0)==0
+        unsat_check_count+=1
+    bundle=[bundle_benchmark(k) for k in (1,2,3,4,5,6,7,8)]
+    resolution=[]
+    for n in (2,3,4,5,6,7,8):
+        flips=[i%2 for i in range(n)]
+        for mode in ('internal_then_ports','ports_then_internal','quietest','busiest'):
+            r=dp_resolution(flips,mode,budget=100000)
+            if r['status']=='COMPLETED':assert r['sat']
+            resolution.append({k:v for k,v in r.items() if k!='trace'})
+    stage_checks={}
+    for mode in ('internal_then_ports','ports_then_internal','quietest','busiest'):
+        stage_checks[mode]=independent_projection_checks([0,1,0,1],mode)
+    # Demonstrate that existential projection loses multiplicity for #SAT.
+    weight_example={'one_block_satisfying_full_assignments':sum(t0.values()),
+                    'one_block_satisfying_boundary_rows':sum(1 for x in t0.values() if x>0),
+                    'full_count_lost_by_unweighted_projection':sum(t0.values())!=sum(1 for x in t0.values() if x>0)}
+    result={'id':'PUDDING-15-BOUNDARY-COLLAPSE-2026-11-08','status':'finite-checked-trail-not-complexity-proof',
+            'seed':seed,'method':'CNF gate truth tables, weighted relational composition, exhaustive CNF checks, resolution elimination',
+            'local_positive':{str(k):v for k,v in sorted(t0.items())},
+            'local_negative':{str(k):v for k,v in sorted(t1.items())},
+            'scalar_counterexample':test_noninterchangeable(),
+            'chain_small_checks':samples,'chain_samples':len(samples),'contradictory_endpoint_checks':unsat_check_count,
+            'bundle_results':bundle,'resolution_benchmark':resolution,'exhaustive_elimination_stage_checks':stage_checks,
+            'weighted_count_loss_example':weight_example,
+            'notes':['The full candidate assignment count is an enumeration space, not measured solver steps.',
+                     'Resolution pair count, interface-table rows, gate evaluations and transition checks are separate cost units.',
+                     'The hand-designed gates are intentionally easy; no unrestricted SAT speedup is shown.',
+                     'Whole macro signatures are safe only when all shared boundary variables are represented.',
+                     'For #SAT preserve internal multiplicity weights, not merely Boolean existence.']}
+    return result
+
+
+def main():
+    p=argparse.ArgumentParser()
+    p.add_argument('--output',default='results.json')
+    p.add_argument('--check',help='Compare a recorded result against a full rerun')
+    args=p.parse_args()
+    r=run()
+    if args.check:
+        expected=json.loads(Path(args.check).read_text())
+        assert expected==r,('reproduction mismatch',args.check)
+        print('CHECKED: exact deterministic regeneration and all internal checks passed')
+    else:
+        Path(args.output).write_text(json.dumps(r,indent=2,sort_keys=True)+'\n')
+        print('WROTE',args.output)
+    print('small chain cases',r['chain_samples'])
+    print('stage exact-projection checks',r['exhaustive_elimination_stage_checks'])
+    print('bundle 8 wires:',r['bundle_results'][-1])
+    print('resolution summary:')
+    for row in r['resolution_benchmark']:
+        if row['blocks'] in (4,8):print(row)
+
+
+if __name__=='__main__':main()

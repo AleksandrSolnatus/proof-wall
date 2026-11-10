@@ -542,6 +542,20 @@
       "title": "The Branches — Six Doorways, One Unfinished Question",
       "url": "exhibits/branches-six-doorways/v2/index.html",
       "version": 2
+    },
+    {
+      "claim_scope": "Recorded finite formulas, stated algorithms and cost proxies; the safe-turn inequality applies only when its explicit conditions hold.",
+      "gardens": [],
+      "id": "stir-the-pudding-research-trail",
+      "metadata": "exhibits/stir-the-pudding-research-trail/v2/exhibit.json",
+      "package_sha256": "dba210177c3eec0ec7869f1dbe561e20046561d8a5eaf684eda3c028f04287a7",
+      "question": "What can sound clause transformations reveal, and when does finding and maintaining those consequences cost too much?",
+      "relations": [],
+      "sample": false,
+      "status": "verified-finite-result",
+      "title": "Stir the Pudding: A Trail of Questions, Experiments and Costs",
+      "url": "exhibits/stir-the-pudding-research-trail/v2/index.html",
+      "version": 2
     }
   ],
   "gardens": "gardens.json",

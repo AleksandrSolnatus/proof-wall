@@ -1,5 +1,5 @@
 {
-  "exhibits": 36,
+  "exhibits": 37,
   "files": {
     ".nojekyll": {
       "bytes": 0,
@@ -1697,6 +1697,138 @@
       "bytes": 7670,
       "sha256": "c33735dc1b75055ce2c489076d6063edfb1d5aa538c3a3796bc925d7cc42c2ca"
     },
+    "exhibits/stir-the-pudding-research-trail/v2/exhibit.json": {
+      "bytes": 27488,
+      "sha256": "2bc7a7dbf43191649e7443a14ea1f37bd5985d563b21b6c95cc1c581df3bfed2"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/article.md.txt": {
+      "bytes": 8765,
+      "sha256": "f7599d46eeac3715e1917017bb2ba8bde0eb42aa692a637e6d53476848f4a0ba"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/10_PUDDING_FIRST_DOMINO_2026-10-20.md.txt": {
+      "bytes": 6259,
+      "sha256": "9bfb7155b7e60fd1edeb49cb470977ab9d1216da4e5eb57206b1c9b286140147"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/11_PUDDING_VISCOSITY_2026-10-20.md.txt": {
+      "bytes": 7647,
+      "sha256": "e9272da70cdb969c692e75b2d246f334cf18740f9b3d9cd96a5dcb1efe006dcc"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/12_PUDDING_PRESSURE_FEEDBACK_2026-10-20.md.txt": {
+      "bytes": 8171,
+      "sha256": "ecf60452ecf2e7cf6e0f843d2c45decd920e8bda7eae3242cb3d32a5dd9fa1bf"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/13_PUDDING_STATE_VISCOSITY_2026-10-20.md.txt": {
+      "bytes": 8428,
+      "sha256": "37c30641bcb1a98ff91e793c2a321d6f02d4cd3fa295c091fe855ff747190ecc"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/14_PUDDING_SAFE_TURN_2026-10-21.md.txt": {
+      "bytes": 10492,
+      "sha256": "2f47b1c05c92e9d9f5cb54ed1e2d61dae3fb7c0df9d826779ef107c248dc8b60"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/15_PUDDING_WHOLE_PROBLEM_AS_VARIABLE_2026-11-08.md.txt": {
+      "bytes": 9496,
+      "sha256": "3d616e2da7dd7793d76fae536134e858ead89548c441b07d15018829f9eb1d35"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/pudding_boundary_collapse.py.txt": {
+      "bytes": 13396,
+      "sha256": "ff96fb54fae2e7d9aef49054ec90b65eac8b97fe102dcf7d81ed98bdf31465d0"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/pudding_cascade_2026_10_20.py.txt": {
+      "bytes": 3775,
+      "sha256": "8d261c25012b5cbde38b123c0e455263f22013eab8acef0613c48a2f0cb8deec"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/trail11-pudding_viscosity_results.json.txt": {
+      "bytes": 540589,
+      "sha256": "0a5d2e925a19f3bbc8ba2cf4f2e53acf7c4d2698c6242477f625efc9aae685b6"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/trail11-pudding_viscosity_trail.py.txt": {
+      "bytes": 5497,
+      "sha256": "4212f2b80961397df109d2c740886596550f08dbfc82c472f21e33d6075d537a"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/trail12-pudding_viscosity_feedback_2026_10_20.py.txt": {
+      "bytes": 4804,
+      "sha256": "04b346efdae6820fc37bbe88b9acefcd2f61024e74bc2c0fb1b9031c28013221"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/trail12-pudding_viscosity_feedback_results.json.txt": {
+      "bytes": 613991,
+      "sha256": "5c35277787f5b15b36bda565ef0d1e36aad05452b1b2b18858e32258c806ae7c"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/trail12-pudding_viscosity_holdout_2026_10_20.py.txt": {
+      "bytes": 3211,
+      "sha256": "7d37e6ea461c79f13b6558e0f696f2f09b37cdce461dcbe0f62902d99e1686fa"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/trail12-pudding_viscosity_holdout_results.json.txt": {
+      "bytes": 75011,
+      "sha256": "dde8629b3fe3747afd70ab8f190dac8ee167d70ec389816e9256c926358cfa67"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/trail13-holdout-runlog.txt.txt": {
+      "bytes": 2190,
+      "sha256": "9ec8e9d99d9819704cd6bf4410431aaa4ab67e2c6dd0e1b159e709b00a348145"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/trail13-pudding_state_holdout.py.txt": {
+      "bytes": 2016,
+      "sha256": "0eb6956d8c5ced7d874fcc26cb513da7ee6e60906f9d3d302dd0e6eb60273c95"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/trail13-pudding_state_holdout_results.json.txt": {
+      "bytes": 1034815,
+      "sha256": "8bbf7aa175a10e899b5d1b3c5aac4c226f0a338aea84fb5fe11f4d0947c3d213"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/trail13-pudding_state_viscosity.py.txt": {
+      "bytes": 6436,
+      "sha256": "0f1a7a7b0e81eff6866ca3286626e75a4c462d2820a74780261cac4adeb5dad8"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/trail13-pudding_state_viscosity_results.json.txt": {
+      "bytes": 2094736,
+      "sha256": "f2d5c3cda73a9d9a04766933aeb63353b335a3af72a9de04565614a78b93463e"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/trail14-proof_checks.py.txt": {
+      "bytes": 968,
+      "sha256": "00e7809dc506436463a3617129713db5fa354507489b5b2b7a99eaa2e768a590"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/trail14-pudding_route_turn.py.txt": {
+      "bytes": 8102,
+      "sha256": "f6fc65ced04c640a5e80d69e51e28423ef3c7d39b3085e8920962c12d4faa579"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/trail14-pudding_width_example.py.txt": {
+      "bytes": 1256,
+      "sha256": "b3fa575531163a4154225b9b28029214420c7543ecded58a76357f483b8c2e98"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/trail14-route-runlog.txt.txt": {
+      "bytes": 3570,
+      "sha256": "b00903a575f86a7f332d86e6a523d2ee57f9d6b255d69b1eeb475e9db876292d"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/trail14-route_turn_ledger.json.txt": {
+      "bytes": 3676647,
+      "sha256": "3093648cfcdd25a58260ae6fd52dbb4175dbe61eeff6c191017f288efb2ceb22"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/trail14-width_examples.json.txt": {
+      "bytes": 84629,
+      "sha256": "947a91225d43de2d0ce18f93f4149e5fd402508e9dd5ee1202faed279f23cb22"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/trail15-results.json.txt": {
+      "bytes": 25770,
+      "sha256": "f66dc4f4ece27c279bc7116a35919ac202fb19fbc5e8716b87762a9820d515b9"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/trail15-verification_receipt.txt.txt": {
+      "bytes": 1095,
+      "sha256": "b5d8b827a35825a9b5afdfda7f9df82e830d5352efff25dc3e33b3502cdca00b"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/files/files/verify_boundary.py.txt": {
+      "bytes": 2063,
+      "sha256": "f2ce22c8843d17647879a9cc4acd1877dae57623c1251b741c62c55425b4716c"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/index.html": {
+      "bytes": 33817,
+      "sha256": "503a558f9313e86e6ec1c8c5f769707c00930455e4f67455cf4e4c03ebd42d9a"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/snapshot.json": {
+      "bytes": 4913,
+      "sha256": "2591a85159177705a382af7ff0dd88c5fd8ed74f757883df42f461fbb789e610"
+    },
+    "exhibits/stir-the-pudding-research-trail/v2/submitted-manifest.json": {
+      "bytes": 20113,
+      "sha256": "548e6eebd38128eb880f3a388c2af624c5fcc4346244d6877260ca40b90b3689"
+    },
     "exhibits/stone-003b-reconnecting-regions/v2/exhibit.json": {
       "bytes": 14981,
       "sha256": "45211b42bc4f22ddf2ffc23ceed551949e8296ea36b2482beb49650644c54323"
@@ -1906,12 +2038,12 @@
       "sha256": "d1cf42ce64b01824f3c20d2eb7df88c95f8ffcbcc840f64a6c772c74989d4a8a"
     },
     "index.html": {
-      "bytes": 22872,
-      "sha256": "e10e6bed63864b5e4d730deeb6de6ca7a19564dbda529bb6e24b409d4edd2a61"
+      "bytes": 23429,
+      "sha256": "0311a16a9ce74c3c4284ef233ada47e604751e4a10c66d632144c463f2cd322b"
     },
     "index.json": {
-      "bytes": 29988,
-      "sha256": "267298d3eb86b53c044084043c6fe6438931fe94b4cd0e13c8c61309f5c2a998"
+      "bytes": 30795,
+      "sha256": "c4b114985d8a08cfd4a08383a3512f1aa93aeba9e143b90fa129f8cc35442ca1"
     },
     "llms.txt": {
       "bytes": 489,

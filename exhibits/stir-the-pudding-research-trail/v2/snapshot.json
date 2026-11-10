@@ -1,0 +1,125 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 8765,
+      "sha256": "f7599d46eeac3715e1917017bb2ba8bde0eb42aa692a637e6d53476848f4a0ba"
+    },
+    "exhibit.json": {
+      "bytes": 20113,
+      "sha256": "548e6eebd38128eb880f3a388c2af624c5fcc4346244d6877260ca40b90b3689"
+    },
+    "files/10_PUDDING_FIRST_DOMINO_2026-10-20.md": {
+      "bytes": 6259,
+      "sha256": "9bfb7155b7e60fd1edeb49cb470977ab9d1216da4e5eb57206b1c9b286140147"
+    },
+    "files/11_PUDDING_VISCOSITY_2026-10-20.md": {
+      "bytes": 7647,
+      "sha256": "e9272da70cdb969c692e75b2d246f334cf18740f9b3d9cd96a5dcb1efe006dcc"
+    },
+    "files/12_PUDDING_PRESSURE_FEEDBACK_2026-10-20.md": {
+      "bytes": 8171,
+      "sha256": "ecf60452ecf2e7cf6e0f843d2c45decd920e8bda7eae3242cb3d32a5dd9fa1bf"
+    },
+    "files/13_PUDDING_STATE_VISCOSITY_2026-10-20.md": {
+      "bytes": 8428,
+      "sha256": "37c30641bcb1a98ff91e793c2a321d6f02d4cd3fa295c091fe855ff747190ecc"
+    },
+    "files/14_PUDDING_SAFE_TURN_2026-10-21.md": {
+      "bytes": 10492,
+      "sha256": "2f47b1c05c92e9d9f5cb54ed1e2d61dae3fb7c0df9d826779ef107c248dc8b60"
+    },
+    "files/15_PUDDING_WHOLE_PROBLEM_AS_VARIABLE_2026-11-08.md": {
+      "bytes": 9496,
+      "sha256": "3d616e2da7dd7793d76fae536134e858ead89548c441b07d15018829f9eb1d35"
+    },
+    "files/pudding_boundary_collapse.py": {
+      "bytes": 13396,
+      "sha256": "ff96fb54fae2e7d9aef49054ec90b65eac8b97fe102dcf7d81ed98bdf31465d0"
+    },
+    "files/pudding_cascade_2026_10_20.py": {
+      "bytes": 3775,
+      "sha256": "8d261c25012b5cbde38b123c0e455263f22013eab8acef0613c48a2f0cb8deec"
+    },
+    "files/trail11-pudding_viscosity_results.json": {
+      "bytes": 540589,
+      "sha256": "0a5d2e925a19f3bbc8ba2cf4f2e53acf7c4d2698c6242477f625efc9aae685b6"
+    },
+    "files/trail11-pudding_viscosity_trail.py": {
+      "bytes": 5497,
+      "sha256": "4212f2b80961397df109d2c740886596550f08dbfc82c472f21e33d6075d537a"
+    },
+    "files/trail12-pudding_viscosity_feedback_2026_10_20.py": {
+      "bytes": 4804,
+      "sha256": "04b346efdae6820fc37bbe88b9acefcd2f61024e74bc2c0fb1b9031c28013221"
+    },
+    "files/trail12-pudding_viscosity_feedback_results.json": {
+      "bytes": 613991,
+      "sha256": "5c35277787f5b15b36bda565ef0d1e36aad05452b1b2b18858e32258c806ae7c"
+    },
+    "files/trail12-pudding_viscosity_holdout_2026_10_20.py": {
+      "bytes": 3211,
+      "sha256": "7d37e6ea461c79f13b6558e0f696f2f09b37cdce461dcbe0f62902d99e1686fa"
+    },
+    "files/trail12-pudding_viscosity_holdout_results.json": {
+      "bytes": 75011,
+      "sha256": "dde8629b3fe3747afd70ab8f190dac8ee167d70ec389816e9256c926358cfa67"
+    },
+    "files/trail13-holdout-runlog.txt": {
+      "bytes": 2190,
+      "sha256": "9ec8e9d99d9819704cd6bf4410431aaa4ab67e2c6dd0e1b159e709b00a348145"
+    },
+    "files/trail13-pudding_state_holdout.py": {
+      "bytes": 2016,
+      "sha256": "0eb6956d8c5ced7d874fcc26cb513da7ee6e60906f9d3d302dd0e6eb60273c95"
+    },
+    "files/trail13-pudding_state_holdout_results.json": {
+      "bytes": 1034815,
+      "sha256": "8bbf7aa175a10e899b5d1b3c5aac4c226f0a338aea84fb5fe11f4d0947c3d213"
+    },
+    "files/trail13-pudding_state_viscosity.py": {
+      "bytes": 6436,
+      "sha256": "0f1a7a7b0e81eff6866ca3286626e75a4c462d2820a74780261cac4adeb5dad8"
+    },
+    "files/trail13-pudding_state_viscosity_results.json": {
+      "bytes": 2094736,
+      "sha256": "f2d5c3cda73a9d9a04766933aeb63353b335a3af72a9de04565614a78b93463e"
+    },
+    "files/trail14-proof_checks.py": {
+      "bytes": 968,
+      "sha256": "00e7809dc506436463a3617129713db5fa354507489b5b2b7a99eaa2e768a590"
+    },
+    "files/trail14-pudding_route_turn.py": {
+      "bytes": 8102,
+      "sha256": "f6fc65ced04c640a5e80d69e51e28423ef3c7d39b3085e8920962c12d4faa579"
+    },
+    "files/trail14-pudding_width_example.py": {
+      "bytes": 1256,
+      "sha256": "b3fa575531163a4154225b9b28029214420c7543ecded58a76357f483b8c2e98"
+    },
+    "files/trail14-route-runlog.txt": {
+      "bytes": 3570,
+      "sha256": "b00903a575f86a7f332d86e6a523d2ee57f9d6b255d69b1eeb475e9db876292d"
+    },
+    "files/trail14-route_turn_ledger.json": {
+      "bytes": 3676647,
+      "sha256": "3093648cfcdd25a58260ae6fd52dbb4175dbe61eeff6c191017f288efb2ceb22"
+    },
+    "files/trail14-width_examples.json": {
+      "bytes": 84629,
+      "sha256": "947a91225d43de2d0ce18f93f4149e5fd402508e9dd5ee1202faed279f23cb22"
+    },
+    "files/trail15-results.json": {
+      "bytes": 25770,
+      "sha256": "f66dc4f4ece27c279bc7116a35919ac202fb19fbc5e8716b87762a9820d515b9"
+    },
+    "files/trail15-verification_receipt.txt": {
+      "bytes": 1095,
+      "sha256": "b5d8b827a35825a9b5afdfda7f9df82e830d5352efff25dc3e33b3502cdca00b"
+    },
+    "files/verify_boundary.py": {
+      "bytes": 2063,
+      "sha256": "f2ce22c8843d17647879a9cc4acd1877dae57623c1251b741c62c55425b4716c"
+    }
+  },
+  "package_sha256": "dba210177c3eec0ec7869f1dbe561e20046561d8a5eaf684eda3c028f04287a7"
+}

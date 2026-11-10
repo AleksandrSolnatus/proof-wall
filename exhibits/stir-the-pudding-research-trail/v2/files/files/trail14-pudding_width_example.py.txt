@@ -1,0 +1,27 @@
+from pudding_route_turn import run
+import random,json
+from pathlib import Path
+
+def chain_formula(n,m,seed):
+    rng=random.Random(seed);possible=[]
+    for i in range(1,n-1):
+        for mask in range(8):
+            if mask==0:continue  # positive all-ones witness satisfies any OR with >=1 positive
+            possible.append(frozenset((i+j if (mask>>j)&1 else -(i+j)) for j in range(3)))
+    return set(rng.sample(possible,m))
+if __name__=='__main__':
+    rec=[]
+    for seed in (2026,2027):
+        F=chain_formula(12,25,seed)
+        for order in ('asc','max','min'):
+            for mode in ('base','before_safe','minrisk_always'):
+                r=run(F,12,order,mode,check=True)
+                rec.append(dict(seed=seed,order=order,mode=mode,**r))
+    p=Path(__file__).parent
+    (p/'width_examples.json').write_text(json.dumps(rec,indent=2))
+    for seed in (2026,2027):
+      print('SEED',seed)
+      for order in ('asc','max','min'):
+        for mode in ('base','before_safe','minrisk_always'):
+            r=next(x for x in rec if x['seed']==seed and x['order']==order and x['mode']==mode)
+            print(order,mode,'maximum neighborhood',max(h['neighbors'] for h in r['history']),'proxy',r['proxy'],'pairs',r['pairs'],'peak',r['peak'])

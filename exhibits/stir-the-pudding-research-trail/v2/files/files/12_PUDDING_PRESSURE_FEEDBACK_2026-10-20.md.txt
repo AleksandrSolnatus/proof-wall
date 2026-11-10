@@ -1,0 +1,97 @@
+Public-review derivative: an internal research location was generalized. Full original and its archives remain preserved privately; archive references below are historical and the ZIPs are not included in this selection.
+
+# Stir the Pudding — The Pressure Gauge
+
+**Date:** 2026-10-20  
+**Trail:** `private research archive`  
+**Previous marker:** `11_PUDDING_VISCOSITY_2026-10-20.md`  
+**Status:** reproducible finite continuation; NOT a general 3-SAT algorithm, mathematical lower bound, or fluid-dynamics model.
+
+## Question
+
+Can logical viscosity (safe subsumption cleanup) be turned on *before* a combinatorial blow-up, using information already visible before eliminating the next variable, without changing which assignments satisfy the original formula?
+
+## The pressure gauge
+
+For candidate variable `x`, let `P_x` be the number of active clauses containing `x`, and `N_x` those containing `¬x`. If we eliminate `x` by Davis–Putnam resolution, exactly `P_x × N_x` clause-pairs are proposed, though many yield tautologies or duplicates. **Pressure** means this proposed pair count, NOT physical fluid pressure.
+
+The new feedback rule predicts when work may surge:
+
+> Before eliminating the chosen variable, if `P_x × N_x > T × (number of active clauses)`, run exact subsumption cleanup, recount, then eliminate. No cleanup on the original all-length-three, duplicate-free input: there can be no initial subsumption. Otherwise skip cleanup.
+
+The selection policy is held to one of: busiest (`max`), quietest (`min`), or ascending variable index (`asc`). Cleanup may change the next variable selected; the choice is made again after cleanup. Because we remove only clauses `D` that are logically implied by an existing shorter clause `C ⊆ D`, the exact set of remaining-variable solutions is preserved at each stage. The gauge determines *when to calculate redundancy*, not when to silently drop valid information.
+
+We first explored thresholds `T` in `{0.5,1,2,4,8,16}` on the **earlier 18 cases** (10 variables, 32/42/50 three-literal clauses, Python `Random(seed)` for seeds 0..5), with three variable-selection policies: 324 complete runs, all individually checked against exhaustive truth-table projection after each elimination. The value `8` performed well on the aggregate proxy `pair attempts + subset checks`; it was **selected after seeing these results**, not proved to be optimal or universal.
+
+## The original First Domino pudding
+
+Same 10-switch, 32-clause seed-0 formula, independently counted to have exactly **23 full satisfying assignments**.
+
+| Busiest-first elimination | Proposed clause pairings | Subsumption subset checks |
+|---|---:|---:|
+| Dry, no cleanup | 10,758 | 0 |
+| Cleanup after **every** step | 352 | 3,746 |
+| Pressure feedback, **T=8** | **883** | **2,167** |
+
+This pressure-feedback version needs fewer cleanups, but spends more resolution pair attempts than always-clean. Which is faster in wall time is **not established** by these operation counts.
+
+## Holdout: thirty fresh puddings
+
+To see if this merely fit the original 18, we fixed `T=8` **before generating** 30 new ten-switch, distinct-three-literal 3-CNF puzzles: 10 seeds (100–109) each for 32, 42, 50 clauses. **22 SAT, 8 UNSAT**, independently identified by exhaustive truth-table enumeration. All three approaches were checked after **every** elimination against the exact projected satisfying set: 30 × 3 choices of variable order × 3 cleanup approaches = **270** complete runs; all checks passed.
+
+The following totals aggregate the 30 inputs *within each variable-order policy*:
+
+| Order and cleanup | Proposed resolution pairs | Subsumption subset checks | Literal reads for choosing variables / feedback |
+|---|---:|---:|---:|
+| Busiest, dry | 1,473,020 | 0 | 148,521 |
+| Busiest, always-clean | **23,277** | 244,527 | 23,890 |
+| Busiest, pressure-8 | 42,424 | 192,719 | 85,671 |
+| Quietest, dry | 62,679 | 0 | 43,793 |
+| Quietest, always-clean | 6,725 | 120,226 | 21,848 |
+| Quietest, pressure-8 | **23,269** | **21,271** | 42,300 |
+| Ascending, dry | 481,567 | 0 | 91,867 |
+| Ascending, always-clean | 13,080 | 163,583 | 22,353 |
+| Ascending, pressure-8 | 36,092 | 95,650 | 66,022 |
+
+If—solely as a **rough proxy**, not real timing—we assign one unit to each pairing, subset check, and literal read, total costs are:
+
+| Elimination order | Dry | Always-clean | Pressure-8 |
+|---|---:|---:|---:|
+| Busiest first | 1,621,541 | **291,694** | 320,814 |
+| Quietest first | 106,472 | 148,799 | **86,840** |
+| Ascending order | 573,434 | 199,016 | **197,764** |
+
+**Important counterexample:** Among the 30 fresh inputs on busiest-first ordering, constant cleanup beats pressure-8 in this proxy on **24 of 30**. The warning can come too late and force a costly second pressure scan. Among quietest-first inputs, pressure-8 beats constant cleanup on all 30, but dry is still cheaper on **16 of 30**. There is no universal winner among these three policies even on our finite sample.
+
+## Mathematical insight about the warning
+
+Let `C_t` be the number of active clauses before elimination. At most `P_t N_t` distinct clauses can be generated from the candidates, and at most `C_t` existing clauses remain. Therefore
+
+`C_(t+1) ≤ C_t + P_t N_t`.
+
+If the warning successfully ensures `P_t N_t ≤ T C_t` at each step, this only shows
+
+`C_(t+1) ≤ (1+T) C_t`.
+
+Iterating can still produce an **exponential** upper bound in the number of steps. So a bounded pressure ratio is not an invariant guaranteeing polynomial work. It is a *local workload gauge*. Preventing a global blow-up would require stronger conditions controlling growth in actual nonredundant clauses, the size of separators, or another demonstrable invariant. No general obstruction or solution to P versus NP has been established.
+
+## What changed
+
+1. The original viscosity idea remains logically safe and exact.
+2. **Timing now has a measurable trigger**: look at next-step potential pairing pressure *before* eliminating the variable.
+3. The holdout reveals a boundary: a single pressure threshold cannot suit both highly explosive and gentle routes.
+4. **Next bend:** Can a low-cost signal distinguish (a) high pairing pressure that will mostly vanish harmlessly, (b) high pressure that carries new independent information, and (c) high pressure that would be cheaply controlled by immediate safe pruning? Keep the fixed clauses; don't change the rules merely to make a prettier result.
+
+## Reproduction and custody
+
+A zip of the exact scripts and two JSON ledgers is included as `12_PUDDING_PRESSURE_FEEDBACK_EVIDENCE_2026-10-20.zip`. The baseline earlier source `pudding_viscosity_trail.py` is bundled because the new scripts import it. New scripts: `pudding_viscosity_feedback_2026_10_20.py`, `pudding_viscosity_holdout_2026_10_20.py`. Outputs: both matching `*_results.json` files. Python standard library only. Historical trail files remain untouched.
+
+**Scope limit:** Proposed clause pairings, set-subsumption subset checks, and literal reads have different actual machine costs; these totals omit hash operations, clause construction overhead, Python runtime, indexing, reconstruction of a complete witness, and memory allocation. This is NOT a performance claim about an optimized industrial SAT solver.
+
+## DOT-HANDOFF
+
+**Changed:** Added pressure-triggered pre-elimination safe subsumption; explored 18 old cases (324 configurations) and verified on 30 fresh cases (270 configurations) with 22 SAT and 8 UNSAT, truth-table projection at each step. The pressure-8 trigger was chosen on the first cases and held fixed on the new ones; it is useful in some conditions and inferior in others.  
+**Location:** `private research archive`, this report plus evidence zip.  
+**Open:** The stronger invariant is how genuinely nonredundant clauses accumulate, not mere candidate pair pressure. Need fair primitive-operation/wall-clock cost accounting, independent checker implementation, and larger families.  
+**Next owner:** Terra on user request.  
+**Next action:** Follow the pressure-to-information boundary without prematurely converting exploration into a stopping rule.

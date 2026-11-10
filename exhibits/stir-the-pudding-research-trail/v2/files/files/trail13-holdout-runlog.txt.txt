@@ -1,0 +1,39 @@
+Holdout 24 puzzles 10 UNSAT; 360 complete checked runs
+
+ max
+dry pairs 4188871 subs 0 reads 246499 proxy 4435370 gears {0: 240}
+always pairs 24264 subs 330965 reads 71034 proxy 426263 gears {0: 24, 2: 216}
+pressure8 pairs 41701 subs 295804 reads 85610 proxy 423115 gears {0: 156, 2: 84}
+state pairs 24772 subs 324744 reads 71597 proxy 421113 gears {0: 81, 1: 32, 2: 128}
+state_guarded pairs 24772 subs 324744 reads 71597 proxy 421113 gears {0: 81, 1: 32, 2: 128}
+guarded wins vs dry 24 of 24
+guarded wins vs always 17 of 24
+guarded wins vs pressure8 10 of 24
+guarded wins vs state 0 of 24
+
+ min
+dry pairs 102654 subs 0 reads 51852 proxy 154506 gears {0: 254}
+always pairs 7234 subs 149377 reads 32714 proxy 189325 gears {0: 24, 2: 229}
+pressure8 pairs 24031 subs 34313 reads 45155 proxy 103499 gears {0: 238, 2: 16}
+state pairs 9221 subs 56370 reads 38045 proxy 103636 gears {0: 163, 1: 65, 2: 28}
+state_guarded pairs 22805 subs 33598 reads 44021 proxy 100424 gears {0: 238, 2: 16}
+guarded wins vs dry 13 of 24
+guarded wins vs always 24 of 24
+guarded wins vs pressure8 1 of 24
+guarded wins vs state 13 of 24
+
+ asc
+dry pairs 812008 subs 0 reads 128975 proxy 940983 gears {0: 253}
+always pairs 15384 subs 241511 reads 51087 proxy 307982 gears {0: 24, 2: 229}
+pressure8 pairs 34515 subs 146669 reads 70466 proxy 251650 gears {0: 203, 2: 50}
+state pairs 16927 subs 174200 reads 56003 proxy 247130 gears {0: 114, 1: 65, 2: 74}
+state_guarded pairs 19491 subs 169073 reads 57376 proxy 245940 gears {0: 128, 1: 52, 2: 73}
+guarded wins vs dry 24 of 24
+guarded wins vs always 24 of 24
+guarded wins vs pressure8 17 of 24
+guarded wins vs state 7 of 24
+anchor dry 34968 [(1, 0), (3, 0), (8, 0), (6, 0), (9, 0), (2, 0), (7, 0), (11, 0), (4, 0), (10, 0), (5, 0)]
+anchor always 10308 [(1, 0), (3, 2), (8, 2), (11, 2), (2, 2), (7, 2), (10, 2), (4, 2), (9, 2), (5, 2)]
+anchor pressure8 9249 [(1, 0), (3, 0), (8, 2), (11, 2), (2, 0), (7, 2), (10, 0), (4, 0), (9, 0), (6, 0), (5, 0)]
+anchor state 9357 [(1, 0), (3, 1), (8, 2), (11, 2), (2, 2), (7, 1), (10, 1), (4, 1), (9, 0), (6, 0), (5, 0)]
+anchor state_guarded 9357 [(1, 0), (3, 1), (8, 2), (11, 2), (2, 2), (7, 1), (10, 1), (4, 1), (9, 0), (6, 0), (5, 0)]

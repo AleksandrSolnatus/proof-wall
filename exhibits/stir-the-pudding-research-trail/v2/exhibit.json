@@ -1,0 +1,510 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "Recorded finite formulas, stated algorithms and cost proxies; the safe-turn inequality applies only when its explicit conditions hold.",
+  "date": "2026-11-09",
+  "downloads": [
+    {
+      "bytes": 8765,
+      "original_path": "article.md",
+      "sha256": "f7599d46eeac3715e1917017bb2ba8bde0eb42aa692a637e6d53476848f4a0ba",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 6259,
+      "original_path": "files/10_PUDDING_FIRST_DOMINO_2026-10-20.md",
+      "sha256": "9bfb7155b7e60fd1edeb49cb470977ab9d1216da4e5eb57206b1c9b286140147",
+      "url": "files/files/10_PUDDING_FIRST_DOMINO_2026-10-20.md.txt"
+    },
+    {
+      "bytes": 7647,
+      "original_path": "files/11_PUDDING_VISCOSITY_2026-10-20.md",
+      "sha256": "e9272da70cdb969c692e75b2d246f334cf18740f9b3d9cd96a5dcb1efe006dcc",
+      "url": "files/files/11_PUDDING_VISCOSITY_2026-10-20.md.txt"
+    },
+    {
+      "bytes": 8171,
+      "original_path": "files/12_PUDDING_PRESSURE_FEEDBACK_2026-10-20.md",
+      "sha256": "ecf60452ecf2e7cf6e0f843d2c45decd920e8bda7eae3242cb3d32a5dd9fa1bf",
+      "url": "files/files/12_PUDDING_PRESSURE_FEEDBACK_2026-10-20.md.txt"
+    },
+    {
+      "bytes": 8428,
+      "original_path": "files/13_PUDDING_STATE_VISCOSITY_2026-10-20.md",
+      "sha256": "37c30641bcb1a98ff91e793c2a321d6f02d4cd3fa295c091fe855ff747190ecc",
+      "url": "files/files/13_PUDDING_STATE_VISCOSITY_2026-10-20.md.txt"
+    },
+    {
+      "bytes": 10492,
+      "original_path": "files/14_PUDDING_SAFE_TURN_2026-10-21.md",
+      "sha256": "2f47b1c05c92e9d9f5cb54ed1e2d61dae3fb7c0df9d826779ef107c248dc8b60",
+      "url": "files/files/14_PUDDING_SAFE_TURN_2026-10-21.md.txt"
+    },
+    {
+      "bytes": 9496,
+      "original_path": "files/15_PUDDING_WHOLE_PROBLEM_AS_VARIABLE_2026-11-08.md",
+      "sha256": "3d616e2da7dd7793d76fae536134e858ead89548c441b07d15018829f9eb1d35",
+      "url": "files/files/15_PUDDING_WHOLE_PROBLEM_AS_VARIABLE_2026-11-08.md.txt"
+    },
+    {
+      "bytes": 13396,
+      "original_path": "files/pudding_boundary_collapse.py",
+      "sha256": "ff96fb54fae2e7d9aef49054ec90b65eac8b97fe102dcf7d81ed98bdf31465d0",
+      "url": "files/files/pudding_boundary_collapse.py.txt"
+    },
+    {
+      "bytes": 3775,
+      "original_path": "files/pudding_cascade_2026_10_20.py",
+      "sha256": "8d261c25012b5cbde38b123c0e455263f22013eab8acef0613c48a2f0cb8deec",
+      "url": "files/files/pudding_cascade_2026_10_20.py.txt"
+    },
+    {
+      "bytes": 25770,
+      "original_path": "files/trail15-results.json",
+      "sha256": "f66dc4f4ece27c279bc7116a35919ac202fb19fbc5e8716b87762a9820d515b9",
+      "url": "files/files/trail15-results.json.txt"
+    },
+    {
+      "bytes": 1095,
+      "original_path": "files/trail15-verification_receipt.txt",
+      "sha256": "b5d8b827a35825a9b5afdfda7f9df82e830d5352efff25dc3e33b3502cdca00b",
+      "url": "files/files/trail15-verification_receipt.txt.txt"
+    },
+    {
+      "bytes": 2063,
+      "original_path": "files/verify_boundary.py",
+      "sha256": "f2ce22c8843d17647879a9cc4acd1877dae57623c1251b741c62c55425b4716c",
+      "url": "files/files/verify_boundary.py.txt"
+    },
+    {
+      "bytes": 5497,
+      "original_path": "files/trail11-pudding_viscosity_trail.py",
+      "sha256": "4212f2b80961397df109d2c740886596550f08dbfc82c472f21e33d6075d537a",
+      "url": "files/files/trail11-pudding_viscosity_trail.py.txt"
+    },
+    {
+      "bytes": 540589,
+      "original_path": "files/trail11-pudding_viscosity_results.json",
+      "sha256": "0a5d2e925a19f3bbc8ba2cf4f2e53acf7c4d2698c6242477f625efc9aae685b6",
+      "url": "files/files/trail11-pudding_viscosity_results.json.txt"
+    },
+    {
+      "bytes": 4804,
+      "original_path": "files/trail12-pudding_viscosity_feedback_2026_10_20.py",
+      "sha256": "04b346efdae6820fc37bbe88b9acefcd2f61024e74bc2c0fb1b9031c28013221",
+      "url": "files/files/trail12-pudding_viscosity_feedback_2026_10_20.py.txt"
+    },
+    {
+      "bytes": 3211,
+      "original_path": "files/trail12-pudding_viscosity_holdout_2026_10_20.py",
+      "sha256": "7d37e6ea461c79f13b6558e0f696f2f09b37cdce461dcbe0f62902d99e1686fa",
+      "url": "files/files/trail12-pudding_viscosity_holdout_2026_10_20.py.txt"
+    },
+    {
+      "bytes": 613991,
+      "original_path": "files/trail12-pudding_viscosity_feedback_results.json",
+      "sha256": "5c35277787f5b15b36bda565ef0d1e36aad05452b1b2b18858e32258c806ae7c",
+      "url": "files/files/trail12-pudding_viscosity_feedback_results.json.txt"
+    },
+    {
+      "bytes": 75011,
+      "original_path": "files/trail12-pudding_viscosity_holdout_results.json",
+      "sha256": "dde8629b3fe3747afd70ab8f190dac8ee167d70ec389816e9256c926358cfa67",
+      "url": "files/files/trail12-pudding_viscosity_holdout_results.json.txt"
+    },
+    {
+      "bytes": 6436,
+      "original_path": "files/trail13-pudding_state_viscosity.py",
+      "sha256": "0f1a7a7b0e81eff6866ca3286626e75a4c462d2820a74780261cac4adeb5dad8",
+      "url": "files/files/trail13-pudding_state_viscosity.py.txt"
+    },
+    {
+      "bytes": 2016,
+      "original_path": "files/trail13-pudding_state_holdout.py",
+      "sha256": "0eb6956d8c5ced7d874fcc26cb513da7ee6e60906f9d3d302dd0e6eb60273c95",
+      "url": "files/files/trail13-pudding_state_holdout.py.txt"
+    },
+    {
+      "bytes": 2094736,
+      "original_path": "files/trail13-pudding_state_viscosity_results.json",
+      "sha256": "f2d5c3cda73a9d9a04766933aeb63353b335a3af72a9de04565614a78b93463e",
+      "url": "files/files/trail13-pudding_state_viscosity_results.json.txt"
+    },
+    {
+      "bytes": 1034815,
+      "original_path": "files/trail13-pudding_state_holdout_results.json",
+      "sha256": "8bbf7aa175a10e899b5d1b3c5aac4c226f0a338aea84fb5fe11f4d0947c3d213",
+      "url": "files/files/trail13-pudding_state_holdout_results.json.txt"
+    },
+    {
+      "bytes": 8102,
+      "original_path": "files/trail14-pudding_route_turn.py",
+      "sha256": "f6fc65ced04c640a5e80d69e51e28423ef3c7d39b3085e8920962c12d4faa579",
+      "url": "files/files/trail14-pudding_route_turn.py.txt"
+    },
+    {
+      "bytes": 3676647,
+      "original_path": "files/trail14-route_turn_ledger.json",
+      "sha256": "3093648cfcdd25a58260ae6fd52dbb4175dbe61eeff6c191017f288efb2ceb22",
+      "url": "files/files/trail14-route_turn_ledger.json.txt"
+    },
+    {
+      "bytes": 1256,
+      "original_path": "files/trail14-pudding_width_example.py",
+      "sha256": "b3fa575531163a4154225b9b28029214420c7543ecded58a76357f483b8c2e98",
+      "url": "files/files/trail14-pudding_width_example.py.txt"
+    },
+    {
+      "bytes": 84629,
+      "original_path": "files/trail14-width_examples.json",
+      "sha256": "947a91225d43de2d0ce18f93f4149e5fd402508e9dd5ee1202faed279f23cb22",
+      "url": "files/files/trail14-width_examples.json.txt"
+    },
+    {
+      "bytes": 968,
+      "original_path": "files/trail14-proof_checks.py",
+      "sha256": "00e7809dc506436463a3617129713db5fa354507489b5b2b7a99eaa2e768a590",
+      "url": "files/files/trail14-proof_checks.py.txt"
+    },
+    {
+      "bytes": 2190,
+      "original_path": "files/trail13-holdout-runlog.txt",
+      "sha256": "9ec8e9d99d9819704cd6bf4410431aaa4ab67e2c6dd0e1b159e709b00a348145",
+      "url": "files/files/trail13-holdout-runlog.txt.txt"
+    },
+    {
+      "bytes": 3570,
+      "original_path": "files/trail14-route-runlog.txt",
+      "sha256": "b00903a575f86a7f332d86e6a523d2ee57f9d6b255d69b1eeb475e9db876292d",
+      "url": "files/files/trail14-route-runlog.txt.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; JH credited for the originating challenge.",
+      "bytes": 8765,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "article",
+      "sha256": "f7599d46eeac3715e1917017bb2ba8bde0eb42aa692a637e6d53476848f4a0ba"
+    },
+    {
+      "attribution": "Labeled public-review derivative of original MATH research report; original preserved privately.",
+      "bytes": 6259,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "files/10_PUDDING_FIRST_DOMINO_2026-10-20.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "9bfb7155b7e60fd1edeb49cb470977ab9d1216da4e5eb57206b1c9b286140147"
+    },
+    {
+      "attribution": "Labeled public-review derivative of original MATH research report; original preserved privately.",
+      "bytes": 7647,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "files/11_PUDDING_VISCOSITY_2026-10-20.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "e9272da70cdb969c692e75b2d246f334cf18740f9b3d9cd96a5dcb1efe006dcc"
+    },
+    {
+      "attribution": "Labeled public-review derivative of original MATH research report; original preserved privately.",
+      "bytes": 8171,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "files/12_PUDDING_PRESSURE_FEEDBACK_2026-10-20.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "ecf60452ecf2e7cf6e0f843d2c45decd920e8bda7eae3242cb3d32a5dd9fa1bf"
+    },
+    {
+      "attribution": "Labeled public-review derivative of original MATH research report; original preserved privately.",
+      "bytes": 8428,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "files/13_PUDDING_STATE_VISCOSITY_2026-10-20.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "37c30641bcb1a98ff91e793c2a321d6f02d4cd3fa295c091fe855ff747190ecc"
+    },
+    {
+      "attribution": "Labeled public-review derivative of original MATH research report; original preserved privately.",
+      "bytes": 10492,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "files/14_PUDDING_SAFE_TURN_2026-10-21.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "2f47b1c05c92e9d9f5cb54ed1e2d61dae3fb7c0df9d826779ef107c248dc8b60"
+    },
+    {
+      "attribution": "Labeled public-review derivative of original MATH research report; original preserved privately.",
+      "bytes": 9496,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "files/15_PUDDING_WHOLE_PROBLEM_AS_VARIABLE_2026-11-08.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "3d616e2da7dd7793d76fae536134e858ead89548c441b07d15018829f9eb1d35"
+    },
+    {
+      "attribution": "Original MATH research source, preserved byte-for-byte.",
+      "bytes": 13396,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/pudding_boundary_collapse.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "ff96fb54fae2e7d9aef49054ec90b65eac8b97fe102dcf7d81ed98bdf31465d0"
+    },
+    {
+      "attribution": "Original MATH research source, preserved byte-for-byte.",
+      "bytes": 3775,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/pudding_cascade_2026_10_20.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "8d261c25012b5cbde38b123c0e455263f22013eab8acef0613c48a2f0cb8deec"
+    },
+    {
+      "attribution": "Original MATH research source, preserved byte-for-byte.",
+      "bytes": 25770,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/trail15-results.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "f66dc4f4ece27c279bc7116a35919ac202fb19fbc5e8716b87762a9820d515b9"
+    },
+    {
+      "attribution": "Original MATH research source, preserved byte-for-byte.",
+      "bytes": 1095,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/plain",
+      "path": "files/trail15-verification_receipt.txt",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "receipt",
+      "sha256": "b5d8b827a35825a9b5afdfda7f9df82e830d5352efff25dc3e33b3502cdca00b"
+    },
+    {
+      "attribution": "Original MATH research source, preserved byte-for-byte.",
+      "bytes": 2063,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/verify_boundary.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "f2ce22c8843d17647879a9cc4acd1877dae57623c1251b741c62c55425b4716c"
+    },
+    {
+      "attribution": "Original research evidence file, extracted byte-for-byte from retained archive.",
+      "bytes": 5497,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/trail11-pudding_viscosity_trail.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "4212f2b80961397df109d2c740886596550f08dbfc82c472f21e33d6075d537a"
+    },
+    {
+      "attribution": "Original research evidence file, extracted byte-for-byte from retained archive.",
+      "bytes": 540589,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/trail11-pudding_viscosity_results.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "0a5d2e925a19f3bbc8ba2cf4f2e53acf7c4d2698c6242477f625efc9aae685b6"
+    },
+    {
+      "attribution": "Original research evidence file, extracted byte-for-byte from retained archive.",
+      "bytes": 4804,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/trail12-pudding_viscosity_feedback_2026_10_20.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "04b346efdae6820fc37bbe88b9acefcd2f61024e74bc2c0fb1b9031c28013221"
+    },
+    {
+      "attribution": "Original research evidence file, extracted byte-for-byte from retained archive.",
+      "bytes": 3211,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/trail12-pudding_viscosity_holdout_2026_10_20.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "7d37e6ea461c79f13b6558e0f696f2f09b37cdce461dcbe0f62902d99e1686fa"
+    },
+    {
+      "attribution": "Original research evidence file, extracted byte-for-byte from retained archive.",
+      "bytes": 613991,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/trail12-pudding_viscosity_feedback_results.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "5c35277787f5b15b36bda565ef0d1e36aad05452b1b2b18858e32258c806ae7c"
+    },
+    {
+      "attribution": "Original research evidence file, extracted byte-for-byte from retained archive.",
+      "bytes": 75011,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/trail12-pudding_viscosity_holdout_results.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "dde8629b3fe3747afd70ab8f190dac8ee167d70ec389816e9256c926358cfa67"
+    },
+    {
+      "attribution": "Original research evidence file, extracted byte-for-byte from retained archive.",
+      "bytes": 6436,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/trail13-pudding_state_viscosity.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "0f1a7a7b0e81eff6866ca3286626e75a4c462d2820a74780261cac4adeb5dad8"
+    },
+    {
+      "attribution": "Original research evidence file, extracted byte-for-byte from retained archive.",
+      "bytes": 2016,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/trail13-pudding_state_holdout.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "0eb6956d8c5ced7d874fcc26cb513da7ee6e60906f9d3d302dd0e6eb60273c95"
+    },
+    {
+      "attribution": "Original research evidence file, extracted byte-for-byte from retained archive.",
+      "bytes": 2094736,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/trail13-pudding_state_viscosity_results.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "f2d5c3cda73a9d9a04766933aeb63353b335a3af72a9de04565614a78b93463e"
+    },
+    {
+      "attribution": "Original research evidence file, extracted byte-for-byte from retained archive.",
+      "bytes": 1034815,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/trail13-pudding_state_holdout_results.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "8bbf7aa175a10e899b5d1b3c5aac4c226f0a338aea84fb5fe11f4d0947c3d213"
+    },
+    {
+      "attribution": "Original research evidence file, extracted byte-for-byte from retained archive.",
+      "bytes": 8102,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/trail14-pudding_route_turn.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "f6fc65ced04c640a5e80d69e51e28423ef3c7d39b3085e8920962c12d4faa579"
+    },
+    {
+      "attribution": "Original research evidence file, extracted byte-for-byte from retained archive.",
+      "bytes": 3676647,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/trail14-route_turn_ledger.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "3093648cfcdd25a58260ae6fd52dbb4175dbe61eeff6c191017f288efb2ceb22"
+    },
+    {
+      "attribution": "Original research evidence file, extracted byte-for-byte from retained archive.",
+      "bytes": 1256,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/trail14-pudding_width_example.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "b3fa575531163a4154225b9b28029214420c7543ecded58a76357f483b8c2e98"
+    },
+    {
+      "attribution": "Original research evidence file, extracted byte-for-byte from retained archive.",
+      "bytes": 84629,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/trail14-width_examples.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "947a91225d43de2d0ce18f93f4149e5fd402508e9dd5ee1202faed279f23cb22"
+    },
+    {
+      "attribution": "Original research evidence file, extracted byte-for-byte from retained archive.",
+      "bytes": 968,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/trail14-proof_checks.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "00e7809dc506436463a3617129713db5fa354507489b5b2b7a99eaa2e768a590"
+    },
+    {
+      "attribution": "Original MATH research run record, extracted byte-for-byte from retained archive.",
+      "bytes": 2190,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/plain",
+      "path": "files/trail13-holdout-runlog.txt",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "receipt",
+      "sha256": "9ec8e9d99d9819704cd6bf4410431aaa4ab67e2c6dd0e1b159e709b00a348145"
+    },
+    {
+      "attribution": "Original MATH research run record, extracted byte-for-byte from retained archive.",
+      "bytes": 3570,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/plain",
+      "path": "files/trail14-route-runlog.txt",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "receipt",
+      "sha256": "b00903a575f86a7f332d86e6a523d2ee57f9d6b255d69b1eeb475e9db876292d"
+    }
+  ],
+  "finding": "Specified finite studies document both benefits and failures of pivot ordering, simplification, feedback and retained boundary relations; a one-step no-growth certificate is conditional.",
+  "gardens": [],
+  "id": "stir-the-pudding-research-trail",
+  "limitations": [
+    "No general 3-SAT algorithm, P-versus-NP result or universal speedup is established.",
+    "Original challenge screenshots were not recovered; JH is credited for the originating challenge, not the later mathematical implementation.",
+    "Some checks are same-author; recorded proxy units do not measure complete elapsed-time or full cost.",
+    "Selected programs and data are source inspection material and may not be a standalone replay package.",
+    "Five supplied editorial files differ from the accompanying manifest; this article is a separately hashed derivative of the actually received text."
+  ],
+  "method": "Historical MATH research reports on resolution, subsumption, adaptive feedback, conditional safe elimination and boundary-relation representations; retain existing finite tests and checks.",
+  "open_questions": [
+    "When can reusable boundary relationships be found and maintained at a net benefit under a fair complete-cost comparison?",
+    "Can pressure detection avoid both expensive late triggers and unnecessary cleanup?"
+  ],
+  "package_sha256": "dba210177c3eec0ec7869f1dbe561e20046561d8a5eaf684eda3c028f04287a7",
+  "provenance": {
+    "authors": [
+      "JH: originating challenge; Amar: project direction; The Bridges Group, owner-directed and AI-assisted: subsequent research and editorial preparation."
+    ],
+    "change_note": "Initial private derivative: omit private correspondence, correct described case count and clarify proxy; source selections preserved byte-for-byte. Selected report derivatives generalize internal source locations; originals remain intact. Trail 09 prompts remain private. The Trail 11 report derivative removes an ambiguous “further” because its anchor is included in the 18-case cohort. Version 2 records publication authorization; approved privacy-filtered article and evidence remain unchanged.",
+    "origin": "Received public-candidate story and original finite MATH research reports and evidence archives. Original private correspondence and full source archives remain in private custody."
+  },
+  "publication": {
+    "attribution": "JH: originating challenge; Amar: project direction; The Bridges Group, owner-directed and AI-assisted: subsequent MATH research and editorial preparation.",
+    "intent": "request-review",
+    "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner."
+  },
+  "question": "What can sound clause transformations reveal, and when does finding and maintaining those consequences cost too much?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Stir the Pudding: A Trail of Questions, Experiments and Costs",
+  "version": 2
+}

@@ -1,0 +1,49 @@
+"""Holdout, not used to choose pressure/clauses warning threshold (8)."""
+import sys,json
+sys.path.insert(0,'/mnt/data')
+from pudding_viscosity_trail import gen,models,prune_subsumed,eliminate
+from pudding_viscosity_feedback_2026_10_20 import feedback,pressure_stats
+
+def baseline(F,n,policy,mode,check=True):
+    todo=set(range(1,n+1)); cur=set(F); original=models(F,range(1,n+1)) if check else None
+    pairs=scans=reads=removed=passes=0
+    while todo:
+        pressures,nreads=pressure_stats(cur,todo); reads+=nreads
+        x=max(todo,key=lambda x:(pressures[x],-x)) if policy=='max' else (min(todo,key=lambda x:(pressures[x],x)) if policy=='min' else min(todo))
+        nxt,stat=eliminate(cur,x);pairs+=stat['pairs']; todo.remove(x)
+        if mode=='always':
+            nxt,rm,sc=prune_subsumed(nxt); scans+=sc;removed+=rm; passes+=1
+        cur=nxt
+        if check:
+            expected={frozenset(l for l in a if abs(l) in todo) for a in original}
+            assert models(cur,todo)==expected, (policy,mode,x)
+        if not cur or frozenset() in cur: break
+    result='UNSAT' if frozenset() in cur else 'SAT'
+    assert result==('SAT' if original else 'UNSAT')
+    return {'pairs':pairs,'subsumption_checks':scans,'literal_reads_for_pressure':reads,'removed':removed,'clean_passes':passes,'status':result}
+
+def main():
+    records=[]
+    for m in (32,42,50):
+        for seed in range(100,110):
+            F=gen(10,m,seed);count=len(models(F,range(1,11)))
+            for p in ('max','min','asc'):
+                for mode in ('none','always','pressure8'):
+                    if mode=='pressure8':
+                        r=feedback(F,10,p,8,check=True)
+                        r={k:r[k] for k in ('pairs','subsumption_checks','literal_reads_for_pressure','removed','clean_passes','status')}
+                    else:r=baseline(F,10,p,mode,check=True)
+                    records.append({'m':m,'seed':seed,'policy':p,'mode':mode,'models':count,**r})
+    for p in ('max','min','asc'):
+        print('\n',p)
+        for mode in ('none','always','pressure8'):
+            rs=[r for r in records if r['policy']==p and r['mode']==mode]
+            keys=('pairs','subsumption_checks','literal_reads_for_pressure','clean_passes')
+            print(mode,dict((k,sum(r[k] for r in rs)) for k in keys),
+                  'proxy(pairs+subchecks+reads)',sum(r['pairs']+r['subsumption_checks']+r['literal_reads_for_pressure'] for r in rs))
+        a=[r for r in records if r['policy']==p and r['mode']=='pressure8']
+        b={(r['m'],r['seed']):r for r in records if r['policy']==p and r['mode']=='always'}
+        print('pressure8 cheaper than always in joint pair+subset check',sum(r['pairs']+r['subsumption_checks']<b[(r['m'],r['seed'])]['pairs']+b[(r['m'],r['seed'])]['subsumption_checks'] for r in a),'of',len(a))
+    print('SAT',len(set((r['m'],r['seed']) for r in records if r['models']>0)), 'UNSAT',len(set((r['m'],r['seed']) for r in records if r['models']==0)))
+    with open('/mnt/data/pudding_viscosity_holdout_results.json','w') as f: json.dump({'cases':'n=10, m=32/42/50, seed 100..109; threshold 8 fixed before generating holdout','results':records},f,indent=2)
+if __name__=='__main__':main()

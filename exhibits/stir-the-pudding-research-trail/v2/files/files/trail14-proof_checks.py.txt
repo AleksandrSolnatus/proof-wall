@@ -1,0 +1,22 @@
+"""Independent small truth-table check of the no-safe-pivot counterexample.
+The general one-step inequality and width bound are proved algebraically in the report;
+this script is only finite sanity evidence, not a proof of asymptotic complexity.
+"""
+from itertools import product
+
+def seven_clause_pudding():
+    return [frozenset(i+1 if bits[i]==0 else -(i+1) for i in range(3))
+            for bits in product((0,1),repeat=3) if bits!=(1,1,1)]
+
+def satisfies(clauses,bits):
+    return all(any((l>0)==bool(bits[abs(l)-1]) for l in c) for c in clauses)
+
+if __name__=='__main__':
+    F=seven_clause_pudding()
+    assignments=[b for b in product((0,1), repeat=3) if satisfies(F,b)]
+    assert assignments == [(1,1,1)]
+    for x in (1,2,3):
+        P=sum(x in c for c in F)
+        N=sum(-x in c for c in F)
+        assert (P,N)==(4,3) and P*N==12 and P+N==7
+    print('Seven-clause example: unique solution 111; every pivot has P*N=12 > P+N=7; independently verified.')
