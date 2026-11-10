@@ -1,0 +1,20 @@
+{
+  "kind": "sanitized derivative of local retirement records; not an original tool receipt",
+  "date": "2026-11-10",
+  "account_removal": "Exact Lab integration reported uninstalled; host subsequently removed Lab tools",
+  "protected_files_unchanged": 80,
+  "recorded_runs": 7,
+  "launcher_checks": {
+    "count": 2,
+    "exit_code": 3,
+    "stdout_bytes": 0,
+    "key_prompt": false
+  },
+  "lab_tools_after_host_removal": 0,
+  "independent_retirement_review": "PASS; no blocking finding",
+  "limits": [
+    "Original private records retained outside this package.",
+    "No new scientific experiment or controlled usage measurement.",
+    "Local schedule inspection does not inventory all cloud schedules."
+  ]
+}

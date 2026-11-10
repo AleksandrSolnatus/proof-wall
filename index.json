@@ -556,6 +556,20 @@
       "title": "Stir the Pudding: A Trail of Questions, Experiments and Costs",
       "url": "exhibits/stir-the-pudding-research-trail/v2/index.html",
       "version": 2
+    },
+    {
+      "claim_scope": "One observed retirement and preservation procedure on November 10, 2026, with historical experiment results retained as recorded.",
+      "gardens": [],
+      "id": "bridges-lab-failure-of-success",
+      "metadata": "exhibits/bridges-lab-failure-of-success/v2/exhibit.json",
+      "package_sha256": "ecfb090a50beda94bf6d91ab218b4f568f33495ca2571c0e18d8c711e3f01e5c",
+      "question": "What can remain useful when we stop using the tool that produced it?",
+      "relations": [],
+      "sample": false,
+      "status": "verified-finite-result",
+      "title": "The failure of Success: Bridges Lab",
+      "url": "exhibits/bridges-lab-failure-of-success/v2/index.html",
+      "version": 2
     }
   ],
   "gardens": "gardens.json",

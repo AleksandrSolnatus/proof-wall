@@ -1,0 +1,51 @@
+# The failure of Success: Bridges Lab
+
+## Seven runs
+
+The Lab's index held seven completed, verified runs: two Rule 90, one sampling, four TREE Boolean-search runs. Each retained its protocol and result records.
+
+In the sampling experiment, a fixed grid recorded zero hits on a narrow feature. Independent random sampling recorded 29; stratified sampling recorded 24. Each method had 512 trials.
+
+TREE retained 128 attempts: 69 SAT, 2 UNSAT, and 57 UNKNOWN. On the needle fixture, both deterministic methods exhausted their budgets. CLOVER found a satisfying assignment in five of thirty attempts. The unsuccessful attempts stayed in the record.
+
+## November 10
+
+Amar requested retirement of the active plugin, with its lessons and underlying materials preserved.
+
+An attempted read through the plugin returned an error: the tunnel client had not been seen for 300 seconds.
+
+The local index and result files were readable. The inspection continued there. The tunnel stayed off.
+
+## Two dependencies
+
+The phone conversation bridge used the Lab's Python environment and tunnel executable. The historical TREE authorization launcher also referred to that environment.
+
+Those files stayed where they were.
+
+The Lab's account integration was removed. Its two normal launchers were changed to stop before asking for a key or starting a service. The scientific source, configuration, receipts, results, and historical copies remained.
+
+A dated retirement record linked the retained work. The project README and workspace map pointed to it in place of routine connection checks.
+
+## The checks afterward
+
+- The account tool reported the exact Lab plugin uninstalled.
+- The host removed its tool namespace. A subsequent inventory contained zero Lab tools.
+- Both normal launchers stopped with a retirement notice, no key prompt, and no service startup.
+- All 80 protected file hashes matched the inventory taken before the changes.
+- The seven-run summary matched the read-only index.
+- The retirement record's links resolved.
+- The phone bridge's shared dependencies remained unchanged. Its launchers did not call the disabled Lab entrypoints.
+
+Independent review passed these retirement and preservation checks. It did not rerun the historical experiments.
+
+## What remains
+
+The experiment records are still local. The source is still present. The shared environment and executable remain available to their other callers. The Lab is absent from the active tool catalog.
+
+The retirement can be reversed after an explicit request. No evidence database, secret, or tunnel identity was deleted.
+
+The next time one of these results is needed, the first destination is the saved record. Whether that record is sufficient for a later task remains to be tested by actual reuse. A missing explanation or a broken dependency would be a reason to revise this arrangement.
+
+## Scope
+
+This exhibit records one completed change of direction: retain the work, retire the active integration, and check what survived. The sampling and TREE figures are historical recorded results. The retirement checks establish preservation within the inspected installation; they do not establish that every future dependency is known. The cause of the reported usage increase remains unresolved.

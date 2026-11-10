@@ -1,0 +1,17 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 3260,
+      "sha256": "f2962909ebec103b475a3527482b76b5b887844d08e2fa3f585067811a76fd78"
+    },
+    "exhibit.json": {
+      "bytes": 3136,
+      "sha256": "bccd59891d1a748878fd08bf074fb05e8df409ad723e2dc6d3e8a6f00c21e109"
+    },
+    "files/retirement-evidence.json": {
+      "bytes": 715,
+      "sha256": "7ca2374ceceeb48a69b1d5fe341747f0d0a655109f18beed46f435f6d8713a38"
+    }
+  },
+  "package_sha256": "ecfb090a50beda94bf6d91ab218b4f568f33495ca2571c0e18d8c711e3f01e5c"
+}

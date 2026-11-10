@@ -1,5 +1,5 @@
 {
-  "exhibits": 37,
+  "exhibits": 38,
   "files": {
     ".nojekyll": {
       "bytes": 0,
@@ -288,6 +288,30 @@
     "exhibits/branches-six-doorways/v2/submitted-manifest.json": {
       "bytes": 15643,
       "sha256": "2cc6a774b4f669e94c513f818bae232df90ecfde366e27f42932ce67d0da3a2f"
+    },
+    "exhibits/bridges-lab-failure-of-success/v2/exhibit.json": {
+      "bytes": 3666,
+      "sha256": "6ac1c47699e87e78448f088b4d0964341bae76692f5828881f9e25b995ab3964"
+    },
+    "exhibits/bridges-lab-failure-of-success/v2/files/article.md.txt": {
+      "bytes": 3260,
+      "sha256": "f2962909ebec103b475a3527482b76b5b887844d08e2fa3f585067811a76fd78"
+    },
+    "exhibits/bridges-lab-failure-of-success/v2/files/files/retirement-evidence.json.txt": {
+      "bytes": 715,
+      "sha256": "7ca2374ceceeb48a69b1d5fe341747f0d0a655109f18beed46f435f6d8713a38"
+    },
+    "exhibits/bridges-lab-failure-of-success/v2/index.html": {
+      "bytes": 9243,
+      "sha256": "5e0dc0d42be7d516380af6f05b9de6c0daac9b12d24b8413242a1d4357a5c52a"
+    },
+    "exhibits/bridges-lab-failure-of-success/v2/snapshot.json": {
+      "bytes": 522,
+      "sha256": "b26ce42bacac4c7e29f94bd3350d4a2a369189b4f7fcf43ef7409aa814951ae1"
+    },
+    "exhibits/bridges-lab-failure-of-success/v2/submitted-manifest.json": {
+      "bytes": 3136,
+      "sha256": "bccd59891d1a748878fd08bf074fb05e8df409ad723e2dc6d3e8a6f00c21e109"
     },
     "exhibits/changing-pair-001-recovered-pigeon/v1/exhibit.json": {
       "bytes": 3212,
@@ -2038,12 +2062,12 @@
       "sha256": "d1cf42ce64b01824f3c20d2eb7df88c95f8ffcbcc840f64a6c772c74989d4a8a"
     },
     "index.html": {
-      "bytes": 23429,
-      "sha256": "0311a16a9ce74c3c4284ef233ada47e604751e4a10c66d632144c463f2cd322b"
+      "bytes": 23904,
+      "sha256": "43338e887a62011f7c28dd4d92ef27c0c97d5ed24bf901463c055940411b2dfe"
     },
     "index.json": {
-      "bytes": 30795,
-      "sha256": "c4b114985d8a08cfd4a08383a3512f1aa93aeba9e143b90fa129f8cc35442ca1"
+      "bytes": 31519,
+      "sha256": "e682f89c8b23625c1bad884f419d7d5876a2b3a75ae4559a7623ba33e705da3a"
     },
     "llms.txt": {
       "bytes": 489,

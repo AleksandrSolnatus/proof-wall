@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "bridges-lab-failure-of-success",
+  "version": 2,
+  "title": "The failure of Success: Bridges Lab",
+  "artifact_type": "proof",
+  "status": "verified-finite-result",
+  "question": "What can remain useful when we stop using the tool that produced it?",
+  "method": "Inspect actual source, recorded results and dependencies; uninstall the exact integration, disable normal launchers, compare preservation hashes and independently review.",
+  "finding": "Seven recorded runs, source and checked shared dependencies remained intact after the Lab integration was retired. The next reuse can test whether the retained record is sufficient.",
+  "claim_scope": "One observed retirement and preservation procedure on November 10, 2026, with historical experiment results retained as recorded.",
+  "limitations": [
+    "Historical scientific results were not rerun for retirement.",
+    "Original private receipts remain outside this exhibit; its evidence attachment is a labeled derivative.",
+    "Future reuse and unobserved dependencies remain untested; usage-cost causation is unresolved."
+  ],
+  "open_questions": [
+    "When a later task needs one of these results, can the preserved record support it without reconstruction?"
+  ],
+  "date": "2026-11-10",
+  "provenance": {
+    "authors": [
+      "Amar",
+      "Root — AI-assisted preparation"
+    ],
+    "origin": "Prepared from the completed Bridges Lab retirement, its independent review, and owner discussion. Evidence attachment is a sanitized derivative; originals remain privately retained.",
+    "change_note": "Editorial revision at Amar’s request: show the recorded results, failed access, dependency discovery, retirement decisions and preservation checks; remove the prescriptive lesson and emphasis on usage. Version 1 remains preserved."
+  },
+  "article": "article.md",
+  "files": [
+    {
+      "path": "article.md",
+      "role": "article",
+      "media_type": "text/markdown",
+      "bytes": 3260,
+      "sha256": "f2962909ebec103b475a3527482b76b5b887844d08e2fa3f585067811a76fd78",
+      "attribution": "Amar; AI-assisted preparation by Root.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted."
+    },
+    {
+      "path": "files/retirement-evidence.json",
+      "role": "receipt",
+      "media_type": "application/json",
+      "bytes": 715,
+      "sha256": "7ca2374ceceeb48a69b1d5fe341747f0d0a655109f18beed46f435f6d8713a38",
+      "attribution": "Amar; AI-assisted preparation by Root.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted."
+    }
+  ],
+  "relations": [],
+  "gardens": [],
+  "publication": {
+    "intent": "request-review",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+    "license": "All rights reserved; no new open-source license is granted.",
+    "attribution": "Amar; AI-assisted preparation by Root."
+  },
+  "sample": false
+}
