@@ -1,0 +1,1081 @@
+{
+  "status": "PASS",
+  "source_n": 9,
+  "source_clauses": 24,
+  "source_sha256": "c85366d7b13d80b44c0461ee5730d976fe306b2418003427cddf60157ecf39f3",
+  "direct_equations": 6,
+  "residuals": [
+    {
+      "assumptions": [
+        -1,
+        -2
+      ],
+      "forced_literal": 3,
+      "equations": 5
+    },
+    {
+      "assumptions": [
+        1,
+        -2
+      ],
+      "forced_literal": -3,
+      "equations": 5
+    },
+    {
+      "assumptions": [
+        -1,
+        2
+      ],
+      "forced_literal": -3,
+      "equations": 5
+    },
+    {
+      "assumptions": [
+        1,
+        2
+      ],
+      "forced_literal": 3,
+      "equations": 5
+    }
+  ],
+  "controls": [
+    {
+      "category": "charges",
+      "status": "UNKNOWN",
+      "models": 16,
+      "cases": 32
+    },
+    {
+      "category": "charges",
+      "status": "UNSAT",
+      "models": 0,
+      "cases": 32
+    },
+    {
+      "category": "delete_one",
+      "status": "UNKNOWN",
+      "models": 4,
+      "cases": 24
+    }
+  ],
+  "control_assignment_rows": 45056,
+  "all_pair_probes_unknown": 144,
+  "binary_subsystem_witnesses": [
+    {
+      "assumptions": [
+        -1,
+        -2
+      ],
+      "binary_subsystem_witness": 36
+    },
+    {
+      "assumptions": [
+        1,
+        -2
+      ],
+      "binary_subsystem_witness": 9
+    },
+    {
+      "assumptions": [
+        -1,
+        2
+      ],
+      "binary_subsystem_witness": 18
+    },
+    {
+      "assumptions": [
+        1,
+        2
+      ],
+      "binary_subsystem_witness": 63
+    },
+    {
+      "assumptions": [
+        -1,
+        -3
+      ],
+      "binary_subsystem_witness": 18
+    },
+    {
+      "assumptions": [
+        1,
+        -3
+      ],
+      "binary_subsystem_witness": 9
+    },
+    {
+      "assumptions": [
+        -1,
+        3
+      ],
+      "binary_subsystem_witness": 36
+    },
+    {
+      "assumptions": [
+        1,
+        3
+      ],
+      "binary_subsystem_witness": 63
+    },
+    {
+      "assumptions": [
+        -1,
+        -4
+      ],
+      "binary_subsystem_witness": 2
+    },
+    {
+      "assumptions": [
+        1,
+        -4
+      ],
+      "binary_subsystem_witness": 193
+    },
+    {
+      "assumptions": [
+        -1,
+        4
+      ],
+      "binary_subsystem_witness": 218
+    },
+    {
+      "assumptions": [
+        1,
+        4
+      ],
+      "binary_subsystem_witness": 25
+    },
+    {
+      "assumptions": [
+        -1,
+        -5
+      ],
+      "binary_subsystem_witness": 4
+    },
+    {
+      "assumptions": [
+        1,
+        -5
+      ],
+      "binary_subsystem_witness": 41
+    },
+    {
+      "assumptions": [
+        -1,
+        5
+      ],
+      "binary_subsystem_witness": 50
+    },
+    {
+      "assumptions": [
+        1,
+        5
+      ],
+      "binary_subsystem_witness": 31
+    },
+    {
+      "assumptions": [
+        -1,
+        -6
+      ],
+      "binary_subsystem_witness": 2
+    },
+    {
+      "assumptions": [
+        1,
+        -6
+      ],
+      "binary_subsystem_witness": 25
+    },
+    {
+      "assumptions": [
+        -1,
+        6
+      ],
+      "binary_subsystem_witness": 52
+    },
+    {
+      "assumptions": [
+        1,
+        6
+      ],
+      "binary_subsystem_witness": 47
+    },
+    {
+      "assumptions": [
+        -1,
+        -7
+      ],
+      "binary_subsystem_witness": 2
+    },
+    {
+      "assumptions": [
+        1,
+        -7
+      ],
+      "binary_subsystem_witness": 25
+    },
+    {
+      "assumptions": [
+        -1,
+        7
+      ],
+      "binary_subsystem_witness": 218
+    },
+    {
+      "assumptions": [
+        1,
+        7
+      ],
+      "binary_subsystem_witness": 193
+    },
+    {
+      "assumptions": [
+        -1,
+        -8
+      ],
+      "binary_subsystem_witness": 4
+    },
+    {
+      "assumptions": [
+        1,
+        -8
+      ],
+      "binary_subsystem_witness": 9
+    },
+    {
+      "assumptions": [
+        -1,
+        8
+      ],
+      "binary_subsystem_witness": 202
+    },
+    {
+      "assumptions": [
+        1,
+        8
+      ],
+      "binary_subsystem_witness": 199
+    },
+    {
+      "assumptions": [
+        -1,
+        -9
+      ],
+      "binary_subsystem_witness": 2
+    },
+    {
+      "assumptions": [
+        1,
+        -9
+      ],
+      "binary_subsystem_witness": 9
+    },
+    {
+      "assumptions": [
+        -1,
+        9
+      ],
+      "binary_subsystem_witness": 332
+    },
+    {
+      "assumptions": [
+        1,
+        9
+      ],
+      "binary_subsystem_witness": 327
+    },
+    {
+      "assumptions": [
+        -2,
+        -3
+      ],
+      "binary_subsystem_witness": 9
+    },
+    {
+      "assumptions": [
+        2,
+        -3
+      ],
+      "binary_subsystem_witness": 18
+    },
+    {
+      "assumptions": [
+        -2,
+        3
+      ],
+      "binary_subsystem_witness": 36
+    },
+    {
+      "assumptions": [
+        2,
+        3
+      ],
+      "binary_subsystem_witness": 63
+    },
+    {
+      "assumptions": [
+        -2,
+        -4
+      ],
+      "binary_subsystem_witness": 4
+    },
+    {
+      "assumptions": [
+        2,
+        -4
+      ],
+      "binary_subsystem_witness": 50
+    },
+    {
+      "assumptions": [
+        -2,
+        4
+      ],
+      "binary_subsystem_witness": 41
+    },
+    {
+      "assumptions": [
+        2,
+        4
+      ],
+      "binary_subsystem_witness": 31
+    },
+    {
+      "assumptions": [
+        -2,
+        -5
+      ],
+      "binary_subsystem_witness": 1
+    },
+    {
+      "assumptions": [
+        2,
+        -5
+      ],
+      "binary_subsystem_witness": 194
+    },
+    {
+      "assumptions": [
+        -2,
+        5
+      ],
+      "binary_subsystem_witness": 217
+    },
+    {
+      "assumptions": [
+        2,
+        5
+      ],
+      "binary_subsystem_witness": 26
+    },
+    {
+      "assumptions": [
+        -2,
+        -6
+      ],
+      "binary_subsystem_witness": 1
+    },
+    {
+      "assumptions": [
+        2,
+        -6
+      ],
+      "binary_subsystem_witness": 26
+    },
+    {
+      "assumptions": [
+        -2,
+        6
+      ],
+      "binary_subsystem_witness": 44
+    },
+    {
+      "assumptions": [
+        2,
+        6
+      ],
+      "binary_subsystem_witness": 55
+    },
+    {
+      "assumptions": [
+        -2,
+        -7
+      ],
+      "binary_subsystem_witness": 4
+    },
+    {
+      "assumptions": [
+        2,
+        -7
+      ],
+      "binary_subsystem_witness": 18
+    },
+    {
+      "assumptions": [
+        -2,
+        7
+      ],
+      "binary_subsystem_witness": 209
+    },
+    {
+      "assumptions": [
+        2,
+        7
+      ],
+      "binary_subsystem_witness": 199
+    },
+    {
+      "assumptions": [
+        -2,
+        -8
+      ],
+      "binary_subsystem_witness": 1
+    },
+    {
+      "assumptions": [
+        2,
+        -8
+      ],
+      "binary_subsystem_witness": 26
+    },
+    {
+      "assumptions": [
+        -2,
+        8
+      ],
+      "binary_subsystem_witness": 217
+    },
+    {
+      "assumptions": [
+        2,
+        8
+      ],
+      "binary_subsystem_witness": 194
+    },
+    {
+      "assumptions": [
+        -2,
+        -9
+      ],
+      "binary_subsystem_witness": 1
+    },
+    {
+      "assumptions": [
+        2,
+        -9
+      ],
+      "binary_subsystem_witness": 18
+    },
+    {
+      "assumptions": [
+        -2,
+        9
+      ],
+      "binary_subsystem_witness": 324
+    },
+    {
+      "assumptions": [
+        2,
+        9
+      ],
+      "binary_subsystem_witness": 343
+    },
+    {
+      "assumptions": [
+        -3,
+        -4
+      ],
+      "binary_subsystem_witness": 2
+    },
+    {
+      "assumptions": [
+        3,
+        -4
+      ],
+      "binary_subsystem_witness": 52
+    },
+    {
+      "assumptions": [
+        -3,
+        4
+      ],
+      "binary_subsystem_witness": 25
+    },
+    {
+      "assumptions": [
+        3,
+        4
+      ],
+      "binary_subsystem_witness": 47
+    },
+    {
+      "assumptions": [
+        -3,
+        -5
+      ],
+      "binary_subsystem_witness": 1
+    },
+    {
+      "assumptions": [
+        3,
+        -5
+      ],
+      "binary_subsystem_witness": 44
+    },
+    {
+      "assumptions": [
+        -3,
+        5
+      ],
+      "binary_subsystem_witness": 26
+    },
+    {
+      "assumptions": [
+        3,
+        5
+      ],
+      "binary_subsystem_witness": 55
+    },
+    {
+      "assumptions": [
+        -3,
+        -6
+      ],
+      "binary_subsystem_witness": 1
+    },
+    {
+      "assumptions": [
+        3,
+        -6
+      ],
+      "binary_subsystem_witness": 324
+    },
+    {
+      "assumptions": [
+        -3,
+        6
+      ],
+      "binary_subsystem_witness": 361
+    },
+    {
+      "assumptions": [
+        3,
+        6
+      ],
+      "binary_subsystem_witness": 44
+    },
+    {
+      "assumptions": [
+        -3,
+        -7
+      ],
+      "binary_subsystem_witness": 2
+    },
+    {
+      "assumptions": [
+        3,
+        -7
+      ],
+      "binary_subsystem_witness": 36
+    },
+    {
+      "assumptions": [
+        -3,
+        7
+      ],
+      "binary_subsystem_witness": 193
+    },
+    {
+      "assumptions": [
+        3,
+        7
+      ],
+      "binary_subsystem_witness": 231
+    },
+    {
+      "assumptions": [
+        -3,
+        -8
+      ],
+      "binary_subsystem_witness": 1
+    },
+    {
+      "assumptions": [
+        3,
+        -8
+      ],
+      "binary_subsystem_witness": 36
+    },
+    {
+      "assumptions": [
+        -3,
+        8
+      ],
+      "binary_subsystem_witness": 194
+    },
+    {
+      "assumptions": [
+        3,
+        8
+      ],
+      "binary_subsystem_witness": 231
+    },
+    {
+      "assumptions": [
+        -3,
+        -9
+      ],
+      "binary_subsystem_witness": 1
+    },
+    {
+      "assumptions": [
+        3,
+        -9
+      ],
+      "binary_subsystem_witness": 44
+    },
+    {
+      "assumptions": [
+        -3,
+        9
+      ],
+      "binary_subsystem_witness": 361
+    },
+    {
+      "assumptions": [
+        3,
+        9
+      ],
+      "binary_subsystem_witness": 324
+    },
+    {
+      "assumptions": [
+        -4,
+        -5
+      ],
+      "binary_subsystem_witness": 0
+    },
+    {
+      "assumptions": [
+        4,
+        -5
+      ],
+      "binary_subsystem_witness": 45
+    },
+    {
+      "assumptions": [
+        -4,
+        5
+      ],
+      "binary_subsystem_witness": 54
+    },
+    {
+      "assumptions": [
+        4,
+        5
+      ],
+      "binary_subsystem_witness": 27
+    },
+    {
+      "assumptions": [
+        -4,
+        -6
+      ],
+      "binary_subsystem_witness": 0
+    },
+    {
+      "assumptions": [
+        4,
+        -6
+      ],
+      "binary_subsystem_witness": 27
+    },
+    {
+      "assumptions": [
+        -4,
+        6
+      ],
+      "binary_subsystem_witness": 54
+    },
+    {
+      "assumptions": [
+        4,
+        6
+      ],
+      "binary_subsystem_witness": 45
+    },
+    {
+      "assumptions": [
+        -4,
+        -7
+      ],
+      "binary_subsystem_witness": 2
+    },
+    {
+      "assumptions": [
+        4,
+        -7
+      ],
+      "binary_subsystem_witness": 25
+    },
+    {
+      "assumptions": [
+        -4,
+        7
+      ],
+      "binary_subsystem_witness": 193
+    },
+    {
+      "assumptions": [
+        4,
+        7
+      ],
+      "binary_subsystem_witness": 218
+    },
+    {
+      "assumptions": [
+        -4,
+        -8
+      ],
+      "binary_subsystem_witness": 0
+    },
+    {
+      "assumptions": [
+        4,
+        -8
+      ],
+      "binary_subsystem_witness": 27
+    },
+    {
+      "assumptions": [
+        -4,
+        8
+      ],
+      "binary_subsystem_witness": 195
+    },
+    {
+      "assumptions": [
+        4,
+        8
+      ],
+      "binary_subsystem_witness": 216
+    },
+    {
+      "assumptions": [
+        -4,
+        -9
+      ],
+      "binary_subsystem_witness": 0
+    },
+    {
+      "assumptions": [
+        4,
+        -9
+      ],
+      "binary_subsystem_witness": 25
+    },
+    {
+      "assumptions": [
+        -4,
+        9
+      ],
+      "binary_subsystem_witness": 325
+    },
+    {
+      "assumptions": [
+        4,
+        9
+      ],
+      "binary_subsystem_witness": 348
+    },
+    {
+      "assumptions": [
+        -5,
+        -6
+      ],
+      "binary_subsystem_witness": 0
+    },
+    {
+      "assumptions": [
+        5,
+        -6
+      ],
+      "binary_subsystem_witness": 27
+    },
+    {
+      "assumptions": [
+        -5,
+        6
+      ],
+      "binary_subsystem_witness": 45
+    },
+    {
+      "assumptions": [
+        5,
+        6
+      ],
+      "binary_subsystem_witness": 54
+    },
+    {
+      "assumptions": [
+        -5,
+        -7
+      ],
+      "binary_subsystem_witness": 0
+    },
+    {
+      "assumptions": [
+        5,
+        -7
+      ],
+      "binary_subsystem_witness": 27
+    },
+    {
+      "assumptions": [
+        -5,
+        7
+      ],
+      "binary_subsystem_witness": 195
+    },
+    {
+      "assumptions": [
+        5,
+        7
+      ],
+      "binary_subsystem_witness": 216
+    },
+    {
+      "assumptions": [
+        -5,
+        -8
+      ],
+      "binary_subsystem_witness": 1
+    },
+    {
+      "assumptions": [
+        5,
+        -8
+      ],
+      "binary_subsystem_witness": 26
+    },
+    {
+      "assumptions": [
+        -5,
+        8
+      ],
+      "binary_subsystem_witness": 194
+    },
+    {
+      "assumptions": [
+        5,
+        8
+      ],
+      "binary_subsystem_witness": 217
+    },
+    {
+      "assumptions": [
+        -5,
+        -9
+      ],
+      "binary_subsystem_witness": 0
+    },
+    {
+      "assumptions": [
+        5,
+        -9
+      ],
+      "binary_subsystem_witness": 26
+    },
+    {
+      "assumptions": [
+        -5,
+        9
+      ],
+      "binary_subsystem_witness": 324
+    },
+    {
+      "assumptions": [
+        5,
+        9
+      ],
+      "binary_subsystem_witness": 350
+    },
+    {
+      "assumptions": [
+        -6,
+        -7
+      ],
+      "binary_subsystem_witness": 0
+    },
+    {
+      "assumptions": [
+        6,
+        -7
+      ],
+      "binary_subsystem_witness": 45
+    },
+    {
+      "assumptions": [
+        -6,
+        7
+      ],
+      "binary_subsystem_witness": 193
+    },
+    {
+      "assumptions": [
+        6,
+        7
+      ],
+      "binary_subsystem_witness": 236
+    },
+    {
+      "assumptions": [
+        -6,
+        -8
+      ],
+      "binary_subsystem_witness": 0
+    },
+    {
+      "assumptions": [
+        6,
+        -8
+      ],
+      "binary_subsystem_witness": 44
+    },
+    {
+      "assumptions": [
+        -6,
+        8
+      ],
+      "binary_subsystem_witness": 194
+    },
+    {
+      "assumptions": [
+        6,
+        8
+      ],
+      "binary_subsystem_witness": 238
+    },
+    {
+      "assumptions": [
+        -6,
+        -9
+      ],
+      "binary_subsystem_witness": 1
+    },
+    {
+      "assumptions": [
+        6,
+        -9
+      ],
+      "binary_subsystem_witness": 44
+    },
+    {
+      "assumptions": [
+        -6,
+        9
+      ],
+      "binary_subsystem_witness": 324
+    },
+    {
+      "assumptions": [
+        6,
+        9
+      ],
+      "binary_subsystem_witness": 361
+    },
+    {
+      "assumptions": [
+        -7,
+        -8
+      ],
+      "binary_subsystem_witness": 0
+    },
+    {
+      "assumptions": [
+        7,
+        -8
+      ],
+      "binary_subsystem_witness": 325
+    },
+    {
+      "assumptions": [
+        -7,
+        8
+      ],
+      "binary_subsystem_witness": 390
+    },
+    {
+      "assumptions": [
+        7,
+        8
+      ],
+      "binary_subsystem_witness": 195
+    },
+    {
+      "assumptions": [
+        -7,
+        -9
+      ],
+      "binary_subsystem_witness": 0
+    },
+    {
+      "assumptions": [
+        7,
+        -9
+      ],
+      "binary_subsystem_witness": 195
+    },
+    {
+      "assumptions": [
+        -7,
+        9
+      ],
+      "binary_subsystem_witness": 390
+    },
+    {
+      "assumptions": [
+        7,
+        9
+      ],
+      "binary_subsystem_witness": 325
+    },
+    {
+      "assumptions": [
+        -8,
+        -9
+      ],
+      "binary_subsystem_witness": 0
+    },
+    {
+      "assumptions": [
+        8,
+        -9
+      ],
+      "binary_subsystem_witness": 195
+    },
+    {
+      "assumptions": [
+        -8,
+        9
+      ],
+      "binary_subsystem_witness": 325
+    },
+    {
+      "assumptions": [
+        8,
+        9
+      ],
+      "binary_subsystem_witness": 390
+    }
+  ],
+  "corruptions_rejected": [
+    "rhs",
+    "support",
+    "source",
+    "xor_rows"
+  ],
+  "wall_seconds": 0.3758373751770705,
+  "limits": "Finite exact formulas only. Pair probes freshly generated by supplied engine, then source reductions and binary consistency independently checked. No general completeness or complexity claim."
+}

@@ -1,0 +1,152 @@
+{
+  "recorded_at_utc": "2026-11-09T23:52:43.421856+00:00",
+  "status": "PASS",
+  "census_stats": {
+    "cases": 110592,
+    "SAT": 26365,
+    "UNSAT": 84227,
+    "pair_checks": 404374,
+    "max_retained": 19
+  },
+  "saved_examples_checked": {
+    "triangle_scale": 36,
+    "triangle_symmetry": 48
+  },
+  "saved_example_deductions_checked": 2940,
+  "separate_five_step_deductions_checked": 5,
+  "five_step_proof": [
+    {
+      "index": 6,
+      "left": [
+        1,
+        2
+      ],
+      "right": [
+        -3,
+        -2
+      ],
+      "pivot": 2,
+      "conclusion": [
+        -3,
+        1
+      ]
+    },
+    {
+      "index": 7,
+      "left": [
+        -3,
+        1
+      ],
+      "right": [
+        1,
+        3
+      ],
+      "pivot": -3,
+      "conclusion": [
+        1
+      ]
+    },
+    {
+      "index": 8,
+      "left": [
+        -2,
+        -1
+      ],
+      "right": [
+        2,
+        3
+      ],
+      "pivot": -2,
+      "conclusion": [
+        -1,
+        3
+      ]
+    },
+    {
+      "index": 9,
+      "left": [
+        -1,
+        3
+      ],
+      "right": [
+        -3,
+        -1
+      ],
+      "pivot": 3,
+      "conclusion": [
+        -1
+      ]
+    },
+    {
+      "index": 10,
+      "left": [
+        1
+      ],
+      "right": [
+        -1
+      ],
+      "pivot": 1,
+      "conclusion": []
+    }
+  ],
+  "malformed_proof_rejections": [
+    "wrong_pivot",
+    "forward_parent",
+    "wrong_result"
+  ],
+  "case_accounting": {
+    "executions_reported": 110676,
+    "census_distinct_formula_partial_pairs": 110592,
+    "distinct_normalized_original_formula_and_partial_pairs_all_suites": 110603,
+    "distinct_normalized_original_formulas_with_n_all_suites": 4107,
+    "distinct_normalized_residual_formulas_with_n_all_suites": 4828,
+    "distinct_example_pairs_by_suite": {
+      "triangle_scale": 12,
+      "triangle_symmetry": 4
+    },
+    "not_counts_up_to_logical_equivalence_or_renaming": true
+  },
+  "no_partial_assignment_census_unsat": 1699,
+  "recorded_original_order_costs": [
+    {
+      "n": 3,
+      "pairs": 105,
+      "pivots": 61,
+      "initial": 6,
+      "retained": 19
+    },
+    {
+      "n": 6,
+      "pairs": 348,
+      "pivots": 124,
+      "initial": 9,
+      "retained": 43
+    },
+    {
+      "n": 10,
+      "pairs": 896,
+      "pivots": 236,
+      "initial": 13,
+      "retained": 89
+    },
+    {
+      "n": 14,
+      "pairs": 1700,
+      "pivots": 380,
+      "initial": 17,
+      "retained": 151
+    }
+  ],
+  "source_total_generated_deductions": 81311,
+  "deduction_scope": "Source rerun audits81311 generated deductions. This independent checker replays only all saved example deductions and the separate five-step proof; census certificates were not saved. It independently checks every saved census decision via direct truth bitsets.",
+  "body_wall_seconds": 0.484002125216648,
+  "timing_scope": "Excludes startup, source replay, retrieval, authoring and output serialization. No performance comparison.",
+  "source_hashes": {
+    "census.csv": "a00eb46b3246dbc20c6ac3c2fffe6d4ca69b4abcd0134f50aed57948e17f8062",
+    "examples.json": "9acdcb3c5c235c2d5099e93f8fc1a3ff6ccae3dfe80725d84639ac99e6e7de98",
+    "five_step_proof.json": "cdb3fad9cbeb9f65a7d4802d6ffe5ad4d9fc04838af9e07aa58332eb7169dea8",
+    "results.json": "99c0b91893f1876221d5db3f5f19fea2ea0bcddfa8f05546aaf7aca5305cb6c7"
+  },
+  "checker_sha256": "2bfc23f4dab0c9650f8777bf6001beb4ae11cacc253c0568ab318a424d919c01",
+  "limits": "Same corpus, no random sampling; no new3CNF experiment, historicalRun025execution, proof minimality, complete independent audit of all census deduction sequences or generalSAT claim."
+}

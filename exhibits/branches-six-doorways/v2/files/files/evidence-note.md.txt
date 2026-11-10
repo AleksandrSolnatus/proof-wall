@@ -1,0 +1,16 @@
+# Evidence and review status
+
+This exhibit incorporates a November 9, 2026 primary-source follow-up. All six named continuation sources were recovered intact. Supplied programs were inspected and replayed in isolated scratch copies; independently authored checks were added. The earlier bounded charter/secondary-source review remains unchanged and is not retroactively described as an experiment audit.
+
+- Shape Tools 011: Exact source replay, parity/control checking, included predecessor's 144-probe sweep. Limit: Finite K3,3 source; no general speedup.
+- Resolution 026: Exact output replay; all census decisions and saved example certificates independently checked. Limit: Complete and polynomial only for 2-CNF; prior Run 025 cost/miss figures still attributed.
+- Guided Constrainer 028: Source replay and full 256-formula truth-set oracle. Limit: Supplied assertion-based verifier is unsafe under optimized Python; normal-mode results are preserved.
+- Hub-and-Spoke 016: Interval traces, exact adjacent threshold, comparison corpus and included prior ledger correction. Limit: Specific norm and discrete recurrence; conceptual spokes, no physical mass-gap theorem.
+- Garden Cycle 011: Exact replay, graph truth tables, full forward/reverse basis checks. Limit: Repeated state occurrences; typed operation costs do not establish elapsed speedup.
+- Opposite Doorway Toy 025: All 84 tables reproduced, structural arguments, certificate and predecessor snapshot checked. Limit: Fixed source-node model; three-shared-node question remains open.
+
+Toy 024 was replayed as a predecessor, not substituted for Toy 025. Recovered Toy 023 and the visually inspected published formula support the eleven-inference minimum through an exact signed map and a proof-convention argument. The published shortest-proof search itself was not reproduced locally.
+
+The counts overlap across replay, independent checking and earlier evidence. They are not a combined discovery total. Timings label their measurement boundaries and omit retrieval, authoring and much review work; no full AI-credit or total-efficiency gain is claimed. Public related exhibits are contextual, not substitute evidence.
+
+The downloads include seven unchanged independent-check result records, their corresponding checker source files, and selected original outputs and certificates. They are provided for inspection; they refer to original source datasets that are not included, so the selected downloads alone are not a complete runnable replay package. Full source archives and private custody records remain separately preserved. No general P-versus-NP result is claimed.

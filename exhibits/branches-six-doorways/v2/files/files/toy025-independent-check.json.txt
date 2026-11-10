@@ -1,0 +1,106 @@
+{
+  "status": "PASS",
+  "formula": [
+    [
+      2,
+      3,
+      4
+    ],
+    [
+      1,
+      -2,
+      4
+    ],
+    [
+      -1,
+      -2,
+      3
+    ],
+    [
+      1,
+      2,
+      -3
+    ],
+    [
+      -1,
+      -3,
+      4
+    ],
+    [
+      1,
+      3,
+      -4
+    ],
+    [
+      -1,
+      2,
+      -4
+    ],
+    [
+      -2,
+      -3,
+      -4
+    ]
+  ],
+  "model": "one source identity per original input clause; duplicate uses count as sharing",
+  "isolated_cut_matches": 9,
+  "mixed_cut_categories_by_input": [
+    {
+      "empty": 178,
+      "singleton": 7,
+      "full": 1
+    },
+    {
+      "empty": 178,
+      "singleton": 7,
+      "full": 1
+    },
+    {
+      "empty": 178,
+      "singleton": 7,
+      "full": 1
+    },
+    {
+      "empty": 178,
+      "singleton": 7,
+      "full": 1
+    },
+    {
+      "empty": 178,
+      "singleton": 7,
+      "full": 1
+    },
+    {
+      "empty": 178,
+      "singleton": 7,
+      "full": 1
+    },
+    {
+      "empty": 178,
+      "singleton": 7,
+      "full": 1
+    },
+    {
+      "empty": 178,
+      "singleton": 7,
+      "full": 1
+    }
+  ],
+  "certificate_graph": {
+    "inferences": 11,
+    "shared_original_input_ids": [
+      0,
+      2,
+      3,
+      6
+    ],
+    "shared_derived_nodes": [],
+    "extra_premise_uses": 4
+  },
+  "corruptions_rejected": 2,
+  "exact_table_inventory": 84,
+  "saved_final_state_reads": 280,
+  "wall_seconds": 0.023045290959998965,
+  "source_checkpoint_sha256": "2d91a48635826058404ec33a263523138300857518bf1f5592a12a2bed360390",
+  "limits": "Reviewer-authored semantics, proof replay and saved-table coverage/read checks. Does not independently regenerate table recurrence or establish unrestricted minimum proof length."
+}

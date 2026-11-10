@@ -1,0 +1,127 @@
+"""Reviewer-authored source/certificate/model checks. No supplied engine imports."""
+from pathlib import Path
+from itertools import product, combinations
+from collections import Counter
+import hashlib, json, time, copy
+
+ROOT=Path(__file__).resolve().parent
+SOURCE=ROOT/'source'
+def require(value,message):
+    if not value:raise ValueError(message)
+def sat_clause(clause,mask):
+    return any(bool(mask & (1<<(abs(l)-1)))==(l>0) for l in clause)
+def models(n,clauses):
+    return [mask for mask in range(1<<n) if all(sat_clause(c,mask) for c in clauses)]
+def fingerprint(n,clauses):
+    return hashlib.sha256(json.dumps([n,clauses],separators=(',',':')).encode()).hexdigest()
+def check_parity(n,clauses,result):
+    equations=[]
+    for block in result['blocks']:
+        require(block['source_sha256']==fingerprint(n,clauses),'source fingerprint')
+        scope=block['variables'];ids=block['clause_indices'];rhs=block['rhs']
+        require(len(scope)==len(set(scope)) and 1<=len(scope)<=3 and all(type(v)is int and 1<=v<=n for v in scope),'scope')
+        require(rhs in [0,1] and len(ids)==len(set(ids)) and all(type(i)is int and 0<=i<len(clauses) for i in ids),'support ids')
+        require(all(set(map(abs,clauses[i]))==set(scope) for i in ids),'support scope')
+        for mask in range(1<<n):
+            conjunction=all(sat_clause(clauses[i],mask) for i in ids)
+            parity=sum(bool(mask & (1<<(v-1))) for v in scope)%2==rhs
+            require(conjunction==parity,'block equivalence')
+        equations.append([sum(1<<(v-1) for v in scope),rhs])
+    require(equations==result['rows'],'equation binding')
+    if result['status']=='UNSAT':
+        indices=result['affine_proof']['rows']
+        require(indices and len(indices)==len(set(indices)) and all(type(i)is int and 0<=i<len(equations) for i in indices),'certificate row ids')
+        lhs=rhs=0
+        for index in indices:lhs^=equations[index][0];rhs^=equations[index][1]
+        require(lhs==0 and rhs==1,'xor contradiction')
+    else:require(result['status']=='UNKNOWN' and result['affine_proof'] is None,'unknown status')
+    return len(equations)
+
+def restriction(formula,assumptions,steps):
+    assignment={}
+    for literal in assumptions:
+        variable=abs(literal);value=literal>0
+        require(variable not in assignment or assignment[variable]==value,'contradictory assumptions')
+        assignment[variable]=value
+    def reduce(clause):
+        if any(assignment.get(abs(l),None)==(l>0) for l in clause):return None
+        return [l for l in clause if abs(l) not in assignment]
+    for step in steps:
+        index=step['source'];literal=step['literal']
+        require(type(index)is int and 0<=index<len(formula),'source index')
+        require(reduce(formula[index])==[literal] and abs(literal) not in assignment,'forced step')
+        assignment[abs(literal)]=literal>0
+    residual=[{'source':i,'clause':reduce(c)} for i,c in enumerate(formula) if reduce(c) is not None]
+    require(all(len(c['clause'])>1 for c in residual),'unit propagation incomplete or conflict')
+    return residual,assignment
+
+def main():
+    start=time.perf_counter()
+    inp=json.loads((SOURCE/'inputs.json').read_text());out=json.loads((SOURCE/'results.json').read_text())
+    F=inp['original'];require(F['n']==9 and len(F['clauses'])==24,'9/24 input')
+    edges=[(u,v) for u in range(3) for v in range(3,6)]
+    require(F['edges']==[list(e) for e in edges] and F['charges']==[1,0,0,0,0,0],'K3,3 conventions')
+    generated=[];scopes=[]
+    for vertex in range(6):
+        scope=[i+1 for i,e in enumerate(edges) if vertex in e];scopes.append(scope)
+        for bits in product([0,1],repeat=3):
+            if sum(bits)%2!=F['charges'][vertex]:generated.append([-v if bit else v for v,bit in zip(scope,bits)])
+    require(generated==F['clauses'],'ordered source generation')
+    require(check_parity(9,F['clauses'],out['direct'])==6,'direct six equations')
+    require([b['variables'] for b in out['direct']['blocks']]==sorted(scopes),'exact six scopes')
+    require(not models(9,F['clauses']),'source UNSAT')
+    residual_summary=[]
+    for branch,proof in zip(inp['branches'],out['residuals']):
+        require(branch['assumptions']==proof['assumptions'] and branch['steps']==proof['source_steps'],'residual receipt binding')
+        residual,assignment=restriction(F['clauses'],proof['assumptions'],proof['source_steps'])
+        require(residual==branch['residual'] and [r['source'] for r in residual]==proof['source_indices'],'source-indexed residual')
+        clauses=[r['clause'] for r in residual]
+        require(check_parity(9,clauses,proof['result'])==5 and proof['result']['status']=='UNSAT','five-row residual refutation')
+        require(branch['kind']=='UNKNOWN' and len(proof['source_steps'])==1,'fixed-pair baseline')
+        residual_summary.append({'assumptions':proof['assumptions'],'forced_literal':proof['source_steps'][0]['literal'],'equations':5})
+    require({tuple(r['assumptions']) for r in residual_summary}=={(-1,-2),(-1,2),(1,-2),(1,2)},'four-branch coverage')
+    controls=Counter();assignment_rows=0
+    for record in out['controls']:
+        category=record['category'];index=record['index']
+        G=inp['charges' if category=='charges' else 'deletions'][index]
+        check_parity(G['n'],G['clauses'],record['result'])
+        count=len(models(G['n'],G['clauses']));assignment_rows+=1<<G['n']
+        require(count==record['models'],'control count')
+        if category=='charges':
+            odd=sum(G['charges'])%2
+            require(count==(0 if odd else 16) and record['result']['status']==('UNSAT' if odd else 'UNKNOWN'),'charge classification')
+        else:require(category=='delete_one' and count==4 and record['result']['status']=='UNKNOWN','deletion control')
+        controls[(category,record['result']['status'],count)]+=1
+    require(len(out['controls'])==88 and assignment_rows==45056,'control total')
+    sweep=json.loads((ROOT/'scratch/pair-sweep.json').read_text())
+    expected={tuple(sign*v for sign,v in zip(signs,pair)) for pair in combinations(range(1,10),2) for signs in product([-1,1],repeat=2)}
+    require({tuple(r['assumptions']) for r in sweep['rows']}==expected and len(sweep['rows'])==144,'all signed pairs')
+    binary_witnesses=[]
+    for row in sweep['rows']:
+        require(row['kind']=='UNKNOWN','pair unknown')
+        residual,assignment=restriction(F['clauses'],row['assumptions'],row['steps'])
+        require(residual==row['residual'],'pair residual binding')
+        binary=[r['clause'] for r in residual if len(r['clause'])==2]
+        witnesses=[mask for mask in range(512) if all(bool(mask&(1<<(v-1)))==value for v,value in assignment.items()) and all(sat_clause(c,mask) for c in binary)]
+        require(witnesses,'binary subsystem must be consistent')
+        binary_witnesses.append({'assumptions':row['assumptions'],'binary_subsystem_witness':witnesses[0]})
+    require(sweep['UNKNOWN']==144 and sweep['UP']==sweep['SCC']==sweep['models']==0,'sweep summary')
+    rejected=[]
+    for label in ['rhs','support','source','xor_rows']:
+        bad=copy.deepcopy(out['direct']);clauses=copy.deepcopy(F['clauses'])
+        if label=='rhs':bad['blocks'][0]['rhs']^=1
+        elif label=='support':bad['blocks'][0]['clause_indices'].pop()
+        elif label=='source':clauses[0][0]*=-1
+        else:bad['affine_proof']['rows'].pop()
+        try:check_parity(9,clauses,bad)
+        except ValueError:rejected.append(label)
+    require(len(rejected)==4,'damaged certificate accepted')
+    result={'status':'PASS','source_n':9,'source_clauses':24,'source_sha256':fingerprint(9,F['clauses']),
+            'direct_equations':6,'residuals':residual_summary,'controls':[{'category':k[0],'status':k[1],'models':k[2],'cases':v} for k,v in sorted(controls.items())],
+            'control_assignment_rows':assignment_rows,'all_pair_probes_unknown':144,'binary_subsystem_witnesses':binary_witnesses,
+            'corruptions_rejected':rejected,'wall_seconds':time.perf_counter()-start,
+            'limits':'Finite exact formulas only. Pair probes freshly generated by supplied engine, then source reductions and binary consistency independently checked. No general completeness or complexity claim.'}
+    (ROOT/'independent-check.json').write_text(json.dumps(result,indent=2)+'\n')
+    print(json.dumps({k:v for k,v in result.items() if k!='binary_subsystem_witnesses'},indent=2))
+
+if __name__=='__main__':main()

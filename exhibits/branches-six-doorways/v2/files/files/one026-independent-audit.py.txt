@@ -1,0 +1,150 @@
+"""Independent truth-bitset census and exact resolution-certificate checking.
+
+No imports from the supplied solver. Saved census decisions are checked using
+direct assignment bitsets; saved proof records are syntactically replayed.
+"""
+from pathlib import Path
+from itertools import combinations, product
+from collections import Counter
+from datetime import datetime, timezone
+import copy
+import csv
+import hashlib
+import json
+import time
+
+ROOT=Path(__file__).resolve().parent
+SOURCE=ROOT/'source/RESOLUTION-026'
+
+
+def require(ok, why):
+    if not ok:raise RuntimeError(why)
+
+
+def canonical(formula):
+    return tuple(sorted({tuple(sorted(set(c))) for c in formula}))
+
+
+def truth_bits(formula,n):
+    out=0
+    for a in range(1<<n):
+        if all(any(bool(a & (1<<(abs(l)-1))) == (l>0) for l in c) for c in formula):out |= 1<<a
+    return out
+
+
+def residual(formula,partial):
+    rows=[]
+    for clause in formula:
+        if any(partial[abs(l)-1]!=-1 and partial[abs(l)-1]==int(l>0) for l in clause):continue
+        rows.append([l for l in clause if partial[abs(l)-1]==-1])
+    return canonical(rows)
+
+
+def check_proof(axioms,steps):
+    known=[frozenset(c) for c in axioms]
+    checked=[]
+    for step in steps:
+        i,j,pivot,k=(step[x] for x in ('left','right','pivot','index'))
+        require(k==len(known) and 0<=i<k and 0<=j<k,'proof index')
+        left,right=known[i],known[j]
+        require(pivot in left and -pivot in right,'proof pivot')
+        conclusion=frozenset(step['result'])
+        require(conclusion==(left-{pivot})|(right-{-pivot}),'wrong resolvent')
+        require(len(conclusion)<=2 and all(-l not in conclusion for l in conclusion),'width/tautology')
+        variables=sorted({abs(l) for l in left|right|conclusion})
+        rename={v:i+1 for i,v in enumerate(variables)}
+        convert=lambda c:[rename[abs(l)]*(1 if l>0 else -1) for l in c]
+        antecedent=truth_bits([convert(left),convert(right)],len(variables))
+        consequent=truth_bits([convert(conclusion)],len(variables))
+        require(not antecedent & ~consequent,'false entailment')
+        known.append(conclusion)
+        checked.append({'index':k,'left':sorted(left),'right':sorted(right),'pivot':pivot,'conclusion':sorted(conclusion)})
+    require(known and not known[-1],'no final contradiction')
+    return known,checked
+
+
+def main():
+    began=time.perf_counter()
+    results=json.loads((SOURCE/'results.json').read_text())
+    clauses=[[s*a,t*b] for a,b in combinations(range(1,4),2) for s,t in product((-1,1),repeat=2)]
+    partials=list(product((-1,0,1),repeat=3))
+    require(clauses==results['clause_order'] and [list(p) for p in partials]==results['partial_order'],'inventory order')
+    clause_masks=[truth_bits([c],3) for c in clauses]
+    partial_masks=[sum(1<<a for a in range(8) if all(v==-1 or bool(a&(1<<i))==bool(v) for i,v in enumerate(p))) for p in partials]
+    formulas=[];formula_models=[]
+    for mask in range(4096):
+        formula=[c for i,c in enumerate(clauses) if mask & (1<<i)];formulas.append(formula)
+        models=255
+        for i,c in enumerate(clauses):
+            if mask & (1<<i):models &= clause_masks[i]
+        formula_models.append(models)
+    identities=set();formula_identities=set();residuals=set();seen=set();census_stats=Counter();pair_sum=0;max_retained=0
+    with (SOURCE/'census.csv').open(newline='') as f:
+        for row in csv.DictReader(f):
+            mask,pi=int(row['formula_mask']),int(row['partial_index'])
+            require(0<=mask<4096 and 0<=pi<27 and (mask,pi) not in seen,'census key');seen.add((mask,pi))
+            bad=not(formula_models[mask]&partial_masks[pi])
+            require(int(row['unsat'])==int(bad),'census answer')
+            count,pairs=int(row['retained']),int(row['pair_checks'])
+            require(0<=count<=19 and 0<=pairs<=count*(count-1)//2,'census clause/pair bound')
+            census_stats['UNSAT' if bad else 'SAT']+=1;pair_sum+=pairs;max_retained=max(max_retained,count)
+            formula_key=canonical(formulas[mask]);identities.add((3,formula_key,partials[pi]));formula_identities.add((3,formula_key))
+            residuals.add((3,residual(formulas[mask],partials[pi])))
+    require(len(seen)==4096*27,'incomplete census')
+    expected_stats={'cases':len(seen),'SAT':census_stats['SAT'],'UNSAT':census_stats['UNSAT'],'pair_checks':pair_sum,'max_retained':max_retained}
+    require(expected_stats==results['stats']['census_completion'],'census aggregate')
+    examples=json.loads((SOURCE/'examples.json').read_text());example_counts=Counter();example_steps=0;identities_by_suite={}
+    costs=[]
+    for e in examples:
+        n,p,F=e['n'],tuple(e['p']),e['F'];g=residual(F,p)
+        ax=[]
+        # Preserve first-occurrence clause order as recorded in the source input.
+        for clause in F:
+            c=frozenset(clause)
+            require(all(v==-1 for v in p),'unexpected partial example')
+            if c not in ax:ax.append(c)
+        known,checked=check_proof(ax,e['proof'])
+        require(known==[frozenset(c) for c in e['closure']],'example final ledger')
+        require(len(ax)==e['cost']['initial'] and len(known)==e['cost']['retained'],'example retained counts')
+        require(e['cost']['pairs']<=len(known)*(len(known)-1)//2 and len(known)<=2*n*n+1,'example bound')
+        key=(n,canonical(F),p);identities.add(key);formula_identities.add((n,canonical(F)));residuals.add((n,g))
+        identities_by_suite.setdefault(e['suite'],set()).add(key)
+        example_counts[e['suite']]+=1;example_steps+=len(checked)
+        if e['suite']=='triangle_scale' and e['order']=='original' and n in [3,6,10,14]:costs.append({'n':n,**e['cost']})
+    require(example_counts==Counter(triangle_scale=36,triangle_symmetry=48),'example inventory')
+    triangle=[[1,2],[-1,-2],[2,3],[-2,-3],[3,1],[-3,-1]]
+    certificate=json.loads((SOURCE/'five_step_proof.json').read_text())
+    require(len(certificate)==5,'five-step count')
+    _,checked=check_proof(triangle,certificate)
+    require(truth_bits(triangle,3)==0,'triangle source truth')
+    rejections=[]
+    for name,field,value in [('wrong_pivot','pivot',1),('forward_parent','left',6),('wrong_result','result',[1,3])]:
+        malformed=copy.deepcopy(certificate);malformed[0][field]=value
+        try:check_proof(triangle,malformed)
+        except RuntimeError:rejections.append(name)
+        else:raise RuntimeError('malformed proof accepted')
+    out={
+        'recorded_at_utc':datetime.now(timezone.utc).isoformat(),'status':'PASS',
+        'census_stats':expected_stats,'saved_examples_checked':dict(example_counts),
+        'saved_example_deductions_checked':example_steps,'separate_five_step_deductions_checked':len(checked),
+        'five_step_proof':checked,'malformed_proof_rejections':rejections,
+        'case_accounting':{'executions_reported':110676,'census_distinct_formula_partial_pairs':len(seen),
+            'distinct_normalized_original_formula_and_partial_pairs_all_suites':len(identities),
+            'distinct_normalized_original_formulas_with_n_all_suites':len(formula_identities),
+            'distinct_normalized_residual_formulas_with_n_all_suites':len(residuals),
+            'distinct_example_pairs_by_suite':{k:len(v) for k,v in identities_by_suite.items()},
+            'not_counts_up_to_logical_equivalence_or_renaming':True},
+        'no_partial_assignment_census_unsat':sum(m==0 for m in formula_models),
+        'recorded_original_order_costs':costs,
+        'source_total_generated_deductions':results['deductions_audited'],
+        'deduction_scope':'Source rerun audits81311 generated deductions. This independent checker replays only all saved example deductions and the separate five-step proof; census certificates were not saved. It independently checks every saved census decision via direct truth bitsets.',
+        'body_wall_seconds':time.perf_counter()-began,
+        'timing_scope':'Excludes startup, source replay, retrieval, authoring and output serialization. No performance comparison.',
+        'source_hashes':{name:hashlib.sha256((SOURCE/name).read_bytes()).hexdigest() for name in ['census.csv','examples.json','five_step_proof.json','results.json']},
+        'checker_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        'limits':'Same corpus, no random sampling; no new3CNF experiment, historicalRun025execution, proof minimality, complete independent audit of all census deduction sequences or generalSAT claim.'}
+    (ROOT/'INDEPENDENT-AUDIT.json').write_text(json.dumps(out,indent=2)+'\n')
+    print(json.dumps(out,indent=2))
+
+
+if __name__=='__main__':main()

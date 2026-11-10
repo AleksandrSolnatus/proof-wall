@@ -1,0 +1,140 @@
+"""Independent assignment-set oracle for the fixed Run 028 corpus.
+
+Target functions are loaded without executing the original program's top-level
+experiment. Expected counts come from explicitly enumerated falsifying sets,
+not from the target's literal-intersection or fixed-map counting routines.
+"""
+from pathlib import Path
+from itertools import product, combinations
+from collections import Counter
+from datetime import datetime, timezone
+import ast
+import hashlib
+import json
+import sys
+import time
+
+ROOT = Path(__file__).resolve().parent
+SOURCE = ROOT / 'check.py'
+
+
+def require(ok, message):
+    if not ok:
+        raise RuntimeError(message)
+
+
+def load_functions(optimization=0):
+    parsed = ast.parse(SOURCE.read_text())
+    nodes = [n for n in parsed.body if isinstance(n, (ast.Import, ast.ImportFrom, ast.FunctionDef))]
+    scope = {}
+    exec(compile(ast.Module(body=nodes, type_ignores=[]), str(SOURCE), 'exec', optimize=optimization), scope)
+    return scope
+
+
+def truth_sets(formula, n=2):
+    # Independent normalization only for the present non-tautological inputs.
+    clauses = sorted({tuple(sorted(set(c))) for c in formula})
+    points = tuple(product((False, True), repeat=n))
+    forbidden = [set(a for a in points if all(a[abs(l)-1] != (l > 0) for l in c)) for c in clauses]
+    union = set().union(*forbidden)
+    singles = [len(s) for s in forbidden]
+    pairs = [(i, j, len(forbidden[i] & forbidden[j])) for i in range(len(clauses)) for j in range(i+1, len(clauses))]
+    triple_free = all(sum(a in s for s in forbidden) <= 2 for a in points)
+    low = sum(singles) - sum(v for _, _, v in pairs)
+    total = len(points)
+    status = 'COVER' if low == total else 'GAP_BY_UPPER_BOUND' if sum(singles) < total else 'UNKNOWN'
+    return clauses, forbidden, singles, pairs, {
+        'formula': [list(c) for c in clauses], 'models': total-len(union),
+        'S1': sum(singles), 'S2': sum(v for _, _, v in pairs), 'L2': low,
+        'actual_forbidden': len(union), 'triple_free': triple_free, 'status': status,
+        'old_disjoint_cover': all(v == 0 for _, _, v in pairs) and sum(singles) == total,
+    }
+
+
+def main():
+    start = time.perf_counter()
+    target = load_functions()
+    universe = [(1,), (-1,), (2,), (-2,), (1,2), (1,-2), (-1,2), (-1,-2)]
+    source_tree = ast.parse(SOURCE.read_text())
+    source_u = next(ast.literal_eval(n.value) for n in source_tree.body if isinstance(n, ast.Assign) and any(isinstance(t,ast.Name) and t.id == 'U' for t in n.targets))
+    require(source_u == universe, 'Corpus universe differs')
+    records = []
+    for mask in range(256):
+        formula = [c for i,c in enumerate(universe) if (mask >> i) & 1]
+        clauses, forbidden, singles, pairs, row = truth_sets(formula)
+        generated = target['receipt'](formula, 2)
+        require(generated == (singles,pairs), ('receipt',mask))
+        require(target['verify'](formula,2,singles,pairs) == row['L2'], ('verifier',mask))
+        require(row['L2'] <= row['actual_forbidden'] <= min(4,row['S1']), ('bounds',mask))
+        require((row['L2'] == row['actual_forbidden']) == row['triple_free'], ('exactness iff',mask))
+        for ids in combinations(range(len(clauses)),3):
+            exact = len(forbidden[ids[0]] & forbidden[ids[1]] & forbidden[ids[2]])
+            require(target['intersect_size']([clauses[i] for i in ids],2) == exact, ('triple',mask,ids))
+        require(row['status'] != 'COVER' or row['models'] == 0, ('false COVER',mask))
+        require(row['status'] != 'GAP_BY_UPPER_BOUND' or row['models'] > 0, ('false GAP',mask))
+        records.append({'mask':mask, **row})
+    examples = {}
+    for name, formula in {
+        'pair_overlap_success':[(1,),(2,),(-1,-2)],
+        'triple_overlap_unsat':[(1,),(-1,),(2,),(1,2)],
+        'same_formula_without_redundant_clause':[(1,),(-1,),(2,)],
+        'empty_clause':[()], 'empty_formula':[],
+    }.items():
+        _,_,s,p,row = truth_sets(formula)
+        require(target['receipt'](formula,2)==(s,p),('example receipt',name))
+        require(target['verify'](formula,2,s,p)==row['L2'],('example verify',name))
+        examples[name]={k:row[k] for k in ['S1','S2','L2','actual_forbidden','models']}
+        examples[name]['triples_absent']=row['triple_free']
+    aggregate = {
+        'formulas':len(records), 'truth_assignments':4*len(records),
+        'status_counts':dict(Counter(r['status'] for r in records)),
+        'previous_disjoint_covers':sum(r['old_disjoint_cover'] for r in records),
+        'pair_corrected_covers':sum(r['status']=='COVER' for r in records),
+        'triple_free_formulas':sum(r['triple_free'] for r in records),
+        'exact_count_checks':sum(r['L2']==r['actual_forbidden'] for r in records),
+        'naive_false_SAT_if_L2_treated_exact':sum(r['L2']<4 and r['models']==0 for r in records),
+        'examples':examples,
+    }
+    replay = json.loads((ROOT/'replay.stdout').read_text())
+    for k,v in aggregate.items(): require(replay[k] == v, ('replay summary',k))
+    malformed = [
+        ('missing_pair', [(1,),(2,)], 2, [2,2], []),
+        ('zero_intersection', [(1,),(2,)], 2, [2,2], [(0,1,0)]),
+        ('duplicate_pair', [(1,),(2,)], 2, [2,2], [(0,1,1),(0,1,1)]),
+        ('reverse_pair', [(1,),(2,)], 2, [2,2], [(1,0,1)]),
+        ('wrong_single', [(1,),(2,)], 2, [3,2], [(0,1,1)]),
+        ('outside_variable_range', [(3,)], 2, [2], []),
+        ('tautological_input', [(1,-1)], 2, [1], []),
+    ]
+    rejected=[]
+    for name,f,n,s,p in malformed:
+        try: target['verify'](f,n,s,p)
+        except AssertionError: rejected.append(name)
+        else: raise RuntimeError(('malformed receipt accepted in normal mode',name))
+    # Demonstrate the exact runtime limitation, without changing global options
+    # or modifying the original source. This is an expected defect observation.
+    optimized = load_functions(optimization=2)
+    forged = optimized['verify']([(1,),(2,)],2,[2,2],[])
+    require(forged == 4, 'Expected optimized-mode loss of validation not reproduced')
+    result = {
+        'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
+        'scope':'Independently authored truth-set oracle on the same finite corpus; no broader benchmark claim.',
+        'normal_mode_status':'PASS', 'aggregate':aggregate,
+        'formula_records':records,
+        'malformed_normal_mode_rejections':rejected,
+        'optimized_function_probe':{
+            'compile_optimize':2, 'malformed_receipt':'Omit pair overlap for (t) AND (u)',
+            'returned_L2':forged, 'actual_models':1,
+            'conclusion':'Source verifier validation is implemented with assert and is disabled by optimized compilation. A false COVER arithmetic result is returned.'},
+        'body_wall_seconds':time.perf_counter()-start,
+        'timing_limits':'Excludes interpreter startup, retrieval, code authoring, review and serialization.',
+        'source_code_sha256':hashlib.sha256(SOURCE.read_bytes()).hexdigest(),
+        'independent_checker_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        'python':sys.version,
+        'cost_and_limits':{'corpus_is_same_as_source':True,'named_examples':5,'named_truth_assignments':20,'unique_formulas_including_examples':257,'randomness':None,'memory_measured':False,'ai_credits_measured':False},
+    }
+    (ROOT/'INDEPENDENT-TRUTH-SETS.json').write_text(json.dumps(result,indent=2)+'\n')
+    print(json.dumps({k:v for k,v in result.items() if k not in ['formula_records','aggregate']},indent=2))
+
+
+if __name__=='__main__':main()

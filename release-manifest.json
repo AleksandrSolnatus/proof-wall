@@ -1,5 +1,5 @@
 {
-  "exhibits": 35,
+  "exhibits": 36,
   "files": {
     ".nojekyll": {
       "bytes": 0,
@@ -188,6 +188,106 @@
     "exhibits/arepo-two-lights-initial-failure/v2/submitted-manifest.json": {
       "bytes": 3634,
       "sha256": "5f43fc1313405d1bc381b74ffe3db33e358e0dbfcd0b96ea321625db51a472d2"
+    },
+    "exhibits/branches-six-doorways/v2/exhibit.json": {
+      "bytes": 20827,
+      "sha256": "3b4bd5d0fde46a0234d5dd72458e77ab858447cefcead2f7ba6ae65cb0ea69ef"
+    },
+    "exhibits/branches-six-doorways/v2/files/article.md.txt": {
+      "bytes": 11274,
+      "sha256": "65d6d31fbc960f9439237690a15c49114c6ac1647ac28f94c9d59ef90bed5495"
+    },
+    "exhibits/branches-six-doorways/v2/files/files/evidence-note.md.txt": {
+      "bytes": 2637,
+      "sha256": "5696921d38846adc94ddad381e7ec594c7f11b3ee7f21739cb0e5160db927203"
+    },
+    "exhibits/branches-six-doorways/v2/files/files/garden011-independent-graph-audit.json.txt": {
+      "bytes": 50600,
+      "sha256": "80d8a1b80287031cab0da63146eb999b7052abe0c6ed651c3393f2516dc47a11"
+    },
+    "exhibits/branches-six-doorways/v2/files/files/garden011-independent-graph-audit.py.txt": {
+      "bytes": 8400,
+      "sha256": "7e9531773439569e96d32ffd778233ba2a016a58c8d419aa2d17d0415474f239"
+    },
+    "exhibits/branches-six-doorways/v2/files/files/garden011-original-results.json.txt": {
+      "bytes": 1247,
+      "sha256": "6f35d79ccd056ae757d0a2d998750e9e5526b910dbd99817e9437a0ec2b8af09"
+    },
+    "exhibits/branches-six-doorways/v2/files/files/guided028-independent-truth-sets.json.txt": {
+      "bytes": 105585,
+      "sha256": "4a5f7aadc01d20ecd4f1af1b067ab8cb5245307fa6da7c8d053a5d8f09c3db19"
+    },
+    "exhibits/branches-six-doorways/v2/files/files/guided028-independent-truth-sets.py.txt": {
+      "bytes": 7526,
+      "sha256": "4dea73e9408835062905330c29cd43280c7d79dc666ce7cea801a3c712247f27"
+    },
+    "exhibits/branches-six-doorways/v2/files/files/guided028-original-output.json.txt": {
+      "bytes": 1245,
+      "sha256": "fc8836330fd423d6f92497d92a80838203ac5b6f1b783ed240787dc73fb4f161"
+    },
+    "exhibits/branches-six-doorways/v2/files/files/hub016-independent-check.json.txt": {
+      "bytes": 1040,
+      "sha256": "79349cea86627511a27633ae64ff4be894dfa85fdd8ce43e3268e6ba898abf62"
+    },
+    "exhibits/branches-six-doorways/v2/files/files/hub016-independent-check.py.txt": {
+      "bytes": 6740,
+      "sha256": "d283008bf2585e6d9278948d894061220de4c8b6ad6fadabaf6be5228e92e405"
+    },
+    "exhibits/branches-six-doorways/v2/files/files/hub016-ledger-correction-check.json.txt": {
+      "bytes": 985,
+      "sha256": "3238872aaf006afcec6b55372623f99e253921a57fb88f41a4d235f62b55637f"
+    },
+    "exhibits/branches-six-doorways/v2/files/files/hub016-original-certificates.json.txt": {
+      "bytes": 5137,
+      "sha256": "40a4463a1caf6351272c15867a92758b2033386ef1413ffb5a7c62421820e187"
+    },
+    "exhibits/branches-six-doorways/v2/files/files/one026-independent-audit.json.txt": {
+      "bytes": 3628,
+      "sha256": "e754bea0743c1ea296a1aa31bb33fc15caaed03478b777690578aecfb9ac9351"
+    },
+    "exhibits/branches-six-doorways/v2/files/files/one026-independent-audit.py.txt": {
+      "bytes": 8616,
+      "sha256": "2bfc23f4dab0c9650f8777bf6001beb4ae11cacc253c0568ab318a424d919c01"
+    },
+    "exhibits/branches-six-doorways/v2/files/files/shape011-independent-check.json.txt": {
+      "bytes": 16429,
+      "sha256": "f0034140b284d25c399319f32a53911a905bf89eefdcb7f6a9ef90d0a6cd9ce8"
+    },
+    "exhibits/branches-six-doorways/v2/files/files/shape011-independent-check.py.txt": {
+      "bytes": 8453,
+      "sha256": "d0a2c061e1579d9671543d483468e90329f99af12fe24e35cd5d6959d25b9686"
+    },
+    "exhibits/branches-six-doorways/v2/files/files/shape011-original-results.json.txt": {
+      "bytes": 303235,
+      "sha256": "9cff5d09ed86269780310d0e516757a9c3f0dc0a76964921a1bfcedd14ad99cb"
+    },
+    "exhibits/branches-six-doorways/v2/files/files/toy023-independent-mapping.json.txt": {
+      "bytes": 1264,
+      "sha256": "9b575473b8a9189b52000dcdd6daee2c40ddfca3fdb9a2698d579b19bd0629e6"
+    },
+    "exhibits/branches-six-doorways/v2/files/files/toy023-independent-mapping.py.txt": {
+      "bytes": 1468,
+      "sha256": "6ca95a81475e299de0c0c9ac15092324aa5bee871ee4a4b2e2dcb94c6aa40f26"
+    },
+    "exhibits/branches-six-doorways/v2/files/files/toy025-independent-check.json.txt": {
+      "bytes": 1712,
+      "sha256": "250b6e1bb8bdae2648720a5160f352aa365a998e56087866330620edf5181973"
+    },
+    "exhibits/branches-six-doorways/v2/files/files/toy025-independent-check.py.txt": {
+      "bytes": 6438,
+      "sha256": "d5aae4832bb618b9913d423a40c299b9bec3fcf42b64efbfe74b4cc6e7a41a3d"
+    },
+    "exhibits/branches-six-doorways/v2/index.html": {
+      "bytes": 31164,
+      "sha256": "e63da5fe38ca09d52e4f99925fb4ce2ae16abfedc4e1f4a9b940daaf6471b27b"
+    },
+    "exhibits/branches-six-doorways/v2/snapshot.json": {
+      "bytes": 3528,
+      "sha256": "fe23ede898c328e42d36c6b75af950c18e42b6f244265c690d151f158af461c1"
+    },
+    "exhibits/branches-six-doorways/v2/submitted-manifest.json": {
+      "bytes": 15643,
+      "sha256": "2cc6a774b4f669e94c513f818bae232df90ecfde366e27f42932ce67d0da3a2f"
     },
     "exhibits/changing-pair-001-recovered-pigeon/v1/exhibit.json": {
       "bytes": 3212,
@@ -1806,12 +1906,12 @@
       "sha256": "d1cf42ce64b01824f3c20d2eb7df88c95f8ffcbcc840f64a6c772c74989d4a8a"
     },
     "index.html": {
-      "bytes": 22373,
-      "sha256": "6a4795e3cc5208255f21295960d4f1527a740c45286265e0b707b13cecbf08a0"
+      "bytes": 22872,
+      "sha256": "e10e6bed63864b5e4d730deeb6de6ca7a19564dbda529bb6e24b409d4edd2a61"
     },
     "index.json": {
-      "bytes": 29188,
-      "sha256": "9cf2684cbd02a2f0231533146e873773021dddb7c73ba27cc602452945f2d84f"
+      "bytes": 29988,
+      "sha256": "267298d3eb86b53c044084043c6fe6438931fe94b4cd0e13c8c61309f5c2a998"
     },
     "llms.txt": {
       "bytes": 489,

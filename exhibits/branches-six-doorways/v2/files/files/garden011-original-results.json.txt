@@ -1,0 +1,70 @@
+{
+  "cases": 5832,
+  "roundtrip_states": 11664,
+  "kinds": {
+    "insert_bridge": 708,
+    "delete_bridge": 708,
+    "insert_cycle_edge": 2208,
+    "delete_cycle_edge": 2208
+  },
+  "patch_costs": {
+    "path_slot_probes": 37368,
+    "mask_xors": 9648,
+    "bit_xors": 9648,
+    "cycle_membership_tests": 4128
+  },
+  "rebuild_costs": {
+    "slot_reads": 34992,
+    "adj_appends": 44712,
+    "adj_probes": 44712,
+    "mask_xors": 28404,
+    "bit_xors": 28404,
+    "chord_slot_tests": 34992
+  },
+  "cold_patch_costs": {
+    "slot_reads": 34992,
+    "chord_slot_tests": 34992,
+    "path_slot_probes": 37368,
+    "adj_appends": 44712,
+    "adj_probes": 44712,
+    "mask_xors": 38052,
+    "bit_xors": 38052,
+    "cycle_membership_tests": 4128
+  },
+  "initial_729_costs": {
+    "slot_reads": 4374,
+    "chord_slot_tests": 4374,
+    "adj_appends": 5832,
+    "adj_probes": 5832,
+    "mask_xors": 3764,
+    "bit_xors": 3764
+  },
+  "naive_delete_false_existence": 192,
+  "first_naive_failure": {
+    "original": [
+      -1,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "edge": 1,
+    "old_rows": [
+      [
+        30,
+        0
+      ],
+      [
+        38,
+        1
+      ]
+    ],
+    "patched": [
+      [
+        56,
+        1
+      ]
+    ]
+  }
+}

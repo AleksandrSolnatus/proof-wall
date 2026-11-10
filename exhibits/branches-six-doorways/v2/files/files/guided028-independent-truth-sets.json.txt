@@ -1,0 +1,7004 @@
+{
+  "recorded_at_utc": "2026-11-09T23:37:36.575576+00:00",
+  "scope": "Independently authored truth-set oracle on the same finite corpus; no broader benchmark claim.",
+  "normal_mode_status": "PASS",
+  "aggregate": {
+    "formulas": 256,
+    "truth_assignments": 1024,
+    "status_counts": {
+      "GAP_BY_UPPER_BOUND": 35,
+      "COVER": 82,
+      "UNKNOWN": 139
+    },
+    "previous_disjoint_covers": 7,
+    "pair_corrected_covers": 82,
+    "triple_free_formulas": 161,
+    "exact_count_checks": 161,
+    "naive_false_SAT_if_L2_treated_exact": 79,
+    "examples": {
+      "pair_overlap_success": {
+        "S1": 5,
+        "S2": 1,
+        "L2": 4,
+        "actual_forbidden": 4,
+        "models": 0,
+        "triples_absent": true
+      },
+      "triple_overlap_unsat": {
+        "S1": 7,
+        "S2": 4,
+        "L2": 3,
+        "actual_forbidden": 4,
+        "models": 0,
+        "triples_absent": false
+      },
+      "same_formula_without_redundant_clause": {
+        "S1": 6,
+        "S2": 2,
+        "L2": 4,
+        "actual_forbidden": 4,
+        "models": 0,
+        "triples_absent": true
+      },
+      "empty_clause": {
+        "S1": 4,
+        "S2": 0,
+        "L2": 4,
+        "actual_forbidden": 4,
+        "models": 0,
+        "triples_absent": true
+      },
+      "empty_formula": {
+        "S1": 0,
+        "S2": 0,
+        "L2": 0,
+        "actual_forbidden": 0,
+        "models": 4,
+        "triples_absent": true
+      }
+    }
+  },
+  "formula_records": [
+    {
+      "mask": 0,
+      "formula": [],
+      "models": 4,
+      "S1": 0,
+      "S2": 0,
+      "L2": 0,
+      "actual_forbidden": 0,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 1,
+      "formula": [
+        [
+          1
+        ]
+      ],
+      "models": 2,
+      "S1": 2,
+      "S2": 0,
+      "L2": 2,
+      "actual_forbidden": 2,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 2,
+      "formula": [
+        [
+          -1
+        ]
+      ],
+      "models": 2,
+      "S1": 2,
+      "S2": 0,
+      "L2": 2,
+      "actual_forbidden": 2,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 3,
+      "formula": [
+        [
+          -1
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 0,
+      "S1": 4,
+      "S2": 0,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": true
+    },
+    {
+      "mask": 4,
+      "formula": [
+        [
+          2
+        ]
+      ],
+      "models": 2,
+      "S1": 2,
+      "S2": 0,
+      "L2": 2,
+      "actual_forbidden": 2,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 5,
+      "formula": [
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 4,
+      "S2": 1,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 6,
+      "formula": [
+        [
+          -1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 4,
+      "S2": 1,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 7,
+      "formula": [
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 8,
+      "formula": [
+        [
+          -2
+        ]
+      ],
+      "models": 2,
+      "S1": 2,
+      "S2": 0,
+      "L2": 2,
+      "actual_forbidden": 2,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 9,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 1,
+      "S1": 4,
+      "S2": 1,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 10,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -1
+        ]
+      ],
+      "models": 1,
+      "S1": 4,
+      "S2": 1,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 11,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 12,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 4,
+      "S2": 0,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": true
+    },
+    {
+      "mask": 13,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 14,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 15,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 4,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 16,
+      "formula": [
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 3,
+      "S1": 1,
+      "S2": 0,
+      "L2": 1,
+      "actual_forbidden": 1,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 17,
+      "formula": [
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 2,
+      "S1": 3,
+      "S2": 1,
+      "L2": 2,
+      "actual_forbidden": 2,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 18,
+      "formula": [
+        [
+          -1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 3,
+      "S2": 0,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 19,
+      "formula": [
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 5,
+      "S2": 1,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 20,
+      "formula": [
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 2,
+      "S1": 3,
+      "S2": 1,
+      "L2": 2,
+      "actual_forbidden": 2,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 21,
+      "formula": [
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 5,
+      "S2": 3,
+      "L2": 2,
+      "actual_forbidden": 3,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 22,
+      "formula": [
+        [
+          -1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 5,
+      "S2": 2,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 23,
+      "formula": [
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 4,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 24,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 3,
+      "S2": 0,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 25,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 5,
+      "S2": 2,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 26,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 5,
+      "S2": 1,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 27,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 3,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 28,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 5,
+      "S2": 1,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 29,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 4,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 30,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 3,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 31,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 9,
+      "S2": 6,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 32,
+      "formula": [
+        [
+          -2,
+          1
+        ]
+      ],
+      "models": 3,
+      "S1": 1,
+      "S2": 0,
+      "L2": 1,
+      "actual_forbidden": 1,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 33,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 2,
+      "S1": 3,
+      "S2": 1,
+      "L2": 2,
+      "actual_forbidden": 2,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 34,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ]
+      ],
+      "models": 1,
+      "S1": 3,
+      "S2": 0,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 35,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 0,
+      "S1": 5,
+      "S2": 1,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 36,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 3,
+      "S2": 0,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 37,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 5,
+      "S2": 2,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 38,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 5,
+      "S2": 1,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 39,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 3,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 40,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ]
+      ],
+      "models": 2,
+      "S1": 3,
+      "S2": 1,
+      "L2": 2,
+      "actual_forbidden": 2,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 41,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 1,
+      "S1": 5,
+      "S2": 3,
+      "L2": 2,
+      "actual_forbidden": 3,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 42,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ]
+      ],
+      "models": 1,
+      "S1": 5,
+      "S2": 2,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 43,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 4,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 44,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 5,
+      "S2": 1,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 45,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 4,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 46,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 3,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 47,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 9,
+      "S2": 6,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 48,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 2,
+      "S1": 2,
+      "S2": 0,
+      "L2": 2,
+      "actual_forbidden": 2,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 49,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 2,
+      "S1": 4,
+      "S2": 2,
+      "L2": 2,
+      "actual_forbidden": 2,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 50,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 4,
+      "S2": 0,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": true
+    },
+    {
+      "mask": 51,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 52,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 4,
+      "S2": 1,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 53,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 6,
+      "S2": 4,
+      "L2": 2,
+      "actual_forbidden": 3,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 54,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 55,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 5,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 56,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 4,
+      "S2": 1,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 57,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 6,
+      "S2": 4,
+      "L2": 2,
+      "actual_forbidden": 3,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 58,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 59,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 5,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 60,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 61,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 6,
+      "L2": 2,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 62,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 4,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 63,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 10,
+      "S2": 8,
+      "L2": 2,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 64,
+      "formula": [
+        [
+          -1,
+          2
+        ]
+      ],
+      "models": 3,
+      "S1": 1,
+      "S2": 0,
+      "L2": 1,
+      "actual_forbidden": 1,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 65,
+      "formula": [
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 1,
+      "S1": 3,
+      "S2": 0,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 66,
+      "formula": [
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ]
+      ],
+      "models": 2,
+      "S1": 3,
+      "S2": 1,
+      "L2": 2,
+      "actual_forbidden": 2,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 67,
+      "formula": [
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 0,
+      "S1": 5,
+      "S2": 1,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 68,
+      "formula": [
+        [
+          -1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 2,
+      "S1": 3,
+      "S2": 1,
+      "L2": 2,
+      "actual_forbidden": 2,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 69,
+      "formula": [
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 5,
+      "S2": 2,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 70,
+      "formula": [
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 5,
+      "S2": 3,
+      "L2": 2,
+      "actual_forbidden": 3,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 71,
+      "formula": [
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 4,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 72,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 3,
+      "S2": 0,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 73,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 0,
+      "S1": 5,
+      "S2": 1,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 74,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 5,
+      "S2": 2,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 75,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 3,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 76,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 5,
+      "S2": 1,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 77,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 3,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 78,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 4,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 79,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 9,
+      "S2": 6,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 80,
+      "formula": [
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 2,
+      "S1": 2,
+      "S2": 0,
+      "L2": 2,
+      "actual_forbidden": 2,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 81,
+      "formula": [
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 4,
+      "S2": 1,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 82,
+      "formula": [
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 4,
+      "S2": 1,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 83,
+      "formula": [
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 84,
+      "formula": [
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 2,
+      "S1": 4,
+      "S2": 2,
+      "L2": 2,
+      "actual_forbidden": 2,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 85,
+      "formula": [
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 6,
+      "S2": 4,
+      "L2": 2,
+      "actual_forbidden": 3,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 86,
+      "formula": [
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 6,
+      "S2": 4,
+      "L2": 2,
+      "actual_forbidden": 3,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 87,
+      "formula": [
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 6,
+      "L2": 2,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 88,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 4,
+      "S2": 0,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": true
+    },
+    {
+      "mask": 89,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 90,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 91,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 4,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 92,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 93,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 5,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 94,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 5,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 95,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 10,
+      "S2": 8,
+      "L2": 2,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 96,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ]
+      ],
+      "models": 2,
+      "S1": 2,
+      "S2": 0,
+      "L2": 2,
+      "actual_forbidden": 2,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 97,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 1,
+      "S1": 4,
+      "S2": 1,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 98,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 4,
+      "S2": 1,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 99,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 100,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 4,
+      "S2": 1,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 101,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 6,
+      "S2": 3,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 102,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 3,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 103,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 5,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 104,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 4,
+      "S2": 1,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 105,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 3,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 106,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 6,
+      "S2": 3,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 107,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 5,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 108,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 109,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 5,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 110,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 5,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 111,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 10,
+      "S2": 8,
+      "L2": 2,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 112,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 3,
+      "S2": 0,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 113,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 5,
+      "S2": 2,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 114,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 5,
+      "S2": 1,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 115,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 3,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 116,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 5,
+      "S2": 2,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 117,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 7,
+      "S2": 5,
+      "L2": 2,
+      "actual_forbidden": 3,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 118,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 4,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 119,
+      "formula": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 9,
+      "S2": 7,
+      "L2": 2,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 120,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 5,
+      "S2": 1,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 121,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 4,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 122,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 3,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 123,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 9,
+      "S2": 6,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 124,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 3,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 125,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 9,
+      "S2": 7,
+      "L2": 2,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 126,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 9,
+      "S2": 6,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 127,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 11,
+      "S2": 10,
+      "L2": 1,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 128,
+      "formula": [
+        [
+          -2,
+          -1
+        ]
+      ],
+      "models": 3,
+      "S1": 1,
+      "S2": 0,
+      "L2": 1,
+      "actual_forbidden": 1,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 129,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 1,
+      "S1": 3,
+      "S2": 0,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 130,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ]
+      ],
+      "models": 2,
+      "S1": 3,
+      "S2": 1,
+      "L2": 2,
+      "actual_forbidden": 2,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 131,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 0,
+      "S1": 5,
+      "S2": 1,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 132,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 3,
+      "S2": 0,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 133,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 5,
+      "S2": 1,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 134,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 5,
+      "S2": 2,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 135,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 3,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 136,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ]
+      ],
+      "models": 2,
+      "S1": 3,
+      "S2": 1,
+      "L2": 2,
+      "actual_forbidden": 2,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 137,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 1,
+      "S1": 5,
+      "S2": 2,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 138,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ]
+      ],
+      "models": 1,
+      "S1": 5,
+      "S2": 3,
+      "L2": 2,
+      "actual_forbidden": 3,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 139,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 4,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 140,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 5,
+      "S2": 1,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 141,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 3,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 142,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 4,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 143,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 9,
+      "S2": 6,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 144,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 2,
+      "S1": 2,
+      "S2": 0,
+      "L2": 2,
+      "actual_forbidden": 2,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 145,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 4,
+      "S2": 1,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 146,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 4,
+      "S2": 1,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 147,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 148,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 4,
+      "S2": 1,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 149,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 3,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 150,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 6,
+      "S2": 3,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 151,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 5,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 152,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 4,
+      "S2": 1,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 153,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 6,
+      "S2": 3,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 154,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 3,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 155,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 5,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 156,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 157,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 5,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 158,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 5,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 159,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 10,
+      "S2": 8,
+      "L2": 2,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 160,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ]
+      ],
+      "models": 2,
+      "S1": 2,
+      "S2": 0,
+      "L2": 2,
+      "actual_forbidden": 2,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 161,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 1,
+      "S1": 4,
+      "S2": 1,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 162,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ]
+      ],
+      "models": 1,
+      "S1": 4,
+      "S2": 1,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 163,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 164,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 4,
+      "S2": 0,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": true
+    },
+    {
+      "mask": 165,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 166,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 167,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 4,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 168,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ]
+      ],
+      "models": 2,
+      "S1": 4,
+      "S2": 2,
+      "L2": 2,
+      "actual_forbidden": 2,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 169,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 1,
+      "S1": 6,
+      "S2": 4,
+      "L2": 2,
+      "actual_forbidden": 3,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 170,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ]
+      ],
+      "models": 1,
+      "S1": 6,
+      "S2": 4,
+      "L2": 2,
+      "actual_forbidden": 3,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 171,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 6,
+      "L2": 2,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 172,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 173,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 5,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 174,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 5,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 175,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 10,
+      "S2": 8,
+      "L2": 2,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 176,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 3,
+      "S2": 0,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 177,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 5,
+      "S2": 2,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 178,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 5,
+      "S2": 1,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 179,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 3,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 180,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 5,
+      "S2": 1,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 181,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 4,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 182,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 3,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 183,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 9,
+      "S2": 6,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 184,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 5,
+      "S2": 2,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 185,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 7,
+      "S2": 5,
+      "L2": 2,
+      "actual_forbidden": 3,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 186,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 4,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 187,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 9,
+      "S2": 7,
+      "L2": 2,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 188,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 3,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 189,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 9,
+      "S2": 7,
+      "L2": 2,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 190,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 9,
+      "S2": 6,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 191,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 11,
+      "S2": 10,
+      "L2": 1,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 192,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1,
+          2
+        ]
+      ],
+      "models": 2,
+      "S1": 2,
+      "S2": 0,
+      "L2": 2,
+      "actual_forbidden": 2,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 193,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 0,
+      "S1": 4,
+      "S2": 0,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": true
+    },
+    {
+      "mask": 194,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ]
+      ],
+      "models": 2,
+      "S1": 4,
+      "S2": 2,
+      "L2": 2,
+      "actual_forbidden": 2,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 195,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 196,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 4,
+      "S2": 1,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 197,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 198,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 6,
+      "S2": 4,
+      "L2": 2,
+      "actual_forbidden": 3,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 199,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 5,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 200,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 4,
+      "S2": 1,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 201,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 202,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 6,
+      "S2": 4,
+      "L2": 2,
+      "actual_forbidden": 3,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 203,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 5,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 204,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 205,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 4,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 206,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 6,
+      "L2": 2,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 207,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 10,
+      "S2": 8,
+      "L2": 2,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 208,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 3,
+      "S2": 0,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 209,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 5,
+      "S2": 1,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 210,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 5,
+      "S2": 2,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 211,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 3,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 212,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 5,
+      "S2": 2,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 213,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 4,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 214,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 7,
+      "S2": 5,
+      "L2": 2,
+      "actual_forbidden": 3,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 215,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 9,
+      "S2": 7,
+      "L2": 2,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 216,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 5,
+      "S2": 1,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 217,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 3,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 218,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 4,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 219,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 9,
+      "S2": 6,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 220,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 3,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 221,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 9,
+      "S2": 6,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 222,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 9,
+      "S2": 7,
+      "L2": 2,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 223,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 11,
+      "S2": 10,
+      "L2": 1,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 224,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 3,
+      "S2": 0,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "GAP_BY_UPPER_BOUND",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 225,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 0,
+      "S1": 5,
+      "S2": 1,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 226,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 5,
+      "S2": 2,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 227,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 3,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 228,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 5,
+      "S2": 1,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 229,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 3,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 230,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 4,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 231,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 9,
+      "S2": 6,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 232,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 5,
+      "S2": 2,
+      "L2": 3,
+      "actual_forbidden": 3,
+      "triple_free": true,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 233,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 4,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 234,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ]
+      ],
+      "models": 1,
+      "S1": 7,
+      "S2": 5,
+      "L2": 2,
+      "actual_forbidden": 3,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 235,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "models": 0,
+      "S1": 9,
+      "S2": 7,
+      "L2": 2,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 236,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 7,
+      "S2": 3,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 237,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 9,
+      "S2": 6,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 238,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 9,
+      "S2": 7,
+      "L2": 2,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 239,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 11,
+      "S2": 10,
+      "L2": 1,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 240,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 4,
+      "S2": 0,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": true
+    },
+    {
+      "mask": 241,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 242,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 243,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 4,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 244,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 245,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 5,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 246,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 5,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 247,
+      "formula": [
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 10,
+      "S2": 8,
+      "L2": 2,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 248,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 249,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 5,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 250,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 5,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 251,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 10,
+      "S2": 8,
+      "L2": 2,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 252,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 8,
+      "S2": 4,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "triple_free": true,
+      "status": "COVER",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 253,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 10,
+      "S2": 8,
+      "L2": 2,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 254,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 10,
+      "S2": 8,
+      "L2": 2,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    },
+    {
+      "mask": 255,
+      "formula": [
+        [
+          -2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "models": 0,
+      "S1": 12,
+      "S2": 12,
+      "L2": 0,
+      "actual_forbidden": 4,
+      "triple_free": false,
+      "status": "UNKNOWN",
+      "old_disjoint_cover": false
+    }
+  ],
+  "malformed_normal_mode_rejections": [
+    "missing_pair",
+    "zero_intersection",
+    "duplicate_pair",
+    "reverse_pair",
+    "wrong_single",
+    "outside_variable_range",
+    "tautological_input"
+  ],
+  "optimized_function_probe": {
+    "compile_optimize": 2,
+    "malformed_receipt": "Omit pair overlap for (t) AND (u)",
+    "returned_L2": 4,
+    "actual_models": 1,
+    "conclusion": "Source verifier validation is implemented with assert and is disabled by optimized compilation. A false COVER arithmetic result is returned."
+  },
+  "body_wall_seconds": 0.008538374910131097,
+  "timing_limits": "Excludes interpreter startup, retrieval, code authoring, review and serialization.",
+  "source_code_sha256": "e248d90ec6a98199fd2d6fa4a2ee9355a0d7312d90b5b61dbd3242e9b5758414",
+  "independent_checker_sha256": "4dea73e9408835062905330c29cd43280c7d79dc666ce7cea801a3c712247f27",
+  "python": "3.14.6 (main, Jun 10 2026, 10:03:53) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "cost_and_limits": {
+    "corpus_is_same_as_source": true,
+    "named_examples": 5,
+    "named_truth_assignments": 20,
+    "unique_formulas_including_examples": 257,
+    "randomness": null,
+    "memory_measured": false,
+    "ai_credits_measured": false
+  }
+}

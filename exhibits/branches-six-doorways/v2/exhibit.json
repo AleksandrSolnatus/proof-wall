@@ -1,0 +1,384 @@
+{
+  "article": "article.md",
+  "artifact_type": "question",
+  "claim_scope": "Historical and methodological overview with newly checked finite claims. No general SAT algorithm, complexity separation, physical theorem or overall efficiency gain is established.",
+  "date": "2026-11-09",
+  "downloads": [
+    {
+      "bytes": 11274,
+      "original_path": "article.md",
+      "sha256": "65d6d31fbc960f9439237690a15c49114c6ac1647ac28f94c9d59ef90bed5495",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 2637,
+      "original_path": "files/evidence-note.md",
+      "sha256": "5696921d38846adc94ddad381e7ec594c7f11b3ee7f21739cb0e5160db927203",
+      "url": "files/files/evidence-note.md.txt"
+    },
+    {
+      "bytes": 16429,
+      "original_path": "files/shape011-independent-check.json",
+      "sha256": "f0034140b284d25c399319f32a53911a905bf89eefdcb7f6a9ef90d0a6cd9ce8",
+      "url": "files/files/shape011-independent-check.json.txt"
+    },
+    {
+      "bytes": 8453,
+      "original_path": "files/shape011-independent-check.py",
+      "sha256": "d0a2c061e1579d9671543d483468e90329f99af12fe24e35cd5d6959d25b9686",
+      "url": "files/files/shape011-independent-check.py.txt"
+    },
+    {
+      "bytes": 3628,
+      "original_path": "files/one026-independent-audit.json",
+      "sha256": "e754bea0743c1ea296a1aa31bb33fc15caaed03478b777690578aecfb9ac9351",
+      "url": "files/files/one026-independent-audit.json.txt"
+    },
+    {
+      "bytes": 8616,
+      "original_path": "files/one026-independent-audit.py",
+      "sha256": "2bfc23f4dab0c9650f8777bf6001beb4ae11cacc253c0568ab318a424d919c01",
+      "url": "files/files/one026-independent-audit.py.txt"
+    },
+    {
+      "bytes": 105585,
+      "original_path": "files/guided028-independent-truth-sets.json",
+      "sha256": "4a5f7aadc01d20ecd4f1af1b067ab8cb5245307fa6da7c8d053a5d8f09c3db19",
+      "url": "files/files/guided028-independent-truth-sets.json.txt"
+    },
+    {
+      "bytes": 7526,
+      "original_path": "files/guided028-independent-truth-sets.py",
+      "sha256": "4dea73e9408835062905330c29cd43280c7d79dc666ce7cea801a3c712247f27",
+      "url": "files/files/guided028-independent-truth-sets.py.txt"
+    },
+    {
+      "bytes": 1040,
+      "original_path": "files/hub016-independent-check.json",
+      "sha256": "79349cea86627511a27633ae64ff4be894dfa85fdd8ce43e3268e6ba898abf62",
+      "url": "files/files/hub016-independent-check.json.txt"
+    },
+    {
+      "bytes": 6740,
+      "original_path": "files/hub016-independent-check.py",
+      "sha256": "d283008bf2585e6d9278948d894061220de4c8b6ad6fadabaf6be5228e92e405",
+      "url": "files/files/hub016-independent-check.py.txt"
+    },
+    {
+      "bytes": 50600,
+      "original_path": "files/garden011-independent-graph-audit.json",
+      "sha256": "80d8a1b80287031cab0da63146eb999b7052abe0c6ed651c3393f2516dc47a11",
+      "url": "files/files/garden011-independent-graph-audit.json.txt"
+    },
+    {
+      "bytes": 8400,
+      "original_path": "files/garden011-independent-graph-audit.py",
+      "sha256": "7e9531773439569e96d32ffd778233ba2a016a58c8d419aa2d17d0415474f239",
+      "url": "files/files/garden011-independent-graph-audit.py.txt"
+    },
+    {
+      "bytes": 1712,
+      "original_path": "files/toy025-independent-check.json",
+      "sha256": "250b6e1bb8bdae2648720a5160f352aa365a998e56087866330620edf5181973",
+      "url": "files/files/toy025-independent-check.json.txt"
+    },
+    {
+      "bytes": 6438,
+      "original_path": "files/toy025-independent-check.py",
+      "sha256": "d5aae4832bb618b9913d423a40c299b9bec3fcf42b64efbfe74b4cc6e7a41a3d",
+      "url": "files/files/toy025-independent-check.py.txt"
+    },
+    {
+      "bytes": 1264,
+      "original_path": "files/toy023-independent-mapping.json",
+      "sha256": "9b575473b8a9189b52000dcdd6daee2c40ddfca3fdb9a2698d579b19bd0629e6",
+      "url": "files/files/toy023-independent-mapping.json.txt"
+    },
+    {
+      "bytes": 1468,
+      "original_path": "files/toy023-independent-mapping.py",
+      "sha256": "6ca95a81475e299de0c0c9ac15092324aa5bee871ee4a4b2e2dcb94c6aa40f26",
+      "url": "files/files/toy023-independent-mapping.py.txt"
+    },
+    {
+      "bytes": 1245,
+      "original_path": "files/guided028-original-output.json",
+      "sha256": "fc8836330fd423d6f92497d92a80838203ac5b6f1b783ed240787dc73fb4f161",
+      "url": "files/files/guided028-original-output.json.txt"
+    },
+    {
+      "bytes": 5137,
+      "original_path": "files/hub016-original-certificates.json",
+      "sha256": "40a4463a1caf6351272c15867a92758b2033386ef1413ffb5a7c62421820e187",
+      "url": "files/files/hub016-original-certificates.json.txt"
+    },
+    {
+      "bytes": 985,
+      "original_path": "files/hub016-ledger-correction-check.json",
+      "sha256": "3238872aaf006afcec6b55372623f99e253921a57fb88f41a4d235f62b55637f",
+      "url": "files/files/hub016-ledger-correction-check.json.txt"
+    },
+    {
+      "bytes": 1247,
+      "original_path": "files/garden011-original-results.json",
+      "sha256": "6f35d79ccd056ae757d0a2d998750e9e5526b910dbd99817e9437a0ec2b8af09",
+      "url": "files/files/garden011-original-results.json.txt"
+    },
+    {
+      "bytes": 303235,
+      "original_path": "files/shape011-original-results.json",
+      "sha256": "9cff5d09ed86269780310d0e516757a9c3f0dc0a76964921a1bfcedd14ad99cb",
+      "url": "files/files/shape011-original-results.json.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+      "bytes": 11274,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "article",
+      "sha256": "65d6d31fbc960f9439237690a15c49114c6ac1647ac28f94c9d59ef90bed5495"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+      "bytes": 2637,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "files/evidence-note.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "5696921d38846adc94ddad381e7ec594c7f11b3ee7f21739cb0e5160db927203"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; independently authored review work.",
+      "bytes": 16429,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/shape011-independent-check.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "f0034140b284d25c399319f32a53911a905bf89eefdcb7f6a9ef90d0a6cd9ce8"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; independently authored review work.",
+      "bytes": 8453,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/shape011-independent-check.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "d0a2c061e1579d9671543d483468e90329f99af12fe24e35cd5d6959d25b9686"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; independently authored review work.",
+      "bytes": 3628,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/one026-independent-audit.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "e754bea0743c1ea296a1aa31bb33fc15caaed03478b777690578aecfb9ac9351"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; independently authored review work.",
+      "bytes": 8616,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/one026-independent-audit.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "2bfc23f4dab0c9650f8777bf6001beb4ae11cacc253c0568ab318a424d919c01"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; independently authored review work.",
+      "bytes": 105585,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/guided028-independent-truth-sets.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "4a5f7aadc01d20ecd4f1af1b067ab8cb5245307fa6da7c8d053a5d8f09c3db19"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; independently authored review work.",
+      "bytes": 7526,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/guided028-independent-truth-sets.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "4dea73e9408835062905330c29cd43280c7d79dc666ce7cea801a3c712247f27"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; independently authored review work.",
+      "bytes": 1040,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/hub016-independent-check.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "79349cea86627511a27633ae64ff4be894dfa85fdd8ce43e3268e6ba898abf62"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; independently authored review work.",
+      "bytes": 6740,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/hub016-independent-check.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "d283008bf2585e6d9278948d894061220de4c8b6ad6fadabaf6be5228e92e405"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; independently authored review work.",
+      "bytes": 50600,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/garden011-independent-graph-audit.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "80d8a1b80287031cab0da63146eb999b7052abe0c6ed651c3393f2516dc47a11"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; independently authored review work.",
+      "bytes": 8400,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/garden011-independent-graph-audit.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "7e9531773439569e96d32ffd778233ba2a016a58c8d419aa2d17d0415474f239"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; independently authored review work.",
+      "bytes": 1712,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/toy025-independent-check.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "250b6e1bb8bdae2648720a5160f352aa365a998e56087866330620edf5181973"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; independently authored review work.",
+      "bytes": 6438,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/toy025-independent-check.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "d5aae4832bb618b9913d423a40c299b9bec3fcf42b64efbfe74b4cc6e7a41a3d"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; independently authored review work.",
+      "bytes": 1264,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/toy023-independent-mapping.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "9b575473b8a9189b52000dcdd6daee2c40ddfca3fdb9a2698d579b19bd0629e6"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; independently authored review work.",
+      "bytes": 1468,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/toy023-independent-mapping.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "6ca95a81475e299de0c0c9ac15092324aa5bee871ee4a4b2e2dcb94c6aa40f26"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; original experiment output.",
+      "bytes": 1245,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/guided028-original-output.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "fc8836330fd423d6f92497d92a80838203ac5b6f1b783ed240787dc73fb4f161"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; original experiment output.",
+      "bytes": 5137,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/hub016-original-certificates.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "40a4463a1caf6351272c15867a92758b2033386ef1413ffb5a7c62421820e187"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; independent review record.",
+      "bytes": 985,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/hub016-ledger-correction-check.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "3238872aaf006afcec6b55372623f99e253921a57fb88f41a4d235f62b55637f"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; original experiment output.",
+      "bytes": 1247,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/garden011-original-results.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "6f35d79ccd056ae757d0a2d998750e9e5526b910dbd99817e9437a0ec2b8af09"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; original experiment output and certificates.",
+      "bytes": 303235,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/shape011-original-results.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "9cff5d09ed86269780310d0e516757a9c3f0dc0a76964921a1bfcedd14ad99cb"
+    }
+  ],
+  "finding": "All six continuation sources now have direct inspection and fresh replay evidence. Bounded independent checks support the stated finite results and corrections; a supplied assertion-dependent verifier defect and historical cost gaps remain explicit.",
+  "gardens": [],
+  "id": "branches-six-doorways",
+  "limitations": [
+    "The old bounded review remains historically limited; the primary-source audit is a separate follow-up.",
+    "Independent checking covers the saved evidence and stated finite scopes, not every unsaved deduction or every historical run.",
+    "Guided 028 relies on assertions; optimized Python disables required supplied checks.",
+    "Toy 025 counts shared nodes under one fixed source-node identity per input clause; the three-node case is open. Its minimum-length dependency uses a published result whose original search was not reproduced.",
+    "One Doorway Run 025 cost and miss figures remain attributed; operation categories and replay timing do not establish total runtime savings.",
+    "Charters and conceptual spokes are not proof of independently launched workers."
+  ],
+  "method": "Synthesis of six retained charters and a new primary-source follow-up: exact source custody, unchanged program replay, independently authored finite checks and explicit historical dependencies.",
+  "open_questions": [
+    "Does an eleven-inference Toy 025 refutation use three shared nodes under the fixed model?",
+    "What remains useful after acquisition, verification and maintenance costs are counted?",
+    "Can the remaining historical Run 025 comparisons be recovered and checked independently?"
+  ],
+  "package_sha256": "6373eda3fdb29c1d05707177eebde59aab30a334feeadb3ba7a0cf1452c2c628",
+  "provenance": {
+    "authors": [
+      "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation."
+    ],
+    "change_note": "Version 2 records owner-authorized publication, adds public inspection copies of existing independent checks and outcomes, and identifies the external Toy 023 source. The earlier private candidate and research originals are preserved. Evidence-note table rendered as a list for the existing builder. Selected original outputs and certificates are also included unchanged. The original Shape 011 result includes its actual certificate.",
+    "origin": "Retained charters and private handoff, followed by recovered exact primary packets, scratch replays and independent checks. Full source ledger and custody evidence remain private."
+  },
+  "publication": {
+    "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+    "intent": "request-review",
+    "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner."
+  },
+  "question": "What did six distinct approaches to finding, checking and excluding answers reveal in their bounded experiments?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "unresolved",
+  "title": "The Branches — Six Doorways, One Unfinished Question",
+  "version": 2
+}

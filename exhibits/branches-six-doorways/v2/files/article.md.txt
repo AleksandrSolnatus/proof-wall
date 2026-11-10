@@ -1,0 +1,75 @@
+# The Branches — Six Doorways, One Unfinished Question
+
+If someone gives you an answer and checking it is easy, why might finding it be hard? And what changes when the answer is no: what would it take to rule out every possibility?
+
+On October 15, 2026, six research charters approached questions like these from different directions. They were instructions for distinct approaches, not evidence that six isolated workers were launched. Opposite Doorway explicitly grew from The Center. None of these stories claims to settle P versus NP.
+
+Its branch origins are supported by retained charter texts. The earlier Drago review examined those charters and selected secondary records; it did not check the six later experiments. A new follow-up on November 9 recovered all six exact continuation sources, replayed their supplied programs and added independently authored checks. The accounts below reflect that new evidence, with historical dependencies and incomplete checks identified separately.
+
+## The Center: a proof is not a wish
+
+The Center began with an eight-part scaffold: define the problem, say exactly what must be proved, and take steps that can fail. Its original question distinguished checking a proposed answer from finding one.
+
+Shape Tools 011 contains a nine-variable contradiction that its included earlier pair-probe method leaves unresolved. Six source-supported XOR equations expose it: every variable occurs twice, so adding the equations cancels every variable while leaving a nonzero right side. The new review reproduced the 011 outputs and checked the 88 controls and four fixed-pair residual refutations. It also reran the included predecessor sweep and confirmed all 144 UNKNOWN outcomes. That result concerns the delivered predecessor code; its identity with a separate older upload was not independently established.
+
+The lesson is not that parity solves SAT. An inference language can expose a reason another language missed. UNKNOWN means the first tool did not settle the question; it does not mean the instance was satisfiable. Recognition, checking and retained structure still have costs; these checks establish no general solver speedup.
+
+A related but distinct public checkpoint, [Shape Tools 009](https://aleksandrsolnatus.github.io/proof-wall/exhibits/shape-tools-009-pair-fixed-point/v2/), examines a different contradiction. It is not evidence for 011's numerical claims.
+
+## One Doorway: how small can the question become?
+
+One Doorway began with a single sentence asking for the elementary question inside P versus NP and a smallest rigorous move. Its style was compression: find a small question that can still bear an exact answer.
+
+Resolution 026 uses ordinary resolution while keeping clauses of width at most two. Its source replay reproduced all four saved outputs. A separate checker confirmed all 110,592 census decisions, 84 saved example proofs containing 2,940 deductions, and the separate five-inference certificate. Across its three suites there were 110,676 executions, representing 110,603 distinct normalized original-formula/partial-assignment tasks; these are not inequivalent formulas. The source checked additional deductions during replay, but not every census proof was retained for independent interpretation. The earlier cancellation-miss and counter-cost figures remain attributed to Run 025, which was not recovered. Completeness and a polynomial bound hold here for 2-CNF, not arbitrary 3-CNF.
+
+A proof's displayed length is also not the work required to find it. The unfinished question is what happens when original three-literal clauses remain while new conclusions are restricted to width two: which small contradictions escape that rule?
+
+## Guided Constrainer: imagination with a mathematical rail
+
+Guided Constrainer invited open-ended questions while asking the assistant to translate them into precise claims, challenge them, and keep corrections. The freedom lay in the inquiry; the constraint lay in what the evidence could support.
+
+In the Run 028 account, each clause excludes a region of possible assignments. The pairwise inclusion-exclusion expression gives a lower bound on the size of their union, not an exact union count. If that lower bound covers the entire assignment space, it supplies a sufficient reason for UNSAT. A shortfall alone does not tell us that a satisfying assignment exists.
+
+The unchanged Run 028 code reproduced 82 COVER, 35 SAT by an upper-bound gap, and 139 UNKNOWN among all 256 subsets of its two-variable clause vocabulary. Independent truth sets confirmed those decisions, including the 79 UNSAT cases missed by the cover test. The redundant-clause counterexample also checks: a logically redundant clause can weaken this lower-bound certificate without changing satisfiability. A new limitation matters for reuse: the supplied verifier relies on Python assertions. Optimized execution removes required checks and can accept a damaged receipt with a false COVER conclusion. The reproduced source results use assertions-enabled execution; the code has been preserved with this defect documented.
+
+## Hub-and-Spoke: connections need maps
+
+Hub-and-Spoke made P versus NP the hub and used six conceptual Millennium-problem spokes, each with its own mathematical axis. Poincare was a solved reference, not another open target. A charter for conceptual spokes does not itself establish that six agents ran them.
+
+Round 016 studies a discrete diagonal recurrence, not physical Yang–Mills dynamics. On the non-kernel subspace its slow norm-contraction factor is q = 256/257. Independently checked outward-rounded intervals put q^177 above one half and q^178 below it; monotonicity therefore proves the first norm-halving index K = 178. Both saved traces, all 1,042 comparison records and a separate exact baseline passed the follow-up checks. The included Round 015 report and as-found ledger also confirm the stale Yang–Mills and Navier–Stokes entries that Round 016 corrected. This review binds those delivered snapshots, not every earlier spoke experiment. The source records one assistant with six conceptual spokes.
+
+Some proposed connections produced NULL rather than a forced transfer. What survives is a discipline: identify the map between two problems, its proof obligations, and the cost of its representation. A suggestive resemblance is a question, not a theorem.
+
+## Garden: the contradiction that survived deletion
+
+Garden also used six conceptual substudies, but its design differed from Hub-and-Spoke. Each seed kept its own vocabulary and fuller record while sending provisional compressed drops to a shared waterer. A drop could guide exploration; a proof claim had to return to the underlying evidence.
+
+Cycle 011 concerns parity constraints on four graph vertices. Simply deleting every basis row that mentions a removed edge can discard a constraint that survives as a combination of rows. In the checked counterexample, combining two such rows preserves an inconsistent triangle. The supplied program and verifier reproduced their archived outputs. A new truth-table and cycle-space checker confirmed 5,832 legal edits over 729 labelled graphs and 11,664 forward/reverse state occurrences, including 192 deletion cases where the naive procedure missed a contradiction. State occurrences are not distinct inputs.
+
+Warm repair uses fewer recorded mask/bit XORs than rebuilding on this corpus, but charging acquisition of the old basis changes the cold-start comparison. These are explicit operation categories, not a single elapsed-time speedup or complete cost model. The next question is how to retain and repair useful structure while paying for finding, checking and maintaining it.
+
+## Opposite Doorway: proving there is no way through
+
+Opposite Doorway began at the other end: rejecting one proposed answer is not the same as excluding every answer. It grew from The Center's questions but made impossibility and proof search its own focus.
+
+Toy 025 concerns one fixed four-variable, eight-clause contradiction under exact binary resolution. Its model gives each original clause one source-node identity: repeated premise occurrences count as uses of that same node. The new replay reproduced all 84 two-shared-node case tables byte for byte. Independent checks covered the formula, structural cut arguments, saved table readings and an eleven-inference certificate with four shared input nodes. Together with the predecessor exclusion, this narrows the minimum shared-node count among eleven-inference refutations to three or four. It does not cover arbitrary presentations with separately duplicated free axiom nodes.
+
+Toy 024 remains a distinct predecessor. Its included snapshot was now replayed and supports exclusion of at most one shared node; it does not replace Toy 025’s two-node work. Toy 023 was also recovered. An exact signed-variable map, checked against the published formula and its proof-length convention, links this source to a published nineteen-line minimum: Peitl and Szeider, [Are hitting formulas hard for resolution?](https://repositum.tuwien.at/bitstream/20.500.12708/190257/1/Peitl-2023-Discrete%20Applied%20Mathematics-vor.pdf), Example 4. With all eight original clauses necessary, this supports a minimum of eleven derived inferences. That minimum uses the published result and a checked convention argument; the published exhaustive minimum search was not rerun locally.
+
+The question left open is concrete: can an eleven-inference refutation of that exact formula use three shared nodes? Its answer would concern this formula and proof model, not every proof system.
+
+## Mistakes we can trace
+
+The new follow-up checked these specific corrections against their continuation records:
+
+- Garden: dropping all rows mentioning a removed edge loses a surviving combination in the checked example; combining rows before deletion preserves it.
+- Guided Constrainer: the pairwise expression is a lower bound, not an exact count. UNKNOWN cases and the newly found assertion-mode defect remain visible.
+- Hub-and-Spoke: the included old ledger and full report demonstrate the stale-summary mismatch. Both are retained alongside the correction.
+
+## What the doors leave open
+
+The branches suggest several questions worth carrying forward. A change of representation can make a hidden relationship easier to see, but building and checking the representation has a cost. A failed test is not a proof that every approach fails. A useful connection needs an explicit map. And a result that survives in a small model keeps the limits of that model.
+
+Related published work includes [reusing checked proof dependencies](https://aleksandrsolnatus.github.io/proof-wall/exhibits/math-proof-cache/v2/), [relation transfer](https://aleksandrsolnatus.github.io/proof-wall/exhibits/relation-transfer-001/v2/), and [reconnecting regions](https://aleksandrsolnatus.github.io/proof-wall/exhibits/stone-003b-reconnecting-regions/v2/). They provide context; the six continuation results are supported by their own privately retained sources and follow-up records.
+
+The central question remains unfinished. The record here offers ways to ask it more carefully, and reasons to preserve what did not work as well as what did.

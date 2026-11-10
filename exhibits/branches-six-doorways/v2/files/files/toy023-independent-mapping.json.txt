@@ -1,0 +1,119 @@
+{
+  "paper_formula_visual_transcription": [
+    [
+      1,
+      2,
+      3
+    ],
+    [
+      -1,
+      -2,
+      -3
+    ],
+    [
+      -1,
+      2,
+      4
+    ],
+    [
+      1,
+      -2,
+      -4
+    ],
+    [
+      1,
+      -3,
+      4
+    ],
+    [
+      -1,
+      3,
+      -4
+    ],
+    [
+      2,
+      -3,
+      -4
+    ],
+    [
+      -2,
+      3,
+      4
+    ]
+  ],
+  "target": [
+    [
+      2,
+      3,
+      4
+    ],
+    [
+      1,
+      -2,
+      4
+    ],
+    [
+      -1,
+      -2,
+      3
+    ],
+    [
+      1,
+      2,
+      -3
+    ],
+    [
+      -1,
+      -3,
+      4
+    ],
+    [
+      1,
+      3,
+      -4
+    ],
+    [
+      -1,
+      2,
+      -4
+    ],
+    [
+      -2,
+      -3,
+      -4
+    ]
+  ],
+  "signed_map": {
+    "1": -1,
+    "2": -2,
+    "3": 3,
+    "4": 4
+  },
+  "paper_to_target_1_based": [
+    3,
+    4,
+    2,
+    7,
+    5,
+    6,
+    8,
+    1
+  ],
+  "map_exact": true,
+  "assignments_checked": 16,
+  "each_clause_unique_violation_witnesses": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "all_eight_axioms_necessary": true,
+  "published_minimum_total_lines": 19,
+  "derived_minimum_inferences": 11,
+  "minimum_search_rerun": false,
+  "pdf_sha256": "5606759de6b9f5bc41bd75d104dfc7d8812313294b42085a94a7314a3fb4dcc1"
+}

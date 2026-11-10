@@ -1,0 +1,3566 @@
+{
+  "recorded_at_utc": "2026-11-09T23:46:48.785581+00:00",
+  "status": "PASS",
+  "independence": "No target imports; direct assignments, cycle-mask enumeration and XOR-set spans.",
+  "initial_states": 729,
+  "oracle_assignment_evaluations": 11664,
+  "edit_records": 5832,
+  "forward_reverse_counts_checked": 11664,
+  "forward_reverse_complete_bases_checked": 11664,
+  "distinct_initial_bases_checked": 729,
+  "exact_edit_inventory_verified": true,
+  "kind_counts": {
+    "insert_bridge": 708,
+    "delete_bridge": 708,
+    "insert_cycle_edge": 2208,
+    "delete_cycle_edge": 2208
+  },
+  "naive_deletion_false_existence": 192,
+  "failures": [
+    {
+      "record": 1119,
+      "original": [
+        -1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 1120,
+      "original": [
+        -1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 1134,
+      "original": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 1135,
+      "original": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 1181,
+      "original": [
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 1182,
+      "original": [
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 1210,
+      "original": [
+        -1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 1211,
+      "original": [
+        -1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 1335,
+      "original": [
+        -1,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 1336,
+      "original": [
+        -1,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 1350,
+      "original": [
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 1351,
+      "original": [
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 1397,
+      "original": [
+        -1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 1398,
+      "original": [
+        -1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 1426,
+      "original": [
+        -1,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 1427,
+      "original": [
+        -1,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 1794,
+      "original": [
+        -1,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 1795,
+      "original": [
+        -1,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 1809,
+      "original": [
+        -1,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 1810,
+      "original": [
+        -1,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 1856,
+      "original": [
+        -1,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 1857,
+      "original": [
+        -1,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 1885,
+      "original": [
+        -1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 1886,
+      "original": [
+        -1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2010,
+      "original": [
+        -1,
+        1,
+        1,
+        0,
+        0,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2011,
+      "original": [
+        -1,
+        1,
+        1,
+        0,
+        0,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2025,
+      "original": [
+        -1,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2026,
+      "original": [
+        -1,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2072,
+      "original": [
+        -1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2073,
+      "original": [
+        -1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2101,
+      "original": [
+        -1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2102,
+      "original": [
+        -1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2467,
+      "original": [
+        0,
+        -1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2470,
+      "original": [
+        0,
+        -1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2482,
+      "original": [
+        0,
+        -1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2485,
+      "original": [
+        0,
+        -1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2529,
+      "original": [
+        0,
+        -1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2532,
+      "original": [
+        0,
+        -1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2558,
+      "original": [
+        0,
+        -1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2561,
+      "original": [
+        0,
+        -1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2683,
+      "original": [
+        0,
+        -1,
+        1,
+        0,
+        0,
+        1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2686,
+      "original": [
+        0,
+        -1,
+        1,
+        0,
+        0,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2698,
+      "original": [
+        0,
+        -1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2701,
+      "original": [
+        0,
+        -1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2745,
+      "original": [
+        0,
+        -1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2748,
+      "original": [
+        0,
+        -1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2774,
+      "original": [
+        0,
+        -1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2777,
+      "original": [
+        0,
+        -1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2899,
+      "original": [
+        0,
+        0,
+        -1,
+        0,
+        0,
+        1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2900,
+      "original": [
+        0,
+        0,
+        -1,
+        0,
+        0,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2914,
+      "original": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2915,
+      "original": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2961,
+      "original": [
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2962,
+      "original": [
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2990,
+      "original": [
+        0,
+        0,
+        -1,
+        1,
+        1,
+        1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 2991,
+      "original": [
+        0,
+        0,
+        -1,
+        1,
+        1,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3039,
+      "original": [
+        0,
+        0,
+        0,
+        -1,
+        0,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3054,
+      "original": [
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3082,
+      "original": [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3102,
+      "original": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3103,
+      "original": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3107,
+      "original": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        -1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3114,
+      "original": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3116,
+      "original": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3135,
+      "original": [
+        0,
+        0,
+        0,
+        1,
+        -1,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3148,
+      "original": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        -1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3155,
+      "original": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3156,
+      "original": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3228,
+      "original": [
+        0,
+        0,
+        1,
+        -1,
+        0,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3243,
+      "original": [
+        0,
+        0,
+        1,
+        -1,
+        1,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3264,
+      "original": [
+        0,
+        0,
+        1,
+        0,
+        -1,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3277,
+      "original": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3290,
+      "original": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3292,
+      "original": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3304,
+      "original": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3305,
+      "original": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3331,
+      "original": [
+        0,
+        0,
+        1,
+        1,
+        -1,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3356,
+      "original": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        -1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3369,
+      "original": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3370,
+      "original": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3493,
+      "original": [
+        0,
+        1,
+        -1,
+        0,
+        0,
+        1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3494,
+      "original": [
+        0,
+        1,
+        -1,
+        0,
+        0,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3508,
+      "original": [
+        0,
+        1,
+        -1,
+        0,
+        1,
+        0
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3509,
+      "original": [
+        0,
+        1,
+        -1,
+        0,
+        1,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3555,
+      "original": [
+        0,
+        1,
+        -1,
+        1,
+        0,
+        0
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3556,
+      "original": [
+        0,
+        1,
+        -1,
+        1,
+        0,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3584,
+      "original": [
+        0,
+        1,
+        -1,
+        1,
+        1,
+        1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3585,
+      "original": [
+        0,
+        1,
+        -1,
+        1,
+        1,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3626,
+      "original": [
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3655,
+      "original": [
+        0,
+        1,
+        0,
+        -1,
+        1,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3676,
+      "original": [
+        0,
+        1,
+        0,
+        0,
+        -1,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3682,
+      "original": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3695,
+      "original": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3696,
+      "original": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3729,
+      "original": [
+        0,
+        1,
+        0,
+        1,
+        -1,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3750,
+      "original": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3751,
+      "original": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3761,
+      "original": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        -1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3774,
+      "original": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3776,
+      "original": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3815,
+      "original": [
+        0,
+        1,
+        1,
+        -1,
+        0,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3844,
+      "original": [
+        0,
+        1,
+        1,
+        -1,
+        1,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3858,
+      "original": [
+        0,
+        1,
+        1,
+        0,
+        -1,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3890,
+      "original": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        -1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3897,
+      "original": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3898,
+      "original": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3925,
+      "original": [
+        0,
+        1,
+        1,
+        1,
+        -1,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3931,
+      "original": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        -1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3938,
+      "original": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3940,
+      "original": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3964,
+      "original": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 3965,
+      "original": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4330,
+      "original": [
+        1,
+        -1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4333,
+      "original": [
+        1,
+        -1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4345,
+      "original": [
+        1,
+        -1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4348,
+      "original": [
+        1,
+        -1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4392,
+      "original": [
+        1,
+        -1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4395,
+      "original": [
+        1,
+        -1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4421,
+      "original": [
+        1,
+        -1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4424,
+      "original": [
+        1,
+        -1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4546,
+      "original": [
+        1,
+        -1,
+        1,
+        0,
+        0,
+        1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4549,
+      "original": [
+        1,
+        -1,
+        1,
+        0,
+        0,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4561,
+      "original": [
+        1,
+        -1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4564,
+      "original": [
+        1,
+        -1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4608,
+      "original": [
+        1,
+        -1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4611,
+      "original": [
+        1,
+        -1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4637,
+      "original": [
+        1,
+        -1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4640,
+      "original": [
+        1,
+        -1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4762,
+      "original": [
+        1,
+        0,
+        -1,
+        0,
+        0,
+        1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4763,
+      "original": [
+        1,
+        0,
+        -1,
+        0,
+        0,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4777,
+      "original": [
+        1,
+        0,
+        -1,
+        0,
+        1,
+        0
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4778,
+      "original": [
+        1,
+        0,
+        -1,
+        0,
+        1,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4824,
+      "original": [
+        1,
+        0,
+        -1,
+        1,
+        0,
+        0
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4825,
+      "original": [
+        1,
+        0,
+        -1,
+        1,
+        0,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4853,
+      "original": [
+        1,
+        0,
+        -1,
+        1,
+        1,
+        1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4854,
+      "original": [
+        1,
+        0,
+        -1,
+        1,
+        1,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4895,
+      "original": [
+        1,
+        0,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4924,
+      "original": [
+        1,
+        0,
+        0,
+        -1,
+        1,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4938,
+      "original": [
+        1,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4970,
+      "original": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        -1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4977,
+      "original": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 4978,
+      "original": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5005,
+      "original": [
+        1,
+        0,
+        0,
+        1,
+        -1,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5011,
+      "original": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        -1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5018,
+      "original": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5020,
+      "original": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5044,
+      "original": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5045,
+      "original": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5084,
+      "original": [
+        1,
+        0,
+        1,
+        -1,
+        0,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5113,
+      "original": [
+        1,
+        0,
+        1,
+        -1,
+        1,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5134,
+      "original": [
+        1,
+        0,
+        1,
+        0,
+        -1,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5140,
+      "original": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        -1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5153,
+      "original": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5154,
+      "original": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5187,
+      "original": [
+        1,
+        0,
+        1,
+        1,
+        -1,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5208,
+      "original": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5209,
+      "original": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5219,
+      "original": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        -1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5232,
+      "original": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5234,
+      "original": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5356,
+      "original": [
+        1,
+        1,
+        -1,
+        0,
+        0,
+        1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5357,
+      "original": [
+        1,
+        1,
+        -1,
+        0,
+        0,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5371,
+      "original": [
+        1,
+        1,
+        -1,
+        0,
+        1,
+        0
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5372,
+      "original": [
+        1,
+        1,
+        -1,
+        0,
+        1,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5418,
+      "original": [
+        1,
+        1,
+        -1,
+        1,
+        0,
+        0
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5419,
+      "original": [
+        1,
+        1,
+        -1,
+        1,
+        0,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5447,
+      "original": [
+        1,
+        1,
+        -1,
+        1,
+        1,
+        1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5448,
+      "original": [
+        1,
+        1,
+        -1,
+        1,
+        1,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5496,
+      "original": [
+        1,
+        1,
+        0,
+        -1,
+        0,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5511,
+      "original": [
+        1,
+        1,
+        0,
+        -1,
+        1,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5532,
+      "original": [
+        1,
+        1,
+        0,
+        0,
+        -1,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5545,
+      "original": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5558,
+      "original": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5560,
+      "original": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5572,
+      "original": [
+        1,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5573,
+      "original": [
+        1,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5599,
+      "original": [
+        1,
+        1,
+        0,
+        1,
+        -1,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5624,
+      "original": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        -1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5637,
+      "original": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5638,
+      "original": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5685,
+      "original": [
+        1,
+        1,
+        1,
+        -1,
+        0,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5700,
+      "original": [
+        1,
+        1,
+        1,
+        -1,
+        1,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5728,
+      "original": [
+        1,
+        1,
+        1,
+        0,
+        -1,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5748,
+      "original": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        1
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5749,
+      "original": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        1
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5753,
+      "original": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        -1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5760,
+      "original": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5762,
+      "original": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "edge": 2,
+      "deleted_edge": [
+        0,
+        3
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5781,
+      "original": [
+        1,
+        1,
+        1,
+        1,
+        -1,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5794,
+      "original": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        -1
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5801,
+      "original": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "edge": 0,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    },
+    {
+      "record": 5802,
+      "original": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "edge": 1,
+      "deleted_edge": [
+        0,
+        2
+      ],
+      "naive_count": 2,
+      "actual_count": 0
+    }
+  ],
+  "labelled_witness": {
+    "original": [
+      -1,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "delete_slot": 1,
+    "delete_edge": [
+      0,
+      2
+    ],
+    "old_rows": [
+      [
+        30,
+        0
+      ],
+      [
+        38,
+        1
+      ]
+    ],
+    "surviving_row": [
+      56,
+      1
+    ],
+    "surviving_edges": [
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "actual_models": 0
+  },
+  "costs": {
+    "warm_patch": {
+      "path_slot_probes": 37368,
+      "mask_xors": 9648,
+      "bit_xors": 9648,
+      "cycle_membership_tests": 4128
+    },
+    "rebuild": {
+      "slot_reads": 34992,
+      "adj_appends": 44712,
+      "adj_probes": 44712,
+      "mask_xors": 28404,
+      "bit_xors": 28404,
+      "chord_slot_tests": 34992
+    },
+    "cold_patch": {
+      "slot_reads": 34992,
+      "chord_slot_tests": 34992,
+      "path_slot_probes": 37368,
+      "adj_appends": 44712,
+      "adj_probes": 44712,
+      "mask_xors": 38052,
+      "bit_xors": 38052,
+      "cycle_membership_tests": 4128
+    },
+    "initial_729": {
+      "slot_reads": 4374,
+      "chord_slot_tests": 4374,
+      "adj_appends": 5832,
+      "adj_probes": 5832,
+      "mask_xors": 3764,
+      "bit_xors": 3764
+    },
+    "reverse_record_totals_excluded_from_forward_comparison": {
+      "path_slot_probes": 37368,
+      "cycle_membership_tests": 4128,
+      "mask_xors": 9168,
+      "bit_xors": 9168
+    }
+  },
+  "cost_scope": "Reconciled all retained category totals; independently derived all rebuild/setup and deletion-update counters. Insertion BFS counters inspected in source and reconciled, not separately reimplemented. Omitted runtime overhead remains omitted.",
+  "body_wall_seconds": 0.09271024982444942,
+  "limits": "Same finite corpus; cached truth/cycle oracle for729 inputs. No long arbitrary edit traces, asymptotic speedup, general SAT claim or audit of all seed deductions. Timing excludes startup, review and serialization.",
+  "checker_sha256": "7e9531773439569e96d32ffd778233ba2a016a58c8d419aa2d17d0415474f239",
+  "cases_sha256": "4018286fcfb845eca252f75d431e0942f8085b1fcb51e748966040ac2f28a306"
+}

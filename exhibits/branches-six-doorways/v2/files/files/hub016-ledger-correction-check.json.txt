@@ -1,0 +1,18 @@
+{
+  "checks": {
+    "old_ledger_yang_mills_null": true,
+    "old_ledger_navier_stokes_124_case_claim": true,
+    "old_report_yang_mills_new_decay_result": true,
+    "old_report_navier_stokes_null": true,
+    "current_ledger_yang_mills_interval_result": true,
+    "current_ledger_navier_stokes_null": true,
+    "full_prior015_report_appended_in_current_spoke": true
+  },
+  "source_hashes": {
+    "inputs/ROUND-015-LEDGER-AS-FOUND.md": "8076b26e798b1c58f39b4a67f5b7f5a349e5bc2b637eab25397f848cd09f1684",
+    "inputs/HUB-AND-SPOKE-001-ROUND-015.md": "a3ea2977cba391e1c8b2edde8b8533995ca14609c7d87c2ad0462749128dbc0f",
+    "HUB-LEDGER.md": "e927847b847a97596a5400db6dd94eef2fadaf4b84eb86b574de6f372f42f194",
+    "spokes/04_YANG-MILLS.md": "d647dd492fd83c30584295ec28ddf9ca497b70f7f945d28e5abee363b5ab25bb"
+  },
+  "limit": "Verifies differences and continuity within included snapshots, not identities of independently retrieved original Library versions or old spoke before its append."
+}

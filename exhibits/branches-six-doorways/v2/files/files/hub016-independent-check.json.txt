@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "selected_base": [
+    256,
+    257
+  ],
+  "norm_halving_K": 178,
+  "preceding_exponent": 177,
+  "cold_baseline_pair_updates": 178,
+  "selected_intervals": [
+    [
+      65576,
+      65754
+    ],
+    [
+      65319,
+      65498
+    ]
+  ],
+  "trace_operations": [
+    12,
+    12
+  ],
+  "trace_max_endpoint_numerator_bits": 35,
+  "exact_baseline_sizes": [
+    [
+      1417,
+      1417
+    ],
+    [
+      1425,
+      1426
+    ]
+  ],
+  "grid_cases": 1008,
+  "grid_decisions": {
+    "above": 282,
+    "at_or_below": 571,
+    "unknown": 155
+  },
+  "precision_comparisons": 34,
+  "first_success_in_tested_range": 17,
+  "fixed_precision_additional_checks": 45,
+  "corruptions_rejected": [
+    "operation",
+    "endpoint",
+    "base",
+    "exponent",
+    "missing_row",
+    "extra_row"
+  ],
+  "wall_seconds": 0.0032907091081142426,
+  "limits": "No supplied code imported. Exact-power/cold-recurrence baselines are separate from bounded certificate replay; no general successful-precision bound or physical mass-gap result."
+}

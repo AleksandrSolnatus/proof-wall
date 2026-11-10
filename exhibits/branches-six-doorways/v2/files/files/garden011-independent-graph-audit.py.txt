@@ -1,0 +1,137 @@
+"""Independent direct enumeration of graph assignments and cycle-mask sets.
+
+Imports neither supplied program. Reads frozen case records and checks their
+coverage, forward/reverse bases, counts, labelled shortcut failures and costs.
+"""
+from pathlib import Path
+from itertools import product
+from collections import Counter
+from datetime import datetime, timezone
+import hashlib
+import json
+import time
+
+ROOT = Path(__file__).resolve().parent
+EDGES = [(0,1),(0,2),(0,3),(1,2),(1,3),(2,3)]
+
+
+def require(ok, why):
+    if not ok:
+        raise RuntimeError(why)
+
+
+def direct_graph(a):
+    present = sum((1 << i) for i,b in enumerate(a) if b >= 0)
+    models = [x for x in range(16) if all(b < 0 or (((x >> u) ^ (x >> v)) & 1) == b for (u,v),b in zip(EDGES,a))]
+    reach = [[u == v for v in range(4)] for u in range(4)]
+    for (u,v),b in zip(EDGES,a):
+        if b >= 0: reach[u][v] = reach[v][u] = True
+    for k in range(4):
+        for u in range(4):
+            for v in range(4): reach[u][v] |= reach[u][k] and reach[k][v]
+    components = len({tuple(i for i in range(4) if reach[u][i]) for u in range(4)})
+    cycles = set()
+    for mask in range(64):
+        if mask & ~present: continue
+        parity = [0]*4
+        for i,(u,v) in enumerate(EDGES):
+            if mask & (1 << i): parity[u] ^= 1; parity[v] ^= 1
+        if not any(parity): cycles.add(mask)
+    return {'models':models,'components':components,'cycles':cycles,'edges':present.bit_count()}
+
+
+def check_basis(a, rows, info, label):
+    span = {0}
+    for mask,residual in rows:
+        require(mask in info['cycles'] and residual in (0,1), ('unsupported row',label,mask,residual))
+        expected = sum(a[i] for i in range(6) if mask & (1 << i)) % 2
+        require(residual == expected, ('row parity',label,mask))
+        span |= {v ^ mask for v in tuple(span)}
+    require(len(span) == 2**len(rows), ('dependent rows',label))
+    require(span == info['cycles'], ('incomplete cycle basis',label))
+    represented = 0 if any(b for _,b in rows) else 2**info['components']
+    require(represented == len(info['models']), ('wrong represented model count',label))
+
+
+def build_cost(info):
+    m,c = info['edges'],info['components']
+    result = {'slot_reads':6,'chord_slot_tests':6}
+    if m: result.update(adj_appends=2*m,adj_probes=2*m)
+    xors = (4-c)+2*(m-4+c)
+    if xors: result.update(mask_xors=xors,bit_xors=xors)
+    return Counter(result)
+
+
+def main():
+    began = time.perf_counter()
+    states = list(product((-1,0,1),repeat=6))
+    oracle = {a:direct_graph(a) for a in states}
+    expected_keys = {(a,i,new) for a in states for i,old in enumerate(a) for new in ((0,1) if old < 0 else (-1,))}
+    records = json.loads((ROOT/'source/cases.json').read_text())
+    summary = json.loads((ROOT/'source/results.json').read_text())
+    seen=set(); original_rows={}; initial_costs={}; kinds=Counter(); failures=[]
+    patch_sum=Counter(); baseline_sum=Counter(); cold_sum=Counter(); reverse_sum=Counter()
+    for j,row in enumerate(records):
+        old=tuple(row['original']); i=row['edge']; new=row['new']; key=(old,i,new)
+        require(key in expected_keys and key not in seen, ('illegal/duplicate edit',j,key));seen.add(key)
+        a=list(old);a[i]=new;a=tuple(a)
+        before,after=oracle[old],oracle[a]
+        if old not in original_rows:
+            check_basis(old,row['old_rows'],before,('initial',old));original_rows[old]=row['old_rows']
+        require(row['old_rows']==original_rows[old],('inconsistent initial rows',j))
+        check_basis(a,row['rows'],after,('forward',j))
+        check_basis(old,row['reverse_rows'],before,('reverse',j))
+        require(row['components']==after['components'] and row['reverse_components']==before['components'],('components',j))
+        require(row['count']==len(after['models']) and row['reverse_count']==len(before['models']),('count',j))
+        if new < 0:
+            kind='delete_bridge' if after['components']>before['components'] else 'delete_cycle_edge'
+            naive=[(m,b) for m,b in row['old_rows'] if not m & (1 << i)]
+            naive_count=0 if any(b for _,b in naive) else 2**after['components']
+            if bool(naive_count)!=bool(after['models']):
+                require(naive_count>0 and len(after['models'])==0,('unexpected failure direction',j))
+                failures.append({'record':j,'original':list(old),'edge':i,'deleted_edge':list(EDGES[i]),'naive_count':naive_count,'actual_count':0})
+            hits=sum(bool(m & (1 << i)) for m,b in row['old_rows'])
+            expected_patch=Counter(cycle_membership_tests=len(row['old_rows']))
+            if hits>1:expected_patch.update(mask_xors=hits-1,bit_xors=hits-1)
+            require(Counter(row['patch_cost'])==expected_patch,('deletion cost',j))
+        else:
+            kind='insert_bridge' if after['components']<before['components'] else 'insert_cycle_edge'
+        require(row['kind']==kind,('kind',j));kinds[kind]+=1
+        require(Counter(row['baseline_cost'])==build_cost(after),('rebuild cost',j))
+        require(Counter(row['setup_cost'])==build_cost(before),('setup cost',j))
+        for field in ['patch_cost','baseline_cost','setup_cost','reverse_cost']:
+            require(all(type(v) is int and v>=0 for v in row[field].values()),('invalid cost',j,field))
+        initial_costs[old]=Counter(row['setup_cost'])
+        patch_sum.update(row['patch_cost']);baseline_sum.update(row['baseline_cost'])
+        cold_sum.update(row['setup_cost']);cold_sum.update(row['patch_cost']);reverse_sum.update(row['reverse_cost'])
+    require(seen==expected_keys and len(records)==5832 and len(original_rows)==729,'enumeration coverage')
+    require(dict(kinds)==summary['kinds'],'kind summary')
+    initial_sum=Counter()
+    for counts in initial_costs.values():initial_sum.update(counts)
+    for name,value in [('patch_costs',patch_sum),('rebuild_costs',baseline_sum),('cold_patch_costs',cold_sum),('initial_729_costs',initial_sum)]:
+        require(value==Counter(summary[name]),('cost summary',name))
+    require(len(failures)==summary['naive_delete_false_existence']==192,'shortcut failure tally')
+    first=failures[0]; original=tuple(first['original']); altered=list(original);altered[first['edge']]=-1
+    require(original==(-1,0,0,0,0,1) and first['edge']==1,'labelled failure binding')
+    require(30^38==56 and oracle[tuple(altered)]['models']==[],'labelled triangle contradiction')
+    result={
+        'recorded_at_utc':datetime.now(timezone.utc).isoformat(),'status':'PASS',
+        'independence':'No target imports; direct assignments, cycle-mask enumeration and XOR-set spans.',
+        'initial_states':729,'oracle_assignment_evaluations':729*16,'edit_records':len(records),
+        'forward_reverse_counts_checked':2*len(records),'forward_reverse_complete_bases_checked':2*len(records),
+        'distinct_initial_bases_checked':len(original_rows),'exact_edit_inventory_verified':True,
+        'kind_counts':dict(kinds),'naive_deletion_false_existence':len(failures),'failures':failures,
+        'labelled_witness':{'original':list(original),'delete_slot':1,'delete_edge':[0,2],
+            'old_rows':[[30,0],[38,1]],'surviving_row':[56,1],'surviving_edges':[[1,2],[1,3],[2,3]],'actual_models':0},
+        'costs':{'warm_patch':dict(patch_sum),'rebuild':dict(baseline_sum),'cold_patch':dict(cold_sum),'initial_729':dict(initial_sum),'reverse_record_totals_excluded_from_forward_comparison':dict(reverse_sum)},
+        'cost_scope':'Reconciled all retained category totals; independently derived all rebuild/setup and deletion-update counters. Insertion BFS counters inspected in source and reconciled, not separately reimplemented. Omitted runtime overhead remains omitted.',
+        'body_wall_seconds':time.perf_counter()-began,
+        'limits':'Same finite corpus; cached truth/cycle oracle for729 inputs. No long arbitrary edit traces, asymptotic speedup, general SAT claim or audit of all seed deductions. Timing excludes startup, review and serialization.',
+        'checker_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        'cases_sha256':hashlib.sha256((ROOT/'source/cases.json').read_bytes()).hexdigest(),
+    }
+    (ROOT/'INDEPENDENT-GRAPH-AUDIT.json').write_text(json.dumps(result,indent=2)+'\n')
+    print(json.dumps({k:v for k,v in result.items() if k not in ['failures','costs']},indent=2))
+
+
+if __name__=='__main__':main()

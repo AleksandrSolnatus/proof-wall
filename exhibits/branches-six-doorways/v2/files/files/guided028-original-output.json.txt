@@ -1,0 +1,61 @@
+{
+  "method": "exact deterministic; no seed",
+  "formulas": 256,
+  "truth_assignments": 1024,
+  "status_counts": {
+    "GAP_BY_UPPER_BOUND": 35,
+    "COVER": 82,
+    "UNKNOWN": 139
+  },
+  "previous_disjoint_covers": 7,
+  "pair_corrected_covers": 82,
+  "triple_free_formulas": 161,
+  "exact_count_checks": 161,
+  "naive_false_SAT_if_L2_treated_exact": 79,
+  "malformed_receipts_rejected": 2,
+  "examples": {
+    "pair_overlap_success": {
+      "S1": 5,
+      "S2": 1,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "models": 0,
+      "triples_absent": true
+    },
+    "triple_overlap_unsat": {
+      "S1": 7,
+      "S2": 4,
+      "L2": 3,
+      "actual_forbidden": 4,
+      "models": 0,
+      "triples_absent": false
+    },
+    "same_formula_without_redundant_clause": {
+      "S1": 6,
+      "S2": 2,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "models": 0,
+      "triples_absent": true
+    },
+    "empty_clause": {
+      "S1": 4,
+      "S2": 0,
+      "L2": 4,
+      "actual_forbidden": 4,
+      "models": 0,
+      "triples_absent": true
+    },
+    "empty_formula": {
+      "S1": 0,
+      "S2": 0,
+      "L2": 0,
+      "actual_forbidden": 0,
+      "models": 4,
+      "triples_absent": true
+    }
+  },
+  "all_assertions_passed": true
+}
+
+

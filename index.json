@@ -528,6 +528,20 @@
       "title": "Four States Carry the Circle",
       "url": "exhibits/four-states-carry-the-circle/v3/index.html",
       "version": 3
+    },
+    {
+      "claim_scope": "Historical and methodological overview with newly checked finite claims. No general SAT algorithm, complexity separation, physical theorem or overall efficiency gain is established.",
+      "gardens": [],
+      "id": "branches-six-doorways",
+      "metadata": "exhibits/branches-six-doorways/v2/exhibit.json",
+      "package_sha256": "6373eda3fdb29c1d05707177eebde59aab30a334feeadb3ba7a0cf1452c2c628",
+      "question": "What did six distinct approaches to finding, checking and excluding answers reveal in their bounded experiments?",
+      "relations": [],
+      "sample": false,
+      "status": "unresolved",
+      "title": "The Branches — Six Doorways, One Unfinished Question",
+      "url": "exhibits/branches-six-doorways/v2/index.html",
+      "version": 2
     }
   ],
   "gardens": "gardens.json",

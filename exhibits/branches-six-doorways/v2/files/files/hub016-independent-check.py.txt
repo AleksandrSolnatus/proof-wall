@@ -1,0 +1,121 @@
+"""Reviewer-authored integer trace/threshold audit; imports no supplied generator."""
+from pathlib import Path
+import json, time, copy
+from collections import Counter
+
+ROOT=Path(__file__).resolve().parent
+SOURCE=ROOT/'source/HUB-AND-SPOKE-001-ROUND-016'
+def require(ok,msg):
+    if not ok:raise ValueError(msg)
+def updivide(a,b):
+    quotient,remainder=divmod(a,b)
+    return quotient+int(remainder!=0)
+def multiplication(a,b,Q):
+    return [a[0]*b[0]//Q,updivide(a[1]*b[1],Q)]
+def independent_power(m,k,p):
+    require(type(m)is int and m>=1 and type(k)is int and k>=0 and type(p)is int and p>=1,'parameters')
+    Q=2**p
+    base=[(m*Q)//(m+1),updivide(m*Q,m+1)]
+    if k==0:return [Q,Q]
+    def visit(exponent):
+        if exponent==0:return [Q,Q]
+        half=visit(exponent//2)
+        square=multiplication(half,half,Q)
+        return multiplication(square,base,Q) if exponent%2 else square
+    return visit(k)
+def check_trace(cert):
+    m,k,p=(cert[name] for name in ('m','k','p'))
+    require(type(m)is int and m>=1 and type(k)is int and k>=0 and type(p)is int and p>=1,'parameters')
+    Q=2**p;base=[m*Q//(m+1),updivide(m*Q,m+1)]
+    require(base==cert['base'],'base rounding')
+    current=[Q,Q];index=0;max_bits=0
+    for bit in (format(k,'b') if k else ''):
+        operands=[None,base] if bit=='1' else [None]
+        for operand in operands:
+            other=current if operand is None else operand
+            require(index<len(cert['rows']),'missing operation')
+            row=cert['rows'][index]
+            require(row['a']==current and row['b']==other,'trace continuity')
+            expected=multiplication(current,other,Q)
+            require(row['out']==expected and 0<=expected[0]<=expected[1]<=Q,'outward-rounded operation')
+            max_bits=max(max_bits,(current[0]*other[0]).bit_length(),(current[1]*other[1]+Q-1).bit_length())
+            current=expected;index+=1
+    require(index==len(cert['rows']) and current==cert['interval'],'terminal binding')
+    return index,max_bits
+def classification(interval,p):
+    Q=2**p
+    if interval[0]>Q//2:return 'above'
+    if interval[1]<=Q//2:return 'at_or_below'
+    return 'unknown'
+def check_exact(m,k,p,interval):
+    numerator=pow(m,k);denominator=pow(m+1,k);Q=2**p
+    require(interval[0]*denominator<=numerator*Q<=interval[1]*denominator,'exact enclosure')
+    decision=classification(interval,p)
+    if decision=='above':require(2*numerator>denominator,'incorrect above')
+    elif decision=='at_or_below':require(2*numerator<=denominator,'incorrect at/below')
+    return decision
+def main():
+    start=time.perf_counter()
+    certificates=json.loads((SOURCE/'CERTIFICATES.json').read_text())
+    require([(c['m'],c['k'],c['p']) for c in certificates]==[(256,177,17),(256,178,17)],'selected cases')
+    trace_info=[check_trace(c) for c in certificates]
+    require([c['interval'] for c in certificates]==[[65576,65754],[65319,65498]],'selected intervals')
+    require([check_exact(c['m'],c['k'],c['p'],c['interval']) for c in certificates]==['above','at_or_below'],'adjacent thresholds')
+    # Cold exact baseline: no input certificate powers or cached predecessor values.
+    numerator=denominator=1;k=0;previous=(1,1)
+    while 2*numerator>denominator:
+        require(k<200,'bounded cold baseline exceeded')
+        previous=(numerator,denominator)
+        numerator*=256;denominator*=257;k+=1
+    require(k==178 and 2*previous[0]>previous[1] and 2*numerator<=denominator,'cold minimum')
+    grid=json.loads((SOURCE/'ALL-CASES.json').read_text())
+    expected={(m,k,p) for m in range(1,17) for k in range(21) for p in (4,8,12)}
+    require(len(grid)==1008 and {(r['m'],r['k'],r['p']) for r in grid}==expected,'full grid coverage')
+    counts=Counter()
+    for row in grid:
+        m,k,p=row['m'],row['k'],row['p'];interval=independent_power(m,k,p)
+        require(interval==row['interval'],'grid algorithm result')
+        result=check_exact(m,k,p,interval);require(result==row['decision'],'grid decision')
+        counts[result]+=1
+    sweep=json.loads((SOURCE/'PRECISION-SWEEP.json').read_text())
+    require([r['p'] for r in sweep]==list(range(8,25)),'precision coverage')
+    successes=[]
+    for row in sweep:
+        p=row['p'];decisions=[]
+        for k in (177,178):
+            interval=independent_power(256,k,p);require(interval==row[str(k)],'precision interval')
+            decisions.append(check_exact(256,k,p,interval))
+        certified=decisions==['above','at_or_below']
+        require(certified==row['certified'],'precision status')
+        if certified:successes.append(p)
+    require(successes[0]==17 and counts['unknown']==155,'precision and unknown count')
+    # Direct bounded checks of the stated fixed-precision obstruction, separate from its algebraic proof.
+    obstruction=[]
+    for p in (1,4,8):
+        Q=2**p
+        for m in (Q,Q+1,2*Q):
+            for exponent in (0,1,2,17,178):
+                interval=independent_power(m,exponent,p)
+                require(interval[1]==Q,'fixed-precision upper endpoint')
+                obstruction.append([m,exponent,p])
+    rejected=[]
+    for label in ['operation','endpoint','base','exponent','missing_row','extra_row']:
+        bad=copy.deepcopy(certificates[0])
+        if label=='operation':bad['rows'][3]['out'][0]+=1
+        elif label=='endpoint':bad['interval'][1]-=1
+        elif label=='base':bad['base'][1]-=1
+        elif label=='exponent':bad['k']=178
+        elif label=='missing_row':bad['rows'].pop()
+        else:bad['rows'].append(copy.deepcopy(bad['rows'][-1]))
+        try:check_trace(bad)
+        except ValueError:rejected.append(label)
+    require(len(rejected)==6,'damaged trace accepted')
+    out={'status':'PASS','selected_base':[256,257],'norm_halving_K':178,'preceding_exponent':177,
+         'cold_baseline_pair_updates':178,'selected_intervals':[c['interval'] for c in certificates],
+         'trace_operations':[x[0] for x in trace_info],'trace_max_endpoint_numerator_bits':max(x[1] for x in trace_info),
+         'exact_baseline_sizes':[[previous[0].bit_length(),previous[1].bit_length()],[numerator.bit_length(),denominator.bit_length()]],
+         'grid_cases':1008,'grid_decisions':dict(counts),'precision_comparisons':34,'first_success_in_tested_range':successes[0],
+         'fixed_precision_additional_checks':len(obstruction),'corruptions_rejected':rejected,'wall_seconds':time.perf_counter()-start,
+         'limits':'No supplied code imported. Exact-power/cold-recurrence baselines are separate from bounded certificate replay; no general successful-precision bound or physical mass-gap result.'}
+    (ROOT/'independent-check.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))
+if __name__=='__main__':main()
