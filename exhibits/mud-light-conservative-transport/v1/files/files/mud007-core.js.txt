@@ -1,0 +1,128 @@
+
+/* AREPO 007 — finite-volume sediment and spectral absorption laboratory.
+ * Standalone engine: deterministic, no external dependencies, no DOM.
+ * Sediment mass per cell, kg per one-meter out-of-plane strip.
+ * Hydrodynamic velocity prescribed, not solved (no momentum claim).
+ * Absorbed optical power is a quasi-steady radiative budget, not stored heat.
+ */
+(function(root,factory){ const api=factory();if(typeof module==='object' && module.exports)module.exports=api;root.ArepoMudLight=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
+'use strict';
+const NX=72,NZ=18,DX=0.16,DZ=0.15,DT=0.12,V=DX*DZ,L=NX*DX,DEPTH=NZ*DZ;
+const BAND=[
+ {id:'blue',nm:470,color:'#72b9ff',kw:0.0166,ka:11,kb:5.4,weight:0.29},
+ {id:'green',nm:535,color:'#8ee4c5',kw:0.0475,ka:8.2,kb:4.2,weight:0.22},
+ {id:'amber',nm:600,color:'#ffc17c',kw:0.217,ka:6.3,kb:3.8,weight:0.22},
+ {id:'red',nm:665,color:'#ff806a',kw:1.007,ka:4.8,kb:3.2,weight:0.19},
+ {id:'infrared',nm:850,color:'#8888a3',kw:2.07,ka:4.0,kb:3.2,weight:0.08}
+];
+const SPECIES=[
+ {id:'clay',settle:0.004,diffX:0.0025,diffZ:0.0018,erosion:0.0021,threshold:0.12},
+ {id:'silt',settle:0.028,diffX:0.0015,diffZ:0.0010,erosion:0.0025,threshold:0.18}
+];
+const idx=(x,z)=>x*NZ+z;
+const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
+const total=(a)=>Array.from(a).reduce((s,x)=>s+x,0);
+function hash(x){const k=Math.sin((x+1)*12.9898)*43758.5453;return k-Math.floor(k);}
+function newState(seed=7301){
+ const clay=new Float64Array(NX*NZ),silt=new Float64Array(NX*NZ),bc=new Float64Array(NX),bs=new Float64Array(NX);
+ for(let x=0;x<NX;x++){
+  const xx=x/(NX-1),core=Math.exp(-(((xx-.44)/.19)**2)),edge=Math.exp(-(((xx-.77)/.13)**2));
+  bc[x]=.28+.33*core+.08*Math.cos(x*.24)**2;
+  bs[x]=.24+.21*edge+.07*Math.sin(x*.16)**2;
+  for(let z=0;z<NZ;z++){
+   const zz=(z+.5)/NZ;
+   clay[idx(x,z)]=V*(.012+.020*core*Math.exp(-(((zz-.68)/.28)**2)));
+   silt[idx(x,z)]=V*(.003+.016*edge*Math.exp(-(((zz-.32)/.24)**2)));
+  }
+ }
+ return {version:7,seed,step:0,t:0,clay,silt,bedClay:bc,bedSilt:bs,initialMass:total(clay)+total(silt)+total(bc)+total(bs),addedMass:0,stir:0,current:0.35,light:0.95,spectrum:'daylight',mix:1,cycle:true,events:[]};
+}
+function clone(s){return load(save(s));}
+function save(s){return {version:7,seed:s.seed,step:s.step,t:s.t,clay:Array.from(s.clay),silt:Array.from(s.silt),bedClay:Array.from(s.bedClay),bedSilt:Array.from(s.bedSilt),initialMass:s.initialMass,addedMass:s.addedMass,stir:s.stir,current:s.current,light:s.light,spectrum:s.spectrum,mix:s.mix,cycle:s.cycle,events:s.events.slice()};}
+function load(o){if(!o||o.version!==7)throw Error('Expected Arepo mud-light v7 snapshot');for(const k of ['clay','silt'])if(!Array.isArray(o[k])||o[k].length!==NX*NZ||o[k].some(v=>!Number.isFinite(v)||v<0))throw Error('Invalid '+k);for(const k of ['bedClay','bedSilt'])if(!Array.isArray(o[k])||o[k].length!==NX||o[k].some(v=>!Number.isFinite(v)||v<0))throw Error('Invalid '+k);return {...o,clay:Float64Array.from(o.clay),silt:Float64Array.from(o.silt),bedClay:Float64Array.from(o.bedClay),bedSilt:Float64Array.from(o.bedSilt),events:Array.isArray(o.events)?o.events.slice():[]};}
+function mass(s){return total(s.clay)+total(s.silt)+total(s.bedClay)+total(s.bedSilt);}
+function concentration(s,species,x,z){return s[species][idx(x,z)]/V;}
+// Each directed proposal requests mass from exactly one donor. The donor's entire
+// set of proposals is scaled together if it requests more than that donor owns.
+// Receiver gets precisely what the donor loses; no clipping 'creates' mass.
+function advanceSpecies(s,spec,store,bed){
+ const length=NX*NZ+NX;
+ const old=new Float64Array(length);old.set(s[store]);old.set(s[bed],NX*NZ);
+ const outgoing=new Float64Array(length),flows=[];
+ function offer(from,to,amount){if(amount>0&&Number.isFinite(amount)){flows.push([from,to,amount]);outgoing[from]+=amount;}}
+ for(let x=0;x<NX-1;x++)for(let z=0;z<NZ;z++){
+  const a=idx(x,z),b=idx(x+1,z),ca=old[a]/V,cb=old[b]/V;
+  const phase=(x+.5)/NX*Math.PI*2;
+  const shear=1.0+.24*Math.sin((z+.5)/NZ*Math.PI);
+  const u=s.current*.13*shear*Math.sin(phase+.17*s.t)*(.45+.55*Math.cos(.082*s.t));
+  const adv=u*(u>=0?ca:cb)*DT*DZ;
+  const diff=-spec.diffX*(cb-ca)/DX*DT*DZ*s.mix;
+  const f=adv+diff;
+  if(f>0)offer(a,b,f);else offer(b,a,-f);
+ }
+ for(let x=0;x<NX;x++)for(let z=0;z<NZ-1;z++){
+  const low=idx(x,z),up=idx(x,z+1),cLow=old[low]/V,cUp=old[up]/V;
+  const settle=spec.settle*DT*DX*cUp;
+  const mix=spec.diffZ*(cUp-cLow)*DT*DX/DZ*s.mix;
+  const f=settle+mix;
+  if(f>0)offer(up,low,f);else offer(low,up,-f);
+ }
+ for(let x=0;x<NX;x++){
+  const low=idx(x,0),bedCell=NX*NZ+x,c=old[low]/V;
+  offer(low,bedCell,spec.settle*c*DX*DT);
+  // Illustrative threshold entrainment: the external shear is prescribed, not measured.
+  const shape=.82+.3*Math.sin(x*.12+.23*s.t)**2;
+  const shear=Math.abs(s.current)*shape+s.stir;
+  offer(bedCell,low,spec.erosion*DX*DT*Math.max(0,shear-spec.threshold)*12);
+ }
+ const newMass=old.slice();
+ const ratio=new Float64Array(length);
+ for(let i=0;i<length;i++)ratio[i]=outgoing[i]>0?Math.min(1,old[i]/outgoing[i]):1;
+ for(const [a,b,request] of flows){const f=request*ratio[a];newMass[a]-=f;newMass[b]+=f;}
+ // The arithmetic transfers cannot produce negative stocks other than roundoff.
+ for(let i=0;i<length;i++)if(newMass[i]<0){if(newMass[i]<-1e-10)throw Error('Negative stock');newMass[i]=0;}
+ s[store].set(newMass.subarray(0,NX*NZ));s[bed].set(newMass.subarray(NX*NZ));
+}
+function step(s,n=1){for(let i=0;i<n;i++){
+ advanceSpecies(s,SPECIES[0],'clay','bedClay');
+ advanceSpecies(s,SPECIES[1],'silt','bedSilt');
+ s.t+=DT;s.step++;
+ s.stir*=.995;
+ if(s.stir<.000001)s.stir=0;
+ }return s;}
+function addPlume(s,x=.5,massAdded=.65){const at=clamp(Math.floor(x*NX),0,NX-1),start=clamp(at-5,0,NX-1),end=clamp(at+5,0,NX-1);const shares=[];let sum=0;for(let i=start;i<=end;i++)for(let z=NZ-8;z<NZ-3;z++){const v=Math.exp(-(((i-at)/3.2)**2))*Math.exp(-(((z-(NZ-5.5))/1.8)**2));shares.push([idx(i,z),v]);sum+=v;}for(const [k,v]of shares)s.clay[k]+=massAdded*v/sum;s.addedMass+=massAdded;s.events.push({step:s.step,type:'plume',x:at,mass:massAdded});return s;}
+function stirBed(s,amount=1.2){s.stir=Math.max(s.stir,amount);s.events.push({step:s.step,type:'stir',amount});return s;}
+function sunlight(s,opts={}){const c=opts.cycle===undefined?s.cycle:opts.cycle;const angle=c?(0.22+0.78*Math.max(0,Math.sin(s.t*.038+1.1))):1;return (opts.light===undefined?s.light:opts.light)*angle;}
+function bandWeights(s,mode){mode=mode||s.spectrum; if(mode==='daylight')return BAND.map(b=>b.weight); const n=BAND.findIndex(b=>b.id===mode);return BAND.map((_,i)=>i===n?1:0);}
+function radiance(s,opts={}){
+ const weights=bandWeights(s,opts.spectrum),illum=sunlight(s,opts),reflection=.055;
+ const byLayer=new Float64Array(NX*NZ),bottom=new Float64Array(NX),byBand=[];
+ let inSum=0,refl=0,water=0,clay=0,silt=0,scattered=0,bed=0;
+ for(let b=0;b<BAND.length;b++){
+  const band=BAND[b],sun=illum*weights[b];let bi=0,br=0,bw=0,bc=0,bs=0,bsc=0,bb=0;
+  for(let x=0;x<NX;x++){
+   const initial=sun,reflected=initial*reflection;
+   let beam=initial-reflected;
+   bi+=initial*DX;br+=reflected*DX;
+   for(let z=NZ-1;z>=0;z--){const ii=idx(x,z),cc=s.clay[ii]/V,cs=s.silt[ii]/V;
+    const a=band.kw,c=band.ka*cc,d=band.kb*cs,kt=a+c+d;
+    const removed=beam*(-Math.expm1(-kt*DZ));
+    const aw=kt>0?removed*a/kt:0,ac=kt>0?removed*c/kt:0,as=kt>0?removed*d/kt:0;
+    // Illustrative partition: EPA-style extinction is not automatically heat.
+    // Scattered-out power leaves the resolved direct beam. Its later path is unknown.
+    const waterAbs=.90,clayAbs=.32,siltAbs=.26;
+    bw+=aw*waterAbs*DX;bc+=ac*clayAbs*DX;bs+=as*siltAbs*DX;
+    bsc+=(aw*(1-waterAbs)+ac*(1-clayAbs)+as*(1-siltAbs))*DX;
+    byLayer[ii]+=beam*DX;beam-=removed;
+   }
+   bb+=beam*DX;bottom[x]+=beam;
+  }
+  inSum+=bi;refl+=br;water+=bw;clay+=bc;silt+=bs;scattered+=bsc;bed+=bb;
+  byBand.push({id:band.id,nm:band.nm,color:band.color,incoming:bi,reflected:br,water:bw,clay:bc,silt:bs,scattered:bsc,bed:bb,bottomFraction:bi>0?bb/bi:0});
+ }
+ return {incident:inSum,reflected:refl,absorbedWater:water,absorbedClay:clay,absorbedSilt:silt,scatteredOut:scattered,absorbedBed:bed,budgetError:inSum-(refl+water+clay+silt+scattered+bed),byLayer,bottom,byBand,illum};
+}
+function stats(s,calculatedRadiance){let max=0,min=Infinity,sumSusp=0;for(let i=0;i<s.clay.length;i++){let c=(s.clay[i]+s.silt[i])/V;max=Math.max(max,c);min=Math.min(min,c);sumSusp+=s.clay[i]+s.silt[i];}const m=mass(s),r=calculatedRadiance||radiance(s);return {mass:m,massExpected:s.initialMass+s.addedMass,massError:m-s.initialMass-s.addedMass,suspended:sumSusp,bed:m-sumSusp,maxConcentration:max,minConcentration:min,light:r};}
+return {NX,NZ,DX,DZ,DT,V,L,DEPTH,BAND,SPECIES,newState,clone,load,save,step,mass,stats,concentration,radiance,addPlume,stirBed,hash};
+});
+

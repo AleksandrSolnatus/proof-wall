@@ -1,0 +1,156 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "Defined mathematical transformations and26 recorded bounded software checks; not physical identity, consciousness or a universal recognition algorithm.",
+  "date": "2026-11-08",
+  "downloads": [
+    {
+      "bytes": 2943,
+      "original_path": "article.md",
+      "sha256": "87141ee5026d7f91d0a250955e56c43e31e87e6e0673123eac3830a72d3fa6db",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 971,
+      "original_path": "files/evidence-notes.md",
+      "sha256": "d2da072e50819145e5a2c4317f7995f581a821056c6917c9f04d30137e81bc56",
+      "url": "files/files/evidence-notes.md.txt"
+    },
+    {
+      "bytes": 1125,
+      "original_path": "files/invariant-ladder.txt",
+      "sha256": "01feb7875fcb04ee0b31eace24f1a6a20515b089ea401ef0c9f35c44fa76a1f3",
+      "url": "files/files/invariant-ladder.txt.txt"
+    },
+    {
+      "bytes": 1414,
+      "original_path": "files/original-test-results.txt",
+      "sha256": "e0b9b127c888e39cd31670f1593370d62b46065dc4ebac9c43f7bfb8883ab466",
+      "url": "files/files/original-test-results.txt.txt"
+    },
+    {
+      "bytes": 4204,
+      "original_path": "files/recognition-engine.js",
+      "sha256": "2cff9116beaa6e0fd879736c86a5e9c5e72ece9c233316d840bf7926f87d06fc",
+      "url": "files/files/recognition-engine.js.txt"
+    },
+    {
+      "bytes": 4095,
+      "original_path": "files/test-recognition.js",
+      "sha256": "895d9554f28192c4cf39ad992b468a6459838f7291e73de630d275a99c8dc483",
+      "url": "files/files/test-recognition.js.txt"
+    },
+    {
+      "bytes": 6035,
+      "original_path": "files/transformation-note.txt",
+      "sha256": "350756cd3bbd1c0361da0e3cee303fea5338396b5d46214004111cbb39423a29",
+      "url": "files/files/transformation-note.txt.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+      "bytes": 2943,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "article",
+      "sha256": "87141ee5026d7f91d0a250955e56c43e31e87e6e0673123eac3830a72d3fa6db"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+      "bytes": 971,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "files/evidence-notes.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "d2da072e50819145e5a2c4317f7995f581a821056c6917c9f04d30137e81bc56"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+      "bytes": 1125,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/plain",
+      "path": "files/invariant-ladder.txt",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "01feb7875fcb04ee0b31eace24f1a6a20515b089ea401ef0c9f35c44fa76a1f3"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+      "bytes": 1414,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/plain",
+      "path": "files/original-test-results.txt",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "e0b9b127c888e39cd31670f1593370d62b46065dc4ebac9c43f7bfb8883ab466"
+    },
+    {
+      "attribution": "Original project research source or recorded evidence; retained headers and source identity.",
+      "bytes": 4204,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/javascript",
+      "path": "files/recognition-engine.js",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "2cff9116beaa6e0fd879736c86a5e9c5e72ece9c233316d840bf7926f87d06fc"
+    },
+    {
+      "attribution": "Original project research source or recorded evidence; retained headers and source identity.",
+      "bytes": 4095,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/javascript",
+      "path": "files/test-recognition.js",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "895d9554f28192c4cf39ad992b468a6459838f7291e73de630d275a99c8dc483"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+      "bytes": 6035,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/plain",
+      "path": "files/transformation-note.txt",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "350756cd3bbd1c0361da0e3cee303fea5338396b5d46214004111cbb39423a29"
+    }
+  ],
+  "finding": "The model separates geometric information loss from retained source provenance; a source record does not repair a noninjective observation.",
+  "gardens": [],
+  "id": "recognition012-loss-boundary",
+  "limitations": [
+    "Similarity, topology, labeled fragments and provenance are distinct criteria, not one strict total ordering.",
+    "A ledger preserving the source does not make a collapsed coordinate map one-to-one.",
+    "The software tests are finite checks; geometrical arguments depend on their stated transformations and domain.",
+    "No consciousness, common physical origin or organism learning follows. No new UI or scientific run was performed for publication."
+  ],
+  "method": "Explicit circle transformations, finite-code tests and a separately retained source ledger, with distinct similarity, topology and injectivity criteria.",
+  "open_questions": [
+    "How much source information must a representation retain to distinguish originals after a lossy transformation?"
+  ],
+  "package_sha256": "5c8b5d011fe1d6d080699a77890d6986d9b3e6713b37a9f3a607251831f0edaf",
+  "provenance": {
+    "authors": [
+      "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation."
+    ],
+    "change_note": "First public exhibit. New article and evidence notes explain retained work. Selected source/test bytes unchanged; relocated filenames are disclosed. No scientific experiment rerun for publication.",
+    "origin": "Existing project source and dated review records; exact selected copies and labeled editorial evidence notes."
+  },
+  "publication": {
+    "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+    "intent": "request-review",
+    "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner."
+  },
+  "question": "Which geometric properties and source records survive bending, cutting and collapsing a shape?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "A shape can vanish while its source survives",
+  "version": 1
+}

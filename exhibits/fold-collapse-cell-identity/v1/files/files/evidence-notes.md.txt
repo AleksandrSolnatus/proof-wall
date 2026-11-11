@@ -1,0 +1,9 @@
+# Evidence notes — labeled editorial selection
+
+Source: the September 24 Fold to Collapse README and independent review, plus the November 10 AREPO source-recovery verification receipt. This public note is an editorial derivative, not an independent new audit.
+
+Historical review: ten source/state tests; independent 4,001-state sweep with maximum distance error about 1.11e-15 and hinge error zero; sampled exact replay. Chromium and desktop WebKit exercised file opening, state round trips, invalid-data preservation and controls. Desktop touch dispatch did not establish physical-phone compatibility.
+
+November 10 recovery: copied core/state tests passed10/10. Its201-position sweep had maximum distance residual8.881784197001252e-16 and hinge residual zero. These observations have distinct dates and scopes.
+
+No teaching benefit, collision, general4D physics, new phone test or native integration follows. Source and test copies are unchanged, with the two test filename extensions relocated for inert publication. Original private source/review locations remain outside the export.

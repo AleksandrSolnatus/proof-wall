@@ -1,0 +1,124 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "Finite integer-column toy and recorded implementation checks; no calibrated granular physics.",
+  "date": "2026-10-05",
+  "downloads": [
+    {
+      "bytes": 3212,
+      "original_path": "article.md",
+      "sha256": "46042f513e5e8b353f6e072abed36aef01608e5d83aa278b8af0dce292ef3250",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 4439,
+      "original_path": "files/dig-pile.test.js",
+      "sha256": "48583ecab459cf389c3205c1bb320a460d7d00662c25e65724691668df3afa24",
+      "url": "files/files/dig-pile.test.js.txt"
+    },
+    {
+      "bytes": 1098,
+      "original_path": "files/evidence-notes.md",
+      "sha256": "d95bcaeba7999e5e10f18627a7fdb1176ac15d0dc2f62cdb30acbb3a4ac309e0",
+      "url": "files/files/evidence-notes.md.txt"
+    },
+    {
+      "bytes": 1423,
+      "original_path": "files/model-results.json",
+      "sha256": "67a80e8e8fa022a9227d7f5cd05b23e41585b1af918376a425af664eb91a354a",
+      "url": "files/files/model-results.json.txt"
+    },
+    {
+      "bytes": 5789,
+      "original_path": "files/sand.js",
+      "sha256": "30184656e3db41a952e77baa5975e8e378f617c116badc18a62d66c96f8bb2e9",
+      "url": "files/files/sand.js.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+      "bytes": 3212,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "article",
+      "sha256": "46042f513e5e8b353f6e072abed36aef01608e5d83aa278b8af0dce292ef3250"
+    },
+    {
+      "attribution": "Original project research source or recorded evidence; retained headers and source identity.",
+      "bytes": 4439,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/javascript",
+      "path": "files/dig-pile.test.js",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "48583ecab459cf389c3205c1bb320a460d7d00662c25e65724691668df3afa24"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+      "bytes": 1098,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "files/evidence-notes.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "d95bcaeba7999e5e10f18627a7fdb1176ac15d0dc2f62cdb30acbb3a4ac309e0"
+    },
+    {
+      "attribution": "Original project research source or recorded evidence; retained headers and source identity.",
+      "bytes": 1423,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/model-results.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "receipt",
+      "sha256": "67a80e8e8fa022a9227d7f5cd05b23e41585b1af918376a425af664eb91a354a"
+    },
+    {
+      "attribution": "Original project research source or recorded evidence; retained headers and source identity.",
+      "bytes": 5789,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/javascript",
+      "path": "files/sand.js",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "30184656e3db41a952e77baa5975e8e378f617c116badc18a62d66c96f8bb2e9"
+    }
+  ],
+  "finding": "The bounded implementation retains material and stable released shapes; each permitted settling transfer lowers a nonnegative integer potential.",
+  "gardens": [],
+  "id": "desert-tray-finite-rest",
+  "limitations": [
+    "The finite-rest argument applies after imposed tool work stops; it gives no useful universal real-time performance bound.",
+    "Fixed packing and coarse columns omit overhangs, underground cavities, grain contact and momentum.",
+    "The scoop is an unlimited bookkeeping account, not a physical bucket.",
+    "Browser mobile checks were emulation, not physical-device testing; no new experiment was run for this release."
+  ],
+  "method": "Integer aggregate columns, an explicit scoop account, deterministic local transfers and a decreasing potential after tool work stops.",
+  "open_questions": [
+    "How would a different neighborhood or representation change the resting shape and work needed to reach it?"
+  ],
+  "package_sha256": "c6bd749bc49b9fb19b1c36702e9f55d8c56c02f7ca44fdc50d67066e77782748",
+  "provenance": {
+    "authors": [
+      "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation."
+    ],
+    "change_note": "First public exhibit. New article and evidence notes explain retained work. Selected source/test bytes unchanged; relocated filenames are disclosed. No scientific experiment rerun for publication.",
+    "origin": "Existing project source and dated review records; exact selected copies and labeled editorial evidence notes."
+  },
+  "publication": {
+    "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+    "intent": "request-review",
+    "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner."
+  },
+  "question": "Can an editable sand toy conserve its material and settle without an arbitrary stop timer?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Sand that knows when to stop",
+  "version": 1
+}

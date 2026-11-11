@@ -1,0 +1,81 @@
+Public derivative of the original report: the internal filesystem-delivery paragraph is omitted. Scientific content is retained.
+
+# Fixed Grains / Conserved Rain 001
+
+2D conservative flow approximation — uncalibrated simulation steps
+
+## Programmed behavior
+
+Stationary overlapping circle unions determine impermeable cells. Rain is finite (area 2), capacity is finite, transfer order is immediate bottom-to-top/left-to-right, gravity has no upward pass, and lateral balancing is prescribed. These rules exclude pressure, capillarity, air trapping, momentum, evaporation, grain motion and physical seconds. N=40 runs use 2,000 ticks; N=80 uses 4,000 ticks, with the same first 160 rain ticks. Dry controls use 160 ticks.
+
+## Independent geometry and predictions
+
+B: adjacent distance .20 < diameter .21; end circles extend .005 beyond walls. A/C: missing row grain gives .19 horizontal opening; elevated grain does not close it.
+
+The exact missing-row-grain opening is 0.19 before rasterization. h=1/N is cell size, not a minimum resolvable gap. Analytic circle geometry and independent four-neighbor flood fill were checked before water. Predicted outcomes were positive drain in A/C, zero drain and positive rejection in B, and distinct A/C routes. No coordinates or parameters were tuned.
+
+## Gates
+
+| Gate | Status |
+|---|---|
+| blocked_leakage | PASS |
+| blocked_rejection_prediction | PASS |
+| bounds_and_boundaries | PASS |
+| conservation | PASS |
+| controls | PASS |
+| distinct_routes | PASS |
+| open_drainage_prediction | PASS |
+| persistence | PASS |
+| topology | PASS |
+
+## Observations
+
+Areas per unit out-of-plane thickness; input area is 2 for every pulse. Exact integer ledgers, rather than rounded values below, establish conservation.
+
+| Run | Stored | Drained | Rejected | First drain tick |
+|---|---:|---:|---:|---:|
+| A_N40 | 0.011250481 | 0.458981099 | 1.529768420 | 40 |
+| A_N80 | 0.010379054 | 0.392119467 | 1.597501479 | 80 |
+| B_N40 | 0.393750000 | 0.000000000 | 1.606250000 | None |
+| B_N80 | 0.404687500 | 0.000000000 | 1.595312500 | None |
+| C_N40 | 0.011397568 | 0.458838365 | 1.529764067 | 40 |
+| C_N80 | 0.014474411 | 0.388029144 | 1.597496445 | 80 |
+| dry_N40 | 0.000000000 | 0.000000000 | 0.000000000 | None |
+| dry_N80 | 0.000000000 | 0.000000000 | 0.000000000 | None |
+| pulse_N40 | 0.000004534 | 1.018745466 | 0.981250000 | 40 |
+| pulse_N80 | 0.000144293 | 0.509230707 | 1.490625000 | 80 |
+
+## Resolution and route comparison
+
+Accessible upstream capacity here means total capacity in the top-reachable fluid component. For open cases that component also includes fluid below the row; it is not solely an above-row reservoir. Drain width is effective entire-face width. Route placement is measured by cumulative downward flux crossing y=0.5, using saved directed edge flows.
+
+| Case | N | Solid area | Top-reachable capacity | Drain width | Flux-weighted crossing x | Crossing area |
+|---|---:|---:|---:|---:|---:|---:|
+| A | 40 | 0.222500 | 0.777500 | 0.200000 | 0.502481 | 0.458981437 |
+| A | 80 | 0.194375 | 0.805625 | 0.200000 | 0.504014 | 0.392180514 |
+| B | 40 | 0.212500 | 0.393750 | 0.200000 | none | 0.000000000 |
+| B | 80 | 0.190625 | 0.404687 | 0.200000 | none | 0.000000000 |
+| C | 40 | 0.222500 | 0.777500 | 0.200000 | 0.695935 | 0.458902595 |
+| C | 80 | 0.194375 | 0.805625 | 0.200000 | 0.683801 | 0.389608064 |
+
+A, N80 minus N40: solid_area = -0.028125000, accessible_upstream_capacity = +0.028125000, drain_width = +0.000000000, stored_area = -0.000871427, drained_area = -0.066861632, rejected_area = +0.067733059.
+
+B, N80 minus N40: solid_area = -0.021875000, accessible_upstream_capacity = +0.010937500, drain_width = +0.000000000, stored_area = +0.010937500, drained_area = +0.000000000, rejected_area = -0.010937500.
+
+C, N80 minus N40: solid_area = -0.028125000, accessible_upstream_capacity = +0.028125000, drain_width = +0.000000000, stored_area = +0.003076843, drained_area = -0.070809221, rejected_area = +0.067732378.
+
+## Persistence and limits
+
+See RESTART_REPORT.md for the two fresh-process replay checks. Timing differences cannot establish convergence to physics. Integer exactness is a numerical property, not physical precision. The coarse solid mask narrows openings; overlap is a declared obstacle-union idealization, not settled mechanics. Graph connectivity and water transfer are separate checks; graph paths alone do not prove a route is used. These results do not validate moving sand or real rain infiltration.
+
+## Separate conclusions
+
+- Geometry-controlled connectivity: PASS.
+- Numerical conservation: PASS.
+- Observed A/C route differences: PASS.
+- Save/reopen persistence: PASS.
+
+One next bounded experiment: repeat the same cases and grids with only the lateral column visit order reversed, to measure route-distribution sensitivity to programmed ordering; retain all other rules and integrity checks.
+
+Batch simulation/replay time: 122.07 seconds. Evidence finalization is additional and recorded in PACKAGE_VERIFICATION.json.
+

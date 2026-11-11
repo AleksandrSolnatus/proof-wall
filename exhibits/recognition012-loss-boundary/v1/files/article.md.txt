@@ -1,0 +1,33 @@
+# A shape can vanish while its source survives
+
+Suppose a circle bends, splits into arcs, then collapses to a point. What can still be recognized? The answer depends on what was retained and which relation we are asking about.
+
+AREPO012 makes the transformations explicit and keeps a source ledger as a separate switch. It explores a boundary between recognizing a geometric structure and remembering where a displayed thing came from.
+
+## Different questions need different invariants
+
+Uniform positive scale and rotation preserve circle similarity. For a circle of radius R, circumference is2piR and area is piR squared. Halving the radius halves the circumference and quarters the area; the circumference-to-diameter ratio stays pi.
+
+A broader polar family bends the loop:
+
+    r(theta) = R[1 + a cos(3theta)].
+
+For0<=a<1, radius stays positive and the boundary remains a simple closed curve. It is generally no longer a circle, so circle similarity and its familiar ratio no longer follow. At a=1, three parameter angles reach the origin. Previously distinct positions now share one location: coordinate correspondence is lost.
+
+Separating arcs changes a different property. Abstract labeled pieces and their source adjacency may remain known even when the displayed boundary is no longer one closed loop. Those labels are additional retained information, not proof that the visible fragments have every property of the original circle.
+
+## The ledger does not undo collapse
+
+A total collapse sends every parameter position to the same point. From that point alone, distinct possible sources cannot be uniquely recovered. An external source ledger can retain which construction was used, but it does not make the geometric map injective.
+
+Thus a picture may retain geometry without provenance, or a record may retain provenance after geometry vanishes. These criteria are independent; they are not rungs on a single universal score.
+
+## What was checked
+
+The preserved012 package supplies26 deterministic checks covering circle ratios, scale and rotation, the pinch boundary, labeled arcs, collapse, retained source specification and the independence of provenance from topology. The November10 recovery verified all eight supplied manifest entries and replayed those26 tests. This publication uses that completed evidence; it did not rerun the scientific or UI work.
+
+The original core, test file and mathematical notes are downloadable for inspection. The selected test's relative dependency on recognition-engine.js is retained.
+
+## What remains only an invitation
+
+Distinct objects can share an invariant without sharing one physical identity or cause. These transformations do not establish AI awareness, consciousness or continuity across conversations. Nor is this an organism learning mathematics. It is a small way to ask a precise question: what was preserved, what was lost, and what extra evidence lets us tell the difference?

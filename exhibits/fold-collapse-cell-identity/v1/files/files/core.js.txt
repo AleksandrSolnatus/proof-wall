@@ -1,0 +1,177 @@
+/* Arepo Fold → Collapse: source and geometry only. No renderer or storage dependency. */
+(function (root, factory) {
+  "use strict";
+  const api = factory();
+  if (typeof module === "object" && module.exports) module.exports = api;
+  else root.FoldCore = api;
+})(typeof globalThis !== "undefined" ? globalThis : this, function () {
+  "use strict";
+
+  const VERSION = "fold-collapse-core-1.0.0";
+  const AXES = ["X", "Y", "Z", "W"];
+  const HALF_PI = Math.PI / 2;
+  const CELL_SPECS = [[3, -1], [0, 1], [0, -1], [1, 1], [1, -1], [2, 1], [2, -1], [3, 1]];
+  const localEdges = [];
+  for (let i = 0; i < 8; i++) {
+    for (let axis = 0; axis < 3; axis++) if (!(i & (1 << axis))) localEdges.push([i, i | (1 << axis)]);
+  }
+  const localFaces = [[0, 1, 3, 2], [4, 6, 7, 5], [0, 4, 5, 1], [2, 3, 7, 6], [0, 2, 6, 4], [1, 5, 7, 3]];
+
+  function freeze(value) {
+    if (value && typeof value === "object" && !Object.isFrozen(value)) {
+      Object.values(value).forEach(freeze);
+      Object.freeze(value);
+    }
+    return value;
+  }
+  function unit(value, name) {
+    if (typeof value !== "number" || !Number.isFinite(value) || value < 0 || value > 1) {
+      throw new RangeError(name + " must be a finite number in [0, 1]");
+    }
+    return value;
+  }
+  function idFor(axis, sign) { return AXES[axis] + (sign === 1 ? "+" : "-"); }
+  function vertexId(v) { return "v" + v.reduce((mask, coordinate, axis) => mask | (coordinate === 1 ? 1 << axis : 0), 0); }
+  function mean(points) {
+    return points[0].map((_, axis) => points.reduce((sum, point) => sum + point[axis] / points.length, 0));
+  }
+  function distance(a, b) { return Math.hypot(...a.map((x, i) => x - b[i])); }
+
+  const vertices = Array.from({length: 16}, (_, mask) => ({
+    id: "v" + mask,
+    coordinates: Array.from({length: 4}, (_, axis) => mask & (1 << axis) ? 1 : -1)
+  }));
+  const vertexById = new Map(vertices.map(v => [v.id, v]));
+  const cells = CELL_SPECS.map(([axis, sign]) => {
+    const varying = [0, 1, 2, 3].filter(i => i !== axis);
+    return {
+      id: idFor(axis, sign), axis, sign,
+      vertexIds: Array.from({length: 8}, (_, mask) => {
+        const v = [0, 0, 0, 0];
+        v[axis] = sign;
+        varying.forEach((a, bit) => { v[a] = mask & (1 << bit) ? 1 : -1; });
+        return vertexId(v);
+      })
+    };
+  });
+  const cellById = new Map(cells.map(cell => [cell.id, cell]));
+  const edges = [];
+  for (let mask = 0; mask < 16; mask++) {
+    for (let axis = 0; axis < 4; axis++) {
+      if (!(mask & (1 << axis))) edges.push({id: "e" + edges.length, axis, vertexIds: ["v" + mask, "v" + (mask | (1 << axis))]});
+    }
+  }
+  const faces = [];
+  for (let a = 0; a < 4; a++) for (let b = a + 1; b < 4; b++) {
+    const fixed = [0, 1, 2, 3].filter(axis => axis !== a && axis !== b);
+    for (let mask = 0; mask < 4; mask++) {
+      const signs = [mask & 1 ? 1 : -1, mask & 2 ? 1 : -1];
+      faces.push({
+        id: "f" + faces.length, axes: [a, b],
+        vertexIds: [0, 1, 3, 2].map(corner => {
+          const v = [0, 0, 0, 0];
+          v[a] = corner & 1 ? 1 : -1;
+          v[b] = corner & 2 ? 1 : -1;
+          fixed.forEach((axis, index) => { v[axis] = signs[index]; });
+          return vertexId(v);
+        }),
+        cellIds: fixed.map((axis, index) => idFor(axis, signs[index]))
+      });
+    }
+  }
+  const hingePairs = cells.filter(cell => cell.axis !== 3).map(cell => ["W-", cell.id]).concat([["Z+", "W+"]]);
+  const hinges = hingePairs.map(([parent, child]) => ({
+    parent, child,
+    vertexIds: cellById.get(parent).vertexIds.filter(id => cellById.get(child).vertexIds.includes(id))
+  }));
+  const source = freeze({
+    id: "tesseract-boundary-unit-v1", dimension: 4, edgeLength: 2,
+    description: "Boundary complex of [-1,1]^4; articulated cells retain source vertex identities.",
+    vertices, edges, faces, cells, hinges
+  });
+  freeze(localEdges);
+  freeze(localFaces);
+
+  function getCell(id) {
+    const cell = cellById.get(id);
+    if (!cell) throw new RangeError("Unknown cell: " + id);
+    return cell;
+  }
+  function rotateAround(v, a, b, angle, pa, pb) {
+    // Keep the two endpoint nets exact, rather than retaining cos(pi/2) residue.
+    const sine = angle === 0 ? 0 : angle === HALF_PI ? 1 : angle === -HALF_PI ? -1 : Math.sin(angle);
+    const cosine = angle === 0 ? 1 : Math.abs(angle) === HALF_PI ? 0 : Math.cos(angle);
+    const out = v.slice();
+    const x = v[a] - pa, y = v[b] - pb;
+    out[a] = pa + x * cosine - y * sine;
+    out[b] = pb + x * sine + y * cosine;
+    return out;
+  }
+  function transform(v, cell, fold) {
+    if (fold === 1 || cell.id === "W-") return v.slice();
+    const unfoldAngle = (1 - fold) * HALF_PI;
+    if (cell.id === "W+") {
+      // Carry the final cell with Z+, then articulate its retained hinge.
+      const angle = -unfoldAngle;
+      const carried = rotateAround(v, 2, 3, angle, 1, -1);
+      const pivot = rotateAround([0, 0, 1, 1], 2, 3, angle, 1, -1);
+      return rotateAround(carried, 2, 3, angle, pivot[2], pivot[3]);
+    }
+    return rotateAround(v, cell.axis, 3, -cell.sign * unfoldAngle, cell.sign, -1);
+  }
+  function cellVertices(id, fold) {
+    unit(fold, "fold");
+    const cell = getCell(id);
+    return freeze(cell.vertexIds.map(vertex => transform(vertexById.get(vertex).coordinates, cell, fold)));
+  }
+  function project0(v) {
+    if (!Array.isArray(v) || v.length !== 4 || !v.every(Number.isFinite)) throw new TypeError("P0 needs four finite coordinates");
+    return freeze(v.slice(0, 3));
+  }
+  function phase(progress) {
+    unit(progress, "progress");
+    const fold = progress < 0.55 ? progress / 0.55 : 1;
+    const collapse = progress <= 0.55 ? 0 : progress < 0.8 ? (progress - 0.55) / 0.25 : 1;
+    const memory = progress <= 0.8 ? 1 : progress === 1 ? 0 : (1 - progress) / 0.2;
+    return freeze({
+      fold, collapse, memory, aidOpacity: memory,
+      name: progress < 0.55 ? "Fold" : progress < 0.8 ? "Collapse" : progress < 1 ? "Memory fades" : "Strict projection"
+    });
+  }
+  function geometry(progress) {
+    const stage = phase(progress);
+    return freeze(cells.map(cell => {
+      const points4 = cellVertices(cell.id, stage.fold);
+      const center4 = mean(points4);
+      // Full cubes are teaching markers, with local bit 0/1/2 mapped to x/y/z.
+      // They do not assert literal projected hyperfaces or volume preservation.
+      const marker3 = points4.map((_, mask) => center4.slice(0, 3).map((c, axis) => c + (mask & (1 << axis) ? 1 : -1)));
+      const literal3 = points4.map(project0);
+      const points3 = stage.collapse === 0 ? marker3 : stage.collapse === 1 ? literal3 : marker3.map((p, index) => p.map((c, axis) => c + stage.collapse * (literal3[index][axis] - c)));
+      return {
+        id: cell.id, sourceVertexIds: cell.vertexIds,
+        points4, points3, marker3, literal3, edges: localEdges, faces: localFaces, center4
+      };
+    }));
+  }
+  function diagnostics(fold) {
+    unit(fold, "fold");
+    const transformed = new Map(cells.map(cell => [cell.id, cellVertices(cell.id, fold)]));
+    let maxRigidityError = 0, maxHingeError = 0;
+    for (const cell of cells) {
+      const before = cell.vertexIds.map(id => vertexById.get(id).coordinates);
+      const after = transformed.get(cell.id);
+      for (let i = 0; i < 8; i++) for (let j = i + 1; j < 8; j++) {
+        maxRigidityError = Math.max(maxRigidityError, Math.abs(distance(before[i], before[j]) - distance(after[i], after[j])));
+      }
+    }
+    for (const hinge of hinges) for (const vertex of hinge.vertexIds) {
+      const a = transformed.get(hinge.parent)[getCell(hinge.parent).vertexIds.indexOf(vertex)];
+      const b = transformed.get(hinge.child)[getCell(hinge.child).vertexIds.indexOf(vertex)];
+      maxHingeError = Math.max(maxHingeError, distance(a, b));
+    }
+    return freeze({maxRigidityError, maxHingeError});
+  }
+
+  return freeze({VERSION, source, cells, cellVertices, project0, phase, geometry, diagnostics});
+});

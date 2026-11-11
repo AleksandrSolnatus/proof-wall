@@ -1,0 +1,21 @@
+const {test}=require('node:test'),assert=require('node:assert/strict'),S=require('./state.js'),C=require('./core.js');
+test('save replay preserves every user setting and deterministic geometry',()=>{
+  for(const progress of [0,.213,.55,.723,.8,.925,1])for(const selected of C.cells.map(c=>c.id)){
+    const state={progress,selected,reveal:true,camera:{yaw:2.1,pitch:-1.2,zoom:2.35}};
+    const text=JSON.stringify(S.receipt(state));const restored=S.parse(text);
+    assert.deepEqual(restored,state);assert.equal(JSON.stringify(S.receipt(restored)),text);
+    assert.deepEqual(C.geometry(restored.progress),C.geometry(progress));
+  }
+});
+test('camera and identity aids never alter canonical definition',()=>{
+  const a=S.fresh(),b=S.fresh();b.camera={yaw:-3,pitch:1.45,zoom:6};b.selected='Z+';b.reveal=true;
+  assert.deepEqual(S.receipt(a).definition,S.receipt(b).definition);
+  assert.deepEqual(C.geometry(a.progress),C.geometry(b.progress));
+});
+test('invalid/future/corrupt files refuse before state adoption',()=>{
+  for(const mutate of [r=>r.format='future',r=>r.state.progress=1.1,r=>r.state.selected='Q+',r=>r.state.reveal='yes',r=>r.state.camera.zoom=0,r=>r.state.camera.yaw=null,r=>r.extra=true,r=>r.definition.mathVersion='other',r=>r.definition.source.vertices[0].coordinates[0]=9,r=>r.state.camera.extra=1]){
+    const r=JSON.parse(JSON.stringify(S.receipt(S.fresh())));mutate(r);assert.throws(()=>S.parse(JSON.stringify(r)));
+  }
+  for(const text of ['', '{', 'null','[]','x'.repeat(100001)])assert.throws(()=>S.parse(text));
+  assert.throws(()=>S.receipt({...S.fresh(),progress:NaN}));
+});

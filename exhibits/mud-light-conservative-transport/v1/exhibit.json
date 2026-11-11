@@ -1,0 +1,108 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "One uncalibrated72x18 sediment model and a specified110-step default run, not validated fluid or thermal physics.",
+  "date": "2026-11-10",
+  "downloads": [
+    {
+      "bytes": 3063,
+      "original_path": "article.md",
+      "sha256": "19ddcf941587afeb9907afd97a36f2a2fdcbb681d457ba310b95aae14af716d7",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 810,
+      "original_path": "files/evidence-notes.md",
+      "sha256": "207402ad915da6bf5c227da23e7902d082650e30c65162c0e935c49a333f60d0",
+      "url": "files/files/evidence-notes.md.txt"
+    },
+    {
+      "bytes": 8838,
+      "original_path": "files/mud007-core.js",
+      "sha256": "953065eaf870dbf1f0fef1729db460218054e61fc59c20d665a05c101c660881",
+      "url": "files/files/mud007-core.js.txt"
+    },
+    {
+      "bytes": 55564,
+      "original_path": "files/witness.json",
+      "sha256": "31b6c252ee4539f92b64c2edcdeab9b4fb5f85fc4e189072627c6974e25322fc",
+      "url": "files/files/witness.json.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+      "bytes": 3063,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "article",
+      "sha256": "19ddcf941587afeb9907afd97a36f2a2fdcbb681d457ba310b95aae14af716d7"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+      "bytes": 810,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "files/evidence-notes.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "207402ad915da6bf5c227da23e7902d082650e30c65162c0e935c49a333f60d0"
+    },
+    {
+      "attribution": "Original AREPO007 core extraction",
+      "bytes": 8838,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/javascript",
+      "path": "files/mud007-core.js",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "953065eaf870dbf1f0fef1729db460218054e61fc59c20d665a05c101c660881"
+    },
+    {
+      "attribution": "Labeled selection from the retained November10 core-probe receipt",
+      "bytes": 55564,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/witness.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "receipt",
+      "sha256": "31b6c252ee4539f92b64c2edcdeab9b4fb5f85fc4e189072627c6974e25322fc"
+    }
+  ],
+  "finding": "The selected007 short-core witness retained nonnegative sediment and exact saved continuation while closing its modeled mass and beam accounts to floating-point residuals.",
+  "gardens": [],
+  "id": "mud-light-conservative-transport",
+  "limitations": [
+    "Transport velocities, erosion thresholds and optical partitions are authored; not calibrated sediment hydrodynamics.",
+    "Scattered-out light leaves the resolved direct beam; its subsequent path and conversion to heat are not modeled.",
+    "The short witness has no intervention, long-run,3D or general stability guarantee.",
+    "Source replay checks are not physical validation, and no scientific code was executed in this publication pipeline."
+  ],
+  "method": "Donor-limited finite-volume-like transfers between suspended/deposited stores, followed by a five-band Beer-Lambert direct-beam calculation.",
+  "open_questions": [
+    "How do transport and optical outcomes change under independently justified parameters and refinement?"
+  ],
+  "package_sha256": "52814055b5bfc466a0426d4d7870a9988827917f2a124aabcb56b252a5573658",
+  "provenance": {
+    "authors": [
+      "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation."
+    ],
+    "change_note": "First public exhibit. New article and evidence notes explain retained work. Selected source/test bytes unchanged; relocated filenames are disclosed. No scientific experiment rerun for publication.",
+    "origin": "Existing project source and dated review records; exact selected copies and labeled editorial evidence notes."
+  },
+  "publication": {
+    "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+    "intent": "request-review",
+    "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner."
+  },
+  "question": "Can moving sediment change a light field while its modeled mass and direct-beam account remain explicit?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Mud changes the light without losing the mud",
+  "version": 1
+}

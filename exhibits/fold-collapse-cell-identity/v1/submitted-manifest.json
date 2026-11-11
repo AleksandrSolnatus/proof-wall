@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "id": "fold-collapse-cell-identity",
+  "version": 1,
+  "title": "Eight cells, one disappearing view",
+  "artifact_type": "experiment",
+  "status": "verified-finite-result",
+  "question": "Can the same eight tesseract boundary cells remain identifiable as a helpful display becomes a collapsed projection?",
+  "method": "Exact source incidence, seven retained hinges, full-cell teaching markers, declared interpolation to XYZ projection and versioned study replay.",
+  "finding": "The geometry preserves cell rigidity and retained hinge matches; strict projection keeps identities even when visible geometry coincides.",
+  "claim_scope": "An isolated geometry/state encounter with recorded desktop browser checks; neither 4D physics nor a learning-effectiveness study.",
+  "limitations": [
+    "Full-size cube markers and their transition are teaching displays, not literal 3D projections or physical deformations.",
+    "Projection coincidence is not source identity or collision.",
+    "No demonstrated teaching benefit, general hidden-W inference or native Arepo integration.",
+    "Desktop WebKit and narrow touch emulation do not establish physical iPhone loading or pinch behavior."
+  ],
+  "open_questions": [
+    "Which representation helps a visitor follow a cell after its visual separation and labels disappear?"
+  ],
+  "date": "2026-09-24",
+  "provenance": {
+    "authors": [
+      "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation."
+    ],
+    "origin": "Existing project source and dated review records; exact selected copies and labeled editorial evidence notes.",
+    "change_note": "First public exhibit. New article and evidence notes explain retained work. Selected source/test bytes unchanged; relocated filenames are disclosed. No scientific experiment rerun for publication."
+  },
+  "article": "article.md",
+  "files": [
+    {
+      "path": "article.md",
+      "role": "article",
+      "media_type": "text/markdown",
+      "bytes": 3121,
+      "sha256": "b49032f982ab4b6c8238910162a2c6dc206b490433bc7e24d657fa6c64a898cc",
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/core.js",
+      "role": "code",
+      "media_type": "text/javascript",
+      "bytes": 7925,
+      "sha256": "769468b14723a81b18805cd667caae6af468d5caac43e871b7ee65b5b2f3e12a",
+      "attribution": "Original project research source or recorded evidence; retained headers and source identity.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/core.test.js",
+      "role": "code",
+      "media_type": "text/javascript",
+      "bytes": 7871,
+      "sha256": "170a8b0b7db21cadd111012201e987c081b21e816258bbd4cedc18e52b579ce3",
+      "attribution": "Original project research source or recorded evidence; retained headers and source identity.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/evidence-notes.md",
+      "role": "data",
+      "media_type": "text/markdown",
+      "bytes": 1090,
+      "sha256": "0fdb5a11b39c40ed270d1f60a45790f87c3530040157ae94472177666e331c96",
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/state.js",
+      "role": "code",
+      "media_type": "text/javascript",
+      "bytes": 2257,
+      "sha256": "26862e1ef01648913f14ea467c3d4f00ecd9db7e6932c99490a4f35d938e6c52",
+      "attribution": "Original project research source or recorded evidence; retained headers and source identity.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/state.test.js",
+      "role": "code",
+      "media_type": "text/javascript",
+      "bytes": 1603,
+      "sha256": "1d044c4b8c980f09d0d1610b75cbd715cc8ea1df6638a6fdee701c5bec7ee54c",
+      "attribution": "Original project research source or recorded evidence; retained headers and source identity.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    }
+  ],
+  "relations": [],
+  "gardens": [],
+  "publication": {
+    "intent": "request-review",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+    "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+    "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation."
+  },
+  "sample": false
+}

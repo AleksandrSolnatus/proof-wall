@@ -1,0 +1,15 @@
+// Source: preserved Genesis backup and AREPO 015 core; no persistence or setters.
+(function(root) {
+  'use strict';
+  const epochUtc = '2026-11-05T06:34:00.000Z';
+  const epochMs = Date.parse(epochUtc);
+  const clock = Object.freeze({
+    epochUtc, epochMs, rateNumerator: 1, rateDenominator: 3,
+    masterElapsedMs(utcMs) {
+      if (!Number.isFinite(utcMs)) throw new TypeError('Expected finite UTC milliseconds');
+      return Math.max(0, utcMs - epochMs) / 3;
+    }
+  });
+  Object.defineProperty(root, 'SeedClock', {value: clock, writable: false, configurable: false});
+  if (typeof module === 'object') module.exports = clock;
+})(globalThis);

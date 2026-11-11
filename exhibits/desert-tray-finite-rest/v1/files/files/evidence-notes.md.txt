@@ -1,0 +1,12 @@
+# Evidence notes — labeled editorial selection
+
+This note summarizes the final October 5 Desert Tray Dig/Pile review, preserving its distinction from the older Push-only checkpoint. It is a new explanation of retained evidence, not an original execution receipt.
+
+- Default total: 168,000 units in tray plus scoop.
+- Final new model suite: 5,802 conservation/nonnegative checks over 5,202 steps; 60 mixed-mode gestures replayed twice.
+- Center fixture: 120-step dig; 378 floor cells retained at rest.
+- Independent browser fixture: 264 exposed cells; 1,584 floor vertices at y=0; no empty-column/height mismatch.
+- Off-tray suspension and re-entry correction retained. Touch checks used Chromium emulation, not a physical phone.
+- The original review separately retains earlier Push-only results; those are not relabeled as final Dig/Pile checks.
+
+Selected original model results are accompanied by the exact model and final Dig/Pile tests. No private field histories, project custody paths or unrelated preservation inventories are exported. No new scientific run was performed for publication.

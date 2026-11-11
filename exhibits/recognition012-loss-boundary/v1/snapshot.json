@@ -1,0 +1,37 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 2943,
+      "sha256": "87141ee5026d7f91d0a250955e56c43e31e87e6e0673123eac3830a72d3fa6db"
+    },
+    "exhibit.json": {
+      "bytes": 6441,
+      "sha256": "1aae36a3edf3c52d466e5441031cae2bc7405d3e6b13f37927ad83d7b0b102c9"
+    },
+    "files/evidence-notes.md": {
+      "bytes": 971,
+      "sha256": "d2da072e50819145e5a2c4317f7995f581a821056c6917c9f04d30137e81bc56"
+    },
+    "files/invariant-ladder.txt": {
+      "bytes": 1125,
+      "sha256": "01feb7875fcb04ee0b31eace24f1a6a20515b089ea401ef0c9f35c44fa76a1f3"
+    },
+    "files/original-test-results.txt": {
+      "bytes": 1414,
+      "sha256": "e0b9b127c888e39cd31670f1593370d62b46065dc4ebac9c43f7bfb8883ab466"
+    },
+    "files/recognition-engine.js": {
+      "bytes": 4204,
+      "sha256": "2cff9116beaa6e0fd879736c86a5e9c5e72ece9c233316d840bf7926f87d06fc"
+    },
+    "files/test-recognition.js": {
+      "bytes": 4095,
+      "sha256": "895d9554f28192c4cf39ad992b468a6459838f7291e73de630d275a99c8dc483"
+    },
+    "files/transformation-note.txt": {
+      "bytes": 6035,
+      "sha256": "350756cd3bbd1c0361da0e3cee303fea5338396b5d46214004111cbb39423a29"
+    }
+  },
+  "package_sha256": "5c8b5d011fe1d6d080699a77890d6986d9b3e6713b37a9f3a607251831f0edaf"
+}

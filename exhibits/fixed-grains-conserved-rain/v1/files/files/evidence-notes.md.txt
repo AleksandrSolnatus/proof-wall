@@ -1,0 +1,7 @@
+# Evidence notes — labeled editorial selection
+
+This exhibit uses the preserved Fixed Grains / Conserved Rain001 report, protocol, original geometry/model and recorded results. No scientific code was executed by the publication workflow.
+
+The report records nine passing gates: blocked leakage, blocked rejection prediction, bounds/boundaries, conservation, controls, distinct routes, open drainage prediction, persistence and topology. It separately retains refinement differences and authored-model limits. Exact integer ledgers, not rounded tables, support its historical conservation finding. Full per-tick ledgers and full audit programs remain in the original private evidence package and are not copied here.
+
+Selected source files preserve their original bytes. The record is finite2D verification, not a theorem about real sand, physical time or all resolutions. The original report and restart report may refer to additional files outside this selected public subset; those references do not imply all evidence is bundled.

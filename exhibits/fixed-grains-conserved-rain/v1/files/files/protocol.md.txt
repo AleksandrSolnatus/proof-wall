@@ -1,0 +1,74 @@
+# Arepo — Fixed Grains / Conserved Rain 001
+
+Status: PREPARED; no experiment has been executed by preparing this prompt.
+Route: one cloud worker. Execute this protocol only when Amar routes this packet for execution. No multi-agent infrastructure is needed.
+
+## Question and limits
+
+Can explicit stationary grains create connected gaps that determine where a finite, conserved rain pulse enters, waits and drains?
+
+Build an isolated, inspectable reference model. This is a new declared approximation, not the SG007 contact solver or native Arepo. Do not modify Desert Tray, the cradle, production sources, or installed applications. No external solver, credentials, or historical input package is required. Use Python standard library; SVG outputs are sufficient.
+
+Display label: “2D conservative flow approximation — uncalibrated simulation steps.” Passing establishes geometry-controlled connectivity, numerical conservation and persistence in this approximation. It does not establish real sand infiltration, permeability, pressure flow, or grain dynamics.
+
+## Frozen geometry
+
+Coordinates are dimensionless. Domain: x in [0,1], y in [0,1]; y increases upward. Gravity is downward. Side walls and floor are closed, except bottom drain x in [0.40,0.60]. No top overflow sink: refused input is rejected rain. Grains are fixed circles, all radius 0.105. Five grains per case; preserve their IDs:
+
+| ID | A: open center | B: blocked center | C: rearranged center |
+|---|---|---|---|
+| g1 | (0.10,0.50) | (0.10,0.50) | (0.10,0.50) |
+| g2 | (0.30,0.50) | (0.30,0.50) | (0.30,0.50) |
+| g3 | (0.50,0.75) | (0.50,0.50) | (0.50,0.50) |
+| g4 | (0.70,0.50) | (0.70,0.50) | (0.70,0.75) |
+| g5 | (0.90,0.50) | (0.90,0.50) | (0.90,0.50) |
+
+Circles overlap their adjacent row neighbors by 0.010 in B and extend 0.005 beyond each side wall. Overlap is intentional: these are fixed obstacle unions, not mechanically settled grains. B therefore contains a continuous left-to-right seal. A opens the central route; C opens a route to its right. Explain this idealization visibly.
+
+The same JSON circle list must drive exact circle rendering and computation. No hand-painted flow mask. Grids: N=40 and N=80, square cells of side h=1/N. Mark a cell solid if its closed square intersects any closed circle. Compute the nearest point on the square to the center and test squared distance <= radius squared + 1e-14. Entire intersecting cells are impermeable. This conservative staircase approximation can narrow gaps but cannot open a true circle seal. Draw both exact circles and optional solid-cell overlay.
+
+Only face-adjacent fluid cells communicate. No diagonal transfer. A bottom fluid cell drains only if its entire bottom face lies within [0.40,0.60]. Report effective drain width at each resolution. Advertise h as cell size, not as a guaranteed minimum resolvable gap; arbitrary orientation and masking matter. Here, the missing row grain leaves an exact 0.19 horizontal gap before rasterization. This experiment does not test marginal sub-cell gaps.
+
+## Independent geometry expectations
+
+Before water execution, document B's analytic seal from circle overlap and wall contact; document the missing-grain openings in A/C with a geometry diagram. Separately flood-fill the fluid-cell graph from top row to drain, without invoking water transfers. Save reachable masks and report connectivity. Analytic circle connectivity and raster connectivity are distinct checks. If the raster graph contradicts the expected topology, stop before rain; preserve the geometry failure. Do not edit coordinates to get a pass.
+
+## Water representation and deterministic rules
+
+Each fluid cell capacity K=1,000,000 integer quanta. One quantum represents h*h/K area units per unit out-of-plane thickness. Solid capacity is zero. Initial water and counters are zero. Use integer arithmetic for transfers and the conservation ledger; render conversion to area only for reporting. This deliberately replaces a floating-point 1e-9 ledger tolerance with exact conservation; it is not a claim of physical precision.
+
+One tick consists of the following ordered passes. Source/destination balances update immediately for each transfer. Visit rows bottom-to-top (j=0 is bottom), columns left-to-right; use the same order at both resolutions. Transfer budget per edge per tick: Q=K//4. These are algorithmic rules, not a calibrated time step.
+
+1. Rain: at each of ticks 1..160, supply exactly N*N*K//80 quanta (total area 2). Distribute equally to ALL N top-row cells by integer quotient; assign any remainder in increasing column order. Accept min(offered, free capacity) in each fluid cell; reject all excess and any offer to a solid cell. Increment supplied for every offer. No redistribution of rejected rain.
+2. Drain: for eligible bottom cells in increasing column order, remove min(water,Q) and add to cumulative drained.
+3. Downward pass: for j=1..N-1, i=0..N-1, if both cells (i,j) and (i,j-1) are fluid, transfer min(source water, destination free capacity,Q) downward.
+4. Lateral pass: rows j=0..N-1, edges i=0..N-2. If both neighboring cells are fluid, let d=w_left-w_right. If d>0 transfer min(d//2,Q) left-to-right; if d<0 transfer min((-d)//2,Q) right-to-left. Equal capacity and half-difference ensure source/capacity bounds. No upward transfer and no second downward pass.
+5. Record and check invariants after each pass and at tick end. supplied = sum(cell water)+drained+rejected, exactly. Require integer water between 0 and K, zero in solids, monotonically increasing supplied/drained/rejected, and no transfer across solid cells or closed boundaries. No clipping or silent correction.
+
+Freeze these rules in PROTOCOL.md before the first simulation. Upward pressure, capillarity, air trapping, evaporation, momentum, grain displacement and physical seconds are excluded. Lateral balancing and pass order are programmed; unexpected routes, timing, retention and resolution differences are observations under those rules.
+
+## Run budget and controls
+
+At each N, run two controls: no grains/no rain (160 ticks, remains dry), and no grains/standard pulse (same main-run horizon). Thus four controls plus six main runs; no parameter search. Main runs: A/B/C at N=40 for 2,000 ticks and N=80 for 4,000 ticks. Rain occupies the same first 160 ticks at both resolutions. Record this policy as fixed algorithmic horizons, not equal physical durations. Compare topology, physical-area ledgers and route placement; timing differences cannot establish convergence to physics.
+
+Save complete states at ticks 0,80,160,400 and final; at N=80 also save tick 800. Save a ledger CSV every tick with supplied, stored, drained, rejected, maximum cell occupancy, and absolute ledger error. Save a sparse directed edge table of cumulative transfers, including source/sink edges, with physical coordinates. Record first drain tick (or none), final retention/rejection/drain area, and all-fluid graph connectivity. B must have zero drain and zero transfer from above the seal to below it. A/C drainage is a prediction to test, not a condition to manufacture by tuning. The blocked pulse must exercise positive rejected input; if it does not, report a prediction failure without increasing the pulse.
+
+For resolution comparison report changes in solid area, accessible upstream capacity, drain width, route distribution and ledger partition. No arbitrary percentage gate for matching retention: masking/order effects may differ. A/B/C topology must agree across the two grids. Inspect whether A and C actually show distinct routes using saved edge flows; do not call them different merely because input coordinates differ.
+
+## Save/reopen
+
+Perform two additional replay continuations: A/N40 and B/N40. At tick 80, serialize and close the process; reopen in a fresh process paused; then explicitly continue to tick 2,000. Save version, exact geometry, N/K/Q, all water integers, tick, source progress, all counters, cumulative edge flows, rule ordering, and settings fingerprint. Use canonical JSON (sorted keys, compact separators; integers preserved exactly). Reject incompatible versions/settings, malformed dimensions, altered geometry or invalid ledgers. Do not silently repair them.
+
+Reopening alone must leave the serialized state byte-identical: no wall-clock catch-up, tick advancement, or added rain. Compare resumed checkpoints/final canonical state and per-tick ledger tail against uninterrupted runs, byte-for-byte. Include one incompatible-model-version rejection check; no additional exploratory persistence matrix.
+
+## Stop conditions and honesty
+
+Stop the batch at the first implementation/integrity failure: topology mismatch, conservation error, negative/excess water, forbidden transfer, B leakage, incompatible-state acceptance, or replay mismatch. Preserve failing input, tick/pass, state and traceback. Do not patch and rerun within this frozen batch. Report a proposed correction separately. A predicted drainage/route behavior failing with valid integrity is a scientific outcome: preserve it and complete the remaining authorized cases, without tuning.
+
+Limit wall time to 10 minutes for simulations/replays and evidence generation; no infrastructure installation or cloud performance claims. If unavailable tooling or the time limit blocks completion, report exactly what ran and what remains. One worker, one isolated directory. No native build, merge, deployment or external messages.
+
+## Deliverables
+
+Produce PROTOCOL.md, geometry.json, minimal runnable source and README commands, controls/main ledgers, checkpoints, cumulative transfer tables, connectivity masks, exact-circle/occupancy/flow SVGs for every case and resolution, RESTART_REPORT.md, RESULTS.json, and a short REPORT.md distinguishing programmed behavior, predictions, observations and limits. Report each gate as PASS/FAIL/NOT RUN and preserve failures. Package in Fixed_Grains_Conserved_Rain_001_Evidence.zip with SHA-256 manifest excluding the manifest itself and ZIP. Verify all packaged file hashes. Provide the actual downloadable artifact if supported; do not claim delivery from a filesystem path alone. If delivery is blocked, state that plainly and retain the complete package at the accessible output location.
+
+End with whether geometry-controlled connectivity, conservation, route differences and persistence were established separately. Recommend at most one next bounded experiment based on observed results. Do not infer validation of moving sand or real rain infiltration.

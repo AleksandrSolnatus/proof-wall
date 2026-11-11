@@ -1,0 +1,21 @@
+AREPO 012 | INVARIANT LADDER (QUICK REFERENCE)
+
+1  CONGRUENCE:       Equal distances — rotation / translation / reflection.
+2  SIMILARITY:      Equal proportions — positive uniform scale allowed.
+3  SIMPLE LOOP:     Continuous, one-to-one closed boundary — may bend.
+4  RELATIONSHIP:    Labeled fragments and their source adjacency survive a cut.
+5  ORIGIN RECORD:   Source and transformations can be traced externally.
+6  LOSS BOUNDARY:   Two originals produce identical retained evidence; unique
+                   source recognition is then impossible from that evidence.
+
+WARNING: these are DIFFERENT criteria, not one strict total ordering; topology
+and source history can be independent. A ledger may survive total geometric
+collapse, while a visible shape may survive without any source history.
+
+Circle R -> R/2 : C -> C/2, A -> A/4, pi stays pi.
+Radial test r(theta)=R[1+a cos(3theta)]:
+  0<a<1 simple loop; a=1 pinches; a>1 crosses.
+Split: original boundary becomes two labeled arcs.
+Collapse to point: destroys coordinate injectivity.
+
+Play, test, and name what remains — don't certify cosmic conclusions.

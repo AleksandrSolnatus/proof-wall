@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "atUtc": "2026-11-10T01:54:40.975Z",
+  "checks": [
+    "full Birth byte-equivalent JSON across process restart",
+    "Present scene and sequence survive process restart; exit checkpoint may increment revision",
+    "complete History survives process restart",
+    "disabled paused reopen performs no physics catch-up or unsolicited checkpoint",
+    "stale revision abort leaves full Birth Present History unchanged"
+  ],
+  "browser": "157.0.8103.38",
+  "node": "v26.5.0",
+  "playwright": "1.65.0",
+  "limits": [
+    "Graceful full process close/reopen; not crash, eviction or power loss.",
+    "Experimental profile only; no historical Safari seal or independently authenticated UTC.",
+    "Stale-revision abort checked; forced mid-transaction I/O failure and simultaneous tabs not tested."
+  ]
+}

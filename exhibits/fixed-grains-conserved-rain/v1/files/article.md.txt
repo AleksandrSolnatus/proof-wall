@@ -1,0 +1,33 @@
+# Where did every drop go?
+
+A picture of rain disappearing into a bed is not enough. If a simulation says water drained, where did it go? If a barrier is closed, what happens to the rain it cannot admit?
+
+Fixed Grains / Conserved Rain001 makes those questions explicit. It uses fixed unions of overlapping circles as impermeable obstacles in a two-dimensional slice. Rain supply, cell capacity and transfers are finite. The water ledger records stored, drained and rejected amounts instead of quietly discarding an overflow.
+
+## Predict the route before the rain
+
+Three geometries test a specific distinction. In B, neighboring circles are0.20 apart with diameter0.21, and the end circles extend0.005 beyond the walls. A and C remove a row grain, making an analytic0.19 opening before rasterization. An elevated grain does not close that opening.
+
+Analytic geometry and an independent four-neighbor flood fill were checked before water evolution. The predictions were positive drain in A/C, zero drain and positive rejection in B, and distinct A/C routes. The report says coordinates and parameters were not tuned to obtain those outcomes.
+
+## Every part of the account matters
+
+Each pulse supplied area2 per unit out-of-plane thickness. The defining account is
+
+    supplied = stored + drained + rejected.
+
+Exact integer ledgers support conservation; rounded table values alone do not. The blocked case reports zero drainage at both grid resolutions and positive rejected input. The open cases drain, but neither accepts all of the finite pulse. Keeping rejection visible matters as much as drawing flowing water.
+
+## Refinement changes more than pixel quality
+
+The experiment used N=40 and N=80, with2,000 and4,000 ticks respectively and the same first160 rain ticks. In A, reported drained area changed from0.458981099 to0.392119467. Rasterized solid area and accessible capacity changed too.
+
+That difference is evidence, not something to smooth away. Smaller cells can change represented openings, storage and travel opportunity. Agreement on whether a route exists does not imply quantitative convergence. Model ticks are not calibrated physical seconds.
+
+## Preserve the failed shortcuts
+
+A visually convincing barrier is not enough to establish topology. A balanced amount is not enough to establish correct flow. A saved final array is not by itself a restart test. This study retains separate geometry, account, control and continuation records.
+
+The selected original report, protocol, geometry, model and results remain available for inspection. They represent an authored conservative flow approximation, not pressure-driven hydrology. Full per-tick histories and the complete original audit package are not included in this exhibit; the report's historical checks are not advertised as fresh publication runs.
+
+There is no grain motion, capillarity, trapped air, inertia, evaporation or validated real-soil behavior. A sealed two-dimensional slice does not prove a sealed three-dimensional packing.

@@ -1,0 +1,35 @@
+'use strict';const assert=require('node:assert/strict');const M=require('./recognition-engine.js');let checks=0;
+function t(name,f){f();checks++;process.stdout.write('PASS '+name+'\n');}
+const near=(a,b,eps=1e-9)=>assert.ok(Math.abs(a-b)<eps,`${a} != ${b}`);
+t('reference circle circumference / diameter = pi',()=>{const c=M.circleProperties(3.75);near(c.perimeter/c.diameter,Math.PI)});
+t('half radius halves circumference',()=>{const a=M.circleProperties(6),b=M.circleProperties(3);near(b.perimeter/a.perimeter,.5)});
+t('half radius quarters area',()=>{const a=M.circleProperties(6),b=M.circleProperties(3);near(b.area/a.area,.25)});
+t('rotation + positive scale preserve circle classification',()=>assert.equal(M.classification({scale:2.6,rotation:127}).exactSimilarity,true));
+t('bending loses similarity',()=>assert.equal(M.classification({bend:.4}).circle,false));
+t('positive radial deformation remains Jordan for a < 1',()=>assert.equal(M.classification({bend:.999}).jordan,true));
+t('a = 1 loses simple closed curve',()=>assert.equal(M.classification({bend:1}).jordan,false));
+t('a = 1 creates three preimage zeros',()=>assert.equal(M.sampleCollisions(1),3));
+t('a > 1 creates six preimage zeros',()=>assert.equal(M.sampleCollisions(1.2),6));
+t('radial zeros at 60,180,300 degrees for a=1',()=>[Math.PI/3,Math.PI,5*Math.PI/3].forEach(a=>near(M.radial(a,1),0)));
+t('radial map distinct angles coincide at a=1',()=>{const a=M.mappedPoint(Math.PI/3,{bend:1}),b=M.mappedPoint(Math.PI,{bend:1});assert.ok(M.distance(a,b)<1e-12)});
+t('cut produces two labeled arcs',()=>assert.equal(M.paths({split:true}).length,2));
+t('uncut produces one closed polygonal path',()=>{const p=M.paths();assert.equal(p.length,1);near(M.distance(p[0][0],p[0].at(-1)),0)});
+t('cut arcs have endpoints and no closed path',()=>{const p=M.paths({split:true});assert.ok(M.distance(p[0][0],p[0].at(-1))>0.1)});
+t('cut destroys Jordan circle even if arc gap is small',()=>assert.equal(M.classification({split:true}).jordan,false));
+t('collapse produces identical points for arbitrary angles',()=>{const p={collapse:1};near(M.distance(M.mappedPoint(0,p),M.mappedPoint(.845,p)),0)});
+t('collapsed geometry without external ledger has no witnessed source',()=>assert.equal(M.witness({collapse:1,ledger:false}),null));
+t('with ledger, source specification persists despite collapse',()=>assert.equal(M.witness({collapse:1,ledger:true}).source,'unit circle with ordered angles'));
+t('witness does not make noninjective mapping injective',()=>assert.equal(M.classification({collapse:1,ledger:true}).injective,false));
+t('positive scale has no intrinsic maximum',()=>{const ratio=1e12;const a=M.circleProperties(1),b=M.circleProperties(ratio);near(b.perimeter/a.perimeter,ratio,.01)});
+t('split and strong bend cannot certify two geometric components',()=>{const c=M.classification({split:true,bend:1.2});assert.equal(c.abstractPieces,2);assert.equal(c.injective,false)});
+t('zero-size shape is excluded from circle claim',()=>assert.equal(M.classification({collapse:1}).circle,false));
+t('baseline distance preserved by pure rotation',()=>{const A=M.mappedPoint(.1),B=M.mappedPoint(2.1),C=M.mappedPoint(.1,{rotation:99}),D=M.mappedPoint(2.1,{rotation:99});near(M.distance(A,B),M.distance(C,D))});
+t('scale multiplies mapped pairwise distances',()=>{const A=M.mappedPoint(.1),B=M.mappedPoint(2.1),C=M.mappedPoint(.1,{scale:2}),D=M.mappedPoint(2.1,{scale:2});near(M.distance(C,D)/M.distance(A,B),2)});
+t('split separation is along the rotated local normal',()=>{
+ const p={split:true,bend:.9,separation:60,rotation:70},arr=M.paths(p),r=p.rotation*Math.PI/180;
+ const localY=([x,y])=>-x*Math.sin(r)+y*Math.cos(r);
+ assert.ok(arr[0].every(pt=>localY(pt)>0));
+ assert.ok(arr[1].every(pt=>localY(pt)<0));
+});
+t('source evidence and topology are independent switches',()=>{const c=M.classification({split:true,ledger:false});assert.equal(c.abstractPieces,2);assert.equal(c.ledger,false)});
+console.log(JSON.stringify({passed:checks,model:'AREPO-012',status:'bounded geometric tests; not a proof of any universal physical claim'}));

@@ -1,0 +1,110 @@
+/* AREPO 017 — Birth / Present / History in one IndexedDB transaction.
+   Birth is only ever added, never put. Clock has no storage writer here.
+   Other tabs use optimistic revision checks to prevent silent overwrite.
+   Browser storage is not a cryptographic or permanent external trust anchor. */
+(function(root,factory){
+ 'use strict';
+ const api=Object.freeze(factory());
+ if(typeof module==='object'&&module.exports)module.exports=api;
+ Object.defineProperty(root,'SeedMemory',{value:api,writable:false,configurable:false});
+})(globalThis,function(){
+ 'use strict';
+ const NAME='arepo-017-durable-seed-v1', VERSION=1, MAX_IMPORT_EVENTS=4000;
+ const CLOCK_ID='AREPO-MASTER-2026-11-05T063400Z-ONE-THIRD';
+ const epoch='2026-11-05T06:34:00.000Z';
+ const simple=(v)=>JSON.parse(JSON.stringify(v));
+ function uid(){
+   if(globalThis.crypto?.randomUUID)return crypto.randomUUID();
+   if(globalThis.crypto?.getRandomValues){const b=new Uint8Array(16);crypto.getRandomValues(b);return [...b].map(v=>v.toString(16).padStart(2,'0')).join('');}
+   return 'id-'+Date.now()+'-'+Math.random().toString(16).slice(2);
+ }
+ function open(){return new Promise((resolve,reject)=>{
+   if(!('indexedDB' in globalThis))return reject(Error('IndexedDB unavailable in this browser origin'));
+   const req=indexedDB.open(NAME,VERSION);
+   req.onupgradeneeded=()=>{
+     const d=req.result;
+     d.createObjectStore('births',{keyPath:'id'});
+     d.createObjectStore('presents',{keyPath:'id'});
+     const events=d.createObjectStore('events',{keyPath:['worldId','seq']});events.createIndex('byWorld','worldId',{unique:false});
+     d.createObjectStore('settings',{keyPath:'key'});
+   };
+   req.onerror=()=>reject(req.error||Error('IndexedDB open failed'));
+   req.onblocked=()=>reject(Error('IndexedDB upgrade blocked by another tab'));
+   req.onsuccess=()=>{const d=req.result;d.onversionchange=()=>d.close();resolve(d);};
+ });}
+ function makeBirth(id,opts={}){return {id, schema:'arepo-017/birth-v1',createdAtUtc:new Date().toISOString(),source:'AREPO 016 isolated seed-clock prototype',clockReference:{id:CLOCK_ID,epochUtc:epoch,rateNumerator:1,rateDenominator:3},parent:opts.parent||null};}
+ function eventFor(type,scene,detail={}){const utcMs=Date.now();return {type,atUtc:new Date(utcMs).toISOString(),pondElapsedMs:SeedClock.masterElapsedMs(utcMs),physicsStep:scene.steps,generation:scene.generation,detail:simple(detail)};}
+ function init(db,physical){return new Promise((resolve,reject)=>{
+   const tx=db.transaction(['births','presents','events','settings'],'readwrite');
+   let out=null;
+   tx.oncomplete=()=>resolve(out);tx.onerror=()=>reject(tx.error||Error('Init transaction error'));tx.onabort=()=>reject(tx.error||Error('Init transaction aborted'));
+   const b=tx.objectStore('births'),p=tx.objectStore('presents'),e=tx.objectStore('events'),st=tx.objectStore('settings');
+   const req=st.get('active');
+   req.onsuccess=()=>{
+     if(req.result){const id=req.result.worldId;const rp=p.get(id);rp.onsuccess=()=>{if(!rp.result){tx.abort();return;}const rb=b.get(id);rb.onsuccess=()=>{if(!rb.result){tx.abort();return;}out={birth:rb.result,present:rp.result};};};}
+     else {
+       const cur=b.openCursor();cur.onsuccess=()=>{
+         if(cur.result){const id=cur.result.key;const rp=p.get(id);rp.onsuccess=()=>{if(!rp.result){tx.abort();return;}st.put({key:'active',worldId:id});out={birth:cur.result.value,present:rp.result};};}
+         else {
+           const id=uid(),birth=makeBirth(id),scene=physical.initial();
+           const present={id,schema:'arepo-017/present-v1',revision:0,seq:1,scene,lastCheckpointUtc:birth.createdAtUtc};
+           b.add(birth);p.add(present);e.add({worldId:id,seq:1,...eventFor('birth',scene,{source:'AREPO 016'})});st.put({key:'active',worldId:id});out={birth,present};
+         }
+       };
+     }
+   };
+ });}
+ // An entire present-state checkpoint and ALL its new history events either commit or abort together.
+ function commit(db,id,expectedRevision,scene,events){return new Promise((resolve,reject)=>{
+   let tx;try{tx=db.transaction(['presents','events'],'readwrite');}catch(err){return reject(err);}
+   let receipt=null,conflict=false;
+   tx.oncomplete=()=>resolve(receipt);tx.onerror=()=>reject(tx.error||Error('Checkpoint transaction failed'));
+   tx.onabort=()=>reject(conflict?Error('CONFLICT: another tab changed this seed; reload before editing'):tx.error||Error('Checkpoint aborted'));
+   const p=tx.objectStore('presents'),h=tx.objectStore('events');
+   const req=p.get(id);
+   req.onsuccess=()=>{
+     const old=req.result;
+     if(!old || old.revision!==expectedRevision){conflict=true;tx.abort();return;}
+     let seq=old.seq;
+     for(const ev of events){seq++;h.add({...simple(ev),worldId:id,seq});}
+     const present={id,schema:'arepo-017/present-v1',revision:expectedRevision+1,seq,scene:simple(scene),lastCheckpointUtc:new Date().toISOString()};
+     p.put(present);
+     receipt=present;
+   };
+ });}
+ function history(db,id){return new Promise((resolve,reject)=>{
+   const tx=db.transaction('events','readonly');const r=tx.objectStore('events').index('byWorld').getAll(IDBKeyRange.only(id));r.onsuccess=()=>resolve(r.result||[]);r.onerror=()=>reject(r.error);
+ });}
+ function list(db){return new Promise((resolve,reject)=>{const tx=db.transaction('births','readonly');const r=tx.objectStore('births').getAll();r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});}
+ function activate(db,id){return new Promise((resolve,reject)=>{
+   const tx=db.transaction(['settings','presents','births'],'readwrite');let v=null;
+   tx.oncomplete=()=>resolve(v);tx.onabort=()=>reject(tx.error||Error('Switch aborted'));
+   const r=tx.objectStore('presents').get(id);r.onsuccess=()=>{
+      if(!r.result){tx.abort();return;}const b=tx.objectStore('births').get(id);b.onsuccess=()=>{if(!b.result){tx.abort();return;}tx.objectStore('settings').put({key:'active',worldId:id});v={birth:b.result,present:r.result};};
+   };
+ });}
+ function validateBackup(o,physical){
+   if(!o||o.format!=='arepo-017/backup-v1'||!o.birth||!o.present||!Array.isArray(o.history)||o.history.length>MAX_IMPORT_EVENTS)throw Error('Not an AREPO 017 backup or too many events');
+   if(typeof o.birth.id!=='string'||!o.birth.id||o.present.id!==o.birth.id||o.history[0]?.type!=='birth')throw Error('Backup identity or birth event invalid');
+   if(o.birth.clockReference?.id!==CLOCK_ID || o.birth.clockReference?.epochUtc!==epoch || o.birth.clockReference.rateNumerator!==1 || o.birth.clockReference.rateDenominator!==3)throw Error('Backup references a different master clock');
+   physical.validate(o.present.scene);
+   if(!Number.isSafeInteger(o.present.revision) || !Number.isSafeInteger(o.present.seq) || o.present.seq<1)throw Error('Invalid revision/sequence');
+   if(o.history.some((v,i)=>!Number.isSafeInteger(v.seq)||v.seq!==i+1||v.worldId!==o.birth.id||typeof v.type!=='string'||v.type.length>80))throw Error('Invalid history sequence');
+   if(o.history.length!==o.present.seq)throw Error('Incomplete event history');
+   return true;
+ }
+ function importAsFork(db,backup,physical){validateBackup(backup,physical);return new Promise((resolve,reject)=>{
+   const tx=db.transaction(['births','presents','events','settings'],'readwrite');let result=null;
+   tx.oncomplete=()=>resolve(result);tx.onerror=()=>reject(tx.error||Error('Import failed'));tx.onabort=()=>reject(tx.error||Error('Import aborted'));
+   const id=uid(),birth=makeBirth(id,{parent:{originalId:backup.birth.id,source:'user-supplied AREPO 017 backup'}});
+   const scene=simple(backup.present.scene),seq=backup.history.length+1;
+   const present={id,schema:'arepo-017/present-v1',revision:0,seq,scene,lastCheckpointUtc:new Date().toISOString()};
+   tx.objectStore('births').add(birth);tx.objectStore('presents').add(present);
+   const events=tx.objectStore('events');
+   for(const ev of backup.history){const {worldId:_,...copy}=ev;events.add({worldId:id,...simple(copy),origin:'restored_backup'});}
+   events.add({worldId:id,seq,...eventFor('restored_as_copy',scene,{sourceWorldId:backup.birth.id})});
+   tx.objectStore('settings').put({key:'active',worldId:id});result={birth,present};
+ });}
+ function backup(birth,present,history){return {format:'arepo-017/backup-v1',exportedAtUtc:new Date().toISOString(),note:'Browser save; not a cryptographic signature or independently authenticated UTC',birth:simple(birth),present:simple(present),history:simple(history)};}
+ return {NAME,CLOCK_ID,open,init,commit,history,list,activate,importAsFork,validateBackup,backup,eventFor};
+});

@@ -1,0 +1,27 @@
+PASS reference circle circumference / diameter = pi
+PASS half radius halves circumference
+PASS half radius quarters area
+PASS rotation + positive scale preserve circle classification
+PASS bending loses similarity
+PASS positive radial deformation remains Jordan for a < 1
+PASS a = 1 loses simple closed curve
+PASS a = 1 creates three preimage zeros
+PASS a > 1 creates six preimage zeros
+PASS radial zeros at 60,180,300 degrees for a=1
+PASS radial map distinct angles coincide at a=1
+PASS cut produces two labeled arcs
+PASS uncut produces one closed polygonal path
+PASS cut arcs have endpoints and no closed path
+PASS cut destroys Jordan circle even if arc gap is small
+PASS collapse produces identical points for arbitrary angles
+PASS collapsed geometry without external ledger has no witnessed source
+PASS with ledger, source specification persists despite collapse
+PASS witness does not make noninjective mapping injective
+PASS positive scale has no intrinsic maximum
+PASS split and strong bend cannot certify two geometric components
+PASS zero-size shape is excluded from circle claim
+PASS baseline distance preserved by pure rotation
+PASS scale multiplies mapped pairwise distances
+PASS split separation is along the rotated local normal
+PASS source evidence and topology are independent switches
+{"passed":26,"model":"AREPO-012","status":"bounded geometric tests; not a proof of any universal physical claim"}

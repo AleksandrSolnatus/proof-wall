@@ -1,0 +1,7 @@
+# Evidence notes — labeled editorial selection
+
+The core is a verbatim extraction of script block1 from AREPO_007_MUD_LIGHT_STANDALONE.html; only the document wrapper and UI were excluded. It is a labeled derivative, not the originally received standalone file.
+
+The November10 recovery's007 probe uses seed7301 and unmodified source defaults, computes100 steps, saves/loads and compares ten paired continuation steps. Its numerical tolerances were1e-8 for mass and beam balance. These checks are finite software witnesses, not physical calibration or proofs of all-run stability.
+
+The selected receipt contains only the007 result. Other model probes and local source paths are excluded. The pure core and selected witness can be inspected as inert text. No science was executed by the publication pipeline.

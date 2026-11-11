@@ -1,0 +1,7 @@
+# Evidence notes — labeled editorial selection
+
+AREPO012 is a November8 mathematical playground. Its original package contains a core,26-check suite, mathematical notes, UI and recorded results. The November10 private source-recovery pass verified the archive CRC, all eight manifest payload hashes and26 supplied core checks. No fresh UI test was part of that recovery; no scientific code was executed for publication.
+
+Selected original engine, test, invariant note, transformation note and historical test results are exact copies of archive members preserved during recovery. Their local recovery paths and original archive bindings remain in the private custody ledger, not the public export. No photographs, personal symbolic-source images or correspondence are included.
+
+The status is finite verified mathematical software. General statements are confined to their explicitly defined transformations; no physical identity or consciousness claim is established.

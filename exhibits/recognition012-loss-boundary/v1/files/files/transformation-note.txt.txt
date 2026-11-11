@@ -1,0 +1,121 @@
+AREPO 012 — RECOGNITION UNDER TRANSFORMATION
+Mathematical note and invariant ladder
+8 November 2026 | Exploratory mathematics | No metaphysical theorem asserted
+
+ORIGINAL QUESTION
+How far can a shape change and still be recognized as the same thing?
+
+ANSWER IN ONE LINE
+There is no single maximum transformation. The limit depends on the equivalence relation, the information allowed to survive, and the kind of recognition requested.
+
+I. A LADDER OF RECOGNITION
+
+LEVEL 1 — METRIC CONGRUENCE
+  Preserve all distances. Translation, rotation, and reflection are allowed.
+  A circle and its rotated copy are congruent; rescaling usually breaks congruence.
+
+LEVEL 2 — GEOMETRIC SIMILARITY
+  Preserve ratios of distances and angles up to uniform positive scale.
+  Every nondegenerate circle satisfies circumference / diameter = pi.
+  Radius R -> R/2 gives circumference C/2 and area A/4.
+  Rotation, reflection, translation, and uniform scaling preserve similarity.
+
+LEVEL 3 — TOPOLOGICAL TYPE
+  Preserve a continuous one-to-one correspondence with a continuous inverse.
+  Every simple closed plane curve is topologically equivalent to a circle.
+  The curve can stretch dramatically and cease to be circular. A cut changes
+  its topology; a self-intersection can also destroy the simple-curve property.
+
+LEVEL 4 — ABSTRACT PARTS AND RELATIONSHIPS
+  Preserve an explicitly chosen combinatorial structure: labels, adjacency,
+  origin IDs, ordered boundary positions, or a documented cut graph.
+  Two fragments need not form a circle to be recognized as parts of that circle.
+  But merely seeing two similar arcs does not establish their original origin.
+
+LEVEL 5 — TRACEABLE ORIGIN (PROVENANCE)
+  Preserve evidence of the source and the operations performed on it.
+  A reliable source record can establish which circle produced fragments even
+  when no visual similarity or topological equivalence survives.
+  However, a logged source is EXTERNAL information; it does not make the
+  final geometry invertible, and source records require verification.
+
+LEVEL 6 — INFORMATION LOSS
+  If the final image and all retained metadata are identical for two different
+  possible originals, no observer receiving only that information can uniquely
+  distinguish which original was used. A source ID or stored original can
+  supply the missing information, but that is additional input.
+
+II. THE TEST FAMILY
+
+  F_a(theta) = R [1 + a cos(3 theta)] (cos theta, sin theta),
+  theta in [0, 2 pi), R > 0, a >= 0.
+
+  a = 0:      perfect circle, similarity and topology both preserved.
+  0 < a < 1:  positive radial distance for all theta, hence a simple closed
+               star-shaped curve. Circularity is lost; topology is preserved.
+  a = 1:      r(theta) = 0 at theta = pi/3, pi, 5pi/3. Three distinct
+               positions meet at the origin. The parametrization is not
+               injective: simple-closed-curve recognition fails.
+  a > 1:      at least six distinct angles can map to the origin. More
+               crossings appear. A known construction history can remain.
+
+This is a LIMIT IN THIS ONE FAMILY, not a universal maximum of shape change.
+The family has a supremum a=1 for preserving the simple-loop property, but
+no largest permitted a<1. Arbitrarily severe stretching, even by a factor of
+one trillion, still preserves similarity if the scaling is uniform and nonzero.
+
+III. WHAT HAPPENS WHEN THE CIRCLE IS CUT?
+
+Remove two short open angular neighborhoods centered at theta=0 and theta=pi.
+The remaining SOURCE boundary consists of two separate labeled arcs. They are
+no longer a single closed circle. Their embedded images can nevertheless touch
+or overlap after extreme bending or collapse, so two abstract arcs does not
+necessarily mean two geometrically disconnected visible components.
+
+IV. LOSS OF INVERTIBILITY
+
+Collapse each point toward the origin by a factor (1-c), 0 <= c <= 1.
+For c<1, this scaling is invertible on the plane. At c=1, all positions
+coincide at one point. The final dot has many possible origins; without an
+independent record, unique reconstruction is impossible.
+
+Mathematically, if f(A)=f(B) with A != B, then no function g receiving only
+f(A) can always satisfy both g(f(A))=A and g(f(B))=B.
+
+V. THREE DIFFERENT CLAIMS — DO NOT CONFUSE THEM
+
+  (a) SAME FORM: equal up to the selected mathematical equivalence.
+  (b) SAME SOURCE: a traceable history connects one object to another.
+  (c) SAME BEING: an ontological or physical identity claim.
+
+The geometric game can investigate (a), and with authentic records it can
+support (b). It does not prove (c), human or machine consciousness, or that
+all physical things are literally one entity.
+
+VI. THE RECOGNITION GAME
+
+Start with a unit circle. Uniformly rescale, rotate, bend until the simple
+loop fails, cut it into two labeled arcs, separate them, then collapse them.
+Toggle the provenance ledger separately. Watch when exact similarity,
+topological shape, pointwise injectivity, and reconstructibility fail.
+
+The testable question is not "Does everything remain the same?" It is:
+"Which information do we require for this particular kind of recognition,
+and at exactly which operation is that information lost?"
+
+VII. LIMITS OF THIS CONSTRUCTION
+
+- Drawn lines are sampled curves; finite display resolution is not proof.
+- Source trace in the toy is an internally written record, not external audit.
+- The shown split is a deliberate deletion of two small source arcs.
+- Original Seed of Recognition symbol is a separate user sketch, not reproduced.
+- Nothing from the lotus/sediment/seed engine has been modified.
+
+MATHEMATICAL REFERENCES/CONTEXT
+Euclidean similarity, circle formulas, Jordan curves/homeomorphisms,
+parametric curves, finite information and injectivity. These are established
+mathematical concepts; the toy's chosen construction is an experiment.
+
+THE WORKING STONE
+Recognition survives only relative to the relations and records chosen to
+survive. There is no absolute limit independent of what "same" means.

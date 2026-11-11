@@ -1,0 +1,33 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 3613,
+      "sha256": "8c1dc9365ac9e4b214b24d616076a92c91c9e27f7af7fc9a09e0ef4c16a8c7d1"
+    },
+    "exhibit.json": {
+      "bytes": 5975,
+      "sha256": "f9ebed17c57de5e4f7697bdf5265625a4e821133593b038d36ea1e1833c331c3"
+    },
+    "files/app/clock.js": {
+      "bytes": 649,
+      "sha256": "a4bf441192dfb966ebe6b59015440e484c5a3c5c6a37ff99aa8287edda8529ae"
+    },
+    "files/app/engine.js": {
+      "bytes": 2304,
+      "sha256": "119d35a2209a8019ab074b7bb72b96483a3d44e4245c935299c2add348babd12"
+    },
+    "files/app/store.js": {
+      "bytes": 8573,
+      "sha256": "e2420c22bd9b34ff5a7b46eda375a8bef24bd82809b9b70949b515ca98057c7c"
+    },
+    "files/evidence-notes.md": {
+      "bytes": 1211,
+      "sha256": "4238393d899f285fbf131111f33a1f0f4778175a5f0c9a0f5b80f9bbbbdc6df4"
+    },
+    "files/exact-persistence-results.json": {
+      "bytes": 821,
+      "sha256": "b3db90039a1c2572848a97908190f37216d16eb39bcd9ab496bbf4b8d0629614"
+    }
+  },
+  "package_sha256": "70bc8f7936cb40b9319708368a790f90c5e7a6c961031c1257860e96c30f4f06"
+}

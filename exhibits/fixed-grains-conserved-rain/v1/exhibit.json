@@ -1,0 +1,172 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "Finite uncalibrated2D flow and restart experiments; no claim of realistic soil, physical seconds or3D packing.",
+  "date": "2026-10-07",
+  "downloads": [
+    {
+      "bytes": 3013,
+      "original_path": "article.md",
+      "sha256": "b8b6b9102a6c50cf9a7ce9223cea50c1b5d9217d954030bd10bb12c1f1cc6734",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 1035,
+      "original_path": "files/evidence-notes.md",
+      "sha256": "9caa76c961dfba949e3ce38ec87bede4a764857fdfc0889e0a77b4895554e1cb",
+      "url": "files/files/evidence-notes.md.txt"
+    },
+    {
+      "bytes": 666,
+      "original_path": "files/geometry.json",
+      "sha256": "aa145247bf5281dc96c2795bfd3efdfe6c75823b7013a71fa4e1dc55e73a1666",
+      "url": "files/files/geometry.json.txt"
+    },
+    {
+      "bytes": 11584,
+      "original_path": "files/model.py",
+      "sha256": "803d983b081bc8cd44235c46f68aef4342fcd92bbee5fdda5d360a595a77d3f0",
+      "url": "files/files/model.py.txt"
+    },
+    {
+      "bytes": 10547,
+      "original_path": "files/protocol.md",
+      "sha256": "4e19f1aeb8b265472dca8a917842504aa4e0d030ae486661e5dc7d0e0809de10",
+      "url": "files/files/protocol.md.txt"
+    },
+    {
+      "bytes": 5014,
+      "original_path": "files/report.md",
+      "sha256": "39955796b5568d8fe9b62e3a1f0544d4111df90ca191bd07be23d5e2eb42a77d",
+      "url": "files/files/report.md.txt"
+    },
+    {
+      "bytes": 169,
+      "original_path": "files/restart-report.md",
+      "sha256": "ea44d2f66a02ecbf94859608fba2ebe779817c1dc7e8934cfe9aac6b0c3da70f",
+      "url": "files/files/restart-report.md.txt"
+    },
+    {
+      "bytes": 6982,
+      "original_path": "files/results.json",
+      "sha256": "ad6f0ed58ab21571d423aae78a44d0de5d7562e4afc782a43ccbd728680098da",
+      "url": "files/files/results.json.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+      "bytes": 3013,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "article",
+      "sha256": "b8b6b9102a6c50cf9a7ce9223cea50c1b5d9217d954030bd10bb12c1f1cc6734"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+      "bytes": 1035,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "files/evidence-notes.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "9caa76c961dfba949e3ce38ec87bede4a764857fdfc0889e0a77b4895554e1cb"
+    },
+    {
+      "attribution": "Original project research source or recorded evidence; retained headers and source identity.",
+      "bytes": 666,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/geometry.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "receipt",
+      "sha256": "aa145247bf5281dc96c2795bfd3efdfe6c75823b7013a71fa4e1dc55e73a1666"
+    },
+    {
+      "attribution": "Original project research source or recorded evidence; retained headers and source identity.",
+      "bytes": 11584,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/x-python",
+      "path": "files/model.py",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "code",
+      "sha256": "803d983b081bc8cd44235c46f68aef4342fcd92bbee5fdda5d360a595a77d3f0"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+      "bytes": 10547,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "files/protocol.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "4e19f1aeb8b265472dca8a917842504aa4e0d030ae486661e5dc7d0e0809de10"
+    },
+    {
+      "attribution": "Labeled derivative of the original report; internal delivery paths omitted.",
+      "bytes": 5014,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "files/report.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "39955796b5568d8fe9b62e3a1f0544d4111df90ca191bd07be23d5e2eb42a77d"
+    },
+    {
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+      "bytes": 169,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "text/markdown",
+      "path": "files/restart-report.md",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "data",
+      "sha256": "ea44d2f66a02ecbf94859608fba2ebe779817c1dc7e8934cfe9aac6b0c3da70f"
+    },
+    {
+      "attribution": "Original project research source or recorded evidence; retained headers and source identity.",
+      "bytes": 6982,
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+      "media_type": "application/json",
+      "path": "files/results.json",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "role": "receipt",
+      "sha256": "ad6f0ed58ab21571d423aae78a44d0de5d7562e4afc782a43ccbd728680098da"
+    }
+  ],
+  "finding": "The recorded open cases drained, the blocked case retained and rejected water without drain leakage, and both resolutions kept explicit accounts.",
+  "gardens": [],
+  "id": "fixed-grains-conserved-rain",
+  "limitations": [
+    "Stationary overlapping-circle obstacles; prescribed transfer order, no grain movement, pressure, capillarity, momentum or evaporation.",
+    "Resolution changes alter represented solid area, accessible capacity and drainage amounts.",
+    "Zero leakage in the fixed2D model does not prove a sealed3D granular packing.",
+    "Original scientific results are retained reports; publication did not rerun the experiment. Selected files are not the complete raw evidence archive."
+  ],
+  "method": "Fixed two-dimensional circle obstacles, analytic openings, independent flood-fill predictions, integer water ledgers and two grid resolutions.",
+  "open_questions": [
+    "Which quantities remain stable under further refinement, and where does the discrete geometry change the route?"
+  ],
+  "package_sha256": "29349ccb0cf3b2021d8d0ea31392e70f6d94488f923c64583c65e7f3a04e2181",
+  "provenance": {
+    "authors": [
+      "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation."
+    ],
+    "change_note": "First public exhibit. New article and evidence notes explain retained work. Selected source/test bytes unchanged; relocated filenames are disclosed. No scientific experiment rerun for publication. The report is a labeled derivative omitting only the internal filesystem-delivery paragraph; original source preserved privately.",
+    "origin": "Existing project source and dated review records; exact selected copies and labeled editorial evidence notes."
+  },
+  "publication": {
+    "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+    "intent": "request-review",
+    "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner."
+  },
+  "question": "Can obstacle geometry predict which routes finite rain can take while every unit remains accounted for?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Where did every drop go?",
+  "version": 1
+}

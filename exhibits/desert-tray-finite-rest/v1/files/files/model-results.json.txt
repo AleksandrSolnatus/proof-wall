@@ -1,0 +1,77 @@
+{
+  "checks": 5802,
+  "steps": 5202,
+  "movingSteps": 4966,
+  "cases": [
+    {
+      "name": "empty pile",
+      "result": "unchanged"
+    },
+    {
+      "name": "dig center",
+      "scoop": 16591,
+      "exposed": 378,
+      "releaseSteps": 3
+    },
+    {
+      "name": "dig northwest",
+      "scoop": 4149,
+      "exposed": 94,
+      "releaseSteps": 2
+    },
+    {
+      "name": "dig northeast",
+      "scoop": 4152,
+      "exposed": 96,
+      "releaseSteps": 1
+    },
+    {
+      "name": "dig southwest",
+      "scoop": 4148,
+      "exposed": 95,
+      "releaseSteps": 3
+    },
+    {
+      "name": "dig southeast",
+      "scoop": 4144,
+      "exposed": 94,
+      "releaseSteps": 1
+    },
+    {
+      "name": "dig left edge",
+      "scoop": 8296,
+      "exposed": 188,
+      "releaseSteps": 3
+    },
+    {
+      "name": "dig right edge",
+      "scoop": 8296,
+      "exposed": 190,
+      "releaseSteps": 1
+    },
+    {
+      "name": "chosen remote pile",
+      "scoop": 13214,
+      "pileGain": 13021,
+      "pileCenter": 70,
+      "depositSteps": 55
+    }
+  ],
+  "replay": {
+    "aggregateUnits": 168000,
+    "trayUnits": 89530,
+    "scoopUnits": 78470,
+    "exposedCells": 1479,
+    "occupiedColumns": 5521,
+    "moved": 0,
+    "displaced": 5960,
+    "transportDistance": 0,
+    "resting": true,
+    "toolActive": false,
+    "min": 0,
+    "max": 47,
+    "maxCardinalSlope": 3,
+    "step": 2012
+  },
+  "status": "PASS"
+}

@@ -1,5 +1,5 @@
 {
-  "exhibits": 38,
+  "exhibits": 44,
   "files": {
     ".nojekyll": {
       "bytes": 0,
@@ -336,6 +336,42 @@
     "exhibits/changing-pair-001-recovered-pigeon/v1/submitted-manifest.json": {
       "bytes": 2691,
       "sha256": "cc5a4bb4990a9843aabd9288a1eb91ed5b1050083c7b270f67de95a14bd3bf27"
+    },
+    "exhibits/desert-tray-finite-rest/v1/exhibit.json": {
+      "bytes": 6314,
+      "sha256": "864de89fdcd900da50ffaf1f9b8412897ea0e4973263cc0bdfd5e63fdf40f880"
+    },
+    "exhibits/desert-tray-finite-rest/v1/files/article.md.txt": {
+      "bytes": 3212,
+      "sha256": "46042f513e5e8b353f6e072abed36aef01608e5d83aa278b8af0dce292ef3250"
+    },
+    "exhibits/desert-tray-finite-rest/v1/files/files/dig-pile.test.js.txt": {
+      "bytes": 4439,
+      "sha256": "48583ecab459cf389c3205c1bb320a460d7d00662c25e65724691668df3afa24"
+    },
+    "exhibits/desert-tray-finite-rest/v1/files/files/evidence-notes.md.txt": {
+      "bytes": 1098,
+      "sha256": "d95bcaeba7999e5e10f18627a7fdb1176ac15d0dc2f62cdb30acbb3a4ac309e0"
+    },
+    "exhibits/desert-tray-finite-rest/v1/files/files/model-results.json.txt": {
+      "bytes": 1423,
+      "sha256": "67a80e8e8fa022a9227d7f5cd05b23e41585b1af918376a425af664eb91a354a"
+    },
+    "exhibits/desert-tray-finite-rest/v1/files/files/sand.js.txt": {
+      "bytes": 5789,
+      "sha256": "30184656e3db41a952e77baa5975e8e378f617c116badc18a62d66c96f8bb2e9"
+    },
+    "exhibits/desert-tray-finite-rest/v1/index.html": {
+      "bytes": 11131,
+      "sha256": "22d3e775a5c61281b1443735af53422fc35c53f1e94e84d42770e67ac0040eaa"
+    },
+    "exhibits/desert-tray-finite-rest/v1/snapshot.json": {
+      "bytes": 938,
+      "sha256": "f51ef20b7c7b4105efcd098a2b0a863a0b7a93078cbdc11f6f720e32006a40ac"
+    },
+    "exhibits/desert-tray-finite-rest/v1/submitted-manifest.json": {
+      "bytes": 5166,
+      "sha256": "8c9519bcd522987d05599de02ce750ad0058560412b32a2409b1b2285c4c9fd2"
     },
     "exhibits/dial-geometry-02-stability-stop/v2/exhibit.json": {
       "bytes": 15284,
@@ -768,6 +804,134 @@
     "exhibits/drago-rocky-two-math-fighters/v1/submitted-manifest.json": {
       "bytes": 24820,
       "sha256": "31e0b26b7c88d3f33d447f6c112a47fa49ae89e5b61316192c24bbcaa5cc0910"
+    },
+    "exhibits/durable-clock-birth-present-history/v1/exhibit.json": {
+      "bytes": 7356,
+      "sha256": "1b33cd821d974050ba2822a421dc3c91cc02bb4fca7e9cbb52315708d0324124"
+    },
+    "exhibits/durable-clock-birth-present-history/v1/files/article.md.txt": {
+      "bytes": 3613,
+      "sha256": "8c1dc9365ac9e4b214b24d616076a92c91c9e27f7af7fc9a09e0ef4c16a8c7d1"
+    },
+    "exhibits/durable-clock-birth-present-history/v1/files/files/app/clock.js.txt": {
+      "bytes": 649,
+      "sha256": "a4bf441192dfb966ebe6b59015440e484c5a3c5c6a37ff99aa8287edda8529ae"
+    },
+    "exhibits/durable-clock-birth-present-history/v1/files/files/app/engine.js.txt": {
+      "bytes": 2304,
+      "sha256": "119d35a2209a8019ab074b7bb72b96483a3d44e4245c935299c2add348babd12"
+    },
+    "exhibits/durable-clock-birth-present-history/v1/files/files/app/store.js.txt": {
+      "bytes": 8573,
+      "sha256": "e2420c22bd9b34ff5a7b46eda375a8bef24bd82809b9b70949b515ca98057c7c"
+    },
+    "exhibits/durable-clock-birth-present-history/v1/files/files/evidence-notes.md.txt": {
+      "bytes": 1211,
+      "sha256": "4238393d899f285fbf131111f33a1f0f4778175a5f0c9a0f5b80f9bbbbdc6df4"
+    },
+    "exhibits/durable-clock-birth-present-history/v1/files/files/exact-persistence-results.json.txt": {
+      "bytes": 821,
+      "sha256": "b3db90039a1c2572848a97908190f37216d16eb39bcd9ab496bbf4b8d0629614"
+    },
+    "exhibits/durable-clock-birth-present-history/v1/index.html": {
+      "bytes": 12431,
+      "sha256": "76c20338b98a7c1adb49acbc64661cfe69f47dcfea77aa2a6e652c6c6ee0714a"
+    },
+    "exhibits/durable-clock-birth-present-history/v1/snapshot.json": {
+      "bytes": 1089,
+      "sha256": "7550d47b319a2f5ba1547b6139d4c593f60136d3b377da1bcd40657586dda02e"
+    },
+    "exhibits/durable-clock-birth-present-history/v1/submitted-manifest.json": {
+      "bytes": 5975,
+      "sha256": "f9ebed17c57de5e4f7697bdf5265625a4e821133593b038d36ea1e1833c331c3"
+    },
+    "exhibits/fixed-grains-conserved-rain/v1/exhibit.json": {
+      "bytes": 8817,
+      "sha256": "47a4876ccf72e108663d1b6bff161bcd8c1237d85492290b0971002ad5251ee0"
+    },
+    "exhibits/fixed-grains-conserved-rain/v1/files/article.md.txt": {
+      "bytes": 3013,
+      "sha256": "b8b6b9102a6c50cf9a7ce9223cea50c1b5d9217d954030bd10bb12c1f1cc6734"
+    },
+    "exhibits/fixed-grains-conserved-rain/v1/files/files/evidence-notes.md.txt": {
+      "bytes": 1035,
+      "sha256": "9caa76c961dfba949e3ce38ec87bede4a764857fdfc0889e0a77b4895554e1cb"
+    },
+    "exhibits/fixed-grains-conserved-rain/v1/files/files/geometry.json.txt": {
+      "bytes": 666,
+      "sha256": "aa145247bf5281dc96c2795bfd3efdfe6c75823b7013a71fa4e1dc55e73a1666"
+    },
+    "exhibits/fixed-grains-conserved-rain/v1/files/files/model.py.txt": {
+      "bytes": 11584,
+      "sha256": "803d983b081bc8cd44235c46f68aef4342fcd92bbee5fdda5d360a595a77d3f0"
+    },
+    "exhibits/fixed-grains-conserved-rain/v1/files/files/protocol.md.txt": {
+      "bytes": 10547,
+      "sha256": "4e19f1aeb8b265472dca8a917842504aa4e0d030ae486661e5dc7d0e0809de10"
+    },
+    "exhibits/fixed-grains-conserved-rain/v1/files/files/report.md.txt": {
+      "bytes": 5014,
+      "sha256": "39955796b5568d8fe9b62e3a1f0544d4111df90ca191bd07be23d5e2eb42a77d"
+    },
+    "exhibits/fixed-grains-conserved-rain/v1/files/files/restart-report.md.txt": {
+      "bytes": 169,
+      "sha256": "ea44d2f66a02ecbf94859608fba2ebe779817c1dc7e8934cfe9aac6b0c3da70f"
+    },
+    "exhibits/fixed-grains-conserved-rain/v1/files/files/results.json.txt": {
+      "bytes": 6982,
+      "sha256": "ad6f0ed58ab21571d423aae78a44d0de5d7562e4afc782a43ccbd728680098da"
+    },
+    "exhibits/fixed-grains-conserved-rain/v1/index.html": {
+      "bytes": 12905,
+      "sha256": "a00e3f725f8046287927554f917d6731df06ac88da8c72aa73269db1dc15e009"
+    },
+    "exhibits/fixed-grains-conserved-rain/v1/snapshot.json": {
+      "bytes": 1348,
+      "sha256": "7813e6666da8132b301e5ae4a560163e3f8098c35768a050ee9d7cbd2efd3afb"
+    },
+    "exhibits/fixed-grains-conserved-rain/v1/submitted-manifest.json": {
+      "bytes": 7062,
+      "sha256": "9d45a8c8a16084a21ca3bf451a76f64d21daa5f182ebd0087723de59da13961d"
+    },
+    "exhibits/fold-collapse-cell-identity/v1/exhibit.json": {
+      "bytes": 7088,
+      "sha256": "61d0a6e50d7e476840d7221f82ee9bc04306aa103d041992c1132c42440d5f7c"
+    },
+    "exhibits/fold-collapse-cell-identity/v1/files/article.md.txt": {
+      "bytes": 3121,
+      "sha256": "b49032f982ab4b6c8238910162a2c6dc206b490433bc7e24d657fa6c64a898cc"
+    },
+    "exhibits/fold-collapse-cell-identity/v1/files/files/core.js.txt": {
+      "bytes": 7925,
+      "sha256": "769468b14723a81b18805cd667caae6af468d5caac43e871b7ee65b5b2f3e12a"
+    },
+    "exhibits/fold-collapse-cell-identity/v1/files/files/core.test.js.txt": {
+      "bytes": 7871,
+      "sha256": "170a8b0b7db21cadd111012201e987c081b21e816258bbd4cedc18e52b579ce3"
+    },
+    "exhibits/fold-collapse-cell-identity/v1/files/files/evidence-notes.md.txt": {
+      "bytes": 1090,
+      "sha256": "0fdb5a11b39c40ed270d1f60a45790f87c3530040157ae94472177666e331c96"
+    },
+    "exhibits/fold-collapse-cell-identity/v1/files/files/state.js.txt": {
+      "bytes": 2257,
+      "sha256": "26862e1ef01648913f14ea467c3d4f00ecd9db7e6932c99490a4f35d938e6c52"
+    },
+    "exhibits/fold-collapse-cell-identity/v1/files/files/state.test.js.txt": {
+      "bytes": 1603,
+      "sha256": "1d044c4b8c980f09d0d1610b75cbd715cc8ea1df6638a6fdee701c5bec7ee54c"
+    },
+    "exhibits/fold-collapse-cell-identity/v1/index.html": {
+      "bytes": 11645,
+      "sha256": "d2b199cd82c8ea6d1f7adee47054cc6b583f8af8bd425b26c570d2267379f921"
+    },
+    "exhibits/fold-collapse-cell-identity/v1/snapshot.json": {
+      "bytes": 1064,
+      "sha256": "21fac7e9c2d5a1d301c676c3af6b98e8c35e74f886f454a14ccd85db013b3172"
+    },
+    "exhibits/fold-collapse-cell-identity/v1/submitted-manifest.json": {
+      "bytes": 5759,
+      "sha256": "83c30f51f528d984077647b3b2a6998bf72238a597501f97fa4beb07fe413c18"
     },
     "exhibits/four-states-carry-the-circle/v2/exhibit.json": {
       "bytes": 9851,
@@ -1261,6 +1425,38 @@
       "bytes": 4395,
       "sha256": "c2df561676b68dabfbc4cb044c674fdd979e3c297399f9129b8f8f796bd559e1"
     },
+    "exhibits/mud-light-conservative-transport/v1/exhibit.json": {
+      "bytes": 5556,
+      "sha256": "78fde7e9636c1fa77f8a8a1759ee708b1a24c73b38f46fcc880e113b70c46dd6"
+    },
+    "exhibits/mud-light-conservative-transport/v1/files/article.md.txt": {
+      "bytes": 3063,
+      "sha256": "19ddcf941587afeb9907afd97a36f2a2fdcbb681d457ba310b95aae14af716d7"
+    },
+    "exhibits/mud-light-conservative-transport/v1/files/files/evidence-notes.md.txt": {
+      "bytes": 810,
+      "sha256": "207402ad915da6bf5c227da23e7902d082650e30c65162c0e935c49a333f60d0"
+    },
+    "exhibits/mud-light-conservative-transport/v1/files/files/mud007-core.js.txt": {
+      "bytes": 8838,
+      "sha256": "953065eaf870dbf1f0fef1729db460218054e61fc59c20d665a05c101c660881"
+    },
+    "exhibits/mud-light-conservative-transport/v1/files/files/witness.json.txt": {
+      "bytes": 55564,
+      "sha256": "31b6c252ee4539f92b64c2edcdeab9b4fb5f85fc4e189072627c6974e25322fc"
+    },
+    "exhibits/mud-light-conservative-transport/v1/index.html": {
+      "bytes": 10456,
+      "sha256": "fe33c8c099c304021903945dd2b098d79b61c7d1cd249dadaeccfa1806d4a0d2"
+    },
+    "exhibits/mud-light-conservative-transport/v1/snapshot.json": {
+      "bytes": 796,
+      "sha256": "324f70db31a2a9916c117e7e6cd66862a939b809e306fbbb45e0e97fce27677b"
+    },
+    "exhibits/mud-light-conservative-transport/v1/submitted-manifest.json": {
+      "bytes": 4621,
+      "sha256": "17b277826d3f34df482888fde12664deb41c1bd96663dea646325b0b09d8e24f"
+    },
     "exhibits/quark-finish-line-003-committed-payback/v2/exhibit.json": {
       "bytes": 6555,
       "sha256": "b9171b191f0e74ab23624c082de6ea195bb36eeff4c599b2cc01c470f8f184fb"
@@ -1332,6 +1528,50 @@
     "exhibits/quark-s5-one-step/v2/submitted-manifest.json": {
       "bytes": 4349,
       "sha256": "345e3b36d3243c82faa540a3ec3cd8e81597e3af32654f22a9f3951c30f36c6e"
+    },
+    "exhibits/recognition012-loss-boundary/v1/exhibit.json": {
+      "bytes": 8088,
+      "sha256": "ef854caf9018a128942fed0d19d478aeab26a2de3a5a043cbbad341e2b6040fe"
+    },
+    "exhibits/recognition012-loss-boundary/v1/files/article.md.txt": {
+      "bytes": 2943,
+      "sha256": "87141ee5026d7f91d0a250955e56c43e31e87e6e0673123eac3830a72d3fa6db"
+    },
+    "exhibits/recognition012-loss-boundary/v1/files/files/evidence-notes.md.txt": {
+      "bytes": 971,
+      "sha256": "d2da072e50819145e5a2c4317f7995f581a821056c6917c9f04d30137e81bc56"
+    },
+    "exhibits/recognition012-loss-boundary/v1/files/files/invariant-ladder.txt.txt": {
+      "bytes": 1125,
+      "sha256": "01feb7875fcb04ee0b31eace24f1a6a20515b089ea401ef0c9f35c44fa76a1f3"
+    },
+    "exhibits/recognition012-loss-boundary/v1/files/files/original-test-results.txt.txt": {
+      "bytes": 1414,
+      "sha256": "e0b9b127c888e39cd31670f1593370d62b46065dc4ebac9c43f7bfb8883ab466"
+    },
+    "exhibits/recognition012-loss-boundary/v1/files/files/recognition-engine.js.txt": {
+      "bytes": 4204,
+      "sha256": "2cff9116beaa6e0fd879736c86a5e9c5e72ece9c233316d840bf7926f87d06fc"
+    },
+    "exhibits/recognition012-loss-boundary/v1/files/files/test-recognition.js.txt": {
+      "bytes": 4095,
+      "sha256": "895d9554f28192c4cf39ad992b468a6459838f7291e73de630d275a99c8dc483"
+    },
+    "exhibits/recognition012-loss-boundary/v1/files/files/transformation-note.txt.txt": {
+      "bytes": 6035,
+      "sha256": "350756cd3bbd1c0361da0e3cee303fea5338396b5d46214004111cbb39423a29"
+    },
+    "exhibits/recognition012-loss-boundary/v1/index.html": {
+      "bytes": 12324,
+      "sha256": "f47a61ab7ffa365cc1ee41ac1d920cd18452da26060fad083c94c74d0d7ea14a"
+    },
+    "exhibits/recognition012-loss-boundary/v1/snapshot.json": {
+      "bytes": 1258,
+      "sha256": "ada3fa0e5717ceeed3de066ff35ec399d843f96904ecd9a950be3416a4cf01b3"
+    },
+    "exhibits/recognition012-loss-boundary/v1/submitted-manifest.json": {
+      "bytes": 6441,
+      "sha256": "1aae36a3edf3c52d466e5441031cae2bc7405d3e6b13f37927ad83d7b0b102c9"
     },
     "exhibits/relation-transfer-001/v2/exhibit.json": {
       "bytes": 14510,
@@ -2062,12 +2302,12 @@
       "sha256": "d1cf42ce64b01824f3c20d2eb7df88c95f8ffcbcc840f64a6c772c74989d4a8a"
     },
     "index.html": {
-      "bytes": 23514,
-      "sha256": "3dad301e98593164ec4a094d46471c1ac3fbb0663237959aaf1312ea53dae891"
+      "bytes": 26618,
+      "sha256": "46c0628523f14647f2cf3b44cd662e68fd9da000eb23a72263027c8ff99a9f6e"
     },
     "index.json": {
-      "bytes": 31519,
-      "sha256": "e682f89c8b23625c1bad884f419d7d5876a2b3a75ae4559a7623ba33e705da3a"
+      "bytes": 36051,
+      "sha256": "606d17b2c31270c01aa62dd58ef57a6271bace64ceb51659adf751a119efb39b"
     },
     "llms.txt": {
       "bytes": 489,
@@ -2082,8 +2322,5 @@
       "sha256": "9a8f34a02329dd77da6f2e6e4945f7c6e1d841e60a5c40157795f284f4b5f7ec"
     }
   },
-  "manifest_note": "This manifest excludes itself. Hashes establish bytes, not truth or permission.",
-  "mode": "release-candidate",
-  "published": false,
-  "schema_version": 1
+  "mode": "release-candidate"
 }

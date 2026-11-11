@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "id": "durable-clock-birth-present-history",
+  "version": 1,
+  "title": "What survives when the window closes?",
+  "artifact_type": "experiment",
+  "status": "verified-finite-result",
+  "question": "Can an isolated browser experiment retain its origin, present state and history without confusing elapsed time with work actually simulated?",
+  "method": "Immutable reference-clock facade, add-only Birth records, versioned Present and History checkpoint transactions, and recorded full-process restart comparisons.",
+  "finding": "The recorded graceful browser restart checks retained the Birth and complete History and restored the committed scene; a paused return performed no physics catch-up.",
+  "claim_scope": "Isolated AREPO017 application rules and recorded completed-transaction/graceful-restart tests; not authenticated time or crash-proof permanent memory.",
+  "limitations": [
+    "Device UTC is not independently authenticated; clock changes and OS sleep were not qualified.",
+    "Storage may be evicted. Durability extends only to the latest completed transaction; crashes and power loss were not tested.",
+    "Stale-revision refusal is not a simultaneous-tabs or forced-I/O-failure qualification.",
+    "Historical Safari seal remains UNKNOWN. No closed-browser physics, growth, learning, cryptographic identity or live-site integration is claimed."
+  ],
+  "open_questions": [
+    "What additional evidence is needed for interrupted writes, storage eviction and device-time discontinuities?"
+  ],
+  "date": "2026-11-09",
+  "provenance": {
+    "authors": [
+      "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation."
+    ],
+    "origin": "Existing project source and dated review records; exact selected copies and labeled editorial evidence notes.",
+    "change_note": "First public exhibit. New article and evidence notes explain retained work. Selected source/test bytes unchanged; relocated filenames are disclosed. No scientific experiment rerun for publication."
+  },
+  "article": "article.md",
+  "files": [
+    {
+      "path": "article.md",
+      "role": "article",
+      "media_type": "text/markdown",
+      "bytes": 3613,
+      "sha256": "8c1dc9365ac9e4b214b24d616076a92c91c9e27f7af7fc9a09e0ef4c16a8c7d1",
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/app/clock.js",
+      "role": "code",
+      "media_type": "text/javascript",
+      "bytes": 649,
+      "sha256": "a4bf441192dfb966ebe6b59015440e484c5a3c5c6a37ff99aa8287edda8529ae",
+      "attribution": "Original project research source or recorded evidence; retained headers and source identity.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/app/engine.js",
+      "role": "code",
+      "media_type": "text/javascript",
+      "bytes": 2304,
+      "sha256": "119d35a2209a8019ab074b7bb72b96483a3d44e4245c935299c2add348babd12",
+      "attribution": "Original project research source or recorded evidence; retained headers and source identity.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/app/store.js",
+      "role": "code",
+      "media_type": "text/javascript",
+      "bytes": 8573,
+      "sha256": "e2420c22bd9b34ff5a7b46eda375a8bef24bd82809b9b70949b515ca98057c7c",
+      "attribution": "Original project research source or recorded evidence; retained headers and source identity.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/evidence-notes.md",
+      "role": "data",
+      "media_type": "text/markdown",
+      "bytes": 1211,
+      "sha256": "4238393d899f285fbf131111f33a1f0f4778175a5f0c9a0f5b80f9bbbbdc6df4",
+      "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    },
+    {
+      "path": "files/exact-persistence-results.json",
+      "role": "receipt",
+      "media_type": "application/json",
+      "bytes": 821,
+      "sha256": "b3db90039a1c2572848a97908190f37216d16eb39bcd9ab496bbf4b8d0629614",
+      "attribution": "Original project research source or recorded evidence; retained headers and source identity.",
+      "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+      "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders."
+    }
+  ],
+  "relations": [],
+  "gardens": [],
+  "publication": {
+    "intent": "request-review",
+    "rights": "Public reading and downloading on the Proof Wall, authorized by the owner.",
+    "license": "All rights reserved; no new open-source license is granted. Existing third-party rights remain with their respective holders.",
+    "attribution": "The Bridges Group, owner-directed and AI-assisted; Proof Wall editorial preparation."
+  },
+  "sample": false
+}

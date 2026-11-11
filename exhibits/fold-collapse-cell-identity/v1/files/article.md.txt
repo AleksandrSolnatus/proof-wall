@@ -1,0 +1,33 @@
+# Eight cells, one disappearing view
+
+Two objects can occupy the same visible place without being the same object. A projection can lose a distinction that the source still retains.
+
+Fold to Collapse is an isolated study of that boundary. Its source is the boundary of the tesseract [-1,1]^4: 16 vertices, 32 edges, 24 square faces and eight cubic cells, with stable X-/X+, Y-/Y+, Z-/Z+ and W-/W+ identities.
+
+## Fold first, then remove the scaffold
+
+The articulated net has seven retained hinges. Each cell remains rigid while the net folds. Cut boundaries use separate cell instances that refer to immutable source identities; at closure the source incidences return.
+
+The initial display uses full-size cube markers centered on projected cell centers. These are explicitly nonliteral presence markers. They help a visitor follow the cells but do not pretend to show their literal projected shape.
+
+After folding, a declared teaching interpolation turns the markers into the actual projection. Memory outlines and identity aids then fade. This interpolation is display deformation, not a new physical law.
+
+## The same picture, different places
+
+The final observation is P0(x,y,z,w) = (x,y,z). It drops W.
+
+The opposite W- and W+ cells become coincident cubes in this observation. Their source centroids are still two units apart in four dimensions. The other six cubic cells lose their W extent and appear as square sheets. The model preserves their IDs even where screen strokes have zero length or overlap.
+
+Camera orbit and zoom are downstream views. They do not alter source topology or the four-dimensional construction. A saved study retains the versioned source definition, phase, selection, teaching recipe and camera; invalid or future definitions refuse before replacing current state.
+
+## What supports the result
+
+The September 24 review records ten geometry/state tests and an independent 4,001-state sweep. Its reported maximum distance error was about 1.11e-15, with retained hinge error zero and exact sampled replay. Desktop Chromium and WebKit checks covered opening, saved-study replay, invalid-file preservation, controls and narrow layouts. These are numerical and software observations, not exact floating-point identities for all possible executions.
+
+The November 10 source recovery separately replayed the ten existing core/state tests. That replay did not rerun the original browsers or establish a new physical-phone result. This publication reused the evidence rather than repeating the science.
+
+## What remains open
+
+A mathematically truthful view is not automatically an effective lesson. No learning benefit was measured. The sidebar remains available, so this is not a blinded learning trial. Projection overlap is not evidence of collision, and the teaching display is not a general four-dimensional world engine.
+
+Source and replay tests are provided as inert downloads. The two test files were originally core.test.cjs and state.test.cjs; their public .js copies retain the same bytes and relative source dependencies. The original interactive HTML is not activated by the archive.

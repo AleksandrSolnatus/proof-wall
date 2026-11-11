@@ -1,0 +1,119 @@
+/* Desert Tray 001: fixed-packing aggregate columns. No physical-unit claim. */
+(function (root) {
+'use strict';
+class SandTray {
+  constructor(width = 100, depth = 70) {
+    this.width = width; this.depth = depth;
+    this.unitHeight = 0.22; this.radius = 5.5; this.yield = 3;
+    this.heights = new Int32Array(width * depth);
+    this.reset();
+  }
+  reset() {
+    this.heights.fill(24); this.tick = 0; this.moved = 0; this.displaced = 0;
+    this.scoop = 0; this.distance = 0; this.tool = null; this.resting = true;
+    this.total = this.heights.length * 24;
+  }
+  valid(x, z) { return Number.isFinite(x) && Number.isFinite(z) && x >= 0 && z >= 0 && x < this.width && z < this.depth; }
+  height(x, z) { return this.heights[Math.min(this.depth - 1, Math.max(0, Math.floor(z))) * this.width + Math.min(this.width - 1, Math.max(0, Math.floor(x)))]; }
+  begin(x, z, mode = 'push') {
+    if (!['push','dig','pile'].includes(mode) || !this.valid(x, z) || this.tool) return false;
+    this.displaced = 0; this.distance = 0;
+    this.tool = {x, z, mode, floor: Math.max(0, this.height(x,z) - 15)};
+    if(mode==='push')this.press(x,z);else this.work(); this.resting=false; return true;
+  }
+  drag(x,z) {
+    if (!this.tool || !this.valid(x,z)) return false;
+    if(this.tool.mode!=='push'){this.tool.x=x;this.tool.z=z;this.resting=false;return true;}
+    const start = {...this.tool}, length = Math.hypot(x-start.x,z-start.z);
+    const steps = Math.max(1,Math.ceil(length / 0.75));
+    for(let n=1;n<=steps;n++) this.press(start.x+(x-start.x)*n/steps,start.z+(z-start.z)*n/steps);
+    return true;
+  }
+  capacity(x,z) {
+    if (!this.tool || this.tool.mode!=='push') return Infinity;
+    const d = Math.hypot(x+.5-this.tool.x,z+.5-this.tool.z) / this.radius;
+    return d < 1 ? Math.floor(this.tool.floor + 15 * d*d) : Infinity;
+  }
+  press(x,z) {
+    this.tool.x=x; this.tool.z=z;
+    const r=this.radius, w=this.width, d=this.depth, ring=[], cut=[];
+    for(let iz=Math.max(0,Math.floor(z-r-2));iz<Math.min(d,Math.ceil(z+r+2));iz++) {
+      for(let ix=Math.max(0,Math.floor(x-r-2));ix<Math.min(w,Math.ceil(x+r+2));ix++) {
+        const distance=Math.hypot(ix+.5-x,iz+.5-z), index=iz*w+ix;
+        if(distance < r) {
+          const amount=Math.max(0,this.heights[index]-this.capacity(ix,iz));
+          if(amount) cut.push({index,amount,x:ix,z:iz});
+        } else if(distance < r+2) ring.push({index,x:ix,z:iz});
+      }
+    }
+    if (!ring.length) return; // Never remove material without a destination.
+    for(const source of cut) {
+      // Nearby lower receivers win; ties retain a fixed spatial order.
+      for(let n=0;n<source.amount;n++) {
+        let best=null, score=Infinity;
+        for(const candidate of ring) {
+          const dx=candidate.x-source.x, dz=candidate.z-source.z;
+          const cost=this.heights[candidate.index]+Math.hypot(dx,dz)*1.8;
+          if(cost<score) {score=cost;best=candidate;}
+        }
+        this.heights[source.index]--; this.heights[best.index]++;
+        this.displaced++; this.distance+=Math.hypot(best.x-source.x,best.z-source.z);
+      }
+    }
+    this.resting=false;
+  }
+  toolRadius(mode=this.tool?.mode || 'push') { return mode==='dig' ? 11 : this.radius; }
+  work() {
+    const t=this.tool;
+    if(!t || t.suspended || t.mode==='push')return 0;
+    const r=this.toolRadius(),w=this.width;
+    let count=0;
+    // A visible scoop is a separate conserved account, never a material source.
+    for(let z=Math.max(0,Math.floor(t.z-r));z<Math.min(this.depth,Math.ceil(t.z+r));z++){
+      for(let x=Math.max(0,Math.floor(t.x-r));x<Math.min(w,Math.ceil(t.x+r));x++){
+        const fraction=Math.hypot(x+.5-t.x,z+.5-t.z)/r;
+        if(fraction>=1)continue;
+        const i=z*w+x,rate=Math.ceil((t.mode==='dig'?2:4)*(1-fraction*fraction));
+        const amount=Math.min(rate,t.mode==='dig'?this.heights[i]:this.scoop);
+        if(t.mode==='dig'){this.heights[i]-=amount;this.scoop+=amount;}
+        else {this.heights[i]+=amount;this.scoop-=amount;}
+        count+=amount;
+      }
+    }
+    this.displaced+=count;return count;
+  }
+  release() { this.tool=null; this.resting=false; }
+  step() {
+    const worked=this.work();
+    let moved=0; const w=this.width,d=this.depth,h=this.heights;
+    // Eight neighbors. A transfer strictly lowers sum(h²), so finite rest is guaranteed.
+    const offsets=[[1,0,this.yield],[0,1,this.yield],[1,1,4],[-1,1,4]];
+    const reverse=this.tick%2;
+    for(let k=0;k<w*d;k++) {
+      const index=reverse ? w*d-1-k : k, x=index%w,z=Math.floor(index/w);
+      for(let q=0;q<4;q++) {
+        const [dx,dz,limit]=offsets[(q+this.tick)%4], nx=x+dx,nz=z+dz;
+        if(nx<0||nx>=w||nz>=d) continue;
+        const j=nz*w+nx, from=h[index]>h[j]?index:j, to=from===index?j:index;
+        if(h[from]-h[to] > limit && h[to] < this.capacity(to%w,Math.floor(to/w))) {
+          h[from]--;h[to]++;moved++;
+        }
+      }
+    }
+    this.tick++;this.moved=moved;this.resting=moved===0&&worked===0;
+    return moved;
+  }
+  metrics() {
+    let mass=0,min=Infinity,max=0,occupied=0,slope=0;
+    const h=this.heights,w=this.width;
+    for(let i=0;i<h.length;i++) {
+      mass+=h[i];min=Math.min(min,h[i]);max=Math.max(max,h[i]);if(h[i])occupied++;
+      if(i%w<w-1)slope=Math.max(slope,Math.abs(h[i]-h[i+1]));
+      if(i<h.length-w)slope=Math.max(slope,Math.abs(h[i]-h[i+w]));
+    }
+    return {aggregateUnits:mass+this.scoop,trayUnits:mass,scoopUnits:this.scoop,exposedCells:h.length-occupied,occupiedColumns:occupied,moved:this.moved,displaced:this.displaced,transportDistance:this.distance,resting:this.resting,toolActive:!!this.tool,min,max,maxCardinalSlope:slope,step:this.tick};
+  }
+}
+root.SandTray=SandTray;
+if(typeof module!=='undefined')module.exports={SandTray};
+})(typeof globalThis!=='undefined'?globalThis:this);

@@ -1,0 +1,39 @@
+# What survives when the window closes?
+
+A clock can report that time has passed while a simulation has done no work at all. A saved history can survive a restart without becoming permanent or tamper-proof memory. This experiment makes those differences explicit.
+
+Mathematica Lutea retains an isolated AREPO017 seed-clock study. The seed is an illustrative mechanical object, not a growing or learning organism.
+
+## Three records, two notions of time
+
+Birth is an add-only origin record in the application's IndexedDB store. Present is the latest saved scene. History is the ordered event record. A checkpoint writes the new Present and its new History events in one IndexedDB transaction: they commit together or abort together. A stale expected revision refuses rather than silently replacing newer state.
+
+The clock facade has a fixed reference epoch and a rate of one third. For supplied finite UTC milliseconds u and reference e, it computes
+
+    elapsed = max(0, u-e) / 3.
+
+The facade has no persistence writer or setter. This prevents ordinary application code from redefining that reference through the facade; it is not cryptographic protection against hostile code or manual database editing.
+
+Reference elapsed time can be reconstructed from device UTC after reopening. Physics, however, advances only when the browser computes steps. Reopening is not evidence of unseen activity during closure. A paused return must not quietly advance the scene just because its clock readout changed.
+
+## What the existing checks established
+
+The acceptance record reports21 core checks,13 native-browser checks and5 supplemental full-record checks. These are distinct test groups, not independent statistical replications.
+
+The supplemental record specifically checks full Birth equality across a graceful browser-process restart, the committed Present scene and sequence, complete History, no unsolicited physics/checkpoint on a disabled paused return, and stale-revision refusal leaving all three stores unchanged. An ordinary exit checkpoint may increment the revision; the recorded check does not claim every Present metadata field is byte-identical.
+
+The core clock and persistence source are attached, together with the existing exact-persistence receipt. This exhibit did not rerun the browser experiment or open anyone's personal browser profile.
+
+## Where the guarantee stops
+
+A transaction boundary is useful, but it is not a promise of infinite retention. Browser storage can be evicted. The evidence covers a graceful full-process close and reopen and the latest completed transaction. It does not cover power loss, forced mid-write I/O failure or uncommitted work.
+
+A rejected stale revision is narrower than a full simultaneous-tabs stress test. Device UTC is not independently authenticated; time jumps and operating-system sleep remain unqualified. The historical Safari seal remains UNKNOWN, and the recorded restart checks used Chrome.
+
+Birth is an application record, not a claim of consciousness, independent identity or hidden continuity. No physics, growth, learning or discovery is claimed while the browser is closed.
+
+## A reusable lesson
+
+Keep the reference clock, computed simulation steps and committed history separate. Then a return can tell a precise story: this much reference time has elapsed, these steps were actually computed, and these records completed their transaction.
+
+The selected JavaScript is provided for source inspection as inert downloads. The full application UI and personal histories are not included; these files alone are not a runnable browser demonstration.

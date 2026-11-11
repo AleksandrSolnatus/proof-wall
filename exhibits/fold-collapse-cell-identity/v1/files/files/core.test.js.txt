@@ -1,0 +1,151 @@
+"use strict";
+const test = require("node:test");
+const assert = require("node:assert/strict");
+const C = require("./core.js");
+const byId = new Map(C.source.vertices.map(v => [v.id, v.coordinates]));
+const norm = (a, b) => Math.hypot(...a.map((x, i) => x - b[i]));
+const pair = values => values.slice().sort().join(",");
+
+test("source has the full tesseract boundary incidence, not only two cubes", () => {
+  const {vertices, edges, faces, cells, hinges} = C.source;
+  assert.deepEqual([vertices.length, edges.length, faces.length, cells.length, hinges.length], [16, 32, 24, 8, 7]);
+  assert.equal(new Set(vertices.map(v => v.coordinates.join(","))).size, 16);
+  for (const v of vertices) {
+    assert.equal(v.coordinates.length, 4);
+    assert.ok(v.coordinates.every(x => x === -1 || x === 1));
+    assert.equal(edges.filter(e => e.vertexIds.includes(v.id)).length, 4);
+    assert.equal(faces.filter(f => f.vertexIds.includes(v.id)).length, 6);
+    assert.equal(cells.filter(c => c.vertexIds.includes(v.id)).length, 4);
+  }
+  const edgeSet = new Set(edges.map(e => pair(e.vertexIds)));
+  assert.equal(edgeSet.size, 32);
+  for (const edge of edges) {
+    assert.equal(norm(...edge.vertexIds.map(id => byId.get(id))), 2);
+    assert.equal(faces.filter(f => edge.vertexIds.every(id => f.vertexIds.includes(id))).length, 3);
+    assert.equal(cells.filter(c => edge.vertexIds.every(id => c.vertexIds.includes(id))).length, 3);
+  }
+  for (const face of faces) {
+    assert.equal(new Set(face.vertexIds).size, 4);
+    for (let i = 0; i < 4; i++) assert.ok(edgeSet.has(pair([face.vertexIds[i], face.vertexIds[(i + 1) % 4]])));
+    const incident = cells.filter(c => face.vertexIds.every(id => c.vertexIds.includes(id))).map(c => c.id).sort();
+    assert.deepEqual(incident, face.cellIds.slice().sort());
+    assert.equal(incident.length, 2);
+  }
+  for (const cell of cells) {
+    assert.equal(new Set(cell.vertexIds).size, 8);
+    assert.equal(edges.filter(e => e.vertexIds.every(id => cell.vertexIds.includes(id))).length, 12);
+    assert.equal(faces.filter(f => f.cellIds.includes(cell.id)).length, 6);
+  }
+  for (let a = 0; a < 8; a++) for (let b = a + 1; b < 8; b++) {
+    const overlap = cells[a].vertexIds.filter(id => cells[b].vertexIds.includes(id));
+    assert.equal(overlap.length, cells[a].axis === cells[b].axis ? 0 : 4);
+  }
+});
+
+test("articulated net preserves every cell distance and the seven retained hinges throughout folding", () => {
+  const parentCount = new Map();
+  for (const hinge of C.source.hinges) parentCount.set(hinge.child, (parentCount.get(hinge.child) || 0) + 1);
+  assert.equal(parentCount.size, 7);
+  assert.ok([...parentCount.values()].every(n => n === 1));
+  assert.ok(!parentCount.has("W-"));
+  let maxRigidity = 0, maxHinge = 0;
+  for (let step = 0; step <= 200; step++) {
+    const fold = step / 200;
+    const actual = new Map(C.cells.map(c => [c.id, C.cellVertices(c.id, fold)]));
+    for (const cell of C.cells) {
+      const points = actual.get(cell.id);
+      assert.ok(points.flat().every(Number.isFinite));
+      for (let a = 0; a < 8; a++) for (let b = a + 1; b < 8; b++) {
+        const err = Math.abs(norm(points[a], points[b]) - norm(byId.get(cell.vertexIds[a]), byId.get(cell.vertexIds[b])));
+        maxRigidity = Math.max(maxRigidity, err);
+        assert.ok(err < 3e-14, "cell distance lost at " + fold + " " + cell.id);
+      }
+    }
+    for (const hinge of C.source.hinges) {
+      const a = C.cells.find(c => c.id === hinge.parent), b = C.cells.find(c => c.id === hinge.child);
+      for (const id of hinge.vertexIds) {
+        const err = norm(actual.get(a.id)[a.vertexIds.indexOf(id)], actual.get(b.id)[b.vertexIds.indexOf(id)]);
+        maxHinge = Math.max(maxHinge, err);
+        assert.ok(err < 3e-14, "hinge torn at " + fold);
+      }
+    }
+    const d = C.diagnostics(fold);
+    assert.ok(d.maxRigidityError < 3e-14 && d.maxHingeError < 3e-14);
+  }
+  console.log("201 folds: maximum distance error", maxRigidity, "; hinge error", maxHinge);
+});
+
+test("net endpoints are exact, cuts are independent instances until closed", () => {
+  for (const cell of C.cells) {
+    assert.ok(C.cellVertices(cell.id, 0).every(v => v[3] === -1));
+    assert.deepEqual(C.cellVertices(cell.id, 1), cell.vertexIds.map(id => byId.get(id)));
+  }
+  const x = C.cells.find(c => c.id === "X+"), y = C.cells.find(c => c.id === "Y+");
+  const shared = x.vertexIds.filter(id => y.vertexIds.includes(id));
+  assert.ok(shared.some(id => norm(C.cellVertices(x.id, 0)[x.vertexIds.indexOf(id)], C.cellVertices(y.id, 0)[y.vertexIds.indexOf(id)]) > 0));
+});
+
+test("strict P0 preserves IDs and yields two coincident cubes and six square sheets", () => {
+  const geom = C.geometry(1);
+  assert.deepEqual(C.phase(1), {fold: 1, collapse: 1, memory: 0, aidOpacity: 0, name: "Strict projection"});
+  for (const cell of geom) {
+    assert.deepEqual(cell.points3, cell.sourceVertexIds.map(id => byId.get(id).slice(0, 3)));
+    assert.equal(cell.points3.length, 8); // Distinct identities remain even at coincident positions.
+    const unique = new Set(cell.points3.map(p => p.join(","))).size;
+    assert.equal(unique, cell.id.startsWith("W") ? 8 : 4);
+    const varying = [0, 1, 2].filter(axis => new Set(cell.points3.map(p => p[axis])).size > 1);
+    assert.equal(varying.length, cell.id.startsWith("W") ? 3 : 2);
+    assert.equal(cell.edges.length, 12);
+    assert.equal(cell.faces.length, 6);
+  }
+  assert.deepEqual(geom.find(c => c.id === "W-").points3, geom.find(c => c.id === "W+").points3);
+  assert.equal(new Set(geom.flatMap(c => c.sourceVertexIds)).size, 16);
+});
+
+test("teaching cubes remain full size and transition only after exact assembly", () => {
+  for (const progress of [0, 0.1, 0.4, 0.55]) {
+    for (const cell of C.geometry(progress)) {
+      assert.deepEqual(cell.points3, cell.marker3);
+      for (const [a, b] of cell.edges) assert.ok(Math.abs(norm(cell.marker3[a], cell.marker3[b]) - 2) < 1e-14);
+    }
+  }
+  for (const progress of [0.56, 0.65, 0.79, 0.8, 1]) {
+    assert.equal(C.phase(progress).fold, 1);
+    for (const cell of C.geometry(progress)) {
+      assert.deepEqual(cell.points4, cell.sourceVertexIds.map(id => byId.get(id)));
+    }
+  }
+  assert.deepEqual(C.geometry(0.8).map(c => c.points3), C.geometry(1).map(c => c.points3));
+});
+
+test("phase joins and display geometry are continuous without hidden state", () => {
+  const epsilon = 1e-8;
+  for (const boundary of [0.55, 0.8]) {
+    const a = C.geometry(boundary - epsilon), b = C.geometry(boundary + epsilon);
+    for (let cell = 0; cell < 8; cell++) for (let v = 0; v < 8; v++) {
+      assert.ok(norm(a[cell].points3[v], b[cell].points3[v]) < 1e-6);
+      assert.ok(norm(a[cell].points4[v], b[cell].points4[v]) < 1e-6);
+    }
+    for (const key of ["fold", "collapse", "memory", "aidOpacity"]) {
+      assert.ok(Math.abs(C.phase(boundary - epsilon)[key] - C.phase(boundary + epsilon)[key]) < 1e-6);
+    }
+  }
+  const first = C.geometry(0.39);
+  C.geometry(1); C.geometry(0);
+  assert.deepEqual(C.geometry(0.39), first);
+});
+
+test("bad inputs are rejected and exported source and results are immutable", () => {
+  for (const invalid of [NaN, Infinity, -Infinity, -0.01, 1.01, "0.5", null, undefined]) {
+    assert.throws(() => C.phase(invalid), RangeError);
+    assert.throws(() => C.cellVertices("W-", invalid), RangeError);
+    assert.throws(() => C.geometry(invalid), RangeError);
+  }
+  assert.throws(() => C.cellVertices("W?", 0.5), RangeError);
+  assert.throws(() => C.project0([1, 2, NaN, 4]), TypeError);
+  assert.throws(() => C.project0([1, 2, 3]), TypeError);
+  assert.throws(() => { C.source.vertices[0].coordinates[0] = 123; }, TypeError);
+  assert.throws(() => { C.geometry(0.5)[0].points4[0][0] = 123; }, TypeError);
+  assert.throws(() => { C.cells.push({}); }, TypeError);
+  assert.deepEqual(C.source.vertices[0].coordinates, [-1, -1, -1, -1]);
+});

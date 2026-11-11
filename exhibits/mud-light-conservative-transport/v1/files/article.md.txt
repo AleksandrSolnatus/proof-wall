@@ -1,0 +1,39 @@
+# Mud changes the light without losing the mud
+
+Darkening water is easy to draw. A more useful experiment asks where the sediment went and what happened to the light removed from a tracked beam.
+
+AREPO007 holds clay and silt in72 by18 water cells, with separate deposited stores. Settling does not erase material. Erosion returns existing deposited material to the suspension rather than conjuring another source.
+
+## Limit the donor, not the balance afterward
+
+Each candidate transfer requests material from one donor. If all requests from that donor exceed its stock, they are scaled together by
+
+    alpha = min(1, donor stock / total outgoing requests).
+
+Every accepted transfer debits the donor and credits the receiver by the same amount. This keeps the proposed local moves bounded by availability. It is different from making a negative concentration and clipping it away afterward.
+
+Tiny numerical roundoff is handled separately. Conservation of a declared account is a useful invariant, but it does not prove that the chosen transport law resembles real mud.
+
+## What happens to the light?
+
+The five-band direct-beam calculation uses Beer-Lambert attenuation. Across a layer of thickness dz with extinction k,
+
+    I_out = I_in exp(-k dz).
+
+The code calculates removal using -expm1(-k dz), then assigns configured portions to water and particle absorption and to scattering out of the resolved beam. Reflection and bed arrival are also accounted for.
+
+That last distinction matters: light scattered out of this beam is not silently labeled heat. Its later path is unknown in this model. A closed direct-beam ledger does not supply a complete radiative-transfer or temperature model.
+
+## A small replayable witness
+
+The November10 source-recovery probe extracted the pure numerical script from the original standalone HTML. With source defaults and seed7301, it computed100 steps, saved and loaded a snapshot, then compared ten further steps on both continuations.
+
+For007, the continued serialized states matched exactly and represented sediment remained finite and nonnegative. The final sediment residual was7.105427357601002e-15 and the direct-beam budget residual3.552713678800501e-15 in the model's own units.
+
+This is one110-step default witness, not a long-run or intervention study. The same recovery also inspected descendant models, but their results are not pooled into this exhibit's evidence count. The publication workflow did not rerun the model.
+
+## What remains open
+
+The velocities, particle extinction strengths, erosion and absorption/scattering fractions are illustrative. The model is not a resolved three-dimensional fluid, calibrated soil or heat engine. More convincing pictures do not close those missing mechanisms.
+
+The downloadable core is the first script block extracted verbatim from the original HTML, with original comments retained. The UI is omitted and the code is served inert. A selected witness receipt states the inputs, steps, checks and measured residuals without exporting unrelated private recovery records.

@@ -1,0 +1,29 @@
+(function(root){
+  'use strict';
+  const Core=typeof module==='object'&&module.exports?require('./core.js'):root.FoldCore;
+  const VERSION='arepo-fold-collapse/1';
+  const DEFAULT_CAMERA=Object.freeze({yaw:-.65,pitch:.4,zoom:1});
+  const fresh=()=>({progress:0,selected:'W-',reveal:false,camera:{...DEFAULT_CAMERA}});
+  function number(v,min,max,name){if(typeof v!=='number'||!Number.isFinite(v)||v<min||v>max)throw Error('Invalid '+name);return v;}
+  function keys(v,list,name){if(!v||typeof v!=='object'||Array.isArray(v)||Object.keys(v).sort().join('|')!==[...list].sort().join('|'))throw Error('Invalid '+name);}
+  function validate(v){
+    keys(v,['progress','selected','reveal','camera'],'study state');
+    number(v.progress,0,1,'stage');
+    if(!Core.cells.some(c=>c.id===v.selected))throw Error('Unknown cell');
+    if(typeof v.reveal!=='boolean')throw Error('Invalid identity aids');
+    keys(v.camera,['yaw','pitch','zoom'],'camera');
+    number(v.camera.yaw,-Math.PI,Math.PI,'view turn');number(v.camera.pitch,-1.45,1.45,'view tilt');number(v.camera.zoom,.35,6,'zoom');
+    return {progress:v.progress,selected:v.selected,reveal:v.reveal,camera:{...v.camera}};
+  }
+  const definition=()=>({mathVersion:Core.VERSION,source:Core.source,observation:{name:'P0',matrix:[[1,0,0,0],[0,1,0,0],[0,0,1,0]],rank:3},teaching:{kind:'axis-aligned-full-cell-markers-then-linear-collapse',timeline:[0,.55,.8,1],durationSeconds:40,ghost:'closed-markers; linear fade .8 to 1; no history dependence'}});
+  function receipt(state){return {format:VERSION,definition:definition(),state:validate(state)};}
+  function parse(text){
+    if(typeof text!=='string'||text.length>100000)throw Error('Study file is too large');
+    const r=JSON.parse(text);keys(r,['format','definition','state'],'study file');
+    if(r.format!==VERSION)throw Error('Unsupported study version');
+    if(JSON.stringify(r.definition)!==JSON.stringify(definition()))throw Error('Source or construction differs from this study');
+    return validate(r.state);
+  }
+  const api=Object.freeze({VERSION,DEFAULT_CAMERA,fresh,validate,definition,receipt,parse});
+  if(typeof module==='object'&&module.exports)module.exports=api;else root.FoldState=api;
+})(typeof globalThis==='object'?globalThis:this);

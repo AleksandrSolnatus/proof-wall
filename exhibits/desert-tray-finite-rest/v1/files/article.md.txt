@@ -1,0 +1,33 @@
+# Sand that knows when to stop
+
+Dig a hollow. Put the lifted sand somewhere else. Let the sides slip inward. Where did the material go, and why does the movement eventually stop?
+
+Desert Tray 001 makes those questions inspectable. Its default bed is 100 by 70 integer columns, initially 24 aggregate units each: 168,000 units in total. Push redistributes material. Dig transfers it into a visible scoop; Pile returns only material already in that account. An empty scoop cannot manufacture sand.
+
+## A small proof behind a playful surface
+
+After imposed tool work stops, a local settling move takes one unit from a taller column a and gives it to a lower neighbor b. Cardinal transfers require a difference greater than three; diagonal transfers require greater than four.
+
+Use the potential Phi = sum of all column heights squared. One transfer changes it by
+
+    (a-1)^2 + (b+1)^2 - a^2 - b^2 = -2(a-b) + 2.
+
+Every permitted transfer makes this strictly negative. Heights remain nonnegative integers, so Phi is a nonnegative integer. There cannot be infinitely many successful transfers after the tools stop. The finite repeated neighbor sweeps therefore reach a state with no permitted transfer. This proves termination for the stated discrete rule, not a physical law of sand or a bound on interactive speed.
+
+During Dig or Pile, the potential may rise or fall. The termination argument does not apply to a person continually working the tray. Conservation uses the larger account: tray units plus scoop units remain 168,000. Once tools stop, the scoop stays fixed while the bed settles.
+
+## What was checked
+
+The final Dig/Pile review records 5,802 conservation and nonnegative checks across 5,202 model steps, including exact replay of 60 mixed-mode gestures twice. A 120-step center dig retained 378 exposed floor cells at rest. These are particular fixtures, not universal shape guarantees. Earlier Push-only tests remain a separate historical cohort.
+
+Independent browser inspection also distinguished a visible hole from a numerical claim: one encounter had 264 empty columns and exactly 1,584 wood-floor vertices at height zero, six per empty cell. A retained scoop made a separate mound without filling the original hole.
+
+## The useful failure
+
+A timed tool initially continued at its last valid location while a captured pointer was outside the tray. Suspension fixed that behavior; an additional re-entry check ensured the final inside sample was not lost. The corrected source and recorded model/event/browser evidence belong to the final Dig/Pile checkpoint.
+
+## What this is not
+
+Columns are aggregate volumes, not individual grains. Packing is fixed and vertical support is implicit. There are no overhangs, underground tunnels, grain collisions or airborne grains. The scoop has unlimited abstract capacity. Authored thresholds produce an exploratory material, not calibrated granular mechanics.
+
+The source and selected tests are available as inert downloads. The original tests were named dig-pile.test.cjs; the public copy is named dig-pile.test.js with unchanged bytes beside sand.js. Existing evidence was reviewed for this exhibit; it was not rerun to manufacture another confirmation.

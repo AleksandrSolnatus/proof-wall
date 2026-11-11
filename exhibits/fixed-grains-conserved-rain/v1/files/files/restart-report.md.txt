@@ -1,0 +1,3 @@
+A: paused state, checkpoints, final and ledger tail byte-identical
+B: paused state, checkpoints, final and ledger tail byte-identical
+Incompatible model version rejected

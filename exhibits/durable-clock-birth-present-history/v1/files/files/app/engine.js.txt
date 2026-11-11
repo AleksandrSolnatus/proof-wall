@@ -1,0 +1,46 @@
+/* AREPO 017 — deliberately small seed physics, derived from AREPO 016.
+   This is not biology. None of these functions read or set the master clock. */
+(function (root, factory) {
+  'use strict';
+  const result = Object.freeze(factory());
+  if (typeof module === 'object' && module.exports) module.exports = result;
+  Object.defineProperty(root, 'SeedPhysical', {value: result, writable: false, configurable: false});
+})(globalThis, function () {
+  'use strict';
+  const DT = 1 / 30;
+  function initial() { return {generation:1, paused:false, failed:false, steps:0, y:150, velocity:0, landed:false}; }
+  function validate(s) {
+    if(!s || !Number.isSafeInteger(s.generation) || s.generation<1 || !Number.isSafeInteger(s.steps) || s.steps<0 ||
+       typeof s.paused!=='boolean' || typeof s.failed!=='boolean' || typeof s.landed!=='boolean' ||
+       !Number.isFinite(s.y) || s.y<0 || s.y>200 || !Number.isFinite(s.velocity) || Math.abs(s.velocity)>1e6) throw Error('Invalid seed physical state');
+    return true;
+  }
+  function copy(s){ validate(s); return {...s}; }
+  function step(s, count=1) {
+    validate(s);
+    if(!Number.isSafeInteger(count) || count<0 || count>10000) throw Error('Invalid step count');
+    const out=copy(s), events=[];
+    for(let i=0;i<count;i++){
+      if(out.paused || out.failed) break;
+      out.velocity += 9.81/30;
+      out.y=Math.max(0,out.y-out.velocity/30);
+      out.steps++;
+      if(out.y===0 && !out.landed) {out.landed=true; events.push({type:'settled_to_floor',generation:out.generation,physicsStep:out.steps});}
+      if(out.y>0)out.landed=false;
+    }
+    return {state:out,events};
+  }
+  function act(s,type){
+    const out=copy(s);
+    switch(type){
+      case 'pause':out.paused=!out.paused;break;
+      case 'reset_scene':out.steps=0;out.y=150;out.velocity=0;out.landed=false;out.failed=false;break;
+      case 'replace_seed':out.generation++;out.steps=0;out.y=150;out.velocity=0;out.landed=false;out.failed=false;break;
+      case 'disable_seed':out.failed=true;break;
+      case 'nudge':if(out.failed)throw Error('Disabled seed cannot be nudged; replace it first');out.velocity=-12;out.landed=false;break;
+      default:throw Error('Unknown action '+type);
+    }
+    validate(out);return out;
+  }
+  return {DT,initial,validate,copy,step,act};
+});

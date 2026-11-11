@@ -1,0 +1,9 @@
+# Evidence notes — labeled editorial selection
+
+The existing isolated AREPO017 acceptance summary records21 core,13 native-browser and5 supplemental record checks. This note summarizes those records and the source boundary document; no new browser run was performed for publication.
+
+The exact-persistence receipt is copied unchanged. Its checks concern graceful full-process close/reopen, full Birth and History, the Present scene/sequence and no paused catch-up. Exit checkpoint revision changes are permitted by the original record. The stale-revision check is not a simultaneous-writer qualification.
+
+The historical Safari seal remains UNKNOWN. Device UTC is not independently authenticated. Crash, eviction, power loss, OS sleep and time jumps remain outside acceptance. No physics executes merely because reference time passed while closed.
+
+Selected clock, engine and store source retain original comments. Personal profiles, exported world histories, internal routing, private repository/access details and original acceptance metadata unrelated to the scientific scope are not exported. The selected exact-persistence receipt contains runtime versions and scientific limits, not a personal history.
