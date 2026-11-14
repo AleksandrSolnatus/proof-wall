@@ -1,0 +1,25 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 3963,
+      "sha256": "272cee12501b96805fb2a1540e642693f1184a94f558129c0507f14b30b3490b"
+    },
+    "exhibit.json": {
+      "bytes": 3944,
+      "sha256": "d6d2924a4cdc495306ea5e7f82cc41e0652f1d399ae6d4102e5baeaf754861f0"
+    },
+    "provenance.json": {
+      "bytes": 1280,
+      "sha256": "0bd5111677eb0740565377cfe9abb06f3c640a6761ee9800fef383db4db984b2"
+    },
+    "replay.py": {
+      "bytes": 3911,
+      "sha256": "ba15c182ea18b025a8b04f16a7645b74d200e02723d9deb0c5b3d4627c5840d7"
+    },
+    "results.json": {
+      "bytes": 7951,
+      "sha256": "da10c69881a6e8584f17c98b3fe8d113794553d52462416c56f6ac4300a81aaf"
+    }
+  },
+  "package_sha256": "5e87b23bf06474739dc6a00b5fd62158ff292cfa6470a33fc23a1aaed74100ab"
+}

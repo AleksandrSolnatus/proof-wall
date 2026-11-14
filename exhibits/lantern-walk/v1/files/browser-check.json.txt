@@ -1,0 +1,15 @@
+{
+  "status": "pass",
+  "tested": [
+    "initial radius1 paths agree",
+    "step radius2 agrees",
+    "step radius3 separates for m6",
+    "whole-map toggle",
+    "connectivity question returns1vs2 components",
+    "reset",
+    "odd m5 radius2 separates by closing edge",
+    "JSON export parsed with original graphs and expected observations"
+  ],
+  "desktop_visual_inspection": "pass",
+  "mobile_viewport": "not-tested"
+}

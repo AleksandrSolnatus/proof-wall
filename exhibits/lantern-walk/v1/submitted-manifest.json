@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "version": 1,
+  "date": "2026-11-10",
+  "sample": false,
+  "article": "article.md",
+  "provenance": {
+    "authors": [
+      "The Bridges Group, with ChatGPT"
+    ],
+    "origin": "New owner-directed work during the November 10, 2026 playground session; original synthetic examples and exact checkers.",
+    "change_note": "Public archive derivative omits interactive HTML; original playable toy remains linked. Other selected files retain original bytes."
+  },
+  "publication": {
+    "intent": "request-review",
+    "rights": "Owner-directed Bridges work. Public reading of this selected contribution is permitted; no private project records are included.",
+    "license": "All rights reserved; no new open-source license granted.",
+    "attribution": "The Bridges Group, with ChatGPT."
+  },
+  "id": "lantern-walk",
+  "title": "Lantern Walk: two worlds can share every nearby view",
+  "artifact_type": "experiment",
+  "status": "verified-finite-result",
+  "question": "When do identical local graph views fail to preserve connectivity?",
+  "method": "Exhaust all labelled simple graphs on1–6 vertices; test two elementary graph families; independently check with DSU connectivity and root-fixing permutations.",
+  "finding": "Degree and triangle signatures first mix connected and disconnected graphs at six vertices. Whole multisets of exact bounded-radius balls can also agree while connectivity differs.",
+  "claim_scope": "33,867 labelled graphs, 13 cycle pairs, 8 all-windows pairs; elementary proofs for the stated families.",
+  "limitations": [
+    "Not a general graph isomorphism algorithm.",
+    "No novelty, universal compression lower bound, or P-versus-NP claim.",
+    "Browser QA was desktop only."
+  ],
+  "open_questions": [
+    "Which additional relation is sufficient for the next question while remaining cheap to preserve?"
+  ],
+  "relations": [],
+  "gardens": [
+    {
+      "id": "butterfly",
+      "reason": "Public learning pieces prompted the question of preserving identity when the view changes."
+    },
+    {
+      "id": "outside-in",
+      "reason": "A playable graph toy for learning by moving the radius."
+    }
+  ],
+  "files": [
+    {
+      "path": "article.md",
+      "role": "article",
+      "media_type": "text/markdown",
+      "bytes": 5375,
+      "sha256": "02ef79411432d6762f0ef713e1ca91e41d0065d5039f5806c019b1dded556052",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-directed Bridges work; selected public contribution.",
+      "license": "All rights reserved; no new open-source license granted."
+    },
+    {
+      "path": "browser-check.json",
+      "role": "receipt",
+      "media_type": "application/json",
+      "bytes": 424,
+      "sha256": "ac9dbf04427af668507348d3fc6cb4194be1f32ac80894f6ac69eaf9ab92ddb6",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-directed Bridges work; selected public contribution.",
+      "license": "All rights reserved; no new open-source license granted."
+    },
+    {
+      "path": "experiment.py",
+      "role": "code",
+      "media_type": "text/x-python",
+      "bytes": 8750,
+      "sha256": "7e54f3e38ab2eeaea6cfa35a205fda491962aec400c4e901cead7ef47464b05a",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-directed Bridges work; selected public contribution.",
+      "license": "All rights reserved; no new open-source license granted."
+    },
+    {
+      "path": "graph.js",
+      "role": "code",
+      "media_type": "text/javascript",
+      "bytes": 1648,
+      "sha256": "4c89e2bb25800c33a9dcb90e2f42757963d34a52bd6893523f7973b7ede52a97",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-directed Bridges work; selected public contribution.",
+      "license": "All rights reserved; no new open-source license granted."
+    },
+    {
+      "path": "js-check-results.json",
+      "role": "receipt",
+      "media_type": "application/json",
+      "bytes": 141,
+      "sha256": "a856d2e32625a16eecc14d2564c82cc91f0cd9eb6a43553d70ccd0ec318a2455",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-directed Bridges work; selected public contribution.",
+      "license": "All rights reserved; no new open-source license granted."
+    },
+    {
+      "path": "results.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 95499,
+      "sha256": "279bba672568b6ac3ef6bf4027b01506cee54b85ef3a2db4131f82b8c836fe0e",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-directed Bridges work; selected public contribution.",
+      "license": "All rights reserved; no new open-source license granted."
+    },
+    {
+      "path": "review-replay.py",
+      "role": "code",
+      "media_type": "text/x-python",
+      "bytes": 5126,
+      "sha256": "77b8e8b1d13a75b015ca36f1bda54157b38d27ee5acabffd1bd88f9b6f0f811a",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-directed Bridges work; selected public contribution.",
+      "license": "All rights reserved; no new open-source license granted."
+    },
+    {
+      "path": "review-results.json",
+      "role": "receipt",
+      "media_type": "application/json",
+      "bytes": 2544,
+      "sha256": "f086cb9b3fc49322bdcf370ab5ea6b7bd7ba726b6bd0dd3fa1567ff5b0850087",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-directed Bridges work; selected public contribution.",
+      "license": "All rights reserved; no new open-source license granted."
+    },
+    {
+      "path": "review.md",
+      "role": "original",
+      "media_type": "text/markdown",
+      "bytes": 4283,
+      "sha256": "7f563e4b8620339639954083824ae58878c59b5ad5573923e1778e937803874a",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-directed Bridges work; selected public contribution.",
+      "license": "All rights reserved; no new open-source license granted."
+    }
+  ]
+}

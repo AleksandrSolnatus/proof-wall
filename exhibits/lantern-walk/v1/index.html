@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer"><meta name="color-scheme" content="light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Lantern Walk: two worlds can share every nearby view · Proof Wall</title><link rel="stylesheet" href="../../../assets/wall.css">
+<link rel="alternate" type="application/json" href="../../../index.json" title="Research index">
+<script src="../../../assets/wall.js" defer></script></head><body><nav class="workshop-return" aria-label="Return to the workshop"><a href="https://bridges.c-amar.chatgpt.site/#work">← Bridges</a></nav>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../../../index.html"><span class="mark" aria-hidden="true">∴</span> Proof Wall</a>
+<nav aria-label="Main"><a href="../../../index.html">The wall</a><a href="../../../paths.html">Little paths</a><a href="../../../contribute.html">Contribute</a></nav></header>
+<main id="main"><a class="back" href="../../../index.html">← The wall</a>
+<div class="exhibit-heading"><p class="eyebrow">lantern-walk / v1 · 2026-11-10</p>
+<h1>Lantern Walk: two worlds can share every nearby view</h1><span class="status">verified finite result</span><p class="scope">33,867 labelled graphs, 13 cycle pairs, 8 all-windows pairs; elementary proofs for the stated families.</p></div>
+
+<div class="reading-layout"><article><section><h2>The question</h2><p>When do identical local graph views fail to preserve connectivity?</p><h2>The method</h2><p>Exhaust all labelled simple graphs on1–6 vertices; test two elementary graph families; independently check with DSU connectivity and root-fixing permutations.</p><h2>The finding</h2><p>Degree and triangle signatures first mix connected and disconnected graphs at six vertices. Whole multisets of exact bounded-radius balls can also agree while connectivity differs.</p></section>
+<section class="original"><p class="eyebrow">Research text · rendered from the supplied Markdown</p><h2>Lantern Walk: two worlds can share every nearby view</h2>
+<p>An exploratory teaching toy from a Bridges playground visit on November 10, 2026.</p>
+<p>The question is small: **how much of a graph must a description preserve before it can answer whether everyone can meet?** Here “meet” means that the undirected graph is connected.</p>
+<h3>Play first</h3>
+<p>Open `index.html` beside `graph.js`. The gold vertex carries a lantern. Start at radius one, walk farther, ask about connectivity, or reveal the whole map. The exported JSON includes both original edge lists, the exact radius, and the observations.</p>
+<p>World A is one cycle of length 2m. World B is two disjoint cycles of length m, where 4≤m≤16 in the interface. Both have 2m vertices, 2m edges, degree 2 everywhere, and no triangles. One is connected and the other is not.</p>
+<p>The local view is the **induced** subgraph on vertices at graph distance at most r from a root. “Same” means rooted graph isomorphism after forgetting vertex names, not just an equal count of visible points.</p>
+<p>If r&lt;floor(m/2), each local view is a path with r edges on each side of the root. This holds at **every vertex** in both worlds. Therefore even the multiset of all local views agrees. At r=floor(m/2), the smaller cycle closes, while the larger ball remains a path. For even m, the vertex counts already differ; for odd m, the smaller ball has a closing edge that the larger one lacks.</p>
+<p>This proves the first distinguishing radius exactly for this cycle family. It does not make the ball-count comparison in the UI a general-purpose graph isomorphism algorithm.</p>
+<h3>The smallest collision under a cheap global summary</h3>
+<p>Take the six-vertex path and compare it with a four-cycle plus a separate edge:</p>
+<p>| Property | Six-vertex path | Four-cycle + edge | | --- | --- | --- | | Vertices | 6 | 6 | | Edges | 5 | 5 | | Sorted degrees | 1,1,2,2,2,2 | 1,1,2,2,2,2 | | Triangles | 0 | 0 | | Connected | Yes | No |</p>
+<p>The replay enumerated every labelled simple graph on one through six vertices: 33,867 graphs total. It grouped graphs by vertex count, sorted degrees and triangle count. Edge count is already determined by the degree sum. No class mixed connected and disconnected graphs through five vertices. At six vertices exactly one class did: the displayed signature, containing 360 labelled paths and 45 labelled four-cycle-plus-edge graphs.</p>
+<p>This establishes minimality for this exact signature within the complete finite search. It does not say that these graphs are difficult to distinguish when their edge lists are available.</p>
+<h3>A further toy: every window agrees</h3>
+<p>For any integer r≥1, compare:</p>
+<ul><li>A path on 4r+2 vertices.</li></ul>
+<ul><li>A disjoint cycle on 2r+2 vertices and a path on 2r vertices.</li></ul>
+<p>They have the same vertex count, edge count, degree multiset and triangle count. Their multisets of **exact rooted radius-r balls** also agree, although only the first graph is connected.</p>
+<p>To see this, consider distance d=0,…,r−1 from either endpoint. Each graph has two rooted path balls whose endpoint distances are {d,r}. The remaining 2r+2 vertices have rooted balls with endpoint distances {r,r}: in the long path these are interior vertices; in the other graph these are all vertices of the cycle. The cycle does not close within radius r because it has 2r+2 vertices. The short path has exactly the same boundary balls as the long one. At radius r+1 the cycle closes and the multisets separate.</p>
+<p>The replay checks r=1,…,8 (6 through 34 vertices). Its canonical key is exact for the connected paths and cycles encountered: a rooted path is determined by its two endpoint distances up to reversal; a rooted cycle is determined by its length. No approximate matcher is used.</p>
+<p>The lesson is conditional and practical: **if a stored description merges these graphs, it cannot by itself answer connectivity correctly for both.** Keeping the original edges or a sufficient additional relation fixes the loss. Nothing here forbids other compact descriptions; a connectivity bit itself answers this one question.</p>
+<h3>Checks and limits</h3>
+<p>Run `python3 experiment.py`. It recreates `results.json` with Python&#x27;s standard library. `graph.js` is a separate JavaScript implementation used by the interface; its 288 profile and witness comparisons against Python are recorded in `js-check-results.json`.</p>
+<p>All graphs are simple, unweighted and undirected. Finite enumeration stops at six vertices. The algebraic families are elementary constructions, with no claim of historical novelty. This experiment makes no P-versus-NP claim, universal compression lower bound, or solver speedup claim.</p>
+<h3>Origin</h3>
+<p>Butterfly&#x27;s public learning stream offered the Outside In sphere toy and Tesseract—Correspondence. Its short descriptions emphasized retaining a thing&#x27;s identity while its view changes. That prompted this new graph exercise about what a view forgets. The toy source and mathematical text here were newly written for the owner&#x27;s play session; no program from those projects was copied.</p>
+<ul><li>Butterfly: https://bridges-butterfly.vercel.app/</li></ul>
+<ul><li>Outside In sphere return path observed in Butterfly: https://sphere-turn-toy.c-amar.chatgpt.site/</li></ul>
+<ul><li>Tesseract return path observed in Butterfly: https://tesseract-correspondence.c-amar.chatgpt.site/</li></ul>
+<ul><li>Proof Wall: https://aleksandrsolnatus.github.io/proof-wall/</li></ul>
+<p>Prepared by ChatGPT with the Bridges Group. Coram Deo.</p></section>
+<section class="limits"><h2>Limits &amp; open questions</h2><ul><li>Not a general graph isomorphism algorithm.</li><li>No novelty, universal compression lower bound, or P-versus-NP claim.</li><li>Browser QA was desktop only.</li></ul><h3>Still open</h3><ul><li>Which additional relation is sufficient for the next question while remaining cheap to preserve?</li></ul></section>
+<section><h2>Little paths</h2><ul><li><a href="../../../paths.html#butterfly">butterfly</a> — Public learning pieces prompted the question of preserving identity when the view changes.</li><li><a href="../../../paths.html#outside-in">outside-in</a> — A playable graph toy for learning by moving the radius.</li></ul></section></article>
+<aside class="evidence"><h2>Inspect the evidence</h2><p>Original bytes, with recorded hashes. Downloads retain their original names; hosted copies use inert suffixes.</p><ul><li><a download="article.md" href="files/article.md.txt">article.md</a>
+<span>article · 5,375 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">02ef79411432d6762f0ef713e1ca91e41d0065d5039f5806c019b1dded556052</code><p>The Bridges Group, with ChatGPT.</p><p>Owner-directed Bridges work; selected public contribution.</p><p>All rights reserved; no new open-source license granted.</p></details></li><li><a download="browser-check.json" href="files/browser-check.json.txt">browser-check.json</a>
+<span>receipt · 424 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">ac9dbf04427af668507348d3fc6cb4194be1f32ac80894f6ac69eaf9ab92ddb6</code><p>The Bridges Group, with ChatGPT.</p><p>Owner-directed Bridges work; selected public contribution.</p><p>All rights reserved; no new open-source license granted.</p></details></li><li><a download="experiment.py" href="files/experiment.py.txt">experiment.py</a>
+<span>code · 8,750 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">7e54f3e38ab2eeaea6cfa35a205fda491962aec400c4e901cead7ef47464b05a</code><p>The Bridges Group, with ChatGPT.</p><p>Owner-directed Bridges work; selected public contribution.</p><p>All rights reserved; no new open-source license granted.</p></details></li><li><a download="graph.js" href="files/graph.js.txt">graph.js</a>
+<span>code · 1,648 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">4c89e2bb25800c33a9dcb90e2f42757963d34a52bd6893523f7973b7ede52a97</code><p>The Bridges Group, with ChatGPT.</p><p>Owner-directed Bridges work; selected public contribution.</p><p>All rights reserved; no new open-source license granted.</p></details></li><li><a download="js-check-results.json" href="files/js-check-results.json.txt">js-check-results.json</a>
+<span>receipt · 141 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">a856d2e32625a16eecc14d2564c82cc91f0cd9eb6a43553d70ccd0ec318a2455</code><p>The Bridges Group, with ChatGPT.</p><p>Owner-directed Bridges work; selected public contribution.</p><p>All rights reserved; no new open-source license granted.</p></details></li><li><a download="results.json" href="files/results.json.txt">results.json</a>
+<span>data · 95,499 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">279bba672568b6ac3ef6bf4027b01506cee54b85ef3a2db4131f82b8c836fe0e</code><p>The Bridges Group, with ChatGPT.</p><p>Owner-directed Bridges work; selected public contribution.</p><p>All rights reserved; no new open-source license granted.</p></details></li><li><a download="review-replay.py" href="files/review-replay.py.txt">review-replay.py</a>
+<span>code · 5,126 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">77b8e8b1d13a75b015ca36f1bda54157b38d27ee5acabffd1bd88f9b6f0f811a</code><p>The Bridges Group, with ChatGPT.</p><p>Owner-directed Bridges work; selected public contribution.</p><p>All rights reserved; no new open-source license granted.</p></details></li><li><a download="review-results.json" href="files/review-results.json.txt">review-results.json</a>
+<span>receipt · 2,544 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">f086cb9b3fc49322bdcf370ab5ea6b7bd7ba726b6bd0dd3fa1567ff5b0850087</code><p>The Bridges Group, with ChatGPT.</p><p>Owner-directed Bridges work; selected public contribution.</p><p>All rights reserved; no new open-source license granted.</p></details></li><li><a download="review.md" href="files/review.md.txt">review.md</a>
+<span>original · 4,283 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">7f563e4b8620339639954083824ae58878c59b5ad5573923e1778e937803874a</code><p>The Bridges Group, with ChatGPT.</p><p>Owner-directed Bridges work; selected public contribution.</p><p>All rights reserved; no new open-source license granted.</p></details></li></ul>
+<p><a href="exhibit.json">Exhibit JSON</a> · <a href="submitted-manifest.json">Original manifest</a> · <a href="snapshot.json">Snapshot</a></p>
+<h3>Provenance</h3><p>The Bridges Group, with ChatGPT</p><p>New owner-directed work during the November 10, 2026 playground session; original synthetic examples and exact checkers.</p><h3>Version note</h3><p>Public archive derivative omits interactive HTML; original playable toy remains linked. Other selected files retain original bytes.</p>
+<h3>Publication &amp; reuse</h3><p>The Bridges Group, with ChatGPT.</p><p>Owner-directed Bridges work. Public reading of this selected contribution is permitted; no private project records are included.</p><p>All rights reserved; no new open-source license granted.</p>
+<p class="fine">Publication review is not a mathematical certification. A finite test is not a general proof.</p>
+<a href="../../../contribute.html?exhibit=lantern-walk%40v1">Suggest a correction or connection →</a></aside></div></main><footer><span>We attract by method.</span><nav aria-label="Other places in the workshop"><a href="../../../paths.html">Other places in the workshop</a> · <a href="https://bridges.c-amar.chatgpt.site/" rel="noreferrer">Return to Bridges</a></nav><div><a href="../../../index.json">Machine-readable index</a> · <a href="../../../llms.txt">For agents</a> · <a href="../../../release-manifest.json">File hashes</a></div><p>No accounts, analytics, or submission server. Hosting providers may keep security logs.</p></footer></body></html>

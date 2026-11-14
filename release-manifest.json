@@ -1,5 +1,5 @@
 {
-  "exhibits": 44,
+  "exhibits": 46,
   "files": {
     ".nojekyll": {
       "bytes": 0,
@@ -1193,6 +1193,58 @@
       "bytes": 4572,
       "sha256": "d75d032a2cbfda1cbdcb69ad39dfe100fd5839d75576318bb4f6d40c9625d8b7"
     },
+    "exhibits/lantern-walk/v1/exhibit.json": {
+      "bytes": 7902,
+      "sha256": "cb6f4f64707179576ed723725d9b5bab6e16c4efe0eec202cc8ed9fb962c84be"
+    },
+    "exhibits/lantern-walk/v1/files/article.md.txt": {
+      "bytes": 5375,
+      "sha256": "02ef79411432d6762f0ef713e1ca91e41d0065d5039f5806c019b1dded556052"
+    },
+    "exhibits/lantern-walk/v1/files/browser-check.json.txt": {
+      "bytes": 424,
+      "sha256": "ac9dbf04427af668507348d3fc6cb4194be1f32ac80894f6ac69eaf9ab92ddb6"
+    },
+    "exhibits/lantern-walk/v1/files/experiment.py.txt": {
+      "bytes": 8750,
+      "sha256": "7e54f3e38ab2eeaea6cfa35a205fda491962aec400c4e901cead7ef47464b05a"
+    },
+    "exhibits/lantern-walk/v1/files/graph.js.txt": {
+      "bytes": 1648,
+      "sha256": "4c89e2bb25800c33a9dcb90e2f42757963d34a52bd6893523f7973b7ede52a97"
+    },
+    "exhibits/lantern-walk/v1/files/js-check-results.json.txt": {
+      "bytes": 141,
+      "sha256": "a856d2e32625a16eecc14d2564c82cc91f0cd9eb6a43553d70ccd0ec318a2455"
+    },
+    "exhibits/lantern-walk/v1/files/results.json.txt": {
+      "bytes": 95499,
+      "sha256": "279bba672568b6ac3ef6bf4027b01506cee54b85ef3a2db4131f82b8c836fe0e"
+    },
+    "exhibits/lantern-walk/v1/files/review-replay.py.txt": {
+      "bytes": 5126,
+      "sha256": "77b8e8b1d13a75b015ca36f1bda54157b38d27ee5acabffd1bd88f9b6f0f811a"
+    },
+    "exhibits/lantern-walk/v1/files/review-results.json.txt": {
+      "bytes": 2544,
+      "sha256": "f086cb9b3fc49322bdcf370ab5ea6b7bd7ba726b6bd0dd3fa1567ff5b0850087"
+    },
+    "exhibits/lantern-walk/v1/files/review.md.txt": {
+      "bytes": 4283,
+      "sha256": "7f563e4b8620339639954083824ae58878c59b5ad5573923e1778e937803874a"
+    },
+    "exhibits/lantern-walk/v1/index.html": {
+      "bytes": 14372,
+      "sha256": "5d40c30acd78ac2717d836ace410fd5c82063b378cbefef7b04fc052a32f72e9"
+    },
+    "exhibits/lantern-walk/v1/snapshot.json": {
+      "bytes": 1455,
+      "sha256": "efc05a001819140006d2749258eae9fcb461482b0b26d21af67fa9ccb1fb2268"
+    },
+    "exhibits/lantern-walk/v1/submitted-manifest.json": {
+      "bytes": 6003,
+      "sha256": "210980deb894de1fbb10250e1295ff310a6d816933fc9f733729f5c00c7ec2e0"
+    },
     "exhibits/lotus-greedy-scheduling/v2/exhibit.json": {
       "bytes": 6148,
       "sha256": "82fd6d6628c51121289495f53694b5dd9f679683f7df12a4c08e1e4d0e4166dd"
@@ -2237,6 +2289,38 @@
       "bytes": 11381,
       "sha256": "96957479ab6ae7d09831fea9d0f223484c5aa07ab50d8a2f39e35b6f7d990738"
     },
+    "exhibits/three-job-greedy-classification/v1/exhibit.json": {
+      "bytes": 4823,
+      "sha256": "b2f29bda974158d948ffa848c07ce339f736a5670ca7e9297dcd01451354b95f"
+    },
+    "exhibits/three-job-greedy-classification/v1/files/article.md.txt": {
+      "bytes": 3963,
+      "sha256": "272cee12501b96805fb2a1540e642693f1184a94f558129c0507f14b30b3490b"
+    },
+    "exhibits/three-job-greedy-classification/v1/files/provenance.json.txt": {
+      "bytes": 1280,
+      "sha256": "0bd5111677eb0740565377cfe9abb06f3c640a6761ee9800fef383db4db984b2"
+    },
+    "exhibits/three-job-greedy-classification/v1/files/replay.py.txt": {
+      "bytes": 3911,
+      "sha256": "ba15c182ea18b025a8b04f16a7645b74d200e02723d9deb0c5b3d4627c5840d7"
+    },
+    "exhibits/three-job-greedy-classification/v1/files/results.json.txt": {
+      "bytes": 7951,
+      "sha256": "da10c69881a6e8584f17c98b3fe8d113794553d52462416c56f6ac4300a81aaf"
+    },
+    "exhibits/three-job-greedy-classification/v1/index.html": {
+      "bytes": 10815,
+      "sha256": "c85e77dda20010111185b8999563f9a5a856eeb64d7be2e5c288e9c028bc1b4b"
+    },
+    "exhibits/three-job-greedy-classification/v1/snapshot.json": {
+      "bytes": 771,
+      "sha256": "ffc8b3549efdba706d6a77e5a5d58227344a7c093ac347515f607da746e4d1cd"
+    },
+    "exhibits/three-job-greedy-classification/v1/submitted-manifest.json": {
+      "bytes": 3944,
+      "sha256": "d6d2924a4cdc495306ea5e7f82cc41e0652f1d399ae6d4102e5baeaf754861f0"
+    },
     "exhibits/website-storefront-accessible-illustration/v2/exhibit.json": {
       "bytes": 4996,
       "sha256": "06ddc2714749bd3e5e69090819a88b47b31b9ee872e6c417212b1075029ca0a2"
@@ -2302,12 +2386,12 @@
       "sha256": "d1cf42ce64b01824f3c20d2eb7df88c95f8ffcbcc840f64a6c772c74989d4a8a"
     },
     "index.html": {
-      "bytes": 26618,
-      "sha256": "46c0628523f14647f2cf3b44cd662e68fd9da000eb23a72263027c8ff99a9f6e"
+      "bytes": 27594,
+      "sha256": "1d54651286f8d9cf50f7ae0a80314d890b7181d21378279a9057c97ba4a735b5"
     },
     "index.json": {
-      "bytes": 36051,
-      "sha256": "606d17b2c31270c01aa62dd58ef57a6271bace64ceb51659adf751a119efb39b"
+      "bytes": 38296,
+      "sha256": "70e8a0f423ec1e3983d87ae175abb979fe1a8db93870529fa8d5dd745d6e459e"
     },
     "llms.txt": {
       "bytes": 489,

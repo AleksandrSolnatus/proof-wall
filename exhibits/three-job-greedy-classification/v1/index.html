@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer"><meta name="color-scheme" content="light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>The last-largest trap: exactly when three-job greedy fails · Proof Wall</title><link rel="stylesheet" href="../../../assets/wall.css">
+<link rel="alternate" type="application/json" href="../../../index.json" title="Research index">
+<script src="../../../assets/wall.js" defer></script></head><body><nav class="workshop-return" aria-label="Return to the workshop"><a href="https://bridges.c-amar.chatgpt.site/#work">← Bridges</a></nav>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../../../index.html"><span class="mark" aria-hidden="true">∴</span> Proof Wall</a>
+<nav aria-label="Main"><a href="../../../index.html">The wall</a><a href="../../../paths.html">Little paths</a><a href="../../../contribute.html">Contribute</a></nav></header>
+<main id="main"><a class="back" href="../../../index.html">← The wall</a>
+<div class="exhibit-heading"><p class="eyebrow">three-job-greedy-classification / v1 · 2026-11-10</p>
+<h1>The last-largest trap: exactly when three-job greedy fails</h1><span class="status">mathematically proved</span><p class="scope">The proof covers positive real durations for exactly three unsplittable jobs on two identical machines; finite replay checks 8,420 lists and 65,640 assignments.</p></div>
+
+<div class="reading-layout"><article><section><h2>The question</h2><p>Exactly which positive three-job inputs defeat input-order least-loaded-machine greedy?</p><h2>The method</h2><p>Enumerate the possible groupings algebraically; independently replay every1–3-job list with durations1–20 against all machine assignments.</p><h2>The finding</h2><p>Greedy fails iff the last job is larger than each earlier job; exact excess is min(min(x,y),z-max(x,y)) in the failing case.</p></section>
+<section class="original"><p class="eyebrow">Research text · rendered from the supplied Markdown</p><h2>The last-largest trap: exactly when three-job greedy scheduling fails</h2>
+<p>For three positive jobs in a fixed order, assigning each next job to the less-loaded of two identical machines fails **exactly when the third job is longer than both earlier jobs**.</p>
+<p>This extends the <a href="https://github.com/AleksandrSolnatus/proof-wall/blob/main/exhibits/lotus-greedy-scheduling/v2/files/article.md.txt" rel="noreferrer">Proof Wall&#x27;s public three-job example</a>, which demonstrates the durations 2, 2, 3. The contribution here is a complete classification of positive three-job inputs, with a small exact replay.</p>
+<h3>Rules</h3>
+<p>Two identical machines start empty. Jobs cannot be split. A machine&#x27;s load is the sum of its assigned durations; makespan is the larger load. Process jobs in their given order, choosing the machine with less load and choosing machine 0 on ties.</p>
+<p>Let the durations be x, y, z, all strictly positive. Write m=min(x,y) and M=max(x,y). This handles both x≤y and x&gt;y: swapping the first two jobs&#x27; machine labels changes no makespan.</p>
+<h3>The equation</h3>
+<p>After the first two jobs, the loads are m and M. Greedy puts z on the smaller load:</p>
+<p>\[ G=\max(M,m+z). \]</p>
+<p>Apart from placing all jobs together, the three groupings have makespans</p>
+<p>\[ \max(m+M,z),\qquad \max(m+z,M),\qquad \max(M+z,m). \]</p>
+<p>The second is G; the third is M+z≥G. Putting all jobs together cannot help. Consequently,</p>
+<p>\[ \boxed{\mathrm{OPT}=\min\{\max(m+M,z),\;\max(M,m+z)\}.} \]</p>
+<p>If z≤M, then max(m+M,z)≥G, so greedy is optimal.</p>
+<p>If z&gt;M, then G=m+z, while both m+M and z are strictly smaller than m+z. Putting the first two jobs together is strictly better. Therefore,</p>
+<p>\[ \boxed{G&gt;\mathrm{OPT}\ \Longleftrightarrow\ z&gt;\max(x,y).} \]</p>
+<p>In the failing case, the exact lost time is</p>
+<p>\[ \boxed{G-\mathrm{OPT}=\min\{m,z-M\}.} \]</p>
+<h3>A smallest integer witness</h3>
+<p>For durations 1, 1, 2, greedy produces loads 3 and 1. Group the first two jobs together and the loads are 2 and 2. The total-work lower bound is 4/2=2, so the alternative is optimal.</p>
+<p>One or two positive jobs cannot fail: assigning each to its own machine reaches the longest-job lower bound. Among three positive integer jobs, total duration below four forces 1, 1, 1, which is optimal under the rule. Thus 1, 1, 2 is smallest by job count and then total duration.</p>
+<h3>The largest three-job loss</h3>
+<p>For a failing input, if z≤m+M,</p>
+<p>\[ \frac{G}{\mathrm{OPT}}=\frac{m+z}{m+M} \le \frac{2m+M}{m+M}\le\frac32. \]</p>
+<p>If z≥m+M,</p>
+<p>\[ \frac{G}{\mathrm{OPT}}=\frac{m+z}{z} \le 1+\frac{m}{m+M}\le\frac32. \]</p>
+<p>Equality requires m=M and z=2m. The 1, 1, 2 witness attains this ratio. This proof concerns three jobs; it does not use the bounded replay to infer a theorem for longer job lists.</p>
+<h3>Independent replay</h3>
+<p>Run `python3 replay.py`. It uses only Python&#x27;s standard library and imports no scheduling solver.</p>
+<p>For every ordered list of one, two or three jobs with durations 1 through 20, the replay enumerates every machine assignment, computes the true optimum, and checks the formula, the failure criterion, the exact excess, and the ratio equality condition. Both x&gt;y and x&lt;y are included.</p>
+<p>The completed run checked 8,420 input lists and 65,640 assignments. Exactly 2,470 lists failed the greedy rule; all matched the criterion. The worst ratio was 3/2. The three-job sweep includes 3,800 x&gt;y cases.</p>
+<p>The algebra proves the stated classification for all positive real three-job durations. The replay is a bounded independent check of the implementation and examples.</p>
+<h3>Origin and limits</h3>
+<p>Created during the owner&#x27;s November 10, 2026 playground session, following the public Proof Wall example. The proof text and replay are new work for this contribution; no private receipts, identities, source records or unpublished packets are included.</p>
+<p>The result concerns precisely this two-machine, fixed-input-order rule. It does not describe more than three jobs, establish runtime advantages, or resolve SAT or P versus NP. No global novelty claim is made.</p></section>
+<section class="limits"><h2>Limits &amp; open questions</h2><ul><li>No claim for longer job lists, precedence, release times, or unequal machines.</li><li>No historical novelty or complexity claim.</li></ul><h3>Still open</h3><ul><li>What similarly concise failure conditions survive when a fourth job is added?</li></ul></section>
+<section><h2>Little paths</h2><ul><li><span class="status">related to</span> <a href="../../../exhibits/lotus-greedy-scheduling/v2/index.html">lotus-greedy-scheduling / v2</a><p>Extends the public 2,2,3 witness to a complete three-job failure classification.</p></li><li><a href="../../../paths.html#lotus">lotus</a> — Small independently checked scheduling knowledge.</li><li><a href="../../../paths.html#rulebench">rulebench</a> — Distinguishes a feasible greedy schedule from a proved optimum.</li></ul></section></article>
+<aside class="evidence"><h2>Inspect the evidence</h2><p>Original bytes, with recorded hashes. Downloads retain their original names; hosted copies use inert suffixes.</p><ul><li><a download="article.md" href="files/article.md.txt">article.md</a>
+<span>article · 3,963 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">272cee12501b96805fb2a1540e642693f1184a94f558129c0507f14b30b3490b</code><p>The Bridges Group, with ChatGPT.</p><p>Owner-directed Bridges work; selected public contribution.</p><p>All rights reserved; no new open-source license granted.</p></details></li><li><a download="provenance.json" href="files/provenance.json.txt">provenance.json</a>
+<span>data · 1,280 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">0bd5111677eb0740565377cfe9abb06f3c640a6761ee9800fef383db4db984b2</code><p>The Bridges Group, with ChatGPT.</p><p>Owner-directed Bridges work; selected public contribution.</p><p>All rights reserved; no new open-source license granted.</p></details></li><li><a download="replay.py" href="files/replay.py.txt">replay.py</a>
+<span>code · 3,911 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">ba15c182ea18b025a8b04f16a7645b74d200e02723d9deb0c5b3d4627c5840d7</code><p>The Bridges Group, with ChatGPT.</p><p>Owner-directed Bridges work; selected public contribution.</p><p>All rights reserved; no new open-source license granted.</p></details></li><li><a download="results.json" href="files/results.json.txt">results.json</a>
+<span>data · 7,951 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">da10c69881a6e8584f17c98b3fe8d113794553d52462416c56f6ac4300a81aaf</code><p>The Bridges Group, with ChatGPT.</p><p>Owner-directed Bridges work; selected public contribution.</p><p>All rights reserved; no new open-source license granted.</p></details></li></ul>
+<p><a href="exhibit.json">Exhibit JSON</a> · <a href="submitted-manifest.json">Original manifest</a> · <a href="snapshot.json">Snapshot</a></p>
+<h3>Provenance</h3><p>The Bridges Group, with ChatGPT</p><p>New owner-directed work during the November 10, 2026 playground session; original synthetic examples and exact checkers.</p><h3>Version note</h3><p>First contribution. Original exhibits remain unchanged.</p>
+<h3>Publication &amp; reuse</h3><p>The Bridges Group, with ChatGPT.</p><p>Owner-directed Bridges work. Public reading of this selected contribution is permitted; no private project records are included.</p><p>All rights reserved; no new open-source license granted.</p>
+<p class="fine">Publication review is not a mathematical certification. A finite test is not a general proof.</p>
+<a href="../../../contribute.html?exhibit=three-job-greedy-classification%40v1">Suggest a correction or connection →</a></aside></div></main><footer><span>We attract by method.</span><nav aria-label="Other places in the workshop"><a href="../../../paths.html">Other places in the workshop</a> · <a href="https://bridges.c-amar.chatgpt.site/" rel="noreferrer">Return to Bridges</a></nav><div><a href="../../../index.json">Machine-readable index</a> · <a href="../../../llms.txt">For agents</a> · <a href="../../../release-manifest.json">File hashes</a></div><p>No accounts, analytics, or submission server. Hosting providers may keep security logs.</p></footer></body></html>

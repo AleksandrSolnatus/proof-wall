@@ -1,0 +1,122 @@
+{
+  "article": "article.md",
+  "artifact_type": "proof",
+  "claim_scope": "The proof covers positive real durations for exactly three unsplittable jobs on two identical machines; finite replay checks 8,420 lists and 65,640 assignments.",
+  "date": "2026-11-10",
+  "downloads": [
+    {
+      "bytes": 3963,
+      "original_path": "article.md",
+      "sha256": "272cee12501b96805fb2a1540e642693f1184a94f558129c0507f14b30b3490b",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 1280,
+      "original_path": "provenance.json",
+      "sha256": "0bd5111677eb0740565377cfe9abb06f3c640a6761ee9800fef383db4db984b2",
+      "url": "files/provenance.json.txt"
+    },
+    {
+      "bytes": 3911,
+      "original_path": "replay.py",
+      "sha256": "ba15c182ea18b025a8b04f16a7645b74d200e02723d9deb0c5b3d4627c5840d7",
+      "url": "files/replay.py.txt"
+    },
+    {
+      "bytes": 7951,
+      "original_path": "results.json",
+      "sha256": "da10c69881a6e8584f17c98b3fe8d113794553d52462416c56f6ac4300a81aaf",
+      "url": "files/results.json.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 3963,
+      "license": "All rights reserved; no new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Owner-directed Bridges work; selected public contribution.",
+      "role": "article",
+      "sha256": "272cee12501b96805fb2a1540e642693f1184a94f558129c0507f14b30b3490b"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 1280,
+      "license": "All rights reserved; no new open-source license granted.",
+      "media_type": "application/json",
+      "path": "provenance.json",
+      "rights": "Owner-directed Bridges work; selected public contribution.",
+      "role": "data",
+      "sha256": "0bd5111677eb0740565377cfe9abb06f3c640a6761ee9800fef383db4db984b2"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 3911,
+      "license": "All rights reserved; no new open-source license granted.",
+      "media_type": "text/x-python",
+      "path": "replay.py",
+      "rights": "Owner-directed Bridges work; selected public contribution.",
+      "role": "code",
+      "sha256": "ba15c182ea18b025a8b04f16a7645b74d200e02723d9deb0c5b3d4627c5840d7"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 7951,
+      "license": "All rights reserved; no new open-source license granted.",
+      "media_type": "application/json",
+      "path": "results.json",
+      "rights": "Owner-directed Bridges work; selected public contribution.",
+      "role": "data",
+      "sha256": "da10c69881a6e8584f17c98b3fe8d113794553d52462416c56f6ac4300a81aaf"
+    }
+  ],
+  "finding": "Greedy fails iff the last job is larger than each earlier job; exact excess is min(min(x,y),z-max(x,y)) in the failing case.",
+  "gardens": [
+    {
+      "id": "lotus",
+      "reason": "Small independently checked scheduling knowledge."
+    },
+    {
+      "id": "rulebench",
+      "reason": "Distinguishes a feasible greedy schedule from a proved optimum."
+    }
+  ],
+  "id": "three-job-greedy-classification",
+  "limitations": [
+    "No claim for longer job lists, precedence, release times, or unequal machines.",
+    "No historical novelty or complexity claim."
+  ],
+  "method": "Enumerate the possible groupings algebraically; independently replay every1–3-job list with durations1–20 against all machine assignments.",
+  "open_questions": [
+    "What similarly concise failure conditions survive when a fourth job is added?"
+  ],
+  "package_sha256": "5e87b23bf06474739dc6a00b5fd62158ff292cfa6470a33fc23a1aaed74100ab",
+  "provenance": {
+    "authors": [
+      "The Bridges Group, with ChatGPT"
+    ],
+    "change_note": "First contribution. Original exhibits remain unchanged.",
+    "origin": "New owner-directed work during the November 10, 2026 playground session; original synthetic examples and exact checkers."
+  },
+  "publication": {
+    "attribution": "The Bridges Group, with ChatGPT.",
+    "intent": "request-review",
+    "license": "All rights reserved; no new open-source license granted.",
+    "rights": "Owner-directed Bridges work. Public reading of this selected contribution is permitted; no private project records are included."
+  },
+  "question": "Exactly which positive three-job inputs defeat input-order least-loaded-machine greedy?",
+  "relations": [
+    {
+      "id": "lotus-greedy-scheduling",
+      "reason": "Extends the public 2,2,3 witness to a complete three-job failure classification.",
+      "type": "related-to",
+      "version": 2
+    }
+  ],
+  "sample": false,
+  "schema_version": 1,
+  "status": "mathematically-proved",
+  "title": "The last-largest trap: exactly when three-job greedy fails",
+  "version": 1
+}

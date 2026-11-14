@@ -654,6 +654,59 @@
       "title": "A shape can vanish while its source survives",
       "url": "exhibits/recognition012-loss-boundary/v1/index.html",
       "version": 1
+    },
+    {
+      "claim_scope": "33,867 labelled graphs, 13 cycle pairs, 8 all-windows pairs; elementary proofs for the stated families.",
+      "gardens": [
+        {
+          "id": "butterfly",
+          "reason": "Public learning pieces prompted the question of preserving identity when the view changes."
+        },
+        {
+          "id": "outside-in",
+          "reason": "A playable graph toy for learning by moving the radius."
+        }
+      ],
+      "id": "lantern-walk",
+      "metadata": "exhibits/lantern-walk/v1/exhibit.json",
+      "package_sha256": "97c7dce026b95c6de1478139a575f916496aed9b42563be0ef54c97e8cbbd65b",
+      "question": "When do identical local graph views fail to preserve connectivity?",
+      "relations": [],
+      "sample": false,
+      "status": "verified-finite-result",
+      "title": "Lantern Walk: two worlds can share every nearby view",
+      "url": "exhibits/lantern-walk/v1/index.html",
+      "version": 1
+    },
+    {
+      "claim_scope": "The proof covers positive real durations for exactly three unsplittable jobs on two identical machines; finite replay checks 8,420 lists and 65,640 assignments.",
+      "gardens": [
+        {
+          "id": "lotus",
+          "reason": "Small independently checked scheduling knowledge."
+        },
+        {
+          "id": "rulebench",
+          "reason": "Distinguishes a feasible greedy schedule from a proved optimum."
+        }
+      ],
+      "id": "three-job-greedy-classification",
+      "metadata": "exhibits/three-job-greedy-classification/v1/exhibit.json",
+      "package_sha256": "5e87b23bf06474739dc6a00b5fd62158ff292cfa6470a33fc23a1aaed74100ab",
+      "question": "Exactly which positive three-job inputs defeat input-order least-loaded-machine greedy?",
+      "relations": [
+        {
+          "id": "lotus-greedy-scheduling",
+          "reason": "Extends the public 2,2,3 witness to a complete three-job failure classification.",
+          "type": "related-to",
+          "version": 2
+        }
+      ],
+      "sample": false,
+      "status": "mathematically-proved",
+      "title": "The last-largest trap: exactly when three-job greedy fails",
+      "url": "exhibits/three-job-greedy-classification/v1/index.html",
+      "version": 1
     }
   ],
   "gardens": "gardens.json",

@@ -1,0 +1,196 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "33,867 labelled graphs, 13 cycle pairs, 8 all-windows pairs; elementary proofs for the stated families.",
+  "date": "2026-11-10",
+  "downloads": [
+    {
+      "bytes": 5375,
+      "original_path": "article.md",
+      "sha256": "02ef79411432d6762f0ef713e1ca91e41d0065d5039f5806c019b1dded556052",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 424,
+      "original_path": "browser-check.json",
+      "sha256": "ac9dbf04427af668507348d3fc6cb4194be1f32ac80894f6ac69eaf9ab92ddb6",
+      "url": "files/browser-check.json.txt"
+    },
+    {
+      "bytes": 8750,
+      "original_path": "experiment.py",
+      "sha256": "7e54f3e38ab2eeaea6cfa35a205fda491962aec400c4e901cead7ef47464b05a",
+      "url": "files/experiment.py.txt"
+    },
+    {
+      "bytes": 1648,
+      "original_path": "graph.js",
+      "sha256": "4c89e2bb25800c33a9dcb90e2f42757963d34a52bd6893523f7973b7ede52a97",
+      "url": "files/graph.js.txt"
+    },
+    {
+      "bytes": 141,
+      "original_path": "js-check-results.json",
+      "sha256": "a856d2e32625a16eecc14d2564c82cc91f0cd9eb6a43553d70ccd0ec318a2455",
+      "url": "files/js-check-results.json.txt"
+    },
+    {
+      "bytes": 95499,
+      "original_path": "results.json",
+      "sha256": "279bba672568b6ac3ef6bf4027b01506cee54b85ef3a2db4131f82b8c836fe0e",
+      "url": "files/results.json.txt"
+    },
+    {
+      "bytes": 5126,
+      "original_path": "review-replay.py",
+      "sha256": "77b8e8b1d13a75b015ca36f1bda54157b38d27ee5acabffd1bd88f9b6f0f811a",
+      "url": "files/review-replay.py.txt"
+    },
+    {
+      "bytes": 2544,
+      "original_path": "review-results.json",
+      "sha256": "f086cb9b3fc49322bdcf370ab5ea6b7bd7ba726b6bd0dd3fa1567ff5b0850087",
+      "url": "files/review-results.json.txt"
+    },
+    {
+      "bytes": 4283,
+      "original_path": "review.md",
+      "sha256": "7f563e4b8620339639954083824ae58878c59b5ad5573923e1778e937803874a",
+      "url": "files/review.md.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 5375,
+      "license": "All rights reserved; no new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Owner-directed Bridges work; selected public contribution.",
+      "role": "article",
+      "sha256": "02ef79411432d6762f0ef713e1ca91e41d0065d5039f5806c019b1dded556052"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 424,
+      "license": "All rights reserved; no new open-source license granted.",
+      "media_type": "application/json",
+      "path": "browser-check.json",
+      "rights": "Owner-directed Bridges work; selected public contribution.",
+      "role": "receipt",
+      "sha256": "ac9dbf04427af668507348d3fc6cb4194be1f32ac80894f6ac69eaf9ab92ddb6"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 8750,
+      "license": "All rights reserved; no new open-source license granted.",
+      "media_type": "text/x-python",
+      "path": "experiment.py",
+      "rights": "Owner-directed Bridges work; selected public contribution.",
+      "role": "code",
+      "sha256": "7e54f3e38ab2eeaea6cfa35a205fda491962aec400c4e901cead7ef47464b05a"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 1648,
+      "license": "All rights reserved; no new open-source license granted.",
+      "media_type": "text/javascript",
+      "path": "graph.js",
+      "rights": "Owner-directed Bridges work; selected public contribution.",
+      "role": "code",
+      "sha256": "4c89e2bb25800c33a9dcb90e2f42757963d34a52bd6893523f7973b7ede52a97"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 141,
+      "license": "All rights reserved; no new open-source license granted.",
+      "media_type": "application/json",
+      "path": "js-check-results.json",
+      "rights": "Owner-directed Bridges work; selected public contribution.",
+      "role": "receipt",
+      "sha256": "a856d2e32625a16eecc14d2564c82cc91f0cd9eb6a43553d70ccd0ec318a2455"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 95499,
+      "license": "All rights reserved; no new open-source license granted.",
+      "media_type": "application/json",
+      "path": "results.json",
+      "rights": "Owner-directed Bridges work; selected public contribution.",
+      "role": "data",
+      "sha256": "279bba672568b6ac3ef6bf4027b01506cee54b85ef3a2db4131f82b8c836fe0e"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 5126,
+      "license": "All rights reserved; no new open-source license granted.",
+      "media_type": "text/x-python",
+      "path": "review-replay.py",
+      "rights": "Owner-directed Bridges work; selected public contribution.",
+      "role": "code",
+      "sha256": "77b8e8b1d13a75b015ca36f1bda54157b38d27ee5acabffd1bd88f9b6f0f811a"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 2544,
+      "license": "All rights reserved; no new open-source license granted.",
+      "media_type": "application/json",
+      "path": "review-results.json",
+      "rights": "Owner-directed Bridges work; selected public contribution.",
+      "role": "receipt",
+      "sha256": "f086cb9b3fc49322bdcf370ab5ea6b7bd7ba726b6bd0dd3fa1567ff5b0850087"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 4283,
+      "license": "All rights reserved; no new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "review.md",
+      "rights": "Owner-directed Bridges work; selected public contribution.",
+      "role": "original",
+      "sha256": "7f563e4b8620339639954083824ae58878c59b5ad5573923e1778e937803874a"
+    }
+  ],
+  "finding": "Degree and triangle signatures first mix connected and disconnected graphs at six vertices. Whole multisets of exact bounded-radius balls can also agree while connectivity differs.",
+  "gardens": [
+    {
+      "id": "butterfly",
+      "reason": "Public learning pieces prompted the question of preserving identity when the view changes."
+    },
+    {
+      "id": "outside-in",
+      "reason": "A playable graph toy for learning by moving the radius."
+    }
+  ],
+  "id": "lantern-walk",
+  "limitations": [
+    "Not a general graph isomorphism algorithm.",
+    "No novelty, universal compression lower bound, or P-versus-NP claim.",
+    "Browser QA was desktop only."
+  ],
+  "method": "Exhaust all labelled simple graphs on1–6 vertices; test two elementary graph families; independently check with DSU connectivity and root-fixing permutations.",
+  "open_questions": [
+    "Which additional relation is sufficient for the next question while remaining cheap to preserve?"
+  ],
+  "package_sha256": "97c7dce026b95c6de1478139a575f916496aed9b42563be0ef54c97e8cbbd65b",
+  "provenance": {
+    "authors": [
+      "The Bridges Group, with ChatGPT"
+    ],
+    "change_note": "Public archive derivative omits interactive HTML; original playable toy remains linked. Other selected files retain original bytes.",
+    "origin": "New owner-directed work during the November 10, 2026 playground session; original synthetic examples and exact checkers."
+  },
+  "publication": {
+    "attribution": "The Bridges Group, with ChatGPT.",
+    "intent": "request-review",
+    "license": "All rights reserved; no new open-source license granted.",
+    "rights": "Owner-directed Bridges work. Public reading of this selected contribution is permitted; no private project records are included."
+  },
+  "question": "When do identical local graph views fail to preserve connectivity?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Lantern Walk: two worlds can share every nearby view",
+  "version": 1
+}
