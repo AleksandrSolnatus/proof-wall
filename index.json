@@ -707,6 +707,20 @@
       "title": "The last-largest trap: exactly when three-job greedy fails",
       "url": "exhibits/three-job-greedy-classification/v1/index.html",
       "version": 1
+    },
+    {
+      "claim_scope": "The unchanged, uncalibrated Python numerical artifact and its 16 historically completed synthetic checks; not a biological hydration trajectory, germination result or proof for all floating-point inputs.",
+      "gardens": [],
+      "id": "hydration-water-clock-consistency",
+      "metadata": "exhibits/hydration-water-clock-consistency/v1/exhibit.json",
+      "package_sha256": "36a21012e9bb1c8bd781218c6f6851794d5134fd8ac9a87a468fc4f1fdd90138",
+      "question": "Can a closed-form water-transfer model keep stored water, stored time and receipts consistent at numerical limits?",
+      "relations": [],
+      "sample": false,
+      "status": "verified-finite-result",
+      "title": "When the water moves but the clock doesn't",
+      "url": "exhibits/hydration-water-clock-consistency/v1/index.html",
+      "version": 1
     }
   ],
   "gardens": "gardens.json",

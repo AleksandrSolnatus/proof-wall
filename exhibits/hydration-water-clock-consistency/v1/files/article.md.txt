@@ -1,0 +1,69 @@
+# When the water moves but the clock doesn't
+
+A water-transfer equation can be correct while its numerical implementation tells an inconsistent story. In this experiment, a requested step could move simulated water without changing the stored clock. Another could report a transfer too small to change the stored water. A third could reach a boundary in a computed time of zero while moving a nonzero amount.
+
+The useful result was learning when the implementation must refuse to advance. The final artifact is a small, explicitly uncalibrated model with its corrections and synthetic checks attached.
+
+## The original question
+
+Could a contained hydration model move water between two finite compartments, preserve its water account, stop at the first declared boundary, and resume from a saved state without inventing the next biological event?
+
+The compartments are called seed and bath. Those names describe the intended question; the supplied test values are artificial reservoirs, not measured seed coefficients. No germination or growth result is claimed.
+
+## The mathematical starting point
+
+The chosen hypothesis gives each compartment a positive, constant storage capacity. Its water potential changes linearly with its water mass. A specified nonnegative conductance makes water move down the potential difference. The bath loses what the seed gains, and the transfer may reverse when the potential difference reverses.
+
+Let DeltaPsi0 be the initial bath-minus-seed potential difference, a = 1/C_seed + 1/C_bath, and k = L*a. Within the declared domain, the signed transfer after duration t is:
+
+```
+x(t) = (DeltaPsi0/a) * (1 - exp(-k*t))
+```
+
+The implementation evaluates the last factor with -expm1(-k*t), avoiding the direct subtraction of nearly equal numbers for small arguments. This is the closed-form solution of the selected linear hypothesis, subject to floating-point arithmetic. It is not an exact description of living seed physiology.
+
+State stores total water and seed water; bath water is their difference. A step records the new state, advanced time, unadvanced time, and signed transfer. When the first declared seed-domain limit, empty bath, or empty seed is reached, the model returns the boundary time and leaves the remainder unadvanced. A boundary state refuses another step under the same hypothesis.
+
+## Three failures worth keeping
+
+### Water moved while the stored clock stood still
+
+The independent review found that a stored elapsed time of 1e20 plus a requested increment of 1 could round back to the same value. A calculation could therefore move water while its stored time did not advance.
+
+The correction checks that positive requested time produces a positive stored increment and that the increment agrees with the requested duration within a declared relative tolerance of 1e-12. Exhausted clock precision causes refusal. The final tests include this case for transfer, zero-conductance, equilibrium, and boundary configurations.
+
+### A reported transfer did not change the stored water
+
+Read-only Counsel found a tiny analytic transfer that could be reported even though rounding left the stored water unchanged. Improving the exponential calculation alone did not solve the endpoint representation problem.
+
+The correction refuses a nonzero transport step when either represented water stock fails to change. Its transfer receipt reports the stored seed-water endpoint difference. Ordinary representable transfers still have floating-point rounding; the receipt does not claim arbitrary precision.
+
+### A nonzero boundary crossing acquired a zero time
+
+A later edge case exposed underflow in the boundary fraction or event time: nonzero water could move to a boundary while the computed event time became zero.
+
+The correction added explicit refusals for those underflows and a sixteenth regression test. Genuine zero-time, zero-transfer outward boundary events remain supported. The model does not forbid every zero-time event merely to remove the troublesome case.
+
+The work also preserves a corrected test expectation: an initially rejected extreme-duration request actually had a valid finite boundary event. That expectation was replaced with a genuinely overflowing rate-duration case; no implementation safeguard was weakened to satisfy the test.
+
+## What was already checked
+
+The October 9, 2026 record reports 16 passing synthetic tests after the final correction, an independent final implementation review, and a final read-only Counsel inspection and 16-test pass. The tests cover the analytic solution, the stored water account, reverse flow, equilibrium, boundary events, remaining time, precision refusals, endpoint receipts, and snapshot continuation and rejection.
+
+The implementation and test files included here match the original verification receipt byte-for-byte. This exhibit preparation did not rerun those experiments or execute the submitted code. The historical result is retained as such; exhibit validation checks the package and its bytes.
+
+The original implementations are hydration.py and test_hydration.py. METHOD.md carries a narrowly edited source explanation, HISTORICAL-REVIEW.md preserves the correction and review account without private coordination details, and HISTORICAL-RESULT.json identifies the retained verification scope and source hashes. SOURCE-NOTICES.json distinguishes exact source copies from editorial derivatives.
+
+## Where the support stops
+
+- Constant conductance, linear storage, and persistent contact are explicit, uncalibrated assumptions. Their organism-level error is not bounded.
+- No measured lotus parameter set, metabolism, leakage, evaporation, tissue expansion, viability diagnosis, rupture, or germination is implemented.
+- The stored total is retained by the state representation; separate floating-point endpoint sums and transfers still require numerical care.
+- Restoring the same valid snapshot preserves the tested continuation. Splitting durations agrees within roundoff; it is not generally a bitwise identity.
+- Sixteen tests and scoped independent review support the retained numerical artifact. They do not establish that all floating-point inputs or biological processes are handled correctly.
+
+## The unfinished question
+
+What constitutive hypothesis and measurements would justify moving beyond these artificial compartments? Water uptake alone cannot identify both conductance and storage. A biological continuation needs its own evidence; a numerical boundary does not supply it.
+
+The portable lesson is smaller: a simulation receipt should describe a change the stored state can actually represent. When it cannot, a clear refusal is useful information.

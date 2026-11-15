@@ -1,0 +1,23 @@
+{
+  "record_type": "selected-historical-verification",
+  "original_date": "2026-10-09",
+  "prepared_on": "2026-11-15",
+  "research_rerun_for_exhibit": false,
+  "scope": "Parameterized uncalibrated hydration kernel + next causal link research",
+  "syntheticTests": 16,
+  "testResult": "PASS; independent final run after last code change",
+  "independentFinalReview": "No remaining numerical blocker; biological calibration unresolved",
+  "counselReview": "Accept final corrected artifact; independent Counsel final16 tests PASS",
+  "lotusParameterSet": null,
+  "growthEmergenceImplemented": false,
+  "nativeBuildOrIntegration": false,
+  "physicalExperiments": false,
+  "original_artifact_sha256": {
+    "hydration.py": "5bd660da4fff10d0f0d9955912bac5b368ff7839199cc8389a3d2453e6c82b52",
+    "test_hydration.py": "19c0a02b28e03fc3b313577cf5aa8e21801fb171d202343f5c2db03921bb0cd0"
+  },
+  "limitations": [
+    "Historical reported checks, not a new replay or a proof for every input.",
+    "Uncalibrated linear passive-water hypothesis; not established biological behavior."
+  ]
+}

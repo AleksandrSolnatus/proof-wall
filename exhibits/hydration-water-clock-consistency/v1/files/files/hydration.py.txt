@@ -1,0 +1,201 @@
+"""Exploratory passive transport; no lotus coefficients or growth model.
+
+SI units: kg, Pa, s. Linear storage is an explicit uncalibrated hypothesis.
+No file IO, clock, background work, native integration or biological defaults.
+"""
+from dataclasses import dataclass, asdict, replace
+import json
+import math
+
+
+class Refusal(ValueError):
+    pass
+
+
+def number(value, name, *, positive=False, nonnegative=False):
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise Refusal(f"{name}: finite number required")
+    try:
+        valid = math.isfinite(value)
+    except OverflowError:
+        valid = False
+    if not valid or (positive and value <= 0) or (nonnegative and value < 0):
+        raise Refusal(f"{name}: invalid numeric domain")
+    return value
+
+
+def time_after(before, duration):
+    after = number(before + duration, 'future elapsed time')
+    if duration > 0 and (after <= before or not math.isclose(
+            after - before, duration, rel_tol=1e-12, abs_tol=0.)):
+        raise Refusal('clock precision exhausted')
+    return after
+
+
+@dataclass(frozen=True)
+class Hypothesis:
+    conductance_kg_s_pa: float
+    seed_capacity_kg_pa: float
+    bath_capacity_kg_pa: float
+    seed_reference_water_kg: float
+    seed_reference_potential_pa: float
+    bath_reference_water_kg: float
+    bath_reference_potential_pa: float
+    seed_domain_max_kg: float
+    covering: str
+    provenance: str
+
+    def validate(self):
+        for key in ('conductance_kg_s_pa',):
+            number(getattr(self, key), key, nonnegative=True)
+        for key in ('seed_capacity_kg_pa', 'bath_capacity_kg_pa', 'seed_domain_max_kg'):
+            number(getattr(self, key), key, positive=True)
+        for key in ('seed_reference_water_kg', 'bath_reference_water_kg'):
+            number(getattr(self, key), key, nonnegative=True)
+        for key in ('seed_reference_potential_pa', 'bath_reference_potential_pa'):
+            number(getattr(self, key), key)
+        if self.seed_reference_water_kg > self.seed_domain_max_kg:
+            raise Refusal('reference outside declared seed domain')
+        if self.covering not in ('intact', 'permeable', 'scarified'):
+            raise Refusal('explicit covering branch required')
+        if not isinstance(self.provenance, str) or not self.provenance.strip():
+            raise Refusal('parameter hypothesis provenance required')
+        # No covering label creates or changes a conductance coefficient.
+        inv = 1 / self.seed_capacity_kg_pa + 1 / self.bath_capacity_kg_pa
+        number(inv, 'inverse capacity', positive=True)
+        number(self.conductance_kg_s_pa * inv, 'relaxation rate', nonnegative=True)
+
+
+@dataclass(frozen=True)
+class State:
+    total_water_kg: float
+    seed_water_kg: float
+    elapsed_s: float
+    status: str  # active or domain_boundary; not viable/dormant/germinated
+
+    @property
+    def bath_water_kg(self):
+        return self.total_water_kg - self.seed_water_kg
+
+    def validate(self, h):
+        h.validate()
+        number(self.total_water_kg, 'total water', nonnegative=True)
+        number(self.seed_water_kg, 'seed water', nonnegative=True)
+        number(self.elapsed_s, 'elapsed time', nonnegative=True)
+        if self.seed_water_kg > min(self.total_water_kg, h.seed_domain_max_kg):
+            raise Refusal('state outside finite water/domain bounds')
+        if self.status not in ('active', 'domain_boundary'):
+            raise Refusal('unknown status')
+        at_boundary = self.seed_water_kg in (0, self.total_water_kg, h.seed_domain_max_kg)
+        if self.status == 'domain_boundary' and not at_boundary:
+            raise Refusal('boundary status without a boundary state')
+
+
+@dataclass(frozen=True)
+class Step:
+    state: State
+    advanced_s: float
+    unadvanced_s: float
+    transferred_kg: float  # signed bath -> seed
+
+
+def potential_difference(h, s):
+    """Bath minus seed potential; positive drives bath->seed."""
+    s.validate(h)
+    bath = h.bath_reference_potential_pa + (
+        s.bath_water_kg - h.bath_reference_water_kg) / h.bath_capacity_kg_pa
+    seed = h.seed_reference_potential_pa + (
+        s.seed_water_kg - h.seed_reference_water_kg) / h.seed_capacity_kg_pa
+    return number(bath - seed, 'potential difference')
+
+
+def advance(h, s, duration_s):
+    """Exact linear solution within domain; first boundary event stops the slice.
+
+    Returns unadvanced duration explicitly. Caller cannot continue a boundary
+    state without an explicit new hypothesis/state; no automatic saturation law.
+    """
+    if not isinstance(h, Hypothesis) or not isinstance(s, State):
+        raise Refusal('explicit hypothesis and state required; no biological defaults')
+    s.validate(h)
+    number(duration_s, 'duration', nonnegative=True)
+    if s.status != 'active':
+        raise Refusal('domain boundary: revised hypothesis required')
+    if duration_s == 0:
+        return Step(s, 0., 0., 0.)
+    future_time = time_after(s.elapsed_s, duration_s)
+    difference = potential_difference(h, s)
+    if h.conductance_kg_s_pa == 0 or difference == 0:
+        return Step(replace(s, elapsed_s=future_time), duration_s, 0., 0.)
+    inverse_capacity = 1 / h.seed_capacity_kg_pa + 1 / h.bath_capacity_kg_pa
+    rate = h.conductance_kg_s_pa * inverse_capacity
+    if rate == 0:
+        raise Refusal('relaxation rate underflow')
+    equilibrium_transfer = difference / inverse_capacity
+    number(equilibrium_transfer, 'equilibrium transfer')
+    if equilibrium_transfer == 0:
+        raise Refusal('equilibrium transfer underflow')
+    rate_duration = number(rate * duration_s, 'rate times duration')
+    transfer = equilibrium_transfer * -math.expm1(-rate_duration)
+    if transfer == 0:
+        raise Refusal('transfer underflow')
+    lower = -s.seed_water_kg
+    upper = min(s.bath_water_kg, h.seed_domain_max_kg - s.seed_water_kg)
+    boundary = upper if difference > 0 else lower
+    hits = transfer >= boundary if difference > 0 else transfer <= boundary
+    if hits:
+        fraction = boundary / equilibrium_transfer
+        if boundary != 0 and fraction == 0:
+            raise Refusal('boundary fraction underflow')
+        # Equality with equilibrium is asymptotic, not a finite boundary event.
+        if fraction >= 1:
+            raise Refusal('precision exhausted near asymptotic domain boundary')
+        advanced = -math.log1p(-fraction) / rate
+        number(advanced, 'boundary time', nonnegative=True)
+        if boundary != 0 and advanced == 0:
+            raise Refusal('boundary time underflow')
+        if advanced > duration_s:
+            raise Refusal('inconsistent boundary time due to numeric precision')
+        seed_water = min(s.total_water_kg, h.seed_domain_max_kg) if difference > 0 else 0.
+        result = State(s.total_water_kg, seed_water, time_after(s.elapsed_s, advanced), 'domain_boundary')
+        result.validate(h)
+        return Step(result, advanced, duration_s - advanced, seed_water - s.seed_water_kg)
+    result = State(s.total_water_kg, s.seed_water_kg + transfer,
+                   future_time, 'active')
+    if (result.seed_water_kg == s.seed_water_kg or result.bath_water_kg == s.bath_water_kg
+            or result.seed_water_kg in (0, s.total_water_kg, h.seed_domain_max_kg)):
+        raise Refusal('water precision exhausted')
+    result.validate(h)
+    return Step(result, duration_s, 0., result.seed_water_kg - s.seed_water_kg)
+
+
+def encode(h, s):
+    s.validate(h)
+    return json.dumps({'schema': 1, 'kind': 'uncalibrated-linear-hydration',
+                       'hypothesis': asdict(h), 'state': asdict(s)},
+                      sort_keys=True, separators=(',', ':'), allow_nan=False)
+
+
+def unique_object(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise Refusal('duplicate JSON key')
+        result[key] = value
+    return result
+
+
+def decode(text):
+    try:
+        d = json.loads(text, object_pairs_hook=unique_object,
+                       parse_constant=lambda _: (_ for _ in ()).throw(Refusal('nonfinite JSON')))
+        if not isinstance(d, dict) or set(d) != {'schema', 'kind', 'hypothesis', 'state'}:
+            raise Refusal('unknown snapshot shape')
+        if type(d['schema']) is not int or d['schema'] != 1 or d['kind'] != 'uncalibrated-linear-hydration':
+            raise Refusal('unknown snapshot schema/kind')
+        h = Hypothesis(**d['hypothesis'])
+        s = State(**d['state'])
+        s.validate(h)
+        return h, s
+    except (TypeError, KeyError, json.JSONDecodeError, OverflowError, ZeroDivisionError) as exc:
+        raise Refusal('invalid snapshot') from exc

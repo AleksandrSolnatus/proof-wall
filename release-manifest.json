@@ -1,5 +1,6 @@
 {
-  "exhibits": 46,
+  "baseline_commit": "663066d7c4785135c982e8428632f9e430d003eb",
+  "exhibits": 47,
   "files": {
     ".nojekyll": {
       "bytes": 0,
@@ -1192,6 +1193,50 @@
     "exhibits/graphics-flex-tesseract/v2/submitted-manifest.json": {
       "bytes": 4572,
       "sha256": "d75d032a2cbfda1cbdcb69ad39dfe100fd5839d75576318bb4f6d40c9625d8b7"
+    },
+    "exhibits/hydration-water-clock-consistency/v1/exhibit.json": {
+      "bytes": 8217,
+      "sha256": "ea93b60bba9923cdfbb92fa4b822760c2b0fe22bea5715ad9e8a78dd5c1cf247"
+    },
+    "exhibits/hydration-water-clock-consistency/v1/files/article.md.txt": {
+      "bytes": 6692,
+      "sha256": "f59ef21a1844ee40ddd24749a7b84d69c73da672a7b11800875a0c440b15f7cf"
+    },
+    "exhibits/hydration-water-clock-consistency/v1/files/files/HISTORICAL-RESULT.json.txt": {
+      "bytes": 1077,
+      "sha256": "decdc4e4c109befaf68ac880f429b7fb5fc8e5fac20245468e57d8adcedeb94e"
+    },
+    "exhibits/hydration-water-clock-consistency/v1/files/files/HISTORICAL-REVIEW.md.txt": {
+      "bytes": 3130,
+      "sha256": "305d7db491ee6cc69e2814c43c67c4fa6569d43efa5b234d34c7ac2e2590fce9"
+    },
+    "exhibits/hydration-water-clock-consistency/v1/files/files/METHOD.md.txt": {
+      "bytes": 5581,
+      "sha256": "32b214a6b037f2989c71ea8710aa87c507f63a0e7ad81af92ce16691e269c783"
+    },
+    "exhibits/hydration-water-clock-consistency/v1/files/files/SOURCE-NOTICES.json.txt": {
+      "bytes": 2333,
+      "sha256": "03b1bd0c61eb86cb14bf07551bcbb7eed5488db82507ba0ef42bca6a495d949e"
+    },
+    "exhibits/hydration-water-clock-consistency/v1/files/files/hydration.py.txt": {
+      "bytes": 8633,
+      "sha256": "5bd660da4fff10d0f0d9955912bac5b368ff7839199cc8389a3d2453e6c82b52"
+    },
+    "exhibits/hydration-water-clock-consistency/v1/files/files/test_hydration.py.txt": {
+      "bytes": 7199,
+      "sha256": "19c0a02b28e03fc3b313577cf5aa8e21801fb171d202343f5c2db03921bb0cd0"
+    },
+    "exhibits/hydration-water-clock-consistency/v1/index.html": {
+      "bytes": 16363,
+      "sha256": "e552c4d4e7d4fd9e7e032b112f88736769ae9767d27bdcfbed6e5bce204c93a9"
+    },
+    "exhibits/hydration-water-clock-consistency/v1/snapshot.json": {
+      "bytes": 1233,
+      "sha256": "ba92ffde8c80a2bdf53f73f87478299a8ee178a8e9612be6c5ebd7ca87ca2d68"
+    },
+    "exhibits/hydration-water-clock-consistency/v1/submitted-manifest.json": {
+      "bytes": 6621,
+      "sha256": "ea8272b612b8ea425931eaec8a8806c789e6cc8ee2b2f67c4a15b3767ba82026"
     },
     "exhibits/lantern-walk/v1/exhibit.json": {
       "bytes": 7902,
@@ -2386,12 +2431,12 @@
       "sha256": "d1cf42ce64b01824f3c20d2eb7df88c95f8ffcbcc840f64a6c772c74989d4a8a"
     },
     "index.html": {
-      "bytes": 27594,
-      "sha256": "1d54651286f8d9cf50f7ae0a80314d890b7181d21378279a9057c97ba4a735b5"
+      "bytes": 28153,
+      "sha256": "16ac14f2681272b46f876bdafb80c5516773ce24ece566929fb843fbd2b749f2"
     },
     "index.json": {
-      "bytes": 38296,
-      "sha256": "70e8a0f423ec1e3983d87ae175abb979fe1a8db93870529fa8d5dd745d6e459e"
+      "bytes": 39156,
+      "sha256": "3cf6c7a541ed9465de1c936544e86836dcf8744bbfc1a96aa6d2e769c4bce139"
     },
     "llms.txt": {
       "bytes": 489,
@@ -2406,5 +2451,13 @@
       "sha256": "9a8f34a02329dd77da6f2e6e4945f7c6e1d841e60a5c40157795f284f4b5f7ec"
     }
   },
-  "mode": "release-candidate"
+  "manifest_note": "This manifest excludes itself; existing public exhibit bytes are retained. Hashes establish bytes, not scientific truth or owner authentication.",
+  "mode": "release-candidate",
+  "new_exhibit": {
+    "id": "hydration-water-clock-consistency",
+    "package_sha256": "36a21012e9bb1c8bd781218c6f6851794d5134fd8ac9a87a468fc4f1fdd90138",
+    "version": 1
+  },
+  "published": false,
+  "schema_version": 1
 }

@@ -1,0 +1,26 @@
+# Retained numerical review — October 9, 2026
+
+This is a selected editorial derivative of the original review, not a newly performed independent examination. Coordination records, private conversation identifiers, timing/budget details, the separate biological-literature discussion, and protected-workspace inventories are omitted. The numerical failures and review limits below are retained; the reviewer role replaces an internal worker label.
+
+## Useful failures and correction
+
+Builder's initial extreme-duration test expected refusal for a finite representable request; the actual finite-domain boundary event was valid. Replaced that mistaken expectation with a genuinely overflowing rate-duration case. No implementation safeguard was weakened.
+
+Initial13 tests missed two precision faults. Independent verifier demonstrated elapsed1e20 plus1 could leave stored time unchanged while moving water. Counsel independently demonstrated an analytic tiny transfer could be reported without changing stored water. Builder added representability/underflow refusals and endpoint-based transfer receipts. Tiny representable derivative check now uses tolerance appropriate to actual endpoint subtraction; ordinary independent closed-form and conservation checks remain unchanged. Clock tolerance is explicitly1e-12relative increment error.
+
+Builder then found a subnormal boundary ratio/time could underflow to zero while moving nonzero water. Added two refusal guards and a16th regression. Genuine zero-time, zero-transfer boundary events remain supported. All corrections preserve immutable input and do not add a biological closure.
+
+
+## Final independent verification
+
+The independent final verifier inspected actual final kernel, tests and README; ran all16 synthetic tests with bundled Python and bytecode disabled. Independently verified prior time failure now refuses, transport/events/units/continuation, endpoint receipts and final boundary-underflow guards. No remaining blocker within the bounded numerical review. Research reviewed for specificity and limits; paper claims were not independently re-retrieved by this final verifier. No files changed by specialists.
+
+
+## Read-only Counsel
+
+The authorized read-only Counsel reviewed actual code/docs, independently ran15tests before final narrow subnormal guard, and accepted bounded numerical demonstrator/research for encounter subject to final independent verification. Final guards and16th test were disclosed; Counsel subsequently inspected those guards and independently reran the final16tests PASS, preserving acceptance. Independent final16-test verification also satisfied the condition. Counsel did not independently retrieve new biological sources in this slice. No material unresolved dissent for scoped numerical claim. Review does not establish accepted biological approximation or calibrated sprouting.
+
+
+## Exhibit preparation
+
+The attached implementation and tests match their historical verification hashes. No research code or scientific tests were run to prepare this exhibit. Package validation does not establish mathematical or biological truth.

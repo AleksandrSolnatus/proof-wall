@@ -1,0 +1,152 @@
+"""Synthetic dimensional fixtures only; these are NOT lotus coefficients."""
+from dataclasses import replace
+import json
+import math
+import unittest
+from hydration import Hypothesis, State, Refusal, advance, potential_difference, encode, decode
+
+
+def fixture():
+    # Deliberately synthetic kg/Pa-scale reservoirs, not a seed calibration.
+    h = Hypothesis(0.25, 2., 4., 1., 0., 7., 6., 20., 'permeable', 'SYNTHETIC TEST ONLY')
+    return h, State(8., 1., 0., 'active')
+
+
+class HydrationTests(unittest.TestCase):
+    def test_independent_closed_form_and_conservation(self):
+        h, s = fixture()
+        result = advance(h, s, 3.)
+        # Analytical equilibrium: transfer=8*(1-exp(-3*3/16)).
+        expected = 8 * (1 - math.exp(-9/16))
+        self.assertAlmostEqual(result.transferred_kg, expected)
+        self.assertEqual(result.state.total_water_kg, s.total_water_kg)
+        self.assertAlmostEqual(result.state.seed_water_kg + result.state.bath_water_kg, 8.)
+        self.assertGreater(result.state.seed_water_kg, s.seed_water_kg)
+        self.assertLess(abs(potential_difference(h, result.state)), abs(potential_difference(h, s)))
+
+    def test_split_time_matches_unsplit_within_roundoff(self):
+        h, s = fixture()
+        whole = advance(h, s, 3.).state
+        split = advance(h, advance(h, s, 1.).state, 2.).state
+        self.assertAlmostEqual(whole.seed_water_kg, split.seed_water_kg, places=14)
+        self.assertEqual(whole.elapsed_s, split.elapsed_s)
+
+    def test_codec_preserves_exact_state_and_future(self):
+        h, s = fixture()
+        mid = advance(h, s, 0.37).state
+        hh, ss = decode(encode(h, mid))
+        self.assertEqual((hh, ss), (h, mid))
+        self.assertEqual(advance(hh, ss, 0.29), advance(h, mid, 0.29))
+
+    def test_zero_time_and_zero_conductance(self):
+        h, s = fixture()
+        self.assertIs(advance(h, s, 0.).state, s)
+        dry_barrier = replace(h, conductance_kg_s_pa=0., covering='intact')
+        end = advance(dry_barrier, s, 100.).state
+        self.assertEqual(end.seed_water_kg, s.seed_water_kg)
+        self.assertEqual(end.status, 'active')  # not a dormancy/viability diagnosis
+
+    def test_covering_never_invents_conductance(self):
+        h, s = fixture()
+        self.assertEqual(advance(h, s, 1.).state,
+                         advance(replace(h, covering='scarified'), s, 1.).state)
+
+    def test_seed_domain_event_and_unadvanced_time(self):
+        h, s = fixture()
+        h = replace(h, seed_domain_max_kg=2.)
+        result = advance(h, s, 10.)
+        expected_time = -math.log(7/8) / (3/16)
+        self.assertAlmostEqual(result.advanced_s, expected_time)
+        self.assertEqual(result.state.seed_water_kg, 2.)
+        self.assertEqual(result.state.status, 'domain_boundary')
+        self.assertEqual(result.advanced_s + result.unadvanced_s, 10.)
+        with self.assertRaises(Refusal):
+            advance(h, result.state, result.unadvanced_s)
+
+    def test_bath_exhaustion_stops(self):
+        h, s = fixture()
+        h = replace(h, bath_reference_potential_pa=100.)
+        result = advance(h, s, 10.)
+        self.assertEqual(result.state.bath_water_kg, 0.)
+        self.assertEqual(result.state.seed_water_kg, s.total_water_kg)
+        self.assertEqual(result.state.status, 'domain_boundary')
+
+    def test_reverse_flow_and_empty_seed_stop(self):
+        h, s = fixture()
+        h = replace(h, bath_reference_potential_pa=-10.)
+        result = advance(h, s, 10.)
+        self.assertEqual(result.state.seed_water_kg, 0.)
+        self.assertEqual(result.state.bath_water_kg, 8.)
+        self.assertEqual(result.state.status, 'domain_boundary')
+
+    def test_equilibrium_has_no_transfer(self):
+        h, s = fixture()
+        h = replace(h, bath_reference_potential_pa=0.)
+        self.assertEqual(advance(h, s, 100.).transferred_kg, 0.)
+
+    def test_immediate_outward_boundary(self):
+        h, s = fixture()
+        s = replace(s, seed_water_kg=0.)
+        h = replace(h, bath_reference_potential_pa=-100.)
+        result = advance(h, s, 1.)
+        self.assertEqual(result.advanced_s, 0.)
+        self.assertEqual(result.unadvanced_s, 1.)
+
+    def test_missing_invalid_and_extreme_inputs_refuse(self):
+        h, s = fixture()
+        with self.assertRaises(Refusal): advance(None, s, 1.)
+        for duration in (-1., float('nan'), float('inf'), True):
+            with self.assertRaises(Refusal): advance(h, s, duration)
+        for key, val in [('seed_capacity_kg_pa', 0.), ('conductance_kg_s_pa', -1.),
+                         ('seed_domain_max_kg', float('inf')), ('provenance', ''),
+                         ('seed_capacity_kg_pa', 5e-324)]:
+            with self.assertRaises(Refusal): advance(replace(h, **{key: val}), s, 1.)
+        with self.assertRaises(Refusal): advance(h, replace(s, seed_water_kg=9.), 1.)
+        with self.assertRaises(Refusal): advance(replace(h, conductance_kg_s_pa=1e308), s, 10.)
+
+    def test_tiny_duration_stable_transfer(self):
+        h, s = fixture()
+        result = advance(h, s, 1e-12)
+        self.assertAlmostEqual(result.transferred_kg / 1e-12, 1.5, places=3)
+        self.assertEqual(result.state.total_water_kg, s.total_water_kg)
+
+    def test_precision_exhaustion_refuses_without_mutating_inputs(self):
+        h, s = fixture()
+        for dt in (1e-20, 5e-324):
+            with self.assertRaises(Refusal): advance(h, s, dt)
+        with self.assertRaises(Refusal):
+            advance(replace(h, conductance_kg_s_pa=5e-324), s, 1e-10)
+        for hh in (h, replace(h, conductance_kg_s_pa=0.),
+                   replace(h, bath_reference_potential_pa=0.),
+                   replace(h, seed_domain_max_kg=2.)):
+            with self.assertRaises(Refusal): advance(hh, replace(s, elapsed_s=1e20), 1.)
+        self.assertEqual(s, State(8., 1., 0., 'active'))
+
+    def test_nonzero_boundary_cannot_execute_at_underflowed_time(self):
+        h = Hypothesis(1., 1., 1., 0., 0., 1e-323, 100., 5e-324,
+                       'permeable', 'SYNTHETIC SUBNORMAL BOUNDARY')
+        s = State(1e-323, 0., 0., 'active')
+        with self.assertRaises(Refusal): advance(h, s, 1.)
+
+    def test_reported_transfer_is_stored_endpoint_change(self):
+        h, s = fixture()
+        result = advance(h, s, 0.001)
+        self.assertEqual(result.transferred_kg, result.state.seed_water_kg - s.seed_water_kg)
+
+    def test_corrupt_future_and_partial_snapshots_refuse(self):
+        h, s = fixture()
+        snapshot = json.loads(encode(h, s))
+        for mutation in ('future', 'unknown', 'missing', 'nan', 'badboundary'):
+            d = json.loads(encode(h, s))
+            if mutation == 'future': d['schema'] = 2
+            if mutation == 'unknown': d['state']['extra'] = 1
+            if mutation == 'missing': del d['hypothesis']['conductance_kg_s_pa']
+            if mutation == 'nan': d['state']['elapsed_s'] = float('nan')
+            if mutation == 'badboundary': d['state']['status'] = 'domain_boundary'
+            with self.assertRaises(Refusal): decode(json.dumps(d))
+        with self.assertRaises(Refusal): decode('{"schema":1,"schema":1}')
+        with self.assertRaises(Refusal): decode('{}')
+
+
+if __name__ == '__main__':
+    unittest.main()

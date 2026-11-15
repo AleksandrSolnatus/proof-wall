@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "id": "hydration-water-clock-consistency",
+  "version": 1,
+  "title": "When the water moves but the clock doesn't",
+  "artifact_type": "experiment",
+  "status": "verified-finite-result",
+  "date": "2026-10-09",
+  "sample": false,
+  "article": "article.md",
+  "question": "Can a closed-form water-transfer model keep stored water, stored time and receipts consistent at numerical limits?",
+  "method": "An explicit two-compartment linear passive-water hypothesis, finite-domain event handling, immutable state, snapshot continuation and 16 recorded synthetic tests; preserve the independent precision counterexamples and their corrections.",
+  "finding": "The retained final implementation refuses unsupported clock, transfer and boundary-time representations, reports stored endpoint transfer, and stops at the declared domain. Its October 9 record reports final independent and Counsel acceptance within numerical scope.",
+  "claim_scope": "The unchanged, uncalibrated Python numerical artifact and its 16 historically completed synthetic checks; not a biological hydration trajectory, germination result or proof for all floating-point inputs.",
+  "limitations": [
+    "Constant conductance, linear storage and persistent contact are provisional, uncalibrated assumptions.",
+    "No measured lotus parameter set, metabolism, viability diagnosis, growth or germination is implemented.",
+    "Floating-point endpoint rounding remains; split-duration continuation is only within roundoff.",
+    "Historical checks are reused, not rerun during exhibit preparation."
+  ],
+  "open_questions": [
+    "What observations and constitutive hypothesis would justify a biological continuation?",
+    "How should conductance and storage be independently identified, given that uptake alone cannot identify both?"
+  ],
+  "provenance": {
+    "authors": [
+      "The Bridges Group, with ChatGPT."
+    ],
+    "origin": "Owner-directed October 9, 2026 contained hydration research. Implementation, synthetic tests, independent final review and read-only Counsel were preserved in the original project.",
+    "change_note": "First owner-authorized publication, November 15, 2026. Article and all six selected supporting files retain their reviewed bytes. Only release metadata changed. Attached source notices retain their preparation-time status; this manifest records the current release decision. No scientific rerun."
+  },
+  "publication": {
+    "intent": "request-review",
+    "rights": "Owner-authorized public reading and downloading of this selected project material and explanatory article. All rights reserved; no new open-source license is granted.",
+    "license": "All rights reserved; no new open-source license granted.",
+    "attribution": "The Bridges Group, with ChatGPT."
+  },
+  "relations": [],
+  "gardens": [],
+  "files": [
+    {
+      "path": "article.md",
+      "role": "article",
+      "media_type": "text/markdown",
+      "bytes": 6692,
+      "sha256": "f59ef21a1844ee40ddd24749a7b84d69c73da672a7b11800875a0c440b15f7cf",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading of this selected project material and explanatory article. All rights reserved; no new open-source license is granted.",
+      "license": "All rights reserved; no new open-source license granted."
+    },
+    {
+      "path": "files/hydration.py",
+      "role": "code",
+      "media_type": "text/x-python",
+      "bytes": 8633,
+      "sha256": "5bd660da4fff10d0f0d9955912bac5b368ff7839199cc8389a3d2453e6c82b52",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading of this selected project material and explanatory article. All rights reserved; no new open-source license is granted.",
+      "license": "All rights reserved; no new open-source license granted."
+    },
+    {
+      "path": "files/test_hydration.py",
+      "role": "code",
+      "media_type": "text/x-python",
+      "bytes": 7199,
+      "sha256": "19c0a02b28e03fc3b313577cf5aa8e21801fb171d202343f5c2db03921bb0cd0",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading of this selected project material and explanatory article. All rights reserved; no new open-source license is granted.",
+      "license": "All rights reserved; no new open-source license granted."
+    },
+    {
+      "path": "files/METHOD.md",
+      "role": "original",
+      "media_type": "text/markdown",
+      "bytes": 5581,
+      "sha256": "32b214a6b037f2989c71ea8710aa87c507f63a0e7ad81af92ce16691e269c783",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading of this selected project material and explanatory article. All rights reserved; no new open-source license is granted.",
+      "license": "All rights reserved; no new open-source license granted."
+    },
+    {
+      "path": "files/HISTORICAL-REVIEW.md",
+      "role": "receipt",
+      "media_type": "text/markdown",
+      "bytes": 3130,
+      "sha256": "305d7db491ee6cc69e2814c43c67c4fa6569d43efa5b234d34c7ac2e2590fce9",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading of this selected project material and explanatory article. All rights reserved; no new open-source license is granted.",
+      "license": "All rights reserved; no new open-source license granted."
+    },
+    {
+      "path": "files/HISTORICAL-RESULT.json",
+      "role": "receipt",
+      "media_type": "application/json",
+      "bytes": 1077,
+      "sha256": "decdc4e4c109befaf68ac880f429b7fb5fc8e5fac20245468e57d8adcedeb94e",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading of this selected project material and explanatory article. All rights reserved; no new open-source license is granted.",
+      "license": "All rights reserved; no new open-source license granted."
+    },
+    {
+      "path": "files/SOURCE-NOTICES.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 2333,
+      "sha256": "03b1bd0c61eb86cb14bf07551bcbb7eed5488db82507ba0ef42bca6a495d949e",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading of this selected project material and explanatory article. All rights reserved; no new open-source license is granted.",
+      "license": "All rights reserved; no new open-source license granted."
+    }
+  ]
+}

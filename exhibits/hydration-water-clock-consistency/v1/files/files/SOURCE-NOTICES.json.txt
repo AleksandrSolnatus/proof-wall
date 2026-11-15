@@ -1,0 +1,43 @@
+{
+  "prepared_on": "2026-11-15",
+  "attribution": "The Bridges Group, with ChatGPT.",
+  "publication_state": "Private proposed exhibit; owner publication approval pending.",
+  "proposed_terms": "All rights reserved; no new open-source license granted.",
+  "files": [
+    {
+      "file": "hydration.py",
+      "kind": "exact original implementation",
+      "original_sha256": "5bd660da4fff10d0f0d9955912bac5b368ff7839199cc8389a3d2453e6c82b52"
+    },
+    {
+      "file": "test_hydration.py",
+      "kind": "exact original synthetic tests",
+      "original_sha256": "19c0a02b28e03fc3b313577cf5aa8e21801fb171d202343f5c2db03921bb0cd0"
+    },
+    {
+      "file": "METHOD.md",
+      "kind": "editorial derivative",
+      "original_sha256": "f90b4201622b4641fdcee0c773eae437664d1a8e7100352c2fb3c9f7832f46c0",
+      "changes": "Personal address, unrelated scaffold reference and unavailable sibling-document pointers removed or replaced; scope and numerical limitations retained."
+    },
+    {
+      "file": "HISTORICAL-REVIEW.md",
+      "kind": "selected review derivative",
+      "original_sha256": "8be1275623d5aa4733746ec71d3eabba38de1d1355cbdd22569d81545ad42f28",
+      "changes": "Selected numerical failures, independent final review and Counsel sections; private conversation/worker identifiers removed; coordination and separate research excluded."
+    },
+    {
+      "file": "HISTORICAL-RESULT.json",
+      "kind": "selected historical receipt derivative",
+      "original_sha256": "d4146c64b4fa7e1011abf54a0cf500d9d1c2038f5b4482914a7c20346c95912f",
+      "changes": "Retains numerical scope, final reported checks and implementation/test identities; excludes budget, operational timing and unrelated workspace inventory."
+    },
+    {
+      "file": "article.md",
+      "kind": "new explanatory article about preserved work"
+    }
+  ],
+  "dependencies": "Implementation and tests import Python standard-library modules only. No third-party code, imagery, fonts, datasets or biological-paper quotations are included.",
+  "review_role_notice": "The historical independent verifier and Counsel are credited by their actual review roles. The exhibit preparer does not claim to be those reviewers.",
+  "preservation": "Canonical source originals remain unchanged. Complete original reviews and custody records are retained privately."
+}

@@ -1,0 +1,43 @@
+# Headless hydration hypothesis — 9 October 2026
+
+This is a contained **uncalibrated numerical demonstrator**, not a predictive lotus model or native app. There is no lotus parameter file, default biological coefficient, CLI run, clock or background process. All values in tests are synthetic dimensional fixtures.
+
+## Explicit provisional approximation for consideration
+
+Two well-mixed compartments share a fixed total of free water, with constant positive linear storage capacities C_seed and C_bath [kg/Pa], and nonnegative effective conductance L [kg/(s·Pa)]. Potentials are affine in water mass:
+
+Ψ_i=Ψ_i,ref+(W_i−W_i,ref)/C_i.
+
+The finite bath loses precisely the water the seed gains. With ΔΨ=Ψ_bath−Ψ_seed, a=1/C_seed+1/C_bath and k=L a:
+
+x(t)=ΔΨ(0)/a × [−expm1(−kt)].
+
+x is signed transfer [kg], positive bath→seed. This is the exact solution of this **chosen hypothesis**, subject to floating-point arithmetic, not an observed lotus hydration trajectory. Unknown coefficients must be supplied explicitly; missing input refuses. A covering label never automatically changes L. Zero specified L is a mathematical barrier case, not a diagnosis of dormancy. State has no viable/dead/germinated label.
+
+**Unaccepted biological approximations:** constant L; linear single-compartment seed retention; persistent contact; no reactions, metabolic water, leakage, gas exchange, evaporation, swelling or changing geometry. Their error is not bounded for lotus. These exclusions are exact in the synthetic system and unresolved in the organism. A future metabolism extension needs a separately justified chemical balance; this model does not establish exact biological water conservation.
+
+C_seed and C_bath are slopes, not physical maximum water stocks. Separate seed_domain_max_kg bounds the seed hypothesis; bath depletion/seed emptying are additional stops. Real contact may disappear before bath depletion and is **not represented here**. No contact geometry or 5 mm tray depth is implemented. For a separately justified pure-hydrostatic constant-area bath, W=ρAh and Ψ=ρgh imply C_bath=A/g; arbitrary synthetic C_bath in tests does not establish an actual tray geometry.
+
+## Domain and continuation behavior
+
+State stores total water and seed water; bath is their difference, so each step retains the exact stored total. Signed transfer permits drying as well as uptake. At the first seed-domain limit, empty bath or empty seed, the analytic event time is returned with the remaining **unadvanced** duration and domain_boundary status. A boundary state refuses further advance; it does not adopt a saturation law or become a sprout. A changed hypothesis requires an explicit choice outside this kernel. Invalid/nonfinite/overflowing inputs and exhausted numerical precision refuse without mutating the immutable input state. Nonzero analytic transfer must change both represented water stocks; the receipt reports the stored seed-water endpoint difference. Clock advancement must be positive and agree with requested duration within relative tolerance 1e-12, otherwise it refuses. Nominal durations and floating-point clock differences may still differ within that tolerance. Tiny representable transfers retain normal floating-point endpoint rounding.
+
+Snapshot codecs retain hypothesis, provenance, covering, state, elapsed simulation time and status. They reject unknown schema/fields, partial data, duplicates and nonfinite values. There is no automatic wall-clock advancement or filesystem custody implementation. Restoring a valid snapshot and applying the same duration yields the same continuation; splitting durations agrees within roundoff, not necessarily bitwise. Snapshot format is local experimental data, not an Arepo project format or durable compatibility promise.
+
+## Verification and use
+
+`hydration.py` exposes Hypothesis, State, advance, encode and decode; importing it performs no run. To execute only the synthetic verification, from this directory:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v
+```
+
+16 tests cover independent analytic solution, transfer conservation, decreasing potential difference, reverse flow, equilibrium, zero L/time, first boundary events and unadvanced time, covering non-effects, tiny duration, overflow/invalid input, exact snapshot continuation, split-duration tolerance corrupt/future snapshot refusal, unrepresentable transfer/clock refusal and endpoint receipts. The test fixtures are deliberately kg/Pa-scale artificial reservoirs, not realistic seed dimensions or estimates.
+
+Test success establishes this numerical hypothesis's tested behavior, not calibrated physiology. No germination, reserve-use, ATP, rupture or native transfer code exists. The retained numerical review and result are included here as HISTORICAL-REVIEW.md and HISTORICAL-RESULT.json.
+
+Next useful choice: consider this explicit hydration approximation, or prefer a different constitutive hypothesis, before selecting biological coefficients. Uptake alone cannot identify both conductance and storage. Quantitative coupling to metabolism, embryo expansion and opening remains unresolved; no physical experiment follows automatically.
+
+## Exhibit copy notice
+
+This is an editorial derivative of the original October 9 source explanation. Personal address, an unrelated implementation reference, and unavailable sibling-document pointers were removed or replaced. The numerical assumptions, limitations and replay instructions are retained. Source identities and derivative status appear in SOURCE-NOTICES.json.
