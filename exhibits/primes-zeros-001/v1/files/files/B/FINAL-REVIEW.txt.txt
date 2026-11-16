@@ -1,0 +1,19 @@
+Read-only final report review disposition: two small wording corrections requested.
+
+Numerical table, prime counts, discrepancies, independent methods, rounded-input
+limits, and absence of any RH conclusion agree with my checked results.
+No further computation performed.
+
+1. The chart paragraph says it plots psi(x)-x and then says 'the actual function
+is a staircase.' Psi is a staircase, but psi(x)-x decreases with slope -1
+between jumps. Please distinguish these, e.g. 'Black connects sampled values;
+psi itself is a staircase, so psi(x)-x slopes downward between its jumps.'
+2. 'each zero-pair term' may imply term-by-term comparisons against A. My
+checker evaluates all included terms independently, but compares the cumulative
+truncations K=0,1,5,10, not A's individual terms. Prefer 'each truncated zero
+sum using an independent real trigonometric expression.'
+
+Source transcription, image inspection, hash preservation, historical-record
+integrity, and budget/accounting statements are coordinator attestations outside
+my assigned numerical review. I have not independently certified them. Subject
+to the two wording corrections above, no scientific or numerical blocker found.

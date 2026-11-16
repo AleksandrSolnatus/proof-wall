@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "id": "primes-zeros-001",
+  "version": 1,
+  "title": "Ten zeros help the average, not every point",
+  "artifact_type": "experiment",
+  "status": "verified-finite-result",
+  "question": "Does including more supplied zeta-zero pairs improve a prime-power approximation at every sampled point, or only in aggregate?",
+  "method": "Preserved integer-sieve and prime-power calculation; four finite zero-sum truncations on 191 preselected half-integers; separately implemented trial division, factorization and real-trigonometric checker.",
+  "finding": "Across K=0,1,5,10 pairs, retained average and maximum absolute errors decrease on the fixed grid, but 81 of 191 points worsen from five pairs to ten. The recorded independent checker agrees on all 764 cumulative approximations within 1e-10.",
+  "claim_scope": "The preserved October 17 finite exercise with ten rounded supplied heights and x=10.5 through 200.5; no certified root finding, analytic remainder bound, general convergence result or Riemann-hypothesis claim.",
+  "limitations": [
+    "psi is a weighted prime-power sum, not the prime-counting function pi.",
+    "Shared rounded input heights and Python math routines limit the independence claim; actual roots and source transcription were not certified by the checker.",
+    "Floating-point logarithms and zero sums are not exact real arithmetic or interval certification.",
+    "No pointwise monotonicity or general error-rate claim; phase timings are not whole-system costs or speed comparisons.",
+    "The original zero-table host was unavailable during release link checking; frozen inputs and the historical locator are included."
+  ],
+  "open_questions": [
+    "How many zero pairs recover useful local detail farther out under a separately chosen range and error criterion?"
+  ],
+  "date": "2026-10-17",
+  "provenance": {
+    "authors": [
+      "The Bridges Group, with ChatGPT."
+    ],
+    "origin": "Owner-directed PRIMES-ZEROS-001, October 17, 2026. A calculation was followed by a separately implemented numerical check and report review. Classical sources and supplied rounded heights are attributed.",
+    "change_note": "First owner-authorized Proof Wall release, November 16, 2026. Original scripts, inputs, full results, reviews, corrections and SVG bytes retained. Article/replay guide are new; report is a labeled editorial derivative; chart PDF wraps the original PNG. No scientific rerun."
+  },
+  "article": "article.md",
+  "files": [
+    {
+      "path": "article.md",
+      "role": "article",
+      "media_type": "text/markdown",
+      "bytes": 7538,
+      "sha256": "447e04f3630c2e9fd67b73c1800a50df409f485d5d3d7ad49a6da6977c332e6d",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading of the selected project contribution. Supplied zero-height facts and classical mathematics retain the source attribution recorded in INPUT.json and SOURCE-NOTICES.json; no third-party book pages are republished.",
+      "license": "All rights reserved for project-authored material; no new open-source license granted. No exclusive ownership of mathematical facts, formulas or cited numerical heights is claimed."
+    },
+    {
+      "path": "files/A/INPUT.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 2797,
+      "sha256": "b83fefa5f00705a26dcb1cc1edb7297eba6bc5301d1a349aecb39d76d2d1dcf3",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading of the selected project contribution. Supplied zero-height facts and classical mathematics retain the source attribution recorded in INPUT.json and SOURCE-NOTICES.json; no third-party book pages are republished.",
+      "license": "All rights reserved for project-authored material; no new open-source license granted. No exclusive ownership of mathematical facts, formulas or cited numerical heights is claimed."
+    },
+    {
+      "path": "files/A/calculate_01.py",
+      "role": "code",
+      "media_type": "text/x-python",
+      "bytes": 2447,
+      "sha256": "846cfd938090e83e996224077ab718959964195a0d37b36fbd8c4ca79528277b",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading of the selected project contribution. Supplied zero-height facts and classical mathematics retain the source attribution recorded in INPUT.json and SOURCE-NOTICES.json; no third-party book pages are republished.",
+      "license": "All rights reserved for project-authored material; no new open-source license granted. No exclusive ownership of mathematical facts, formulas or cited numerical heights is claimed."
+    },
+    {
+      "path": "files/A/results.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 96295,
+      "sha256": "0201d5034fde0277e8732256d872725720b29760aed41a5438a829ea1d87d4d8",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading of the selected project contribution. Supplied zero-height facts and classical mathematics retain the source attribution recorded in INPUT.json and SOURCE-NOTICES.json; no third-party book pages are republished.",
+      "license": "All rights reserved for project-authored material; no new open-source license granted. No exclusive ownership of mathematical facts, formulas or cited numerical heights is claimed."
+    },
+    {
+      "path": "files/B/FINAL-REVIEW.txt",
+      "role": "receipt",
+      "media_type": "text/plain",
+      "bytes": 1188,
+      "sha256": "dddffc8347f50c6bb26fcbfa5292fa4f2847f5081a1657839b0a17965d406032",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading of the selected project contribution. Supplied zero-height facts and classical mathematics retain the source attribution recorded in INPUT.json and SOURCE-NOTICES.json; no third-party book pages are republished.",
+      "license": "All rights reserved for project-authored material; no new open-source license granted. No exclusive ownership of mathematical facts, formulas or cited numerical heights is claimed."
+    },
+    {
+      "path": "files/B/REVIEW.txt",
+      "role": "receipt",
+      "media_type": "text/plain",
+      "bytes": 2829,
+      "sha256": "1c82e0e3ef5afc41b1e3e9e09ea7886ecc6a0ccc27fa4c513491dccfee3f68d5",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading of the selected project contribution. Supplied zero-height facts and classical mathematics retain the source attribution recorded in INPUT.json and SOURCE-NOTICES.json; no third-party book pages are republished.",
+      "license": "All rights reserved for project-authored material; no new open-source license granted. No exclusive ownership of mathematical facts, formulas or cited numerical heights is claimed."
+    },
+    {
+      "path": "files/B/checker.py",
+      "role": "code",
+      "media_type": "text/x-python",
+      "bytes": 3182,
+      "sha256": "5414d97e1878294b53a441982b1ad8cd501deb403e74f2e068e3fb9a696011ca",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading of the selected project contribution. Supplied zero-height facts and classical mathematics retain the source attribution recorded in INPUT.json and SOURCE-NOTICES.json; no third-party book pages are republished.",
+      "license": "All rights reserved for project-authored material; no new open-source license granted. No exclusive ownership of mathematical facts, formulas or cited numerical heights is claimed."
+    },
+    {
+      "path": "files/B/results.json",
+      "role": "receipt",
+      "media_type": "application/json",
+      "bytes": 1698,
+      "sha256": "00b9524b12eade41eb13aa7432aa1165d7ee406fe3c683426ca5bea9417e3396",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading of the selected project contribution. Supplied zero-height facts and classical mathematics retain the source attribution recorded in INPUT.json and SOURCE-NOTICES.json; no third-party book pages are republished.",
+      "license": "All rights reserved for project-authored material; no new open-source license granted. No exclusive ownership of mathematical facts, formulas or cited numerical heights is claimed."
+    },
+    {
+      "path": "files/CHART.pdf",
+      "role": "data",
+      "media_type": "application/pdf",
+      "bytes": 97385,
+      "sha256": "bdd32d780843fd3b077b903937037afb6ed2c06cb04a49acb429be0e786e2102",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading of the selected project contribution. Supplied zero-height facts and classical mathematics retain the source attribution recorded in INPUT.json and SOURCE-NOTICES.json; no third-party book pages are republished.",
+      "license": "All rights reserved for project-authored material; no new open-source license granted. No exclusive ownership of mathematical facts, formulas or cited numerical heights is claimed."
+    },
+    {
+      "path": "files/INPUT.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 2797,
+      "sha256": "b83fefa5f00705a26dcb1cc1edb7297eba6bc5301d1a349aecb39d76d2d1dcf3",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading of the selected project contribution. Supplied zero-height facts and classical mathematics retain the source attribution recorded in INPUT.json and SOURCE-NOTICES.json; no third-party book pages are republished.",
+      "license": "All rights reserved for project-authored material; no new open-source license granted. No exclusive ownership of mathematical facts, formulas or cited numerical heights is claimed."
+    },
+    {
+      "path": "files/REPORT.md",
+      "role": "original",
+      "media_type": "text/markdown",
+      "bytes": 3738,
+      "sha256": "f87012e01b648412988fcfb10441a2e1b16909a1d28b1873254678a7fd0ff4d0",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading of the selected project contribution. Supplied zero-height facts and classical mathematics retain the source attribution recorded in INPUT.json and SOURCE-NOTICES.json; no third-party book pages are republished.",
+      "license": "All rights reserved for project-authored material; no new open-source license granted. No exclusive ownership of mathematical facts, formulas or cited numerical heights is claimed."
+    },
+    {
+      "path": "files/REPRODUCE.md",
+      "role": "data",
+      "media_type": "text/markdown",
+      "bytes": 3177,
+      "sha256": "292ffce06908ddd745aebcc6ab269207007354c3ad22c49b569701f17fcb1734",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading of the selected project contribution. Supplied zero-height facts and classical mathematics retain the source attribution recorded in INPUT.json and SOURCE-NOTICES.json; no third-party book pages are republished.",
+      "license": "All rights reserved for project-authored material; no new open-source license granted. No exclusive ownership of mathematical facts, formulas or cited numerical heights is claimed."
+    },
+    {
+      "path": "files/REVIEW-CORRECTIONS.txt",
+      "role": "receipt",
+      "media_type": "text/plain",
+      "bytes": 249,
+      "sha256": "f642e15809b9f4c9fbda452a7021a2dbb9c7421e9123d975265173018469c985",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading of the selected project contribution. Supplied zero-height facts and classical mathematics retain the source attribution recorded in INPUT.json and SOURCE-NOTICES.json; no third-party book pages are republished.",
+      "license": "All rights reserved for project-authored material; no new open-source license granted. No exclusive ownership of mathematical facts, formulas or cited numerical heights is claimed."
+    },
+    {
+      "path": "files/SOURCE-NOTICES.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 4974,
+      "sha256": "99cff6cd0a06bb8b63476a9ca4a9aad7ea8c20598712a635e9ab647465aac8a5",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading of the selected project contribution. Supplied zero-height facts and classical mathematics retain the source attribution recorded in INPUT.json and SOURCE-NOTICES.json; no third-party book pages are republished.",
+      "license": "All rights reserved for project-authored material; no new open-source license granted. No exclusive ownership of mathematical facts, formulas or cited numerical heights is claimed."
+    },
+    {
+      "path": "files/SOURCES.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 1027,
+      "sha256": "f83458bf35a2d2ea14575fe8fd8573bcbb4842d946b710a884aa464b2faf63eb",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading of the selected project contribution. Supplied zero-height facts and classical mathematics retain the source attribution recorded in INPUT.json and SOURCE-NOTICES.json; no third-party book pages are republished.",
+      "license": "All rights reserved for project-authored material; no new open-source license granted. No exclusive ownership of mathematical facts, formulas or cited numerical heights is claimed."
+    },
+    {
+      "path": "files/chart-svg.txt",
+      "role": "original",
+      "media_type": "text/plain",
+      "bytes": 10770,
+      "sha256": "2cb111d827d66b5b10c8f72b14869606ec4de9040a9e560fe16e8c3983739825",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading of the selected project contribution. Supplied zero-height facts and classical mathematics retain the source attribution recorded in INPUT.json and SOURCE-NOTICES.json; no third-party book pages are republished.",
+      "license": "All rights reserved for project-authored material; no new open-source license granted. No exclusive ownership of mathematical facts, formulas or cited numerical heights is claimed."
+    },
+    {
+      "path": "files/plot.py",
+      "role": "code",
+      "media_type": "text/x-python",
+      "bytes": 1842,
+      "sha256": "72972d0b0806f15ad77da2450c4e9f43ad8a7d133c0070abaec04d7bd3cba95d",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading of the selected project contribution. Supplied zero-height facts and classical mathematics retain the source attribution recorded in INPUT.json and SOURCE-NOTICES.json; no third-party book pages are republished.",
+      "license": "All rights reserved for project-authored material; no new open-source license granted. No exclusive ownership of mathematical facts, formulas or cited numerical heights is claimed."
+    }
+  ],
+  "relations": [],
+  "gardens": [],
+  "publication": {
+    "intent": "request-review",
+    "rights": "Owner-authorized public reading and downloading of the selected project contribution. Supplied zero-height facts and classical mathematics retain the source attribution recorded in INPUT.json and SOURCE-NOTICES.json; no third-party book pages are republished.",
+    "license": "All rights reserved for project-authored material; no new open-source license granted. No exclusive ownership of mathematical facts, formulas or cited numerical heights is claimed.",
+    "attribution": "The Bridges Group, with ChatGPT."
+  },
+  "sample": false
+}

@@ -1,0 +1,1 @@
+Final reviewer requested two wording corrections, applied before delivery: independent numerical comparison is per cumulative truncated sum, not each individual term; psi is staircase but plotted psi-x slopes between jumps. No numeric data changed.

@@ -721,6 +721,20 @@
       "title": "When the water moves but the clock doesn't",
       "url": "exhibits/hydration-water-clock-consistency/v1/index.html",
       "version": 1
+    },
+    {
+      "claim_scope": "The preserved October 17 finite exercise with ten rounded supplied heights and x=10.5 through 200.5; no certified root finding, analytic remainder bound, general convergence result or Riemann-hypothesis claim.",
+      "gardens": [],
+      "id": "primes-zeros-001",
+      "metadata": "exhibits/primes-zeros-001/v1/exhibit.json",
+      "package_sha256": "855238dc38a63c4e0de0757532d3568f426ddb28adf698dce2902b51cebc4ea1",
+      "question": "Does including more supplied zeta-zero pairs improve a prime-power approximation at every sampled point, or only in aggregate?",
+      "relations": [],
+      "sample": false,
+      "status": "verified-finite-result",
+      "title": "Ten zeros help the average, not every point",
+      "url": "exhibits/primes-zeros-001/v1/index.html",
+      "version": 1
     }
   ],
   "gardens": "gardens.json",

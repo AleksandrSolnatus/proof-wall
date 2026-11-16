@@ -1,0 +1,85 @@
+# Ten zeros help the average, not every point
+
+Adding more mathematical information made the average approximation better. It still made the answer worse at 81 of the 191 places we inspected.
+
+This small October 17 experiment connects prime numbers with supplied Riemann-zeta zero data. The title's ten zeros are ten positive heights, each used with its conjugate partner. They were published, rounded inputs, not zeros discovered or certified by this project.
+
+## What were we asking?
+
+How much detail do a few zero pairs recover in a function built from prime powers? If we include more pairs, does the approximation improve everywhere, or only in aggregate?
+
+There are two different functions to keep separate. pi(x) counts primes up to x. Chebyshev's psi(x) adds log(p) for every prime power p^k at or below x. A prime contributes again at its square, cube, and later powers. The experiment's zero-sum approximation concerns psi, not pi. Rounding its output does not turn it into a prime count.
+
+The work uses a classical connection, not a newly invented formula. The original source record cites Andrew Odlyzko's zero table, the NIST Digital Library of Mathematical Functions, and Alain Connes and Matilde Marcolli's Noncommutative Geometry, Quantum Fields and Motives, page 322, equation 2.19. Only the project's small factual input selection, code, data and chart are included here; no book pages or third-party illustrations are republished.
+
+## The fixed experiment
+
+The grid was chosen before calculation: 191 half-integers from 10.5 to 200.5. These avoid the integer prime-power jumps of psi. Four truncations used zero, one, five and ten conjugate pairs.
+
+The finite expression was:
+
+```
+psi_K(x) = x - log(2*pi) - 0.5*log(1 - x^(-2))
+           - 2*Re(sum(x^(0.5+i*t)/(0.5+i*t), first K heights))
+```
+
+Even K=0 retains the constant and trivial-zero correction; it is not simply x. INPUT.json preserves the exact rounded heights, grid and chosen truncations. This finite expression has no certified remainder bound here.
+
+The calculation used an integer sieve to identify the primes and exact integer arithmetic to enumerate their powers. Logarithms and the zero-sum evaluation used ordinary floating-point arithmetic. The accompanying prime-count checkpoints were 4, 25, 168 and 1,229 at 10, 100, 1,000 and 10,000 respectively.
+
+## The result: a better average can conceal local regressions
+
+The retained results report:
+
+```
+Pairs   Mean absolute error   Maximum absolute error   Worse than prior K
+0       1.681802              8.483721                 not applicable
+1       1.544412              7.512199                 81 of 191
+5       1.274680              6.271211                 79 of 191
+10      1.149982              4.549629                 81 of 191
+```
+
+Moving from five pairs to ten reduced both the average and maximum error across this grid. Yet 81 individual sample points had strictly greater absolute error. That count uses the original strict comparison, without a tolerance.
+
+The result is a finite example of the difference between aggregate improvement and pointwise improvement. It does not establish a general convergence rate or show that additional zeros always help the average on another range.
+
+## What the independent check covered
+
+The preserved second implementation used trial division to reproduce the full list of 1,229 primes through 10,000. It obtained psi by integer factorization and von Mangoldt values, rather than by the first implementation's prime-power enumeration. It evaluated the zero pairs through real trigonometric expressions, rather than complex exponentials.
+
+Its existing review records agreement on all 191 rows and 764 cumulative approximations within absolute tolerance 1e-10. The largest recorded discrepancy was about 1.42e-14. The aggregate metrics and counts of worsening points agreed.
+
+That agreement checks two implementations against the same supplied rounded inputs. The checker did not independently retrieve or certify the zero heights, and both implementations still share Python mathematical routines. No rootfinding or zeta residual check was performed. This publication reuses those completed checks; it does not rerun the experiment.
+
+## Corrections we kept
+
+The final reviewer asked for two explanatory corrections. First, the numerical comparison was of cumulative truncated sums, not a term-by-term comparison of each individual zero contribution. Second, psi itself is a staircase, but the plotted psi(x)-x slopes downward between its jumps.
+
+Those corrections were applied to the original report without changing its numbers. The initial image preview also cropped the right edge; the final square viewport corrected the presentation without changing the data. The source records no failed numerical attempt or post-result tuning of the grid.
+
+## See the work
+
+The original chart is supplied as CHART.pdf, a one-page display copy of its preserved PNG. The plot was not recomputed or redrawn. Its black line connects reference samples of psi(x)-x; orange and blue show the zero-pair corrections for K=0 and K=10. The chart does not display the K=5 comparison directly; the full row data carry that comparison and its 81 regressions.
+
+The original SVG bytes are also retained as inert chart-svg.txt, with the original plot.py and all calculation/checker inputs and outputs. REPRODUCE.md explains the directory layout and the original programs' operating-system and assertion requirements. The publishing builder does not execute submitted code.
+
+## Where the support stops
+
+- The supplied ten heights have nine-decimal rounded precision. They are not locally certified roots or a complete zero set.
+- The reference psi uses exact prime-power identities with floating-point logarithms, not exact real arithmetic. No interval certification or truncation remainder bound is supplied.
+- This fixed grid is not evidence of pointwise monotonicity, a general error rate, or a new prime-counting algorithm.
+- Nothing here proves or supplies a new result about the Riemann hypothesis.
+- Reported script times are historical phase measurements, not a speed comparison or whole-system cost account.
+
+## The next question
+
+How many zero pairs would recover useful local detail farther along the number line, under an explicitly chosen error criterion? That is a future experiment with its own range and stopping rule. The completed small experiment already gives a useful warning: an improving summary statistic does not tell us where an approximation became less accurate.
+
+## Sources and attribution
+
+- [Andrew Odlyzko's published zero table](https://www-users.cse.umn.edu/~odlyzko/zeta_tables/zeros1): historical source of the ten rounded positive heights. The host was unavailable during this release's link check; the frozen selected inputs are included, and no new source certification is claimed.
+- [NIST DLMF, Zeros](https://dlmf.nist.gov/25.10): background definitions and scope of the Riemann hypothesis.
+- [NIST DLMF, Mathematical Applications](https://dlmf.nist.gov/25.16): the prime-counting and Chebyshev-function distinction.
+- [Connes and Marcolli, Noncommutative Geometry, Quantum Fields and Motives](https://www.math.fsu.edu/~marcolli/bookweb.pdf): the historical formula citation, page 322, equation 2.19.
+
+The Bridges Group, with ChatGPT. All rights reserved for the selected project-authored material; no new open-source license is granted. No exclusive ownership of mathematical facts, formulas, or the cited zero heights is claimed.

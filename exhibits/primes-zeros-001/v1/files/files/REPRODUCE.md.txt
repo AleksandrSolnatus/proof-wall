@@ -1,0 +1,49 @@
+# Inspect and optionally replay the preserved experiment
+
+The Proof Wall has not executed these programs. The published results are the original October 17, 2026 files; the independent review is historical. Always use a disposable directory for any replay, because the original programs write results.json.
+
+## Recover the logical layout
+
+The site serves inert .txt or .bin copies. The download links retain the original basenames. Restore the files under the following layout; in particular, A/INPUT.json and the top-level INPUT.json are both required and are identical original files.
+
+```
+INPUT.json
+SOURCES.json
+plot.py
+A/
+  INPUT.json
+  calculate_01.py
+  results.json
+B/
+  checker.py
+  results.json
+  REVIEW.txt
+  FINAL-REVIEW.txt
+```
+
+To inspect without rerunning, read A/results.json for all 191 rows, four approximations per row, the complete prime list and metrics; B/results.json and the two review files record the separate check. Historical elapsed_seconds fields are phase observations, not performance comparisons.
+
+## Optional execution by a reader
+
+Use Python 3 with its standard library on a POSIX system supporting resource and signal.alarm, such as macOS or Linux. The original source is not directly portable to Windows. Run a normal interpreter, without -O or PYTHONOPTIMIZE: the original checker uses assert for its checks. It is a preserved research checker, not a hardened verifier for arbitrary hostile input.
+
+Copy the layout to a new directory and preserve the downloaded originals elsewhere. From that disposable root:
+
+```
+cd A
+python3 calculate_01.py
+cd ../B
+python3 checker.py
+```
+
+Each original program sets a 25-second CPU limit and 30-second alarm. The checker reads the top-level INPUT.json and A/results.json and writes B/results.json. Shared rounded inputs and Python math routines remain common dependencies. A replay result would be the reader's new run, not the original receipt.
+
+## The existing chart
+
+CHART.pdf is a one-page image-container conversion of the preserved original PNG, including its full square canvas. It does not recompute or redraw the graph. chart-svg.txt contains the unchanged original SVG bytes, delivered as inert text under the current Proof Wall schema. To inspect it as an image offline, save a copy as prime-zero-corrections.svg. plot.py is the original graph-construction source; if a reader chooses to run it from this root, it reads A/results.json and writes that SVG name. It was not run for publication.
+
+The figure shows K=0 and K=10 corrections and the sampled reference. The K=5 comparison underlying the 81 worsened points is in the row data, not an additional visible curve. The PDF contains no active content or embedded research source.
+
+## Scope
+
+The selected zero heights are rounded historical inputs attributed to Andrew Odlyzko's published table. The source host was unavailable during the release link check; the inputs are included and the historical source locator is retained. No current or historical root certification, completeness of the zero table, analytic remainder bound or Riemann-hypothesis result is claimed. Full third-party book pages, images and datasets are not included.

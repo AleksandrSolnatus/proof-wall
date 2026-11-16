@@ -1,0 +1,46 @@
+Independent practice check: PASS
+
+Inspected INPUT.json, SOURCES.json, A/calculate_01.py, and A/results.json.
+The initial displayed results were truncated, but checker.py parsed the complete
+file and checked every row. The cleared source ran unchanged with CPU limit25s
+and alarm30s. Exit0, empty stderr. One numerical run; no further experiments.
+
+Trial division independently reproduced all1229 primes through10000 and all
+four pi checkpoints:4,25,168,1229. Factorization of each integer through200
+identified its distinct prime factors; von Mangoldt is log(p) only when exactly
+one distinct prime factor is present. Summing these values reproduced psi on
+all191 half-integers from10.5 through200.5 with discrepancy0.
+
+All764 approximations for K=0,1,5,10, and their signed/absolute errors, passed
+absolute tolerance1e-10. The maximum discrepancy was1.4210854715202004e-14
+at x=73.5,K=10. Both floating metrics had discrepancy0; prior-K fields and
+counts of worsening points agreed exactly. The independent implementation
+uses the real paired-zero expression, not complex exponentials.
+
+Interpretation review
+The finite expression concerns Chebyshev psi, not pi. At half-integers there
+are no prime-power jumps, so no midpoint ambiguity enters these sampled values.
+Pairing rho=0.5+it with its conjugate gives twice the real part:
+2*sqrt(x)*(0.5*cos(t*log(x))+t*sin(t*log(x)))/(0.25+t*t).
+The supplied implementation subtracts that pair contribution and includes
+-log(2*pi)-0.5*log(1-x^(-2)); its sign conventions agree with INPUT.
+MAE and maximum error decline across these four sampled truncations, but
+81,79,81 points worsen compared with the previous truncation. Thus adding
+these terms is not pointwise monotone improvement, and this small grid does
+not establish a general convergence rate or certified approximation bound.
+
+Provenance and limits
+INPUT and SOURCES attribute the first10 supplied positive heights to
+https://www-users.cse.umn.edu/~odlyzko/zeta_tables/zeros1, accessed2026-10-17,
+with9 decimal digits. This checker used those rounded values as inputs;
+it did not independently retrieve or validate the source transcription.
+SOURCES also records DLMF25.10,25.16 and Marcolli book p322 equation2.19;
+those citations were inspected as supplied provenance only, without network
+retrieval. No roots were found, no zero locations were certified, no completeness
+of the zero table was checked, and no RH claim follows. The1e-10 comparison
+is implementation agreement on shared rounded inputs, not error versus true
+zero heights or an analytic remainder bound. Shared Python math routines and
+supplied inputs remain common dependencies. Runtime is a single local checker
+measurement and not a speed competition or whole-system cost measure.
+
+Artifacts: checker.py, results.json, stdout.txt, stderr.txt, REVIEW.txt.

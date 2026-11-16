@@ -1,0 +1,68 @@
+import json, math, resource, signal, time
+from pathlib import Path
+resource.setrlimit(resource.RLIMIT_CPU, (25,25))
+signal.alarm(30)
+start=time.monotonic()
+root=Path('..')
+p=json.loads((root/'INPUT.json').read_text())
+a=json.loads((root/'A/results.json').read_text())
+assert p['x_grid']==[n+0.5 for n in range(10,201)]
+assert p['zero_terms']==[0,1,5,10]
+primes=[n for n in range(2,10001) if all(n%d for d in range(2,math.isqrt(n)+1))]
+assert primes==a['primes']
+assert a['prime_limit']==10000
+pi={str(x):sum(q<=x for q in primes) for x in p['prime_count_checkpoints']}
+assert pi==a['pi_checkpoints']
+def mangoldt(n):
+    remainder=n
+    factors=[]
+    d=2
+    while d*d<=remainder:
+        if remainder%d==0:
+            factors.append(d)
+            while remainder%d==0:
+                remainder//=d
+        d+=1
+    if remainder>1:
+        factors.append(remainder)
+    return math.log(factors[0]) if len(factors)==1 else 0.0
+lambdas={n:mangoldt(n) for n in range(2,201)}
+maxdiff={}
+locations={}
+def check(key, new, old, where):
+    assert math.isfinite(new) and math.isfinite(old)
+    diff=abs(new-old)
+    if key not in maxdiff or diff>maxdiff[key]:
+        maxdiff[key]=diff
+        locations[key]=where
+    assert diff<=1e-10, (key,where,new,old)
+assert len(a['rows'])==a['row_count']==191
+errors={str(k):[] for k in p['zero_terms']}
+for x,row in zip(p['x_grid'],a['rows']):
+    assert row['x']==x
+    psi=math.fsum(lambdas[n] for n in range(2,math.floor(x)+1))
+    check('psi',psi,row['psi'],x)
+    assert set(row['approximations'])==set(errors)
+    for k in p['zero_terms']:
+        lx=math.log(x)
+        terms=[2*math.sqrt(x)*(0.5*math.cos(t*lx)+t*math.sin(t*lx))/(0.25+t*t) for t in p['zero_heights'][:k]]
+        approx=x-math.log(2*math.pi)-0.5*math.log1p(-1/(x*x))-math.fsum(terms)
+        err=approx-psi
+        errors[str(k)].append(abs(err))
+        old=row['approximations'][str(k)]
+        for field,new in [('psi_K',approx),('signed_error',err),('absolute_error',abs(err))]:
+            check(field,new,old[field],{'x':x,'K':k})
+metrics={}
+prev=None
+for k in p['zero_terms']:
+    e=errors[str(k)]
+    m={'MAE':math.fsum(e)/len(e),'max_absolute_error':max(e),'previous_K':prev,'points_worse_than_previous_K':None if prev is None else sum(v>w for v,w in zip(e,errors[str(prev)]))}
+    for field in ('MAE','max_absolute_error'):
+        check(field,m[field],a['metrics'][str(k)][field],k)
+    for field in ('previous_K','points_worse_than_previous_K'):
+        assert m[field]==a['metrics'][str(k)][field]
+    metrics[str(k)]=m
+    prev=k
+result={'status':'PASS','absolute_tolerance':1e-10,'primes_checked':len(primes),'pi_checkpoints':pi,'rows_checked':191,'approximations_checked':764,'maximal_absolute_discrepancies':maxdiff,'maximal_discrepancy_locations':locations,'independent_metrics':metrics,'elapsed_seconds':time.monotonic()-start,'method':'trial division; full integer factorization for von Mangoldt; real trigonometric zero-pair formula','limits':'Checks consistency with supplied rounded zero heights, not actual roots, certified errors, all zeros, or RH.'}
+Path('results.json').write_text(json.dumps(result,indent=2)+'\n')
+print(json.dumps(result))

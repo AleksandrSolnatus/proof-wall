@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "absolute_tolerance": 1e-10,
+  "primes_checked": 1229,
+  "pi_checkpoints": {
+    "10": 4,
+    "100": 25,
+    "1000": 168,
+    "10000": 1229
+  },
+  "rows_checked": 191,
+  "approximations_checked": 764,
+  "maximal_absolute_discrepancies": {
+    "psi": 0.0,
+    "psi_K": 1.4210854715202004e-14,
+    "signed_error": 1.4210854715202004e-14,
+    "absolute_error": 1.4210854715202004e-14,
+    "MAE": 0.0,
+    "max_absolute_error": 0.0
+  },
+  "maximal_discrepancy_locations": {
+    "psi": 10.5,
+    "psi_K": {
+      "x": 73.5,
+      "K": 10
+    },
+    "signed_error": {
+      "x": 73.5,
+      "K": 10
+    },
+    "absolute_error": {
+      "x": 73.5,
+      "K": 10
+    },
+    "MAE": 0,
+    "max_absolute_error": 0
+  },
+  "independent_metrics": {
+    "0": {
+      "MAE": 1.6818022274392161,
+      "max_absolute_error": 8.483721328571107,
+      "previous_K": null,
+      "points_worse_than_previous_K": null
+    },
+    "1": {
+      "MAE": 1.5444121872382408,
+      "max_absolute_error": 7.512199424497396,
+      "previous_K": 0,
+      "points_worse_than_previous_K": 81
+    },
+    "5": {
+      "MAE": 1.2746803365761006,
+      "max_absolute_error": 6.271211181531498,
+      "previous_K": 1,
+      "points_worse_than_previous_K": 79
+    },
+    "10": {
+      "MAE": 1.149982351496032,
+      "max_absolute_error": 4.549628969764456,
+      "previous_K": 5,
+      "points_worse_than_previous_K": 81
+    }
+  },
+  "elapsed_seconds": 0.006745375008904375,
+  "method": "trial division; full integer factorization for von Mangoldt; real trigonometric zero-pair formula",
+  "limits": "Checks consistency with supplied rounded zero heights, not actual roots, certified errors, all zeros, or RH."
+}

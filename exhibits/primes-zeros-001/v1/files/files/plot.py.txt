@@ -1,0 +1,17 @@
+from pathlib import Path
+import json,xml.etree.ElementTree as ET
+p=Path(__file__).resolve().parent
+rows=json.loads((p/'A/results.json').read_text())['rows']
+X=lambda x:80+(x-10.5)/190*850
+Y=lambda y:90+(8-y)/18*330
+s=['<svg xmlns="http://www.w3.org/2000/svg" width="768" height="768" viewBox="0 0 1000 1000"><rect width="100%" height="100%" fill="white"/><g font-family="Arial,sans-serif" fill="#18232d"><text x="80" y="32" font-size="23">Prime-power counts: the corrections supplied by zeros</text><text x="80" y="58" font-size="14">Sampled ψ(x) − x versus finite approximations; published rounded zeros, not a proof</text>']
+for y in range(-10,9,2):s.append(f'<path d="M80 {Y(y)} H930" stroke="#e4e8ec"/><text x="65" y="{Y(y)+5}" text-anchor="end" font-size="12">{y}</text>')
+for x in [10.5,50,100,150,200.5]:s.append(f'<text x="{X(x)}" y="445" text-anchor="middle" font-size="12">{x}</text>')
+for key,color in [('0','#d18818'),('10','#007b9f'),('reference','#222222')]:
+ values=[(r['x'],(r['psi'] if key=='reference' else r['approximations'][key]['psi_K'])-r['x'])for r in rows]
+ assert all(-10<=y<=8 for x,y in values)
+ pts=' '.join(f'{X(x):.2f},{Y(y):.2f}'for x,y in values)
+ s.append(f'<polyline points="{pts}" fill="none" stroke="{color}" stroke-width="{1.3 if key=="reference" else 2}"/>')
+for x,label,color in [(80,'Prime-power reference (samples)','#222222'),(410,'No zero terms','#d18818'),(650,'Ten conjugate zero pairs','#007b9f')]:s.append(f'<path d="M{x} 478 h25" stroke="{color}" stroke-width="3"/><text x="{x+32}" y="483" font-size="13">{label}</text>')
+s.append('<text x="80" y="514" font-size="12">191 half-integer samples, 10.5–200.5. Lines connect samples; ψ is a staircase, while ψ−x slopes between jumps.</text></g></svg>')
+text=''.join(s);ET.fromstring(text);(p/'prime-zero-corrections.svg').write_text(text)

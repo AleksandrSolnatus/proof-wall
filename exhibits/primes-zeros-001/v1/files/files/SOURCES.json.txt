@@ -1,0 +1,25 @@
+{
+  "access_date": "2026-10-17",
+  "sources": [
+    {
+      "url": "https://www-users.cse.umn.edu/~odlyzko/zeta_tables/zeros1",
+      "use": "first10positiveimaginaryzeroheights copied with9decimalprecision",
+      "limitation": "published tabulation,not local rootfinding/certifiedzero verification"
+    },
+    {
+      "url": "https://dlmf.nist.gov/25.10",
+      "use": "critical strip,critical line,conjugation and RH definition"
+    },
+    {
+      "url": "https://dlmf.nist.gov/25.16",
+      "use": "primecounting and Chebyshev function distinction"
+    },
+    {
+      "url": "https://www.math.fsu.edu/~marcolli/bookweb.pdf",
+      "use": "p322equation2.19 explicit psi formula, symmetric zero summation and midpoint convention at jumps",
+      "access": "web search extracted relevant full formula; not full book read"
+    }
+  ],
+  "exercise": "half-integers avoid jumps; finite zero table yields approximatepsi,not exactpi",
+  "environment": "standard library only; mpmath,numpy,matplotlib unavailable; no installation"
+}

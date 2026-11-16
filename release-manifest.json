@@ -1,6 +1,6 @@
 {
-  "baseline_commit": "663066d7c4785135c982e8428632f9e430d003eb",
-  "exhibits": 47,
+  "baseline_commit": "b58d339a662dcc4464932a6efb2559b51d3f12d7",
+  "exhibits": 48,
   "files": {
     ".nojekyll": {
       "bytes": 0,
@@ -1554,6 +1554,90 @@
       "bytes": 4621,
       "sha256": "17b277826d3f34df482888fde12664deb41c1bd96663dea646325b0b09d8e24f"
     },
+    "exhibits/primes-zeros-001/v1/exhibit.json": {
+      "bytes": 19572,
+      "sha256": "3f3c6820f01034b5375094d4acb14fbd2c8df28cfb7236b9e5b134fbd80e6287"
+    },
+    "exhibits/primes-zeros-001/v1/files/article.md.txt": {
+      "bytes": 7538,
+      "sha256": "447e04f3630c2e9fd67b73c1800a50df409f485d5d3d7ad49a6da6977c332e6d"
+    },
+    "exhibits/primes-zeros-001/v1/files/files/A/INPUT.json.txt": {
+      "bytes": 2797,
+      "sha256": "b83fefa5f00705a26dcb1cc1edb7297eba6bc5301d1a349aecb39d76d2d1dcf3"
+    },
+    "exhibits/primes-zeros-001/v1/files/files/A/calculate_01.py.txt": {
+      "bytes": 2447,
+      "sha256": "846cfd938090e83e996224077ab718959964195a0d37b36fbd8c4ca79528277b"
+    },
+    "exhibits/primes-zeros-001/v1/files/files/A/results.json.txt": {
+      "bytes": 96295,
+      "sha256": "0201d5034fde0277e8732256d872725720b29760aed41a5438a829ea1d87d4d8"
+    },
+    "exhibits/primes-zeros-001/v1/files/files/B/FINAL-REVIEW.txt.txt": {
+      "bytes": 1188,
+      "sha256": "dddffc8347f50c6bb26fcbfa5292fa4f2847f5081a1657839b0a17965d406032"
+    },
+    "exhibits/primes-zeros-001/v1/files/files/B/REVIEW.txt.txt": {
+      "bytes": 2829,
+      "sha256": "1c82e0e3ef5afc41b1e3e9e09ea7886ecc6a0ccc27fa4c513491dccfee3f68d5"
+    },
+    "exhibits/primes-zeros-001/v1/files/files/B/checker.py.txt": {
+      "bytes": 3182,
+      "sha256": "5414d97e1878294b53a441982b1ad8cd501deb403e74f2e068e3fb9a696011ca"
+    },
+    "exhibits/primes-zeros-001/v1/files/files/B/results.json.txt": {
+      "bytes": 1698,
+      "sha256": "00b9524b12eade41eb13aa7432aa1165d7ee406fe3c683426ca5bea9417e3396"
+    },
+    "exhibits/primes-zeros-001/v1/files/files/CHART.pdf.bin": {
+      "bytes": 97385,
+      "sha256": "bdd32d780843fd3b077b903937037afb6ed2c06cb04a49acb429be0e786e2102"
+    },
+    "exhibits/primes-zeros-001/v1/files/files/INPUT.json.txt": {
+      "bytes": 2797,
+      "sha256": "b83fefa5f00705a26dcb1cc1edb7297eba6bc5301d1a349aecb39d76d2d1dcf3"
+    },
+    "exhibits/primes-zeros-001/v1/files/files/REPORT.md.txt": {
+      "bytes": 3738,
+      "sha256": "f87012e01b648412988fcfb10441a2e1b16909a1d28b1873254678a7fd0ff4d0"
+    },
+    "exhibits/primes-zeros-001/v1/files/files/REPRODUCE.md.txt": {
+      "bytes": 3177,
+      "sha256": "292ffce06908ddd745aebcc6ab269207007354c3ad22c49b569701f17fcb1734"
+    },
+    "exhibits/primes-zeros-001/v1/files/files/REVIEW-CORRECTIONS.txt.txt": {
+      "bytes": 249,
+      "sha256": "f642e15809b9f4c9fbda452a7021a2dbb9c7421e9123d975265173018469c985"
+    },
+    "exhibits/primes-zeros-001/v1/files/files/SOURCE-NOTICES.json.txt": {
+      "bytes": 4974,
+      "sha256": "99cff6cd0a06bb8b63476a9ca4a9aad7ea8c20598712a635e9ab647465aac8a5"
+    },
+    "exhibits/primes-zeros-001/v1/files/files/SOURCES.json.txt": {
+      "bytes": 1027,
+      "sha256": "f83458bf35a2d2ea14575fe8fd8573bcbb4842d946b710a884aa464b2faf63eb"
+    },
+    "exhibits/primes-zeros-001/v1/files/files/chart-svg.txt.txt": {
+      "bytes": 10770,
+      "sha256": "2cb111d827d66b5b10c8f72b14869606ec4de9040a9e560fe16e8c3983739825"
+    },
+    "exhibits/primes-zeros-001/v1/files/files/plot.py.txt": {
+      "bytes": 1842,
+      "sha256": "72972d0b0806f15ad77da2450c4e9f43ad8a7d133c0070abaec04d7bd3cba95d"
+    },
+    "exhibits/primes-zeros-001/v1/index.html": {
+      "bytes": 26983,
+      "sha256": "20f43ada0c44f07bb03ce8ff5a47601c462c10d8013ee86edd79bc48be24da2e"
+    },
+    "exhibits/primes-zeros-001/v1/snapshot.json": {
+      "bytes": 2619,
+      "sha256": "c735a1df285b69696135fca1ad3830720b61261a188440271b792294852a11dd"
+    },
+    "exhibits/primes-zeros-001/v1/submitted-manifest.json": {
+      "bytes": 15918,
+      "sha256": "d421503522a507c4c61d09c71e83b0528127fa22d091fe569f0da93bb2b363be"
+    },
     "exhibits/quark-finish-line-003-committed-payback/v2/exhibit.json": {
       "bytes": 6555,
       "sha256": "b9171b191f0e74ab23624c082de6ea195bb36eeff4c599b2cc01c470f8f184fb"
@@ -2431,12 +2515,12 @@
       "sha256": "d1cf42ce64b01824f3c20d2eb7df88c95f8ffcbcc840f64a6c772c74989d4a8a"
     },
     "index.html": {
-      "bytes": 28225,
-      "sha256": "85c0b24644fe66bf2d4cf6a57a747f5bf8358c539c5f400bbd5b467e6a43e813"
+      "bytes": 28743,
+      "sha256": "f56993482fb02e8098ffc60f7e737228d31d8055e247ae756941364a659bf6b4"
     },
     "index.json": {
-      "bytes": 39156,
-      "sha256": "3cf6c7a541ed9465de1c936544e86836dcf8744bbfc1a96aa6d2e769c4bce139"
+      "bytes": 39984,
+      "sha256": "f2f469251bf0047d83ae4c99d0710756884195075d94e8fe0640fc9984a6c763"
     },
     "llms.txt": {
       "bytes": 489,
@@ -2454,8 +2538,8 @@
   "manifest_note": "This manifest excludes itself; existing public exhibit bytes are retained. Hashes establish bytes, not scientific truth or owner authentication.",
   "mode": "release-candidate",
   "new_exhibit": {
-    "id": "hydration-water-clock-consistency",
-    "package_sha256": "36a21012e9bb1c8bd781218c6f6851794d5134fd8ac9a87a468fc4f1fdd90138",
+    "id": "primes-zeros-001",
+    "package_sha256": "855238dc38a63c4e0de0757532d3568f426ddb28adf698dce2902b51cebc4ea1",
     "version": 1
   },
   "published": false,

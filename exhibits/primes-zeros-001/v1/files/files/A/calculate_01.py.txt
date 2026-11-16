@@ -1,0 +1,50 @@
+import cmath
+import json
+import math
+from pathlib import Path
+import resource
+import signal
+import time
+
+resource.setrlimit(resource.RLIMIT_CPU, (25, 25))
+signal.alarm(30)
+start = time.monotonic()
+p = json.loads(Path('INPUT.json').read_text())
+limit = 10000
+sieve = bytearray(b'\x01') * (limit + 1)
+sieve[0:2] = b'\x00\x00'
+for n in range(2, math.isqrt(limit) + 1):
+    if sieve[n]:
+        for multiple in range(n * n, limit + 1, n):
+            sieve[multiple] = 0
+primes = [n for n in range(2, limit + 1) if sieve[n]]
+checkpoints = {str(x): sum(q <= x for q in primes) for x in p['prime_count_checkpoints']}
+powers = []
+for q in primes:
+    power = q
+    while power <= max(p['x_grid']):
+        powers.append((power, math.log(q)))
+        power *= q
+powers.sort()
+rows = []
+errors = {k: [] for k in p['zero_terms']}
+for x in p['x_grid']:
+    psi = math.fsum(logq for power, logq in powers if power <= x)
+    row = {'x': x, 'psi': psi, 'approximations': {}}
+    for k in p['zero_terms']:
+        terms = [(cmath.exp(complex(0.5, t) * math.log(x)) / complex(0.5, t)).real for t in p['zero_heights'][:k]]
+        approximation = x - math.log(2 * math.pi) - 0.5 * math.log1p(-x ** (-2)) - 2 * math.fsum(terms)
+        signed_error = approximation - psi
+        absolute_error = abs(signed_error)
+        errors[k].append(absolute_error)
+        row['approximations'][str(k)] = {'psi_K': approximation, 'signed_error': signed_error, 'absolute_error': absolute_error}
+    rows.append(row)
+metrics = {}
+previous = None
+for k in p['zero_terms']:
+    e = errors[k]
+    metrics[str(k)] = {'MAE': math.fsum(e) / len(e), 'max_absolute_error': max(e), 'previous_K': previous, 'points_worse_than_previous_K': None if previous is None else sum(a > b for a, b in zip(e, errors[previous]))}
+    previous = k
+result = {'method': 'Exact integer sieve and prime-power enumeration; floating-point logarithms and complex exponentials; supplied rounded zero heights', 'prime_limit': limit, 'primes': primes, 'pi_checkpoints': checkpoints, 'row_count': len(rows), 'metrics': metrics, 'rows': rows, 'elapsed_seconds': time.monotonic() - start, 'limitations': p['meaning'], 'zero_source': p['source'], 'zero_source_locator': p['source_locator']}
+Path('results.json').write_text(json.dumps(result, separators=(',', ':')) + '\n')
+print(json.dumps({'pi_checkpoints': checkpoints, 'row_count': len(rows), 'metrics': metrics, 'elapsed_seconds': result['elapsed_seconds']}))
