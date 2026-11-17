@@ -1,0 +1,79 @@
+{
+  "attribution": "The Bridges Group, with ChatGPT.",
+  "original_bathybeacon_byline": null,
+  "publication": "private pending exact owner approval",
+  "proposed_terms": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+  "copy_treatments": [
+    {
+      "file": "files/CURRENT-POOL-DIRECTION.md",
+      "treatment": "Narrow source derivative: personal-background paragraph replaced; current P0/P1 stage and evidence requirements preserved.",
+      "source_sha256": null,
+      "source_dependencies": [
+        {
+          "sha256": "af2481b3b1969f775eb6f14c3c692db06cee1e04710850244dac194b556b4d8c",
+          "bytes": 8471
+        }
+      ]
+    },
+    {
+      "file": "files/OBSERVABILITY-PLAN.md",
+      "treatment": "Plan retained with two local reference targets adapted; explicit not-begun implementation status preserved.",
+      "source_sha256": null,
+      "source_dependencies": [
+        {
+          "sha256": "3600fb246657c37d6c3e67efe8ed0253209835a17e20e37be1f14f8740710e7a",
+          "bytes": 2111
+        }
+      ]
+    },
+    {
+      "file": "files/TEST-QUESTION.md",
+      "treatment": "Exact selected comparison and evidence-package sections with explicit status preface; older geometry/thresholds excluded.",
+      "source_sha256": null,
+      "source_dependencies": [
+        {
+          "sha256": "1a365932713eb96047caf3ddeeb36b220e295aed2ac020a03d392215b9d6f69c",
+          "bytes": 10623
+        }
+      ]
+    },
+    {
+      "file": "files/REVISION-TRAIL.md",
+      "treatment": "New chronological synthesis; no original confident engineering claim promoted to accepted result.",
+      "source_sha256": null,
+      "source_dependencies": [
+        {
+          "sha256": "a267ac02202057f1d4b74ee075fa6908a04a3b7fca259e0224fc33d9170682a8",
+          "bytes": 39112
+        },
+        {
+          "sha256": "6905d6e6fd971302dc4bcf7a8c7b0655385e5eabd21b02fa978fd5c5494e50d4",
+          "bytes": 14675
+        },
+        {
+          "sha256": "95c893fc124fcfa71cbc40e9309bccda95dccfd76f6b18c8f06c0790314edf51",
+          "bytes": 12370
+        },
+        {
+          "sha256": "b3795f11ca5eee91b70b17c9eab667fe0bbf66b5eafbb8feb9323faf1df96a55",
+          "bytes": 10414
+        },
+        {
+          "sha256": "8b48efdf150b3a953d12ce23366559994beb0006f7ee9b686ff38f3adfab1c8a",
+          "bytes": 2953
+        },
+        {
+          "sha256": "77a079c094e330ed64433596e134312da3a94ee60f98e59227e1e606cd5f1a53",
+          "bytes": 3264
+        },
+        {
+          "sha256": "321b6842877520c370ae54a46fb45cdfcca65d8aeee1430ef99ff42b41edf5d5",
+          "bytes": 1149
+        }
+      ]
+    }
+  ],
+  "source_preservation": "Complete originals remain unchanged in canonical homes; no broad archive, private chat, personal media or device/account record is selected.",
+  "scientific_execution": false,
+  "external_notice": "Sound Field references React/Vite dependencies and a NOAA public-domain recording via Commons; neither dependency implementations nor audio binaries are copied. No third-party rights are replaced by proposed project terms."
+}

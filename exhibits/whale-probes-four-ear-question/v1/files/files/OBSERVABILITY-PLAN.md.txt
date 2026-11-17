@@ -1,0 +1,36 @@
+# Numerical Observability
+
+**Status: Supporting analysis for pool layouts and independent recorder errors. Simulation implementation has not begun.**
+
+## Entry condition
+
+The [pool recorder direction](CURRENT-POOL-DIRECTION.md) supplies the current design questions. Simulation should compare layouts, identify timing and position tolerances, and help interpret pool results. It no longer gates the Owner's decision to pursue multiple recorders.
+
+## Oracle ladder
+
+Simulate known three-dimensional receiver and source paths, emission and arrival times, clock models, propagation, and measurement faults. Withhold truth in stages:
+
+1. known receivers, unknown source;
+2. known moving source at non-collinear positions, unknown receivers;
+3. one known reference, remaining receivers and source unknown;
+4. all underwater horizontal paths unknown, retaining only proposed field measurements; and
+5. stress cases for clock offset and nonlinear drift, thermal behavior, sound-speed error, receiver shear, dropout, clipping, association errors, multipath, and multiple sources.
+
+Each stage must first recover the generated truth with calibrated uncertainty before harder unknowns are introduced.
+
+## Required outputs
+
+- The complete simulated truth and configuration.
+- Recovered state families, gauge freedoms, and materially different alternatives.
+- Uncertainty calibration: whether stated intervals contain truth at the expected rate.
+- Sensitivity to each fault and to the presence or absence of an external reference.
+- Metrics tied directly to the selected pool layout, capture comparison, and later field usefulness requirements.
+
+## Stop conditions
+
+Stop or redesign when materially different scenes fit equally well, confident intervals exclude truth, realistic measurement errors exceed the useful bounds, or the proposed measurements cannot distinguish the endorsed use case. A visually plausible trajectory is not a pass result.
+
+The historical review that produced this ladder is preserved in [AI-PANEL-REVIEW-SYNTHESIS.md](REVISION-TRAIL.md).
+
+
+Exhibit copy notice: source plan retained; local reference targets adapted to included exhibit materials. Implementation and results are not supplied or inferred.

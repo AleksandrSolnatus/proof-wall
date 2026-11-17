@@ -1,0 +1,23 @@
+{
+  "status": "historical software reference",
+  "recorded_project_direction_date": "2026-08-24",
+  "whales_current_stage": "custom recorder learning and controlled pool-first multi-recorder plans",
+  "app_development_in_whales": "not current or authorized by this exhibit",
+  "implementation_review_scope": "Source inspection and identity transfer only; recorded historical build reused.",
+  "biological_or_localization_validation": "not established",
+  "source_filename_map": {
+    "app/page.tsx": "files/source/app/page.tsx.txt",
+    "app/acoustic-analysis.ts": "files/source/app/acoustic-analysis.ts.txt",
+    "app/globals.css": "files/source/app/globals.css.txt",
+    "src/main.tsx": "files/source/src/main.tsx.txt",
+    "package.json": "files/source/package.json",
+    "pnpm-lock.yaml": "files/source/pnpm-lock.yaml.txt",
+    "vite.config.ts": "files/source/vite.config.ts.txt",
+    "tsconfig.json": "files/source/tsconfig.json",
+    "eslint.config.mjs": "files/source/eslint.config.mjs",
+    "index.html": "files/source/index.html.txt",
+    "pnpm-workspace.yaml": "files/source/pnpm-workspace.yaml.txt",
+    "tests/static-build.test.mjs": "files/source/tests/static-build.test.mjs",
+    "scripts/check-wav-detection.ts": "files/source/scripts/check-wav-detection.ts.txt"
+  }
+}

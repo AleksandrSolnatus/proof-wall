@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "id": "sound-field-linked-acoustic-views",
+  "version": 1,
+  "title": "Sound Field: one moment, three views",
+  "artifact_type": "experiment",
+  "status": "experimental",
+  "question": "How can one candidate acoustic event remain linked across different views without turning a visual pattern into a biological label?",
+  "method": "Retain source of the linked-view browser prototype and its existing successful static build/deployment record; preserve detector and interpretation limits.",
+  "finding": "The source implements adjustable event inspection and exports settings/observations; historical build/deploy success covers packaging, not detector accuracy or biological interpretation.",
+  "claim_scope": "Historical source prototype and recorded static build; no new execution, calibrated acoustic accuracy or localization/semantic result.",
+  "limitations": [
+    "Preparation reviews selected records and packaging; it is not a new scientific or hardware test.",
+    "Original sources and chronological qualifications must not be flattened into a claim of completed marine or biological validation.",
+    "Historical static build success does not validate event detection, biology, calibration or distributed localization.",
+    "Dependency implementations and opening audio are external, with exact names/source/audio identity recorded.",
+    "Current Whales direction is recorder work; the instrument remains historical reference."
+  ],
+  "open_questions": [
+    "What exact new measurement would advance this prototype or question while preserving the stated scope?"
+  ],
+  "date": "2026-07-16",
+  "provenance": {
+    "authors": [
+      "The Bridges Group, with ChatGPT."
+    ],
+    "origin": "Existing archived BathyBeacon posts and recorded Whales source/design history; selected with original identities retained privately.",
+    "change_note": "First public release, November 17, 2026. Reviewed article and supporting files retain their exact bytes."
+  },
+  "article": "article.md",
+  "files": [
+    {
+      "path": "article.md",
+      "role": "article",
+      "media_type": "text/markdown",
+      "bytes": 5046,
+      "sha256": "84960c76492bd1abaf04763afc1f5e2729876edb356bc4386686b645f5b512a7",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights."
+    },
+    {
+      "path": "files/CURRENT-STATUS.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 1284,
+      "sha256": "156c3e942abfdd35347740dc2b201e7653cc2d72644874bc634413b7a21c9c5b",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights."
+    },
+    {
+      "path": "files/HISTORICAL-BUILD.json",
+      "role": "receipt",
+      "media_type": "application/json",
+      "bytes": 2185,
+      "sha256": "63cd61b73b8e4b6788568d45b76d392544f453ff604ecaa880bb3f5a503aa0b1",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights."
+    },
+    {
+      "path": "files/SOURCE-GUIDE.md",
+      "role": "data",
+      "media_type": "text/markdown",
+      "bytes": 2718,
+      "sha256": "ee1ea593752c3b7cc677a08b33086f3300fd0309b5d9da2b0983f91103e72c00",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights."
+    },
+    {
+      "path": "files/SOURCE-NOTICES.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 5645,
+      "sha256": "41f880e17fd96daa5dbbe19e03e3cb4f6bdea9d9b855c6098e9d8172e93fd87b",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights."
+    },
+    {
+      "path": "files/source/app/acoustic-analysis.ts.txt",
+      "role": "code",
+      "media_type": "text/plain",
+      "bytes": 5869,
+      "sha256": "e05fe6ea6918691208de657669b70e874b2d6c9a83577dcf248a3bf466c2fd73",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights."
+    },
+    {
+      "path": "files/source/app/globals.css.txt",
+      "role": "data",
+      "media_type": "text/plain",
+      "bytes": 14585,
+      "sha256": "9caeb5c5a11a4d55cee6ff85980f8c1c4ab927d0cc8f3e066dafa0c32700e4d7",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights."
+    },
+    {
+      "path": "files/source/app/page.tsx.txt",
+      "role": "code",
+      "media_type": "text/plain",
+      "bytes": 41599,
+      "sha256": "3aa62347bf09e394bbc9dcdc580981f36c11856c89a3507b8edcac354813ba22",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights."
+    },
+    {
+      "path": "files/source/eslint.config.mjs",
+      "role": "code",
+      "media_type": "text/javascript",
+      "bytes": 623,
+      "sha256": "aa2cbe10a0fef2edb992deeaeb6fe1fa8ec7f3b3df9595ba478fe40814badda9",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights."
+    },
+    {
+      "path": "files/source/index.html.txt",
+      "role": "data",
+      "media_type": "text/plain",
+      "bytes": 539,
+      "sha256": "f7b8fb78d94f2443269c0196693c3f83ecdb44a8a770f43fe3cfc83729085460",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights."
+    },
+    {
+      "path": "files/source/package.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 820,
+      "sha256": "b866e04c02be3149e0db40c022e04e93eb90afb23df24959e7a3089fbb48ca96",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights."
+    },
+    {
+      "path": "files/source/pnpm-lock.yaml.txt",
+      "role": "data",
+      "media_type": "text/plain",
+      "bytes": 72372,
+      "sha256": "32d28fd85fef7977ae8de24638bad803d2900c0a1b16161b7b71d18e06ac1e2f",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights."
+    },
+    {
+      "path": "files/source/pnpm-workspace.yaml.txt",
+      "role": "data",
+      "media_type": "text/plain",
+      "bytes": 29,
+      "sha256": "ac02d96368617c760f093cfe61fdec64b6244007ab3553e0d6621f706f54a353",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights."
+    },
+    {
+      "path": "files/source/scripts/check-wav-detection.ts.txt",
+      "role": "code",
+      "media_type": "text/plain",
+      "bytes": 2746,
+      "sha256": "813235504ba28909487d54cb6652f4a28b6f261418008efb51e7e839a3a22580",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights."
+    },
+    {
+      "path": "files/source/src/main.tsx.txt",
+      "role": "code",
+      "media_type": "text/plain",
+      "bytes": 351,
+      "sha256": "ca09ce1379805c0ca29167f57d61e96c9ba438dd86da959231aa3dc40c55bb0d",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights."
+    },
+    {
+      "path": "files/source/tests/static-build.test.mjs",
+      "role": "code",
+      "media_type": "text/javascript",
+      "bytes": 818,
+      "sha256": "c1b61ba39bd8cc3b7af5b3109078c532065860d2fac619ac7210aed246bc07d9",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights."
+    },
+    {
+      "path": "files/source/tsconfig.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 648,
+      "sha256": "d86854245e60b89d7f9b5b2ca9818596e4356db0f3876614f570d27c75368e7a",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights."
+    },
+    {
+      "path": "files/source/vite.config.ts.txt",
+      "role": "code",
+      "media_type": "text/plain",
+      "bytes": 209,
+      "sha256": "68f2a61e0dd4f07571fb8e83bcd54570a4fb21f7ae43ac81ded877cb841775c7",
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights."
+    }
+  ],
+  "relations": [],
+  "gardens": [],
+  "publication": {
+    "intent": "request-review",
+    "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+    "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+    "attribution": "The Bridges Group, with ChatGPT."
+  },
+  "sample": false
+}

@@ -1,0 +1,49 @@
+{
+  "record_type": "selected existing public build/deployment record, not a fresh execution",
+  "source_commit": "ee8eafdc12f206fd651465fd9590bff733d4302a",
+  "workflow": "Publish Sound Field",
+  "observed_run_date": "2026-07-16",
+  "build_job": "success",
+  "deploy_job": "success",
+  "public_record": "https://github.com/AleksandrSolnatus/sound-field/actions/runs/29462995560",
+  "same_source_core": [
+    {
+      "file": "app/page.tsx",
+      "sha256": "3aa62347bf09e394bbc9dcdc580981f36c11856c89a3507b8edcac354813ba22",
+      "same_as_successful_build_source": true
+    },
+    {
+      "file": "app/acoustic-analysis.ts",
+      "sha256": "e05fe6ea6918691208de657669b70e874b2d6c9a83577dcf248a3bf466c2fd73",
+      "same_as_successful_build_source": true
+    },
+    {
+      "file": "app/globals.css",
+      "sha256": "9caeb5c5a11a4d55cee6ff85980f8c1c4ab927d0cc8f3e066dafa0c32700e4d7",
+      "same_as_successful_build_source": true
+    },
+    {
+      "file": "package.json",
+      "sha256": "b866e04c02be3149e0db40c022e04e93eb90afb23df24959e7a3089fbb48ca96",
+      "same_as_successful_build_source": true
+    },
+    {
+      "file": "public/opening-sound.mp3",
+      "sha256": "f3f065c23c942df5bbc39f12d6a5ce6773897f94a03a08612ea882e274fe5d7f",
+      "same_as_successful_build_source": true
+    },
+    {
+      "file": "tests/static-build.test.mjs",
+      "sha256": "c1b61ba39bd8cc3b7af5b3109078c532065860d2fac619ac7210aed246bc07d9",
+      "same_as_successful_build_source": true
+    }
+  ],
+  "source_layout_note": "The successful build used the older root layout. The current local project nests this retained instrument under software/sound-field-web; matched core bytes do not establish a new run of every current-tree command.",
+  "static_test_scope": "Build artifact title, relative bundled JS/CSS assets and opening-audio file presence. The workflow outcome is not a detector-accuracy test, semantic validation or proof that every optional command ran.",
+  "current_link_check": {
+    "url": "https://aleksandrsolnatus.github.io/sound-field/",
+    "status": 200,
+    "scope": "page availability only, not an end-to-end UI replay"
+  },
+  "new_build_or_scientific_execution": false
+}

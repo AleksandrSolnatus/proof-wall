@@ -735,6 +735,34 @@
       "title": "Ten zeros help the average, not every point",
       "url": "exhibits/primes-zeros-001/v1/index.html",
       "version": 1
+    },
+    {
+      "claim_scope": "Historical source prototype and recorded static build; no new execution, calibrated acoustic accuracy or localization/semantic result.",
+      "gardens": [],
+      "id": "sound-field-linked-acoustic-views",
+      "metadata": "exhibits/sound-field-linked-acoustic-views/v1/exhibit.json",
+      "package_sha256": "71564877a5f33c257baddc2795c28458a76d6586fff2122c1c3d1bf3ea746afe",
+      "question": "How can one candidate acoustic event remain linked across different views without turning a visual pattern into a biological label?",
+      "relations": [],
+      "sample": false,
+      "status": "experimental",
+      "title": "Sound Field: one moment, three views",
+      "url": "exhibits/sound-field-linked-acoustic-views/v1/index.html",
+      "version": 1
+    },
+    {
+      "claim_scope": "Documented design evolution and unresolved engineering question only; no hardware performance, general observability theorem or biological result.",
+      "gardens": [],
+      "id": "whale-probes-four-ear-question",
+      "metadata": "exhibits/whale-probes-four-ear-question/v1/exhibit.json",
+      "package_sha256": "8cebf73c1059eb53b510923ef64db5cc844ce5994b334e29963448058ddf4c36",
+      "question": "What measured geometry, timing and independent truth would let a controlled multi-recorder comparison reveal the value and limits of several acoustic viewpoints?",
+      "relations": [],
+      "sample": false,
+      "status": "unresolved",
+      "title": "Four ears, one minute: what must the recorders know?",
+      "url": "exhibits/whale-probes-four-ear-question/v1/index.html",
+      "version": 1
     }
   ],
   "gardens": "gardens.json",

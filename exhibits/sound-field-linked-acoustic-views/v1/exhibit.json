@@ -1,0 +1,333 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "Historical source prototype and recorded static build; no new execution, calibrated acoustic accuracy or localization/semantic result.",
+  "date": "2026-07-16",
+  "downloads": [
+    {
+      "bytes": 5046,
+      "original_path": "article.md",
+      "sha256": "84960c76492bd1abaf04763afc1f5e2729876edb356bc4386686b645f5b512a7",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 1284,
+      "original_path": "files/CURRENT-STATUS.json",
+      "sha256": "156c3e942abfdd35347740dc2b201e7653cc2d72644874bc634413b7a21c9c5b",
+      "url": "files/files/CURRENT-STATUS.json.txt"
+    },
+    {
+      "bytes": 2185,
+      "original_path": "files/HISTORICAL-BUILD.json",
+      "sha256": "63cd61b73b8e4b6788568d45b76d392544f453ff604ecaa880bb3f5a503aa0b1",
+      "url": "files/files/HISTORICAL-BUILD.json.txt"
+    },
+    {
+      "bytes": 2718,
+      "original_path": "files/SOURCE-GUIDE.md",
+      "sha256": "ee1ea593752c3b7cc677a08b33086f3300fd0309b5d9da2b0983f91103e72c00",
+      "url": "files/files/SOURCE-GUIDE.md.txt"
+    },
+    {
+      "bytes": 5645,
+      "original_path": "files/SOURCE-NOTICES.json",
+      "sha256": "41f880e17fd96daa5dbbe19e03e3cb4f6bdea9d9b855c6098e9d8172e93fd87b",
+      "url": "files/files/SOURCE-NOTICES.json.txt"
+    },
+    {
+      "bytes": 5869,
+      "original_path": "files/source/app/acoustic-analysis.ts.txt",
+      "sha256": "e05fe6ea6918691208de657669b70e874b2d6c9a83577dcf248a3bf466c2fd73",
+      "url": "files/files/source/app/acoustic-analysis.ts.txt.txt"
+    },
+    {
+      "bytes": 14585,
+      "original_path": "files/source/app/globals.css.txt",
+      "sha256": "9caeb5c5a11a4d55cee6ff85980f8c1c4ab927d0cc8f3e066dafa0c32700e4d7",
+      "url": "files/files/source/app/globals.css.txt.txt"
+    },
+    {
+      "bytes": 41599,
+      "original_path": "files/source/app/page.tsx.txt",
+      "sha256": "3aa62347bf09e394bbc9dcdc580981f36c11856c89a3507b8edcac354813ba22",
+      "url": "files/files/source/app/page.tsx.txt.txt"
+    },
+    {
+      "bytes": 623,
+      "original_path": "files/source/eslint.config.mjs",
+      "sha256": "aa2cbe10a0fef2edb992deeaeb6fe1fa8ec7f3b3df9595ba478fe40814badda9",
+      "url": "files/files/source/eslint.config.mjs.txt"
+    },
+    {
+      "bytes": 539,
+      "original_path": "files/source/index.html.txt",
+      "sha256": "f7b8fb78d94f2443269c0196693c3f83ecdb44a8a770f43fe3cfc83729085460",
+      "url": "files/files/source/index.html.txt.txt"
+    },
+    {
+      "bytes": 820,
+      "original_path": "files/source/package.json",
+      "sha256": "b866e04c02be3149e0db40c022e04e93eb90afb23df24959e7a3089fbb48ca96",
+      "url": "files/files/source/package.json.txt"
+    },
+    {
+      "bytes": 72372,
+      "original_path": "files/source/pnpm-lock.yaml.txt",
+      "sha256": "32d28fd85fef7977ae8de24638bad803d2900c0a1b16161b7b71d18e06ac1e2f",
+      "url": "files/files/source/pnpm-lock.yaml.txt.txt"
+    },
+    {
+      "bytes": 29,
+      "original_path": "files/source/pnpm-workspace.yaml.txt",
+      "sha256": "ac02d96368617c760f093cfe61fdec64b6244007ab3553e0d6621f706f54a353",
+      "url": "files/files/source/pnpm-workspace.yaml.txt.txt"
+    },
+    {
+      "bytes": 2746,
+      "original_path": "files/source/scripts/check-wav-detection.ts.txt",
+      "sha256": "813235504ba28909487d54cb6652f4a28b6f261418008efb51e7e839a3a22580",
+      "url": "files/files/source/scripts/check-wav-detection.ts.txt.txt"
+    },
+    {
+      "bytes": 351,
+      "original_path": "files/source/src/main.tsx.txt",
+      "sha256": "ca09ce1379805c0ca29167f57d61e96c9ba438dd86da959231aa3dc40c55bb0d",
+      "url": "files/files/source/src/main.tsx.txt.txt"
+    },
+    {
+      "bytes": 818,
+      "original_path": "files/source/tests/static-build.test.mjs",
+      "sha256": "c1b61ba39bd8cc3b7af5b3109078c532065860d2fac619ac7210aed246bc07d9",
+      "url": "files/files/source/tests/static-build.test.mjs.txt"
+    },
+    {
+      "bytes": 648,
+      "original_path": "files/source/tsconfig.json",
+      "sha256": "d86854245e60b89d7f9b5b2ca9818596e4356db0f3876614f570d27c75368e7a",
+      "url": "files/files/source/tsconfig.json.txt"
+    },
+    {
+      "bytes": 209,
+      "original_path": "files/source/vite.config.ts.txt",
+      "sha256": "68f2a61e0dd4f07571fb8e83bcd54570a4fb21f7ae43ac81ded877cb841775c7",
+      "url": "files/files/source/vite.config.ts.txt.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 5046,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "article",
+      "sha256": "84960c76492bd1abaf04763afc1f5e2729876edb356bc4386686b645f5b512a7"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 1284,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "application/json",
+      "path": "files/CURRENT-STATUS.json",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "data",
+      "sha256": "156c3e942abfdd35347740dc2b201e7653cc2d72644874bc634413b7a21c9c5b"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 2185,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "application/json",
+      "path": "files/HISTORICAL-BUILD.json",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "receipt",
+      "sha256": "63cd61b73b8e4b6788568d45b76d392544f453ff604ecaa880bb3f5a503aa0b1"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 2718,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "text/markdown",
+      "path": "files/SOURCE-GUIDE.md",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "data",
+      "sha256": "ee1ea593752c3b7cc677a08b33086f3300fd0309b5d9da2b0983f91103e72c00"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 5645,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "application/json",
+      "path": "files/SOURCE-NOTICES.json",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "data",
+      "sha256": "41f880e17fd96daa5dbbe19e03e3cb4f6bdea9d9b855c6098e9d8172e93fd87b"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 5869,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "text/plain",
+      "path": "files/source/app/acoustic-analysis.ts.txt",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "code",
+      "sha256": "e05fe6ea6918691208de657669b70e874b2d6c9a83577dcf248a3bf466c2fd73"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 14585,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "text/plain",
+      "path": "files/source/app/globals.css.txt",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "data",
+      "sha256": "9caeb5c5a11a4d55cee6ff85980f8c1c4ab927d0cc8f3e066dafa0c32700e4d7"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 41599,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "text/plain",
+      "path": "files/source/app/page.tsx.txt",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "code",
+      "sha256": "3aa62347bf09e394bbc9dcdc580981f36c11856c89a3507b8edcac354813ba22"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 623,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "text/javascript",
+      "path": "files/source/eslint.config.mjs",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "code",
+      "sha256": "aa2cbe10a0fef2edb992deeaeb6fe1fa8ec7f3b3df9595ba478fe40814badda9"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 539,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "text/plain",
+      "path": "files/source/index.html.txt",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "data",
+      "sha256": "f7b8fb78d94f2443269c0196693c3f83ecdb44a8a770f43fe3cfc83729085460"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 820,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "application/json",
+      "path": "files/source/package.json",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "data",
+      "sha256": "b866e04c02be3149e0db40c022e04e93eb90afb23df24959e7a3089fbb48ca96"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 72372,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "text/plain",
+      "path": "files/source/pnpm-lock.yaml.txt",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "data",
+      "sha256": "32d28fd85fef7977ae8de24638bad803d2900c0a1b16161b7b71d18e06ac1e2f"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 29,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "text/plain",
+      "path": "files/source/pnpm-workspace.yaml.txt",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "data",
+      "sha256": "ac02d96368617c760f093cfe61fdec64b6244007ab3553e0d6621f706f54a353"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 2746,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "text/plain",
+      "path": "files/source/scripts/check-wav-detection.ts.txt",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "code",
+      "sha256": "813235504ba28909487d54cb6652f4a28b6f261418008efb51e7e839a3a22580"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 351,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "text/plain",
+      "path": "files/source/src/main.tsx.txt",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "code",
+      "sha256": "ca09ce1379805c0ca29167f57d61e96c9ba438dd86da959231aa3dc40c55bb0d"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 818,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "text/javascript",
+      "path": "files/source/tests/static-build.test.mjs",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "code",
+      "sha256": "c1b61ba39bd8cc3b7af5b3109078c532065860d2fac619ac7210aed246bc07d9"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 648,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "application/json",
+      "path": "files/source/tsconfig.json",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "data",
+      "sha256": "d86854245e60b89d7f9b5b2ca9818596e4356db0f3876614f570d27c75368e7a"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 209,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "text/plain",
+      "path": "files/source/vite.config.ts.txt",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "code",
+      "sha256": "68f2a61e0dd4f07571fb8e83bcd54570a4fb21f7ae43ac81ded877cb841775c7"
+    }
+  ],
+  "finding": "The source implements adjustable event inspection and exports settings/observations; historical build/deploy success covers packaging, not detector accuracy or biological interpretation.",
+  "gardens": [],
+  "id": "sound-field-linked-acoustic-views",
+  "limitations": [
+    "Preparation reviews selected records and packaging; it is not a new scientific or hardware test.",
+    "Original sources and chronological qualifications must not be flattened into a claim of completed marine or biological validation.",
+    "Historical static build success does not validate event detection, biology, calibration or distributed localization.",
+    "Dependency implementations and opening audio are external, with exact names/source/audio identity recorded.",
+    "Current Whales direction is recorder work; the instrument remains historical reference."
+  ],
+  "method": "Retain source of the linked-view browser prototype and its existing successful static build/deployment record; preserve detector and interpretation limits.",
+  "open_questions": [
+    "What exact new measurement would advance this prototype or question while preserving the stated scope?"
+  ],
+  "package_sha256": "71564877a5f33c257baddc2795c28458a76d6586fff2122c1c3d1bf3ea746afe",
+  "provenance": {
+    "authors": [
+      "The Bridges Group, with ChatGPT."
+    ],
+    "change_note": "First public release, November 17, 2026. Reviewed article and supporting files retain their exact bytes.",
+    "origin": "Existing archived BathyBeacon posts and recorded Whales source/design history; selected with original identities retained privately."
+  },
+  "publication": {
+    "attribution": "The Bridges Group, with ChatGPT.",
+    "intent": "request-review",
+    "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+    "rights": "Owner-authorized public reading and downloading. External sources retain their own rights."
+  },
+  "question": "How can one candidate acoustic event remain linked across different views without turning a visual pattern into a biological label?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "experimental",
+  "title": "Sound Field: one moment, three views",
+  "version": 1
+}

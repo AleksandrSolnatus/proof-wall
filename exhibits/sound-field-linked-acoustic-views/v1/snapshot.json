@@ -1,0 +1,81 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 5046,
+      "sha256": "84960c76492bd1abaf04763afc1f5e2729876edb356bc4386686b645f5b512a7"
+    },
+    "exhibit.json": {
+      "bytes": 12149,
+      "sha256": "31a3a9a02d6f63cf49c16380ca408808a9f3b9b2a7bcbac5f33561caf2cd9c9e"
+    },
+    "files/CURRENT-STATUS.json": {
+      "bytes": 1284,
+      "sha256": "156c3e942abfdd35347740dc2b201e7653cc2d72644874bc634413b7a21c9c5b"
+    },
+    "files/HISTORICAL-BUILD.json": {
+      "bytes": 2185,
+      "sha256": "63cd61b73b8e4b6788568d45b76d392544f453ff604ecaa880bb3f5a503aa0b1"
+    },
+    "files/SOURCE-GUIDE.md": {
+      "bytes": 2718,
+      "sha256": "ee1ea593752c3b7cc677a08b33086f3300fd0309b5d9da2b0983f91103e72c00"
+    },
+    "files/SOURCE-NOTICES.json": {
+      "bytes": 5645,
+      "sha256": "41f880e17fd96daa5dbbe19e03e3cb4f6bdea9d9b855c6098e9d8172e93fd87b"
+    },
+    "files/source/app/acoustic-analysis.ts.txt": {
+      "bytes": 5869,
+      "sha256": "e05fe6ea6918691208de657669b70e874b2d6c9a83577dcf248a3bf466c2fd73"
+    },
+    "files/source/app/globals.css.txt": {
+      "bytes": 14585,
+      "sha256": "9caeb5c5a11a4d55cee6ff85980f8c1c4ab927d0cc8f3e066dafa0c32700e4d7"
+    },
+    "files/source/app/page.tsx.txt": {
+      "bytes": 41599,
+      "sha256": "3aa62347bf09e394bbc9dcdc580981f36c11856c89a3507b8edcac354813ba22"
+    },
+    "files/source/eslint.config.mjs": {
+      "bytes": 623,
+      "sha256": "aa2cbe10a0fef2edb992deeaeb6fe1fa8ec7f3b3df9595ba478fe40814badda9"
+    },
+    "files/source/index.html.txt": {
+      "bytes": 539,
+      "sha256": "f7b8fb78d94f2443269c0196693c3f83ecdb44a8a770f43fe3cfc83729085460"
+    },
+    "files/source/package.json": {
+      "bytes": 820,
+      "sha256": "b866e04c02be3149e0db40c022e04e93eb90afb23df24959e7a3089fbb48ca96"
+    },
+    "files/source/pnpm-lock.yaml.txt": {
+      "bytes": 72372,
+      "sha256": "32d28fd85fef7977ae8de24638bad803d2900c0a1b16161b7b71d18e06ac1e2f"
+    },
+    "files/source/pnpm-workspace.yaml.txt": {
+      "bytes": 29,
+      "sha256": "ac02d96368617c760f093cfe61fdec64b6244007ab3553e0d6621f706f54a353"
+    },
+    "files/source/scripts/check-wav-detection.ts.txt": {
+      "bytes": 2746,
+      "sha256": "813235504ba28909487d54cb6652f4a28b6f261418008efb51e7e839a3a22580"
+    },
+    "files/source/src/main.tsx.txt": {
+      "bytes": 351,
+      "sha256": "ca09ce1379805c0ca29167f57d61e96c9ba438dd86da959231aa3dc40c55bb0d"
+    },
+    "files/source/tests/static-build.test.mjs": {
+      "bytes": 818,
+      "sha256": "c1b61ba39bd8cc3b7af5b3109078c532065860d2fac619ac7210aed246bc07d9"
+    },
+    "files/source/tsconfig.json": {
+      "bytes": 648,
+      "sha256": "d86854245e60b89d7f9b5b2ca9818596e4356db0f3876614f570d27c75368e7a"
+    },
+    "files/source/vite.config.ts.txt": {
+      "bytes": 209,
+      "sha256": "68f2a61e0dd4f07571fb8e83bcd54570a4fb21f7ae43ac81ded877cb841775c7"
+    }
+  },
+  "package_sha256": "71564877a5f33c257baddc2795c28458a76d6586fff2122c1c3d1bf3ea746afe"
+}

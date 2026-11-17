@@ -1,0 +1,157 @@
+{
+  "article": "article.md",
+  "artifact_type": "question",
+  "claim_scope": "Documented design evolution and unresolved engineering question only; no hardware performance, general observability theorem or biological result.",
+  "date": "2026-08-24",
+  "downloads": [
+    {
+      "bytes": 5347,
+      "original_path": "article.md",
+      "sha256": "0ae7f454f2865d930e9b448f48c926c0d542fb121e26a414962e98c633f6af00",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 890,
+      "original_path": "files/CLAIM-STATUS.json",
+      "sha256": "942dce03fc34bf86cf2d5c903603afc67683aad94efa1e9cb94bf6cb9ff3c98c",
+      "url": "files/files/CLAIM-STATUS.json.txt"
+    },
+    {
+      "bytes": 8643,
+      "original_path": "files/CURRENT-POOL-DIRECTION.md",
+      "sha256": "23b46cab2a616a00ef4d7ab6d85bac959c6d90475a90e099f53131defb1d3219",
+      "url": "files/files/CURRENT-POOL-DIRECTION.md.txt"
+    },
+    {
+      "bytes": 2217,
+      "original_path": "files/OBSERVABILITY-PLAN.md",
+      "sha256": "e951841dd5992dd60908586a1dcf8d1959e5854b5700d9dd7f4ac0ad7cf4217e",
+      "url": "files/files/OBSERVABILITY-PLAN.md.txt"
+    },
+    {
+      "bytes": 2211,
+      "original_path": "files/REVISION-TRAIL.md",
+      "sha256": "e47fd5490fe4cc693227e3c7d9e72cd163887ccb6dafee5504e481f9f7deb29c",
+      "url": "files/files/REVISION-TRAIL.md.txt"
+    },
+    {
+      "bytes": 3148,
+      "original_path": "files/SOURCE-NOTICES.json",
+      "sha256": "5c83ac4cdee13257a421155884aa38acfb9b700fde4f361be1ba519746d69d47",
+      "url": "files/files/SOURCE-NOTICES.json.txt"
+    },
+    {
+      "bytes": 1538,
+      "original_path": "files/TEST-QUESTION.md",
+      "sha256": "5d9783b6aa5608f152ae5a2a6b29975c7e141905be539943bd284ee99e7f08f5",
+      "url": "files/files/TEST-QUESTION.md.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 5347,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "article",
+      "sha256": "0ae7f454f2865d930e9b448f48c926c0d542fb121e26a414962e98c633f6af00"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 890,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "application/json",
+      "path": "files/CLAIM-STATUS.json",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "data",
+      "sha256": "942dce03fc34bf86cf2d5c903603afc67683aad94efa1e9cb94bf6cb9ff3c98c"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 8643,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "text/markdown",
+      "path": "files/CURRENT-POOL-DIRECTION.md",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "original",
+      "sha256": "23b46cab2a616a00ef4d7ab6d85bac959c6d90475a90e099f53131defb1d3219"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 2217,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "text/markdown",
+      "path": "files/OBSERVABILITY-PLAN.md",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "original",
+      "sha256": "e951841dd5992dd60908586a1dcf8d1959e5854b5700d9dd7f4ac0ad7cf4217e"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 2211,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "text/markdown",
+      "path": "files/REVISION-TRAIL.md",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "data",
+      "sha256": "e47fd5490fe4cc693227e3c7d9e72cd163887ccb6dafee5504e481f9f7deb29c"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 3148,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "application/json",
+      "path": "files/SOURCE-NOTICES.json",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "data",
+      "sha256": "5c83ac4cdee13257a421155884aa38acfb9b700fde4f361be1ba519746d69d47"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 1538,
+      "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+      "media_type": "text/markdown",
+      "path": "files/TEST-QUESTION.md",
+      "rights": "Owner-authorized public reading and downloading. External sources retain their own rights.",
+      "role": "original",
+      "sha256": "5d9783b6aa5608f152ae5a2a6b29975c7e141905be539943bd284ee99e7f08f5"
+    }
+  ],
+  "finding": "A narrower controlled-test question is prepared; the inspected records do not supply a completed multi-recorder test, implemented observability solver or validated field pod.",
+  "gardens": [],
+  "id": "whale-probes-four-ear-question",
+  "limitations": [
+    "Preparation reviews selected records and packaging; it is not a new scientific or hardware test.",
+    "Original sources and chronological qualifications must not be flattened into a claim of completed marine or biological validation.",
+    "Canonical records describe plans; no completed controlled multi-recorder audio and independent geometry result supplied.",
+    "Observability implementation is explicitly not begun in the source plan.",
+    "Deep, autonomous, open-water, animal and renewed app work remain outside the recorded accepted stage."
+  ],
+  "method": "Preserve the proposal/correction trail and the recorded current pool-first P0/P1 plans, with selected comparison and evidence requirements.",
+  "open_questions": [
+    "What exact new measurement would advance this prototype or question while preserving the stated scope?"
+  ],
+  "package_sha256": "8cebf73c1059eb53b510923ef64db5cc844ce5994b334e29963448058ddf4c36",
+  "provenance": {
+    "authors": [
+      "The Bridges Group, with ChatGPT."
+    ],
+    "change_note": "First public release, November 17, 2026. Reviewed article and supporting files retain their exact bytes.",
+    "origin": "Existing archived BathyBeacon posts and recorded Whales source/design history; selected with original identities retained privately."
+  },
+  "publication": {
+    "attribution": "The Bridges Group, with ChatGPT.",
+    "intent": "request-review",
+    "license": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+    "rights": "Owner-authorized public reading and downloading. External sources retain their own rights."
+  },
+  "question": "What measured geometry, timing and independent truth would let a controlled multi-recorder comparison reveal the value and limits of several acoustic viewpoints?",
+  "relations": [],
+  "sample": false,
+  "schema_version": 1,
+  "status": "unresolved",
+  "title": "Four ears, one minute: what must the recorders know?",
+  "version": 1
+}

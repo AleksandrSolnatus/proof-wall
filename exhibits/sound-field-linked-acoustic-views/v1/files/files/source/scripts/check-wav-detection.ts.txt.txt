@@ -1,0 +1,86 @@
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { detectPulses, type AcousticBuffer } from "../app/acoustic-analysis.ts";
+
+const filePath = process.argv[2];
+const sensitivity = Number(process.argv[3] ?? 48);
+const minimumGap = Number(process.argv[4] ?? 8);
+
+if (!filePath) throw new Error("Pass a PCM WAV file path.");
+
+const bytes = readFileSync(resolve(filePath));
+if (bytes.toString("ascii", 0, 4) !== "RIFF" || bytes.toString("ascii", 8, 12) !== "WAVE") {
+  throw new Error("This checker currently accepts RIFF/WAVE files only.");
+}
+
+let offset = 12;
+let channels = 0;
+let sampleRate = 0;
+let bitsPerSample = 0;
+let format = 0;
+let dataStart = 0;
+let dataSize = 0;
+
+while (offset + 8 <= bytes.length) {
+  const id = bytes.toString("ascii", offset, offset + 4);
+  const size = bytes.readUInt32LE(offset + 4);
+  const start = offset + 8;
+  if (id === "fmt ") {
+    format = bytes.readUInt16LE(start);
+    channels = bytes.readUInt16LE(start + 2);
+    sampleRate = bytes.readUInt32LE(start + 4);
+    bitsPerSample = bytes.readUInt16LE(start + 14);
+  } else if (id === "data") {
+    dataStart = start;
+    dataSize = size;
+  }
+  offset = start + size + (size % 2);
+}
+
+if (format !== 1 || bitsPerSample !== 16 || !channels || !dataStart) {
+  throw new Error("This checker currently accepts 16-bit PCM WAV files only.");
+}
+
+const frameCount = Math.floor(dataSize / (channels * 2));
+const channelData = Array.from({ length: channels }, () => new Float32Array(frameCount));
+
+for (let frame = 0; frame < frameCount; frame += 1) {
+  for (let channel = 0; channel < channels; channel += 1) {
+    const byteOffset = dataStart + (frame * channels + channel) * 2;
+    channelData[channel][frame] = bytes.readInt16LE(byteOffset) / 32768;
+  }
+}
+
+const buffer: AcousticBuffer = {
+  sampleRate,
+  length: frameCount,
+  numberOfChannels: channels,
+  getChannelData: (channel) => channelData[channel],
+};
+
+const result = detectPulses(buffer, sensitivity, minimumGap);
+const intervals = result.pulses
+  .map((pulse) => pulse.intervalBefore)
+  .filter((interval): interval is number => interval !== null)
+  .sort((a, b) => a - b);
+
+const middle = intervals.length ? intervals[Math.floor(intervals.length / 2)] : null;
+
+process.stdout.write(
+  `${JSON.stringify(
+    {
+      file: resolve(filePath),
+      durationSeconds: frameCount / sampleRate,
+      sampleRate,
+      sensitivity,
+      minimumGapMilliseconds: minimumGap,
+      detectedPulses: result.pulses.length,
+      medianIntervalMilliseconds: middle === null ? null : middle * 1000,
+      firstPulseSeconds: result.pulses[0]?.time ?? null,
+      lastPulseSeconds: result.pulses.at(-1)?.time ?? null,
+      limited: result.limited,
+    },
+    null,
+    2,
+  )}\n`,
+);

@@ -1,0 +1,16 @@
+import assert from "node:assert/strict";
+import { readFile, readdir, stat } from "node:fs/promises";
+import test from "node:test";
+
+test("builds a portable static Sound Field instrument", async () => {
+  const html = await readFile(new URL("../dist/index.html", import.meta.url), "utf8");
+  const assets = await readdir(new URL("../dist/assets/", import.meta.url));
+  const openingSound = await stat(new URL("../dist/opening-sound.mp3", import.meta.url));
+
+  assert.match(html, /<title>Sound Field — open acoustic instrument<\/title>/i);
+  assert.match(html, /\.\/assets\/index-[^"']+\.js/);
+  assert.match(html, /\.\/assets\/index-[^"']+\.css/);
+  assert.ok(assets.some((asset) => asset.endsWith(".js")));
+  assert.ok(assets.some((asset) => asset.endsWith(".css")));
+  assert.ok(openingSound.size > 1_000_000);
+});

@@ -1,0 +1,21 @@
+# Revision trail — proposal, critique, current direction
+
+## Original pod architecture — proposal
+
+The four-page Rapid-Deploy Lagrangian Acoustic Pod Network document presented neutral-depth behavior, acoustic self-location, recovery layers, dimensional/cost targets and deployment as a carry-forward architecture. It did not supply the measurements needed to credit those capabilities. The original is preserved privately, not redistributed as a current build guide.
+
+## Historical scene and roundtable reviews
+
+Later concept/review documents questioned exact underwater position knowledge, passive hover and recovery claims, precise tracking targets and assumed deployment suitability. The scene proposal separated a reusable recorder from recovery concepts and emphasized retaining every component. These were successive design proposals and critiques, not successive passed hardware trials.
+
+## July 18 panel review — historical
+
+The source explicitly says the concept survives as a legitimate research question, not a validated design. It asks for independently constrained geometry, clocks, ground truth, alternatives and uncertainty. Its earlier gate sequence placed numerical observability ahead of controlled multi-recorder tests. That sequence is historical and does not override the later accepted stage.
+
+## August 24 project direction — recorded current stage
+
+The canonical project adopted a custom-build, pool-first learning ladder with multiple separated recorders as the working premise. P0 is a known-position shared-clock reference; P1 compares independent dry surface modules. Numerical observability supports layout/error decisions and no longer gates the decision to pursue multiple recorders. App work is historical; deep, autonomous, open-water and animal work are deferred.
+
+## Publication boundary
+
+This exhibit records a question and its test plan, not an acoustic observability theorem or a field deployment approval. The original schematic/build-sheet references remain outside the packet: the canonical design index itself requires circuit review and measured blocks before construction. No new hardware, simulation, recording or animal work was performed or commissioned.

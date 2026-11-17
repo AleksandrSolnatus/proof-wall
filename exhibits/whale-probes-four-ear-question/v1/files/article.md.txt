@@ -1,0 +1,43 @@
+# Four ears, one minute: what must the recorders know?
+
+The whale-probe idea asks whether several short, synchronized recordings could preserve more of an acoustic encounter than any one recorder. Its strongest current form is a question with a controlled test plan. The reviewed local records do not supply a completed multi-recorder experiment, a validated drifting-pod reconstruction, or a field-ready instrument.
+
+That distinction preserves the idea rather than discarding it. We can show what changed, which unsupported promises were removed, and exactly what evidence the next stage is intended to produce.
+
+## The original ambition
+
+An early architecture proposed smooth, motorless pods that would descend, record, recover and help reconstruct an encounter. Some versions presented passive depth control, receiver self-location, high-precision trajectories and finished mass/cost targets too confidently. These were proposed capabilities, not measured outcomes.
+
+The preserved reviews challenged those claims. A plausible track is not sufficient evidence of a recovered scene. Unknown receiver motion, clock behavior, uncertain event association and propagation can all matter. The project had not demonstrated that its proposed measurements were enough to distinguish the true scene from materially different alternatives.
+
+The original architecture PDF and full historical reports are preserved privately. They are not included as current construction instructions. This exhibit does not repeat their depth, precision, recovery, safety or cost aspirations as verified specifications.
+
+## The accepted direction moved closer to the bench
+
+The August 24 Whales records make multiple separated recorders the working premise. The project is not asking again whether it is allowed to pursue several ears. The intended measurements will establish the extent and limits of their value, and which practical designs preserve useful evidence.
+
+The current learning ladder begins with one understood dry analog input, then a complete recorder core and matched duplication. The P0 reference uses four capture points on one shared clock, with receiver positions and a controlled source path independently measured in a pool. P1 then compares four independent surface modules, exposing the additional costs of separate clocks, enclosures, motion and recovery.
+
+This is a recorded plan. No converter, final circuit, recorder core or field pod is established as selected and validated in the inspected source. The existing dry-side and shallow-ear schematics are reference designs requiring their own review and measurements. The numerical observability implementation had not begun in the canonical plan.
+
+## The comparison that would teach us something
+
+Keep the same source run and compare every individual recorder with the combined set, including the best single recorder chosen after the run. Preserve missed events, clipping, false events, timing, geometry and uncertainty. If localization is attempted, compare it with independently retained position truth.
+
+The historical merit-test document suggested a concealed one-minute source path: analyze the recordings first, then reveal the independent path record. Its older open-water geometry and proposed thresholds are not silently adopted as a completed pool protocol. The current plan must supply the actual pool geometry and suitable declared criteria before interpreting a future result.
+
+The intended evidence is concrete: original synchronized recordings, recorder settings, measured receiver/source paths, the hidden path and reveal record, event-arrival tables, per-recorder versus combined results, and failures. A convincing illustration without those records is not a passed reconstruction test.
+
+## What was corrected
+
+The source history progressively separated the delivery vehicle, recovery mechanism, acoustic measurement and biological interpretation. A boat, drone, drifting capsule or recovery collar does not by itself solve the acoustic question. A visualizer does not establish source identity or meaning. The current pool-first direction keeps open-water, autonomous recovery, animal work and app development outside the accepted stage.
+
+We retain those corrections as design history, without treating every statement from an AI panel as an independently proved physical result. REVISION-TRAIL.md marks the older proposals, their criticism and the recorded current direction. TEST-QUESTION.md contains only the selected comparison and evidence requirements; it is not a new authorization or a claim that the experiment ran.
+
+## What passes muster now
+
+This material passes as an unresolved engineering question and a documented proposal for controlled testing. It does not pass as a finished acoustic pod, a demonstrated advantage for a particular layout, an underwater navigation result or a whale behavioral finding.
+
+The next missing evidence is an actual controlled multi-recorder run with its original audio, geometry, clocks, independent ground truth and comparison result. That gap does not erase the useful design work. It tells a reader which observation would move the question forward.
+
+The Bridges Group, with ChatGPT. This is an unresolved engineering question. All rights reserved for selected project-authored material; no new open-source license is granted.

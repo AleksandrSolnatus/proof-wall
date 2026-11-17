@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="An open acoustic instrument for listening to impulse timing and pressure shape before labeling meaning."
+    />
+    <meta name="theme-color" content="#02090e" />
+    <title>Sound Field — open acoustic instrument</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

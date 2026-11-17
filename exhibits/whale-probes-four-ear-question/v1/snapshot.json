@@ -1,0 +1,37 @@
+{
+  "files": {
+    "article.md": {
+      "bytes": 5347,
+      "sha256": "0ae7f454f2865d930e9b448f48c926c0d542fb121e26a414962e98c633f6af00"
+    },
+    "exhibit.json": {
+      "bytes": 6213,
+      "sha256": "bab0f4ce8cc12f6ec39738f2bda4b80b2106c3d6d8e7e15b367f5fd2a40895e7"
+    },
+    "files/CLAIM-STATUS.json": {
+      "bytes": 890,
+      "sha256": "942dce03fc34bf86cf2d5c903603afc67683aad94efa1e9cb94bf6cb9ff3c98c"
+    },
+    "files/CURRENT-POOL-DIRECTION.md": {
+      "bytes": 8643,
+      "sha256": "23b46cab2a616a00ef4d7ab6d85bac959c6d90475a90e099f53131defb1d3219"
+    },
+    "files/OBSERVABILITY-PLAN.md": {
+      "bytes": 2217,
+      "sha256": "e951841dd5992dd60908586a1dcf8d1959e5854b5700d9dd7f4ac0ad7cf4217e"
+    },
+    "files/REVISION-TRAIL.md": {
+      "bytes": 2211,
+      "sha256": "e47fd5490fe4cc693227e3c7d9e72cd163887ccb6dafee5504e481f9f7deb29c"
+    },
+    "files/SOURCE-NOTICES.json": {
+      "bytes": 3148,
+      "sha256": "5c83ac4cdee13257a421155884aa38acfb9b700fde4f361be1ba519746d69d47"
+    },
+    "files/TEST-QUESTION.md": {
+      "bytes": 1538,
+      "sha256": "5d9783b6aa5608f152ae5a2a6b29975c7e141905be539943bd284ee99e7f08f5"
+    }
+  },
+  "package_sha256": "8cebf73c1059eb53b510923ef64db5cc844ce5994b334e29963448058ddf4c36"
+}

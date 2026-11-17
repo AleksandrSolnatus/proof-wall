@@ -1,0 +1,1070 @@
+"use client";
+
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ChangeEvent,
+  type DragEvent,
+  type PointerEvent as ReactPointerEvent,
+} from "react";
+import {
+  detectPulses,
+  pulsesInRange,
+  type DetectionResult,
+  type Pulse,
+} from "./acoustic-analysis";
+
+type Selection = { start: number; end: number } | null;
+
+type Observation = {
+  id: string;
+  start: number;
+  end: number;
+  text: string;
+  createdAt: string;
+};
+
+const OPENING_SOUND_PATH = "./opening-sound.mp3";
+
+function clamp(value: number, minimum: number, maximum: number) {
+  return Math.min(Math.max(value, minimum), maximum);
+}
+
+function formatTime(seconds: number, precise = false) {
+  if (!Number.isFinite(seconds)) return "0:00";
+  const safe = Math.max(0, seconds);
+  if (precise) {
+    const hundredths = Math.round(safe * 100);
+    const minutes = Math.floor(hundredths / 6000);
+    const remainder = (hundredths - minutes * 6000) / 100;
+    return `${minutes}:${remainder.toFixed(2).padStart(5, "0")}`;
+  }
+  const rounded = Math.round(safe);
+  return `${Math.floor(rounded / 60)}:${String(rounded % 60).padStart(2, "0")}`;
+}
+
+function formatInterval(seconds: number | null) {
+  if (seconds === null) return "—";
+  if (seconds < 1) return `${(seconds * 1000).toFixed(seconds < 0.01 ? 2 : 1)} ms`;
+  return `${seconds.toFixed(3)} sec`;
+}
+
+function formatBytes(bytes: number) {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+function prepareCanvas(canvas: HTMLCanvasElement, height: number) {
+  const ratio = Math.min(window.devicePixelRatio || 1, 2);
+  const width = Math.max(300, canvas.clientWidth);
+  canvas.width = Math.floor(width * ratio);
+  canvas.height = Math.floor(height * ratio);
+  const context = canvas.getContext("2d");
+  if (!context) return null;
+  context.setTransform(ratio, 0, 0, ratio, 0, 0);
+  return { context, width, height };
+}
+
+function drawTimeRuler(
+  context: CanvasRenderingContext2D,
+  width: number,
+  height: number,
+  start: number,
+  end: number,
+) {
+  const plotHeight = height - 23;
+  context.fillStyle = "#061017";
+  context.fillRect(0, 0, width, height);
+  context.font = "10px var(--font-geist-mono), monospace";
+  context.lineWidth = 1;
+  for (let line = 0; line <= 5; line += 1) {
+    const x = (line / 5) * width;
+    context.strokeStyle = "rgba(157, 211, 202, 0.09)";
+    context.beginPath();
+    context.moveTo(x, 0);
+    context.lineTo(x, plotHeight);
+    context.stroke();
+    context.fillStyle = "rgba(216, 232, 227, 0.48)";
+    context.textAlign = line === 0 ? "left" : line === 5 ? "right" : "center";
+    context.fillText(formatTime(start + ((end - start) * line) / 5, true), x, height - 6);
+  }
+}
+
+function drawSelectionAndPlayhead(
+  context: CanvasRenderingContext2D,
+  width: number,
+  plotHeight: number,
+  viewStart: number,
+  viewEnd: number,
+  selection: Selection,
+  currentTime: number,
+) {
+  const span = Math.max(0.001, viewEnd - viewStart);
+  if (selection) {
+    const left = clamp(((selection.start - viewStart) / span) * width, 0, width);
+    const right = clamp(((selection.end - viewStart) / span) * width, 0, width);
+    context.fillStyle = "rgba(239, 190, 91, 0.13)";
+    context.fillRect(left, 0, Math.max(1, right - left), plotHeight);
+    context.strokeStyle = "rgba(245, 203, 116, 0.76)";
+    context.beginPath();
+    context.moveTo(left, 0);
+    context.lineTo(left, plotHeight);
+    context.moveTo(right, 0);
+    context.lineTo(right, plotHeight);
+    context.stroke();
+  }
+  if (currentTime >= viewStart && currentTime <= viewEnd) {
+    const x = ((currentTime - viewStart) / span) * width;
+    context.strokeStyle = "#f1be57";
+    context.lineWidth = 1.5;
+    context.beginPath();
+    context.moveTo(x, 0);
+    context.lineTo(x, plotHeight);
+    context.stroke();
+  }
+}
+
+export default function Home() {
+  const [audioBuffer, setAudioBuffer] = useState<AudioBuffer | null>(null);
+  const [audioUrl, setAudioUrl] = useState<string | null>(null);
+  const [file, setFile] = useState<File | null>(null);
+  const [loadError, setLoadError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [zoom, setZoom] = useState(1);
+  const [viewStart, setViewStart] = useState(0);
+  const [selection, setSelection] = useState<Selection>(null);
+  const [loopSelection, setLoopSelection] = useState(false);
+  const [sensitivity, setSensitivity] = useState(48);
+  const [minimumGap, setMinimumGap] = useState(8);
+  const [detection, setDetection] = useState<DetectionResult | null>(null);
+  const [selectedPulseId, setSelectedPulseId] = useState<number | null>(null);
+  const [note, setNote] = useState("");
+  const [observations, setObservations] = useState<Observation[]>([]);
+  const [isDraggingFile, setIsDraggingFile] = useState(false);
+
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const railRef = useRef<HTMLCanvasElement>(null);
+  const intervalRef = useRef<HTMLCanvasElement>(null);
+  const stackRef = useRef<HTMLCanvasElement>(null);
+  const dragOriginRef = useRef<{ time: number; x: number } | null>(null);
+  const selectionRef = useRef<Selection>(null);
+  const loopRef = useRef(false);
+  const openingSoundStartedRef = useRef(false);
+
+  const duration = audioBuffer?.duration ?? 0;
+  const viewDuration = duration ? duration / zoom : 0;
+  const viewEnd = duration ? Math.min(duration, viewStart + viewDuration) : 0;
+  const focusStart = selection && selection.end - selection.start > 0.001 ? selection.start : viewStart;
+  const focusEnd = selection && selection.end - selection.start > 0.001 ? selection.end : viewEnd;
+  const focusPulses = useMemo(
+    () => pulsesInRange(detection?.pulses ?? [], focusStart, focusEnd, 120),
+    [detection, focusEnd, focusStart],
+  );
+  const selectedPulse =
+    selectedPulseId === null ? null : detection?.pulses[selectedPulseId] ?? null;
+
+  const storageKey = useMemo(() => {
+    if (!file) return null;
+    return `sound-field:${file.name}:${file.size}:${file.lastModified}`;
+  }, [file]);
+
+  useEffect(() => {
+    selectionRef.current = selection;
+  }, [selection]);
+
+  useEffect(() => {
+    loopRef.current = loopSelection;
+  }, [loopSelection]);
+
+  useEffect(() => {
+    if (!storageKey) return;
+    window.localStorage.setItem(storageKey, JSON.stringify(observations));
+  }, [observations, storageKey]);
+
+  useEffect(() => {
+    return () => {
+      if (audioUrl) URL.revokeObjectURL(audioUrl);
+    };
+  }, [audioUrl]);
+
+  const loadAudio = useCallback(
+    async (incoming: File) => {
+      setIsLoading(true);
+      setLoadError("");
+      try {
+        const AudioContextClass =
+          window.AudioContext ||
+          (window as typeof window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+        if (!AudioContextClass) throw new Error("This browser cannot decode audio files.");
+        const context = new AudioContextClass();
+        const decoded = await context.decodeAudioData(await incoming.arrayBuffer());
+        await context.close();
+        if (audioUrl) URL.revokeObjectURL(audioUrl);
+        const nextUrl = URL.createObjectURL(incoming);
+        setAudioBuffer(decoded);
+        setAudioUrl(nextUrl);
+        setFile(incoming);
+        setCurrentTime(0);
+        setZoom(1);
+        setViewStart(0);
+        setSelection(null);
+        setLoopSelection(false);
+        setSelectedPulseId(null);
+        setDetection(null);
+        setIsPlaying(false);
+        try {
+          const key = `sound-field:${incoming.name}:${incoming.size}:${incoming.lastModified}`;
+          const stored = window.localStorage.getItem(key);
+          setObservations(stored ? JSON.parse(stored) : []);
+        } catch {
+          setObservations([]);
+        }
+      } catch (error) {
+        setLoadError(error instanceof Error ? error.message : "The recording could not be opened.");
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [audioUrl],
+  );
+
+  useEffect(() => {
+    if (openingSoundStartedRef.current) return;
+    openingSoundStartedRef.current = true;
+
+    const openSound = async () => {
+      try {
+        const response = await fetch(OPENING_SOUND_PATH);
+        if (!response.ok) throw new Error("The opening sound could not be reached.");
+        const blob = await response.blob();
+        const openingSound = new File([blob], "opening-sound.mp3", {
+          type: blob.type || "audio/mpeg",
+          lastModified: 0,
+        });
+        await loadAudio(openingSound);
+      } catch (error) {
+        setLoadError(error instanceof Error ? error.message : "The opening sound could not be opened.");
+      }
+    };
+
+    void openSound();
+  }, [loadAudio]);
+
+  useEffect(() => {
+    if (!audioBuffer) return;
+    let cancelled = false;
+    const timer = window.setTimeout(() => {
+      const result = detectPulses(audioBuffer, sensitivity, minimumGap);
+      if (!cancelled) setDetection(result);
+    }, 90);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timer);
+    };
+  }, [audioBuffer, minimumGap, sensitivity]);
+
+  const chooseFile = (event: ChangeEvent<HTMLInputElement>) => {
+    const incoming = event.target.files?.[0];
+    if (incoming) void loadAudio(incoming);
+    event.target.value = "";
+  };
+
+  const dropFile = (event: DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    setIsDraggingFile(false);
+    const incoming = event.dataTransfer.files?.[0];
+    if (incoming) void loadAudio(incoming);
+  };
+
+  const seek = useCallback(
+    (time: number) => {
+      const next = clamp(time, 0, duration);
+      if (audioRef.current) audioRef.current.currentTime = next;
+      setCurrentTime(next);
+    },
+    [duration],
+  );
+
+  const togglePlay = useCallback(async () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (audio.paused) {
+      const held = selectionRef.current;
+      if (held && loopRef.current && (audio.currentTime < held.start || audio.currentTime >= held.end)) {
+        audio.currentTime = held.start;
+      }
+      await audio.play();
+    } else {
+      audio.pause();
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!isPlaying) return;
+    let frame = 0;
+    const update = () => {
+      const audio = audioRef.current;
+      if (!audio) return;
+      const held = selectionRef.current;
+      if (loopRef.current && held && held.end - held.start > 0.005 && audio.currentTime >= held.end) {
+        audio.currentTime = held.start;
+      }
+      setCurrentTime(audio.currentTime);
+      frame = window.requestAnimationFrame(update);
+    };
+    frame = window.requestAnimationFrame(update);
+    return () => window.cancelAnimationFrame(frame);
+  }, [isPlaying]);
+
+  useEffect(() => {
+    const keydown = (event: KeyboardEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (target?.matches("input, textarea, button, select")) return;
+      if (event.code === "Space") {
+        event.preventDefault();
+        void togglePlay();
+      } else if (event.code === "ArrowLeft") {
+        seek(currentTime - 2);
+      } else if (event.code === "ArrowRight") {
+        seek(currentTime + 2);
+      }
+    };
+    window.addEventListener("keydown", keydown);
+    return () => window.removeEventListener("keydown", keydown);
+  }, [currentTime, seek, togglePlay]);
+
+  const changeZoom = (nextZoom: number) => {
+    if (!duration) return;
+    const focus = selection
+      ? (selection.start + selection.end) / 2
+      : currentTime || viewStart + viewDuration / 2;
+    const nextDuration = duration / nextZoom;
+    setZoom(nextZoom);
+    setViewStart(clamp(focus - nextDuration / 2, 0, Math.max(0, duration - nextDuration)));
+  };
+
+  const choosePulse = useCallback(
+    (pulse: Pulse, moveSound = true) => {
+      setSelectedPulseId(pulse.id);
+      if (moveSound) seek(pulse.time);
+    },
+    [seek],
+  );
+
+  const drawRail = useCallback(() => {
+    const canvas = railRef.current;
+    if (!canvas) return;
+    const prepared = prepareCanvas(canvas, 272);
+    if (!prepared) return;
+    const { context, width, height } = prepared;
+    const plotHeight = height - 23;
+    drawTimeRuler(context, width, height, viewStart, viewEnd);
+    if (!audioBuffer || !duration) return;
+
+    const channel = audioBuffer.getChannelData(0);
+    const first = Math.floor(viewStart * audioBuffer.sampleRate);
+    const last = Math.min(channel.length, Math.ceil(viewEnd * audioBuffer.sampleRate));
+    const samplesPerPixel = Math.max(1, (last - first) / width);
+    const middle = plotHeight / 2;
+    context.fillStyle = "rgba(114, 192, 181, 0.09)";
+    context.beginPath();
+    context.moveTo(0, middle);
+    for (let x = 0; x < width; x += 1) {
+      const start = Math.floor(first + x * samplesPerPixel);
+      const end = Math.min(last, Math.ceil(start + samplesPerPixel));
+      let peak = 0;
+      const step = Math.max(1, Math.floor((end - start) / 20));
+      for (let sample = start; sample < end; sample += step) {
+        peak = Math.max(peak, Math.abs(channel[sample] ?? 0));
+      }
+      context.lineTo(x, middle - peak * middle * 0.76);
+    }
+    for (let x = width - 1; x >= 0; x -= 1) {
+      const start = Math.floor(first + x * samplesPerPixel);
+      const end = Math.min(last, Math.ceil(start + samplesPerPixel));
+      let peak = 0;
+      const step = Math.max(1, Math.floor((end - start) / 20));
+      for (let sample = start; sample < end; sample += step) {
+        peak = Math.max(peak, Math.abs(channel[sample] ?? 0));
+      }
+      context.lineTo(x, middle + peak * middle * 0.76);
+    }
+    context.closePath();
+    context.fill();
+    context.strokeStyle = "rgba(143, 211, 200, 0.17)";
+    context.beginPath();
+    context.moveTo(0, middle + 0.5);
+    context.lineTo(width, middle + 0.5);
+    context.stroke();
+
+    const visible = pulsesInRange(detection?.pulses ?? [], viewStart, viewEnd, 2500);
+    const span = Math.max(0.001, viewEnd - viewStart);
+    visible.forEach((pulse) => {
+      const x = ((pulse.time - viewStart) / span) * width;
+      const selected = pulse.id === selectedPulseId;
+      const strength = clamp(Math.log2(1 + pulse.strength) / 4, 0.18, 1);
+      context.strokeStyle = selected
+        ? "#ffd783"
+        : `rgba(113, 222, 205, ${0.2 + strength * 0.66})`;
+      context.lineWidth = selected ? 2.2 : 1;
+      context.beginPath();
+      context.moveTo(x, 12);
+      context.lineTo(x, plotHeight - 10);
+      context.stroke();
+      context.fillStyle = selected ? "#ffd783" : "rgba(119, 218, 203, 0.74)";
+      context.beginPath();
+      context.arc(x, 10 + (1 - clamp(pulse.tailRatio, 0, 1.6) / 1.6) * 26, selected ? 4 : 2, 0, Math.PI * 2);
+      context.fill();
+    });
+    drawSelectionAndPlayhead(context, width, plotHeight, viewStart, viewEnd, selection, currentTime);
+  }, [audioBuffer, currentTime, detection, duration, selectedPulseId, selection, viewEnd, viewStart]);
+
+  const drawIntervalPath = useCallback(() => {
+    const canvas = intervalRef.current;
+    if (!canvas) return;
+    const prepared = prepareCanvas(canvas, 292);
+    if (!prepared) return;
+    const { context, width, height } = prepared;
+    const padding = { top: 22, right: 18, bottom: 31, left: 48 };
+    const plotWidth = width - padding.left - padding.right;
+    const plotHeight = height - padding.top - padding.bottom;
+    context.fillStyle = "#061017";
+    context.fillRect(0, 0, width, height);
+    const usable = focusPulses.filter((pulse) => pulse.intervalBefore !== null);
+    if (!usable.length) {
+      context.fillStyle = "rgba(218, 234, 229, 0.4)";
+      context.font = "12px var(--font-geist-sans), sans-serif";
+      context.textAlign = "center";
+      context.fillText("Hold a region containing several detected impulses.", width / 2, height / 2);
+      return;
+    }
+    const intervals = usable.map((pulse) => pulse.intervalBefore as number);
+    const minimum = Math.max(0.001, Math.min(...intervals));
+    const maximum = Math.max(minimum * 1.5, Math.max(...intervals));
+    const logMinimum = Math.log(minimum);
+    const logMaximum = Math.log(maximum);
+    const range = Math.max(1e-6, focusEnd - focusStart);
+    context.strokeStyle = "rgba(157, 211, 202, 0.1)";
+    context.fillStyle = "rgba(216, 232, 227, 0.45)";
+    context.font = "10px var(--font-geist-mono), monospace";
+    context.textAlign = "right";
+    for (let line = 0; line <= 3; line += 1) {
+      const y = padding.top + (line / 3) * plotHeight;
+      const exponent = logMaximum - (line / 3) * (logMaximum - logMinimum);
+      context.beginPath();
+      context.moveTo(padding.left, y);
+      context.lineTo(width - padding.right, y);
+      context.stroke();
+      context.fillText(formatInterval(Math.exp(exponent)), padding.left - 8, y + 3);
+    }
+    context.strokeStyle = "rgba(123, 216, 202, 0.58)";
+    context.lineWidth = 1.25;
+    context.beginPath();
+    usable.forEach((pulse, index) => {
+      const x = padding.left + ((pulse.time - focusStart) / range) * plotWidth;
+      const normalized = (Math.log(pulse.intervalBefore as number) - logMinimum) / (logMaximum - logMinimum);
+      const y = padding.top + (1 - normalized) * plotHeight;
+      if (index === 0) context.moveTo(x, y);
+      else context.lineTo(x, y);
+    });
+    context.stroke();
+    usable.forEach((pulse) => {
+      const x = padding.left + ((pulse.time - focusStart) / range) * plotWidth;
+      const normalized = (Math.log(pulse.intervalBefore as number) - logMinimum) / (logMaximum - logMinimum);
+      const y = padding.top + (1 - normalized) * plotHeight;
+      const selected = pulse.id === selectedPulseId;
+      context.fillStyle = selected ? "#ffd783" : "#72d7c8";
+      context.beginPath();
+      context.arc(x, y, selected ? 5 : 2.8, 0, Math.PI * 2);
+      context.fill();
+    });
+    context.fillStyle = "rgba(216, 232, 227, 0.42)";
+    context.textAlign = "left";
+    context.fillText(formatTime(focusStart, true), padding.left, height - 9);
+    context.textAlign = "right";
+    context.fillText(formatTime(focusEnd, true), width - padding.right, height - 9);
+  }, [focusEnd, focusPulses, focusStart, selectedPulseId]);
+
+  const drawStack = useCallback(() => {
+    const canvas = stackRef.current;
+    if (!canvas) return;
+    const prepared = prepareCanvas(canvas, 360);
+    if (!prepared) return;
+    const { context, width, height } = prepared;
+    context.fillStyle = "#061017";
+    context.fillRect(0, 0, width, height);
+    if (!audioBuffer || !focusPulses.length) {
+      context.fillStyle = "rgba(218, 234, 229, 0.4)";
+      context.font = "12px var(--font-geist-sans), sans-serif";
+      context.textAlign = "center";
+      context.fillText("Detected pressure shapes will align here.", width / 2, height / 2);
+      return;
+    }
+    const labelHeight = 25;
+    const plotHeight = height - labelHeight;
+    const offscreen = document.createElement("canvas");
+    offscreen.width = Math.max(320, Math.round(width));
+    offscreen.height = focusPulses.length;
+    const offscreenContext = offscreen.getContext("2d");
+    if (!offscreenContext) return;
+    const image = offscreenContext.createImageData(offscreen.width, offscreen.height);
+    const startOffset = -0.002;
+    const endOffset = 0.018;
+    const offsetRange = endOffset - startOffset;
+
+    focusPulses.forEach((pulse, row) => {
+      const samples = audioBuffer.getChannelData(pulse.channel);
+      const scale = Math.max(0.00001, pulse.amplitude * 0.86);
+      for (let x = 0; x < offscreen.width; x += 1) {
+        const offset = startOffset + (x / Math.max(1, offscreen.width - 1)) * offsetRange;
+        const sampleIndex = clamp(
+          Math.round(pulse.sampleIndex + offset * audioBuffer.sampleRate),
+          0,
+          samples.length - 1,
+        );
+        const value = clamp(samples[sampleIndex] / scale, -1, 1);
+        const magnitude = Math.sqrt(Math.abs(value));
+        const base = [5, 15, 21];
+        const color = value >= 0 ? [242, 191, 91] : [87, 207, 191];
+        const index = (row * offscreen.width + x) * 4;
+        image.data[index] = Math.round(base[0] + (color[0] - base[0]) * magnitude);
+        image.data[index + 1] = Math.round(base[1] + (color[1] - base[1]) * magnitude);
+        image.data[index + 2] = Math.round(base[2] + (color[2] - base[2]) * magnitude);
+        image.data[index + 3] = 255;
+      }
+    });
+    offscreenContext.putImageData(image, 0, 0);
+    context.imageSmoothingEnabled = false;
+    context.drawImage(offscreen, 0, 0, width, plotHeight);
+    const zeroX = ((0 - startOffset) / offsetRange) * width;
+    context.strokeStyle = "rgba(255, 226, 162, 0.78)";
+    context.beginPath();
+    context.moveTo(zeroX, 0);
+    context.lineTo(zeroX, plotHeight);
+    context.stroke();
+    const selectedRow = focusPulses.findIndex((pulse) => pulse.id === selectedPulseId);
+    if (selectedRow >= 0) {
+      const rowHeight = plotHeight / focusPulses.length;
+      context.strokeStyle = "#fff0c8";
+      context.lineWidth = 1.5;
+      context.strokeRect(0.75, selectedRow * rowHeight + 0.75, width - 1.5, Math.max(2, rowHeight - 1.5));
+    }
+    context.fillStyle = "rgba(216, 232, 227, 0.5)";
+    context.font = "10px var(--font-geist-mono), monospace";
+    context.textAlign = "left";
+    context.fillText("−2 ms", 0, height - 7);
+    context.textAlign = "center";
+    context.fillText("sharpest change", zeroX, height - 7);
+    context.textAlign = "right";
+    context.fillText("+18 ms", width, height - 7);
+  }, [audioBuffer, focusPulses, selectedPulseId]);
+
+  useEffect(() => {
+    drawRail();
+    drawIntervalPath();
+    drawStack();
+    const redraw = () => {
+      drawRail();
+      drawIntervalPath();
+      drawStack();
+    };
+    window.addEventListener("resize", redraw);
+    return () => window.removeEventListener("resize", redraw);
+  }, [drawIntervalPath, drawRail, drawStack]);
+
+  const timeAtRailPointer = (event: ReactPointerEvent<HTMLCanvasElement>) => {
+    const rectangle = event.currentTarget.getBoundingClientRect();
+    const fraction = clamp((event.clientX - rectangle.left) / rectangle.width, 0, 1);
+    return viewStart + fraction * (viewEnd - viewStart);
+  };
+
+  const railPointerDown = (event: ReactPointerEvent<HTMLCanvasElement>) => {
+    if (!audioBuffer) return;
+    const time = timeAtRailPointer(event);
+    dragOriginRef.current = { time, x: event.clientX };
+    event.currentTarget.setPointerCapture(event.pointerId);
+    setSelection({ start: time, end: time });
+  };
+
+  const railPointerMove = (event: ReactPointerEvent<HTMLCanvasElement>) => {
+    const origin = dragOriginRef.current;
+    if (!origin) return;
+    const time = timeAtRailPointer(event);
+    setSelection({ start: Math.min(origin.time, time), end: Math.max(origin.time, time) });
+  };
+
+  const railPointerUp = (event: ReactPointerEvent<HTMLCanvasElement>) => {
+    const origin = dragOriginRef.current;
+    if (!origin) return;
+    const time = timeAtRailPointer(event);
+    if (Math.abs(event.clientX - origin.x) < 4) {
+      setSelection(null);
+      const rectangle = event.currentTarget.getBoundingClientRect();
+      const tolerance = ((viewEnd - viewStart) * 10) / rectangle.width;
+      const nearest = pulsesInRange(detection?.pulses ?? [], time - tolerance, time + tolerance)
+        .sort((a, b) => Math.abs(a.time - time) - Math.abs(b.time - time))[0];
+      if (nearest) choosePulse(nearest);
+      else seek(time);
+    } else {
+      const next = { start: Math.min(origin.time, time), end: Math.max(origin.time, time) };
+      setSelection(next);
+      setSelectedPulseId(null);
+      seek(next.start);
+    }
+    dragOriginRef.current = null;
+  };
+
+  const intervalPointerUp = (event: ReactPointerEvent<HTMLCanvasElement>) => {
+    if (!focusPulses.length) return;
+    const rectangle = event.currentTarget.getBoundingClientRect();
+    const fraction = clamp((event.clientX - rectangle.left - 48) / Math.max(1, rectangle.width - 66), 0, 1);
+    const time = focusStart + fraction * (focusEnd - focusStart);
+    const nearest = [...focusPulses].sort((a, b) => Math.abs(a.time - time) - Math.abs(b.time - time))[0];
+    if (nearest) choosePulse(nearest);
+  };
+
+  const stackPointerUp = (event: ReactPointerEvent<HTMLCanvasElement>) => {
+    if (!focusPulses.length) return;
+    const rectangle = event.currentTarget.getBoundingClientRect();
+    const plotHeight = rectangle.height * (335 / 360);
+    if (event.clientY - rectangle.top > plotHeight) return;
+    const row = clamp(
+      Math.floor(((event.clientY - rectangle.top) / plotHeight) * focusPulses.length),
+      0,
+      focusPulses.length - 1,
+    );
+    choosePulse(focusPulses[row]);
+  };
+
+  const saveObservation = () => {
+    const text = note.trim();
+    if (!text || !audioBuffer) return;
+    const start = selection?.start ?? selectedPulse?.time ?? currentTime;
+    const end = selection?.end ?? selectedPulse?.time ?? currentTime;
+    const item: Observation = {
+      id: typeof crypto.randomUUID === "function" ? crypto.randomUUID() : `${Date.now()}`,
+      start,
+      end,
+      text,
+      createdAt: new Date().toISOString(),
+    };
+    setObservations((current) => [...current, item].sort((a, b) => a.start - b.start));
+    setNote("");
+  };
+
+  const openObservation = (item: Observation) => {
+    seek(item.start);
+    if (item.end - item.start > 0.01) setSelection({ start: item.start, end: item.end });
+    const nextDuration = duration / zoom;
+    setViewStart(clamp(item.start - nextDuration * 0.2, 0, Math.max(0, duration - nextDuration)));
+  };
+
+  const exportSession = () => {
+    if (!file || !detection) return;
+    const payload = {
+      format: "sound-field-session-v2",
+      recording: {
+        name: file.name,
+        size: file.size,
+        lastModified: file.lastModified,
+        duration,
+        sampleRate: audioBuffer?.sampleRate,
+        channels: audioBuffer?.numberOfChannels,
+      },
+      pulseFinder: {
+        sensitivity,
+        minimumGapMilliseconds: minimumGap,
+        threshold: detection.threshold,
+        noiseFloor: detection.noiseFloor,
+        blockMilliseconds: detection.blockMilliseconds,
+      },
+      pulses: detection.pulses.map((pulse) => ({
+        time: pulse.time,
+        intervalBefore: pulse.intervalBefore,
+        amplitude: pulse.amplitude,
+        relativeStrength: pulse.strength,
+        tailRatio: pulse.tailRatio,
+        channel: pulse.channel + 1,
+      })),
+      observations,
+    };
+    const url = URL.createObjectURL(
+      new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" }),
+    );
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = `${file.name.replace(/\.[^.]+$/, "")}-sound-field.json`;
+    anchor.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const changeDetection = (kind: "sensitivity" | "gap", value: number) => {
+    setDetection(null);
+    setSelectedPulseId(null);
+    if (kind === "sensitivity") setSensitivity(value);
+    else setMinimumGap(value);
+  };
+
+  const selectionLabel = selection
+    ? `${formatTime(selection.start, true)} — ${formatTime(selection.end, true)}`
+    : selectedPulse
+      ? `Impulse at ${formatTime(selectedPulse.time, true)}`
+      : `At ${formatTime(currentTime, true)}`;
+
+  return (
+    <main className="app-shell">
+      <header className="topbar">
+        <div>
+          <p className="eyebrow">Open acoustic instrument</p>
+          <h1>Sound Field</h1>
+        </div>
+        <div className="header-actions">
+          <div className="privacy-note">
+            <span className="status-dot" aria-hidden="true" />
+            Audio stays on this device
+          </div>
+          <button type="button" onClick={exportSession} disabled={!detection || !file}>
+            Export this reading
+          </button>
+        </div>
+      </header>
+
+      <section
+        className={`file-dock ${isDraggingFile ? "is-dragging" : ""}`}
+        onDragEnter={(event) => {
+          event.preventDefault();
+          setIsDraggingFile(true);
+        }}
+        onDragOver={(event) => event.preventDefault()}
+        onDragLeave={() => setIsDraggingFile(false)}
+        onDrop={dropFile}
+      >
+        <input
+          ref={fileInputRef}
+          className="visually-hidden"
+          type="file"
+          accept="audio/*,.wav,.mp3,.m4a,.aac,.ogg,.flac"
+          onChange={chooseFile}
+        />
+        <div className="file-copy">
+          <p className="file-title">{file ? file.name : "Bring in a recording"}</p>
+          <p>
+            {file && audioBuffer
+              ? `${formatTime(duration, true)} · ${(audioBuffer.sampleRate / 1000).toFixed(1)} kHz · ${audioBuffer.numberOfChannels} ${audioBuffer.numberOfChannels === 1 ? "channel" : "channels"} · ${formatBytes(file.size)}`
+              : "Drop a recording here. The instrument reads it inside your browser."}
+          </p>
+        </div>
+        <button className="primary-button" type="button" onClick={() => fileInputRef.current?.click()}>
+          {isLoading ? "Opening…" : file ? "Open another" : "Choose recording"}
+        </button>
+      </section>
+
+      {loadError ? <p className="error-message">{loadError}</p> : null}
+
+      <audio
+        ref={audioRef}
+        src={audioUrl ?? undefined}
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+        onEnded={() => setIsPlaying(false)}
+      />
+
+      <section className="instrument-grid">
+        <div className="field-column">
+          <section className="control-deck panel">
+            <div className="transport-main">
+              <button
+                className="play-button"
+                type="button"
+                onClick={() => void togglePlay()}
+                disabled={!audioBuffer}
+              >
+                {isPlaying ? "Pause" : "Listen"}
+              </button>
+              <button type="button" onClick={() => seek(currentTime - 5)} disabled={!audioBuffer}>
+                −5 sec
+              </button>
+              <button type="button" onClick={() => seek(currentTime + 5)} disabled={!audioBuffer}>
+                +5 sec
+              </button>
+              <div className="time-readout">
+                <strong>{formatTime(currentTime, true)}</strong>
+                <span>/ {formatTime(duration, true)}</span>
+              </div>
+            </div>
+            <div className="view-controls">
+              <label className="range-control">
+                <span>Time magnification {zoom.toFixed(1)}×</span>
+                <input
+                  type="range"
+                  min="1"
+                  max="30"
+                  step="0.5"
+                  value={zoom}
+                  disabled={!audioBuffer}
+                  onChange={(event) => changeZoom(Number(event.target.value))}
+                />
+              </label>
+              <label className="range-control">
+                <span>Position in recording</span>
+                <input
+                  type="range"
+                  min="0"
+                  max={Math.max(0, duration - viewDuration)}
+                  step={Math.max(0.001, duration / 5000)}
+                  value={viewStart}
+                  disabled={!audioBuffer || zoom === 1}
+                  onChange={(event) => setViewStart(Number(event.target.value))}
+                />
+              </label>
+            </div>
+          </section>
+
+          <section className="pulse-finder panel">
+            <div className="finder-copy">
+              <p className="eyebrow">A movable lens, not a verdict</p>
+              <h2>Find sharp pressure changes</h2>
+              <p>
+                The lines below are moments this setting notices. Adjust it until the marks follow what you hear.
+              </p>
+            </div>
+            <label className="range-control detector-control">
+              <span>Sensitivity <strong>{sensitivity}</strong></span>
+              <input
+                type="range"
+                min="5"
+                max="95"
+                step="1"
+                value={sensitivity}
+                disabled={!audioBuffer}
+                onChange={(event) => changeDetection("sensitivity", Number(event.target.value))}
+              />
+            </label>
+            <label className="range-control detector-control">
+              <span>Keep events apart by <strong>{minimumGap} ms</strong></span>
+              <input
+                type="range"
+                min="2"
+                max="120"
+                step="1"
+                value={minimumGap}
+                disabled={!audioBuffer}
+                onChange={(event) => changeDetection("gap", Number(event.target.value))}
+              />
+            </label>
+            <div className="finder-count">
+              <strong>{detection ? detection.pulses.length.toLocaleString() : audioBuffer ? "…" : "0"}</strong>
+              <span>{detection ? "impulses noticed" : audioBuffer ? "reading recording" : "open a recording"}</span>
+            </div>
+          </section>
+
+          <section className="field-panel panel" aria-labelledby="sequence-title">
+            <div className="panel-heading">
+              <div>
+                <div className="heading-line">
+                  <h2 id="sequence-title">Impulse sequence</h2>
+                  <span className="truth-badge">Spacing remains exact</span>
+                </div>
+                <p>Each bright line is a detected sharp change. Drag to hold any region; click a line to inspect it.</p>
+              </div>
+              {selection ? (
+                <button className="quiet-button" type="button" onClick={() => setSelection(null)}>
+                  Release region
+                </button>
+              ) : null}
+            </div>
+            <canvas
+              ref={railRef}
+              className="field-canvas sequence-canvas"
+              role="img"
+              aria-label="Detected impulse sequence with exact timing"
+              onPointerDown={railPointerDown}
+              onPointerMove={railPointerMove}
+              onPointerUp={railPointerUp}
+              onPointerCancel={() => {
+                dragOriginRef.current = null;
+              }}
+            />
+            {!audioBuffer ? <div className="canvas-empty">The recording’s impulse sequence will form here.</div> : null}
+          </section>
+
+          <div className="pattern-grid">
+            <section className="field-panel panel" aria-labelledby="interval-title">
+              <div className="panel-heading compact">
+                <div>
+                  <h2 id="interval-title">Interval path</h2>
+                  <p>Height is the time since the previous impulse. The line follows their original order.</p>
+                </div>
+              </div>
+              <canvas
+                ref={intervalRef}
+                className="field-canvas interval-canvas"
+                role="img"
+                aria-label="Sequential path of time intervals between detected impulses"
+                onPointerUp={intervalPointerUp}
+              />
+            </section>
+
+            <section className="field-panel panel" aria-labelledby="stack-title">
+              <div className="panel-heading compact">
+                <div>
+                  <h2 id="stack-title">Aligned pressure shapes</h2>
+                  <p>One impulse per row, aligned at its sharpest change. Row order still follows time.</p>
+                </div>
+                <div className="polarity-key" aria-label="Pressure color key">
+                  <span className="negative-key">−</span>
+                  <span className="positive-key">+</span>
+                </div>
+              </div>
+              <canvas
+                ref={stackRef}
+                className="field-canvas stack-canvas"
+                role="img"
+                aria-label="Pressure shapes aligned at their sharpest change"
+                onPointerUp={stackPointerUp}
+              />
+            </section>
+          </div>
+
+          <section className="reading-boundary panel">
+            <p>
+              These views do not claim a speaker, word, intention, direction, or physical location. They expose
+              timing and pressure-shape structure already present in the recording so a listener can ask better
+              questions of it.
+            </p>
+          </section>
+        </div>
+
+        <aside className="side-column">
+          <section className="pulse-inspector panel">
+            <p className="eyebrow">One detected moment</p>
+            <h2>{selectedPulse ? formatTime(selectedPulse.time, true) : "Choose an impulse"}</h2>
+            {selectedPulse ? (
+              <>
+                <dl className="pulse-measures">
+                  <div>
+                    <dt>Gap before</dt>
+                    <dd>{formatInterval(selectedPulse.intervalBefore)}</dd>
+                  </div>
+                  <div>
+                    <dt>Relative strength</dt>
+                    <dd>{selectedPulse.strength.toFixed(2)}×</dd>
+                  </div>
+                  <div>
+                    <dt>Later / first energy</dt>
+                    <dd>{selectedPulse.tailRatio.toFixed(3)}</dd>
+                  </div>
+                  <div>
+                    <dt>Strongest channel</dt>
+                    <dd>{selectedPulse.channel + 1}</dd>
+                  </div>
+                </dl>
+                <div className="inspector-actions">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSelection({
+                        start: Math.max(0, selectedPulse.time - 0.12),
+                        end: Math.min(duration, selectedPulse.time + 0.3),
+                      });
+                      seek(Math.max(0, selectedPulse.time - 0.12));
+                    }}
+                  >
+                    Hold sound around it
+                  </button>
+                  <button type="button" onClick={() => void togglePlay()}>
+                    {isPlaying ? "Pause" : "Listen from here"}
+                  </button>
+                </div>
+              </>
+            ) : (
+              <p className="inspector-empty">
+                Click any bright line, point, or row. The same moment will illuminate across all three views.
+              </p>
+            )}
+          </section>
+
+          <section className="notes-column panel" aria-labelledby="observations-title">
+            <div className="notes-heading">
+              <div>
+                <p className="eyebrow">Your language, not ours</p>
+                <h2 id="observations-title">Observations</h2>
+              </div>
+              <span className="observation-count">{observations.length}</span>
+            </div>
+            <div className="selection-card">
+              <span>{selection ? "Held region" : selectedPulse ? "Chosen impulse" : "Listening position"}</span>
+              <strong>{selectionLabel}</strong>
+              <label className="toggle-row">
+                <input
+                  type="checkbox"
+                  checked={loopSelection}
+                  disabled={!selection}
+                  onChange={(event) => setLoopSelection(event.target.checked)}
+                />
+                Repeat held region
+              </label>
+            </div>
+            <label className="note-field">
+              <span>What are you noticing?</span>
+              <textarea
+                value={note}
+                onChange={(event) => setNote(event.target.value)}
+                placeholder="A recurrence, break, shape, question, possible relationship…"
+                rows={4}
+                disabled={!audioBuffer}
+              />
+            </label>
+            <button
+              className="primary-button full-width"
+              type="button"
+              onClick={saveObservation}
+              disabled={!audioBuffer || !note.trim()}
+            >
+              Save observation here
+            </button>
+            <div className="observation-list">
+              {observations.length ? (
+                observations.map((item) => (
+                  <article className="observation" key={item.id}>
+                    <button className="observation-open" type="button" onClick={() => openObservation(item)}>
+                      <span>
+                        {formatTime(item.start, true)}
+                        {item.end - item.start > 0.01 ? ` — ${formatTime(item.end, true)}` : ""}
+                      </span>
+                      <p>{item.text}</p>
+                    </button>
+                    <button
+                      className="delete-button"
+                      type="button"
+                      onClick={() => setObservations((current) => current.filter((entry) => entry.id !== item.id))}
+                    >
+                      Remove
+                    </button>
+                  </article>
+                ))
+              ) : (
+                <div className="empty-notes">
+                  <p>Your observations will collect here in time order.</p>
+                  <span>They remain on this device until you export the reading.</span>
+                </div>
+              )}
+            </div>
+          </section>
+        </aside>
+      </section>
+
+      <footer className="footer-note">
+        <p>Detection settings travel with exported readings, so another listener can recreate the same lens.</p>
+        <p className="shortcut-note">Space listens · arrows move 2 seconds</p>
+      </footer>
+    </main>
+  );
+}

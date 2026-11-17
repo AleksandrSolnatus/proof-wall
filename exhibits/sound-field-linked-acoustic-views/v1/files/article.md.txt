@@ -1,0 +1,41 @@
+# Sound Field: one moment, three views
+
+Before the project narrowed to custom recorders, it produced a browser instrument for examining an acoustic recording. Sound Field keeps a detected moment linked across an event sequence, the interval since its predecessor, and aligned waveform shapes. Selecting an event is intended to carry the listener to the same moment in each view.
+
+This is a retained software prototype, not a whale translator. The current Whales project explicitly preserves it as historical reference and does not authorize renewed app development. Preparing this exhibit changes neither that direction nor the application.
+
+## What was implemented
+
+The preserved source decodes a selected file through the browser audio API, finds candidate sharp pressure changes under adjustable sensitivity and spacing settings, and gives each retained event a sample position, time, channel and other numerical descriptors.
+
+The views answer different inspection questions. Where are the candidate events in the recording? How do their intervals change? What do their local waveform shapes look like when aligned? The interface also supports region selection, repeated listening, freeform observations and export of a reading with its detection settings.
+
+The settings matter: a different detection lens may yield a different set of candidate events. The detector caps a large result at 5,000 selected events; some displays further limit the events shown. A view is therefore not an unfiltered statement that every biologically meaningful click has been found.
+
+## Existing evidence we can reuse
+
+An existing successful public GitHub workflow, dated July 16, 2026, records build and deployment of the prototype at the pinned source commit in HISTORICAL-BUILD.json. The inspected calculation module, interface, stylesheet, package manifest, opening recording and static-build test match the corresponding files at that commit byte-for-byte.
+
+The static-build test checks the generated title, relative assets and presence of the bundled recording. It is not a detector-accuracy, synchronization, localization or behavioral test. A test source is not proof that every test command was run; the preserved workflow evidence establishes the recorded build/deploy outcome within its own scope. No application code, build or scientific test was executed for this exhibit preparation.
+
+The existing public instrument was reachable during the preparation link check. That check establishes page availability, not a new end-to-end certification of every interaction. The implementation remains available for inspection, rather than being recreated here.
+
+## Measurements and interpretation stay separate
+
+An impulsive event is a numerical candidate. It does not identify a speaker, a species, a word, an intention, a bearing or a physical location. The three linked views organize one recording; they do not supply the missing geometry of a distributed receiver array.
+
+The source processes a user-selected file in the browser. The opening demonstration fetches a bundled public recording, and notes are stored in browser local storage before export. An exported reading contains recording metadata, detected events, settings and the listener's notes; a reader should inspect it before sharing. No personal recording, saved note, browser storage or actual user export is included in this exhibit.
+
+## Source and replay boundaries
+
+The selected TypeScript, TSX, CSS and configuration files are exact copies served as inert text. SOURCE-GUIDE.md maps their original names and directory layout. The package and dependency lock are included, but dependency implementations and audio binaries are not redistributed in this Proof Wall packet.
+
+The opening sound is credited to NOAA through the Wikimedia Commons source record, which identifies it as public domain. Its exact preserved MP3 identity and pinned public source location are recorded so a reader can obtain the existing example rather than substitute an undocumented recording. This attribution does not imply NOAA endorsement of the detector or any biological interpretation.
+
+## What passes muster
+
+The material passes as an inspectable historical software prototype with preserved source and a recorded successful static build/deployment. It does not pass as a validated acoustic classifier, calibrated pressure instrument or demonstrated whale-scene reconstruction system. The project has no selected field partner or biological result on the strength of this interface.
+
+The useful next question is how candidate events compare with a known, independently annotated recording under declared settings. That question remains open here. The existing contribution is a way to move between representations while keeping the selected moment and the listener's uncertainty visible.
+
+The Bridges Group, with ChatGPT. All rights reserved for selected project-authored material; no new open-source license is granted. External dependencies and the NOAA recording retain their own provenance and terms.

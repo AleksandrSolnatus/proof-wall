@@ -1,0 +1,12 @@
+{
+  "publication_form": "unresolved engineering question with documented test plans",
+  "recorded_current_direction": "pool-first custom recorder learning; multi-recorder premise accepted",
+  "P0": "planned shared-clock reference",
+  "P1": "planned independent surface modules",
+  "observability": "canonical plan says implementation has not begun",
+  "controlled_multi_recorder_data": "No completed controlled run/audio/ground-truth result supplied in inspected canonical project records.",
+  "field_recovery_or_animal_result": "not established by these sources",
+  "biological_semantics_or_identity": "hypotheses only",
+  "schematics": "deferred references; circuit review and block measurements required by the source project, not completed by this curation",
+  "source_review_limit": "Earlier AI panels are design criticism, not independent proof of every physical/biological claim."
+}

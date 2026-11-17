@@ -1,0 +1,131 @@
+{
+  "attribution": "The Bridges Group, with ChatGPT.",
+  "original_bathybeacon_byline": null,
+  "publication": "private pending exact owner approval",
+  "proposed_terms": "Proposed all rights reserved for owner-directed material; no new open-source license. External sources retain their own rights.",
+  "copy_treatments": [
+    {
+      "file": "files/source/app/page.tsx.txt",
+      "treatment": "exact source bytes; inert renamed suffix where needed",
+      "source_sha256": "3aa62347bf09e394bbc9dcdc580981f36c11856c89a3507b8edcac354813ba22",
+      "source_dependencies": []
+    },
+    {
+      "file": "files/source/app/acoustic-analysis.ts.txt",
+      "treatment": "exact source bytes; inert renamed suffix where needed",
+      "source_sha256": "e05fe6ea6918691208de657669b70e874b2d6c9a83577dcf248a3bf466c2fd73",
+      "source_dependencies": []
+    },
+    {
+      "file": "files/source/app/globals.css.txt",
+      "treatment": "exact source bytes; inert renamed suffix where needed",
+      "source_sha256": "9caeb5c5a11a4d55cee6ff85980f8c1c4ab927d0cc8f3e066dafa0c32700e4d7",
+      "source_dependencies": []
+    },
+    {
+      "file": "files/source/src/main.tsx.txt",
+      "treatment": "exact source bytes; inert renamed suffix where needed",
+      "source_sha256": "ca09ce1379805c0ca29167f57d61e96c9ba438dd86da959231aa3dc40c55bb0d",
+      "source_dependencies": []
+    },
+    {
+      "file": "files/source/package.json",
+      "treatment": "exact source bytes; inert renamed suffix where needed",
+      "source_sha256": "b866e04c02be3149e0db40c022e04e93eb90afb23df24959e7a3089fbb48ca96",
+      "source_dependencies": []
+    },
+    {
+      "file": "files/source/pnpm-lock.yaml.txt",
+      "treatment": "exact source bytes; inert renamed suffix where needed",
+      "source_sha256": "32d28fd85fef7977ae8de24638bad803d2900c0a1b16161b7b71d18e06ac1e2f",
+      "source_dependencies": []
+    },
+    {
+      "file": "files/source/vite.config.ts.txt",
+      "treatment": "exact source bytes; inert renamed suffix where needed",
+      "source_sha256": "68f2a61e0dd4f07571fb8e83bcd54570a4fb21f7ae43ac81ded877cb841775c7",
+      "source_dependencies": []
+    },
+    {
+      "file": "files/source/tsconfig.json",
+      "treatment": "exact source bytes; inert renamed suffix where needed",
+      "source_sha256": "d86854245e60b89d7f9b5b2ca9818596e4356db0f3876614f570d27c75368e7a",
+      "source_dependencies": []
+    },
+    {
+      "file": "files/source/eslint.config.mjs",
+      "treatment": "exact source bytes; inert renamed suffix where needed",
+      "source_sha256": "aa2cbe10a0fef2edb992deeaeb6fe1fa8ec7f3b3df9595ba478fe40814badda9",
+      "source_dependencies": []
+    },
+    {
+      "file": "files/source/index.html.txt",
+      "treatment": "exact source bytes; inert renamed suffix where needed",
+      "source_sha256": "f7b8fb78d94f2443269c0196693c3f83ecdb44a8a770f43fe3cfc83729085460",
+      "source_dependencies": []
+    },
+    {
+      "file": "files/source/pnpm-workspace.yaml.txt",
+      "treatment": "exact source bytes; inert renamed suffix where needed",
+      "source_sha256": "ac02d96368617c760f093cfe61fdec64b6244007ab3553e0d6621f706f54a353",
+      "source_dependencies": []
+    },
+    {
+      "file": "files/source/tests/static-build.test.mjs",
+      "treatment": "exact source bytes; inert renamed suffix where needed",
+      "source_sha256": "c1b61ba39bd8cc3b7af5b3109078c532065860d2fac619ac7210aed246bc07d9",
+      "source_dependencies": []
+    },
+    {
+      "file": "files/source/scripts/check-wav-detection.ts.txt",
+      "treatment": "exact source bytes; inert renamed suffix where needed",
+      "source_sha256": "813235504ba28909487d54cb6652f4a28b6f261418008efb51e7e839a3a22580",
+      "source_dependencies": []
+    },
+    {
+      "file": "files/HISTORICAL-BUILD.json",
+      "treatment": "Selected public GitHub workflow facts and source-identity comparison; no runner/account or private receipt details.",
+      "source_sha256": null,
+      "source_dependencies": [
+        {
+          "sha256": "89bd25792947c1e16a2fc3470faec0678713fd8777814ee51fa128cc7c8a3f70",
+          "bytes": 1341
+        },
+        {
+          "sha256": "c1b61ba39bd8cc3b7af5b3109078c532065860d2fac619ac7210aed246bc07d9",
+          "bytes": 818
+        }
+      ]
+    },
+    {
+      "file": "files/SOURCE-GUIDE.md",
+      "treatment": "New reader guide with exact filenames/audio identity and existing public links; no audio or private sessions copied.",
+      "source_sha256": null,
+      "source_dependencies": [
+        {
+          "sha256": "545a0634eea92c7ce91ee5cde73640b77ab145e7abe834beedbf4639d1284d5b",
+          "bytes": 2178
+        },
+        {
+          "sha256": "3aa62347bf09e394bbc9dcdc580981f36c11856c89a3507b8edcac354813ba22",
+          "bytes": 41599
+        },
+        {
+          "sha256": "e05fe6ea6918691208de657669b70e874b2d6c9a83577dcf248a3bf466c2fd73",
+          "bytes": 5869
+        },
+        {
+          "sha256": "813235504ba28909487d54cb6652f4a28b6f261418008efb51e7e839a3a22580",
+          "bytes": 2746
+        },
+        {
+          "sha256": "edf94a98e5bdcb24e2ff5a169932d3b8d73058836253479140c7f83bd02c1222",
+          "bytes": 2390
+        }
+      ]
+    }
+  ],
+  "source_preservation": "Complete originals remain unchanged in canonical homes; no broad archive, private chat, personal media or device/account record is selected.",
+  "scientific_execution": false,
+  "external_notice": "Sound Field references React/Vite dependencies and a NOAA public-domain recording via Commons; neither dependency implementations nor audio binaries are copied. No third-party rights are replaced by proposed project terms."
+}

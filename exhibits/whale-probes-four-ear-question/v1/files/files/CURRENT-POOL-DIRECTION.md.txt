@@ -1,0 +1,121 @@
+# Pool Recorder Direction
+
+**Status: Current custom-build and learning direction. No parts have been selected or purchased.**
+
+## Accepted premise
+
+The project will proceed on the Owner's premise that several separated recorders are more useful than one recorder for preserving a whale acoustic scene. Controlled work will measure the size and limits of that advantage, but it will not use failure of one layout or reconstruction method to abandon the multi-recorder direction.
+
+The immediate goal is the simplest, least expensive, most durable reusable system that can teach us how several capture points should be built, synchronized, placed, tracked, and recovered. Development begins at the breadboard, moves to a dry recorder, and then enters a pool without animals.
+
+The recorder is also a learning instrument. Each block should have a purpose, a measurement, a likely failure and a way to establish its behavior before later blocks are added.
+
+## Design rules
+
+- Build identical single-purpose modules before specialized pods.
+- Keep raw continuous recordings; do not use automatic gain control or overwrite evidence with processing.
+- Give every capture point the same known acoustic path so recordings overlap and can be compared.
+- Use battery power around the pool. Keep mains power, chargers, exposed electronics, and swimmers out of the test area.
+- Keep electronics dry and accessible for the first pool stages. Deep housings, autonomous recovery, and underwater navigation are later problems.
+- Let buoyancy support the module and a small captive hanging mass establish depth and trim. Do not make a pool prototype fight currents, hover, or navigate.
+- Measure receiver position and motion independently before asking audio to recover them.
+- Make hydrophone, recorder core, float, suspension, ballast, and storage replaceable rather than sealing every function into one disposable object.
+- Build the acoustic and recording path ourselves from understandable modules. Commercial recorders may be used as measurement references, not substituted for the project.
+
+## Learning ladder
+
+### L0 — tools, signals, and safety
+
+Inventory the existing breadboards, Arduino-compatible boards, multimeter, oscilloscope or other measurement tools, soldering equipment, audio interface, hydrophones, components, and power supplies. Use low-voltage battery power for pool work and keep all breadboard lessons dry.
+
+### L1 — one dry analog ear
+
+On a breadboard, build and measure one block at a time: protected hydrophone input, quiet power and midpoint reference, fixed gain, anti-alias filtering, and a second lower-gain path only if clipping measurements justify it. Use a known electrical or acoustic input and record voltage, noise, frequency response, and clipping at each stage.
+
+### L2 — one complete recorder core
+
+Select an audio converter, stable clock, controller, local storage, and file format that can continuously record the required bandwidth without missing samples. Begin with development boards or breakout modules; a custom circuit board is earned only after the connections and measurements are stable.
+
+### L3 — repeat before miniaturizing
+
+Build a second identical core and compare them. Unit matching and clock drift must be understood before four housings or a polished board are made.
+
+## Two reference stages
+
+### P0 — shared-clock four-ear reference
+
+Use four matched hydrophones connected to one dry multichannel recorder. Mount them at known pool positions and use a repeatable non-whale click source on a measured path.
+
+P0 is not the final independent recorder. It establishes the best result available when channel synchronization is already solved. It must measure event coverage, clipping, channel matching, arrival differences, reconstruction, multipath, and repeatability.
+
+### P1 — four independent surface modules
+
+Build four identical battery-powered recorder modules. Each keeps its recorder and storage dry above the surface while one hydrophone hangs below on a quiet, measured suspension. The float supplies buoyancy; a captive reusable weight supplies trim; simple pool lines or overhead tracking supply position truth.
+
+Compare P1 directly with P0 using the same source paths. The difference reveals the actual cost of independent clocks, enclosures, motion, deployment, and recovery.
+
+Each P1 module should eventually contain only:
+
+1. one hydrophone and characterized fixed-gain input;
+2. one audio converter and stable sample clock;
+3. battery power;
+4. local continuous storage;
+5. a simple start/stop and health indication;
+6. a dry, serviceable surface enclosure;
+7. passive float, suspension, captive trim weight, and recovery handle; and
+8. an identity and configuration record that travels with every file.
+
+## Pool arrangements to compare
+
+Use the same four modules in several arrangements rather than building a different recorder for each hypothesis:
+
+1. co-located control — redundancy without useful aperture;
+2. compact cluster — local direction information;
+3. wide square — distributed two-dimensional coverage;
+4. depth-offset layout — added vertical information;
+5. fixed individual tethers — measured independent placement;
+6. freely moving floats with overhead ground truth; and
+7. moving floats analyzed again using only launch and recovery positions.
+
+Known fixed geometry comes first. Motion and withheld position are introduced only after the reference result is repeatable.
+
+## Architecture choices to compare
+
+No converter, controller, or clock is selected yet. The first options matrix should compare:
+
+- analog input topologies that work with the selected hydrophone;
+- simultaneous multichannel conversion for the P0 shared-clock reference;
+- converter and controller combinations suitable for one P1 recorder core;
+- stable-clock and cross-unit synchronization methods;
+- removable local storage and lossless file writing; and
+- breadboard, soldered prototype, and later custom-board costs at one and four units.
+
+High advertised sample rate does not establish usable whale-click capture. Each candidate must be tested for frequency response, self-noise, clipping, clock offset and drift, channel or unit matching, file integrity, enclosure acoustics, and repeatable synchronization. GPS synchronization may help outdoors, but an indoor pool requires a separate start reference and measured post-run alignment.
+
+Current evidence informing the comparison:
+
+- [Open Acoustic Devices](https://www.openacousticdevices.info/audiomoth) describes how a low-cost recorder combines a clock, local WAV storage, high sample rates, and an underwater case. HydroMoth is a cost and integration benchmark, not the recorder Whales intends to purchase as its solution.
+- The [CETI Bio-Logger paper](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0337093) demonstrates why the P0 reference matters: its simultaneous multichannel converter keeps populated hydrophone channels synchronized within one sample and its direction tests depend on matched channels and known geometry.
+- Open Acoustic Devices provides an outdoor [GPS synchronization system](https://www.openacousticdevices.info/gps-sync), but its suitability, indoor availability, and achieved sample alignment for P1 must be measured rather than assumed.
+
+## Evidence from every run
+
+Retain:
+
+- original files from every recorder;
+- recorder identity, firmware, gain, sample rate, start method, and clock references;
+- measured hydrophone and source coordinates through time;
+- source schedule and concealed path for blind runs;
+- photographs or video of geometry and deployment;
+- water temperature and pool dimensions;
+- detected-event and arrival-time tables;
+- comparison of every individual recorder with all four together;
+- reconstruction, uncertainty, and materially different alternatives; and
+- failures, handling noise, leaks, clock faults, missed events, and recovery problems.
+
+## Immediate design decision
+
+The next artifact is an inventory-led learning and parts matrix. It must start with what the Owner already has, identify the minimum parts for L1, and compare later P0/P1 choices by total cost per capture point, synchronization method, audio path, serviceability, pool safety, and what each stage can prove. Purchase follows that comparison, not the other way around.
+
+
+Exhibit copy notice: selected source explanation retained as a design plan, not a measured outcome or new authorization. The personal learning-background paragraph was replaced by its engineering-purpose summary. Canonical project direction and role permissions remain outside this exhibit.

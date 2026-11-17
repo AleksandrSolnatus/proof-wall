@@ -1,0 +1,27 @@
+# Source guide — historical Sound Field prototype
+
+Whales records this instrument as historical reference. No app restart, rebuild, install or deployment was performed here. Its source can be examined independently of the current recorder project.
+
+## Restore names when examining the source
+
+The current Proof Wall schema carries the TypeScript, TSX, CSS, YAML and HTML files as inert text. SOURCE-NOTICES.json maps the exact original names. Restore that logical layout in a separate directory before any reader-chosen replay. JSON and MJS originals retain their source suffixes. Do not treat a renamed file as rewritten code.
+
+The original package declares its Node and pnpm requirements and retains its dependency lock. The dependency implementations are not included. Readers choosing to install them must obtain their original licensed packages; this exhibit grants no new license over those packages. No dependency installation was performed for preparation.
+
+## Opening recording
+
+The retained bundled file is public/opening-sound.mp3, SHA-256 f3f065c23c942df5bbc39f12d6a5ce6773897f94a03a08612ea882e274fe5d7f. It is not copied into this packet. The existing source file is available at:
+
+https://raw.githubusercontent.com/AleksandrSolnatus/sound-field/ee8eafdc12f206fd651465fd9590bff733d4302a/public/opening-sound.mp3
+
+The source README attributes the demonstration to NOAA's rapid-click recording via Wikimedia Commons. The Commons record identifies NOAA as author and marks the recording public domain. This source identification was inspected; no recording was analyzed or recertified during preparation.
+
+https://commons.wikimedia.org/wiki/File:Sperm_Whale_Rapid_Clicks_and_Coda.ogg
+
+The existing instrument remains at https://aleksandrsolnatus.github.io/sound-field/ . That is an existing public destination, not a new deployment from this exhibit. Browser/audio compatibility and the detector's accuracy remain distinct from a static build passing.
+
+## Inspection scope
+
+The source uses adjustable candidate-event detection, links selected event identities across views, keeps personal notes in browser storage and exports recording metadata/settings/events/notes. No actual user audio, browser storage or exported reading is included. The opening sample is fetched by the historical application; do not construe local user-file decoding as a guarantee that no network request ever occurs.
+
+The WAV-checking script is a preserved inspection utility for 16-bit PCM RIFF/WAVE input. No outputs from that script or quantitative accuracy test are claimed in this packet. The static test checks packaging, not event truth. The 5,000-event cap and view selection limits remain in the original implementation.

@@ -1,0 +1,190 @@
+export type Pulse = {
+  id: number;
+  sampleIndex: number;
+  time: number;
+  channel: number;
+  amplitude: number;
+  strength: number;
+  tailRatio: number;
+  intervalBefore: number | null;
+};
+
+export type DetectionResult = {
+  pulses: Pulse[];
+  threshold: number;
+  noiseFloor: number;
+  blockMilliseconds: number;
+  limited: boolean;
+};
+
+export type AcousticBuffer = Pick<
+  AudioBuffer,
+  "sampleRate" | "length" | "numberOfChannels" | "getChannelData"
+>;
+
+function clamp(value: number, minimum: number, maximum: number) {
+  return Math.min(Math.max(value, minimum), maximum);
+}
+
+function percentile(sorted: Float32Array, position: number) {
+  if (!sorted.length) return 0;
+  const index = clamp(Math.round((sorted.length - 1) * position), 0, sorted.length - 1);
+  return sorted[index];
+}
+
+function strongestSample(
+  channels: Float32Array[],
+  start: number,
+  end: number,
+) {
+  let value = 0;
+  let sampleIndex = start;
+  let channelIndex = 0;
+
+  for (let channel = 0; channel < channels.length; channel += 1) {
+    const samples = channels[channel];
+    const safeStart = Math.max(1, start);
+    const safeEnd = Math.min(samples.length, end);
+    for (let index = safeStart; index < safeEnd; index += 1) {
+      const highPassed = Math.abs(samples[index] - samples[index - 1] * 0.985);
+      if (highPassed > value) {
+        value = highPassed;
+        sampleIndex = index;
+        channelIndex = channel;
+      }
+    }
+  }
+
+  return { value, sampleIndex, channelIndex };
+}
+
+export function detectPulses(
+  buffer: AcousticBuffer,
+  sensitivity: number,
+  minimumGapMilliseconds: number,
+): DetectionResult {
+  const sampleRate = buffer.sampleRate;
+  const channels = Array.from({ length: buffer.numberOfChannels }, (_, index) =>
+    buffer.getChannelData(index),
+  );
+  const targetBlockSize = Math.max(1, Math.round(sampleRate * 0.0005));
+  const blockSize = Math.max(targetBlockSize, Math.ceil(buffer.length / 1_200_000));
+  const blockCount = Math.ceil(buffer.length / blockSize);
+  const blockPeaks = new Float32Array(blockCount);
+
+  for (let block = 0; block < blockCount; block += 1) {
+    const start = block * blockSize;
+    const end = Math.min(buffer.length, start + blockSize);
+    blockPeaks[block] = strongestSample(channels, start, end).value;
+  }
+
+  const ordered = blockPeaks.slice();
+  ordered.sort();
+  const noiseFloor = percentile(ordered, 0.5);
+  const quantile = 0.999 - clamp(sensitivity, 0, 100) * 0.00032;
+  const floorMultiplier = 4.5 - clamp(sensitivity, 0, 100) * 0.035;
+  const threshold = Math.max(noiseFloor * floorMultiplier, percentile(ordered, quantile));
+  const minimumGapSamples = Math.max(
+    blockSize,
+    Math.round(sampleRate * (minimumGapMilliseconds / 1000)),
+  );
+
+  const candidateBlocks: number[] = [];
+  let clusterBestBlock = -1;
+  let clusterBestValue = 0;
+  let lastCandidateSample = -Infinity;
+
+  const finishCluster = () => {
+    if (clusterBestBlock >= 0) candidateBlocks.push(clusterBestBlock);
+    clusterBestBlock = -1;
+    clusterBestValue = 0;
+  };
+
+  for (let block = 0; block < blockPeaks.length; block += 1) {
+    const value = blockPeaks[block];
+    if (value < threshold) continue;
+    const sample = block * blockSize;
+    if (sample - lastCandidateSample > minimumGapSamples) finishCluster();
+    if (value > clusterBestValue) {
+      clusterBestValue = value;
+      clusterBestBlock = block;
+    }
+    lastCandidateSample = sample;
+  }
+  finishCluster();
+
+  const rawPulses: Pulse[] = candidateBlocks.map((block, id) => {
+    const center = block * blockSize;
+    const refined = strongestSample(
+      channels,
+      Math.max(0, center - blockSize),
+      Math.min(buffer.length, center + blockSize * 2),
+    );
+    const samples = channels[refined.channelIndex];
+    const earlyStart = Math.max(0, refined.sampleIndex - Math.round(sampleRate * 0.00035));
+    const earlyEnd = Math.min(samples.length, refined.sampleIndex + Math.round(sampleRate * 0.00085));
+    const tailStart = earlyEnd;
+    const tailEnd = Math.min(samples.length, refined.sampleIndex + Math.round(sampleRate * 0.012));
+    let amplitude = 0;
+    let earlyEnergy = 0;
+    let tailEnergy = 0;
+
+    for (let index = earlyStart; index < earlyEnd; index += 1) {
+      const sample = samples[index];
+      amplitude = Math.max(amplitude, Math.abs(sample));
+      earlyEnergy += sample * sample;
+    }
+    for (let index = tailStart; index < tailEnd; index += 1) {
+      const sample = samples[index];
+      tailEnergy += sample * sample;
+    }
+
+    const earlyAverage = earlyEnergy / Math.max(1, earlyEnd - earlyStart);
+    const tailAverage = tailEnergy / Math.max(1, tailEnd - tailStart);
+
+    return {
+      id,
+      sampleIndex: refined.sampleIndex,
+      time: refined.sampleIndex / sampleRate,
+      channel: refined.channelIndex,
+      amplitude,
+      strength: refined.value / Math.max(threshold, 1e-9),
+      tailRatio: Math.sqrt(tailAverage / Math.max(earlyAverage, 1e-12)),
+      intervalBefore: null,
+    } satisfies Pulse;
+  });
+
+  const limited = rawPulses.length > 5000;
+  const pulses = limited
+    ? rawPulses
+        .slice()
+        .sort((a, b) => b.strength - a.strength)
+        .slice(0, 5000)
+        .sort((a, b) => a.time - b.time)
+    : rawPulses;
+
+  pulses.forEach((pulse, index) => {
+    pulse.id = index;
+    pulse.intervalBefore = index ? pulse.time - pulses[index - 1].time : null;
+  });
+
+  return {
+    pulses,
+    threshold,
+    noiseFloor,
+    blockMilliseconds: (blockSize / sampleRate) * 1000,
+    limited,
+  };
+}
+
+export function pulsesInRange(
+  pulses: Pulse[],
+  start: number,
+  end: number,
+  limit = Infinity,
+) {
+  const matches = pulses.filter((pulse) => pulse.time >= start && pulse.time <= end);
+  if (matches.length <= limit) return matches;
+  const step = matches.length / limit;
+  return Array.from({ length: limit }, (_, index) => matches[Math.floor(index * step)]);
+}

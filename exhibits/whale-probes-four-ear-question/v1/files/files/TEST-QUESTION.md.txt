@@ -1,0 +1,39 @@
+# Test question — selected historical merit-test material
+
+This selection preserves the historical comparison/evidence requirements, not a completed test or an adopted field/pool construction protocol. Older open-water dimensions, proposed numerical pass thresholds, hardware instructions and third-party literature summaries are not selected. The current pool-first source supplies the accepted stage. No experiment was performed for this exhibit.
+
+## The comparison that matters
+
+
+Analyze the hidden run five times:
+
+1. hydrophone 1 alone;
+2. hydrophone 2 alone;
+3. hydrophone 3 alone;
+4. hydrophone 4 alone; and
+5. all four hydrophones together.
+
+For every version, report:
+
+- fraction of emitted pulses detected;
+- clipped or unusable pulses;
+- false events caused by reflections or noise;
+- whether the regular-to-rapid transition was recovered;
+- continuity of the inferred source activity; and
+- position error where localization is attempted.
+
+Do not compare the field only with the worst single receiver. Compare it with every receiver and with the best single receiver chosen after the run.
+
+
+## Evidence package
+
+
+Keep the result small enough that another person can inspect it:
+
+1. the original synchronized WAV files;
+2. a photograph and measured diagram of the geometry;
+3. the concealed path log and time-stamped video;
+4. the event-arrival table for all four hydrophones;
+5. one plot comparing each single receiver with the four-receiver result; and
+6. one map overlaying the recovered path and the revealed true path.
+

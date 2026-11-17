@@ -1,6 +1,5 @@
 {
-  "baseline_commit": "b58d339a662dcc4464932a6efb2559b51d3f12d7",
-  "exhibits": 48,
+  "exhibits": 50,
   "files": {
     ".nojekyll": {
       "bytes": 0,
@@ -2142,6 +2141,94 @@
       "bytes": 7670,
       "sha256": "c33735dc1b75055ce2c489076d6063edfb1d5aa538c3a3796bc925d7cc42c2ca"
     },
+    "exhibits/sound-field-linked-acoustic-views/v1/exhibit.json": {
+      "bytes": 16394,
+      "sha256": "8e8bb1697767736db11478fc75c0869fc8c75b74581b6c13f620e06aadbc00a5"
+    },
+    "exhibits/sound-field-linked-acoustic-views/v1/files/article.md.txt": {
+      "bytes": 5046,
+      "sha256": "84960c76492bd1abaf04763afc1f5e2729876edb356bc4386686b645f5b512a7"
+    },
+    "exhibits/sound-field-linked-acoustic-views/v1/files/files/CURRENT-STATUS.json.txt": {
+      "bytes": 1284,
+      "sha256": "156c3e942abfdd35347740dc2b201e7653cc2d72644874bc634413b7a21c9c5b"
+    },
+    "exhibits/sound-field-linked-acoustic-views/v1/files/files/HISTORICAL-BUILD.json.txt": {
+      "bytes": 2185,
+      "sha256": "63cd61b73b8e4b6788568d45b76d392544f453ff604ecaa880bb3f5a503aa0b1"
+    },
+    "exhibits/sound-field-linked-acoustic-views/v1/files/files/SOURCE-GUIDE.md.txt": {
+      "bytes": 2718,
+      "sha256": "ee1ea593752c3b7cc677a08b33086f3300fd0309b5d9da2b0983f91103e72c00"
+    },
+    "exhibits/sound-field-linked-acoustic-views/v1/files/files/SOURCE-NOTICES.json.txt": {
+      "bytes": 5645,
+      "sha256": "41f880e17fd96daa5dbbe19e03e3cb4f6bdea9d9b855c6098e9d8172e93fd87b"
+    },
+    "exhibits/sound-field-linked-acoustic-views/v1/files/files/source/app/acoustic-analysis.ts.txt.txt": {
+      "bytes": 5869,
+      "sha256": "e05fe6ea6918691208de657669b70e874b2d6c9a83577dcf248a3bf466c2fd73"
+    },
+    "exhibits/sound-field-linked-acoustic-views/v1/files/files/source/app/globals.css.txt.txt": {
+      "bytes": 14585,
+      "sha256": "9caeb5c5a11a4d55cee6ff85980f8c1c4ab927d0cc8f3e066dafa0c32700e4d7"
+    },
+    "exhibits/sound-field-linked-acoustic-views/v1/files/files/source/app/page.tsx.txt.txt": {
+      "bytes": 41599,
+      "sha256": "3aa62347bf09e394bbc9dcdc580981f36c11856c89a3507b8edcac354813ba22"
+    },
+    "exhibits/sound-field-linked-acoustic-views/v1/files/files/source/eslint.config.mjs.txt": {
+      "bytes": 623,
+      "sha256": "aa2cbe10a0fef2edb992deeaeb6fe1fa8ec7f3b3df9595ba478fe40814badda9"
+    },
+    "exhibits/sound-field-linked-acoustic-views/v1/files/files/source/index.html.txt.txt": {
+      "bytes": 539,
+      "sha256": "f7b8fb78d94f2443269c0196693c3f83ecdb44a8a770f43fe3cfc83729085460"
+    },
+    "exhibits/sound-field-linked-acoustic-views/v1/files/files/source/package.json.txt": {
+      "bytes": 820,
+      "sha256": "b866e04c02be3149e0db40c022e04e93eb90afb23df24959e7a3089fbb48ca96"
+    },
+    "exhibits/sound-field-linked-acoustic-views/v1/files/files/source/pnpm-lock.yaml.txt.txt": {
+      "bytes": 72372,
+      "sha256": "32d28fd85fef7977ae8de24638bad803d2900c0a1b16161b7b71d18e06ac1e2f"
+    },
+    "exhibits/sound-field-linked-acoustic-views/v1/files/files/source/pnpm-workspace.yaml.txt.txt": {
+      "bytes": 29,
+      "sha256": "ac02d96368617c760f093cfe61fdec64b6244007ab3553e0d6621f706f54a353"
+    },
+    "exhibits/sound-field-linked-acoustic-views/v1/files/files/source/scripts/check-wav-detection.ts.txt.txt": {
+      "bytes": 2746,
+      "sha256": "813235504ba28909487d54cb6652f4a28b6f261418008efb51e7e839a3a22580"
+    },
+    "exhibits/sound-field-linked-acoustic-views/v1/files/files/source/src/main.tsx.txt.txt": {
+      "bytes": 351,
+      "sha256": "ca09ce1379805c0ca29167f57d61e96c9ba438dd86da959231aa3dc40c55bb0d"
+    },
+    "exhibits/sound-field-linked-acoustic-views/v1/files/files/source/tests/static-build.test.mjs.txt": {
+      "bytes": 818,
+      "sha256": "c1b61ba39bd8cc3b7af5b3109078c532065860d2fac619ac7210aed246bc07d9"
+    },
+    "exhibits/sound-field-linked-acoustic-views/v1/files/files/source/tsconfig.json.txt": {
+      "bytes": 648,
+      "sha256": "d86854245e60b89d7f9b5b2ca9818596e4356db0f3876614f570d27c75368e7a"
+    },
+    "exhibits/sound-field-linked-acoustic-views/v1/files/files/source/vite.config.ts.txt.txt": {
+      "bytes": 209,
+      "sha256": "68f2a61e0dd4f07571fb8e83bcd54570a4fb21f7ae43ac81ded877cb841775c7"
+    },
+    "exhibits/sound-field-linked-acoustic-views/v1/index.html": {
+      "bytes": 20675,
+      "sha256": "fe9f3eca3614ce8018cbbee87af4a797a9d7e7272761d6fcfa2523a2386b21eb"
+    },
+    "exhibits/sound-field-linked-acoustic-views/v1/snapshot.json": {
+      "bytes": 2946,
+      "sha256": "accd227719072258b1755437873b45d6698a2c6f93275674f5553a9ba474115e"
+    },
+    "exhibits/sound-field-linked-acoustic-views/v1/submitted-manifest.json": {
+      "bytes": 12149,
+      "sha256": "31a3a9a02d6f63cf49c16380ca408808a9f3b9b2a7bcbac5f33561caf2cd9c9e"
+    },
     "exhibits/stir-the-pudding-research-trail/v2/exhibit.json": {
       "bytes": 27488,
       "sha256": "2bc7a7dbf43191649e7443a14ea1f37bd5985d563b21b6c95cc1c581df3bfed2"
@@ -2482,6 +2569,50 @@
       "bytes": 4032,
       "sha256": "6ced31b001082a2f647bc663e618f20d17e61c9f4781a89d4586a06c3c6dbf40"
     },
+    "exhibits/whale-probes-four-ear-question/v1/exhibit.json": {
+      "bytes": 7840,
+      "sha256": "e4127d47ed3b5c0d623a5549d8e721f68d668e6737fc8924270b9cb6e5490f09"
+    },
+    "exhibits/whale-probes-four-ear-question/v1/files/article.md.txt": {
+      "bytes": 5347,
+      "sha256": "0ae7f454f2865d930e9b448f48c926c0d542fb121e26a414962e98c633f6af00"
+    },
+    "exhibits/whale-probes-four-ear-question/v1/files/files/CLAIM-STATUS.json.txt": {
+      "bytes": 890,
+      "sha256": "942dce03fc34bf86cf2d5c903603afc67683aad94efa1e9cb94bf6cb9ff3c98c"
+    },
+    "exhibits/whale-probes-four-ear-question/v1/files/files/CURRENT-POOL-DIRECTION.md.txt": {
+      "bytes": 8643,
+      "sha256": "23b46cab2a616a00ef4d7ab6d85bac959c6d90475a90e099f53131defb1d3219"
+    },
+    "exhibits/whale-probes-four-ear-question/v1/files/files/OBSERVABILITY-PLAN.md.txt": {
+      "bytes": 2217,
+      "sha256": "e951841dd5992dd60908586a1dcf8d1959e5854b5700d9dd7f4ac0ad7cf4217e"
+    },
+    "exhibits/whale-probes-four-ear-question/v1/files/files/REVISION-TRAIL.md.txt": {
+      "bytes": 2211,
+      "sha256": "e47fd5490fe4cc693227e3c7d9e72cd163887ccb6dafee5504e481f9f7deb29c"
+    },
+    "exhibits/whale-probes-four-ear-question/v1/files/files/SOURCE-NOTICES.json.txt": {
+      "bytes": 3148,
+      "sha256": "5c83ac4cdee13257a421155884aa38acfb9b700fde4f361be1ba519746d69d47"
+    },
+    "exhibits/whale-probes-four-ear-question/v1/files/files/TEST-QUESTION.md.txt": {
+      "bytes": 1538,
+      "sha256": "5d9783b6aa5608f152ae5a2a6b29975c7e141905be539943bd284ee99e7f08f5"
+    },
+    "exhibits/whale-probes-four-ear-question/v1/index.html": {
+      "bytes": 14500,
+      "sha256": "91787733f00427801c2dfde839c11098302a54264947cbd3a4c8765f34d7807f"
+    },
+    "exhibits/whale-probes-four-ear-question/v1/snapshot.json": {
+      "bytes": 1248,
+      "sha256": "da61aaf60fc7de5cd6cdc11874f53dcfe440e7738030e3f6b66f6ae5a2c37ee8"
+    },
+    "exhibits/whale-probes-four-ear-question/v1/submitted-manifest.json": {
+      "bytes": 6213,
+      "sha256": "bab0f4ce8cc12f6ec39738f2bda4b80b2106c3d6d8e7e15b367f5fd2a40895e7"
+    },
     "exhibits/zero-up-001-schedule-eversion/v1/exhibit.json": {
       "bytes": 3785,
       "sha256": "84f1d89668d3d595070d97db63060a44f5b34c951256f185a90285488d6dfe5a"
@@ -2515,12 +2646,12 @@
       "sha256": "d1cf42ce64b01824f3c20d2eb7df88c95f8ffcbcc840f64a6c772c74989d4a8a"
     },
     "index.html": {
-      "bytes": 28743,
-      "sha256": "f56993482fb02e8098ffc60f7e737228d31d8055e247ae756941364a659bf6b4"
+      "bytes": 29837,
+      "sha256": "0e0a8ad31735fb128e665a840bc35ae49fd79601795e2e4780faaf2a53cb6905"
     },
     "index.json": {
-      "bytes": 39984,
-      "sha256": "f2f469251bf0047d83ae4c99d0710756884195075d94e8fe0640fc9984a6c763"
+      "bytes": 41615,
+      "sha256": "b4549dff3dd270b44fa20674c375c8ac61d5fd98b361629d52868dfce30f1b22"
     },
     "llms.txt": {
       "bytes": 489,
@@ -2535,13 +2666,5 @@
       "sha256": "9a8f34a02329dd77da6f2e6e4945f7c6e1d841e60a5c40157795f284f4b5f7ec"
     }
   },
-  "manifest_note": "This manifest excludes itself; existing public exhibit bytes are retained. Hashes establish bytes, not scientific truth or owner authentication.",
-  "mode": "release-candidate",
-  "new_exhibit": {
-    "id": "primes-zeros-001",
-    "package_sha256": "855238dc38a63c4e0de0757532d3568f426ddb28adf698dce2902b51cebc4ea1",
-    "version": 1
-  },
-  "published": false,
-  "schema_version": 1
+  "mode": "release-candidate"
 }
