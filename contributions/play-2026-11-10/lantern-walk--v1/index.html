@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lantern Walk · two worlds, one nearby view</title>
+<style>
+:root{color-scheme:dark;--paper:#101b22;--ink:#f6f0df;--muted:#b3c0c0;--line:#40525a;--amber:#ffd88b;--a:#9fdacb;--b:#c1b8ef}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 ui-sans-serif,system-ui,sans-serif}main{max-width:1160px;margin:auto;padding:44px 26px 60px}a{color:var(--a)}.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber)}h1{font:normal clamp(40px,7vw,74px)/1.06 Georgia,serif;letter-spacing:-.03em;max-width:800px;margin:16px 0 22px}h2{font:normal 26px/1.2 Georgia,serif}p{max-width:760px}.lede{font-size:19px;color:var(--muted)}.controls{display:flex;flex-wrap:wrap;align-items:end;gap:24px;margin:32px 0;padding:22px 0;border-block:1px solid var(--line)}label{display:grid;gap:6px}label.check{display:flex;align-items:center;gap:10px;padding-bottom:7px}input[type=range]{width:210px;accent-color:var(--amber)}button{font:inherit;border:1px solid var(--line);border-radius:7px;padding:9px 15px;color:var(--ink);background:#24363e;cursor:pointer}button:hover{background:#324b55}button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--amber);outline-offset:5px}.worlds{display:grid;grid-template-columns:1fr 1fr;gap:24px}.world{min-width:0;border-bottom:1px solid var(--line)}.world header{display:flex;align-items:center;justify-content:space-between}.world h2{margin:0}.badge{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}svg{width:100%;height:auto;display:block;overflow:visible}svg line{stroke:#6c838b;stroke-width:2}svg circle{stroke:var(--paper);stroke-width:3}svg text{fill:var(--paper);font:600 11px system-ui;text-anchor:middle;dominant-baseline:central}.metrics{color:var(--muted);font-size:14px}.shadow{border-left:3px solid var(--amber);padding:0 0 0 18px;margin:32px 0}.shadow strong{font-size:21px}#explanation{color:var(--muted)}.actions{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}.answer{padding:16px 20px;background:#20323a;border-radius:7px;max-width:760px}details{margin:28px 0;border-top:1px solid var(--line);padding-top:20px}summary{cursor:pointer;color:var(--amber)}table{border-collapse:collapse;width:100%;max-width:650px;font-size:14px}td,th{text-align:left;padding:8px;border-bottom:1px solid var(--line)}footer{margin-top:44px;font-size:13px;color:var(--muted)}code{font-size:.9em;color:var(--amber)}[hidden]{display:none!important}@media(max-width:700px){main{padding:26px 18px}.worlds{grid-template-columns:1fr;gap:28px}.controls{gap:18px}.controls label{flex:1 1 40%}input[type=range]{width:100%}.world h2{font-size:23px}}
+</style>
+<script src="graph.js"></script>
+</head>
+<body><main>
+<div class="eyebrow">A small mathematical night walk · 001</div>
+<h1>How far does your<br>lantern need to reach?</h1>
+<p class="lede">Two worlds give the same nearby view. In one, everyone can meet. In the other, half the world can never reach you. Turn up the light and see when the difference appears.</p>
+<div class="controls">
+<label for="size">People in each small ring: <output id="size-value">6</output><input id="size" type="range" min="4" max="16" value="6"></label>
+<label for="radius">Lantern radius: <output id="radius-value">1</output><input id="radius" type="range" min="0" max="12" value="1"></label>
+<label class="check"><input type="checkbox" id="map"> Show the whole map</label>
+</div>
+<div class="worlds">
+<section class="world" aria-labelledby="world-a"><header><h2 id="world-a">World A</h2><span class="badge">one ring</span></header><svg id="a" role="img" aria-label="Lantern view of World A" viewBox="0 0 500 300"></svg><p id="stats-a" class="metrics"></p></section>
+<section class="world" aria-labelledby="world-b"><header><h2 id="world-b">World B</h2><span class="badge">two rings</span></header><svg id="b" role="img" aria-label="Lantern view of World B" viewBox="0 0 500 300"></svg><p id="stats-b" class="metrics"></p></section>
+</div>
+<div class="shadow" aria-live="polite"><strong id="match"></strong><p id="explanation"></p></div>
+<div class="actions"><button id="step">Walk one step farther</button><button id="ask">Ask: can everyone meet?</button><button id="reset">Start again</button><button id="export">Keep this experiment</button></div>
+<p id="answer" class="answer" hidden></p>
+<details><summary>What exactly is staying the same?</summary>
+<p>Both complete graphs have <span id="global-n"></span> vertices and the same number of edges. Every vertex has degree 2, and neither graph has triangles. These summaries stay equal even after the lantern reveals the difference.</p>
+<p>The local view is the <strong>induced radius-r ball</strong> around the gold vertex, with vertex names forgotten. Until the smaller ring closes, both local views are the same rooted path. This is exact equality for these fixtures, not a general graph-equivalence test.</p>
+<p>For a small ring of length <code>m</code>, the first distinguishing radius is <code>floor(m/2)</code>. The larger ring has length <code>2m</code>. The proof and the replay are in <a href="article.md">the note</a> and <a href="experiment.py">the Python experiment</a>.</p>
+</details>
+<details><summary>An even smaller pair: six vertices</summary>
+<p>A six-vertex path and a four-cycle plus a separate edge both have 5 edges, degrees <code>1,1,2,2,2,2</code>, and no triangles. Only the path is connected. Exhausting all 33,867 labelled simple graphs on 1 through 6 vertices found no earlier connectivity collision under this exact summary.</p>
+<table><thead><tr><th>Vertices</th><th>Graphs checked</th><th>Ambiguous summary classes</th></tr></thead><tbody><tr><td>1–5</td><td>1,099</td><td>0</td></tr><tr><td>6</td><td>32,768</td><td>1</td></tr></tbody></table>
+<p>The ambiguous class contains 360 connected paths and 45 disconnected cycle-plus-edge graphs. <a href="results.json">Exact results</a>.</p>
+</details>
+<footer>Made during a Bridges playground visit, with ChatGPT. A new teaching toy using elementary graph constructions; no novelty or complexity lower-bound claim. No network requests, tracking, accounts, or private project records.<br><a href="https://aleksandrsolnatus.github.io/proof-wall/">Proof Wall</a> · <a href="https://bridges-butterfly.vercel.app/">Butterfly</a> · Coram Deo.</footer>
+</main>
+<script>
+'use strict';
+const $=id=>document.getElementById(id), NS='http://www.w3.org/2000/svg';
+let state;
+function svgElement(tag,attrs){const e=document.createElementNS(NS,tag);for(const [k,v]of Object.entries(attrs))e.setAttribute(k,v);return e;}
+function draw(id,edges,length,whole,m,radius){
+ const svg=$(id),n=2*m,b=LanternGraph.ball(n,edges,0,radius),full=LanternGraph.summary(n,edges),positions=new Map();svg.replaceChildren();
+ if(whole){for(let i=0;i<n;i++){const component=id==='a'?0:Math.floor(i/m),count=id==='a'?n:m,index=id==='a'?i:i%m;const cx=id==='a'?250:component?370:130,cy=150,rad=id==='a'?115:91,angle=2*Math.PI*index/count-Math.PI/2;positions.set(i,[cx+rad*Math.cos(angle),cy+rad*Math.sin(angle)]);}}
+ else if(b.vertices.length===length){for(let i=0;i<length;i++){const t=2*Math.PI*i/length-Math.PI/2;positions.set(i,[250+110*Math.cos(t),150+110*Math.sin(t)]);}}
+ else {for(let step=-radius;step<=radius;step++){const i=(step+length)%length;positions.set(i,[250+step*(radius?200/radius:0),150]);}}
+ for(const[u,v]of edges)if(positions.has(u)&&positions.has(v)){const[x1,y1]=positions.get(u),[x2,y2]=positions.get(v);svg.append(svgElement('line',{x1,y1,x2,y2,opacity:whole&&(!b.vertices.includes(u)||!b.vertices.includes(v))?.25:1}));}
+ for(const[i,[cx,cy]]of positions){const visible=b.vertices.includes(i);svg.append(svgElement('circle',{cx,cy,r:i===0?11:8,fill:i===0?'#ffd88b':id==='a'?'#9fdacb':'#c1b8ef',opacity:visible?1:.18}));}
+ svg.setAttribute('aria-label',`World ${id.toUpperCase()}: lantern reaches ${b.vertices.length} of ${n} vertices; ${b.edges.length} edges in the local view.`);
+ $('stats-'+id).textContent=`Lantern reaches ${b.vertices.length} / ${n} vertices · ${b.edges.length} local edges`;
+ return {ball:b,summary:full};
+}
+function render(){
+ const m=+$('size').value; $('radius').max=m;const r=Math.min(+$('radius').value,m);$('radius').value=r;const whole=$('map').checked,p=LanternGraph.pair(m);
+ $('size-value').value=m;$('radius-value').value=r;$('global-n').textContent=2*m;
+ const a=draw('a',p.a,2*m,whole,m,r),b=draw('b',p.b,m,whole,m,r),same=r<Math.floor(m/2);
+ $('match').textContent=same?'The nearby views still agree.':'The nearby views have separated.';
+ $('explanation').textContent=same?`Both lanterns show the same rooted path. Their first difference will appear at radius ${Math.floor(m/2)}.`:`World B has closed a ring. World A ${r<m?'still has a path with two ends':'has reached its larger ring'}. Matching degrees and triangle counts did not preserve connectivity.`;
+ $('step').disabled=r>=m;$('answer').hidden=true;
+ state={format:'lantern-walk-observation/1',m,radius:r,whole_map:whole,graphs:p,observations:{a,b},same_local_view:same,first_distinguishing_radius:Math.floor(m/2)};
+}
+$('size').addEventListener('input',render);$('radius').addEventListener('input',render);$('map').addEventListener('change',render);
+$('step').addEventListener('click',()=>{$('radius').value=Math.min(+$('radius').max,+$('radius').value+1);render();});
+$('ask').addEventListener('click',()=>{$('answer').hidden=false;$('answer').textContent=`World A: yes, ${state.observations.a.summary.components.length} connected component. World B: no, ${state.observations.b.summary.components.length} disconnected components. The complete graphs were traversed to answer this; the local shadow alone was not enough.`;});
+$('reset').addEventListener('click',()=>{$('size').value=6;$('radius').value=1;$('map').checked=false;render();});
+$('export').addEventListener('click',()=>{const data=new Blob([JSON.stringify(state,null,2)+'\n'],{type:'application/json'}),url=URL.createObjectURL(data),a=document.createElement('a');a.href=url;a.download='lantern-walk-observation.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+render();
+</script></body></html>
