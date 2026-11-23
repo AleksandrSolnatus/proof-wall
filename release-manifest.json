@@ -1,5 +1,5 @@
 {
-  "exhibits": 50,
+  "exhibits": 52,
   "files": {
     ".nojekyll": {
       "bytes": 0,
@@ -2505,6 +2505,38 @@
       "bytes": 11381,
       "sha256": "96957479ab6ae7d09831fea9d0f223484c5aa07ab50d8a2f39e35b6f7d990738"
     },
+    "exhibits/the-memory-of-a-meal/v1/exhibit.json": {
+      "bytes": 3143,
+      "sha256": "89f66bd39a46e7baf7417d54b0506d7c0679ed781cf318a244d82c1841895eb0"
+    },
+    "exhibits/the-memory-of-a-meal/v1/files/article.md.txt": {
+      "bytes": 3644,
+      "sha256": "1cf1c8d58b6c5ec539d34e4fcd4dbcd80f8daf0d0902054d66944a985416e923"
+    },
+    "exhibits/the-memory-of-a-meal/v1/files/files/results.json.txt": {
+      "bytes": 620,
+      "sha256": "16eb3dd7358af3ab9a79f45b63b0458ffdda6a69c3d1889861adfa5a4246faa3"
+    },
+    "exhibits/the-memory-of-a-meal/v1/index.html": {
+      "bytes": 10238,
+      "sha256": "547ad5afeb23d38cd8c9b391022250c90fe0c73e764021066f3cb05f95e438f9"
+    },
+    "exhibits/the-memory-of-a-meal/v1/interaction.css": {
+      "bytes": 1050,
+      "sha256": "554e66fcc15da7035b34566fd83127c1b1a4e7bed78bfea6c31393a47c3110a6"
+    },
+    "exhibits/the-memory-of-a-meal/v1/interaction.js": {
+      "bytes": 1564,
+      "sha256": "dc4c4fb2041d109c20ed530e25fb49014887efddb7e17a28d1e012e6e088c99f"
+    },
+    "exhibits/the-memory-of-a-meal/v1/snapshot.json": {
+      "bytes": 510,
+      "sha256": "99d415e113384e7fb4fe3b85695ea519fd35411d1171ef1179ff8fa76296d988"
+    },
+    "exhibits/the-memory-of-a-meal/v1/submitted-manifest.json": {
+      "bytes": 2637,
+      "sha256": "0a8ff3a3ed76942aa50e0d16de7d87892b5ad9db4fd18a438718c92efa658ef8"
+    },
     "exhibits/three-job-greedy-classification/v1/exhibit.json": {
       "bytes": 4823,
       "sha256": "b2f29bda974158d948ffa848c07ce339f736a5670ca7e9297dcd01451354b95f"
@@ -2536,6 +2568,38 @@
     "exhibits/three-job-greedy-classification/v1/submitted-manifest.json": {
       "bytes": 3944,
       "sha256": "d6d2924a4cdc495306ea5e7f82cc41e0652f1d399ae6d4102e5baeaf754861f0"
+    },
+    "exhibits/two-microseconds-two-futures/v1/exhibit.json": {
+      "bytes": 3187,
+      "sha256": "309ee8a9893a6ad90ce99a270d7c4029a22f2a168f84e642b978eed6bdc8e617"
+    },
+    "exhibits/two-microseconds-two-futures/v1/files/article.md.txt": {
+      "bytes": 4552,
+      "sha256": "772f2ddc3f6968b921a6844cd48c51965e86ab01a60135c953d34c05f61997f3"
+    },
+    "exhibits/two-microseconds-two-futures/v1/files/files/results.json.txt": {
+      "bytes": 1880,
+      "sha256": "4122c494de61a80e226f44d3b6b5b977f1ba3bbdfe8b8fce141957b3a1d7c07f"
+    },
+    "exhibits/two-microseconds-two-futures/v1/index.html": {
+      "bytes": 13845,
+      "sha256": "615c7a3799166fb15eaa7c32dc242b5018311832971e08758aa4c19ed331ab45"
+    },
+    "exhibits/two-microseconds-two-futures/v1/interaction.css": {
+      "bytes": 1050,
+      "sha256": "554e66fcc15da7035b34566fd83127c1b1a4e7bed78bfea6c31393a47c3110a6"
+    },
+    "exhibits/two-microseconds-two-futures/v1/interaction.js": {
+      "bytes": 1564,
+      "sha256": "dc4c4fb2041d109c20ed530e25fb49014887efddb7e17a28d1e012e6e088c99f"
+    },
+    "exhibits/two-microseconds-two-futures/v1/snapshot.json": {
+      "bytes": 511,
+      "sha256": "02c14078bbf9b9a0c403d7fa545121f21896a3093cfcca11779f4f588475e232"
+    },
+    "exhibits/two-microseconds-two-futures/v1/submitted-manifest.json": {
+      "bytes": 2680,
+      "sha256": "c821921dc35d7f5750af384450159dd20e74337a23e1c42868d374d47cc4a9ab"
     },
     "exhibits/website-storefront-accessible-illustration/v2/exhibit.json": {
       "bytes": 4996,
@@ -2646,12 +2710,12 @@
       "sha256": "d1cf42ce64b01824f3c20d2eb7df88c95f8ffcbcc840f64a6c772c74989d4a8a"
     },
     "index.html": {
-      "bytes": 29837,
-      "sha256": "0e0a8ad31735fb128e665a840bc35ae49fd79601795e2e4780faaf2a53cb6905"
+      "bytes": 30756,
+      "sha256": "ceac15e2ff4607475d0b8cf6a01b89b770d9c37f8eefbe100e45944d68d2d2f8"
     },
     "index.json": {
-      "bytes": 41615,
-      "sha256": "b4549dff3dd270b44fa20674c375c8ac61d5fd98b361629d52868dfce30f1b22"
+      "bytes": 43348,
+      "sha256": "703918eb63075e96637b4228d2d8b29dc2b09d7bd3e1c15649a05f2f98549c13"
     },
     "llms.txt": {
       "bytes": 489,
