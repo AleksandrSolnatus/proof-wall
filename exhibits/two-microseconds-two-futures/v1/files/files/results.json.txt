@@ -1,0 +1,91 @@
+{
+  "kind": "curated-source-summary-not-raw-replay",
+  "seed": 31001,
+  "checkpoint_s": 150.1,
+  "dt_s": 0.05,
+  "decision_s": 151,
+  "end_s": 180,
+  "threshold_s": 1.2,
+  "allowance_s": 1e-10,
+  "ticks_to_decision": 18,
+  "arms": {
+    "low": {
+      "credit_us": 299999,
+      "patch25_s": 151.05,
+      "choice_at_151": 25,
+      "choice_at_152": 41
+    },
+    "high": {
+      "credit_us": 300001,
+      "patch25_s": 151,
+      "choice_at_151": 41,
+      "choice_at_152": 41
+    }
+  },
+  "scenarios": [
+    {
+      "id": "baseline",
+      "label": "Original",
+      "low": {
+        "patch41_s": null,
+        "terminal_count": 28
+      },
+      "high": {
+        "patch41_s": 163.8,
+        "terminal_count": 29
+      }
+    },
+    {
+      "id": "threshold-low",
+      "label": "Threshold 1.199 s",
+      "low": {
+        "patch41_s": 163.8,
+        "terminal_count": 29
+      },
+      "high": {
+        "patch41_s": 163.8,
+        "terminal_count": 29
+      }
+    },
+    {
+      "id": "threshold-high",
+      "label": "Threshold 1.201 s",
+      "low": {
+        "patch41_s": null,
+        "terminal_count": 28
+      },
+      "high": {
+        "patch41_s": null,
+        "terminal_count": 28
+      }
+    },
+    {
+      "id": "delay",
+      "label": "Delay decision one tick",
+      "low": {
+        "patch41_s": 163.85,
+        "terminal_count": 29
+      },
+      "high": {
+        "patch41_s": 163.85,
+        "terminal_count": 29
+      }
+    },
+    {
+      "id": "swap",
+      "label": "Swap issued commands",
+      "low": {
+        "patch41_s": 177.8,
+        "terminal_count": 29
+      },
+      "high": {
+        "patch41_s": 169.3,
+        "terminal_count": 29
+      }
+    }
+  ],
+  "baseline_terminal_difference": [
+    "amphipod-patch-41"
+  ],
+  "provenance": "Rocky experiment, independently checked by Drago. Curated public outcomes from preserved private evidence."
+}

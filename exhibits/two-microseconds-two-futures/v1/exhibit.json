@@ -1,0 +1,81 @@
+{
+  "article": "article.md",
+  "artifact_type": "experiment",
+  "claim_scope": "Seed 31001, controlled checkpoint 150.1 s, dt 0.05 s, endpoint 180 s.",
+  "date": "2026-11-23",
+  "downloads": [
+    {
+      "bytes": 4552,
+      "original_path": "article.md",
+      "sha256": "772f2ddc3f6968b921a6844cd48c51965e86ab01a60135c953d34c05f61997f3",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 1880,
+      "original_path": "files/results.json",
+      "sha256": "4122c494de61a80e226f44d3b6b5b977f1ba3bbdfe8b8fce141957b3a1d7c07f",
+      "url": "files/files/results.json.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 4552,
+      "license": "All rights reserved; no new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Owner-authorized public reading and downloading of these selected materials.",
+      "role": "article",
+      "sha256": "772f2ddc3f6968b921a6844cd48c51965e86ab01a60135c953d34c05f61997f3"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 1880,
+      "license": "All rights reserved; no new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/results.json",
+      "rights": "Owner-authorized public reading and downloading of these selected materials.",
+      "role": "data",
+      "sha256": "4122c494de61a80e226f44d3b6b5b977f1ba3bbdfe8b8fce141957b3a1d7c07f"
+    }
+  ],
+  "finding": "A two-microsecond stored-credit difference changes which side of a decision the meal falls on and the final consumed patch set.",
+  "gardens": [],
+  "id": "two-microseconds-two-futures",
+  "limitations": [
+    "No general chaos, biological calibration or numerical convergence claim.",
+    "Exact cross-platform replay amended; earlier natural trajectory cause open."
+  ],
+  "method": "Pinned DEEP fork; independent intervention replay and exact terminal identity comparison.",
+  "open_questions": [
+    "Which earlier natural transition caused the position divergence at 131 s?"
+  ],
+  "package_sha256": "5033549de7cdee0d4e6521ab61191d8aab7c42e7f484cd0013a8f0c2ae68886a",
+  "provenance": {
+    "authors": [
+      "The Bridges Group, with ChatGPT"
+    ],
+    "change_note": "First public version. Curated findings and recorded outcomes from the pinned DEEP work.",
+    "origin": "Owner-directed DEEP work by Rocky, independently reviewed by Drago; curated November 23 handoff."
+  },
+  "publication": {
+    "attribution": "The Bridges Group, with ChatGPT.",
+    "intent": "request-review",
+    "license": "All rights reserved; no new open-source license granted.",
+    "rights": "Owner-authorized public reading and downloading of these selected materials."
+  },
+  "question": "Can a small handling-clock change move a feeding event across a decision boundary?",
+  "relations": [
+    {
+      "id": "the-memory-of-a-meal",
+      "reason": "Companion in Mathematics Found in DEEP.",
+      "type": "related-to",
+      "version": 1
+    }
+  ],
+  "sample": false,
+  "schema_version": 1,
+  "status": "verified-finite-result",
+  "title": "Two Microseconds, Two Futures",
+  "version": 1
+}

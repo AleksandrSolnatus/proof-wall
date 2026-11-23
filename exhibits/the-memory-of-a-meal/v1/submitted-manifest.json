@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "version": 1,
+  "date": "2026-11-23",
+  "sample": false,
+  "id": "the-memory-of-a-meal",
+  "title": "The Memory of a Meal",
+  "artifact_type": "proof",
+  "status": "mathematically-proved",
+  "article": "article.md",
+  "question": "When does a compressed state admit an exact deterministic update?",
+  "method": "Elementary factorization proof; independently checked one-step timer-deletion witness.",
+  "finding": "Equal codes with unequal encoded successors forbid an exact deterministic reduced update.",
+  "claim_scope": "The theorem for deterministic maps on stated domains; the DEEP witness for a domain containing the natural checkpoint and reset counterfactual.",
+  "limitations": [
+    "No claim of natural reachability for reset clone.",
+    "No general impossibility of compression or complexity claim."
+  ],
+  "provenance": {
+    "authors": [
+      "The Bridges Group, with ChatGPT"
+    ],
+    "origin": "Owner-directed DEEP work by Rocky, independently reviewed by Drago; curated November 23 handoff.",
+    "change_note": "First public version. Curated findings and recorded outcomes from the pinned DEEP work."
+  },
+  "publication": {
+    "intent": "request-review",
+    "rights": "Owner-authorized public reading and downloading of these selected materials.",
+    "license": "All rights reserved; no new open-source license granted.",
+    "attribution": "The Bridges Group, with ChatGPT."
+  },
+  "open_questions": [
+    "Which sufficient representation retains future-relevant information?"
+  ],
+  "relations": [
+    {
+      "type": "related-to",
+      "id": "two-microseconds-two-futures",
+      "version": 1,
+      "reason": "Companion in Mathematics Found in DEEP."
+    }
+  ],
+  "gardens": [],
+  "files": [
+    {
+      "path": "article.md",
+      "role": "article",
+      "media_type": "text/markdown",
+      "bytes": 3644,
+      "sha256": "1cf1c8d58b6c5ec539d34e4fcd4dbcd80f8daf0d0902054d66944a985416e923",
+      "rights": "Owner-authorized public reading and downloading of these selected materials.",
+      "license": "All rights reserved; no new open-source license granted.",
+      "attribution": "The Bridges Group, with ChatGPT."
+    },
+    {
+      "path": "files/results.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 620,
+      "sha256": "16eb3dd7358af3ab9a79f45b63b0458ffdda6a69c3d1889861adfa5a4246faa3",
+      "rights": "Owner-authorized public reading and downloading of these selected materials.",
+      "license": "All rights reserved; no new open-source license granted.",
+      "attribution": "The Bridges Group, with ChatGPT."
+    }
+  ]
+}

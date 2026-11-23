@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "version": 1,
+  "date": "2026-11-23",
+  "sample": false,
+  "id": "two-microseconds-two-futures",
+  "title": "Two Microseconds, Two Futures",
+  "artifact_type": "experiment",
+  "status": "verified-finite-result",
+  "article": "article.md",
+  "question": "Can a small handling-clock change move a feeding event across a decision boundary?",
+  "method": "Pinned DEEP fork; independent intervention replay and exact terminal identity comparison.",
+  "finding": "A two-microsecond stored-credit difference changes which side of a decision the meal falls on and the final consumed patch set.",
+  "claim_scope": "Seed 31001, controlled checkpoint 150.1 s, dt 0.05 s, endpoint 180 s.",
+  "limitations": [
+    "No general chaos, biological calibration or numerical convergence claim.",
+    "Exact cross-platform replay amended; earlier natural trajectory cause open."
+  ],
+  "provenance": {
+    "authors": [
+      "The Bridges Group, with ChatGPT"
+    ],
+    "origin": "Owner-directed DEEP work by Rocky, independently reviewed by Drago; curated November 23 handoff.",
+    "change_note": "First public version. Curated findings and recorded outcomes from the pinned DEEP work."
+  },
+  "publication": {
+    "intent": "request-review",
+    "rights": "Owner-authorized public reading and downloading of these selected materials.",
+    "license": "All rights reserved; no new open-source license granted.",
+    "attribution": "The Bridges Group, with ChatGPT."
+  },
+  "open_questions": [
+    "Which earlier natural transition caused the position divergence at 131 s?"
+  ],
+  "relations": [
+    {
+      "type": "related-to",
+      "id": "the-memory-of-a-meal",
+      "version": 1,
+      "reason": "Companion in Mathematics Found in DEEP."
+    }
+  ],
+  "gardens": [],
+  "files": [
+    {
+      "path": "article.md",
+      "role": "article",
+      "media_type": "text/markdown",
+      "bytes": 4552,
+      "sha256": "772f2ddc3f6968b921a6844cd48c51965e86ab01a60135c953d34c05f61997f3",
+      "rights": "Owner-authorized public reading and downloading of these selected materials.",
+      "license": "All rights reserved; no new open-source license granted.",
+      "attribution": "The Bridges Group, with ChatGPT."
+    },
+    {
+      "path": "files/results.json",
+      "role": "data",
+      "media_type": "application/json",
+      "bytes": 1880,
+      "sha256": "4122c494de61a80e226f44d3b6b5b977f1ba3bbdfe8b8fce141957b3a1d7c07f",
+      "rights": "Owner-authorized public reading and downloading of these selected materials.",
+      "license": "All rights reserved; no new open-source license granted.",
+      "attribution": "The Bridges Group, with ChatGPT."
+    }
+  ]
+}

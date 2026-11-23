@@ -1,0 +1,37 @@
+# Two Microseconds, Two Futures
+
+Mathematics Found in DEEP · The Bridges Group, with ChatGPT · 23 November 2026
+
+While building an ocean, we encountered a small mathematical experiment. Two versions of the same reef differ by two microseconds in the stored time a fish has spent handling food. A feeding event falls on different sides of a decision, and the two worlds end with different consumed resources.
+
+## The controlled experiment
+At 150.1 seconds in the fine-step reef (seed 31001, dt=0.05 s), clone the world. Change only rockcod-08's elapsed handling time for patch 25 to 0.299999 or 0.300001 seconds. Both remain in reach with sufficient gut capacity and no competing target for that patch. Eighteen ticks contribute 0.9 seconds. The feeding threshold is 1.2 seconds, with a 1e−10 s allowance. The higher-credit state crosses it before the next decision; the lower does not.
+
+- Initial handling time. Lower credit: 0.299999 s · Higher credit: 0.300001 s
+- Patch 25 consumed. Lower credit: 151.05 s · Higher credit: 151.00 s
+- Choice at 151.00 s. Lower credit: Patch 25 · Higher credit: Patch 41
+- Choice at 152.00 s. Lower credit: Patch 41 · Higher credit: Patch 41
+- Patch 41 consumed. Lower credit: Not by 180 s · Higher credit: 163.80 s
+- World-wide consumed patch count at 180 s. Lower credit: 28 · Higher credit: 29
+
+Sensing and choosing precede movement and feeding resolution within a step. The high-credit transfer is already complete at the 151 s sensing boundary. Low credit still sees patch 25 and selects it; high credit sees only patch 41. The differing cue counts also change RNG state. Both later choose the same patch, but that label is not the same as full-state equality. At 180 s the consumed-ID sets differ only by patch 41.
+
+## Testing the explanation
+Drago independently checked 18 full step-start pairs from 150.10 through 150.95 s (equal except the handling clock) and challenged the causal account with disposable replays.
+
+- Original. Low arm: patch 41 eaten / count: Not by 180 / 28 · High arm: patch 41 eaten / count: 163.8 / 29
+- Handling threshold 1.199 s. Low arm: patch 41 eaten / count: 163.8 / 29 · High arm: patch 41 eaten / count: 163.8 / 29
+- Handling threshold 1.201 s. Low arm: patch 41 eaten / count: Not by 180 / 28 · High arm: patch 41 eaten / count: Not by 180 / 28
+- Delay next decision by one tick. Low arm: patch 41 eaten / count: 163.85 / 29 · High arm: patch 41 eaten / count: 163.85 / 29
+- Swap issued command at 151 s. Low arm: patch 41 eaten / count: 177.8 / 29 · High arm: patch 41 eaten / count: 169.3 / 29
+
+The command swap is applied after ordinary sensing and choice, preserving the recipient's own random draws. It substitutes heading, speed, target and mode together. In the tested low-credit state the high command was sufficient to recover the extra feeding. In the tested high-credit state its original command was not necessary for eventual capture. These are state- and intervention-specific claims. The delay also shifts later decision times. The controls do not isolate one mediator as universally necessary.
+
+## What this establishes — and does not
+The controlled intervention is independently reproduced and explains a bounded causal difference. The earlier natural coarse/fine trajectory difference remains incompletely explained: we do not know which upstream transition put rockcod-08 inside patch-25 sensing range at 131 s in one run. Rocky initially lacked the original historical traces. Drago later recovered all three and reported matching their bytes on Root. In this release check, the regenerated traces matched all three recorded hashes. A tested bearing-bin swap changed headings without changing the terminal resource sets. The separate Linux and Mac controlled-fork traces differ slightly; outcome agreement is not cross-platform byte identity. The maximum reported absolute numeric discrepancy in the supplement was at most 3.34e−16.
+
+This is a synthetic model experiment, not proof of real animal behavior, mathematical chaos, general numerical convergence or P versus NP. The companion exhibit The Memory of a Meal gives the exact restricted mathematical obstruction suggested by this work.
+
+## Evidence and companion
+
+[The Memory of a Meal](https://aleksandrsolnatus.github.io/proof-wall/exhibits/the-memory-of-a-meal/v1/index.html) is the companion exhibit in Mathematics Found in DEEP. Download the curated results from this exhibit. The pinned simulator, original Rocky archive, and Drago review records are held in private custody.

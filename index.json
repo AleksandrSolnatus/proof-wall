@@ -763,6 +763,48 @@
       "title": "Four ears, one minute: what must the recorders know?",
       "url": "exhibits/whale-probes-four-ear-question/v1/index.html",
       "version": 1
+    },
+    {
+      "claim_scope": "The theorem for deterministic maps on stated domains; the DEEP witness for a domain containing the natural checkpoint and reset counterfactual.",
+      "gardens": [],
+      "id": "the-memory-of-a-meal",
+      "metadata": "exhibits/the-memory-of-a-meal/v1/exhibit.json",
+      "package_sha256": "2c5e2415cdb4605276d21e42b21af2247c41cee1fa01a5dc6493574a172f331c",
+      "question": "When does a compressed state admit an exact deterministic update?",
+      "relations": [
+        {
+          "id": "two-microseconds-two-futures",
+          "reason": "Companion in Mathematics Found in DEEP.",
+          "type": "related-to",
+          "version": 1
+        }
+      ],
+      "sample": false,
+      "status": "mathematically-proved",
+      "title": "The Memory of a Meal",
+      "url": "exhibits/the-memory-of-a-meal/v1/index.html",
+      "version": 1
+    },
+    {
+      "claim_scope": "Seed 31001, controlled checkpoint 150.1 s, dt 0.05 s, endpoint 180 s.",
+      "gardens": [],
+      "id": "two-microseconds-two-futures",
+      "metadata": "exhibits/two-microseconds-two-futures/v1/exhibit.json",
+      "package_sha256": "5033549de7cdee0d4e6521ab61191d8aab7c42e7f484cd0013a8f0c2ae68886a",
+      "question": "Can a small handling-clock change move a feeding event across a decision boundary?",
+      "relations": [
+        {
+          "id": "the-memory-of-a-meal",
+          "reason": "Companion in Mathematics Found in DEEP.",
+          "type": "related-to",
+          "version": 1
+        }
+      ],
+      "sample": false,
+      "status": "verified-finite-result",
+      "title": "Two Microseconds, Two Futures",
+      "url": "exhibits/two-microseconds-two-futures/v1/index.html",
+      "version": 1
     }
   ],
   "gardens": "gardens.json",

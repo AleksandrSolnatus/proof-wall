@@ -1,0 +1,81 @@
+{
+  "article": "article.md",
+  "artifact_type": "proof",
+  "claim_scope": "The theorem for deterministic maps on stated domains; the DEEP witness for a domain containing the natural checkpoint and reset counterfactual.",
+  "date": "2026-11-23",
+  "downloads": [
+    {
+      "bytes": 3644,
+      "original_path": "article.md",
+      "sha256": "1cf1c8d58b6c5ec539d34e4fcd4dbcd80f8daf0d0902054d66944a985416e923",
+      "url": "files/article.md.txt"
+    },
+    {
+      "bytes": 620,
+      "original_path": "files/results.json",
+      "sha256": "16eb3dd7358af3ab9a79f45b63b0458ffdda6a69c3d1889861adfa5a4246faa3",
+      "url": "files/files/results.json.txt"
+    }
+  ],
+  "files": [
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 3644,
+      "license": "All rights reserved; no new open-source license granted.",
+      "media_type": "text/markdown",
+      "path": "article.md",
+      "rights": "Owner-authorized public reading and downloading of these selected materials.",
+      "role": "article",
+      "sha256": "1cf1c8d58b6c5ec539d34e4fcd4dbcd80f8daf0d0902054d66944a985416e923"
+    },
+    {
+      "attribution": "The Bridges Group, with ChatGPT.",
+      "bytes": 620,
+      "license": "All rights reserved; no new open-source license granted.",
+      "media_type": "application/json",
+      "path": "files/results.json",
+      "rights": "Owner-authorized public reading and downloading of these selected materials.",
+      "role": "data",
+      "sha256": "16eb3dd7358af3ab9a79f45b63b0458ffdda6a69c3d1889861adfa5a4246faa3"
+    }
+  ],
+  "finding": "Equal codes with unequal encoded successors forbid an exact deterministic reduced update.",
+  "gardens": [],
+  "id": "the-memory-of-a-meal",
+  "limitations": [
+    "No claim of natural reachability for reset clone.",
+    "No general impossibility of compression or complexity claim."
+  ],
+  "method": "Elementary factorization proof; independently checked one-step timer-deletion witness.",
+  "open_questions": [
+    "Which sufficient representation retains future-relevant information?"
+  ],
+  "package_sha256": "2c5e2415cdb4605276d21e42b21af2247c41cee1fa01a5dc6493574a172f331c",
+  "provenance": {
+    "authors": [
+      "The Bridges Group, with ChatGPT"
+    ],
+    "change_note": "First public version. Curated findings and recorded outcomes from the pinned DEEP work.",
+    "origin": "Owner-directed DEEP work by Rocky, independently reviewed by Drago; curated November 23 handoff."
+  },
+  "publication": {
+    "attribution": "The Bridges Group, with ChatGPT.",
+    "intent": "request-review",
+    "license": "All rights reserved; no new open-source license granted.",
+    "rights": "Owner-authorized public reading and downloading of these selected materials."
+  },
+  "question": "When does a compressed state admit an exact deterministic update?",
+  "relations": [
+    {
+      "id": "two-microseconds-two-futures",
+      "reason": "Companion in Mathematics Found in DEEP.",
+      "type": "related-to",
+      "version": 1
+    }
+  ],
+  "sample": false,
+  "schema_version": 1,
+  "status": "mathematically-proved",
+  "title": "The Memory of a Meal",
+  "version": 1
+}

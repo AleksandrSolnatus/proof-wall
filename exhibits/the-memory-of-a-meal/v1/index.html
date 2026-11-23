@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer"><meta name="color-scheme" content="light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>The Memory of a Meal · Proof Wall</title><link rel="stylesheet" href="../../../assets/wall.css">
+<link rel="alternate" type="application/json" href="../../../index.json" title="Research index">
+<script src="../../../assets/wall.js" defer></script><link rel="stylesheet" href="interaction.css"><script src="interaction.js" defer></script></head><body><nav class="workshop-return" aria-label="Return to the workshop"><a href="https://bridges.c-amar.chatgpt.site/#work">← Bridges</a></nav>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="../../../index.html"><span class="mark" aria-hidden="true">∴</span> Proof Wall</a>
+<nav aria-label="Main"><a href="../../../index.html">The wall</a><a href="../../../paths.html">Little paths</a><a href="../../../contribute.html">Contribute</a></nav></header>
+<main id="main"><a class="back" href="../../../index.html">← The wall</a>
+<div class="exhibit-heading"><p class="eyebrow">the-memory-of-a-meal / v1 · 2026-11-23</p>
+<h1>The Memory of a Meal</h1><span class="status">mathematically proved</span><p class="scope">The theorem for deterministic maps on stated domains; the DEEP witness for a domain containing the natural checkpoint and reset counterfactual.</p></div>
+<aside class="notice"><h2>Later work points here</h2><ul><li><a href="../../../exhibits/two-microseconds-two-futures/v1/index.html">Two Microseconds, Two Futures (v1)</a> related to this exhibit. Companion in Mathematics Found in DEEP.</li></ul></aside>
+<div class="reading-layout"><article><section><h2>The question</h2><p>When does a compressed state admit an exact deterministic update?</p><h2>The method</h2><p>Elementary factorization proof; independently checked one-step timer-deletion witness.</p><h2>The finding</h2><p>Equal codes with unequal encoded successors forbid an exact deterministic reduced update.</p></section>
+<section id="meal" class="deep-demo" aria-labelledby="meal-title" hidden>
+<h2 id="meal-title">Keep or omit the clock</h2>
+<p>Illustration of the checked witness at 150.10 s. Changing the representation leaves the two states fixed.</p>
+<label>Representation<select><option value="keep">Keep handling time</option><option value="omit">Omit handling time</option></select></label>
+<div class="lanes"><div class="lane"><h3>Natural checkpoint</h3><p>Reached by the original model.</p><p data-clock>Handling time: 1.150719588341451 s</p><p data-result hidden>Patch 25 transferred at 150.15 s.</p></div><div class="lane"><h3>Reset-clock clone</h3><p>Admitted counterfactual.</p><p data-clock>Handling time: 0 s</p><p data-result hidden>No patch-25 transfer in this step.</p></div></div>
+<button type="button" data-advance>Advance one step</button><button type="button" data-reset>Reset</button>
+<p role="status"></p></section><section class="original"><p class="eyebrow">Research text · rendered from the supplied Markdown</p><h2>The Memory of a Meal</h2>
+<p>Mathematics Found in DEEP · The Bridges Group, with ChatGPT · 23 November 2026</p>
+<p>A fish can be in the same place, facing the same food, with the same stored world around it, yet be at a different point in the work of eating. Can a representation forget that work and still predict exactly what happens next?</p>
+<h3>A small theorem</h3>
+<p>Let S be a set of states, T:S→S a deterministic transition, and C:S→M a representation. An exact deterministic reduced update F:C(S)→C(S), satisfying F(C(s))=C(T(s)) for every s∈S, exists if and only if</p>
+<p>C(x)=C(y) implies C(T(x))=C(T(y)) for every x,y∈S.</p>
+<p>Proof. If F exists, equal inputs to F give equal outputs. Therefore C(x)=C(y) implies C(T(x))=C(T(y)). Conversely, if the implication holds, define F(m)=C(T(s)) for any state s with C(s)=m. The implication makes this definition independent of the representative, and closure gives F(m)∈C(S). Thus F exists. ∎</p>
+<p>The theorem is an elementary factorization condition, not a claim of novelty. For a restricted one-step domain that is not closed under T, take C defined on the admitted inputs D and their successors T(D). The same argument gives a map F:C(D)→M; the counterexample needs only two admitted inputs and their defined next states.</p>
+<h3>The witness from DEEP</h3>
+<p>In the pinned coastal reef model, rockcod-08 handles amphipod-patch-25. At time 150.1 s, compare the naturally reached checkpoint, whose handling time is 1.150719588341451 s, to a validated clone with that one field reset to zero. All other fields are equal. Define C to delete only elapsed handling time and retain everything else.</p>
+<ul><li>Natural checkpoint. Handling time: 1.150719588341451 s · One original 0.05 s step later: Patch 25 transferred at 150.15 s</li></ul>
+<ul><li>Reset-clock clone. Handling time: 0 s · One original 0.05 s step later: No patch-25 transfer</li></ul>
+<p>C(x)=C(y), but their encoded successors differ in retained resource state. Consequently the proposed reduced representation cannot have an exact deterministic update on any domain containing these two admitted states. The original checkpoint is naturally reached; the reset-clock state is a counterfactual, not established to be naturally reachable. Nothing here rules out other sufficient representations or establishes impossibility on the naturally reachable domain alone.</p>
+<h3>What was learned</h3>
+<p>Current location, target and the rest of the retained state cannot replace the omitted handling clock in this example. A summary of past work can be necessary for the next transition even when the complete past is not. The question is not how much history can be discarded, but whether the chosen representation preserves what the future requires.</p>
+<p>Rocky developed the witness. An early receipt held a mutable reference and showed the reset clock at a later time. Rocky fixed it by capturing a snapshot. Drago independently checked the corrected witness and rejected four negative controls: missing RNG state, an omitted interior frame, a shifted restart, and a same-count substitution of a resource ID. Read the companion exhibit Two Microseconds, Two Futures for the longer clock intervention. The theorem is exact; the witness belongs to the specified synthetic simulator. Neither is a claim about real fish or computational complexity.</p>
+<h3>Evidence and companion</h3>
+<p><a href="https://aleksandrsolnatus.github.io/proof-wall/exhibits/two-microseconds-two-futures/v1/index.html" rel="noreferrer">Two Microseconds, Two Futures</a> is the companion exhibit in Mathematics Found in DEEP. Download the curated results from this exhibit. The pinned simulator, original Rocky archive, and Drago review records are held in private custody.</p></section>
+<section class="limits"><h2>Limits &amp; open questions</h2><ul><li>No claim of natural reachability for reset clone.</li><li>No general impossibility of compression or complexity claim.</li></ul><h3>Still open</h3><ul><li>Which sufficient representation retains future-relevant information?</li></ul></section>
+<section><h2>Little paths</h2><ul><li><span class="status">related to</span> <a href="../../../exhibits/two-microseconds-two-futures/v1/index.html">two-microseconds-two-futures / v1</a><p>Companion in Mathematics Found in DEEP.</p></li></ul></section></article>
+<aside class="evidence"><h2>Inspect the evidence</h2><p>Original bytes, with recorded hashes. Downloads retain their original names; hosted copies use inert suffixes.</p><ul><li><a download="article.md" href="files/article.md.txt">article.md</a>
+<span>article · 3,644 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">1cf1c8d58b6c5ec539d34e4fcd4dbcd80f8daf0d0902054d66944a985416e923</code><p>The Bridges Group, with ChatGPT.</p><p>Owner-authorized public reading and downloading of these selected materials.</p><p>All rights reserved; no new open-source license granted.</p></details></li><li><a download="results.json" href="files/files/results.json.txt">files/results.json</a>
+<span>data · 620 bytes</span><details><summary>Hash, attribution &amp; rights</summary>
+<code class="hash">16eb3dd7358af3ab9a79f45b63b0458ffdda6a69c3d1889861adfa5a4246faa3</code><p>The Bridges Group, with ChatGPT.</p><p>Owner-authorized public reading and downloading of these selected materials.</p><p>All rights reserved; no new open-source license granted.</p></details></li></ul>
+<p><a href="exhibit.json">Exhibit JSON</a> · <a href="submitted-manifest.json">Original manifest</a> · <a href="snapshot.json">Snapshot</a></p>
+<h3>Provenance</h3><p>The Bridges Group, with ChatGPT</p><p>Owner-directed DEEP work by Rocky, independently reviewed by Drago; curated November 23 handoff.</p><h3>Version note</h3><p>First public version. Curated findings and recorded outcomes from the pinned DEEP work.</p>
+<h3>Publication &amp; reuse</h3><p>The Bridges Group, with ChatGPT.</p><p>Owner-authorized public reading and downloading of these selected materials.</p><p>All rights reserved; no new open-source license granted.</p>
+<p class="fine">Publication review is not a mathematical certification. A finite test is not a general proof.</p>
+<a href="../../../contribute.html?exhibit=the-memory-of-a-meal%40v1">Suggest a correction or connection →</a></aside></div></main><footer><span>We attract by method.</span><nav aria-label="Other places in the workshop"><a href="../../../paths.html">Other places in the workshop</a> · <a href="https://bridges.c-amar.chatgpt.site/" rel="noreferrer">Return to Bridges</a></nav><div><a href="../../../index.json">Machine-readable index</a> · <a href="../../../llms.txt">For agents</a> · <a href="../../../release-manifest.json">File hashes</a></div><p>No accounts, analytics, or submission server. Hosting providers may keep security logs.</p></footer></body></html>

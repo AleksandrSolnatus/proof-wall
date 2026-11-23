@@ -1,0 +1,13 @@
+.deep-demo { background:#eef1eb; border:1px solid var(--rule); padding:clamp(1rem,3vw,1.5rem); border-radius:4px; }
+.deep-demo [hidden] { display:none !important; }
+.deep-demo .lanes { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.8rem; margin:.9rem 0; }
+.deep-demo .lane { border-top:3px solid #66847e; background:#fffdf8; padding:1rem; overflow-wrap:anywhere; }
+.deep-demo .lane:nth-child(2) { border-top-color:#9a764a; }
+.deep-demo h3 { font-size:1rem; margin:0 0 .6rem; }
+.deep-demo .lane p, .deep-demo ol { margin:.4rem 0; }
+.deep-demo ol { padding-left:1.3rem; }
+.deep-demo select,.deep-demo button { min-height:44px; max-width:100%; font:inherit; color:var(--ink); background:#fffdf8; border:1px solid #607773; border-radius:3px; padding:.35rem .55rem; }
+.deep-demo select { display:block; margin:.3rem 0 .8rem; }
+.deep-demo button { margin:.3rem .25rem .3rem 0; }
+.deep-demo :focus-visible { outline:3px solid var(--blue); outline-offset:3px; }
+@media(max-width:540px) { .deep-demo .lanes { grid-template-columns:1fr; } }

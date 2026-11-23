@@ -1,0 +1,18 @@
+{
+  "kind": "curated-source-summary-not-raw-replay",
+  "seed": 31001,
+  "actor": "rockcod-08",
+  "resource": "amphipod-patch-25",
+  "checkpoint_s": 150.1,
+  "dt_s": 0.05,
+  "natural_handling_s": 1.150719588341451,
+  "reset_handling_s": 0,
+  "natural_transfer_s": 150.15,
+  "reset_transfer_s": null,
+  "removed_field": "elapsed handling time of selected actor",
+  "natural_reachability": {
+    "natural": true,
+    "reset": "validated counterfactual; natural reachability not established"
+  },
+  "provenance": "Rocky experiment, independently checked by Drago. Curated public outcomes from preserved private evidence."
+}

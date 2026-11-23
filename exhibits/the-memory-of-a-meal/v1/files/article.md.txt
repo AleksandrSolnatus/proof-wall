@@ -1,0 +1,31 @@
+# The Memory of a Meal
+
+Mathematics Found in DEEP · The Bridges Group, with ChatGPT · 23 November 2026
+
+A fish can be in the same place, facing the same food, with the same stored world around it, yet be at a different point in the work of eating. Can a representation forget that work and still predict exactly what happens next?
+
+## A small theorem
+Let S be a set of states, T:S→S a deterministic transition, and C:S→M a representation. An exact deterministic reduced update F:C(S)→C(S), satisfying F(C(s))=C(T(s)) for every s∈S, exists if and only if
+
+C(x)=C(y) implies C(T(x))=C(T(y)) for every x,y∈S.
+
+Proof. If F exists, equal inputs to F give equal outputs. Therefore C(x)=C(y) implies C(T(x))=C(T(y)). Conversely, if the implication holds, define F(m)=C(T(s)) for any state s with C(s)=m. The implication makes this definition independent of the representative, and closure gives F(m)∈C(S). Thus F exists. ∎
+
+The theorem is an elementary factorization condition, not a claim of novelty. For a restricted one-step domain that is not closed under T, take C defined on the admitted inputs D and their successors T(D). The same argument gives a map F:C(D)→M; the counterexample needs only two admitted inputs and their defined next states.
+
+## The witness from DEEP
+In the pinned coastal reef model, rockcod-08 handles amphipod-patch-25. At time 150.1 s, compare the naturally reached checkpoint, whose handling time is 1.150719588341451 s, to a validated clone with that one field reset to zero. All other fields are equal. Define C to delete only elapsed handling time and retain everything else.
+
+- Natural checkpoint. Handling time: 1.150719588341451 s · One original 0.05 s step later: Patch 25 transferred at 150.15 s
+- Reset-clock clone. Handling time: 0 s · One original 0.05 s step later: No patch-25 transfer
+
+C(x)=C(y), but their encoded successors differ in retained resource state. Consequently the proposed reduced representation cannot have an exact deterministic update on any domain containing these two admitted states. The original checkpoint is naturally reached; the reset-clock state is a counterfactual, not established to be naturally reachable. Nothing here rules out other sufficient representations or establishes impossibility on the naturally reachable domain alone.
+
+## What was learned
+Current location, target and the rest of the retained state cannot replace the omitted handling clock in this example. A summary of past work can be necessary for the next transition even when the complete past is not. The question is not how much history can be discarded, but whether the chosen representation preserves what the future requires.
+
+Rocky developed the witness. An early receipt held a mutable reference and showed the reset clock at a later time. Rocky fixed it by capturing a snapshot. Drago independently checked the corrected witness and rejected four negative controls: missing RNG state, an omitted interior frame, a shifted restart, and a same-count substitution of a resource ID. Read the companion exhibit Two Microseconds, Two Futures for the longer clock intervention. The theorem is exact; the witness belongs to the specified synthetic simulator. Neither is a claim about real fish or computational complexity.
+
+## Evidence and companion
+
+[Two Microseconds, Two Futures](https://aleksandrsolnatus.github.io/proof-wall/exhibits/two-microseconds-two-futures/v1/index.html) is the companion exhibit in Mathematics Found in DEEP. Download the curated results from this exhibit. The pinned simulator, original Rocky archive, and Drago review records are held in private custody.
